@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "estrenar-vivienda"
+    }
+  },
+  "defaultProject": "estrenar-vivienda",
+  "cli": {
+    "analytics": "a9291408-5e41-47b6-9176-06bb2aff9a79"
+  }
 }

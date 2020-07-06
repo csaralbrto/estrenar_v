@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  site: 'https://estrenarvivienda.demodayscript.com/',
+  autor: '',
+  title: '',
+  description : '',
+  key_words: '',
+  image: '',
+  path : 'https://estrenarvivienda.demodayscript.com/',
+  type: 'website',
+  production: false,
+  endpoint: '',
+  endpointApi: '',
+  endpointTesting: 'http://test-blaa.demodayscript.com',
+  endpointTestingApi: 'http://test-blaa.demodayscript.com/api/',
+  endpointTestingApiElastic: 'http://test-blaa.demodayscript.com/api/elasticsearch?',
 };
 
 /*
