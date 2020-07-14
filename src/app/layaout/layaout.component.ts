@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BlogService } from './blog.service';
+import { LayoutService } from './layout.service';
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss'],
-  providers: [ BlogService ]
+  selector: 'app-layaout',
+  templateUrl: './layaout.component.html',
+  styleUrls: ['./layaout.component.scss'],
+  providers: [ LayoutService ]
 })
-export class BlogComponent implements OnInit {
+export class LayaoutComponent implements OnInit {
   public response: any;
 
-  constructor( public Service: BlogService ) { }
+  constructor( public Service: LayoutService ) { }
 
   ngOnInit(): void {
-    
-    /* Método para obtener toda la info del blog */
-    this.Service.getBlogData()
+
+      
+    /* Método para obtener toda la info de quienes somos */
+    this.Service.getwhoWeAreData()
     .subscribe(
       data => this.response = data,
       err => console.log(),
@@ -31,8 +32,8 @@ export class BlogComponent implements OnInit {
       }
     );    
 
-    /* Método para obtener toda la info de los más leidos */
-    this.Service.mostRead()
+    /* Método para obtener el glosario */
+    this.Service.getGlossaryData()
     .subscribe(
       data => this.response = data,
       err => console.log(),
@@ -46,8 +47,8 @@ export class BlogComponent implements OnInit {
       }
     );
 
-    /* Método para obtener toda la info de la experiencia de estrenar */
-    this.Service.newExperience()
+    /* Método para obtener aviso de privacidad */
+    this.Service.getPrivacyNotificationData()
     .subscribe(
       data => this.response = data,
       err => console.log(),
@@ -61,8 +62,8 @@ export class BlogComponent implements OnInit {
       }
     );
     
-    /* Método para obtener toda la info de el lado eco */
-    this.Service.ecoSide()
+    /* Método para obtener aviso legal */
+    this.Service.getLegalNoticeData()
     .subscribe(
       data => this.response = data,
       err => console.log(),
@@ -76,8 +77,8 @@ export class BlogComponent implements OnInit {
       }
     );
         
-    /* Método para obtener toda la info de lo recomendado */
-    this.Service.blogRecommended()
+    /* Método para obtener politica de tratamiento */
+    this.Service.getTreatmentPolicyData()
     .subscribe(
       data => this.response = data,
       err => console.log(),
@@ -91,8 +92,8 @@ export class BlogComponent implements OnInit {
       }
     );
             
-    /* Método para obtener toda la info de noticias del sector */
-    this.Service.blogNews()
+    /* Método para obtener el mapa del sitio */
+    this.Service.getSitemap()
     .subscribe(
       data => this.response = data,
       err => console.log(),
@@ -106,8 +107,8 @@ export class BlogComponent implements OnInit {
       }
     );
                 
-    /* Método para obtener toda la info de articulo relacionado */
-    this.Service.blogRelated()
+    /* Método para obtener la revista digital */
+    this.Service.getWebMagazine()
     .subscribe(
       data => this.response = data,
       err => console.log(),

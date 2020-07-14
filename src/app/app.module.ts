@@ -7,6 +7,16 @@ import { HomeComponent } from './home/home.component';
 import { HomeLayoutsComponent } from './home-layouts/home-layouts.component';
 import { BlogComponent } from './blog/blog.component';
 import { ConstructoraComponent } from './constructora/constructora.component';
+import { ToolComponent } from './tool/tool.component';
+import { ComparatorComponent } from './comparator/comparator.component';
+import { ContentUploadComponent } from './content-upload/content-upload.component';
+import { WizardComponent } from './wizard/wizard.component';
+import { LayaoutComponent } from './layaout/layaout.component';
+import { UserComponent } from './user/user.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SideBarComponent } from './shared/side-bar/side-bar.component';
+import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +24,17 @@ import { ConstructoraComponent } from './constructora/constructora.component';
     HomeComponent,
     HomeLayoutsComponent,
     BlogComponent,
-    ConstructoraComponent
+    ConstructoraComponent,
+    ToolComponent,
+    ComparatorComponent,
+    ContentUploadComponent,
+    WizardComponent,
+    LayaoutComponent,
+    UserComponent,
+    FooterComponent,
+    HeaderComponent,
+    SideBarComponent,
+    BreadcrumbsComponent
   ],
   imports: [
     BrowserModule,
