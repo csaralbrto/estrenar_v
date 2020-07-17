@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 
@@ -32,48 +33,48 @@ export class LayoutService {
   /* Cargar quienes somos */
   getwhoWeAreData(): Observable<any> {
     return this.http.get(this.whoWeAreData)
-        .map( response => response.json() );
+    .pipe(map(( response => response.json() )));
   }
 
   /* Cargar glosario */
   getGlossaryData(): Observable<any> {
     return this.http.get(this.glossaryData)
-        .map( response => response.json() );
+    .pipe(map(( response => response.json() )));
   }
 
   /* Enviar información contactanos */
   sendContactUs( operation: string, params: any ): Observable<any> {
     return this.http.post(this.contactUs + operation, params)
-      .map(response => response.json());
+    .pipe(map(( response => response.json() )));
     }
 
   /* Cargar aviso de privacidad */
   getPrivacyNotificationData(): Observable<any> {
     return this.http.get(this.privacyNotificationData)
-        .map( response => response.json() );
+    .pipe(map(( response => response.json() )));
   }
 
   /* Cargar aviso legal */
   getLegalNoticeData(): Observable<any> {
-    return this.http.get(this.servicePath)
-        .map( response => response.json() );
+    return this.http.get(this.legalNoticeData)
+    .pipe(map(( response => response.json() )));
   }
 
   /* Cargar politicas de tratamientos */
   getTreatmentPolicyData(): Observable<any> {
-    return this.http.get(this.servicePath)
-        .map( response => response.json() );
+    return this.http.get(this.treatmentPolicyData)
+    .pipe(map(( response => response.json() )));
   }
 
   /* Cargar mapa del sitio */
   getSitemap(): Observable<any> {
     return this.http.get(this.sitemap)
-        .map( response => response.json() );
+    .pipe(map(( response => response.json() )));
   }
 
   /* Cargar revista digital */
   getWebMagazine(): Observable<any> {
     return this.http.get(this.webMagazine)
-        .map( response => response.json() );
+    .pipe(map(( response => response.json() )));
   }
 }

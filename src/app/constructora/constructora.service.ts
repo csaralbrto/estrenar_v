@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -22,16 +23,16 @@ export class ConstructoraService {
   /* Traer toda la info de constructoras */
   getData(): Observable<any> {
     return this.http.get(this.dataPath)
-        .map( response => response.json() );
+    .pipe(map(( response => response.json() )));
   }
   /* Traer la info del proyecto */
   findConstructora( params: any ): Observable<any> {
     return this.http.get(this.endpoint + params)
-      .map(response => response.json());
+    .pipe(map(( response => response.json() )));
   }
   /* Traer los proyectos de la constructora */
   findProject( params: any ): Observable<any> {
     return this.http.get(this.projectDataConstructora + params)
-      .map(response => response.json());
+    .pipe(map(( response => response.json() )));
   }
 }

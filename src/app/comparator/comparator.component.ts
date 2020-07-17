@@ -17,7 +17,7 @@ export class ComparatorComponent implements OnInit {
   ngOnInit(): void {
 
     /* Método para obtener toda la info del comparador */
-    this.Service.comparatodData()
+    this.Service.comparatorData()
     .subscribe(
       data => this.response = data,
       err => console.log(),

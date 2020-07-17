@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -34,47 +35,47 @@ export class BlogService {
   /* Traer toda la info de blogs */
   getBlogData(): Observable<any> {
     return this.http.get(this.dataBlogPath)
-        .map( response => response.json() );
+        .pipe(map(( response => response.json() )));
   }
   /* Traer los mas leidos */
   mostRead(): Observable<any> {
     return this.http.get(this.mostReadPath)
-        .map( response => response.json() );
+        .pipe(map(( response => response.json() )));
   }
   /* Traer la experiencia de estrenar */
   newExperience(): Observable<any> {
     return this.http.get(this.newExperiencePath)
-        .map( response => response.json() );
+        .pipe(map(( response => response.json() )));
   }
   /* Traer info nuestro lado eco*/
   ecoSide(): Observable<any> {
     return this.http.get(this.ecoSidePath)
-        .map( response => response.json() );
+        .pipe(map(( response => response.json() )));
   }
   /* Traer recomendados*/
   blogRecommended(): Observable<any> {
     return this.http.get(this.recommendedPath)
-        .map( response => response.json() );
+        .pipe(map(( response => response.json() )));
   }
   /* Traer noticias del sector*/
   blogNews(): Observable<any> {
     return this.http.get(this.blogNewsPath)
-        .map( response => response.json() );
+        .pipe(map(( response => response.json() )));
   }
   /* Traer la info del blog */
   findProject( params: any ): Observable<any> {
     return this.http.get(this.blogPath + params)
-      .map(response => response.json());
+      .pipe(map((response => response.json())));
   }
   /* Traer articulo relacionado*/
   blogRelated(): Observable<any> {
     return this.http.get(this.blogRelatedPath)
-        .map( response => response.json() );
+        .pipe(map(( response => response.json() )));
   }
   /* Enviar comentario */
   sendBlogComment( operation: string, params: any ): Observable<any> {
     return this.http.post(this.sendComment + operation, params)
-      .map(response => response.json());
+      .pipe(map((response => response.json())));
   }
 
 

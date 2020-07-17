@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -15,6 +16,6 @@ export class HomeService {
   /* Traer toda la info de proyectos destacados, construsctoras, blog, etc */
   getAllData(): Observable<any> {
     return this.http.get(this.dataPath)
-        .map( response => response.json() );
+    .pipe(map(( response => response.json() )));
   }
 }

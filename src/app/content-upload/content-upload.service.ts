@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -16,6 +17,6 @@ export class ContentUploadService {
   /* Enviar datos para crear proyectos */
   saveformData( operation: string, params: any ): Observable<any> {
     return this.http.post(this.formData + operation, params)
-      .map(response => response.json());
+    .pipe(map(( response => response.json() )));
   }
 }

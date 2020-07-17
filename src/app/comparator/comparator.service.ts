@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComparatorService {
-  public comparatorData: string;
+  public compararData: string;
 
   constructor( private http: Http ) {
-    this.comparatorData = environment.endpointApi+ 'comparator/';
+    this.compararData = environment.endpointApi+ 'comparator/';
    }
   
   /* Traer info al comparador*/
-  comparatoData(): Observable<any> {
-    return this.http.get(this.comparatorData)
-        .map( response => response.json() );
+  comparatorData(): Observable<any> {
+    return this.http.get(this.compararData)
+    .pipe(map(( response => response.json() )));
   }
 }
