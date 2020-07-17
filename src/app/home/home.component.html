@@ -1,3 +1,348 @@
-<div class="text-center">
-  <p>home works!</p>
+<!-- Barra de navegación-->
+<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+  <div class="title-bar-title">Menu</div>
 </div>
+
+<div data-sticky-container>
+  <div class="top-bar" data-sticky data-margin-top="0">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">{{ name_company }}</li>
+        <li class="has-submenu">
+          <a href="#0">{{ menu_title_proyects }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_house_VIS }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_builders }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_tools }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_blog }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Ciudad, Sector o Barrio" /></li>
+        <li><i class="fi-magnifying-glass large icon-search-style"></i></li>
+        <li><i class="fi-torso large icon-topbar-style"></i></li>
+        <li>
+          <i class="fi-heart large icon-topbar-style"><span>{{ number_persons }}</span></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--Fin Barra de navegación-->
+
+<!-- Navegación -->
+<div class="grid-container large-8">
+  <!-- Sección Busqueda -->
+  <form action="">
+    <div class="grid-x grid-padding-x">
+      <div class="large-12 cell align-middle">
+        <h1>{{ main_title_page }}</h1>
+      </div>
+      <div class="large-7 medium-7 small-7 cell">
+        <input type="search" placeholder="¿Qué estás buscando?" />
+        <i class="fi-magnifying-glass large icon-search-style"></i>
+      </div>
+      <div class="large-3 medium-3 small-3 cell">
+        <select name="precio" id="precio">
+          <option value="">Precio</option>
+        </select>
+      </div>
+      <div class="large-2 medium-2 small-2 cell">
+        <a href="#" class="search_button button large-expanded">Buscar</a>
+      </div>
+    </div>
+  </form>
+  <!-- Fin Sección Busqueda -->
+
+  <!-- Sección Publicidad -->
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell ">
+      <div class="large-3 medium-3 small-3 cell">
+      </div>
+      <div class="large-6 medium-6 small-6 cell">
+        <div class="callout secondary">
+          <p>PUBLICIDAD</p>
+        </div>
+      </div>
+      <div class="large-3 medium-3 small-3 cell">
+      </div>
+    </div>
+  </div>
+  <!--Fin Sección Publicidad -->
+
+  <!--Sección ¿Qué estas buscando? -->
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell align-middle">
+      <h2>{{ title_section_list_search }}</h2>
+    </div>
+  </div>
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell ">
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+        <div class="orbit-wrapper">
+          <ul class="orbit-container">
+            <li class="is-active orbit-slide">
+              <figure class="orbit-figure">
+                <img class="orbit-image" src="https://placehold.it/1200x400/888?text=Imagen-1" alt="Space">
+                <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+              </figure>
+            </li>
+            <li class="orbit-slide">
+              <div class="media-object">
+                <div class="media-object-section align-self-middle">
+                  <div class="thumbnail">
+                    <img src="https://placehold.it/100x100/777?text=Casas">
+                    <a class="link-carrousel-icon" href="">Casas</a>
+                  </div>
+                  <div class="thumbnail">
+                    <img src="https://placehold.it/100x100/777?text=Apartamentos">
+                    <a class="link-carrousel-icon" href="">Apartamentos</a>
+                  </div>
+                </div>
+                <div class="media-object-section align-self-middle">
+                  <div class="thumbnail">
+                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
+                    <a class="link-carrousel-icon" href="">Apartaestudios</a>
+                  </div>
+                  <div class="thumbnail">
+                    <img src="https://placehold.it/100x100/777?text=VIS">
+                    <a class="link-carrousel-icon" href="">VIS</a>
+                  </div>
+                </div>
+                <div class="media-object-section main-section">
+                  <img src="https://placehold.it/500x300/777?text=Viviendas-Pet-Friendly">
+                </div>
+                <div class="media-object-section align-self-bottom">
+                  <div class="thumbnail">
+                    <img src="https://placehold.it/250x150/777?text=Viviendas-Pet-Friendly">
+                  </div>
+                  <div class="thumbnail">
+                    <img src="https://placehold.it/250x150/777?text=Smart-Home">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="orbit-slide">
+              <figure class="orbit-figure">
+                <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
+                <figcaption class="orbit-caption">Encapsulating</figcaption>
+              </figure>
+            </li>
+            <li class="orbit-slide">
+              <figure class="orbit-figure">
+                <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
+                <figcaption class="orbit-caption">Outta This World</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+        <nav class="orbit-bullets">
+          <button class="is-active" data-slide="0">
+            <span class="show-for-sr">First slide details.</span>
+            <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+          </button>
+          <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+          <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+          <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+        </nav>
+        <div class="orbit-controls">
+          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
+          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
+        </div>
+      </div>
+    </div>
+    <!--Fin Sección ¿Qué estas buscando? -->
+
+
+    <!--Sección Proyectos destacados -->
+    <div class="row">
+      <div class="large-12 cell align-middle">
+        <h2>{{ title_section_top_proyects }}</h2>
+      </div>
+
+
+      <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+        <div class="cell">
+          <div class="card">
+            <img src="https://placehold.it/550x150/777?text=Proyectos">
+            <div class="card-section">
+              <h4>Proyecto 1</h4>
+              <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="card">
+            <img src="https://placehold.it/250x350/777?text=Proyectos">
+            <div class="card-section">
+              <h4>Proyecto 2</h4>
+              <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="card">
+            <img src="https://placehold.it/250x350/777?text=Proyectos">
+            <div class="card-section">
+              <h4>Proyecto 3</h4>
+              <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin Sección Proyectos destacados -->
+
+    <!-- Sección Publicidad -->
+    <div class="large-12 cell align-middle">
+      <div class="large-3 medium-3 small-3 cell">
+      </div>
+      <div class="large-6 medium-6 small-6 cell">
+        <div class="callout secondary">
+          <p>PUBLICIDAD</p>
+        </div>
+      </div>
+      <div class="large-3 medium-3 small-3 cell">
+      </div>
+    </div>
+
+    <!--Fin Sección Publicidad -->
+
+    <!--Sección Constructoras -->
+    <div class="large-12 cell align-middle">
+      <h2>{{ title_section_builders }}</h2>
+    </div>
+  </div>
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell ">
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+        <div class="orbit-wrapper">
+          <ul class="orbit-container">
+            <li class="is-active orbit-slide">
+              <div class="media-object">
+                <div class="media-object-section main-section">
+                  <div class="thumbnail builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
+                  </div>
+                  <div class="thumbnail builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=VIS">
+                  </div>
+                  <div class="thumbnail builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
+                  </div>
+                  <div class="thumbnail builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=VIS">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="orbit-slide">
+              <div class="media-object">
+                <div class="media-object-section main-section">
+                  <div class="builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
+                  </div>
+                  <div class="builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=VIS">
+                  </div>
+                  <div class="builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
+                  </div>
+                  <div class="builder-card-carrousell">
+                    <img src="https://placehold.it/100x100/777?text=VIS">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="orbit-slide">
+              <figure class="orbit-figure">
+                <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
+                <figcaption class="orbit-caption">Encapsulating</figcaption>
+              </figure>
+            </li>
+            <li class="orbit-slide">
+              <figure class="orbit-figure">
+                <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
+                <figcaption class="orbit-caption">Outta This World</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+        <nav class="orbit-bullets">
+          <button class="is-active" data-slide="0">
+            <span class="show-for-sr">First slide details.</span>
+            <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+          </button>
+          <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+          <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+          <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+        </nav>
+        <div class="orbit-controls">
+          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
+          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
+        </div>
+      </div>
+    </div>
+    <!--Fin Sección Constructoras -->
+
+    <!--Sección Blog -->
+    <div class="row">
+      <div class="large-12 cell align-middle">
+        <h2>{{ title_section_blog }}</h2>
+      </div>
+      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
+        <div class="cell">
+          <div class="card">
+            <img src="https://placehold.it/250x250/777?text=Proyectos">
+            <div class="card-section">
+              <h4>Blog 1</h4>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="card">
+            <img src="https://placehold.it/250x250/777?text=Proyectos">
+            <div class="card-section">
+              <h4>Blog 2</h4>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="card">
+            <img src="https://placehold.it/250x250/777?text=Proyectos">
+            <div class="card-section">
+              <h4>Blog 3</h4>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="card">
+            <img src="https://placehold.it/250x250/777?text=Proyectos">
+            <div class="card-section">
+              <h4>Blog 4</h4>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin Sección Blog -->
+
+    <!--Footer -->
+    <footer>
+
+    </footer>
+    <!--Fin Footer -->
