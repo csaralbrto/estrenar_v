@@ -8,7 +8,6 @@ import { MetaTag } from '../../class/metatag.class';
     selector: 'as-social',
     templateUrl: 'social.html'
 })
-
 export class SocialComponent implements OnInit, Input{
     @Input() nodes_tags: any;
     tag: MetaTag;
