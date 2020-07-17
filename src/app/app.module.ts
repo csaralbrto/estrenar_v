@@ -17,6 +17,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
+import { SocialComponent } from './social/social.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
     FooterComponent,
     HeaderComponent,
     SideBarComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    SocialComponent
   ],
   imports: [
     BrowserModule,
