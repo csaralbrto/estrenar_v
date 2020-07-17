@@ -1,0 +1,75 @@
+/************************************************************
+* Estilos barra de navegación                               *
+*************************************************************/
+.icon-search-style {
+  color: #a9d13a;
+  font-size: 2rem;
+  position: relative;
+  margin-left: -3rem;
+  -webkit-transform: rotate(280deg);
+  -moz-transform: rotate(280deg);
+  -ms-transform: rotate(280deg);
+  -o-transform: rotate(280deg);
+  transform: rotate(280deg);
+}
+
+.icon-topbar-style {
+  color: #a9d13a;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.top-bar {
+  background-color: blue($color: #000000);
+}
+
+/************************************************************
+* Estilos Generales                                         *
+*************************************************************/
+h1,
+h2,
+h3,
+h4,
+p {
+  text-align: center;
+  color: #14444E;
+  font-weight: bolder;
+}
+
+body {
+  font-size: 12px;
+}
+
+.search_button {
+  background-color: #a9d13a;
+  color: #fff;
+  font-weight: bolder;
+}
+
+input,
+select,
+.button {
+  border-radius: 0.25rem;
+  border: 1px solid #000000;
+}
+
+/************************************************************
+* Estilos servicios carrousell                                         *
+*************************************************************/
+
+.link-carrousel-icon {
+  display: block;
+  padding-top: 12px;
+  color: #14444E;
+  font-weight: bolder;
+}
+
+/************************************************************
+* Estilos Carrousell Constructora                                         *
+*************************************************************/
+
+.builder-card-carrousell {
+  display: inline-block;
+  padding: 2rem;
+  max-width: 100%;
+}
