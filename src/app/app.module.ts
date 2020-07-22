@@ -18,6 +18,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 import { SocialComponent } from './social/social.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -36,13 +37,10 @@ import { SocialComponent } from './social/social.component';
     HeaderComponent,
     SideBarComponent,
     BreadcrumbsComponent,
-    SocialComponent
+    SocialComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
