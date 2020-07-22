@@ -1,1 +1,41 @@
-<p>header works!</p>
+<!-- Barra de navegación-->
+<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div data-sticky-container>
+  <div class="top-bar" data-sticky data-margin-top="0">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">{{ name_company }}</li>
+        <li class="has-submenu">
+          <a href="#0">{{ menu_title_proyects }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_house_VIS }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_builders }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_tools }}</a>
+        </li>
+        <li>
+          <a href="#0">{{ menu_title_blog }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Ciudad, Sector o Barrio" /></li>
+        <li><i class="fi-magnifying-glass large icon-search-style"></i></li>
+        <li><i class="fi-torso large icon-topbar-style"></i></li>
+        <li>
+          <i class="fi-heart large icon-topbar-style"><span>{{ number_persons }}</span></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--Fin Barra de navegación-->

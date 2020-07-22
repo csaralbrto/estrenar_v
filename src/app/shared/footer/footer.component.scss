@@ -1,0 +1,43 @@
+footer {
+  background-color: #66A6B2;
+  padding: 10px;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+footer a {
+  display: block;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  text-decoration: underline;
+}
+
+footer h4 {
+  color: #a9d13a;
+  font-weight: bolder;
+}
+
+footer h3>a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: bolder;
+}
+
+.region-social-media-links {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 30px 0 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #7c7c7c;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
