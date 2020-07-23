@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class HomeService {
   private dataPath: string;
   constructor(private http: Http) {
-    this.dataPath = environment.endpointApi + 'home/allData';
+    this.dataPath = environment.endpointApi + 'home';
   }
 
   /* Traer toda la info de proyectos destacados, construsctoras, blog, etc */

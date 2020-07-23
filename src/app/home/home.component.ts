@@ -28,7 +28,8 @@ export class HomeComponent implements OnInit {
       (data) => (this.response = data),
       (err) => console.log(),
       () => {
-        if (this.response.successful) {
+        if (this.response) {
+          console.log(this.response.blogs);
           /* si responde correctamente */
         }
         if (this.response.error) {

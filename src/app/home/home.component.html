@@ -57,35 +57,24 @@
             </li>
             <li class="orbit-slide">
               <div class="media-object">
-                <div class="media-object-section align-self-middle">
+                <div class="media-object-section align-self-middle" *ngFor="let header_proj1 of response.header_proj1; let i = index">
                   <div class="thumbnail">
-                    <img src="https://placehold.it/100x100/777?text=Casas">
-                    <a class="link-carrousel-icon" href="">Casas</a>
-                  </div>
-                  <div class="thumbnail">
-                    <img src="https://placehold.it/100x100/777?text=Apartamentos">
-                    <a class="link-carrousel-icon" href="">Apartamentos</a>
+                    <img src="{{ header_proj1.url_img }}">
+                    <a class="link-carrousel-icon" href="">{{ header_proj1.tipo }}</a>
                   </div>
                 </div>
-                <div class="media-object-section align-self-middle">
+                <div class="media-object-section align-self-middle" *ngFor="let header_proj2 of response.header_proj2; let i = index">
                   <div class="thumbnail">
-                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
-                    <a class="link-carrousel-icon" href="">Apartaestudios</a>
-                  </div>
-                  <div class="thumbnail">
-                    <img src="https://placehold.it/100x100/777?text=VIS">
-                    <a class="link-carrousel-icon" href="">VIS</a>
+                    <img src="{{ header_proj2.url_img }}">
+                    <a class="link-carrousel-icon" href="">{{ header_proj2.tipo }}</a>
                   </div>
                 </div>
-                <div class="media-object-section main-section">
-                  <img src="https://placehold.it/500x300/777?text=Viviendas-Pet-Friendly">
+                <div class="media-object-section main-section" *ngFor="let header_proj3 of response.header_proj3; let i = index">
+                  <img src="{{ header_proj3.url_img }}">
                 </div>
                 <div class="media-object-section align-self-bottom">
                   <div class="thumbnail">
-                    <img src="https://placehold.it/250x150/777?text=Viviendas-Pet-Friendly">
-                  </div>
-                  <div class="thumbnail">
-                    <img src="https://placehold.it/250x150/777?text=Smart-Home">
+                    <img src="{{ header_proj4.url_img }}" *ngFor="let header_proj4 of response.header_proj4; let i = index">
                   </div>
                 </div>
               </div>
@@ -127,9 +116,7 @@
       <div class="large-12 cell align-middle">
         <h2>{{ title_section_top_proyects }}</h2>
       </div>
-
-
-      <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+      <!-- <div class="grid-x grid-margin-x small-up-2 medium-up-3">
         <div class="cell">
           <div class="card">
             <img src="https://placehold.it/550x150/777?text=Proyectos">
@@ -154,6 +141,17 @@
             <div class="card-section">
               <h4>Proyecto 3</h4>
               <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+        <div class="cell" *ngFor="let project of response.projects; let i = index">
+          <div class="card">
+            <img src="{{ project.imagen_banner }}">
+            <div class="card-section">
+              <h4>{{ project.nombre }}</h4>
+              <div [innerHTML]=project.descripcion></div>
             </div>
           </div>
         </div>
@@ -188,29 +186,22 @@
           <ul class="orbit-container">
             <li class="is-active orbit-slide">
               <div class="media-object">
-                <div class="media-object-section main-section">
+                <div class="media-object-section main-section" *ngFor="let constructora of response.constructoras; let i = index">
                   <div class="thumbnail builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
-                  </div>
-                  <div class="thumbnail builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=VIS">
-                  </div>
-                  <div class="thumbnail builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
-                  </div>
-                  <div class="thumbnail builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=VIS">
+                    <img src="{{ response.url }}{{ constructora.logo }}">
+                    <p>{{ constructora.name }}</p>
                   </div>
                 </div>
               </div>
             </li>
             <li class="orbit-slide">
               <div class="media-object">
-                <div class="media-object-section main-section">
+                <div class="media-object-section main-section" *ngFor="let constructora of response.constructoras; let i = index">
                   <div class="builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
+                    <img src="{{ response.url }}{{ constructora.logo }}">
+                    <p>{{ constructora.name }}</p>
                   </div>
-                  <div class="builder-card-carrousell">
+                  <!-- <div class="builder-card-carrousell">
                     <img src="https://placehold.it/100x100/777?text=VIS">
                   </div>
                   <div class="builder-card-carrousell">
@@ -218,7 +209,7 @@
                   </div>
                   <div class="builder-card-carrousell">
                     <img src="https://placehold.it/100x100/777?text=VIS">
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </li>
@@ -254,7 +245,23 @@
     <!--Fin Sección Constructoras -->
 
     <!--Sección Blog -->
+
     <div class="row">
+      <div class="large-12 cell align-middle">
+      <h2>{{ title_section_blog }}</h2>
+      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
+        <div class="cell" *ngFor="let blog of response.blogs; let i = index">
+          <div class="card">
+            <img [src]="blog.banner" [title]="blog.banner">
+            <div class="card-section">
+              <h4>{{ blog.titulo }}</h4>
+              <p>{{ blog.sub_titulo }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
       <div class="large-12 cell align-middle">
         <h2>{{ title_section_blog }}</h2>
       </div>
@@ -296,5 +303,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    
     <!--Fin Sección Blog -->
