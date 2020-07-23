@@ -12,7 +12,7 @@ export const environment = {
   path : 'https://estrenarvivienda.demodayscript.com/',
   type: 'website',
   production: false,
-  endpoint: '',
+  endpoint: 'https://api-estrenarvivienda.demodayscript.com/',
   endpointApi: 'https://api-estrenarvivienda.demodayscript.com/api/',
   endpointTesting: 'https://api-estrenarvivienda.demodayscript.com/api/',
   endpointTestingApi: 'https://api-estrenarvivienda.demodayscript.com/api/',
