@@ -13,7 +13,7 @@ export class ProjectsService {
   public endpoint: string;
   constructor( private http: Http ) { 
     this.servicePath = environment.endpointApi+ 'home/url';
-    this.dataPath = environment.endpointApi+ 'projects';
+    this.dataPath = environment.endpointApi+ 'allProjects';
     this.endpoint = environment.endpointApi + 'project/';
   }
 
@@ -25,7 +25,7 @@ export class ProjectsService {
   /* Traer la info del proyecto */
   findProject( params: any ): Observable<any> {
     return this.http.get(this.endpoint + params)
-      .map(response => response.json());
+    .pipe(map(( response => response.json() )));
   }
   /* Cargar informacion de salas de ventas */
   getRoomSaleData(): Observable<any> {

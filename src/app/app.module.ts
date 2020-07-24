@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeLayoutsComponent } from './home-layouts/home-layouts.component';
 import { BlogComponent } from './blog/blog.component';
 import { ConstructoraComponent } from './constructora/constructora.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { ToolComponent } from './tool/tool.component';
 import { ComparatorComponent } from './comparator/comparator.component';
 import { ContentUploadComponent } from './content-upload/content-upload.component';
@@ -27,6 +28,7 @@ import { HttpModule } from '@angular/http';
     HomeLayoutsComponent,
     BlogComponent,
     ConstructoraComponent,
+    ProjectsComponent,
     ToolComponent,
     ComparatorComponent,
     ContentUploadComponent,
