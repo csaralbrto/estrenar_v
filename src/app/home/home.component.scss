@@ -1,34 +1,4 @@
 /************************************************************
-* Estilos Generales                                         *
-*************************************************************/
-h1,
-h2,
-h3,
-h4,
-p {
-  text-align: center;
-  color: #14444E;
-  font-weight: bolder;
-}
-
-body {
-  font-size: 12px;
-}
-
-.search_button {
-  background-color: #a9d13a;
-  color: #fff;
-  font-weight: bolder;
-}
-
-input,
-select,
-.button {
-  border-radius: 0.25rem;
-  border: 1px solid #000000;
-}
-
-/************************************************************
 * Estilos servicios carrousell                                         *
 *************************************************************/
 
@@ -47,4 +17,8 @@ select,
   display: inline-block;
   padding: 2rem;
   max-width: 100%;
+}
+
+.top_bar {
+  background-image: url("https://placehold.it/1920x1080/888?text=Imagen-Cabecera");
 }

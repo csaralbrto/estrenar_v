@@ -4,13 +4,20 @@
 .icon-search-style {
   color: #a9d13a;
   font-size: 2rem;
-  position: relative;
+  top: 0.5rem;
   margin-left: -3rem;
+  position: relative;
+  outline: none;
+  cursor: pointer;
   -webkit-transform: rotate(280deg);
   -moz-transform: rotate(280deg);
   -ms-transform: rotate(280deg);
   -o-transform: rotate(280deg);
   transform: rotate(280deg);
+}
+
+.contenedor_busqueda_campo {
+  width: 25rem;
 }
 
 .icon-topbar-style {
@@ -20,5 +27,43 @@
 }
 
 .top-bar {
-  background-color: blue($color: #000000);
+  background-color: get-color(secondary);
+  color: get-color(primary);
+  padding: 1.5rem;
+}
+
+.top-bar input {
+  //display: none;
+  max-width: none;
+}
+
+.top-bar span {
+  margin-top: 1.5rem;
+  float: right;
+}
+
+.top-bar * {
+  background-color: transparent;
+}
+
+.menu {
+  font-weight: 600;
+  background-color: get-color(secondary);
+}
+
+.menu-logo {
+  padding: 0.7rem 5rem 0rem 0rem;
+}
+
+.logo_header {
+  width: 4rem;
+  height: 1.5rem;
+  display: table;
+  background-size: 12.5rem;
+  background-image: url(http://localhost:4200/assets/images/logo-header.png);
+  background-repeat: no-repeat;
+}
+
+.numero_personas {
+  float: right;
 }

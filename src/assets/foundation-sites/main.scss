@@ -1,0 +1,51 @@
+/************************************************************
+* Estilos Generales                                         *
+*************************************************************/
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+  color: #14444E;
+  font-weight: bolder;
+}
+
+body {
+  //font-size: 14px;
+}
+
+.search_button {
+  background-color: #a9d13a;
+  color: #fff;
+  font-weight: bolder;
+}
+
+
+input {
+  background-color: #fff !important;
+  color: #AFBFC3;
+}
+
+input,
+select,
+.button {
+  border-radius: 0.25rem !important;
+  border: 1px solid #000000;
+}
+
+.grid-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+
+
+a,
+input {
+  color: get_color(primary);
+  margin-top: 1rem;
+}
+
+.text-bold {
+  font-weight: bold;
+}

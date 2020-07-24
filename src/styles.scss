@@ -85,11 +85,24 @@
 //Fonts foundation icons
 @import "./assets/fonts/foundation-icons/foundation-icons.css";
 
-@mixin foundation-everything(
-  $flex: true,
+//Styles General
+@import "./assets/foundation-sites/main.scss";
+
+//Styles home
+@import "./app/home/home.component.scss";
+
+//Styles header
+@import "./app/shared/header/header.component.scss";
+
+//Styles footer
+@import "./app/shared/footer/footer.component.scss";
+
+//Styles Projects
+@import "./app/projects/projects.component.scss";
+
+@mixin foundation-everything($flex: true,
   $prototype: false,
-  $xy-grid: $xy-grid
-) {
+  $xy-grid: $xy-grid) {
   @if $flex {
     $global-flexbox: true !global;
   }
@@ -106,10 +119,14 @@
   // Grids
   @if not $flex {
     @include foundation-grid;
-  } @else {
+  }
+
+  @else {
     @if $xy-grid {
       @include foundation-xy-grid-classes;
-    } @else {
+    }
+
+    @else {
       @include foundation-flex-grid;
     }
   }
@@ -152,13 +169,18 @@
   @include foundation-sticky;
   @include foundation-title-bar;
   @include foundation-top-bar;
+  @include border-rounded;
+
 
   // Helpers
   @include foundation-float-classes;
+
   @if $flex {
     @include foundation-flex-classes;
   }
+
   @include foundation-visibility-classes;
+
   @if $prototype {
     @include foundation-prototype-classes;
   }
