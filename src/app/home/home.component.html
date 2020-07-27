@@ -64,24 +64,28 @@
             </li>
             <li class="orbit-slide">
               <div class="media-object">
-                <div class="media-object-section align-self-middle" *ngFor="let header_proj1 of response.header_proj1; let i = index">
+                <div class="media-object-section align-self-middle"
+                  *ngFor="let header_proj1 of response.header_proj1; let i = index">
                   <div class="thumbnail">
                     <img src="{{ header_proj1.url_img }}">
                     <a class="link-carrousel-icon" href="">{{ header_proj1.tipo }}</a>
                   </div>
                 </div>
-                <div class="media-object-section align-self-middle" *ngFor="let header_proj2 of response.header_proj2; let i = index">
+                <div class="media-object-section align-self-middle"
+                  *ngFor="let header_proj2 of response.header_proj2; let i = index">
                   <div class="thumbnail">
                     <img src="{{ header_proj2.url_img }}">
                     <a class="link-carrousel-icon" href="">{{ header_proj2.tipo }}</a>
                   </div>
                 </div>
-                <div class="media-object-section main-section" *ngFor="let header_proj3 of response.header_proj3; let i = index">
+                <div class="media-object-section main-section"
+                  *ngFor="let header_proj3 of response.header_proj3; let i = index">
                   <img src="{{ header_proj3.url_img }}">
                 </div>
                 <div class="media-object-section align-self-bottom">
                   <div class="thumbnail">
-                    <img src="{{ header_proj4.url_img }}" *ngFor="let header_proj4 of response.header_proj4; let i = index">
+                    <img src="{{ header_proj4.url_img }}"
+                      *ngFor="let header_proj4 of response.header_proj4; let i = index" alt="">
                   </div>
                 </div>
               </div>
@@ -193,7 +197,8 @@
           <ul class="orbit-container">
             <li class="is-active orbit-slide">
               <div class="media-object">
-                <div class="media-object-section main-section" *ngFor="let constructora of response.constructoras; let i = index">
+                <div class="media-object-section main-section"
+                  *ngFor="let constructora of response.constructoras; let i = index">
                   <div class="thumbnail builder-card-carrousell">
                     <img src="{{ response.url }}{{ constructora.logo }}">
                     <p>{{ constructora.name }}</p>
@@ -203,7 +208,8 @@
             </li>
             <li class="orbit-slide">
               <div class="media-object">
-                <div class="media-object-section main-section" *ngFor="let constructora of response.constructoras; let i = index">
+                <div class="media-object-section main-section"
+                  *ngFor="let constructora of response.constructoras; let i = index">
                   <div class="builder-card-carrousell">
                     <img src="{{ response.url }}{{ constructora.logo }}">
                     <p>{{ constructora.name }}</p>
@@ -255,20 +261,20 @@
 
     <div class="row">
       <div class="large-12 cell align-middle">
-      <h2>{{ title_section_blog }}</h2>
-      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-        <div class="cell" *ngFor="let blog of response.blogs; let i = index">
-          <div class="card">
-            <img [src]="blog.banner" [title]="blog.banner">
-            <div class="card-section">
-              <h4>{{ blog.titulo }}</h4>
-              <p>{{ blog.sub_titulo }}</p>
+        <h2>{{ title_section_blog }}</h2>
+        <div class="grid-x grid-margin-x small-up-2 medium-up-4">
+          <div class="cell" *ngFor="let blog of response.blogs; let i = index">
+            <div class="card">
+              <img [src]="blog.banner" [title]="blog.banner">
+              <div class="card-section">
+                <h4>{{ blog.titulo }}</h4>
+                <p>{{ blog.sub_titulo }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- <div class="row">
+      <!-- <div class="row">
       <div class="large-12 cell align-middle">
         <h2>{{ title_section_blog }}</h2>
       </div>
@@ -311,5 +317,5 @@
         </div>
       </div>
     </div> -->
-    
-    <!--Fin Sección Blog -->
+
+      <!--Fin Sección Blog -->
