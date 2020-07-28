@@ -124,27 +124,27 @@
             </div>
             <div class="cell">
               <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                72 m<sup>2</sup>
+              <span class="text-info-project-card"> 
+                  {{ project1.medida_apartamento }} m<sup>2</sup>
                 <span class="badge alert-info-project">!</span>
               </span>
             </div>
             <div class="cell">
               <i class="fi-heart large icon-topbar-style"></i>
               <span class="text-info-project-card">
-                x1
+                {{ project1.n_garages }}
               </span>
             </div>
             <div class="cell">
               <i class="fi-heart large icon-topbar-style"></i>
               <span class="text-info-project-card">
-                x3
+                {{ project1.n_habitaciones }}
               </span>
             </div>
             <div class="cell">
               <i class="fi-heart large icon-topbar-style"></i>
               <span class="text-info-project-card">
-                x2
+                {{ project1.n_banos }}
               </span>
             </div>
           </div>
@@ -266,7 +266,41 @@
     <!-- Card Proyecto individual-->
     <div class="cell shrink" *ngFor="let project2 of response_data_project.projects_2; let i = index">
       <div class="card">
-        <img class="project-images-card" [src]="project2.url_img">
+        <div class="overlap-container">
+          <img class="project-images-card" [src]="project2.url_img">
+          <div class="card-section-over">
+            <div class="cell ">
+              <a class="align-bookmark-project" href="">
+                <i class="fi-heart large icon-topbar-style"></i>
+              </a>
+            </div>
+            <div class="cell">
+              <i class="fi-heart large icon-topbar-style"></i>
+              <span class="text-info-project-card"> 
+                  {{ project2.medida_apartamento }} m<sup>2</sup>
+                <span class="badge alert-info-project">!</span>
+              </span>
+            </div>
+            <div class="cell">
+              <i class="fi-heart large icon-topbar-style"></i>
+              <span class="text-info-project-card">
+                {{ project2.n_garages }}
+              </span>
+            </div>
+            <div class="cell">
+              <i class="fi-heart large icon-topbar-style"></i>
+              <span class="text-info-project-card">
+                {{ project2.n_habitaciones }}
+              </span>
+            </div>
+            <div class="cell">
+              <i class="fi-heart large icon-topbar-style"></i>
+              <span class="text-info-project-card">
+                {{ project2.n_banos }}
+              </span>
+            </div>
+          </div>
+        </div>
         <div class="card-section">
           <span class="rounded link-category-project">
             <a href="">
