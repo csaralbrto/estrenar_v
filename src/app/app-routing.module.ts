@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'proyectos', component: ProjectsComponent, pathMatch: 'full' },
+  { path: 'proyecto/:path', component: ProjectDetailComponent, pathMatch: 'full' },  
 ];
 
 @NgModule({

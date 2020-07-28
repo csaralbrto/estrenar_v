@@ -20,6 +20,7 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 import { SocialComponent } from './social/social.component';
 import { HttpModule } from '@angular/http';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpModule } from '@angular/http';
     SideBarComponent,
     BreadcrumbsComponent,
     SocialComponent,
+    ProjectDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule],
   providers: [],
