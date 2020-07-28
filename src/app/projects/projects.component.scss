@@ -58,3 +58,47 @@
   background-color: #a9d13a;
 
 }
+
+.attributes-project {
+  padding: 0.3em;
+  font-size: 30px;
+}
+
+.text-project-attributes {
+  font-size: small;
+  display: inline-block;
+  position: absolute;
+  padding-top: 1em;
+}
+
+.auto.icon_attribute_project {
+  display: inline-block;
+  position: relative;
+}
+
+
+
+
+.featured-image-block-grid-header {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featured-image-block {
+
+  margin-bottom: 20px;
+
+  .featured-image-block-title {
+    font-weight: 600;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1em;
+    color: #404040;
+  }
+
+}
+
+.link_load_attributes_project {
+  color: #1468a0;
+}
