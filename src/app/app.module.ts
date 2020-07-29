@@ -21,6 +21,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import { SocialComponent } from './social/social.component';
 import { HttpModule } from '@angular/http';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
     BreadcrumbsComponent,
     SocialComponent,
     ProjectDetailComponent,
+    ContactusComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule],
   providers: [],
