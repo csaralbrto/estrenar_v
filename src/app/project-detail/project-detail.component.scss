@@ -1,105 +1,69 @@
-.project-images-card {
-    width: 270px;
-    height: 190px;
-  }
-  
-  .link-category-project {
-    border: 1px solid #1779ba;
-    font-size: 0.4rem;
-    font-weight: bolder;
-    margin: 2px;
-    border-radius: 8px;
-    padding: 0.3rem;
-  
-    a {
-      color: #1468a0;
-    }
-  }
-  
-  .body-card-project {
-    color: #15454F;
-  }
-  
-  .card-section-over {
-    position: absolute;
-    left: 68%;
-    top: 0;
-    background-color: #000;
-    width: 40%;
-    height: 100%;
-    opacity: 43%;
-    line-height: 1.5rem;
-  }
-  
-  .align-bookmark-project {
-    margin-left: 30%;
-    position: relative;
-    top: 5px;
-  }
-  
-  .text-info-project-card {
-    color: #fff;
-    top: -9px;
-    position: relative;
-    right: 12px;
-    text-align: center;
-    font-size: 10px;
-  }
-  
-  .alert-info-project {
-    font-size: 2px;
-    height: 14px;
-    width: 14px;
-    position: absolute;
-    margin-top: 18px;
-    margin-left: 2px;
-    cursor: pointer;
-    color: #000;
-    background-color: #a9d13a;
-  
-  }
-  
-  .attributes-project {
-    padding: 0.3em;
-    font-size: 30px;
-  }
-  
-  .text-project-attributes {
-    font-size: small;
-    display: inline-block;
-    position: absolute;
-    padding-top: 1em;
-  }
-  
-  .auto.icon_attribute_project {
-    display: inline-block;
-    position: relative;
-  }
-  
-  
-  
-  
-  .featured-image-block-grid-header {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .featured-image-block {
-  
-    margin-bottom: 20px;
-  
-    .featured-image-block-title {
-      font-weight: 600;
-      margin-top: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 1em;
-      color: #404040;
-    }
-  
-  }
-  
-  .link_load_attributes_project {
-    color: #1468a0;
-  }
-  
+.radio_item {
+  display: none !important;
+}
+
+.radio_item:checked+label {
+  opacity: 1;
+}
+
+.label-item {
+  opacity: 0.1;
+  cursor: pointer;
+}
+
+.container-date-agenda {
+  padding: 4%;
+}
+
+.date-agenda-option {
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  border-radius: 10px;
+  position: relative;
+  padding: 9px;
+  font-size: 13px;
+  line-height: initial;
+  width: 125%;
+  height: 43px;
+}
+
+/****************************************/
+/* Layout rules using position: absolute and pixels. */
+.position-pixels.date-as-calendar {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.position-pixels.date-as-calendar .weekday,
+.position-pixels.date-as-calendar .day,
+.position-pixels.date-as-calendar .month,
+.position-pixels.date-as-calendar .year {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1em;
+}
+
+.position-pixels.date-as-calendar .month {
+  top: 0px;
+  font-size: 12px;
+  padding: 2px 0;
+}
+
+.position-pixels.date-as-calendar .weekday {
+  top: 16px;
+  font-size: 10px;
+}
+
+.position-pixels.date-as-calendar .day {
+  top: 26px;
+  font-size: 24px;
+}
+
+.position-pixels.date-as-calendar .year {
+  top: 50px;
+  font-size: 14px;
+}
