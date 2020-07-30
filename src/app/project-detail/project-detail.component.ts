@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import { ProjectDetailService } from './project-detail.service';
 import { environment } from '../../environments/environment';
 
@@ -12,11 +13,11 @@ import { environment } from '../../environments/environment';
 export class ProjectDetailComponent implements OnInit {
   public response: any;
 
-  constructor( private activatedRoute: ActivatedRoute, private router:Router, public Service: ProjectDetailService ) { }
+  constructor( private activatedRoute: ActivatedRoute, private router:Router, public Service: ProjectDetailService, private sanitizer: DomSanitizer ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
-  maps_url = '';
+  public maps_url;
 
   ngOnInit(): void {
     const title = this.activatedRoute.snapshot.params.path;
@@ -29,15 +30,16 @@ export class ProjectDetailComponent implements OnInit {
             /* si responde correctamente en la respuesta */
             // console.log(this.response);
             this.largo = this.response.url_img.length;
-            this.cadena = this.response.url_img.substr(40, this.largo);
+            this.cadena = this.response.url_img.substr(60, this.largo);
             this.response.url_img = this.dataPath + this.cadena;
             for (let project of this.response.relacionados) {
               if (project.url_img) {
                 this.largo = project.url_img.length;
-                this.cadena = project.url_img.substr(40, this.largo);
+                this.cadena = project.url_img.substr(60, this.largo);
                 project.url_img = this.dataPath + this.cadena;
               }
             }
+            this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ this.response.latitude +","+ this.response.longitude +"&hl=es&z=14&output=embed");
             console.log(this.response);
 
           }
