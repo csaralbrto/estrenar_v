@@ -1,9 +1,18 @@
+.tabs-content {
+  background-color: #14444e;
+  color: #fff;
+}
+
 .radio_item {
   display: none !important;
 }
 
 .radio_item:checked+label {
   opacity: 1;
+
+  .date-agenda-option {
+    background-color: #a9d13a !important;
+  }
 }
 
 .label-item {
@@ -19,10 +28,21 @@
   border: 1px solid rgba(10, 10, 10, 0.25);
   border-radius: 10px;
   position: relative;
-  padding: 9px;
+  padding: 8px 17px 0 17px;
   font-size: 13px;
   line-height: initial;
-  width: 125%;
+  width: 100%;
+  height: 43px;
+  background-color: lightgray;
+  color: #3a6269;
+  font-weight: bolder;
+}
+
+.label_item {
+  border-radius: 10px;
+  position: static;
+  font-size: 13px;
+  line-height: initial;
   height: 43px;
 }
 
@@ -35,9 +55,9 @@
   height: 64px;
 }
 
-.position-pixels.date-as-calendar .weekday,
-.position-pixels.date-as-calendar .day,
-.position-pixels.date-as-calendar .month,
+.position-pixels.date-as-calendar .labelDayAgenda,
+.position-pixels.date-as-calendar .labelDayStringAgenda,
+.position-pixels.date-as-calendar .labelMonthAgenda,
 .position-pixels.date-as-calendar .year {
   display: block;
   position: absolute;
@@ -47,23 +67,40 @@
   height: 1em;
 }
 
-.position-pixels.date-as-calendar .month {
+.position-pixels.date-as-calendar .labelMonthAgenda {
   top: 0px;
   font-size: 12px;
   padding: 2px 0;
 }
 
-.position-pixels.date-as-calendar .weekday {
-  top: 16px;
+.position-pixels.date-as-calendar .labelDayAgenda {
+  top: 40px;
   font-size: 10px;
 }
 
-.position-pixels.date-as-calendar .day {
-  top: 26px;
+.position-pixels.date-as-calendar .labelDayStringAgenda {
+  top: 13px;
   font-size: 24px;
 }
 
 .position-pixels.date-as-calendar .year {
   top: 50px;
   font-size: 14px;
+}
+
+.minus-agenda {
+  position: relative;
+  float: left;
+  margin: 20px;
+  cursor: pointer;
+}
+
+
+.plus-agenda {
+  position: relative;
+  float: left;
+  margin-left: 6em;
+  margin-top: -3.7em;
+  cursor: pointer;
+  z-index: 1;
 }
