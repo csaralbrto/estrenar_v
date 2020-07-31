@@ -9,7 +9,6 @@ export class ToolComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    $('#range-financing-term').show();
-    $('#range-financing-term').foundation('_reflow');
+    $(document).foundation();
   }
 }

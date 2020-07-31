@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectDetailService } from './project-detail.service';
 import { environment } from '../../environments/environment';
+declare function todayDate(): any;
 
 @Component({
   selector: 'app-project-detail',
