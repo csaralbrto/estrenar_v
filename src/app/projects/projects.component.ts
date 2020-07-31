@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from './projects.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -10,6 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class ProjectsComponent implements OnInit {
   public response_data_project: any;
+  public form;
 
   constructor( public Service: ProjectsService ) { }
   dataPath = environment.endpoint;
@@ -49,5 +52,4 @@ export class ProjectsComponent implements OnInit {
       }
     );
   }
-
 }
