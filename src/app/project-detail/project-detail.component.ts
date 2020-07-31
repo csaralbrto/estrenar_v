@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import { ProjectDetailService } from './project-detail.service';
 import { environment } from '../../environments/environment';
+declare function todayDate(): any;
 
 @Component({
   selector: 'app-project-detail',

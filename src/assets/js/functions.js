@@ -6,9 +6,6 @@ function addDayDate() {
     ('0' + (fecha.getMonth() + 1)).slice(-2) +
     '-' + ('0' + (fecha.getDate())).slice(-2));
   $("#dateAgenda").val(final);
-  console.log(fecha);
-  console.log(final);
-  console.log("text");
   drawDateField();
 }
 
@@ -51,6 +48,4 @@ function drawDateField() {
   $("#MonthAgendaLabel").html(stringMonth);
   $("#DayAgendaLabel").html(stringDay);
   $("#DayAgenda").html(day);
-  console.log("ssss " + dateInit);
-  console.log($("#dateAgenda").val());
 }
