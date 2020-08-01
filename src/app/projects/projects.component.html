@@ -21,25 +21,26 @@
       <h2 class="" title="" aria-label="">Apartamentos en Barranquilla</h2>
     </div>
   </div>
+  <form [formGroup]="form_filters">
     <div class="grid-container fluid">
       <div class="grid-x grid-margin-x">
         <div class="cell auto">
           <label>Tipo de inmueble
-            <select id="type" name="type">
+            <select id="type" name="type" formControlName="type">
               <option value="Apartamento">Apartamento</option>
             </select>
           </label>
         </div>
         <div class="cell auto">
           <label>Precio
-            <select id="price" name="price">
+            <select id="price" name="price" formControlName="price">
               <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
             </select>
           </label>
         </div>
         <div class="cell auto">
           <label>Ciudad
-            <select id="city" name="city">
+            <select id="city" name="city" formControlName="city">
               <option value="barranquilla">Barranquilla</option>
               <option value="bogota">Bogot&aacute;</option>
             </select>
@@ -47,7 +48,7 @@
         </div>
         <div class="cell auto">
           <label>Zona
-            <select id="zone" name="zone">
+            <select id="zone" name="zone" formControlName="zone">
               <option value="norte">Norte</option>
               <option value="sur">Sur</option>
             </select>
@@ -55,7 +56,7 @@
         </div>
         <div class="cell auto">
           <label>Sector
-            <select id="sector" name="sector">
+            <select id="sector" name="sector" formControlName="sector">
               <option value="husker">Centro Internacional</option>
             </select>
           </label>
@@ -108,6 +109,7 @@
         </div>
       </div>
     </div>
+  </form>
   
 
   <div class="grid-x grid-margin-x small-up-2 medium-up-4">

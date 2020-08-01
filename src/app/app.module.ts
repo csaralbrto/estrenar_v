@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,7 +46,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     ProjectDetailComponent,
     ContactusComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpModule],
+  imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

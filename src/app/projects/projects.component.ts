@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from './projects.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -12,15 +12,16 @@ import { environment } from '../../environments/environment';
 })
 export class ProjectsComponent implements OnInit {
   public response_data_project: any;
-  public form;
+  public form_filters: FormGroup;
 
-  constructor( public Service: ProjectsService ) { }
+  constructor( public Service: ProjectsService, private formBuilder: FormBuilder ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
 
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.createForm();
     $('app-projects').foundation();
 
     /* Método para obtener toda la info de proyectos */
@@ -52,4 +53,15 @@ export class ProjectsComponent implements OnInit {
       }
     );
   }
+
+  createForm() {
+    this.form_filters =  this.formBuilder.group({
+      type: new FormControl('Seleccione'),
+      price: new FormControl('Seleccione'),
+      city: new FormControl('Seleccione'),
+      zone: new FormControl('Seleccione'),
+      sector: new FormControl('Seleccione'),
+    });
+  }
+
 }
