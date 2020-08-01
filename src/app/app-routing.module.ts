@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ToolComponent } from './tool/tool.component';
+import { ConstructoraComponent } from './constructora/constructora.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'herramientas', component: ToolComponent, pathMatch: 'full' },
+  {
+    path: 'constructoras',
+    component: ConstructoraComponent,
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
