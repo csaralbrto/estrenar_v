@@ -440,9 +440,9 @@
     <div class="cell medium-12">
       <div class="grid-x grid-margin-x small-up-2 medium-up-4">
         <!-- Card Proyecto individual-->
-        <div class="cell shrink">
+        <div class="cell shrink"  *ngFor="let project1 of response.projects; let i = index">
           <div class="card">
-            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <img class="project-images-card" [src]="project1.url_img">
             <div class="card-section">
               <span class="rounded link-category-project">
                 <a href="">
@@ -467,11 +467,11 @@
             </div>
             <div class="card-section body-card-project">
               <h6 class="text-capitalize Text Wrap">
-                Paque Central de Occidente
+                {{ project1.direccion }}
               </h6>
               <p>
                 <small>
-                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                  {{ project1.sub_titulo }}
                 </small>
               </p>
               <p class="text-center">
@@ -479,166 +479,13 @@
                   DESDE
                 </small>
                 <br>
-                <span class="text-bold">$129.000.000</span>
+                <span class="text-bold">{{ project1.valor_venta | number }}</span>
               </p>
               <hr />
             </div>
             <div class="card-section">
               <div class="button-group align-spaced ">
-                <a class="button">Ver Proyecto</a>
-                <a class="button">Contacto</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cell shrink">
-          <div class="card">
-            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-            <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
-            </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                Paque Central de Occidente
-              </h6>
-              <p>
-                <small>
-                  Apartamento en Centro Internacional del Caribe, Barranquilla
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">$129.000.000</span>
-              </p>
-              <hr />
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button">Ver Proyecto</a>
-                <a class="button">Contacto</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cell shrink">
-          <div class="card">
-            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-            <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
-            </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                Paque Central de Occidente
-              </h6>
-              <p>
-                <small>
-                  Apartamento en Centro Internacional del Caribe, Barranquilla
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">$129.000.000</span>
-              </p>
-              <hr />
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button">Ver Proyecto</a>
-                <a class="button">Contacto</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cell shrink">
-          <div class="card">
-            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-            <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
-            </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                Paque Central de Occidente
-              </h6>
-              <p>
-                <small>
-                  Apartamento en Centro Internacional del Caribe, Barranquilla
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">$129.000.000</span>
-              </p>
-              <hr />
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button">Ver Proyecto</a>
+                <a class="button" routerLink="/proyecto/{{project1.titulo}}">Ver Proyecto</a>
                 <a class="button">Contacto</a>
               </div>
             </div>
@@ -651,4 +498,19 @@
 
     <div class="cell medium-12">
       <h2>Art&iacute;culos de inter&eacute;s</h2>
+    </div>
+    <div class="row">
+      <div class="large-12 cell align-middle">
+        <div class="grid-x grid-margin-x small-up-2 medium-up-4">
+          <div class="cell" *ngFor="let blog of response.blogs; let i = index">
+            <div class="card">
+              <img [src]="blog.banner" [title]="blog.banner">
+              <div class="card-section">
+                <h4>{{ blog.titulo }}</h4>
+                <p>{{ blog.sub_titulo }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>

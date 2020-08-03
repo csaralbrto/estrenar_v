@@ -14,6 +14,7 @@ export const environment = {
   production: false,
   endpoint: 'https://api-estrenarvivienda.demodayscript.com/',
   endpointApi: 'https://api-estrenarvivienda.demodayscript.com/api/',
+  endpointSearchApi: 'https://api-estrenarvivienda.demodayscript.com/api/search?',
   endpointTesting: 'https://api-estrenarvivienda.demodayscript.com/api/',
   endpointTestingApi: 'http://127.0.0.1:8000/api/',
   endpointTestingApiElastic: 'http://test-blaa.demodayscript.com/api/elasticsearch?',

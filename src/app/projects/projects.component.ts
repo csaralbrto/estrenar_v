@@ -11,8 +11,16 @@ import { environment } from '../../environments/environment';
   providers: [ProjectsService],
 })
 export class ProjectsComponent implements OnInit {
+  public data: any = {nodes: [], pagination: 0};
   public response_data_project: any;
   public form_filters: FormGroup;
+  public resutls: boolean = false;
+  public route = 'filtro-proyectos';
+  public stringQuery = '';
+  public query_elasticsearch = {
+    'filtro-proyectos': {term: '', fields: ''}
+  };
+  public collectionActive: string = '';
 
   constructor( public Service: ProjectsService, private formBuilder: FormBuilder ) { }
   dataPath = environment.endpoint;
@@ -21,6 +29,7 @@ export class ProjectsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.collectionActive = this.route;
     this.createForm();
     $('app-projects').foundation();
 
@@ -52,6 +61,39 @@ export class ProjectsComponent implements OnInit {
         }
       }
     );
+  }
+
+  change(value) {
+    this.data.nodes = [];
+    let term = [], field = [], str = [],fields = "";
+    this.query_elasticsearch[this.collectionActive].page = 0;
+
+      Object.keys(value).forEach( function(key) {
+        if(value[key] && value[key] !== 'Seleccione'){
+          let p = key;
+          term.push(p+'='+value[key])
+          field.push(p);
+        }
+      },this);
+
+      /* añadimos el parametro del tipo de busqueda */
+      this.stringQuery = 'find=projects';
+      /* recorremos el array para saber con que parametos se va a buscar */
+      term.forEach(element => {
+        this.stringQuery = this.stringQuery + '&' + element;
+
+      });
+      /* llamamos la funcion que va a buscar */
+      this.getDataSearch();
+  }
+
+  getDataSearch(){
+    this.Service.getDataFilter(this.stringQuery)
+      .subscribe(
+        data => { },
+        err => console.log(),
+        () => {}
+      );
   }
 
   createForm() {

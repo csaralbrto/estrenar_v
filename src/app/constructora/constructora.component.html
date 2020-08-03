@@ -28,296 +28,34 @@
 </div>
 <div class="grid-container">
   <div class="grid-x grid-padding-x meidum-4 small-1">
-    <div class="medium-4 small-12">
+    <div class="medium-4 small-12" *ngFor="let project1 of response; let i = index">
       <!-- Card Proyecto individual-->
       <div class="cell shrink">
         <div class="card">
           <div class="card-section grid-x grid-padding-x">
             <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
+              <img [src]="project1.url_img" alt="">
             </div>
             <div class="medium-8">
               <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
+              <span>{{ project1.direccion }}</span>
               <br>
               <span>+57 5800000</span>
             </div>
           </div>
           <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
+            <p [innerHTML]=project1.descripcion></p>
           </div>
           <div class="card-section">
             <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
+              <a href="/proyectos" class="button">Proyectos</a>
             </div>
           </div>
         </div>
       </div>
       <!-- Fin Card Proyecto individual-->
     </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-    <div class="medium-4 small-12">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img src="https://placehold.it/100x100/888?text=Imagen-1" alt="">
-            </div>
-            <div class="medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <span>Cll 90 # 11A-31 Bogotá</span>
-              <br>
-              <span>+57 5800000</span>
-            </div>
-          </div>
-          <div class="card-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, eligendi voluptatum necessitatibus,
-              sunt impedit voluptate dignissimos beatae, alias amet blanditiis totam! Possimus eaque odit ut commodi
-              voluptas minus cupiditate optio?</p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
+    
   </div>
   <div class="grid-x grid-padding-x meidum-4 small-1 text-center">
     <div class="medium-12 large-12 small-12">

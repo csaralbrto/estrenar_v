@@ -13,13 +13,20 @@ export class ToolService {
   public initialQuote: string;
   public subsidyHome: string;
   public debtCapacity: string;
+  public dataPath: string;
 
   constructor( private http: Http ) { 
     this.loanHome = environment.endpointApi + 'tools/loan_home/';
     this.initialQuote = environment.endpointApi + 'tools/initial_Quote/';
     this.subsidyHome = environment.endpointApi + 'tools/subsidy_home/';
     this.debtCapacity = environment.endpointApi + 'tools/debt_capacity/';
+    this.dataPath = environment.endpointApi+ 'tools/home/';
 
+  }
+  /* Traer toda la info de proyectos */
+  getData(): Observable<any> {
+    return this.http.get(this.dataPath)
+    .pipe(map(( response => response.json() )));
   }
 
   /* Enviar datos a cred viviendas */

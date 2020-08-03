@@ -26,21 +26,21 @@
       <div class="grid-x grid-margin-x">
         <div class="cell auto">
           <label>Tipo de inmueble
-            <select id="type" name="type" formControlName="type">
+            <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)">
               <option value="Apartamento">Apartamento</option>
             </select>
           </label>
         </div>
         <div class="cell auto">
           <label>Precio
-            <select id="price" name="price" formControlName="price">
+            <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)">
               <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
             </select>
           </label>
         </div>
         <div class="cell auto">
           <label>Ciudad
-            <select id="city" name="city" formControlName="city">
+            <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)">
               <option value="barranquilla">Barranquilla</option>
               <option value="bogota">Bogot&aacute;</option>
             </select>
@@ -48,7 +48,7 @@
         </div>
         <div class="cell auto">
           <label>Zona
-            <select id="zone" name="zone" formControlName="zone">
+            <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)">
               <option value="norte">Norte</option>
               <option value="sur">Sur</option>
             </select>
@@ -56,7 +56,7 @@
         </div>
         <div class="cell auto">
           <label>Sector
-            <select id="sector" name="sector" formControlName="sector">
+            <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)">
               <option value="husker">Centro Internacional</option>
             </select>
           </label>
