@@ -23,6 +23,7 @@ import { SocialComponent } from './social/social.component';
 import { HttpModule } from '@angular/http';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     SocialComponent,
     ProjectDetailComponent,
     ContactusComponent,
+    DetailConstructoraComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
   providers: [],
