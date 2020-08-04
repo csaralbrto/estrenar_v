@@ -4,8 +4,9 @@
 h1,
 h2,
 h3,
-h4 {
-  text-align: center;
+h4,
+h5,
+h6 {
   color: #14444E;
   font-weight: bolder;
 }
@@ -201,4 +202,19 @@ input {
 .main_img_slide {
   width: 550px !important;
   height: 355px !important;
+}
+
+.card-section {
+  flex: 1 0 auto;
+  padding: 1rem;
+  line-height: 0.01rem;
+  margin-bottom: -5%;
+
+  p {
+    margin-bottom: unset !important;
+  }
+
+  hr {
+    margin: auto !important;
+  }
 }

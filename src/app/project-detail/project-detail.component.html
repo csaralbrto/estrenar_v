@@ -37,92 +37,109 @@
           </p>
         </div>
         <div class="cell medium-9 large-9">
-          <div class="button-group align-right">
-            <a class="search_button button">Contacto</a>
-            <a class="button">Ver Video</a>
-            <a class="button">Im&aacute;genes</a>
-            <a class="button">Recorrido</a>
+          <div class="button-group align-right" data-responsive-accordion-tabs="tabs medium-accordion large-tabs"
+            role="tablist" id="options-tabs-projects" data-tabs id="options-tabs-projects">
+            <a class="search_button button" href="#contactar" role="tab">Contacto</a>
+            <a class="button" href="#video-project" role="tab">Ver Video</a>
+            <a class="button" href="#images-project" role="tab">Im&aacute;genes</a>
+            <a class="button" href="#travel-project" role="tab">Recorrido</a>
           </div>
         </div>
       </div>
     </div>
   </div>
   <section>
-    <div class="grid-x grid-padding-x medium-12">
-      <div class="cell">
-        <div class="orbit" role="region" aria-label="" data-orbit>
-          <div class="orbit-controls">
-            <button class="orbit-previous" tabindex="0"><span class="show-for-sr">Previous Slide</span>◀︎</button>
-            <button class="orbit-next" tabindex="0"><span class="show-for-sr">Next Slide</span>▶︎</button>
+    <div data-tabs-content="options-tabs-projects">
+      <div class="tabs-panel is-active" id="images-project">
+        <div class="grid-x grid-padding-x medium-12">
+          <div class="cell">
+            <div class="orbit" role="region" aria-label="" data-orbit>
+              <div class="orbit-controls">
+                <button class="orbit-previous" tabindex="0"><span class="show-for-sr">Previous Slide</span>◀︎</button>
+                <button class="orbit-next" tabindex="0"><span class="show-for-sr">Next Slide</span>▶︎</button>
+              </div>
+              <ul class="orbit-container">
+                <li class="orbit-slide is-active">
+                  <div class="grid-x grid-padding-x align-stretch medium-12">
+                    <div class="cell small-6 flex-container flex-dir-column">
+                      <img class="main_img_slide" [src]="dataPath + galeria[0]">
+                    </div>
+                    <div class="cell small-3">
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[1]">
+                      </div>
+                      <div class=" flex-child-shrink">&nbsp;</div>
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[2]">
+                      </div>
+                    </div>
+                    <div class="cell small-3">
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[3]">
+                      </div>
+                      <div class=" flex-child-shrink">&nbsp;</div>
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[4]">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="orbit-slide">
+                  <div class="grid-x grid-padding-x align-stretch">
+                    <div class="cell small-3 ">
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[5]">
+                      </div>
+                      <div class=" flex-child-shrink">&nbsp;</div>
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[6]">
+                      </div>
+                    </div>
+                    <div class="cell small-3">
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[7]">
+                      </div>
+                      <div class=" flex-child-shrink">&nbsp;</div>
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[8]">
+                      </div>
+                    </div>
+                    <div class="cell small-3">
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[9]">
+                      </div>
+                      <div class=" flex-child-shrink">&nbsp;</div>
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[10]">
+                      </div>
+                    </div>
+                    <div class="cell small-3">
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[11]">
+                      </div>
+                      <div class=" flex-child-shrink">&nbsp;</div>
+                      <div class=" flex-child-shrink">
+                        <img [src]="dataPath + galeria[12]">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- More slides... -->
+              </ul>
+            </div>
           </div>
-          <ul class="orbit-container">
-            <li class="orbit-slide is-active">
-              <div class="grid-x grid-padding-x align-stretch medium-12">
-                <div class="cell small-6 flex-container flex-dir-column">
-                  <img class="main_img_slide" [src]="dataPath + galeria[0]">
-                </div>
-                <div class="cell small-3">
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[1]">
-                  </div>
-                  <div class=" flex-child-shrink">&nbsp;</div>
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[2]">
-                  </div>
-                </div>
-                <div class="cell small-3">
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[3]">
-                  </div>
-                  <div class=" flex-child-shrink">&nbsp;</div>
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[4]">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="orbit-slide">
-              <div class="grid-x grid-padding-x align-stretch">
-                <div class="cell small-3 ">
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[5]">
-                  </div>
-                  <div class=" flex-child-shrink">&nbsp;</div>
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[6]">
-                  </div>
-                </div>
-                <div class="cell small-3">
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[7]">
-                  </div>
-                  <div class=" flex-child-shrink">&nbsp;</div>
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[8]">
-                  </div>
-                </div>
-                <div class="cell small-3">
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[9]">
-                  </div>
-                  <div class=" flex-child-shrink">&nbsp;</div>
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[10]">
-                  </div>
-                </div>
-                <div class="cell small-3">
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[11]">
-                  </div>
-                  <div class=" flex-child-shrink">&nbsp;</div>
-                  <div class=" flex-child-shrink">
-                    <img [src]="dataPath + galeria[12]">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <!-- More slides... -->
-          </ul>
+        </div>
+      </div>
+      <div class="tabs-panel" id="video-project">
+        <div class="responsive-embed">
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="tabs-panel" id="travel-project">
+        <div class="responsive-embed">
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/bL2wxHaDK6E" frameborder="0"
+            allowfullscreen></iframe>
         </div>
       </div>
     </div>

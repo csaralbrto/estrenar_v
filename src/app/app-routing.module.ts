@@ -5,6 +5,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ToolComponent } from './tool/tool.component';
 import { ConstructoraComponent } from './constructora/constructora.component';
+import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'constructoras',
     component: ConstructoraComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'constructoras/:path',
+    component: DetailConstructoraComponent,
     pathMatch: 'full',
   },
 ];

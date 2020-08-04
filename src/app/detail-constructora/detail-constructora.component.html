@@ -1,1 +1,1019 @@
-<p>detail-constructora works!</p>
+<!-- Constructora INterna-->
+<div class="grid-container">
+  <div class="grid-x grid-padding-x align-stretch">
+    <div class="cell large-2 medium-2 small-12"></div>
+    <div class="cell large-3 medium-2 small-12">
+      <img src="https://placehold.it/400x200/888?text=Imagen-1" alt="">
+    </div>
+    <div class="cell large-2 medium-2 small-12">
+      <div class="cell large-12 small-12 medium-12">
+        <h5>Ciudad oficina principal</h5>
+        <span>Bogot&aacute;</span>
+      </div>
+      <div class="cell large-12 small-12 medium-12">
+        <h5>Direcci&oacute;n oficina principal</h5>
+        <span>Calle 90 # 11A-31</span>
+      </div>
+      <div class="cell large-12 small-12 medium-12">
+        <h5>Tel&eacute;fonos</h5>
+        <span>+57 15803300</span>
+      </div>
+    </div>
+    <div class="cell large-4 medium-4 small-12">
+      <p class="text-justify align-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rerum quaerat
+        ratione,
+        sapiente aliquam quis
+        consequuntur cumque excepturi fugit a facere rem ullam ipsam ipsum voluptatibus repellendus est mollitia nam?
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+    <div class="orbit-wrapper">
+      <div class="orbit-controls">
+        <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+        <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+      </div>
+      <ul class="orbit-container">
+        <li class="is-active orbit-slide">
+          <img class="orbit-image" src="https://placehold.it/1000x400?text=Slide-1" alt="Space">
+        </li>
+        <li class="orbit-slide">
+          <div class="align-center">
+            <img class="orbit-image" src="https://placehold.it/700x400?text=Slide-2" alt="Space">
+          </div>
+          <div class="grid-x grid-padding-x align-stretch card-detail-builder">
+            <div class="cell large-6 medium-6 small 6"></div>
+            <div class="cell large-4 medium-4 small 4">
+              <div class="grid-x  grid-margin-x small-up-1 medium-up-1">
+                <div class="cell shrink">
+                  <div class="card">
+                    <div class="card-section">
+                      <h6>Hacienda Rosablanca - Alcavar&aacute;n <i class="fi-heart large icon-topbar-style"></i></h6>
+                      <p>Apartamento en Anillo Vial.</p>
+                    </div>
+                    <div class="card-section">
+                      <p class="text-center">
+                        <small>
+                          Desde:
+                        </small>
+                        <br>
+                        <span class="text-bold stat ">$ 272.732.720</span>
+                      </p>
+                      <hr>
+                    </div>
+                    <div class="card-section align-stretch">
+                      <div class="cell auto icon_attribute_project">
+                        <i class="fi-map attributes-project attributes-project"></i>
+                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
+                      </div>
+                      <div class="cell auto icon_attribute_project">
+                        <i class="fi-map attributes-project attributes-project"></i>
+                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
+                      </div>
+                      <div class="cell medium-6 large-6 small-6 icon_attribute_project">
+                        <i class="fi-map attributes-project attributes-project"></i>
+                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
+                      </div>
+                      <div class="cell medium-6 large-6 small-6 icon_attribute_project">
+                        <i class="fi-map attributes-project attributes-project"></i>
+                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
+                      </div>
+                      <hr>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cell large-4 medium-4 small 4"></div>
+          </div>
+        </li>
+        <li class="orbit-slide">
+          <img class="orbit-image" src="https://placehold.it/1000x400?text=Slide-3" alt="Space">
+        </li>
+        <li class="orbit-slide">
+          <img class="orbit-image" src="https://placehold.it/1000x400?text=Slide-4" alt="Space">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--Fin Constructora INterna-->
+<div class="grid-container">
+  <form>
+    <div class="grid-container fluid">
+      <div class="grid-x grid-margin-x">
+        <div class="cell auto">
+          <label>Tipo de inmueble
+            <select id="type" name="type" formControlName="type">
+              <option value="Apartamento">Apartamento</option>
+            </select>
+          </label>
+        </div>
+        <div class="cell auto">
+          <label>Precio
+            <select id="price" name="price" formControlName="price">
+              <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
+            </select>
+          </label>
+        </div>
+        <div class="cell auto">
+          <label>Ciudad
+            <select id="city" name="city" formControlName="city">
+              <option value="barranquilla">Barranquilla</option>
+              <option value="bogota">Bogot&aacute;</option>
+            </select>
+          </label>
+        </div>
+        <div class="cell auto">
+          <label>Zona
+            <select id="zone" name="zone" formControlName="zone">
+              <option value="norte">Norte</option>
+              <option value="sur">Sur</option>
+            </select>
+          </label>
+        </div>
+        <div class="cell auto">
+          <label>Sector
+            <select id="sector" name="sector" formControlName="sector">
+              <option value="husker">Centro Internacional</option>
+            </select>
+          </label>
+        </div>
+        <div class="cell shrink">
+          <div class="button-group align-spaced ">
+            <a class="button">M&aacute;s Filtros</a>
+            <a class="button search_button">Favoritos</a>
+          </div>
+        </div>
+        <div class="cell large-12 small-12 medium-12">
+          <p class="text-bold">84 Resultados</p>
+          <hr>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card-container-project-publicity">
+            <div class="card-section">
+              <div class="callout secondary">
+                <p>PUBLICIDAD</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                Paque Central de Occidente
+              </h6>
+              <p>
+                <small>
+                  Apartamento en Centro Internacional del Caribe, Barranquilla
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">$129.000.000</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+      </div>
+    </div>
+  </form>
+</div>
