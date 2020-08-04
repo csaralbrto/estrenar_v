@@ -27,7 +27,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'constructoras/:path',
+    path: 'constructora/:path',
     component: DetailConstructoraComponent,
     pathMatch: 'full',
   },

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import { ProjectDetailService } from './project-detail.service';
+import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 declare function todayDate(): any;
 
@@ -13,17 +14,21 @@ declare function todayDate(): any;
 })
 export class ProjectDetailComponent implements OnInit {
   public response: any;
+  public form: FormGroup;
+  public form2: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     public Service: ProjectDetailService, 
     private sanitizer: DomSanitizer,
+    private formBuilder: FormBuilder,
   ) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
   public galeria;
+  public confirm: any;
   
   public maps_url;
 
@@ -31,6 +36,8 @@ export class ProjectDetailComponent implements OnInit {
 
     //Asignamos la fecha actual al campo de fecha
     $(document).foundation();
+    this.createForm();
+    this.createFormDates();
     todayDate();
 
     const title = this.activatedRoute.snapshot.params.path;
@@ -52,8 +59,69 @@ export class ProjectDetailComponent implements OnInit {
             }
           }
           this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ this.response.latitude +","+ this.response.longitude +"&hl=es&z=14&output=embed");
-          console.log(this.response);
+          // console.log(this.response);
           this.galeria = JSON.parse(this.response.galeria);
+        }
+      }
+    );
+  }
+
+  createForm() {
+    this.form =  this.formBuilder.group({
+      name: new FormControl(''),
+      lastname: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      contact: new FormControl('Deseas ser contactado'),
+      typeSearch: new FormControl(''),
+    });
+  }
+  createFormDates() {
+    this.form2 =  this.formBuilder.group({
+      dateAgenda: new FormControl(''),
+      journalOption: new FormControl(''),
+      house_for: new FormControl(''),
+      name: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+    });
+  }
+
+  onSubmit(values) {
+    /* Se recibe los valores del formulario */
+    console.log('se recibieron lo valores',values);
+    this.Service.getFormService( {} )
+    .subscribe(
+      data =>{console.log(data)},
+      err => console.log(),
+      () => {
+        if(this.confirm){
+          // $('#modalAlertSuccessful').foundation('open');
+          console.log('Respondió '+this.confirm);
+          this.form.reset();
+        }
+        if(this.confirm.error){
+          // $('#modalAlertError').foundation('open');
+        }
+      }
+    );
+  }
+
+  onSubmitDates(values) {
+    /* Se recibe los valores del formulario de Citas */
+    console.log('se recibieron lo valores'+values);
+    this.Service.getFormService( values )
+    .subscribe(
+      data => this.confirm = data,
+      err => console.log(),
+      () => {
+        if(this.confirm){
+          // $('#modalAlertSuccessful').foundation('open');
+          console.log('Respondió '+this.confirm);
+          this.form.reset();
+        }
+        if(this.confirm.error){
+          // $('#modalAlertError').foundation('open');
         }
       }
     );

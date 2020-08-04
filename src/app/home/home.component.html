@@ -201,7 +201,8 @@
                   *ngFor="let constructora of response.constructoras; let i = index">
                   <div class="thumbnail builder-card-carrousell">
                     <img src="{{ response.url }}{{ constructora.logo }}">
-                    <p>{{ constructora.name }}</p>
+                    <p></p>
+                    <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
                   </div>
                 </div>
               </div>
@@ -212,7 +213,8 @@
                   *ngFor="let constructora of response.constructoras; let i = index">
                   <div class="builder-card-carrousell">
                     <img src="{{ response.url }}{{ constructora.logo }}">
-                    <p>{{ constructora.name }}</p>
+                    <p></p>
+                    <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
                   </div>
                   <!-- <div class="builder-card-carrousell">
                     <img src="https://placehold.it/100x100/777?text=VIS">

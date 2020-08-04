@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   largo = '';
 
   title_section_list_search = '¿Qué estás buscando?';
-  title_section_top_proyects = 'Proyectos destaca|dos';
+  title_section_top_proyects = 'Proyectos destacados';
   title_section_builders = 'Constructoras';
   title_section_blog = 'Blog';
   main_title_page = 'Te ayudamos a encontrar tu lugar ideal';
