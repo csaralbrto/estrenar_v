@@ -1,0 +1,38 @@
+.form-tabs {
+  color: #565D60;
+  border-left: 1px solid #565D60;
+
+  label {
+    color: #565D60;
+  }
+}
+
+.tabs-form-container {
+  list-style: none;
+}
+
+.tabs-title {
+  background-color: #C5C5C5;
+  color: #7B7B7B;
+  display: inline-block;
+  padding: 0.85rem 0.95rem 0.85rem 0.95rem;
+  border-radius: 100rem;
+  margin: 2%;
+  cursor: pointer;
+}
+
+.tabs-title.is-active {
+  background-color: #565D60 !important;
+
+  a {
+    color: #fff;
+  }
+}
+
+.tabs-title>a {
+  display: block;
+  padding: unset;
+  color: #7B7B7B;
+  background-color: unset;
+  margin-top: unset;
+}
