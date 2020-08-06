@@ -89,15 +89,14 @@ export class ProjectDetailComponent implements OnInit {
 
   onSubmit(values) {
     /* Se recibe los valores del formulario */
-    console.log('se recibieron lo valores',values);
-    this.Service.getFormService( {} )
+    values.type_submit = 'contact_form';
+    this.Service.getFormService( values )
     .subscribe(
       data =>{console.log(data)},
       err => console.log(),
       () => {
         if(this.confirm){
           // $('#modalAlertSuccessful').foundation('open');
-          console.log('Respondió '+this.confirm);
           this.form.reset();
         }
         if(this.confirm.error){
@@ -109,7 +108,7 @@ export class ProjectDetailComponent implements OnInit {
 
   onSubmitDates(values) {
     /* Se recibe los valores del formulario de Citas */
-    console.log('se recibieron lo valores'+values);
+    values.type_submit = 'date_form';
     this.Service.getFormService( values )
     .subscribe(
       data => this.confirm = data,
