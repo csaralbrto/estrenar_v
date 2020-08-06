@@ -6,6 +6,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
 import { ToolComponent } from './tool/tool.component';
 import { ConstructoraComponent } from './constructora/constructora.component';
 import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
+import { ContentUploadComponent } from './content-upload/content-upload.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'constructora/:path',
     component: DetailConstructoraComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'cargar',
+    component: ContentUploadComponent,
     pathMatch: 'full',
   },
 ];
