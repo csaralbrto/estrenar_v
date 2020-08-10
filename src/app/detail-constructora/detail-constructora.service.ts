@@ -12,7 +12,7 @@ export class DetailConstructoraService {
   public endpointForm: string;
 
   constructor( private http: Http ) {
-    this.endpoint = environment.endpointApi + 'constructora/';
+    this.endpoint = environment.endpointApi + 'constructoras/';
     this.endpointForm = environment.endpointApi + 'saveFormDate/';
    }
 
