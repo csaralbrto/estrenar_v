@@ -36,3 +36,124 @@
   background-color: unset;
   margin-top: unset;
 }
+
+.radio_item_circle {
+  display: none !important;
+}
+
+.radio_item_circle:checked+label {
+  color: #14444e;
+
+  .date-upload-option {
+    background-color: #14444e !important;
+    color: #14444e;
+  }
+
+  .date-upload-option-small {
+    background-color: #14444e !important;
+    color: #fff;
+  }
+
+  .date-upload-option-medium {
+    background-color: #14444e !important;
+    color: #fff;
+  }
+}
+
+.container-date-upload {
+  padding: 4%;
+}
+
+.date-upload-option {
+  border-radius: 100%;
+  position: relative;
+  padding: 1em;
+  padding-top: 1em;
+  font-size: 1em;
+  line-height: initial;
+  width: 7em;
+  height: 7em;
+  background-color: #C5C5C5;
+  color: #14444e;
+  font-weight: bolder;
+}
+
+.date-upload-option-small {
+  border-radius: 100%;
+  position: relative;
+  padding: 1em;
+  padding-top: 1em;
+  font-size: 1em;
+  line-height: initial;
+  width: 3em;
+  height: 3em;
+  background-color: #C5C5C5;
+  color: #14444e;
+  font-weight: bolder;
+}
+
+.date-upload-option i {
+  font-size: 4em;
+  color: #fff;
+}
+
+.label-item-circle {
+  border-radius: 10px;
+  position: static;
+  font-size: 1em;
+  line-height: initial;
+  height: 43px;
+  color: #14444e;
+}
+
+.date-upload-option-medium {
+  position: relative;
+  background-color: #C5C5C5;
+  width: 5rem;
+  height: 5rem;
+  padding-top: 2em;
+  border-radius: 100%;
+  display: inline-block;
+}
+
+.upload-button {
+  width: 10em;
+  border: 1px solid #C5C5C5;
+  height: 10em;
+  display: inline-block;
+  border-radius: 7%;
+  cursor: pointer;
+  background-color: #C5C5C5;
+}
+
+.upload-button i {
+  font-size: 3em;
+  color: gray;
+  display: block;
+}
+
+.container-upload-image {
+  display: inline-block;
+  border-radius: 10px;
+  width: 350px;
+  height: 250px;
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+.container-upload-image-add {
+  display: inline-block;
+  border-radius: 10px;
+  width: 350px;
+  height: 250px;
+  background-color: #C5C5C5;
+}
+
+.container-upload-image-add i {
+  display: block;
+  position: relative;
+  padding-top: 17%;
+  font-size: 4em;
+}

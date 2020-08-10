@@ -8,10 +8,10 @@
           data-responsive-accordion-tabs="tabs medium-accordion large-tabs" data-tabs id="content-upload-tabs"
           role="tablist">
           <li class="tabs-title is-active"><a href="#infoForm" aria-selected="true">1</a></li>
-          <li class="tabs-title"><a href="#panel2c">2</a></li>
-          <li class="tabs-title"><a href="#panel3c">3</a></li>
-          <li class="tabs-title"><a href="#panel4c">4</a></li>
-          <li class="tabs-title"><a href="#panel4c">5</a></li>
+          <li class="tabs-title"><a href="#multimedia">2</a></li>
+          <li class="tabs-title"><a href="#features">3</a></li>
+          <li class="tabs-title"><a href="#contact">4</a></li>
+          <li class="tabs-title"><a href="#descProperty">5</a></li>
         </ul>
       </div>
     </div>
@@ -46,19 +46,61 @@
               <span>Tipo Inmueble</span>
             </div>
             <div class="cell medium-12 large-12 small-12">
-              <input id="tipoInmueble1" type="checkbox"><label for="tipoInmueble1">Casas</label>
-              <input id="tipoInmueble2" type="checkbox"><label for="tipoInmueble2">Apartamentos</label>
-              <input id="tipoInmueble3" type="checkbox"><label for="tipoInmueble3">Apartaestudios</label>
-              <input id="tipoInmueble4" type="checkbox"><label for="tipoInmueble4">Lotes</label>
+              <input id="tipoInmueble1" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <label for="tipoInmueble1" class="label-item-circle text-center">
+                <div class="date-upload-option text-bold">
+                  <i class="fi-home"></i>
+                </div>
+                Casas
+              </label>
+              <input id="tipoInmueble2" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <label for="tipoInmueble2" class="label-item-circle text-center">
+                <div class="date-upload-option text-bold">
+                  <i class="fi-home"></i>
+                </div>
+                Apartamentos
+              </label>
+              <input id="tipoInmueble3" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <label for="tipoInmueble3" class="label-item-circle text-center">
+                <div class="date-upload-option text-bold">
+                  <i class="fi-home"></i>
+                </div>
+                Apartaestudios
+              </label>
+              <input id="tipoInmueble4" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <label for="tipoInmueble4" class="label-item-circle text-center">
+                <div class="date-upload-option text-bold">
+                  <i class="fi-home"></i>
+                </div>
+                Lotes
+              </label>
             </div>
             <div class="cell medium-12 large-12 small-12">
               <span>Estado del Proyecto</span>
             </div>
             <div class="grid-x grid-margin-x">
               <div class="cell medium-8 large-8 small-12">
-                <input id="estadoProyecto1" type="checkbox"><label for="checkbox12">En construcci&oacute;n</label>
-                <input id="estadoProyecto2" type="checkbox"><label for="checkbox22">Sobre planos</label>
-                <input id="estadoProyecto3" type="checkbox"><label for="checkbox32">Terminado</label>
+                <input id="estadoProyecto1" type="radio" name="estadoProyecto" class="radio_item_circle">
+                <label for="estadoProyecto1" class="label-item-circle text-center">
+                  <div class="date-upload-option text-bold">
+                    <i class="fi-home"></i>
+                  </div>
+                  En construcci&oacute;n
+                </label>
+                <input id="estadoProyecto2" type="radio" name="estadoProyecto" class="radio_item_circle">
+                <label for="estadoProyecto2" class="label-item-circle text-center">
+                  <div class="date-upload-option text-bold">
+                    <i class="fi-home"></i>
+                  </div>
+                  Sobre planos
+                </label>
+                <input id="estadoProyecto3" type="radio" name="estadoProyecto" class="radio_item_circle">
+                <label for="estadoProyecto3" class="label-item-circle text-center">
+                  <div class="date-upload-option text-bold">
+                    <i class="fi-home"></i>
+                  </div>
+                  Terminado
+                </label>
               </div>
               <div class="cell medium-4 large-4 small-12">
                 <label for="">Fecha aproximada de entrega
@@ -124,11 +166,36 @@
                 </div>
                 <div class="cell small-12 medium-12 large-12">
                   <h5>Estrato *</h5>
-                  <input id="estrato1" type="checkbox"><label for="estrato1">1</label>
-                  <input id="estrato2" type="checkbox"><label for="estrato2">2</label>
-                  <input id="estrato3" type="checkbox"><label for="estrato3">3</label>
-                  <input id="estrato4" type="checkbox"><label for="estrato4">4</label>
-                  <input id="estrato5" type="checkbox"><label for="estrato5">5</label>
+                  <input id="estrato1" type="radio" name="estrato" class="radio_item_circle">
+                  <label for="estrato1" class="label-item-circle text-center">
+                    <div class="date-upload-option-small text-bold">
+                      1
+                    </div>
+                  </label>
+                  <input id="estrato2" type="radio" name="estrato" class="radio_item_circle">
+                  <label for="estrato2" class="label-item-circle text-center">
+                    <div class="date-upload-option-small text-bold">
+                      2
+                    </div>
+                  </label>
+                  <input id="estrato3" type="radio" name="estrato" class="radio_item_circle">
+                  <label for="estrato3" class="label-item-circle text-center">
+                    <div class="date-upload-option-small text-bold">
+                      3
+                    </div>
+                  </label>
+                  <input id="estrato4" type="radio" name="estrato" class="radio_item_circle">
+                  <label for="estrato4" class="label-item-circle text-center">
+                    <div class="date-upload-option-small text-bold">
+                      4
+                    </div>
+                  </label>
+                  <input id="estrato5" type="radio" name="estrato" class="radio_item_circle">
+                  <label for="estrato5" class="label-item-circle text-center">
+                    <div class="date-upload-option-small text-bold">
+                      5
+                    </div>
+                  </label>
                 </div>
                 <div class="cell small-12 medium-12 large-12">
                   <h5>Banco *</h5>
@@ -156,7 +223,7 @@
               </div>
             </div>
           </div>
-          <div class="tabs-panel" id="panel2c">
+          <div class="tabs-panel" id="multimedia">
             <div class="grid-x grid-margin-x">
               <div class="cell small-12 medium-12 large-12">
                 <h3>Carga de Contenido</h3>
@@ -168,8 +235,9 @@
                 <span>Las imagenes debe estar entre ??? y ??? p&iacute;xeles, y ser menores que 1 MB</span>
               </div>
               <div class="cell small-12 medium-4 large-4">
-                <button class="hollow button medium-only-expanded" type="file" name="file">
-                  <i class="fi-upload-cloud">Subir archivo</i>
+                <button class="hollow secondary upload-button" type="file" name="file">
+                  <i class="fi-upload-cloud"></i>
+                  Subir archivo
                 </button>
               </div>
               <div class="cell small-0 medium-8 large-8">
@@ -182,12 +250,15 @@
               </div>
               <div class="grid-x cell small-12 medium-12 large-12">
                 <div class="cell small-12 medium-6 large-6">
-                  <img src="https://placehold.it/500x300/888?text=Imagen-1">
+                  <div class="container-upload-image">
+                    <img src="https://placehold.it/350x250/?text=Imagen-1">
+                  </div>
                 </div>
                 <div class="cell small-12 medium-6 large-6">
-                  <button class="hollow button medium-only-expanded" type="file" name="file">
-                    <i class="fi-upload-cloud">Subir archivo</i>
-                  </button>
+                  <div class="container-upload-image-add text-center">
+                    <i class="fi-plus"></i>
+                    <span>A&ntilde;adir imagen</span>
+                  </div>
                 </div>
               </div>
               <div class="cell small-12 medium-12 large-12">
@@ -207,7 +278,7 @@
               </div>
             </div>
           </div>
-          <div class="tabs-panel" id="panel3c">
+          <div class="tabs-panel" id="features">
             <div class="grid-x grid-margin-x">
               <div class="cell small-12 medium-12 large-12">
                 <h3>Carga de Contenido</h3>
@@ -369,7 +440,7 @@
               </div>
             </div>
           </div>
-          <div class="tabs-panel" id="panel4c">
+          <div class="tabs-panel" id="contact">
             <div class="grid-x grid-margin-x">
               <div class="cell small-12 medium-12 large-12">
                 <h3>Carga de Contenido</h3>
@@ -402,13 +473,51 @@
                 <h5>Horario de atención</h5>
               </div>
               <div class="cell medium-12 large-12 small-12">
-                <input id="checkLunes" type="checkbox"><label for="checkLunes">Lunes</label>
-                <input id="checkMartes" type="checkbox"><label for="checkMartes">Martes</label>
-                <input id="checkMiercoles" type="checkbox"><label for="checkMiercoles">Miercoles</label>
-                <input id="checkJueves" type="checkbox"><label for="checkJueves">Jueves</label>
-                <input id="checkViernes" type="checkbox"><label for="checkViernes">Viernes</label>
-                <input id="checkSabado" type="checkbox"><label for="checkSabado">Sabado</label>
-                <input id="checkDomingo" type="checkbox"><label for="checkDomingo">Domingo</label>
+                <input id="checkLunes" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <label for="checkLunes" class="label-item-circle text-center">
+                  <div class="date-upload-option-medium text-bold">
+                    Lunes
+                  </div>
+                </label>
+                <input id="checkMartes" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <label for="checkMartes" class="label-item-circle text-center">
+                  <div class="date-upload-option-medium text-bold">
+                    Martes
+                  </div>
+                </label>
+                <input id="checkMiercoles" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <label for="checkMiercoles" class="label-item-circle text-center">
+                  <div class="date-upload-option-medium text-bold">
+                    Mi&eacute;rcoles
+                  </div>
+                </label>
+                <input id="checkJueves" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <label for="checkJueves" class="label-item-circle text-center">
+                  <div class="date-upload-option-medium text-bold">
+                    Jueves
+                  </div>
+                </label>
+                <input id="checkViernes" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <label for="checkViernes" class="label-item-circle text-center">
+                  <div class="date-upload-option-medium text-bold">
+                    Viernes
+                  </div>
+                </label>
+                <input id="checkSabado" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <label for="checkSabado" class="label-item-circle text-center">
+                  <div class="date-upload-option-medium text-bold">
+                    S&aacute;bado
+                  </div>
+                </label>
+                <input id="checkDomingo" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <label for="checkDomingo" class="label-item-circle text-center">
+                  <div class="date-upload-option-medium text-bold">
+                    Domingo
+                  </div>
+                </label>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <br><br>
               </div>
               <div class="cell medium-4 large-4 small-8">
                 <select>
@@ -436,6 +545,325 @@
               </div>
               <div class="cell medium-6 large-6 small-6 align-left">
                 <button class="button primary">Siguiente &gt;</button>
+              </div>
+            </div>
+          </div>
+          <div class="tabs-panel" id="descProperty">
+            <div class="grid-x grid-margin-x">
+              <div class="cell small-12 medium-12 large-12">
+                <h3>Carga de Contenido</h3>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <h5>Información financiera</h5>
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+                <label>Etiqueta precio *
+                  <input type="text" placeholder="">
+                </label>
+                <label>Cuota incial
+                  <input type="text" placeholder="">
+                </label>
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+                <label>Precio desde
+                  <input type="text" placeholder="">
+                </label>
+                <label>Separación
+                  <input type="text" placeholder="">
+                </label>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <h5>&Aacute;rea</h5>
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+                <label>&Aacute;rea construida *
+                  <input type="text" placeholder="">
+                </label>
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+                <label>&Aacute;rea privada *
+                  <input type="text" placeholder="">
+                </label>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <h5>Descripci&oacute;n inmueble</h5>
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+                <label>Tipo de vivienda
+                  <select>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                  </select>
+                </label>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <span>Acabados</span>
+              </div>
+              <div class="cell medium-12 large-12 small-12">
+                <input id="tipoInmueble1" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <label for="tipoInmueble1" class="label-item-circle text-center">
+                  <div class="date-upload-option text-bold">
+                    <i class="fi-home"></i>
+                  </div>
+                  Obra Gris
+                </label>
+                <input id="tipoInmueble2" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <label for="tipoInmueble2" class="label-item-circle text-center">
+                  <div class="date-upload-option text-bold">
+                    <i class="fi-home"></i>
+                  </div>
+                  Con acabados
+                </label>
+                <input id="tipoInmueble3" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <label for="tipoInmueble3" class="label-item-circle text-center">
+                  <div class="date-upload-option text-bold">
+                    <i class="fi-home"></i>
+                  </div>
+                  Semi-acabados
+                </label>
+                <input id="tipoInmueble4" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <label for="tipoInmueble4" class="label-item-circle text-center">
+                  <div class="date-upload-option text-bold">
+                    <i class="fi-home"></i>
+                  </div>
+                  Sin-acabados
+                </label>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <span>Planos</span>
+              </div>
+              <div class="cell small-12 medium-4 large-4">
+                <button class="hollow secondary upload-button" type="file" name="file">
+                  <i class="fi-upload-cloud"></i>
+                  Subir archivo
+                </button>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <span>Im&aacute;genes del inmueble</span>
+              </div>
+              <div class="grid-x cell small-12 medium-12 large-12">
+                <div class="small-12 medium-4 large-4">
+                  <img src="https://placehold.it/250x150/?text=Imagen-Inmueble" alt="">
+                  <input type="text" name="" id="" placeholder="Título*">
+                  <input type="text" name="" id="" placeholder="Alt*">
+                </div>
+                <div class="small-12 medium-4 large-4">
+                  <img src="https://placehold.it/250x150/?text=Imagen-Inmueble" alt="">
+                  <input type="text" name="" id="" placeholder="Título*">
+                  <input type="text" name="" id="" placeholder="Alt*">
+                </div>
+                <div class="small-12 medium-4 large-4">
+                  <img src="https://placehold.it/250x150/?text=Imagen-Inmueble" alt="">
+                  <input type="text" name="" id="" placeholder="Título*">
+                  <input type="text" name="" id="" placeholder="Alt*">
+                </div>
+                <div class="small-12 medium-4 large-4">
+                  <img src="https://placehold.it/250x150/?text=Imagen-Inmueble" alt="">
+                  <input type="text" name="" id="" placeholder="Título*">
+                  <input type="text" name="" id="" placeholder="Alt*">
+                </div>
+                <div class="small-12 medium-4 large-4">
+                  <img src="https://placehold.it/250x150/?text=Imagen-Inmueble" alt="">
+                  <input type="text" name="" id="" placeholder="Título*">
+                  <input type="text" name="" id="" placeholder="Alt*">
+                </div>
+                <div class="small-12 medium-4 large-4 text-center">
+                  <button class="hollow secondary upload-button" type="file" name="file">
+                    <i class="fi-upload-cloud"></i>
+                    Subir archivo
+                  </button>
+                </div>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <h5>Video</h5>
+              </div>
+              <div class="cell small-12 medium-6 large-6">
+                <label>URL
+                  <input type="text" placeholder="">
+                </label>
+              </div>
+              <div class="cell small-12 medium-6 large-6">
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <h5>Recorrido</h5>
+              </div>
+              <div class="cell small-12 medium-6 large-6">
+                <label>URL
+                  <input type="text" placeholder="">
+                </label>
+              </div>
+              <div class="cell small-12 medium-6 large-6">
+              </div>
+              <div class="grid-x cell small-12 medium-12 large-12">
+                <div class="cell small-3 medium-3 large-3">
+                  <i class="fi-address-book"> Habitaciones*</i>
+                </div>
+                <div class="cell small-3 medium-3 large-3">
+                  <input type="number" name="" id="">
+                </div>
+              </div>
+              <div class="grid-x cell small-12 medium-12 large-12">
+                <div class="cell small-3 medium-3 large-3">
+                  <i class="fi-address-book"> Niveles del inmueble*</i>
+                </div>
+                <div class="cell small-3 medium-3 large-3">
+                  <input type="number" name="" id="">
+                </div>
+              </div>
+              <div class="grid-x cell small-12 medium-12 large-12">
+                <div class="cell small-3 medium-3 large-3">
+                  <i class="fi-address-book">Ba&ntilde;os*</i>
+                  <label for="">
+                    <input type="checkbox" name="" id="">
+                    Ba&ntilde;o social
+                  </label>
+                </div>
+                <div class="cell small-3 medium-3 large-3">
+                  <input type="number" name="" id="">
+                </div>
+              </div>
+              <div class="grid-x cell small-12 medium-12 large-12">
+                <div class="cell small-3 medium-3 large-3">
+                  <i class="fi-address-book">Garajes*</i>
+                  <label for="">
+                    <input type="checkbox" name="" id="">
+                    Cubierto
+                  </label>
+                  <label for="">
+                    <input type="checkbox" name="" id="">
+                    Descubierto
+                  </label>
+                </div>
+                <div class="cell small-3 medium-3 large-3">
+                  <input type="number" name="" id="">
+                </div>
+              </div>
+              <div class="grid-x cell small-12 medium-12 large-12">
+                <div class="cell small-3 medium-3 large-3">
+                  <i class="fi-address-book"> Tipo de Garaje*</i>
+                  <label for="">
+                    <input type="checkbox" name="" id="">
+                    Comunal
+                  </label>
+                  <label for="">
+                    <input type="checkbox" name="" id="">
+                    Privado
+                  </label>
+                </div>
+                <div class="cell small-3 medium-3 large-3">
+                </div>
+              </div>
+              <div class="grid-x cell small-12 medium-12 large-12">
+                <div class="cell small-3 medium-3 large-3">
+                  <i class="fi-address-book"> Sala comedor*</i>
+                  <label for="">
+                    <input type="checkbox" name="" id="">
+                    Cubierto
+                  </label>
+                  <label for="">
+                    <input type="checkbox" name="" id="">
+                    Descubierto
+                  </label>
+                </div>
+                <div class="cell small-3 medium-3 large-3">
+                </div>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <h5>Caracter&iacute;sticas del inmueble</h5>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <span class="label primary">
+                  <a href="">
+                    Piscina
+                  </a>
+                  <a href="">
+                    <span class="badge "><i class="fi-x"></i></span>
+                  </a>
+                </span>
+                <span class="label primary">
+                  <a href="">
+                    3 Habitaciones
+                  </a>
+                  <a href="">
+                    <span class="badge "><i class="fi-x"></i></span>
+                  </a>
+                </span>
+                <span class="label primary">
+                  <a href="">
+                    2 Garajes
+                  </a>
+                  <a href="">
+                    <span class="badge "><i class="fi-x"></i></span>
+                  </a>
+                </span>
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <hr />
+              </div>
+              <div class="cell small-12 medium-12 large-12">
+                <span class="label secondary">
+                  <a href="">
+                    Piscina
+                  </a>
+                  <a href="">
+                    <span class="badge secondary"><i class="fi-x"></i></span>
+                  </a>
+                </span>
+                <span class="label secondary">
+                  <a href="">
+                    3 Habitaciones
+                  </a>
+                  <a href="">
+                    <span class="badge secondary"><i class="fi-x"></i></span>
+                  </a>
+                </span>
+                <span class="label secondary">
+                  <a href="">
+                    2 Garajes
+                  </a>
+                  <a href="">
+                    <span class="badge secondary"><i class="fi-x"></i></span>
+                  </a>
+                </span>
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+                <label for="">
+                  &Aacute;rea balc&oacute;n
+                </label>
+                <input type="text" name="" id="">
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+                <label for="">
+                  <input type="checkbox" name="" id="">
+                  Entrega inmediata
+                </label>
+              </div>
+              <div class="cell medium-6 large-6 small-12">
+              </div>
+              <div class="cell medium-12 large-12 small-12">
+                <label for="detail">Comentarios adicionales</label>
+                <textarea name="" id="detail" cols="30" rows="5">
+                  </textarea>
+              </div>
+              <div class="cell medium-12 large-12 small-12">
+                <hr>
+              </div>
+              <div class="cell medium-12 large-12 small-12 text-center">
+                <span>A&Ntilde;ADIR TIPOLOG&Iacute;A <i class="fi-plus"></i></span>
+              </div>
+              <div class="cell medium-6 large-6 small-6 align-right">
+                <button class="button primary">&lt; Anterior</button>
+              </div>
+              <div class="cell medium-6 large-6 small-6 align-left">
+                <button class="button primary">Siguiente &gt;</button>
+                <label for="">
+                  <input type="checkbox" name="" id="">
+                  Aceptaci&oacute;n <a href="" target="_blank" rel="noopener noreferrer">Aviso legal</a>
+                </label>
               </div>
             </div>
           </div>
