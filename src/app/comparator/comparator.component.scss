@@ -1,0 +1,17 @@
+.image-comparator {
+  border-radius: 10px;
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+thead,
+th {
+  background-color: unset;
+  border: none;
+}
+
+td {
+  border-bottom: 1px solid gray;
+}

@@ -7,6 +7,8 @@ import { ToolComponent } from './tool/tool.component';
 import { ConstructoraComponent } from './constructora/constructora.component';
 import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
 import { ContentUploadComponent } from './content-upload/content-upload.component';
+import { ComparatorComponent } from './comparator/comparator.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,16 @@ const routes: Routes = [
   {
     path: 'cargar',
     component: ContentUploadComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'comparador',
+    component: ComparatorComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'favoritos',
+    component: FavoritesComponent,
     pathMatch: 'full',
   },
 ];

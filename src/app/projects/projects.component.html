@@ -63,7 +63,7 @@
         </div>
         <div class="cell shrink">
           <div class="button-group align-spaced ">
-            <a class="button">M&aacute;s Filtros</a>
+            <a class="button" data-open="modalMoreFilters">M&aacute;s Filtros</a>
             <a class="button search_button">Favoritos</a>
           </div>
         </div>
@@ -110,7 +110,7 @@
       </div>
     </div>
   </form>
-  
+
 
   <div class="grid-x grid-margin-x small-up-2 medium-up-4">
     <!-- Card Proyecto individual-->
@@ -356,4 +356,118 @@
     <!-- Fin Card Proyecto individual-->
   </div>
 
+</div>
+<div class="reveal container-modal" id="modalMoreFilters" aria-labelledby="modalMoreFiltersHeader" data-reveal>
+  <div class="grid-x grid-padding-x">
+    <div class="cell small-12 medium-12 large-12 text-center">
+      <span class="text-bold" id="modalMoreFiltersHeader">M&Aacute;S FILTROS</span>
+      <button class="close-button" data-close aria-label="Cerrar Modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="grid-x cell small-6 medium-6 large-6">
+      <div class="cell small-6 medium-6 large-6">
+        <span class="text-bold">ESTADO DEL PROYECTO</span>
+      </div>
+      <div class="cell small-12 medium-12 large-12">
+        <label for="">
+          <input type="checkbox" name="" id="">
+          Sobre planos
+        </label>
+        <label for="">
+          <input type="checkbox" name="" id="">
+          En construcción
+        </label>
+        <label for="">
+          <input type="checkbox" name="" id="">
+          Terminado
+        </label>
+      </div>
+      <div class="cell small-12 medium-12 large-12">
+        <span class="text-bold">INMUEBLE</span>
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <label for=""><i class="fi-map"></i>&Aacute;rea m<sup>2</sup></label>
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <select name="" id="">
+          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
+          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
+          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
+          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
+        </select>
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <label for=""><i class="fi-home"></i> Habitaciones</label>
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <input type="number" name="" id="">
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <label for=""><i class="fi-home"></i> Ba&ntilde;os</label>
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <input type="number" name="" id="">
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <label for=""><i class="fi-home"></i> Garajes</label>
+      </div>
+      <div class="cell small-6 medium-6 large-6">
+        <input type="number" name="" id="">
+      </div>
+    </div>
+    <div class="cell small-6 medium-6 large-6">
+      <div class="cell small-12 medium-12 large-12">
+        <span class="text-bold">CONSTRUCTORA</span>
+      </div>
+      <div class="cell small-12 medium-12 large-12">
+        <input type="search" name="" id="">
+        <i class="fi-magnifying-glass large icon-search-style">
+        </i>
+      </div>
+      <div class="cell small-12 medium-12 large-12">
+        <span class="text-bold">COLECCIONES</span>
+      </div>
+      <div class="cell small-12 medium-12 large-12">
+        <input id="coleccion1" type="checkbox" name="coleccion1" class="radio_item_oval">
+        <label for="coleccion1" class="label-item-oval-small text-center">
+          <div class="option-small-oval text-bold">
+            Pet friendly
+          </div>
+        </label>
+        <input id="coleccion2" type="checkbox" name="coleccion2" class="radio_item_oval">
+        <label for="coleccion2" class="label-item-oval-small text-center">
+          <div class="option-small-oval text-bold">
+            Tercera edad
+          </div>
+        </label>
+        <input id="coleccion3" type="checkbox" name="coleccion3" class="radio_item_oval">
+        <label for="coleccion1" class="label-item-oval-small text-center">
+          <div class="option-small-oval text-bold">
+            Mi Casa Ya
+          </div>
+        </label>
+        <input id="coleccion4" type="checkbox" name="coleccion4" class="radio_item_oval">
+        <label for="coleccion4" class="label-item-oval-small text-center">
+          <div class="option-small-oval text-bold">
+            Lorem ipsum
+          </div>
+        </label>
+        <input id="coleccion5" type="checkbox" name="coleccion5" class="radio_item_oval">
+        <label for="coleccion5" class="label-item-oval-small text-center">
+          <div class="option-small-oval text-bold">
+            Lorem ipsum
+          </div>
+        </label>
+      </div>
+      <div class="grid-x cell small-12 medium-12 large-12">
+        <div class="cell small-6 medium-6 large-6">
+          <a href="">Limpiar filtros</a>
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button search_button">Mostrar 45 apartamentos</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -295,27 +295,29 @@
               <div class="grid-container">
                 <div class="grid-x grid-margin-x">
                   <div class="cell small-12">
-                    <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+                    <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name"
+                      name="name" required pattern="text">
                     <span class="form-error">
                       Debe digitar un nombre de contacto
                     </span>
                   </div>
                   <div class="cell small-12">
-                    <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required
-                      pattern="text">
+                    <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError"
+                      formControlName="lastname" name="lastnanme" required pattern="text">
                     <span class="form-error">
                       Debe digitar un apellido de contacto
                     </span>
                   </div>
                   <div class="cell small-12">
-                    <input type="email" placeholder="Email*" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+                    <input type="email" placeholder="Email*" aria-errormessage="emailError" formControlName="email"
+                      name="email" required pattern="email">
                     <span class="form-error">
                       Debe digitar un correo de contacto valido
                     </span>
                   </div>
                   <div class="cell small-12">
-                    <input type="tel" placeholder="Tel&eacute;fono*" aria-errormessage="phoneError" formControlName="phone" name="phone" required
-                      >
+                    <input type="tel" placeholder="Tel&eacute;fono*" aria-errormessage="phoneError"
+                      formControlName="phone" name="phone" required>
                     <span class="form-error">
                       Debe digitar un n&uacute;mbre de contacto
                     </span>
@@ -337,14 +339,16 @@
                   <fieldset class="cell small-5 large-5 medium-5 control-group">
                     <label for="houseForHabitar" class="control control-radio">
                       Habitar
-                      <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar">
+                      <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch" value="habitar"
+                        id="houseForHabitar">
                       <div class="control_indicator"></div>
                     </label>
                   </fieldset>
                   <fieldset class="cell small-6 large-6 medium-6 control-group">
                     <label for="houseForInvertir" class="control control-radio">
                       Invertir
-                      <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir">
+                      <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch"
+                        value="invertir" id="houseForInvertir">
                       <div class="control_indicator"></div>
                     </label>
                   </fieldset>
@@ -362,6 +366,7 @@
                   <div class="grid-x grid-margin-x">
                     <fieldset class="cell large-12 align-center">
                       <button class="button" (click)="onSubmit(form.value)" value="Submit">Enviar</button>
+                      <button class="button" value="Popup" data-open="modalThanks" aria-haspopup="true">popup</button>
                     </fieldset>
                   </div>
                 </div>
@@ -402,14 +407,16 @@
                     <div class="control-group">
                       <label for="journalMorning" class="control control-radio">
                         Ma&ntilde;ana
-                        <input type="radio" name="journalOption" formControlName="journalOption" value="morning" id="journalMorning">
+                        <input type="radio" name="journalOption" formControlName="journalOption" value="morning"
+                          id="journalMorning">
                         <div class="control_indicator"></div>
                       </label>
                     </div>
                     <fieldset class="cell large-12">
                       <label for="journalAfternoon" class="control control-radio">
                         Tarde
-                        <input type="radio" name="journalOption" formControlName="journalOption" value="afternoon" id="journalAfternoon">
+                        <input type="radio" name="journalOption" formControlName="journalOption" value="afternoon"
+                          id="journalAfternoon">
                         <div class="control_indicator"></div>
                       </label>
                       <span class="form-error">
@@ -420,7 +427,8 @@
                   <div class="cell small-12 container-date-agenda">
                     <div class="grid-x grid-padding-x align-stretch">
                       <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for" value="invertir" id="horario1">
+                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
+                          value="invertir" id="horario1">
                         <label class="label_item" for="horario1">
                           <div class="date-agenda-option text-bold text-center">
                             <time>08:00 AM</time>
@@ -428,7 +436,8 @@
                         </label>
                       </div>
                       <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for" value="invertir" id="horario2">
+                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
+                          value="invertir" id="horario2">
                         <label class="label_item" for="horario2">
                           <div class="date-agenda-option text-bold text-center">
                             <time>09:00 AM</time>
@@ -436,7 +445,8 @@
                         </label>
                       </div>
                       <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for" value="invertir" id="horario3">
+                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
+                          value="invertir" id="horario3">
                         <label class="label_item" for="horario3">
                           <div class="date-agenda-option text-bold text-center">
                             <time>10:00 AM</time>
@@ -444,7 +454,8 @@
                         </label>
                       </div>
                       <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for" value="invertir" id="horario4">
+                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
+                          value="invertir" id="horario4">
                         <label class="label_item" for="horario4">
                           <div class="date-agenda-option text-bold text-center">
                             <time>11:00 AM</time>
@@ -457,20 +468,22 @@
                     </div>
                   </div>
                   <div class="cell small-12">
-                    <input type="text" name="name" formControlName="name"  placeholder="Nombre*" aria-errormessage="nameError" required pattern="text">
+                    <input type="text" name="name" formControlName="name" placeholder="Nombre*"
+                      aria-errormessage="nameError" required pattern="text">
                     <span class="form-error">
                       Debe digitar un nombre de contacto
                     </span>
                   </div>
                   <div class="cell small-12">
-                    <input type="email" name="email" formControlName="email"  placeholder="Email*" aria-errormessage="emailError" required pattern="email">
+                    <input type="email" name="email" formControlName="email" placeholder="Email*"
+                      aria-errormessage="emailError" required pattern="email">
                     <span class="form-error">
                       Debe digitar un correo de contacto valido
                     </span>
                   </div>
                   <div class="cell small-12">
-                    <input type="tel" name="phone" formControlName="phone"  placeholder="Tel&eacute;fono*" aria-errormessage="phoneError" required
-                      >
+                    <input type="tel" name="phone" formControlName="phone" placeholder="Tel&eacute;fono*"
+                      aria-errormessage="phoneError" required>
                     <span class="form-error">
                       Debe digitar un n&uacute;mbre de contacto
                     </span>
@@ -486,7 +499,12 @@
                   </fieldset>
                   <div class="grid-x grid-margin-x">
                     <fieldset class="cell large-12 align-center">
+<<<<<<< Updated upstream
                       <button class="button" (click)="onSubmitDates(form2.value)" value="Submit">Enviar</button>
+=======
+                      <button class="button" type="submit" (click)="onSubmitDates(form2.value)"
+                        value="Submit">Enviar</button>
+>>>>>>> Stashed changes
                     </fieldset>
                   </div>
                 </div>
@@ -996,3 +1014,10 @@
     </div>
   </div>
 </section>
+<div class="tiny reveal text-center container-modal" id="modalThanks" role="dialog" tabindex="-1">
+  <p>!Gracias¡</p>
+  <p>Pronto te llegar&aacute; toda la informaci&oacute;n a tu correo</p>
+  <button class="close-button" data-close="" aria-label="Close reveal" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>

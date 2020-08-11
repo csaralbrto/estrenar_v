@@ -76,9 +76,6 @@
   position: relative;
 }
 
-
-
-
 .featured-image-block-grid-header {
   margin-left: auto;
   margin-right: auto;
@@ -101,4 +98,51 @@
 
 .link_load_attributes_project {
   color: #1468a0;
+}
+
+.radio_item_oval {
+  display: none !important;
+}
+
+.radio_item_oval:checked+label {
+  color: #fff;
+
+  .option-small-oval {
+    background-color: #fff !important;
+    color: #14444e;
+  }
+}
+
+.option-small-oval {
+  border: 1px solid white;
+  border-radius: 35%;
+  position: relative;
+  padding: 0.3em;
+  line-height: initial;
+  width: 8.5em;
+  background-color: #14444e;
+  color: #fff;
+  font-weight: bolder;
+  margin: 0.3em;
+  display: inline;
+}
+
+.label-item-oval-small {
+  margin-left: unset;
+  margin-right: unset;
+  margin-bottom: 10px;
+}
+
+.container-modal {
+  background-color: #14444e;
+
+  * {
+    font-size: 0.9em;
+  }
+
+  label,
+  span {
+    color: #fff !important;
+  }
+
 }
