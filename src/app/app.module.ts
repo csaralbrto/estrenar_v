@@ -24,6 +24,7 @@ import { HttpModule } from '@angular/http';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { DetailConstructoraComponent } from './detail-constructora/detail-constr
     ProjectDetailComponent,
     ContactusComponent,
     DetailConstructoraComponent,
+    FavoritesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
   providers: [],
