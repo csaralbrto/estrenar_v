@@ -29,7 +29,7 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit(): void {
     this.collectionActive = this.route;
-    this.createForm();
+    // this.createForm();
     $(document).foundation();
 
     /* Método para obtener toda la info de proyectos */
@@ -62,46 +62,46 @@ export class FavoritesComponent implements OnInit {
     );
   }
 
-  change(value) {
-    this.data.nodes = [];
-    let term = [], field = [], str = [],fields = "";
-    this.query_elasticsearch[this.collectionActive].page = 0;
+  // change(value) {
+  //   this.data.nodes = [];
+  //   let term = [], field = [], str = [],fields = "";
+  //   this.query_elasticsearch[this.collectionActive].page = 0;
 
-      Object.keys(value).forEach( function(key) {
-        if(value[key] && value[key] !== 'Seleccione'){
-          let p = key;
-          term.push(p+'='+value[key])
-          field.push(p);
-        }
-      },this);
+  //     Object.keys(value).forEach( function(key) {
+  //       if(value[key] && value[key] !== 'Seleccione'){
+  //         let p = key;
+  //         term.push(p+'='+value[key])
+  //         field.push(p);
+  //       }
+  //     },this);
 
-      /* añadimos el parametro del tipo de busqueda */
-      this.stringQuery = 'find=projects';
-      /* recorremos el array para saber con que parametos se va a buscar */
-      term.forEach(element => {
-        this.stringQuery = this.stringQuery + '&' + element;
+  //     /* añadimos el parametro del tipo de busqueda */
+  //     this.stringQuery = 'find=projects';
+  //     /* recorremos el array para saber con que parametos se va a buscar */
+  //     term.forEach(element => {
+  //       this.stringQuery = this.stringQuery + '&' + element;
 
-      });
-      /* llamamos la funcion que va a buscar */
-      this.getDataSearch();
-  }
+  //     });
+  //     /* llamamos la funcion que va a buscar */
+  //     this.getDataSearch();
+  // }
 
-  getDataSearch(){
-    this.Service.getDataFilter(this.stringQuery)
-      .subscribe(
-        data => { },
-        err => console.log(),
-        () => {}
-      );
-  }
+  // getDataSearch(){
+  //   this.Service.getDataFilter(this.stringQuery)
+  //     .subscribe(
+  //       data => { },
+  //       err => console.log(),
+  //       () => {}
+  //     );
+  // }
 
-  createForm() {
-    this.form_filters =  this.formBuilder.group({
-      type: new FormControl('Seleccione'),
-      price: new FormControl('Seleccione'),
-      city: new FormControl('Seleccione'),
-      zone: new FormControl('Seleccione'),
-      sector: new FormControl('Seleccione'),
-    });
-  }
+  // createForm() {
+  //   this.form_filters =  this.formBuilder.group({
+  //     type: new FormControl('Seleccione'),
+  //     price: new FormControl('Seleccione'),
+  //     city: new FormControl('Seleccione'),
+  //     zone: new FormControl('Seleccione'),
+  //     sector: new FormControl('Seleccione'),
+  //   });
+  // }
 }
