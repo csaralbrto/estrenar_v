@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
   main_title_page = 'Te ayudamos a encontrar tu lugar ideal';
 
   ngOnInit(): void {
-    $('app-home').foundation();
+    $(document).foundation();
+    $('#welcomeModal').foundation('open');
 
     /* Método para obtener toda la info del home */
     this.Service.getAllData().subscribe(
