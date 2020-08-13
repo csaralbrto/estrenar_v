@@ -14,7 +14,7 @@ export class FavoritesService {
 
   constructor( private http: Http ) {
     this.endpoint = environment.endpointApi + 'favorites/';
-    this.dataPath = environment.endpointApi+ 'allProjects';
+    this.dataPath = environment.endpointApi+ 'allProjectsFavorites';
     this.endpointFilter = environment.endpointSearchApi;
    }
 

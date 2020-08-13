@@ -9,33 +9,12 @@
           <tr>
             <th>
             </th>
-            <th width="20%">
-              <div class="card text-center">
+            <th width="20%" *ngFor="let project of response; let i = index">
+              <div class="card text-center" >
                 <div class="card-section">
-                  <h5>Parque Central de Occidente</h5>
+                  <h5>{{ project.direccion }}</h5>
                 </div>
-                <img class="image-comparator" src="https://placehold.it/1920x1080/?text=Card-1">
-                <div class="card-section">
-                  <div class="grid-x cell large-12 medium-12 small-12">
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-mail"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4 show-for-small-only">
-                      <i class="fi-telephone"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-cloud"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </th>
-            <th width="20%">
-              <div class="card text-center">
-                <div class="card-section">
-                  <h5>Parque Central de Occidente</h5>
-                </div>
-                <img class="image-comparator" src="https://placehold.it/1920x1080/?text=Card-1">
+                <img class="image-comparator" [src]="project.url_img">
                 <div class="card-section">
                   <div class="grid-x cell large-12 medium-12 small-12">
                     <div class="cell large-4 medium-4 small-4">
@@ -51,64 +30,23 @@
                 </div>
               </div>
             </th>
-            <th width="20%">
-              <div class="card text-center">
-                <div class="card-section">
-                  <h5>Parque Central de Occidente</h5>
-                </div>
-                <img class="image-comparator" src="https://placehold.it/1920x1080/?text=Card-1">
-                <div class="card-section">
-                  <div class="grid-x cell large-12 medium-12 small-12">
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-mail"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4 show-for-small-only">
-                      <i class="fi-telephone"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-cloud"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </th>
-            <th width="20%">
-              <div class="card text-center">
-                <div class="card-section">
-                  <h5>Parque Central de Occidente</h5>
-                </div>
-                <img class="image-comparator" src="https://placehold.it/1920x1080/?text=Card-1">
-                <div class="card-section">
-                  <div class="grid-x cell large-12 medium-12 small-12">
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-mail"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4 show-for-small-only">
-                      <i class="fi-telephone"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-cloud"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </th>
+  
           </tr>
         </thead>
         <tbody>
           <tr>
             <th><i class="fi-dollar"></i> Precio</th>
-            <td class="stat bold">$129.000.000</td>
-            <td class="stat bold">$129.000.000</td>
-            <td class="stat bold">$129.000.000</td>
-            <td class="stat bold">$129.000.000</td>
+            <td class="stat bold">{{ response[0].valor_venta | number }}</td>
+            <td class="stat bold">{{ response[1].valor_venta | number }}</td>
+            <td class="stat bold">{{ response[2].valor_venta | number }}</td>
+            <td class="stat bold">{{ response[3].valor_venta | number }}</td>
           </tr>
           <tr>
             <th><i class="fi-marker"></i> Ubicaci&oacute;n</th>
-            <td>Bogot&aacute;, Cedritos</td>
-            <td>Bogot&aacute;, Cedritos</td>
-            <td>Bogot&aacute;, Cedritos</td>
-            <td>Bogot&aacute;, Cedritos</td>
+            <td>{{ response[0].sub_titulo }}</td>
+            <td>{{ response[1].sub_titulo }}</td>
+            <td>{{ response[2].sub_titulo }}</td>
+            <td>{{ response[3].sub_titulo }}</td>
           </tr>
           <tr>
             <th><i class="fi-home"></i> Tipo de vivienda</th>
@@ -120,9 +58,9 @@
           <tr>
             <th><i class="fi-map"></i> Estado</th>
             <td>Sobre Planos</td>
+            <td>En construcción</td>
             <td>Sobre Planos</td>
-            <td>Sobre Planos</td>
-            <td>Sobre Planos</td>
+            <td>En construcción</td>
           </tr>
           <tr>
             <th><i class="fi-home"></i> Tipo</th>
@@ -133,31 +71,31 @@
           </tr>
           <tr>
             <th><i class="fi-ticket"></i> &Aacute;rea</th>
-            <td>65 m<sup>2</sup></td>
-            <td>65 m<sup>2</sup></td>
-            <td>65 m<sup>2</sup></td>
-            <td>65 m<sup>2</sup></td>
+            <td>{{ response[0].medida_apartamento }} m<sup>2</sup></td>
+            <td>{{ response[1].medida_apartamento }} m<sup>2</sup></td>
+            <td>{{ response[2].medida_apartamento }} m<sup>2</sup></td>
+            <td>{{ response[3].medida_apartamento }} m<sup>2</sup></td>
           </tr>
           <tr>
             <th><i class="fi-address-book"></i> Alcobas</th>
-            <td>3</td>
-            <td>3</td>
-            <td>3</td>
-            <td>3</td>
+            <td>{{ response[0].n_habitaciones }}</td>
+            <td>{{ response[1].n_habitaciones }}</td>
+            <td>{{ response[2].n_habitaciones }}</td>
+            <td>{{ response[3].n_habitaciones }}</td>
           </tr>
           <tr>
             <th><i class="fi-address-book"></i> Ba&ntilde;os</th>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
+            <td>{{ response[0].n_banos }}</td>
+            <td>{{ response[1].n_banos }}</td>
+            <td>{{ response[2].n_banos }}</td>
+            <td>{{ response[3].n_banos }}</td>
           </tr>
           <tr>
             <th><i class="fi-address-book"></i> Garajes</th>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+            <td>{{ response[0].n_garages }}</td>
+            <td>{{ response[1].n_garages }}</td>
+            <td>{{ response[2].n_garages }}</td>
+            <td>{{ response[3].n_garages }}</td>
           </tr>
           <tr>
             <th><i class="fi-address-book"></i> Acabados</th>
@@ -168,10 +106,10 @@
           </tr>
           <tr>
             <th><i class="fi-address-book"></i> Estrato</th>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
+            <td>{{ response[0].estrato }}</td>
+            <td>{{ response[1].estrato }}</td>
+            <td>{{ response[2].estrato }}</td>
+            <td>{{ response[3].estrato }}</td>
           </tr>
         </tbody>
       </table>
