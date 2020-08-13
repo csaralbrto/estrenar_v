@@ -32,7 +32,7 @@ export class ComparatorComponent implements OnInit {
           for (let project of this.response) {
             if (project.url_img) {
               this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(33, this.largo);
+              this.cadena = project.url_img.substr(54, this.largo);
               project.url_img = this.dataPath + this.cadena;
             }
           }

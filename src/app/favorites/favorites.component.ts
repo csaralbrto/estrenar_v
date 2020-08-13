@@ -39,17 +39,10 @@ export class FavoritesComponent implements OnInit {
       () => {
         if (this.response) {
           console.log(this.response);
-          for (let project of this.response.projects_1) {
+          for (let project of this.response) {
             if (project.url_img) {
               this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(52, this.largo);
-              project.url_img = this.dataPath + this.cadena;
-            }
-          }
-          for (let project of this.response.projects_2) {
-            if (project.url_img) {
-              this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(52, this.largo);
+              this.cadena = project.url_img.substr(53, this.largo);
               project.url_img = this.dataPath + this.cadena;
             }
           }
