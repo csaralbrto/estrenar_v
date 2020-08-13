@@ -1,1 +1,534 @@
-<p>wizard works!</p>
+<div class="full reveal" id="welcomeModal" data-reveal>
+  <form action="">
+    <div class="grid-x grid-margin-x grid text-center" id="wizard0">
+      <div class="cell small-3 medium-3 large-3"></div>
+      <div class="grid-x cell small-6 medium-6 large-6 text-center">
+        <div class="cell small-12 medium-12 large-12">
+          <i class="fi-social-google-plus"></i>
+        </div>
+        <div class="cell small-12 medium-12 large-12">
+          <h2>
+            Bienvenido a Estrenar Vivienda lorem ipsum adempte nocte
+          </h2>
+        </div>
+        <hr class="logoMinDivider">
+        <div class="cell small-12 medium-6 large-6">
+          <div class="image-container-wizard-0">
+            <img src="https://placehold.it/250x280/?text=Card-1" alt="">
+            <div class="container-info-wizard-0">
+              <p>Quiero recibir ayuda <br>para buscar vivienda</p>
+              <button class="button search_button" (click)="changeStepWizard(1);">Quiero asesor&iacute;a</button>
+            </div>
+          </div>
+        </div>
+        <div class="cell small-12 medium-6 large-6 text-center">
+          <div class="image-container-wizard-0">
+            <img src="https://placehold.it/250x280/?text=Card-1" alt="">
+            <div class="container-info-wizard-0">
+              <br>
+              <p>Prefiero explorar por mi cuenta</p>
+              <button class="button search_button" (click)="changeStepWizard(1);">Realizar b&uacute;squeda</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+      <div class="cell small-9 medium-6 large-6 footer-wizard">
+        <p>Toda la informaci&oacute;n contenida de precios, descuentos, promociones, sorteos y condiciones de las
+          publicaciones, pueden cambiar sin previo aviso y est&aacute;n sujetos a las politicas de
+          comercializaci&oacute;n
+          del anunciante, quien es el &uacute;nico responsable del coontenido del anuncio.</p>
+        <p class="text-center">Copyright &copy;2019 - Estrenar Vivienda</p>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x grid text-center" id="wizard1" style="display: none;">
+      <div class="cell small-0 medium-3 large-3"></div>
+      <div class="grid-x cell small-12 medium-6 large-6 text-center">
+        <div class="cell small-12 medium-12 large-12">
+          <i class="fi-social-google-plus"></i>
+        </div>
+        <div class="cell small-12 medium-12 large-12">
+          <p>1/6</p>
+          <div class="progress wizard-progress-bar" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0"
+            aria-valuetext="50 percent" aria-valuemax="100">
+            <div class="progress-meter" style="width: 15%"></div>
+          </div>
+        </div>
+        <div class="grid-container cell small-12 medium-12 large-12">
+          <h5>¿Qu&eacute; estas buscando?</h5>
+        </div>
+        <hr class="logoMinDivider">
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-12 medium-6 large-6">
+          <input type="text" name="" id="" placeholder="Ciudad, zona">
+        </div>
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-6 medium-6 large-6">
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(2);">Siguiente &#62; </button>
+        </div>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6 footer-wizard">
+        <p>Toda la informaci&oacute;n contenida de precios, descuentos, promociones, sorteos y condiciones de las
+          publicaciones, pueden cambiar sin previo aviso y est&aacute;n sujetos a las politicas de
+          comercializaci&oacute;n
+          del anunciante, quien es el &uacute;nico responsable del coontenido del anuncio.</p>
+        <p class="text-center">Copyright &copy;2019 - Estrenar Vivienda</p>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x grid text-center" id="wizard2" style="display: none;">
+      <div class="cell small-0 medium-3 large-3"></div>
+      <div class="grid-x cell small-12 medium-6 large-6 text-center">
+        <div class="cell small-12 medium-12 large-12">
+          <i class="fi-social-google-plus"></i>
+        </div>
+        <div class="cell small-12 medium-12 large-12">
+          <p>2/6</p>
+          <div class="progress wizard-progress-bar" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0"
+            aria-valuetext="50 percent" aria-valuemax="100">
+            <div class="progress-meter" style="width: 30%"></div>
+          </div>
+        </div>
+        <div class="grid-container cell small-12 medium-12 large-12">
+          <h5>¿C&uacute;al es tu presupuesto de compra?</h5>
+        </div>
+        <hr class="logoMinDivider">
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-12 medium-6 large-6">
+          <p>Presupuesto de compra</p>
+          <p>Desde $200.000.000</p>
+          <p>Hasta $400.000.000</p>
+          <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
+            <span>$150M</span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <input type="hidden">
+            <input type="hidden">
+            <span>$1500M</span>
+          </div>
+        </div>
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-12 medium-6 large-6">
+          <p>Presupuesto de compra</p>
+          <p class="stat">$200.000.000</p>
+          <div class="slider" data-slider data-initial-start="50" data-end="200">
+            <span>$150M</span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <input type="hidden">
+            <span>$1500M</span>
+          </div>
+        </div>
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(1);">&#60; Siguiente</button>
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(3);">Siguiente &#62; </button>
+        </div>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6">
+        <a href="#" (click)="changeStepWizard(0);">Volver a iniciar</a>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6 footer-wizard">
+        <p>Toda la informaci&oacute;n contenida de precios, descuentos, promociones, sorteos y condiciones de las
+          publicaciones, pueden cambiar sin previo aviso y est&aacute;n sujetos a las politicas de
+          comercializaci&oacute;n
+          del anunciante, quien es el &uacute;nico responsable del coontenido del anuncio.</p>
+        <p class="text-center">Copyright &copy;2019 - Estrenar Vivienda</p>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x grid text-center" id="wizard3" style="display: none;">
+      <div class="cell small-0 medium-3 large-3"></div>
+      <div class="grid-x cell small-12 medium-6 large-6 text-center">
+        <div class="cell small-12 medium-12 large-12">
+          <i class="fi-social-google-plus"></i>
+        </div>
+        <div class="cell small-12 medium-12 large-12">
+          <p>3/6</p>
+          <div class="progress wizard-progress-bar" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0"
+            aria-valuetext="50 percent" aria-valuemax="100">
+            <div class="progress-meter" style="width: 45%"></div>
+          </div>
+        </div>
+        <div class="cell small-12 medium-12 large-12 text-left">
+          <span class="label secondary">
+            <a href="">Barranquilla </a>
+          </span>
+          <span class="label secondary">
+            <a href="">$400.000.000 </a>
+          </span>
+        </div>
+        <div class="grid-container cell small-12 medium-12 large-12">
+          <h5>¿Vas a comprar con subsidio?</h5>
+        </div>
+        <hr class="logoMinDivider">
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-12 medium-6 large-6">
+          <input type="radio" class="radio_item-wizard" name="subsidy" formControlName="subsidyYes" value="yes"
+            id="subsidyYes">
+          <label class="label_item-wizard" for="subsidyYes">
+            <div class="wizard-option text-bold text-center">
+              SI
+            </div>
+          </label>
+          <input type="radio" class="radio_item-wizard" name="subsidy" formControlName="subsidyNo" value="no"
+            id="subsidyNo">
+          <label class="label_item-wizard" for="subsidyNo">
+            <div class="wizard-option text-bold text-center">
+              NO
+            </div>
+          </label>
+        </div>
+        <div class="cell small-0 medium-3 large-3"></div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(2);">&#60; Siguiente</button>
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(4);">Siguiente &#62; </button>
+        </div>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6">
+        <a href="#" (click)="changeStepWizard(0);">Volver a iniciar</a>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6 footer-wizard">
+        <p>Toda la informaci&oacute;n contenida de precios, descuentos, promociones, sorteos y condiciones de las
+          publicaciones, pueden cambiar sin previo aviso y est&aacute;n sujetos a las politicas de
+          comercializaci&oacute;n
+          del anunciante, quien es el &uacute;nico responsable del coontenido del anuncio.</p>
+        <p class="text-center">Copyright &copy;2019 - Estrenar Vivienda</p>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x grid text-center" id="wizard4" style="display: none;">
+      <div class="cell small-0 medium-3 large-3"></div>
+      <div class="grid-x cell small-12 medium-6 large-6 text-center">
+        <div class="cell small-12 medium-12 large-12">
+          <i class="fi-social-google-plus"></i>
+        </div>
+        <div class="cell small-12 medium-12 large-12">
+          <p>4/6</p>
+          <div class="progress wizard-progress-bar" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0"
+            aria-valuetext="50 percent" aria-valuemax="100">
+            <div class="progress-meter" style="width: 60%"></div>
+          </div>
+        </div>
+        <div class="cell small-12 medium-12 large-12 text-left">
+          <span class="label secondary">
+            <a href="">Barranquilla </a>
+          </span>
+          <span class="label secondary">
+            <a href="">$400.000.000 </a>
+          </span>
+        </div>
+        <div class="grid-container cell small-12 medium-12 large-12">
+          <h5>¿En cu&aacute;nto tiempo consideras estrenar vivienda?</h5>
+        </div>
+        <hr class="logoMinDivider">
+        <div class="cell small-12 medium-12 large-12 container-wizard-options-top">
+          <input type="radio" class="radio_item-wizard" name="waitTime" value="1" id="waitTime1">
+          <label class="label_item-wizard-top" for="waitTime1">
+            <div class="top-select-option">
+            </div>
+            <div class="wizard-option-top text-bold text-center">
+              Inmediatanente
+            </div>
+          </label>
+          <input type="radio" class="radio_item-wizard" name="waitTime" value="2" id="waitTime2">
+          <label class="label_item-wizard-top" for="waitTime2">
+            <div class="top-select-option">
+            </div>
+            <div class="wizard-option-top text-bold text-center">
+              Menos de 3 meses
+            </div>
+          </label>
+          <input type="radio" class="radio_item-wizard" name="waitTime" value="3" id="waitTime3">
+          <label class="label_item-wizard-top" for="waitTime3">
+            <div class="top-select-option">
+            </div>
+            <div class="wizard-option-top text-bold text-center">
+              Entre 3 y 6 meses
+            </div>
+          </label>
+          <input type="radio" class="radio_item-wizard" name="waitTime" value="4" id="waitTime4">
+          <label class="label_item-wizard-top" for="waitTime4">
+            <div class="top-select-option">
+            </div>
+            <div class="wizard-option-top text-bold text-center">
+              Entre 6 meses y 1 a&ntilde;o
+            </div>
+          </label>
+          <input type="radio" class="radio_item-wizard" name="waitTime" value="5" id="waitTime5">
+          <label class="label_item-wizard-top" for="waitTime5">
+            <div class="top-select-option">
+            </div>
+            <div class="wizard-option-top text-bold text-center">
+              Solo estoy mirando
+            </div>
+          </label>
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(3);">&#60; Siguiente</button>
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(5);">Siguiente &#62; </button>
+        </div>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6">
+        <a href="#" (click)="changeStepWizard(0);">Volver a iniciar</a>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6 footer-wizard">
+        <p>Toda la informaci&oacute;n contenida de precios, descuentos, promociones, sorteos y condiciones de las
+          publicaciones, pueden cambiar sin previo aviso y est&aacute;n sujetos a las politicas de
+          comercializaci&oacute;n
+          del anunciante, quien es el &uacute;nico responsable del coontenido del anuncio.</p>
+        <p class="text-center">Copyright &copy;2019 - Estrenar Vivienda</p>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x grid text-center" id="wizard5" style="display: none;">
+      <div class="cell small-0 medium-3 large-3"></div>
+      <div class="grid-x cell small-12 medium-6 large-6 text-center">
+        <div class="cell small-12 medium-12 large-12">
+          <i class="fi-social-google-plus"></i>
+        </div>
+        <div class="cell small-12 medium-12 large-12">
+          <p>5/6</p>
+          <div class="progress wizard-progress-bar" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0"
+            aria-valuetext="50 percent" aria-valuemax="100">
+            <div class="progress-meter" style="width: 60%"></div>
+          </div>
+        </div>
+        <div class="cell small-12 medium-12 large-12 text-left">
+          <span class="label secondary">
+            <a href="">Barranquilla </a>
+          </span>
+          <span class="label secondary">
+            <a href="">$400.000.000 </a>
+          </span>
+          <span class="label secondary">
+            <a href="">Entre 3 y 6 meses </a>
+          </span>
+        </div>
+        <div class="grid-container cell small-12 medium-12 large-12">
+          <h5>¿Por cu&aacute;l medio prefieres ser contacatdo?</h5>
+        </div>
+        <hr class="logoMinDivider">
+        <div class="cell small-0 medium-2 large-2">
+        </div>
+        <div class="cell small-12 medium-6 large-6 container-wizard-options-top">
+          <input type="radio" class="radio_item-wizard" name="contactType" value="1" id="contactType1">
+          <label class="label_item-wizard-square" for="contactType1">
+            <div class="wizard-option-square text-bold text-center">
+              <i class="fi-mail"></i>
+            </div>
+            <span class="text-option-square">Correo electr&oacute;nico</span>
+          </label>
+          <input type="radio" class="radio_item-wizard" name="contactType" value="2" id="contactType2">
+          <label class="label_item-wizard-square" for="contactType2">
+            <div class="wizard-option-square text-bold text-center">
+              <i class="fi-mail"></i>
+            </div>
+            <span class="text-option-square">WhatsApp</span>
+          </label>
+          <input type="radio" class="radio_item-wizard" name="contactType" value="3" id="contactType3">
+          <label class="label_item-wizard-square" for="contactType3">
+            <div class="wizard-option-square text-bold text-center">
+              <i class="fi-telephone"></i>
+            </div>
+            <span class="text-option-square">Tel&eacute;fono o celular</span>
+          </label>
+        </div>
+        <div class="cell small-0 medium-3 large-3">
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(4);">&#60; Siguiente</button>
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="changeStepWizard(6);">Siguiente &#62; </button>
+        </div>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6">
+        <a href="#" (click)="changeStepWizard(0);">Volver a iniciar</a>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6 footer-wizard">
+        <p>Toda la informaci&oacute;n contenida de precios, descuentos, promociones, sorteos y condiciones de las
+          publicaciones, pueden cambiar sin previo aviso y est&aacute;n sujetos a las politicas de
+          comercializaci&oacute;n
+          del anunciante, quien es el &uacute;nico responsable del coontenido del anuncio.</p>
+        <p class="text-center">Copyright &copy;2019 - Estrenar Vivienda</p>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x grid text-center" id="wizard6" style="display: none;">
+      <div class="cell small-0 medium-3 large-3"></div>
+      <div class="grid-x cell small-12 medium-6 large-6 text-center">
+        <div class="cell small-12 medium-12 large-12">
+          <i class="fi-social-google-plus"></i>
+        </div>
+        <div class="cell small-12 medium-12 large-12">
+          <p>6/6</p>
+          <div class="progress wizard-progress-bar" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0"
+            aria-valuetext="50 percent" aria-valuemax="100">
+            <div class="progress-meter" style="width: 100%"></div>
+          </div>
+        </div>
+        <div class="cell small-12 medium-12 large-12 text-left">
+          <span class="label secondary">
+            <a href="">Barranquilla </a>
+          </span>
+          <span class="label secondary">
+            <a href="">$400.000.000 </a>
+          </span>
+          <span class="label secondary">
+            <a href="">Entre 3 y 6 meses </a>
+          </span>
+          <span class="label secondary">
+            <a href="">Correo electr&oacute;nico </a>
+          </span>
+        </div>
+        <div class="grid-container cell small-12 medium-12 large-12">
+          <h5>¿D&eacute;janos tus datos para ayudarte en tu b&uacute;squeda de vivienda?</h5>
+        </div>
+        <hr class="logoMinDivider">
+        <div class="cell small-0 medium-2 large-2">
+        </div>
+        <div class="grid-x cell small-12 medium-8 large-8">
+          <div class="cell small-12 medium-12 large-12">
+            <input type="text" name="" id="" placeholder="Nombre">
+          </div>
+          <div class="cell small-12 medium-12 large-12">
+            <input type="text" name="" id="" placeholder="Tel&eacute;fono">
+          </div>
+          <div class="cell small-12 medium-12 large-12">
+            <input type="text" name="" id="" placeholder="Email">
+          </div>
+          <div class="cell small-4 large-4 medium-4">
+            <span>Compras vivienda para:</span>
+          </div>
+          <div class="cell small-3 large-3 medium-3 control-group">
+            <label for="houseForHabitar" class="control control-radio">
+              Habitar
+              <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch" value="habitar"
+                id="houseForHabitar">
+              <div class="control_indicator"></div>
+            </label>
+          </div>
+          <div class="cell small-3 large-3 medium-3 control-group">
+            <label for="houseForInvertir" class="control control-radio">
+              Invertir
+              <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch" value="invertir"
+                id="houseForInvertir">
+              <div class="control_indicator"></div>
+            </label>
+          </div>
+          <div class="cell small-2 large-2 medium-2 control-group">
+          </div>
+          <div class="cell small-12 medium-12 large-12">
+            <input id="checkbox1" type="checkbox"><label for="checkbox1" class="small">Declaro haber leido el
+              <a href="http://" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a> y estar
+              conforme con el mismo.</label>
+            <span class="form-error">
+              Debe aceptor el Aviso de Privacidad
+            </span>
+          </div>
+          <div class="cell small-12 medium-12 large-12 privacyTerms">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae labore veritatis iure commodi
+              corrupti
+              in veniam eveniet, placeat pariatur rem aperiam velit, neque eaque error quaerat quam, quo tempora
+              voluptates? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, quis dolores fuga aliquam non
+              optio. Sit exercitationem assumenda tempora ex illum? Aut ut consequuntur deleniti! Ea delectus aliquid
+              accusantium architecto! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere corporis officia
+              reprehenderit, ipsam voluptatem similique quia voluptate esse dolore molestias quod dicta accusamus
+              doloremque animi, inventore vel hic quisquam et.</p>
+          </div>
+        </div>
+        <div class="cell small-0 medium-2 large-2">
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="closeWizard();">Enviar</button>
+        </div>
+        <div class="cell small-6 medium-6 large-6">
+          <button class="button" (click)="closeWizard();">Lo enviar&eacute; despu&eacute;s</button>
+        </div>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6">
+        <a href="#" (click)="changeStepWizard(0);">Volver a iniciar</a>
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-0 medium-3 large-3">
+      </div>
+      <div class="cell small-12 medium-6 large-6 footer-wizard">
+        <p>Toda la informaci&oacute;n contenida de precios, descuentos, promociones, sorteos y condiciones de las
+          publicaciones, pueden cambiar sin previo aviso y est&aacute;n sujetos a las politicas de
+          comercializaci&oacute;n
+          del anunciante, quien es el &uacute;nico responsable del coontenido del anuncio.</p>
+        <p class="text-center">Copyright &copy;2019 - Estrenar Vivienda</p>
+      </div>
+      <div class="cell small-3 medium-3 large-3">
+      </div>
+    </div>
+  </form>
+</div>
