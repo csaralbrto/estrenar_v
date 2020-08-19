@@ -25,6 +25,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
 import { ContactusComponent } from './contactus/contactus.component';
 import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     ContactusComponent,
     DetailConstructoraComponent,
     FavoritesComponent,
+    BlogDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
   providers: [],
