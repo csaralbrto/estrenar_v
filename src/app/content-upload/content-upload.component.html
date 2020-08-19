@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="cell small-12 medium-8 large-8">
-      <form action="">
+      <form [formGroup]="form">
         <div class="form-tabs" data-tabs-content="content-upload-tabs">
           <div class="tabs-panel is-active" id="infoForm">
             <div class="grid-x grid-margin-x">
@@ -28,7 +28,7 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Constructora *
-                  <select>
+                  <select name="company_constructor" formControlName="company_constructor">
                     <option value=""></option>
                     <option value=""></option>
                     <option value=""></option>
@@ -38,7 +38,7 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Nombre del proyecto *
-                  <input type="text" placeholder="">
+                  <input type="text" placeholder="" name="name_proyect" formControlName="name_proyect">
                 </label>
               </div>
             </div>
@@ -46,28 +46,28 @@
               <span>Tipo Inmueble</span>
             </div>
             <div class="cell medium-12 large-12 small-12">
-              <input id="tipoInmueble1" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <input id="tipoInmueble1" name="type_property" formControlName="type_property" type="radio" class="radio_item_circle">
               <label for="tipoInmueble1" class="label-item-circle text-center">
                 <div class="date-upload-option text-bold">
                   <i class="fi-home"></i>
                 </div>
                 Casas
               </label>
-              <input id="tipoInmueble2" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <input id="tipoInmueble2" name="type_property" formControlName="type_property" type="radio" class="radio_item_circle">
               <label for="tipoInmueble2" class="label-item-circle text-center">
                 <div class="date-upload-option text-bold">
                   <i class="fi-home"></i>
                 </div>
                 Apartamentos
               </label>
-              <input id="tipoInmueble3" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <input id="tipoInmueble3" name="type_property" formControlName="type_property" type="radio" class="radio_item_circle">
               <label for="tipoInmueble3" class="label-item-circle text-center">
                 <div class="date-upload-option text-bold">
                   <i class="fi-home"></i>
                 </div>
                 Apartaestudios
               </label>
-              <input id="tipoInmueble4" name="tipoInmueble" type="radio" class="radio_item_circle">
+              <input id="tipoInmueble4" name="type_property" formControlName="type_property" type="radio" class="radio_item_circle">
               <label for="tipoInmueble4" class="label-item-circle text-center">
                 <div class="date-upload-option text-bold">
                   <i class="fi-home"></i>
@@ -80,21 +80,21 @@
             </div>
             <div class="grid-x grid-margin-x">
               <div class="cell medium-8 large-8 small-12">
-                <input id="estadoProyecto1" type="radio" name="estadoProyecto" class="radio_item_circle">
+                <input id="estadoProyecto1" type="radio" name="status_project" formControlName="status_project" class="radio_item_circle">
                 <label for="estadoProyecto1" class="label-item-circle text-center">
                   <div class="date-upload-option text-bold">
                     <i class="fi-home"></i>
                   </div>
                   En construcci&oacute;n
                 </label>
-                <input id="estadoProyecto2" type="radio" name="estadoProyecto" class="radio_item_circle">
+                <input id="estadoProyecto2" type="radio" name="status_project" formControlName="status_project" class="radio_item_circle">
                 <label for="estadoProyecto2" class="label-item-circle text-center">
                   <div class="date-upload-option text-bold">
                     <i class="fi-home"></i>
                   </div>
                   Sobre planos
                 </label>
-                <input id="estadoProyecto3" type="radio" name="estadoProyecto" class="radio_item_circle">
+                <input id="estadoProyecto3" type="radio" name="status_project" formControlName="status_project" class="radio_item_circle">
                 <label for="estadoProyecto3" class="label-item-circle text-center">
                   <div class="date-upload-option text-bold">
                     <i class="fi-home"></i>
@@ -104,7 +104,7 @@
               </div>
               <div class="cell medium-4 large-4 small-12">
                 <label for="">Fecha aproximada de entrega
-                  <input type="date" name="" id="">
+                  <input type="date" id="date_of_delivery" name="date_of_delivery" formControlName="date_of_delivery">
                 </label>
               </div>
             </div>
@@ -114,16 +114,16 @@
             <div class="grid-x grid-margin-x cell medium-12 large-12 small-12">
               <div class="grid-x  cell medium-7 large-7 small-12">
                 <div class="cell medium-6 large-6 small-12">
-                  <label>Nombre del proyecto *
-                    <input type="text" placeholder="">
+                  <label>Ciudad *
+                    <input type="text" placeholder="" name="city" formControlName="city">
                   </label>
-                  <label>Nombre del proyecto *
-                    <input type="text" placeholder="">
+                  <label>Zona *
+                    <input type="text" placeholder="" name="zone" formControlName="zone">
                   </label>
                 </div>
                 <div class="cell medium-6 large-6 small-12">
-                  <label>Constructora *
-                    <select>
+                  <label>Sector *
+                    <select name="sector" formControlName="sector">
                       <option value=""></option>
                       <option value=""></option>
                       <option value=""></option>
@@ -135,7 +135,7 @@
                   <h5>Direcci&oacute;n *</h5>
                 </div>
                 <div class="cell small-12 medium-12 large-12">
-                  <input type="checkbox" name="" id="">
+                  <input type="checkbox"  id="">
                   <label for="">
                     Sala de ventas
                   </label>
@@ -143,11 +143,11 @@
                 <div class="cell small-12 medium-12 large-12">
                   <label for="">
                     Escribe la direcci&oacute;n de la sala de ventas
-                    <input type="text" name="" id="">
+                    <input type="text" id="" name="address_room_sales" formControlName="address_room_sales">
                   </label>
                 </div>
                 <div class="cell small-12 medium-12 large-12">
-                  <input type="checkbox" name="" id="">
+                  <input type="checkbox"  id="">
                   <label for="">
                     Sala de ventas
                   </label>
@@ -155,42 +155,42 @@
                 <div class="cell small-12 medium-12 large-12">
                   <label for="">
                     Escribe la direcci&oacute;n del proyecto
-                    <input type="text" name="" id="">
+                    <input type="text"  id="" name="address_project" formControlName="address_project">
                   </label>
                 </div>
                 <div class="cell small-12 medium-12 large-12">
-                  <input type="checkbox" name="" id="">
+                  <input type="checkbox" id="">
                   <label for="">
                     Oficina
                   </label>
                 </div>
                 <div class="cell small-12 medium-12 large-12">
                   <h5>Estrato *</h5>
-                  <input id="estrato1" type="radio" name="estrato" class="radio_item_circle">
+                  <input id="estrato1" type="radio" name="stratum" formControlName="stratum" class="radio_item_circle">
                   <label for="estrato1" class="label-item-circle text-center">
                     <div class="date-upload-option-small text-bold">
                       1
                     </div>
                   </label>
-                  <input id="estrato2" type="radio" name="estrato" class="radio_item_circle">
+                  <input id="estrato2" type="radio" name="stratum" formControlName="stratum" class="radio_item_circle">
                   <label for="estrato2" class="label-item-circle text-center">
                     <div class="date-upload-option-small text-bold">
                       2
                     </div>
                   </label>
-                  <input id="estrato3" type="radio" name="estrato" class="radio_item_circle">
+                  <input id="estrato3" type="radio" name="stratum" formControlName="stratum" class="radio_item_circle">
                   <label for="estrato3" class="label-item-circle text-center">
                     <div class="date-upload-option-small text-bold">
                       3
                     </div>
                   </label>
-                  <input id="estrato4" type="radio" name="estrato" class="radio_item_circle">
+                  <input id="estrato4" type="radio" name="stratum" formControlName="stratum" class="radio_item_circle">
                   <label for="estrato4" class="label-item-circle text-center">
                     <div class="date-upload-option-small text-bold">
                       4
                     </div>
                   </label>
-                  <input id="estrato5" type="radio" name="estrato" class="radio_item_circle">
+                  <input id="estrato5" type="radio" name="stratum" formControlName="stratum" class="radio_item_circle">
                   <label for="estrato5" class="label-item-circle text-center">
                     <div class="date-upload-option-small text-bold">
                       5
@@ -202,7 +202,7 @@
                 </div>
                 <div class="cell medium-6 large-6 small-12">
                   <label>Banco o entidad para cr&eacute;dito
-                    <select>
+                    <select name="bank" formControlName="bank">
                       <option value=""></option>
                       <option value=""></option>
                       <option value=""></option>
@@ -235,7 +235,7 @@
                 <span>Las imagenes debe estar entre ??? y ??? p&iacute;xeles, y ser menores que 1 MB</span>
               </div>
               <div class="cell small-12 medium-4 large-4">
-                <button class="hollow secondary upload-button" type="file" name="file">
+                <button class="hollow secondary upload-button" type="file" name="logo_project" fomrControlName="logo_project">
                   <i class="fi-upload-cloud"></i>
                   Subir archivo
                 </button>
@@ -268,7 +268,7 @@
                 <span>Url</span>
               </div>
               <div class="cell small-12 medium-12 large-12">
-                <input type="text" name="" id="">
+                <input type="text" name="url_video" fomrControlName="url_video" id="">
               </div>
               <div class="cell medium-6 large-6 small-6 align-right">
                 <button class="button primary">&lt; Anterior</button>
@@ -343,22 +343,22 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>N&uacute;mero de torres
-                  <input type="text" placeholder="">
+                  <input type="text" name="number_towers" formControlName="number_towers" placeholder="">
                 </label>
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Pisos por torres
-                  <input type="text" placeholder="">
+                  <input type="text" name="floors_towers" formControlName="floors_towers" placeholder="">
                 </label>
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Apartamentos por piso / Casas por manzana
-                  <input type="text" placeholder="">
+                  <input type="text" name="apartments_towers" formControlName="apartments_towers" placeholder="">
                 </label>
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Acensor por torre
-                  <input type="text" placeholder="">
+                  <input type="text" name="elevator_towers" formControlName="elevator_towers" placeholder="">
                 </label>
               </div>
               <div class="cell small-12 medium-12 large-12">
@@ -421,7 +421,7 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Colecci&oacute;n
-                  <select>
+                  <select name="colection" formControlName="colection">
                     <option value=""></option>
                     <option value=""></option>
                     <option value=""></option>
@@ -450,20 +450,20 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Nombre *
-                  <input type="text" placeholder="">
+                  <input type="text" name="name" formControlName="name" placeholder="">
                 </label>
                 <label>Email *
-                  <input type="text" placeholder="">
+                  <input type="email" name="email" formControlName="email" placeholder="">
                 </label>
               </div>
               <div class="cell medium-6 large-6 small-12">
-                <label>Nombre *
-                  <input type="text" placeholder="">
+                <label>Celular *
+                  <input type="number" name="phone" formControlName="phone" placeholder="">
                 </label>
                 <a href="">Agregar Correo <i class="fi-plus"></i></a>
               </div>
               <div class="cell medium-12 large-12 small-12">
-                <input id="esNumeroWhatsapp" type="checkbox">
+                <input id="esNumeroWhatsapp" name="check_whatsapp" formControlName="check_whatsapp" type="checkbox">
                 <label for="esNumeroWhatsapp">Este es el mismo número de Whatsapp</label>
               </div>
               <div class="cell medium-12 large-12 small-12">
@@ -473,37 +473,37 @@
                 <h5>Horario de atención</h5>
               </div>
               <div class="cell medium-12 large-12 small-12">
-                <input id="checkLunes" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <input id="checkLunes" type="checkbox" name="dayTimeAtention" formControlName="dayTimeAtention" class="radio_item_circle">
                 <label for="checkLunes" class="label-item-circle text-center">
                   <div class="date-upload-option-medium text-bold">
                     Lunes
                   </div>
                 </label>
-                <input id="checkMartes" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <input id="checkMartes" type="checkbox" name="dayTimeAtention" formControlName="dayTimeAtention" class="radio_item_circle">
                 <label for="checkMartes" class="label-item-circle text-center">
                   <div class="date-upload-option-medium text-bold">
                     Martes
                   </div>
                 </label>
-                <input id="checkMiercoles" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <input id="checkMiercoles" type="checkbox" name="dayTimeAtention" formControlName="dayTimeAtention" class="radio_item_circle">
                 <label for="checkMiercoles" class="label-item-circle text-center">
                   <div class="date-upload-option-medium text-bold">
                     Mi&eacute;rcoles
                   </div>
                 </label>
-                <input id="checkJueves" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <input id="checkJueves" type="checkbox" name="dayTimeAtention" formControlName="dayTimeAtention" class="radio_item_circle">
                 <label for="checkJueves" class="label-item-circle text-center">
                   <div class="date-upload-option-medium text-bold">
                     Jueves
                   </div>
                 </label>
-                <input id="checkViernes" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <input id="checkViernes" type="checkbox" name="dayTimeAtention" formControlName="dayTimeAtention" class="radio_item_circle">
                 <label for="checkViernes" class="label-item-circle text-center">
                   <div class="date-upload-option-medium text-bold">
                     Viernes
                   </div>
                 </label>
-                <input id="checkSabado" type="checkbox" name="dayTimeAtention" class="radio_item_circle">
+                <input id="checkSabado" type="checkbox" name="dayTimeAtention" formControlName="dayTimeAtention" class="radio_item_circle">
                 <label for="checkSabado" class="label-item-circle text-center">
                   <div class="date-upload-option-medium text-bold">
                     S&aacute;bado
@@ -520,7 +520,7 @@
                 <br><br>
               </div>
               <div class="cell medium-4 large-4 small-8">
-                <select>
+                <select name="hour" formControlName="hour">
                   <option value="09:00">09:00</option>
                   <option value="10:00">10:00</option>
                   <option value="11:00">11:00</option>
@@ -528,7 +528,7 @@
                 </select>
               </div>
               <div class="cell medium-2 large-2 small-4">
-                <select>
+                <select name="schedule" formControlName="schedule">
                   <option value="am">AM</option>
                   <option value="pm">PM</option>
                 </select>
@@ -537,7 +537,7 @@
               </div>
               <div class="cell medium-12 large-12 small-12">
                 <label for="detail">Especificaciones (max 170 caracteres)</label>
-                <textarea name="" id="detail" cols="30" rows="5">
+                <textarea name="specification" formControlName="specification" id="detail" cols="30" rows="5">
                   </textarea>
               </div>
               <div class="cell medium-6 large-6 small-6 align-right">
@@ -558,18 +558,18 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Etiqueta precio *
-                  <input type="text" placeholder="">
+                  <input type="text" name="label_price" formControlName="label_price" placeholder="">
                 </label>
                 <label>Cuota incial
-                  <input type="text" placeholder="">
+                  <input type="text" name="initial_fee" formControlName="initial_fee" placeholder="">
                 </label>
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Precio desde
-                  <input type="text" placeholder="">
+                  <input type="text" name="price_from" formControlName="price_from" placeholder="">
                 </label>
                 <label>Separación
-                  <input type="text" placeholder="">
+                  <input type="text" name="separation" formControlName="separation" placeholder="">
                 </label>
               </div>
               <div class="cell small-12 medium-12 large-12">
@@ -577,12 +577,12 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>&Aacute;rea construida *
-                  <input type="text" placeholder="">
+                  <input type="text" name="constructed_area" formControlName="constructed_area" placeholder="">
                 </label>
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>&Aacute;rea privada *
-                  <input type="text" placeholder="">
+                  <input type="text" name="private_area" formControlName="private_area" placeholder="">
                 </label>
               </div>
               <div class="cell small-12 medium-12 large-12">
@@ -590,7 +590,7 @@
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label>Tipo de vivienda
-                  <select>
+                  <select name="type_of_property" formControlName="type_of_property">
                     <option value=""></option>
                     <option value=""></option>
                     <option value=""></option>
@@ -602,28 +602,28 @@
                 <span>Acabados</span>
               </div>
               <div class="cell medium-12 large-12 small-12">
-                <input id="tipoInmueble1" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <input id="tipoInmueble1" name="finishes" formcontrolName="finishes" type="radio" class="radio_item_circle">
                 <label for="tipoInmueble1" class="label-item-circle text-center">
                   <div class="date-upload-option text-bold">
                     <i class="fi-home"></i>
                   </div>
                   Obra Gris
                 </label>
-                <input id="tipoInmueble2" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <input id="tipoInmueble2" name="finishes" formcontrolName="finishes" type="radio" class="radio_item_circle">
                 <label for="tipoInmueble2" class="label-item-circle text-center">
                   <div class="date-upload-option text-bold">
                     <i class="fi-home"></i>
                   </div>
                   Con acabados
                 </label>
-                <input id="tipoInmueble3" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <input id="tipoInmueble3" name="finishes" formcontrolName="finishes" type="radio" class="radio_item_circle">
                 <label for="tipoInmueble3" class="label-item-circle text-center">
                   <div class="date-upload-option text-bold">
                     <i class="fi-home"></i>
                   </div>
                   Semi-acabados
                 </label>
-                <input id="tipoInmueble4" name="tipoAcabado" type="radio" class="radio_item_circle">
+                <input id="tipoInmueble4" name="finishes" formcontrolName="finishes" type="radio" class="radio_item_circle">
                 <label for="tipoInmueble4" class="label-item-circle text-center">
                   <div class="date-upload-option text-bold">
                     <i class="fi-home"></i>
@@ -635,7 +635,7 @@
                 <span>Planos</span>
               </div>
               <div class="cell small-12 medium-4 large-4">
-                <button class="hollow secondary upload-button" type="file" name="file">
+                <button class="hollow secondary upload-button" type="file" name="maps" formControlName="maps">
                   <i class="fi-upload-cloud"></i>
                   Subir archivo
                 </button>
@@ -670,7 +670,7 @@
                   <input type="text" name="" id="" placeholder="Alt*">
                 </div>
                 <div class="small-12 medium-4 large-4 text-center">
-                  <button class="hollow secondary upload-button" type="file" name="file">
+                  <button class="hollow secondary upload-button" type="file[]" name="images_property" fonmControlName="images_property">
                     <i class="fi-upload-cloud"></i>
                     Subir archivo
                   </button>
@@ -681,7 +681,7 @@
               </div>
               <div class="cell small-12 medium-6 large-6">
                 <label>URL
-                  <input type="text" placeholder="">
+                  <input type="text" name="video_property" formControlName="video_property" placeholder="">
                 </label>
               </div>
               <div class="cell small-12 medium-6 large-6">
@@ -691,7 +691,7 @@
               </div>
               <div class="cell small-12 medium-6 large-6">
                 <label>URL
-                  <input type="text" placeholder="">
+                  <input type="text" name="tour" formControlName="tour" placeholder="">
                 </label>
               </div>
               <div class="cell small-12 medium-6 large-6">
@@ -701,7 +701,7 @@
                   <i class="fi-address-book"> Habitaciones*</i>
                 </div>
                 <div class="cell small-3 medium-3 large-3">
-                  <input type="number" name="" id="">
+                  <input type="number" name="bedrooms" formControlName="bedrooms" id="">
                 </div>
               </div>
               <div class="grid-x cell small-12 medium-12 large-12">
@@ -709,46 +709,46 @@
                   <i class="fi-address-book"> Niveles del inmueble*</i>
                 </div>
                 <div class="cell small-3 medium-3 large-3">
-                  <input type="number" name="" id="">
+                  <input type="number" name="levels_property" formControlName="levels_property" id="">
                 </div>
               </div>
               <div class="grid-x cell small-12 medium-12 large-12">
                 <div class="cell small-3 medium-3 large-3">
                   <i class="fi-address-book">Ba&ntilde;os*</i>
                   <label for="">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="bathrooms" formControlName="bathrooms" id="">
                     Ba&ntilde;o social
                   </label>
                 </div>
                 <div class="cell small-3 medium-3 large-3">
-                  <input type="number" name="" id="">
+                  <input type="number" name="social_bathrooms" formControlName="social_bathrooms" id="">
                 </div>
               </div>
               <div class="grid-x cell small-12 medium-12 large-12">
                 <div class="cell small-3 medium-3 large-3">
                   <i class="fi-address-book">Garajes*</i>
                   <label for="">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="garages" formControlName="garages" id="">
                     Cubierto
                   </label>
                   <label for="">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="garages" formControlName="garages" id="">
                     Descubierto
                   </label>
                 </div>
                 <div class="cell small-3 medium-3 large-3">
-                  <input type="number" name="" id="">
+                  <input type="number" name="" formControlName="" id="">
                 </div>
               </div>
               <div class="grid-x cell small-12 medium-12 large-12">
                 <div class="cell small-3 medium-3 large-3">
                   <i class="fi-address-book"> Tipo de Garaje*</i>
                   <label for="">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="type_garages" formControlName="type_garages" id="">
                     Comunal
                   </label>
                   <label for="">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="type_garages" formControlName="type_garages" id="">
                     Privado
                   </label>
                 </div>
@@ -759,11 +759,11 @@
                 <div class="cell small-3 medium-3 large-3">
                   <i class="fi-address-book"> Sala comedor*</i>
                   <label for="">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="dining_room" formControlName="dining_room" id="">
                     Cubierto
                   </label>
                   <label for="">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="dining_room" formControlName="dining_room" id="">
                     Descubierto
                   </label>
                 </div>
@@ -832,13 +832,13 @@
                 <label for="">
                   &Aacute;rea balc&oacute;n
                 </label>
-                <input type="text" name="" id="">
+                <input type="text" name="balcony_area" formControlName="balcony_area" id="">
               </div>
               <div class="cell medium-6 large-6 small-12">
               </div>
               <div class="cell medium-6 large-6 small-12">
                 <label for="">
-                  <input type="checkbox" name="" id="">
+                  <input type="checkbox" name="immediate_delivery" formControlName="immediate_delivery" id="">
                   Entrega inmediata
                 </label>
               </div>
@@ -846,7 +846,7 @@
               </div>
               <div class="cell medium-12 large-12 small-12">
                 <label for="detail">Comentarios adicionales</label>
-                <textarea name="" id="detail" cols="30" rows="5">
+                <textarea name="additional_comments" fomrControlName="additional_comments" id="detail" cols="30" rows="5">
                   </textarea>
               </div>
               <div class="cell medium-12 large-12 small-12">

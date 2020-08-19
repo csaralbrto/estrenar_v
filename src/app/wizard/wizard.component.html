@@ -1,5 +1,5 @@
 <div class="full reveal" id="welcomeModal" data-reveal>
-  <form action="">
+  <form action="" [formGroup]="form">
     <div class="grid-x grid-margin-x grid text-center" id="wizard0">
       <div class="cell small-3 medium-3 large-3"></div>
       <div class="grid-x cell small-6 medium-6 large-6 text-center">
@@ -46,7 +46,6 @@
       <div class="cell small-3 medium-3 large-3">
       </div>
     </div>
-
     <div class="grid-x grid-margin-x grid text-center" id="wizard1" style="display: none;">
       <div class="cell small-0 medium-3 large-3"></div>
       <div class="grid-x cell small-12 medium-6 large-6 text-center">
@@ -66,7 +65,7 @@
         <hr class="logoMinDivider">
         <div class="cell small-0 medium-3 large-3"></div>
         <div class="cell small-12 medium-6 large-6">
-          <input type="text" name="" id="" placeholder="Ciudad, zona">
+          <input type="text" name="search" formControlName="search" id="" placeholder="Ciudad, zona">
         </div>
         <div class="cell small-0 medium-3 large-3"></div>
         <div class="cell small-6 medium-6 large-6">
@@ -117,8 +116,8 @@
             <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
             <span class="slider-fill" data-slider-fill></span>
             <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-            <input type="hidden">
-            <input type="hidden">
+            <input type="hidden" name="budget_from" formControlName="budget_from">
+            <input type="hidden" name="budget_to" formControlName="budget_to">
             <span>$1500M</span>
           </div>
         </div>
@@ -131,7 +130,7 @@
             <span>$150M</span>
             <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
             <span class="slider-fill" data-slider-fill></span>
-            <input type="hidden">
+            <input type="hidden" name="purchase_budget" formControlName="purchase_budget">
             <span>$1500M</span>
           </div>
         </div>
@@ -192,14 +191,14 @@
         <hr class="logoMinDivider">
         <div class="cell small-0 medium-3 large-3"></div>
         <div class="cell small-12 medium-6 large-6">
-          <input type="radio" class="radio_item-wizard" name="subsidy" formControlName="subsidyYes" value="yes"
+          <input type="radio" class="radio_item-wizard" name="subsidyYes" formControlName="subsidyYes" value="yes"
             id="subsidyYes">
           <label class="label_item-wizard" for="subsidyYes">
             <div class="wizard-option text-bold text-center">
               SI
             </div>
           </label>
-          <input type="radio" class="radio_item-wizard" name="subsidy" formControlName="subsidyNo" value="no"
+          <input type="radio" class="radio_item-wizard" name="subsidyNo" formControlName="subsidyNo" value="no"
             id="subsidyNo">
           <label class="label_item-wizard" for="subsidyNo">
             <div class="wizard-option text-bold text-center">
@@ -263,7 +262,7 @@
         </div>
         <hr class="logoMinDivider">
         <div class="cell small-12 medium-12 large-12 container-wizard-options-top">
-          <input type="radio" class="radio_item-wizard" name="waitTime" value="1" id="waitTime1">
+          <input type="radio" class="radio_item-wizard" name="waitTime" formControlName="waitTime" value="1" id="waitTime1">
           <label class="label_item-wizard-top" for="waitTime1">
             <div class="top-select-option">
             </div>
@@ -271,7 +270,7 @@
               Inmediatanente
             </div>
           </label>
-          <input type="radio" class="radio_item-wizard" name="waitTime" value="2" id="waitTime2">
+          <input type="radio" class="radio_item-wizard" name="waitTime" formControlName="waitTime" value="2" id="waitTime2">
           <label class="label_item-wizard-top" for="waitTime2">
             <div class="top-select-option">
             </div>
@@ -279,7 +278,7 @@
               Menos de 3 meses
             </div>
           </label>
-          <input type="radio" class="radio_item-wizard" name="waitTime" value="3" id="waitTime3">
+          <input type="radio" class="radio_item-wizard" name="waitTime" formControlName="waitTime" value="3" id="waitTime3">
           <label class="label_item-wizard-top" for="waitTime3">
             <div class="top-select-option">
             </div>
@@ -287,7 +286,7 @@
               Entre 3 y 6 meses
             </div>
           </label>
-          <input type="radio" class="radio_item-wizard" name="waitTime" value="4" id="waitTime4">
+          <input type="radio" class="radio_item-wizard" name="waitTime" formControlName="waitTime" value="4" id="waitTime4">
           <label class="label_item-wizard-top" for="waitTime4">
             <div class="top-select-option">
             </div>
@@ -295,7 +294,7 @@
               Entre 6 meses y 1 a&ntilde;o
             </div>
           </label>
-          <input type="radio" class="radio_item-wizard" name="waitTime" value="5" id="waitTime5">
+          <input type="radio" class="radio_item-wizard" name="waitTime" formControlName="waitTime" value="5" id="waitTime5">
           <label class="label_item-wizard-top" for="waitTime5">
             <div class="top-select-option">
             </div>
@@ -364,21 +363,21 @@
         <div class="cell small-0 medium-2 large-2">
         </div>
         <div class="cell small-12 medium-6 large-6 container-wizard-options-top">
-          <input type="radio" class="radio_item-wizard" name="contactType" value="1" id="contactType1">
+          <input type="radio" class="radio_item-wizard" name="contactType" formControlName="contactType" value="1" id="contactType1">
           <label class="label_item-wizard-square" for="contactType1">
             <div class="wizard-option-square text-bold text-center">
               <i class="fi-mail"></i>
             </div>
             <span class="text-option-square">Correo electr&oacute;nico</span>
           </label>
-          <input type="radio" class="radio_item-wizard" name="contactType" value="2" id="contactType2">
+          <input type="radio" class="radio_item-wizard" name="contactType" formControlName="contactType" value="2" id="contactType2">
           <label class="label_item-wizard-square" for="contactType2">
             <div class="wizard-option-square text-bold text-center">
               <i class="fi-mail"></i>
             </div>
             <span class="text-option-square">WhatsApp</span>
           </label>
-          <input type="radio" class="radio_item-wizard" name="contactType" value="3" id="contactType3">
+          <input type="radio" class="radio_item-wizard" name="contactType" formControlName="contactType" value="3" id="contactType3">
           <label class="label_item-wizard-square" for="contactType3">
             <div class="wizard-option-square text-bold text-center">
               <i class="fi-telephone"></i>
@@ -452,13 +451,13 @@
         </div>
         <div class="grid-x cell small-12 medium-8 large-8">
           <div class="cell small-12 medium-12 large-12">
-            <input type="text" name="" id="" placeholder="Nombre">
+            <input type="text" name="name" formControlName="name" id="" placeholder="Nombre">
           </div>
           <div class="cell small-12 medium-12 large-12">
-            <input type="text" name="" id="" placeholder="Tel&eacute;fono">
+            <input type="phone" name="phone" formControlName="phone" id="" placeholder="Tel&eacute;fono">
           </div>
           <div class="cell small-12 medium-12 large-12">
-            <input type="text" name="" id="" placeholder="Email">
+            <input type="email" name="email" formControlName="email" id="" placeholder="Email">
           </div>
           <div class="cell small-4 large-4 medium-4">
             <span>Compras vivienda para:</span>
