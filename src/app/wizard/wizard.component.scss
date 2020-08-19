@@ -5,7 +5,7 @@
 }
 
 .footer-wizard {
-  position: absolute;
+  position: relative;
   bottom: 0;
   font-style: italic;
   font-size: 0.6rem;
@@ -147,8 +147,17 @@
 }
 
 .privacyTerms {
-  height: 4em;
+  height: 3em;
   overflow-y: scroll;
   font-size: 0.75em;
+  margin-bottom: 2em;
+}
+
+.privacyTermCheck {
+  display: flex;
+}
+
+.text-option-square {
+  font-size: 2em;
   margin-bottom: 2em;
 }
