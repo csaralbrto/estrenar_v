@@ -9,6 +9,8 @@ import { DetailConstructoraComponent } from './detail-constructora/detail-constr
 import { ContentUploadComponent } from './content-upload/content-upload.component';
 import { ComparatorComponent } from './comparator/comparator.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { BlogComponent } from './blog/blog.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 
 const routes: Routes = [
   {
@@ -47,6 +49,16 @@ const routes: Routes = [
   {
     path: 'favoritos',
     component: FavoritesComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'blog',
+    component: BlogComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'blog/:path',
+    component: BlogDetailComponent,
     pathMatch: 'full',
   },
 ];
