@@ -26,6 +26,14 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { TypologyComponent } from './typology/typology.component';
+import { LoginComponent } from './login/login.component';
+import { PostLoginComponent } from './post-login/post-login.component';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
+import { GlosoryComponent } from './glosory/glosory.component';
+import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +59,14 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
     DetailConstructoraComponent,
     FavoritesComponent,
     BlogDetailComponent,
+    TypologyComponent,
+    LoginComponent,
+    PostLoginComponent,
+    MyAccountComponent,
+    ContactUsComponent,
+    QuienesSomosComponent,
+    GlosoryComponent,
+    PrivacyNoticeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
   providers: [],
