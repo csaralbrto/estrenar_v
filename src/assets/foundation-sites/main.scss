@@ -218,3 +218,33 @@ input {
     margin: auto !important;
   }
 }
+
+.background-primary {
+  * {
+    color: white;
+  }
+
+  div {
+    padding-top: 0.5em;
+  }
+
+  i {
+    color: #14444e;
+  }
+
+  background-color: #14444e;
+  border-radius: 0.5em;
+}
+
+
+.menu.information-company * {
+  background-color: #fff;
+  color: gray;
+}
+
+.menu.information-company {
+  .is-active a {
+    background-color: #fff;
+    color: #14444e;
+  }
+}

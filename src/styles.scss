@@ -103,6 +103,12 @@
 //Styles Projects Detail
 @import "./app/project-detail/project-detail.component.scss";
 
+//Styles Content Upload
+@import "./app/content-upload/content-upload.component.scss";
+
+//Styles Wizard
+@import "./app/wizard/wizard.component.scss";
+
 @mixin foundation-everything($flex: true,
   $prototype: false,
   $xy-grid: $xy-grid) {
