@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   name_company = 'Estrena Vivienda';
   menu_title_proyects = 'Proyectos';
   menu_title_house_VIS = 'Vivienda VIS';
+  // menu_title_house_vacational = 'Vacacionales';
   menu_title_builders = 'Constructoras';
   menu_title_tools = 'Herramientas';
   menu_title_blog = 'Blog';

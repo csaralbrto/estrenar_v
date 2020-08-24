@@ -72,11 +72,6 @@ export class BlogService {
     return this.http.get(this.blogRelatedPath)
         .pipe(map(( response => response.json() )));
   }
-  /* Enviar comentario */
-  sendBlogComment( operation: string, params: any ): Observable<any> {
-    return this.http.post(this.sendComment + operation, params)
-      .pipe(map((response => response.json())));
-  }
 
 
 }
