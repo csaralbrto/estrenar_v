@@ -1,0 +1,24 @@
+.tabs-title.glosary {
+  a {
+    padding: 0.2rem 0.4rem !important;
+    color: #14444e;
+  }
+}
+
+.tabs-title.glosary.is-active {
+  a {
+    background-color: #14444e;
+    color: #fff;
+    border-radius: 10%;
+  }
+}
+
+.tabs-panel.glosary * {
+  background-color: #fff;
+  color: #14444e !important;
+}
+
+.tabs-panel.glosary.is-active {
+  background-color: #fff;
+  color: #14444e !important;
+}

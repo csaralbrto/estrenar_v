@@ -1,0 +1,56 @@
+.radio_item-account {
+  display: none !important;
+}
+
+.radio_item-account:checked+label {
+  opacity: 1;
+
+  .label_item-account-square {
+    background-color: #fff !important;
+  }
+
+  .account-option-square {
+    background-color: #fff !important;
+    border-color: #a9d13a;
+
+    i {
+      color: #a9d13a;
+    }
+  }
+}
+
+.container-account-options-top {
+  display: flex;
+}
+
+.account-option-square {
+  border-radius: 10px;
+  border: 1px solid #14444E;
+  position: relative;
+  font-size: 5px;
+  line-height: initial;
+  height: 7em;
+  padding: 1em;
+  width: 7em;
+
+  i {
+    font-size: 5em;
+    color: #14444E;
+  }
+}
+
+.label_item-account-square {
+  border-radius: 10px;
+  position: relative;
+  font-size: 10px;
+  line-height: initial;
+  height: 10em;
+  width: 10em;
+  padding-top: 0em;
+  background-color: #fff;
+}
+
+.text-option-square {
+  font-size: 1em;
+  margin-bottom: 2em;
+}

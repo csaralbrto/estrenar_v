@@ -11,6 +11,13 @@ import { ComparatorComponent } from './comparator/comparator.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
+import { PostLoginComponent } from './post-login/post-login.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
+import { GlosoryComponent } from './glosory/glosory.component';
+import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.component';
 
 const routes: Routes = [
   {
@@ -59,6 +66,41 @@ const routes: Routes = [
   {
     path: 'blog/:path',
     component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'user',
+    component: UserComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'login-post',
+    component: PostLoginComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'contactenos',
+    component: ContactusComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'quienes-somos',
+    component: QuienesSomosComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'glosario',
+    component: GlosoryComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'aviso-privacidad',
+    component: PrivacyNoticeComponent,
     pathMatch: 'full',
   },
 ];

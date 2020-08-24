@@ -16,7 +16,6 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     $(document).foundation();
-    $('#featuredContent').orbit({ fluid: '800x800' });
     /* Método para obtener toda la info del blog */
     this.Service.getBlogData().subscribe(
       (data) => (this.response = data),
