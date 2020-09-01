@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     $(document).foundation();
-    $('#welcomeModal').foundation('open');
+/*    $('#welcomeModal').foundation('open'); */
 
     /* Método para obtener toda la info del home */
     this.Service.getAllData().subscribe(
