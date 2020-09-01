@@ -69,3 +69,34 @@
 .numero_personas {
   float: right;
 }
+
+
+/*******************************/
+
+.titulo-seccion {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    background: url("/assets/images/curva.png") no-repeat center bottom;
+    padding-bottom: 2rem;
+    background-size: 38px;
+}
+
+.search-box {
+  background: url("/assets/images/loupe.png") no-repeat 98% center; 
+  background-size: 26px;
+}
+
+.search_button {
+    background-color: #a9d13a;
+    color: #fff;
+    font-weight: bolder;
+    padding: 0.7rem 2rem !important;
+    border: none !important;
+    width: 100%;
+}  
+
+.back-gray {
+  background: #EEEEEE;
+}

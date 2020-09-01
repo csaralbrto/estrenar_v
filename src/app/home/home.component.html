@@ -1,281 +1,305 @@
 <!-- Navegación -->
-<div class="grid-container large-8">
-  <!-- Sección Busqueda -->
-  <form action="">
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell align-middle">
-        <h1>{{ main_title_page }}</h1>
-      </div>
-      <div class="large-6 medium-6 small-6 cell">
-        <div>
-          <input type="search" placeholder="¿Qué estás buscando?" />
-          <i class="fi-magnifying-glass large icon-search-style"></i>
+<div class="header-home">
+  <div class="grid-container">
+    <!-- Sección Busqueda -->
+    <form action="">
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell align-middle">
+          <h1>{{ main_title_page }}</h1>
+        </div>
+        <div class="large-6 medium-6 small-6 cell">
+          <div>
+            <input type="search" class="search-box" placeholder="¿Qué estás buscando?" />
+            <!-- <i class="fi-magnifying-glass large icon-search-style"></i> -->
+          </div>
+        </div>
+        <div class="large-2 medium-2 small-2 cell">
+          <select name="precio" id="precio">
+            <option value="">Precio</option>
+          </select>
+        </div>
+        <div class="large-2 medium-2 small-2 cell">
+          <select name="precio" id="precio">
+            <option value="">Precio</option>
+          </select>
+        </div>
+        <div class="large-2 medium-2 small-2 cell">
+          <a href="#" class="search_button button large-expanded">Buscar</a>
         </div>
       </div>
-      <div class="large-2 medium-2 small-2 cell">
-        <select name="precio" id="precio">
-          <option value="">Precio</option>
-        </select>
-      </div>
-      <div class="large-2 medium-2 small-2 cell">
-        <select name="precio" id="precio">
-          <option value="">Precio</option>
-        </select>
-      </div>
-      <div class="large-2 medium-2 small-2 cell">
-        <a href="#" class="search_button button large-expanded">Buscar</a>
-      </div>
-    </div>
-  </form>
-  <!-- Fin Sección Busqueda -->
+    </form>
+    <!-- Fin Sección Busqueda -->
+  </div>
+</div>
+
+
+
+
+<div class="back-gray">
 
   <!-- Sección Publicidad -->
-  <div class="grid-x grid-padding-x">
-    <div class="large-12 cell ">
-      <div class="large-3 medium-3 small-3 cell">
-      </div>
-      <div class="large-6 medium-6 small-6 cell">
-        <div class="callout secondary">
-          <p>PUBLICIDAD</p>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x publicidad">
+      <div class="cell">
+        <div class="large-6 medium-6 small-6 cell">
+          <div class="callout secondary">
+            <p>PUBLICIDAD</p>
+          </div>
         </div>
-      </div>
-      <div class="large-3 medium-3 small-3 cell">
       </div>
     </div>
   </div>
   <!--Fin Sección Publicidad -->
 
   <!--Sección ¿Qué estas buscando? -->
-  <div class="grid-x grid-padding-x">
-    <div class="large-12 cell align-middle">
-      <h2>{{ title_section_list_search }}</h2>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="large-12 cell align-middle">
+        <h2 class="titulo-seccion">{{ title_section_list_search }}</h2>
+      </div>
+    </div>
+
+    <div class="grid-x grid-padding-x">
+      <div class="large-12 cell ">
+        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+          <div class="orbit-wrapper">
+            <ul class="orbit-container">
+              <li class="is-active orbit-slide">
+                <figure class="orbit-figure">
+                  <img class="orbit-image" src="https://placehold.it/1200x400/888?text=Imagen-1" alt="Space">
+                  <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+                </figure>
+              </li>
+              <li class="orbit-slide">
+                <div class="media-object">
+                  <div class="media-object-section align-self-middle"
+                    *ngFor="let header_proj1 of response.header_proj1; let i = index">
+                    <div class="thumbnail">
+                      <img src="{{ header_proj1.url_img }}">
+                      <a class="link-carrousel-icon" href="">{{ header_proj1.tipo }}</a>
+                    </div>
+                  </div>
+                  <div class="media-object-section align-self-middle"
+                    *ngFor="let header_proj2 of response.header_proj2; let i = index">
+                    <div class="thumbnail">
+                      <img src="{{ header_proj2.url_img }}">
+                      <a class="link-carrousel-icon" href="">{{ header_proj2.tipo }}</a>
+                    </div>
+                  </div>
+                  <div class="media-object-section main-section"
+                    *ngFor="let header_proj3 of response.header_proj3; let i = index">
+                    <img src="{{ header_proj3.url_img }}">
+                  </div>
+                  <div class="media-object-section align-self-bottom">
+                    <div class="thumbnail"
+                      *ngFor="let header_proj4 of response.header_proj4; let i = index" alt="">
+                      <img src="{{ header_proj4.url_img }}">
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <figure class="orbit-figure">
+                  <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
+                  <figcaption class="orbit-caption">Encapsulating</figcaption>
+                </figure>
+              </li>
+              <li class="orbit-slide">
+                <figure class="orbit-figure">
+                  <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
+                  <figcaption class="orbit-caption">Outta This World</figcaption>
+                </figure>
+              </li>
+            </ul>
+          </div>
+          <nav class="orbit-bullets">
+            <button class="is-active" data-slide="0">
+              <span class="show-for-sr">First slide details.</span>
+              <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+            </button>
+            <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+            <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+            <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+          </nav>
+          <div class="orbit-controls">
+            <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
+            <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="grid-x grid-padding-x">
-    <div class="large-12 cell ">
-      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-        <div class="orbit-wrapper">
-          <ul class="orbit-container">
-            <li class="is-active orbit-slide">
-              <figure class="orbit-figure">
-                <img class="orbit-image" src="https://placehold.it/1200x400/888?text=Imagen-1" alt="Space">
-                <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-              </figure>
-            </li>
-            <li class="orbit-slide">
-              <div class="media-object">
-                <div class="media-object-section align-self-middle"
-                  *ngFor="let header_proj1 of response.header_proj1; let i = index">
-                  <div class="thumbnail">
-                    <img src="{{ header_proj1.url_img }}">
-                    <a class="link-carrousel-icon" href="">{{ header_proj1.tipo }}</a>
-                  </div>
-                </div>
-                <div class="media-object-section align-self-middle"
-                  *ngFor="let header_proj2 of response.header_proj2; let i = index">
-                  <div class="thumbnail">
-                    <img src="{{ header_proj2.url_img }}">
-                    <a class="link-carrousel-icon" href="">{{ header_proj2.tipo }}</a>
-                  </div>
-                </div>
-                <div class="media-object-section main-section"
-                  *ngFor="let header_proj3 of response.header_proj3; let i = index">
-                  <img src="{{ header_proj3.url_img }}">
-                </div>
-                <div class="media-object-section align-self-bottom">
-                  <div class="thumbnail"
-                    *ngFor="let header_proj4 of response.header_proj4; let i = index" alt="">
-                    <img src="{{ header_proj4.url_img }}">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="orbit-slide">
-              <figure class="orbit-figure">
-                <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
-                <figcaption class="orbit-caption">Encapsulating</figcaption>
-              </figure>
-            </li>
-            <li class="orbit-slide">
-              <figure class="orbit-figure">
-                <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
-                <figcaption class="orbit-caption">Outta This World</figcaption>
-              </figure>
-            </li>
-          </ul>
-        </div>
-        <nav class="orbit-bullets">
-          <button class="is-active" data-slide="0">
-            <span class="show-for-sr">First slide details.</span>
-            <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-          </button>
-          <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-          <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-          <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-        </nav>
-        <div class="orbit-controls">
-          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
-          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
-        </div>
-      </div>
-    </div>
     <!--Fin Sección ¿Qué estas buscando? -->
 
+</div>
 
-    <!--Sección Proyectos destacados -->
-    <div class="row">
-      <div class="large-12 cell align-middle">
-        <h2>{{ title_section_top_proyects }}</h2>
+
+
+<div class="grid-container">
+  <!--Sección Proyectos destacados -->
+  <div class="row">
+    <div class="large-12 cell align-middle">
+      <h2 class="titulo-seccion">{{ title_section_top_proyects }}</h2>
+    </div>
+    <!-- <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+      <div class="cell">
+        <div class="card">
+          <img src="https://placehold.it/550x150/777?text=Proyectos">
+          <div class="card-section">
+            <h4>Proyecto 1</h4>
+            <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
+          </div>
+        </div>
       </div>
-      <!-- <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-        <div class="cell">
-          <div class="card">
-            <img src="https://placehold.it/550x150/777?text=Proyectos">
-            <div class="card-section">
-              <h4>Proyecto 1</h4>
-              <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
-            </div>
+      <div class="cell">
+        <div class="card">
+          <img src="https://placehold.it/250x350/777?text=Proyectos">
+          <div class="card-section">
+            <h4>Proyecto 2</h4>
+            <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
           </div>
         </div>
-        <div class="cell">
-          <div class="card">
-            <img src="https://placehold.it/250x350/777?text=Proyectos">
-            <div class="card-section">
-              <h4>Proyecto 2</h4>
-              <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
-            </div>
+      </div>
+      <div class="cell">
+        <div class="card">
+          <img src="https://placehold.it/250x350/777?text=Proyectos">
+          <div class="card-section">
+            <h4>Proyecto 3</h4>
+            <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
           </div>
         </div>
-        <div class="cell">
-          <div class="card">
-            <img src="https://placehold.it/250x350/777?text=Proyectos">
-            <div class="card-section">
-              <h4>Proyecto 3</h4>
-              <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-        <div class="cell" *ngFor="let project of response.projects; let i = index">
-          <div class="card">
-            <img src="{{ project.imagen_banner }}">
-            <div class="card-section">
-              <h4>{{ project.nombre }}</h4>
-              <div [innerHTML]=project.descripcion></div>
-            </div>
+      </div>
+    </div> -->
+    <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+      <div class="cell" *ngFor="let project of response.projects; let i = index">
+        <div class="card">
+          <img src="{{ project.imagen_banner }}">
+          <div class="card-section">
+            <h4>{{ project.nombre }}</h4>
+            <div [innerHTML]=project.descripcion></div>
           </div>
         </div>
       </div>
     </div>
-    <!--Fin Sección Proyectos destacados -->
+  </div>
+  <!--Fin Sección Proyectos destacados -->
+</div>
 
-    <!-- Sección Publicidad -->
-    <div class="large-12 cell align-middle">
-      <div class="large-3 medium-3 small-3 cell">
-      </div>
+
+<!-- Sección Publicidad -->
+<div class="grid-container">
+  <div class="grid-x grid-padding-x publicidad">
+    <div class="cell">
       <div class="large-6 medium-6 small-6 cell">
         <div class="callout secondary">
           <p>PUBLICIDAD</p>
         </div>
       </div>
-      <div class="large-3 medium-3 small-3 cell">
-      </div>
-    </div>
-
-    <!--Fin Sección Publicidad -->
-
-    <!--Sección Constructoras -->
-    <div class="large-12 cell align-middle">
-      <h2>{{ title_section_builders }}</h2>
     </div>
   </div>
-  <div class="grid-x grid-padding-x">
-    <div class="large-12 cell ">
-      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-        <div class="orbit-wrapper">
-          <ul class="orbit-container">
-            <li class="is-active orbit-slide">
-              <div class="media-object">
-                <div class="media-object-section main-section"
-                  *ngFor="let constructora of response.constructoras; let i = index">
-                  <div class="thumbnail builder-card-carrousell">
-                    <img src="{{ response.url }}{{ constructora.logo }}">
-                    <p></p>
-                    <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
+</div>
+<!--Fin Sección Publicidad -->
+
+
+
+<!--Sección Constructoras -->
+<div class="back-gray">
+  <div class="grid-container">
+    <div class="large-12 cell align-middle">
+      <h2 class="titulo-seccion">{{ title_section_builders }}</h2>
+    </div>
+    
+    <div class="grid-x grid-padding-x">
+      <div class="large-12 cell ">
+        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+          <div class="orbit-wrapper">
+            <ul class="orbit-container">
+              <li class="orbit-slide">
+                <div class="media-object">
+                  <div class="media-object-section main-section"
+                    *ngFor="let constructora of response.constructoras; let i = index">
+                    <div class="thumbnail builder-card-carrousell">
+                      <img src="{{ response.url }}{{ constructora.logo }}">
+                      <p></p>
+                      <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </li>
-            <li class="orbit-slide">
-              <div class="media-object">
-                <div class="media-object-section main-section"
-                  *ngFor="let constructora of response.constructoras; let i = index">
-                  <div class="builder-card-carrousell">
-                    <img src="{{ response.url }}{{ constructora.logo }}">
-                    <p></p>
-                    <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
+              </li>
+<!--               <li class="orbit-slide">
+                <div class="media-object">
+                  <div class="media-object-section main-section"
+                    *ngFor="let constructora of response.constructoras; let i = index">
+                    <div class="builder-card-carrousell">
+                      <img src="{{ response.url }}{{ constructora.logo }}">
+                      <p></p>
+                      <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
+                    </div>
+                    <div class="builder-card-carrousell">
+                      <img src="https://placehold.it/100x100/777?text=VIS">
+                    </div>
+                    <div class="builder-card-carrousell">
+                      <img src="https://placehold.it/100x100/777?text=Apartaestudios">
+                    </div>
+                    <div class="builder-card-carrousell">
+                      <img src="https://placehold.it/100x100/777?text=VIS">
+                    </div>
                   </div>
-                  <!-- <div class="builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=VIS">
-                  </div>
-                  <div class="builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=Apartaestudios">
-                  </div>
-                  <div class="builder-card-carrousell">
-                    <img src="https://placehold.it/100x100/777?text=VIS">
-                  </div> -->
                 </div>
-              </div>
-            </li>
-            <li class="orbit-slide">
-              <figure class="orbit-figure">
-                <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
-                <figcaption class="orbit-caption">Encapsulating</figcaption>
-              </figure>
-            </li>
-            <li class="orbit-slide">
-              <figure class="orbit-figure">
-                <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
-                <figcaption class="orbit-caption">Outta This World</figcaption>
-              </figure>
-            </li>
-          </ul>
-        </div>
-        <nav class="orbit-bullets">
-          <button class="is-active" data-slide="0">
-            <span class="show-for-sr">First slide details.</span>
-            <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-          </button>
-          <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-          <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-          <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-        </nav>
-        <div class="orbit-controls">
-          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
-          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
+              </li> -->
+             <!--  <li class="orbit-slide">
+                <figure class="orbit-figure">
+                  <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
+                  <figcaption class="orbit-caption">Encapsulating</figcaption>
+                </figure>
+              </li>
+              <li class="orbit-slide">
+                <figure class="orbit-figure">
+                  <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
+                  <figcaption class="orbit-caption">Outta This World</figcaption>
+                </figure>
+              </li> -->
+            </ul>
+          </div>
+          <nav class="orbit-bullets">
+            <button class="is-active" data-slide="0">
+              <span class="show-for-sr">First slide details.</span>
+              <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+            </button>
+            <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+            <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+            <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+          </nav>
+          <div class="orbit-controls">
+            <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
+            <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
+          </div>
         </div>
       </div>
     </div>
-    <!--Fin Sección Constructoras -->
+  </div>
+</div>
+<!--Fin Sección Constructoras -->
 
-    <!--Sección Blog -->
-
-    <div class="row">
-      <div class="large-12 cell align-middle">
-        <h2>{{ title_section_blog }}</h2>
-        <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-          <div class="cell" *ngFor="let blog of response.blogs; let i = index">
-            <div class="card">
-              <img [src]="blog.banner" [title]="blog.banner">
-              <div class="card-section">
-                <h4>{{ blog.titulo }}</h4>
-                <p>{{ blog.sub_titulo }}</p>
-              </div>
+<!--Sección Blog -->
+<div class="grid-container blog-home">
+  <div class="row">
+    <div class="large-12 cell align-middle">
+      <h2 class="titulo-seccion">{{ title_section_blog }}</h2>
+      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
+        <div class="cell" *ngFor="let blog of response.blogs; let i = index">
+          <div class="card">
+            <img [src]="blog.banner" [title]="blog.banner" width="270" height="195">
+            <div class="card-section">
+              <h3>{{ blog.titulo }}</h3>
+              <p>{{ blog.sub_titulo }}</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
       <!-- <div class="row">
       <div class="large-12 cell align-middle">
         <h2>{{ title_section_blog }}</h2>
