@@ -14,7 +14,7 @@ export class ProjectsService {
   public endpoint: string;
   public endpointFilter: string;
   constructor( private http: Http, /* private commonFunctions: CommonFunctions */ ) { 
-    this.servicePath = environment.endpointApi+ 'home/url';
+    this.servicePath = environment.endpointApi+ 'project/roomSales';
     this.dataPath = environment.endpointApi+ 'allProjects';
     this.endpoint = environment.endpointApi + 'project/';
     this.endpointFilter = environment.endpointSearchApi;

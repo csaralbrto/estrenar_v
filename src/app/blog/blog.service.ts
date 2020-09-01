@@ -22,15 +22,15 @@ export class BlogService {
   public sendComment: string;
 
   constructor( private http: Http ) { 
-    this.dataBlogPath = environment.endpointApi+ 'blogs';
-    this.mostReadPath = environment.endpointApi+ 'mostRead';
-    this.newExperiencePath = environment.endpointApi+ 'newExperience';
-    this.ecoSidePath = environment.endpointApi+ 'ecoSide';
-    this.recommendedPath = environment.endpointApi+ 'blogRecommended';
-    this.blogNewsPath = environment.endpointApi+ 'blogNews';
-    this.blogRelatedPath = environment.endpointApi+ 'blogRelated';
-    this.blogPath = environment.endpointApi + 'blog/';
-    this.sendComment = environment.endpointApi + 'blog_comment/';
+    this.dataBlogPath = environment.endpointTestingApi+ 'articles';
+    this.mostReadPath = environment.endpointTestingApi+ 'articles?items_per_page=2';
+    this.newExperiencePath = environment.endpointTestingApi+ 'articles?items_per_page=4&page=0&article_type=La experiencia de estrenar';
+    this.ecoSidePath = environment.endpointTestingApi+ 'ecoSide';
+    this.recommendedPath = environment.endpointTestingApi+ 'articles?items_per_page=5';
+    this.blogNewsPath = environment.endpointTestingApi+ 'articles?items_per_page=5&article_type=Noticias del sector';
+    this.blogRelatedPath = environment.endpointTestingApi+ 'blogRelated';
+    this.blogPath = environment.endpointTestingApi + 'blog/';
+    this.sendComment = environment.endpointTestingApi + 'blog_comment/';
   }
   /* Traer toda la info de blogs */
   getBlogData(): Observable<any> {

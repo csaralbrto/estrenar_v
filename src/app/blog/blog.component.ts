@@ -11,6 +11,11 @@ import { BlogService } from './blog.service';
 })
 export class BlogComponent implements OnInit {
   public response: any;
+  public dataArticle: '?include=uid,field_article_type,field_media.field_media_image,field_tags';
+  public responseNewExperience: any;
+  public responseMostRead: any;
+  public responseRecommend: any;
+  public responseNews: any;
 
   constructor(public Service: BlogService) {}
 
@@ -21,7 +26,7 @@ export class BlogComponent implements OnInit {
       (data) => (this.response = data),
       (err) => console.log(),
       () => {
-        if (this.response.successful) {
+        if (this.response) {
           /* si responde correctamente */
         }
         if (this.response.error) {
@@ -32,7 +37,7 @@ export class BlogComponent implements OnInit {
 
     /* Método para obtener toda la info de los más leidos */
     this.Service.mostRead().subscribe(
-      (data) => (this.response = data),
+      (data) => (this.responseMostRead = data),
       (err) => console.log(),
       () => {
         if (this.response.successful) {
@@ -46,7 +51,7 @@ export class BlogComponent implements OnInit {
 
     /* Método para obtener toda la info de la experiencia de estrenar */
     this.Service.newExperience().subscribe(
-      (data) => (this.response = data),
+      (data) => (this.responseNewExperience = data),
       (err) => console.log(),
       () => {
         if (this.response.successful) {
@@ -74,7 +79,7 @@ export class BlogComponent implements OnInit {
 
     /* Método para obtener toda la info de lo recomendado */
     this.Service.blogRecommended().subscribe(
-      (data) => (this.response = data),
+      (data) => (this.responseRecommend = data),
       (err) => console.log(),
       () => {
         if (this.response.successful) {
@@ -88,7 +93,7 @@ export class BlogComponent implements OnInit {
 
     /* Método para obtener toda la info de noticias del sector */
     this.Service.blogNews().subscribe(
-      (data) => (this.response = data),
+      (data) => (this.responseNews = data),
       (err) => console.log(),
       () => {
         if (this.response.successful) {

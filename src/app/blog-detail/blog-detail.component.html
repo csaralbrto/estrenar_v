@@ -4,46 +4,12 @@
   </div>
   <div class="cell small-1 medium-1 large-1"></div>
   <div class="cell small-7 medium-7 large-7">
-    <h2>Estrenar vivienda es el portal de tu nuevo hogar en Colombia</h2>
+    <h2>{{ response.data.attributes.title }}</h2>
     <div class="cell small-12 medium-12 large-12">
       <img src="" alt="">
     </div>
     <div class="cell small-12 medium-12 large-12">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate aliquam, mollitia optio quod quos corrupti,
-        molestiae tenetur quas voluptatem, et perferendis neque vero. Quidem voluptates autem odit cum, nisi sapiente!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis perferendis ullam voluptatibus quas vitae ea
-        eaque obcaecati tempore. Cumque dolore deserunt excepturi nostrum neque laboriosam dignissimos ipsam voluptate
-        minima nihil? Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores fugiat beatae laudantium, velit
-        repellat earum aut ipsum porro doloremque adipisci reiciendis incidunt harum consectetur? Iusto non esse eos
-        dolor! Debitis.
-      </p>
-      <h5>La m&aacute;s amplia oferta inmobiliar&iacute;a para Estrenar Vivienda</h5>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem alias aliquam est nam consequuntur itaque
-        maxime necessitatibus iusto nobis explicabo, corrupti voluptate porro aspernatur, tempora totam ullam quas
-        exercitationem at.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis accusamus ut voluptate nemo necessitatibus odit
-        quo vitae, maxime ducimus sint quis, provident, recusandae laborum repellendus tempora? Repudiandae animi eius
-        adipisci! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad beatae fugit, reiciendis officia, nostrum
-        obcaecati voluptatibus recusandae expedita soluta similique molestiae aut nulla ipsam accusamus, hic libero.
-        Labore, temporibus eos.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, fuga sapiente illo dolores ab tempore
-        voluptate facere magnam explicabo sed minima iure nam officiis accusantium unde excepturi reiciendis animi
-        architecto! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque explicabo ad minima numquam at
-        aliquid quae similique soluta reprehenderit, aliquam cupiditate repellat nihil nemo facere nesciunt id, dolor
-        quas est? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur adipisci dolorum ab aut cum eius
-        expedita tempore rerum reprehenderit ea maxime autem molestiae velit repellendus vel accusantium, harum repellat
-        officiis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident nobis non veritatis quas magnam,
-        asperiores qui totam molestiae accusamus distinctio soluta harum perspiciatis sapiente velit a officia nulla
-        nemo rem?
-      </p>
+      <p [innerHTML]=response.data.attributes.body.processed></p>
       <p>
         <span>Compartir Post</span>
       </p>
@@ -125,7 +91,19 @@
   </div>
   <div class="cell small-2 medium-2 large-2">
     <h5>Articulos relacionados</h5>
-    <div class="media-object">
+    <div class="media-object" *ngFor="let related of responseRelated; let i = index">
+      <div class="media-object-section">
+        <div class="thumbnail">
+          <img [src]="related.article_image">
+        </div>
+      </div>
+      <div class="media-object-section">
+        <span>{{ related.article_type }}</span>
+        <h6>{{ related.title }}</h6>
+        <span class="dateLabel">{{ related.changed }}</span>
+      </div>
+    </div>
+    <!-- <div class="media-object">
       <div class="media-object-section">
         <div class="thumbnail">
           <img src="https://placehold.it/100x100/?text=Card-1">
@@ -172,19 +150,7 @@
         <h6>Tendencias para decoración navideña</h6>
         <span>04.12.2019</span>
       </div>
-    </div>
-    <div class="media-object">
-      <div class="media-object-section">
-        <div class="thumbnail">
-          <img src="https://placehold.it/100x100/?text=Card-1">
-        </div>
-      </div>
-      <div class="media-object-section">
-        <span>DISE&Ntilde;O</span>
-        <h6>Tendencias para decoración navideña</h6>
-        <span>04.12.2019</span>
-      </div>
-    </div>
+    </div> -->
     <div class="responsive-embed">
       <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="220"
         data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"

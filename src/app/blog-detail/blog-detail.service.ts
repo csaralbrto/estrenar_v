@@ -22,50 +22,14 @@ export class BlogDetailService {
   public sendComment: string;
 
   constructor( private http: Http ) { 
-    this.dataBlogPath = environment.endpointApi+ 'blogs';
-    this.mostReadPath = environment.endpointApi+ 'mostRead';
-    this.newExperiencePath = environment.endpointApi+ 'newExperience';
-    this.ecoSidePath = environment.endpointApi+ 'ecoSide';
-    this.recommendedPath = environment.endpointApi+ 'blogRecommended';
-    this.blogNewsPath = environment.endpointApi+ 'blogNews';
-    this.blogRelatedPath = environment.endpointApi+ 'blogRelated';
-    this.blogPath = environment.endpointApi + 'blog/';
-    this.sendComment = environment.endpointApi + 'blog_comment/';
+    this.dataBlogPath = environment.endpointTestingApi+ 'node/article/';
+    this.blogRelatedPath = environment.endpointTestingApi+ 'articles?items_per_page=4';
+    this.sendComment = environment.endpointTestingApi + 'blog_comment/';
   }
-  /* Traer toda la info de blogs */
-  getBlogData(): Observable<any> {
-    return this.http.get(this.dataBlogPath)
-        .pipe(map(( response => response.json() )));
-  }
-  /* Traer los mas leidos */
-  mostRead(): Observable<any> {
-    return this.http.get(this.mostReadPath)
-        .pipe(map(( response => response.json() )));
-  }
-  /* Traer la experiencia de estrenar */
-  newExperience(): Observable<any> {
-    return this.http.get(this.newExperiencePath)
-        .pipe(map(( response => response.json() )));
-  }
-  /* Traer info nuestro lado eco*/
-  ecoSide(): Observable<any> {
-    return this.http.get(this.ecoSidePath)
-        .pipe(map(( response => response.json() )));
-  }
-  /* Traer recomendados*/
-  blogRecommended(): Observable<any> {
-    return this.http.get(this.recommendedPath)
-        .pipe(map(( response => response.json() )));
-  }
-  /* Traer noticias del sector*/
-  blogNews(): Observable<any> {
-    return this.http.get(this.blogNewsPath)
-        .pipe(map(( response => response.json() )));
-  }
-  /* Traer la info del blog */
+  /* Traer la info del proyecto */
   findProject( params: any ): Observable<any> {
-    return this.http.get(this.blogPath + params)
-      .pipe(map((response => response.json())));
+    return this.http.get(this.dataBlogPath + params)
+    .pipe(map(( response => response.json() )));
   }
   /* Traer articulo relacionado*/
   blogRelated(): Observable<any> {

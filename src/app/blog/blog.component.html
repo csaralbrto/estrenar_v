@@ -14,26 +14,26 @@
         <ul class="orbit-container">
           <li class="is-active orbit-slide">
             <figure class="orbit-figure">
-              <img class="orbit-image" src="https://placehold.it/1080x500/?text=Imagen1" alt="Space">
-              <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+              <img class="orbit-image" [src]="responseNewExperience[0].article_image" alt="Space">
+              <figcaption class="orbit-caption">{{responseNewExperience[0].title}}</figcaption>
             </figure>
           </li>
           <li class="orbit-slide">
             <figure class="orbit-figure">
-              <img class="orbit-image" src="https://placehold.it/1080x500/?text=Imagen2" alt="Space">
-              <figcaption class="orbit-caption">Lets Rocket!</figcaption>
+              <img class="orbit-image" [src]="responseNewExperience[1].article_image" alt="Space">
+              <figcaption class="orbit-caption">{{responseNewExperience[1].title}}</figcaption>
             </figure>
           </li>
           <li class="orbit-slide">
             <figure class="orbit-figure">
-              <img class="orbit-image" src="https://placehold.it/1080x500/?text=Imagen3" alt="Space">
-              <figcaption class="orbit-caption">Encapsulating</figcaption>
+              <img class="orbit-image" [src]="responseNewExperience[2].article_image" alt="Space">
+              <figcaption class="orbit-caption">{{responseNewExperience[2].title}}</figcaption>
             </figure>
           </li>
           <li class="orbit-slide">
             <figure class="orbit-figure">
-              <img class="orbit-image" src="https://placehold.it/1080x500/?text=Imagen4" alt="Space">
-              <figcaption class="orbit-caption">Outta This World</figcaption>
+              <img class="orbit-image" [src]="responseNewExperience[3].article_image" alt="Space">
+              <figcaption class="orbit-caption">{{responseNewExperience[3].title}}</figcaption>
             </figure>
           </li>
         </ul>
@@ -48,17 +48,17 @@
     </div>
     <div class="cell small-6 medium-6 large-6">
       <!-- Card Blog individual-->
-      <div class="cell shrink">
+      <div class="cell shrink" *ngFor="let mostRead of responseMostRead; let i = index"> 
         <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+          <img class="project-images-card" [src]="mostRead.article_image">
           <div class="card-section">
             <span class="label secondary">
-              <a href="">LA ESPERIENCIA DE ESTRENAR</a>
+              <a routerLink="/blog/{{mostRead.url + dataArticle}}">{{ mostRead.article_type }}</a>
             </span>
           </div>
           <div class="card-section body-card-project">
             <h6 class="text-capitalize text-justify">
-              Cesant&iacute;s, la cuota inicial para cumplir el sue&ntilde;o de tener vivienda en Colombia
+              {{ mostRead.title }}
             </h6>
             <p>
               <small>
@@ -69,36 +69,7 @@
             </p>
           </div>
           <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-    </div>
-    <div class="cell small-6 medium-6 large-6">
-      <!-- Card Blog individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-          <div class="card-section">
-            <span class="label secondary">
-              <a href="">NOTICIAS DEL SECTOR</a>
-            </span>
-          </div>
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
-                velit soluta quae corporis, similique est praesentium tenetur, nisi, deserunt laudantium neque totam
-                dolorem cupiditate quibusdam id.
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
+            <span class="dateLabel">{{ mostRead.changed }}</span>
           </div>
         </div>
       </div>
@@ -110,154 +81,58 @@
     </div>
     <div class="cell small-12 medium-12 large-12">
       <div class="overlay-container">
-        <img src="http://lorempixel.com/500/300" />
+        <img [src]="responseNewExperience[0].article_image" />
         <div class="overlay">
-          <span>Overlay text</span>
+          <span>{{ responseNewExperience[0].title }}</span>
           <i class="fi-address-book"></i>
-          <span>David Richards | 04.12.2019</span>
+          <span>{{ responseNewExperience[0].user_name || responseNewExperience[0].changed }}</span>
         </div>
       </div>
     </div>
     <div class="grid-x cell small-12 medium-12 large-12 small-up-1 large-up-3 medium-up-3 ">
       <!-- Card Blog individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+      <div class="cell shrink" *ngFor="let newExperience of responseNewExperience; let i = index">
+        <div class="card" *ngIf="i >= 1">
+          <img class="project-images-card" [src]="newExperience.article_image">
           <div class="card-section body-card-project">
             <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
+              {{ newExperience.title }}
             </h6>
             <p>
               <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis1
               </small>
             </p>
           </div>
           <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-      <!-- Card Blog individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-      <!-- Card Blog individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
+            <span class="dateLabel">{{ newExperience.changed }}</span>
           </div>
         </div>
       </div>
       <!-- Fin Card Blog individual-->
     </div>
 
+    <div class="cell small-12 medium-12 large-12">
+      <i class="smallIcon"></i>
+      <h4>Nuestro lado eco</h4>
+    </div>
     <div class="grid-x cell small-12 medium-12 large-12 small-up-1 large-up-2 medium-up-2 ">
       <!-- Card Blog individual-->
-      <div class="cell shrink">
+      <div class="cell shrink" *ngFor="let news of responseNews; let i = index">
         <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
+          <img class="project-images-card" [src]="news.article_image">
           <div class="card-section body-card-project">
             <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
+              {{ news.title }}
             </h6>
             <p>
               <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis1
               </small>
             </p>
           </div>
           <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-      <!-- Card Blog individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-      <!-- Card Blog individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-      <!-- Card Blog individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              Cedromonti, el nuevo proyecto VIS de Compensar en Zipaquir&aacute;
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">04.12.2019</span>
+            <span class="dateLabel">{{ news.changed }}</span>
           </div>
         </div>
       </div>
@@ -267,7 +142,11 @@
   <div class="grid-x cell small-4 medium-4 large-4 align-stretch">
     <div class="cell small-12 medium-12 large-12 shrink">
       <h4>Recomendados</h4>
-      <div class="cell small-12 medium-12 large-12 shrink">
+      <div class="cell small-12 medium-12 large-12 shrink" *ngFor="let recommend of responseRecommend; let i = index">
+        <p>{{ recommend.title }}</p>
+        <span class="dateLabel">{{ recommend.changed }}</span>
+      </div>
+      <!-- <div class="cell small-12 medium-12 large-12 shrink">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
         <span class="dateLabel">04.12.2019</span>
       </div>
@@ -290,11 +169,7 @@
       <div class="cell small-12 medium-12 large-12 shrink">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
         <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
+      </div> -->
       <div class="cell small-12 medium-12 large-12 text-center ">
         <div class="image-container-blog-lateral">
           <img src="https://placehold.it/250x280/?text=Card-1" alt="">
@@ -307,7 +182,11 @@
       <div class="cell small-12 medium-12 large-12">
         <h4>Noticias del Sector</h4>
       </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
+      <div class="cell small-12 medium-12 large-12 shrink" *ngFor="let news of responseNews; let i = index">
+        <p>{{ news.title }}</p>
+        <span class="dateLabel">{{ news.changed }}</span>
+      </div>
+      <!-- <div class="cell small-12 medium-12 large-12 shrink">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
         <span class="dateLabel">04.12.2019</span>
       </div>
@@ -334,7 +213,7 @@
       <div class="cell small-12 medium-12 large-12 shrink">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
         <span class="dateLabel">04.12.2019</span>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="cell small-2 medium-2 large-2"></div>
