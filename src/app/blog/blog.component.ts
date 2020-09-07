@@ -11,7 +11,7 @@ import { BlogService } from './blog.service';
 })
 export class BlogComponent implements OnInit {
   public response: any;
-  public dataArticle: '?include=uid,field_article_type,field_media.field_media_image,field_tags';
+  dataArticle = '?include=uid,field_article_type,field_media.field_media_image,field_tags';
   public responseNewExperience: any;
   public responseMostRead: any;
   public responseRecommend: any;
