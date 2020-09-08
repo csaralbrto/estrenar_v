@@ -1,4 +1,4 @@
-<!-- Barra de navegación-->
+<!--
 <div data-sticky-container class="hide-for-small-only">
   <div class="top-bar" data-sticky data-margin-top="0" data-top-anchor="1" data-btm-anchor="content:bottom">
     <div class="top-bar-left">
@@ -27,7 +27,6 @@
           <a href="#0">{{ menu_title_house_VIS }}</a>
         </li>
         <li>
-          <!-- <a href="#0">{{ menu_title_house_vacational }}</a> -->
         </li>
         <li>
           <a href="constructoras">{{ menu_title_builders }}</a>
@@ -51,8 +50,66 @@
     </div>
   </div>
 </div>
-<!--Fin Barra de navegación-->
+-->
+<!--
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous"
   src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=583591131736043&autoLogAppEvents=1"
   nonce="2IPkz6lM"></script>
+-->
+
+<div class="container-header">
+  <div class="full-w header">
+      <div class="small-3 columns">
+        <div class="logo">
+            <a href="home.php"><img src="/assets/images/logo-header.png"></a>
+        </div>
+      </div>
+      <div class="medium-9 columns hide-for-small-only">
+        <ul class="menu">
+          <li>
+          <a href="proyectos.php" alt="" title="">Proyectos</a>
+          </li>
+          <li>
+          <a href="#">Vivienda VIS</a>
+          </li>
+          <li>
+          <a href="constructoras.php">Constructoras</a>
+          </li>
+          <li>
+          <a href="#">Herramientas</a>
+          </li>
+          <li>
+          <a href="blog-listados.php">Blog</a>
+          </li>
+          <li class="contenedor_busqueda_campo">
+          <input type="search" placeholder="Ciudad, Sector o Barrio" id="campoBusqueda" />
+          </li>
+          <li><a href="#"><img src="/assets/images/loupe.png"></a></li>
+          <li><a href="#"><img src="/assets/images/loupe.png"><span class="num_fav">2</span></a></li>
+        </ul>
+      </div>
+  </div>
+  
+    <!--Fin menu -->
+  <div class="row columns text-center">
+    <h1>Te ayudamos a encontrar tu lugar ideal</h1>
+    <div>
+      <form action="">
+          <div class="row condensed">
+            <div class="medium-6 medium-offset-1 columns">
+              <input type="search" placeholder="¿Qué estás buscando?" />
+            </div>
+            <div class="medium-2 columns">
+              <select name="precio" id="precio">
+              <option value="">Precio</option>
+              </select>
+            </div>
+            <div class="medium-2 columns end">
+              <a href="#" class="button expanded secondary">Buscar</a>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

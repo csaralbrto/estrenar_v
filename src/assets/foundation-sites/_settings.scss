@@ -69,31 +69,29 @@
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
-$foundation-palette: (primary: #ffffff,
-  secondary: #13454E,
-  success: #3adb76,
+$foundation-palette: (
+  primary: #14454e,
+  secondary: #a8d139,
+  success: #a8d139,
   warning: #ffae00,
   alert: #cc4b37,
 );
-$light-gray: #e6e6e6;
+$light-gray: #eeeeee;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: "Helvetica Neue",
-Helvetica,
-Roboto,
-Arial,
-sans-serif;
+// $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'Roboto', sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
 $global-position: 1rem;
 $global-weight-normal: normal;
-$global-weight-bold: bold;
-$global-radius: 0;
+$global-weight-bold: 500;
+$global-radius: 8px;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
@@ -104,22 +102,24 @@ $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 $print-hrefs: true;
 
-@include add-foundation-colors;
+//@include add-foundation-colors; //##Global
 
 // 2. Breakpoints
 // --------------
 
-$breakpoints: (small: 0,
+$breakpoints: (
+  small: 0,
   medium: 640px,
   large: 1024px,
   xlarge: 1200px,
   xxlarge: 1440px,
 );
-$breakpoints-hidpi: (hidpi-1: 1,
+$breakpoints-hidpi: (
+  hidpi-1: 1,
   hidpi-1-5: 1.5,
   hidpi-2: 2,
   retina: 2,
-  hidpi-3: 3,
+  hidpi-3: 3
 );
 $print-breakpoint: large;
 $breakpoint-classes: (small medium large);
@@ -129,51 +129,40 @@ $breakpoint-classes: (small medium large);
 
 $grid-row-width: $global-width;
 $grid-column-count: 12;
-$grid-column-gutter: (small: 20px,
+$grid-column-gutter: (
+  small: 20px,
   medium: 30px,
 );
 $grid-column-align-edge: true;
-$grid-column-alias: "columns";
+$grid-column-alias: 'columns';
 $block-grid-max: 8;
 
 // 4. Base Typography
 // ------------------
 
 $header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+$header-font-weight: $global-weight-bold;
 $header-font-style: normal;
-$font-family-monospace: Consolas,
-"Liberation Mono",
-Courier,
-monospace;
+$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
 $header-lineheight: 1.4;
-$header-margin-bottom: 0.5rem;
-$header-styles: (small: ("h1": ("font-size": 24,
-    ),
-    "h2": ("font-size": 20,
-    ),
-    "h3": ("font-size": 19,
-    ),
-    "h4": ("font-size": 18,
-    ),
-    "h5": ("font-size": 17,
-    ),
-    "h6": ("font-size": 16,
-    ),
+$header-margin-bottom: 2rem;
+$header-styles: (
+  small: (
+    'h1': ('font-size': 24),
+    'h2': ('font-size': 20),
+    'h3': ('font-size': 19),
+    'h4': ('font-size': 18),
+    'h5': ('font-size': 17),
+    'h6': ('font-size': 16),
   ),
-  medium: ("h1": ("font-size": 48,
-    ),
-    "h2": ("font-size": 40,
-    ),
-    "h3": ("font-size": 31,
-    ),
-    "h4": ("font-size": 25,
-    ),
-    "h5": ("font-size": 20,
-    ),
-    "h6": ("font-size": 16,
-    ),
+  medium: (
+    'h1': ('font-size': 42),
+    'h2': ('font-size': 32),
+    'h3': ('font-size': 28),
+    'h4': ('font-size': 24),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16),
   ),
 );
 $header-text-rendering: optimizeLegibility;
@@ -183,8 +172,8 @@ $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
 $enable-code-inline: true;
-$anchor-color: get_color(primary);
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color: $primary-color;
+//##$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
@@ -223,7 +212,7 @@ $subheader-margin-bottom: 0.5rem;
 $stat-font-size: 2.5rem;
 $cite-color: $dark-gray;
 $cite-font-size: rem-calc(13);
-$cite-pseudo-content: "\2014 \0020";
+$cite-pseudo-content: '\2014 \0020';
 $code-color: $black;
 $code-font-family: $font-family-monospace;
 $code-font-weight: $global-weight-normal;
@@ -249,8 +238,8 @@ $input-error-font-weight: $global-weight-bold;
 
 $accordion-background: $white;
 $accordion-plusminus: true;
-$accordion-plus-content: "\002B";
-$accordion-minus-content: "\2013";
+$accordion-plus-content: '\002B';
+$accordion-minus-content: '\2013';
 $accordion-title-font-size: rem-calc(12);
 $accordion-item-color: $primary-color;
 $accordion-item-background-hover: $light-gray;
@@ -298,8 +287,8 @@ $breadcrumbs-item-color-disabled: $medium-gray;
 $breadcrumbs-item-margin: 0.75rem;
 $breadcrumbs-item-uppercase: true;
 $breadcrumbs-item-separator: true;
-$breadcrumbs-item-separator-item: "/";
-$breadcrumbs-item-separator-item-rtl: "\\";
+$breadcrumbs-item-separator-item: '/';
+$breadcrumbs-item-separator-item-rtl: '\\';
 $breadcrumbs-item-separator-color: $medium-gray;
 
 // 11. Button
@@ -311,23 +300,23 @@ $button-padding: 0.85em 1em;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
-$button-background-hover: scale-color($button-background, $lightness: -15%);
+//##$button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
-$button-border: 1px solid transparent;
+$button-border: 0px solid transparent;
 $button-hollow-border-width: 1px;
-$button-sizes: (tiny: 0.6rem,
+$button-sizes: (
+  tiny: 0.6rem,
   small: 0.75rem,
-  default: 0.9rem,
+  default: 0.8rem,
   large: 1.25rem,
 );
 $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
-$button-transition: background-color 0.25s ease-out,
-color 0.25s ease-out;
+$button-transition: background-color 0.25s ease-out, color 0.25s ease-out;
 $button-responsive-expanded: false;
 
 // 12. Button Group
@@ -335,7 +324,7 @@ $button-responsive-expanded: false;
 
 $buttongroup-margin: 1rem;
 $buttongroup-spacing: 1px;
-$buttongroup-child-selector: ".button";
+$buttongroup-child-selector: '.button';
 $buttongroup-expand-max: 6;
 $buttongroup-radius-on-each: true;
 
@@ -346,7 +335,8 @@ $callout-background: $white;
 $callout-background-fade: 85%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
-$callout-sizes: (small: 0.5rem,
+$callout-sizes: (
+  small: 0.5rem,
   default: 1rem,
   large: 3rem,
 );
@@ -373,13 +363,16 @@ $card-margin-bottom: $global-margin;
 $closebutton-position: right top;
 $closebutton-z-index: 10;
 $closebutton-default-size: medium;
-$closebutton-offset-horizontal: (small: 0.66rem,
+$closebutton-offset-horizontal: (
+  small: 0.66rem,
   medium: 1rem,
 );
-$closebutton-offset-vertical: (small: 0.33em,
+$closebutton-offset-vertical: (
+  small: 0.33em,
   medium: 0.5rem,
 );
-$closebutton-size: (small: 1.5em,
+$closebutton-size: (
+  small: 1.5em,
   medium: 2em,
 );
 $closebutton-lineheight: 1;
@@ -408,7 +401,8 @@ $dropdown-border: 1px solid $medium-gray;
 $dropdown-font-size: 1rem;
 $dropdown-width: 300px;
 $dropdown-radius: $global-radius;
-$dropdown-sizes: (tiny: 100px,
+$dropdown-sizes: (
+  tiny: 100px,
   small: 200px,
   large: 400px,
 );
@@ -445,26 +439,26 @@ $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
 $form-spacing: rem-calc(16);
 $helptext-color: $black;
-$helptext-font-size: rem-calc(13);
+$helptext-font-size: rem-calc(11);
 $helptext-font-style: italic;
 $input-prefix-color: $black;
 $input-prefix-background: $light-gray;
 $input-prefix-border: 1px solid $medium-gray;
 $input-prefix-padding: 1rem;
 $form-label-color: $black;
-$form-label-font-size: rem-calc(14);
-$form-label-font-weight: $global-weight-normal;
-$form-label-line-height: 1.8;
-$select-background: $white;
-$select-triangle-color: $dark-gray;
+$form-label-font-size: rem-calc(13);
+$form-label-font-weight: 500;
+$form-label-line-height: 1.9;
+$select-background: $light-gray;
+$select-triangle-color: $primary-color;
 $select-radius: $global-radius;
 $input-color: $black;
 $input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
-$input-font-size: rem-calc(16);
+$input-font-size: rem-calc(13);
 $input-font-weight: $global-weight-normal;
 $input-line-height: $global-lineheight;
-$input-background: $white;
+$input-background: $light-gray;
 $input-background-focus: $white;
 $input-background-disabled: $light-gray;
 $input-border: 1px solid $medium-gray;
@@ -473,8 +467,7 @@ $input-padding: $form-spacing / 2;
 $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
 $input-cursor-disabled: not-allowed;
-$input-transition: box-shadow 0.5s,
-border-color 0.25s ease-in-out;
+$input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
 $form-button-radius: $global-radius;
@@ -525,9 +518,11 @@ $meter-fill-bad: $alert-color;
 // 25. Off-canvas
 // --------------
 
-$offcanvas-sizes: (small: 250px,
+$offcanvas-sizes: (
+  small: 250px,
 );
-$offcanvas-vertical-sizes: (small: 250px,
+$offcanvas-vertical-sizes: (
+  small: 250px,
 );
 $offcanvas-background: $light-gray;
 $offcanvas-shadow: 0 0 10px rgba($black, 0.7);
@@ -541,14 +536,14 @@ $offcanvas-transition-length: 0.5s;
 $offcanvas-transition-timing: ease;
 $offcanvas-fixed-reveal: true;
 $offcanvas-exit-background: rgba($white, 0.25);
-$maincontent-class: "off-canvas-content";
+$maincontent-class: 'off-canvas-content';
 
 // 26. Orbit
 // ---------
 
 $orbit-bullet-background: $medium-gray;
-$orbit-bullet-background-active: $dark-gray;
-$orbit-bullet-diameter: 1.2rem;
+$orbit-bullet-background-active: $secondary-color;
+$orbit-bullet-diameter: 0.4rem;
 $orbit-bullet-margin: 0.1rem;
 $orbit-bullet-margin-top: 0.8rem;
 $orbit-bullet-margin-bottom: 0.8rem;
@@ -575,8 +570,8 @@ $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
 $pagination-mobile-current-item: false;
 $pagination-arrows: true;
-$pagination-arrow-previous: "\00AB";
-$pagination-arrow-next: "\00BB";
+$pagination-arrow-previous: '\00AB';
+$pagination-arrow-next: '\00BB';
 
 // 28. Progress Bar
 // ----------------
@@ -590,7 +585,12 @@ $progress-radius: $global-radius;
 // 29. Prototype Arrow
 // -------------------
 
-$prototype-arrow-directions: (down, up, right, left);
+$prototype-arrow-directions: (
+  down,
+  up,
+  right,
+  left
+);
 $prototype-arrow-size: 0.4375rem;
 $prototype-arrow-color: $black;
 
@@ -616,7 +616,13 @@ $prototype-border-color: $medium-gray;
 // ---------------------
 
 $prototype-display-breakpoints: $global-prototype-breakpoints;
-$prototype-display: (inline, inline-block, block, table, table-cell);
+$prototype-display: (
+  inline,
+  inline-block,
+  block,
+  table,
+  table-cell
+);
 
 // 34. Prototype Font-Styling
 // --------------------------
@@ -630,26 +636,41 @@ $prototype-font-bold: $global-weight-bold;
 // -----------------------------
 
 $prototype-list-breakpoints: $global-prototype-breakpoints;
-$prototype-style-type-unordered: (disc, circle, square);
-$prototype-style-type-ordered: (decimal,
+$prototype-style-type-unordered: (
+  disc,
+  circle,
+  square
+);
+$prototype-style-type-ordered: (
+  decimal,
   lower-alpha,
   lower-latin,
   lower-roman,
   upper-alpha,
   upper-latin,
-  upper-roman);
+  upper-roman
+);
 
 // 36. Prototype Overflow
 // ----------------------
 
 $prototype-overflow-breakpoints: $global-prototype-breakpoints;
-$prototype-overflow: (visible, hidden, scroll);
+$prototype-overflow: (
+  visible,
+  hidden,
+  scroll
+);
 
 // 37. Prototype Position
 // ----------------------
 
 $prototype-position-breakpoints: $global-prototype-breakpoints;
-$prototype-position: (static, relative, absolute, fixed);
+$prototype-position: (
+  static,
+  relative,
+  absolute,
+  fixed
+);
 $prototype-position-z-index: 975;
 
 // 38. Prototype Rounded
@@ -672,18 +693,22 @@ $prototype-separator-margin-top: $global-margin;
 // --------------------
 
 $prototype-shadow-breakpoints: $global-prototype-breakpoints;
-$prototype-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-0 2px 10px 0 rgba(0, 0, 0, 0.12);
+$prototype-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),
+                       0 2px 10px 0 rgba(0,0,0,.12);
 
 // 41. Prototype Sizing
 // --------------------
 
 $prototype-sizing-breakpoints: $global-prototype-breakpoints;
-$prototype-sizing: (width, height);
-$prototype-sizes: (25: 25%,
+$prototype-sizing: (
+  width,
+  height
+);
+$prototype-sizes: (
+  25: 25%,
   50: 50%,
   75: 75%,
-  100: 100%,
+  100: 100%
 );
 
 // 42. Prototype Spacing
@@ -696,13 +721,21 @@ $prototype-spacers-count: 3;
 // -----------------------------
 
 $prototype-decoration-breakpoints: $global-prototype-breakpoints;
-$prototype-text-decoration: (overline, underline, line-through);
+$prototype-text-decoration: (
+  overline,
+  underline,
+  line-through,
+);
 
 // 44. Prototype Text-Transformation
 // ---------------------------------
 
 $prototype-transformation-breakpoints: $global-prototype-breakpoints;
-$prototype-text-transformation: (lowercase, uppercase, capitalize);
+$prototype-text-transformation: (
+  lowercase,
+  uppercase,
+  capitalize
+);
 
 // 45. Prototype Text-Utilities
 // ----------------------------
@@ -714,7 +747,8 @@ $prototype-text-overflow: ellipsis;
 // --------------------
 
 $responsive-embed-margin-bottom: rem-calc(16);
-$responsive-embed-ratios: (default: 4 by 3,
+$responsive-embed-ratios: (
+  default: 4 by 3,
   widescreen: 16 by 9,
 );
 
@@ -759,7 +793,7 @@ $switch-paddle-background: $white;
 $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
-$switch-opacity-disabled: 0.5;
+$switch-opacity-disabled: .5;
 $switch-cursor-disabled: not-allowed;
 
 // 50. Table
@@ -771,8 +805,7 @@ $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
 $table-row-hover: darken($table-background, $table-hover-scale);
-$table-row-stripe-hover: darken($table-background,
-  $table-color-scale + $table-hover-scale);
+$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
 $table-is-striped: true;
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
@@ -807,7 +840,7 @@ $tab-content-padding: 1rem;
 $thumbnail-border: 4px solid $white;
 $thumbnail-margin-bottom: $global-margin;
 $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
-$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
+//##$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
 
@@ -853,10 +886,12 @@ $topbar-unstack-breakpoint: medium;
 $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
-$grid-margin-gutters: (small: 20px,
-  medium: 30px,
+$grid-margin-gutters: (
+  small: 20px,
+  medium: 30px
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
+
