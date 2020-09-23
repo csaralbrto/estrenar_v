@@ -1,317 +1,386 @@
-<!-- Constructora INterna-->
-<div class="grid-container">
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell large-2 medium-2 small-12"></div>
-    <div class="cell large-3 medium-2 small-12">
-      <img src="https://placehold.it/400x200/888?text=Imagen-1" alt="">
+<div class="row columns">
+    <div class="medium-6 columns">
+        <div class="row">
+            <div class="small-4 columns">
+                <img class="image" src="/assets/images/content/constructora.jpg" alt="">
+            </div>
+            <div class="small-8 columns">
+                <h1>Constructora {{ content.name }}</h1>
+            </div>
+        </div>
     </div>
-    <div class="cell large-2 medium-2 small-12">
-      <div class="cell large-12 small-12 medium-12">
-        <h5>Ciudad oficina principal</h5>
-        <span>{{ content.ciudad }}</span>
-      </div>
-      <div class="cell large-12 small-12 medium-12">
-        <h5>Direcci&oacute;n oficina principal</h5>
-        <span>{{content.address}}</span>
-      </div>
-      <div class="cell large-12 small-12 medium-12">
-        <h5>Tel&eacute;fonos</h5>
-        <span>{{ content.cel_phone }}</span>
-      </div>
+    <div class="medium-6 columns">
+        <div class="container-info">
+            <div class="row">
+                <div class="medium-4 columns">
+                    <div class="label-info">Ciudad oficina principal</div>
+                    <div class="dato">{{ content.ciudad }}</div>
+                    <div class="label-info">Dirección oficina principal</div>
+                    <div class="dato">{{content.address}} </div>
+                    <div class="label-info">Teléfonos</div>
+                    <div class="dato">{{ content.cel_phone }}</div>
+                </div>
+                <div class="medium-8 columns">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis
+                        fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis. Cras et augue ac
+                        nisl congue eleifend hendrerit eget eros. Nulla pulvinar faucibus leo in tempus. Sed ornare
+                        libero sit amet justo congue, quis laoreet neque congue.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="cell large-4 medium-4 small-12">
-      <p class="text-justify align-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rerum quaerat
-        ratione,
-        sapiente aliquam quis
-        consequuntur cumque excepturi fugit a facere rem ullam ipsam ipsum voluptatibus repellendus est mollitia nam?
-      </p>
+</div>
+<hr class="white">
+<!--slide-->
+<div class="row columns">
+    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+        <div class="orbit-wrapper">
+
+            <ul class="orbit-container">
+                <li class="is-active orbit-slide">
+                    <div class="row slide-build">
+                        <div class="medium-7 medium-offset-1 columns">
+                            <figure class="orbit-figure">
+                                <img class="orbit-image" [src]="project[0].url_img" alt="">
+                            </figure>
+                        </div>
+                        <div class="medium-4 columns card-build">
+                            <div class="card">
+
+                                <div class="card-section">
+                                    <h2>{{ project[0].direccion }}</h2>
+                                    <div class="descripcion">
+                                        {{ project[0].sub_titulo }}
+                                    </div>
+                                    <div class="precio text-center">
+                                        <div>Desde:</div>
+                                        <span>{{ project[0].valor_venta | number }}</span>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="card-section">
+                                    <div class="row">
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
+                                                </div>
+                                                <div class="data">{{ project[0].medida_apartamento }} m</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
+                                                </div>
+                                                <div class="data">{{ project[0].n_habitaciones }} alcobas</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
+                                                </div>
+                                                <div class="data">{{ project[0].n_gagrages }} garajes</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                                <div class="data">{{ project[0].n_banos }} baños</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="card-section">
+                                    <div class="button-group align-spaced ">
+                                        <a class="button" href="#">Ver
+                                            Proyecto</a>
+                                        <a class="button">Contacto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="orbit-slide">
+                    <div class="row slide-build">
+                        <div class="medium-7 medium-offset-1 columns">
+                          <figure class="orbit-figure">
+                            <img class="orbit-image" [src]="project[1].url_img" alt="">
+                        </figure>
+                    </div>
+                    <div class="medium-4 columns card-build">
+                        <div class="card">
+
+                            <div class="card-section">
+                                <h2>{{ project[1].direccion }}</h2>
+                                <div class="descripcion">
+                                    {{ project[1].sub_titulo }}
+                                </div>
+                                <div class="precio text-center">
+                                    <div>Desde:</div>
+                                    <span>{{ project[1].valor_venta | number }}</span>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="card-section">
+                                <div class="row">
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
+                                            </div>
+                                            <div class="data">{{ project[1].medida_apartamento }} m</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
+                                            </div>
+                                            <div class="data">{{ project[1].n_habitaciones }} alcobas</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
+                                            </div>
+                                            <div class="data">{{ project[1].n_gagrages }} garajes</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                            <div class="data">{{ project[1].n_banos }} baños</div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="card-section">
+                                    <div class="button-group align-spaced ">
+                                        <a class="button" href="proyecto.php">Ver
+                                            Proyecto</a>
+                                        <a class="button">Contacto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="container-controls">
+            <nav class="orbit-bullets">
+                <button class="is-active" data-slide="0">
+                    <span class="show-for-sr">First slide details.</span>
+                    <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                </button>
+                <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+            </nav>
+            <div class="orbit-controls">
+                <button class="orbit-previous"><span class="show-for-sr">Previous
+                        Slide</span>&#9664;&#xFE0E;</button>
+                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<div class="grid-container">
-  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-    <div class="orbit-wrapper">
-      <div class="orbit-controls">
-        <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-        <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-      </div>
-      <ul class="orbit-container">
-        <li class="is-active orbit-slide">
-          <img class="orbit-image" src="https://placehold.it/1000x400?text=Slide-1" alt="Space">
-        </li>
-        <li class="orbit-slide">
-          <div class="align-center">
-            <img class="orbit-image" src="https://placehold.it/700x400?text=Slide-2" alt="Space">
-          </div>
-          <div class="grid-x grid-padding-x align-stretch card-detail-builder">
-            <div class="cell large-6 medium-6 small 6"></div>
-            <div class="cell large-4 medium-4 small 4">
-              <div class="grid-x  grid-margin-x small-up-1 medium-up-1">
-                <div class="cell shrink">
-                  <div class="card">
-                    <div class="card-section">
-                      <h6>Hacienda Rosablanca - Alcavar&aacute;n <i class="fi-heart large icon-topbar-style"></i></h6>
-                      <p>Apartamento en Anillo Vial.</p>
-                    </div>
-                    <div class="card-section">
-                      <p class="text-center">
-                        <small>
-                          Desde:
-                        </small>
-                        <br>
-                        <span class="text-bold stat ">$ 272.732.720</span>
-                      </p>
-                      <hr>
-                    </div>
-                    <div class="card-section align-stretch">
-                      <div class="cell auto icon_attribute_project">
-                        <i class="fi-map attributes-project attributes-project"></i>
-                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
-                      </div>
-                      <div class="cell auto icon_attribute_project">
-                        <i class="fi-map attributes-project attributes-project"></i>
-                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
-                      </div>
-                      <div class="cell medium-6 large-6 small-6 icon_attribute_project">
-                        <i class="fi-map attributes-project attributes-project"></i>
-                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
-                      </div>
-                      <div class="cell medium-6 large-6 small-6 icon_attribute_project">
-                        <i class="fi-map attributes-project attributes-project"></i>
-                        <span class="text-project-attributes">72 m<sup>2</sup> &aacute;rea construida</span>
-                      </div>
-                      <hr>
-                    </div>
+
+<!--fin slide-->
+<hr class="white">
+<div class="row columns">
+    <h1 class="deco text-center">Proyectos de Constructora {{ content.name }}</h1>
+    <!--filtros-->
+    <form [formGroup]="form_filters">
+      <div class="filtros">
+          <div class="row condensed">
+              <div class="medium-2 columns">
+                  <label>Tipo de inmueble
+                      <select id="type" name="type" formControlName="type" (change)="change(content.id,form_filters.value)">
+                          <option value="apartamento">Apartamento</option>
+                          <option value="casa">Casa</option>
+                      </select>
+                  </label>
+              </div>
+              <div class="medium-2 columns">
+                  <label>Precio
+                      <select id="price" name="price" formControlName="price" (change)="change(content.id,form_filters.value)">
+                          <option value="apartamento">60.000.000-700.000.000</option>
+                          <option value="casa">Otro</option>
+                      </select>
+                  </label>
+              </div>
+              <div class="medium-2 columns">
+                  <label>Ciudad
+                      <select id="city" name="city" formControlName="city" (change)="change(content.id,form_filters.value)">
+                      <option value="barranquilla">Barranquilla</option>
+                      <option value="bogota">Bogot&aacute;</option>
+                      </select>
+                  </label>
+              </div>
+              <div class="medium-2 columns">
+                  <label>Zona
+                      <select id="zone" name="zone" formControlName="zone" (change)="change(content.id,form_filters.value)">
+                          <option value="apartamento">Norte</option>
+                          <option value="casa">Sur</option>
+                      </select>
+                  </label>
+              </div>
+              <div class="medium-2 columns">
+                  <label>Sector
+                      <select id="sector" name="sector" formControlName="sector" (change)="change(content.id,form_filters.value)">
+                          <option value="apartamento">Centro Internacional</option>
+                          <option value="casa">Sur</option>
+                      </select>
+                  </label>
+              </div>
+              <div class="medium-2 columns">
+                  <div class="botones">
+                      <a href="#" class="button ">Más filtros</a>
+                      <a href="#" class="button secondary ">Favoritos</a>
                   </div>
-                </div>
               </div>
-            </div>
-            <div class="cell large-4 medium-4 small 4"></div>
           </div>
-        </li>
-        <li class="orbit-slide">
-          <img class="orbit-image" src="https://placehold.it/1000x400?text=Slide-3" alt="Space">
-        </li>
-        <li class="orbit-slide">
-          <img class="orbit-image" src="https://placehold.it/1000x400?text=Slide-4" alt="Space">
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<!--Fin Constructora INterna-->
-<div class="grid-container">
-    <div class="grid-container fluid">
-      <form [formGroup]="form_filters">
-        <div class="grid-container fluid">
-          <div class="grid-x grid-margin-x">
-            <div class="cell auto">
-              <label>Tipo de inmueble
-                <select id="type" name="type" formControlName="type" (change)="change(content.id,form_filters.value)">
-                  <option value="Apartamento">Apartamento</option>
-                </select>
-              </label>
-            </div>
-            <div class="cell auto">
-              <label>Precio
-                <select id="price" name="price" formControlName="price" (change)="change(content.id,form_filters.value)">
-                  <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
-                </select>
-              </label>
-            </div>
-            <div class="cell auto">
-              <label>Ciudad
-                <select id="city" name="city" formControlName="city" (change)="change(content.id,form_filters.value)">
-                  <option value="barranquilla">Barranquilla</option>
-                  <option value="bogota">Bogot&aacute;</option>
-                </select>
-              </label>
-            </div>
-            <div class="cell auto">
-              <label>Zona
-                <select id="zone" name="zone" formControlName="zone" (change)="change(content.id,form_filters.value)">
-                  <option value="norte">Norte</option>
-                  <option value="sur">Sur</option>
-                </select>
-              </label>
-            </div>
-            <div class="cell auto">
-              <label>Sector
-                <select id="sector" name="sector" formControlName="sector" (change)="change(content.id,form_filters.value)">
-                  <option value="husker">Centro Internacional</option>
-                </select>
-              </label>
-            </div>
-            <div class="cell shrink">
-              <div class="button-group align-spaced ">
-                <a class="button">M&aacute;s Filtros</a>
-                <a class="button search_button">Favoritos</a>
-              </div>
-            </div>
+          <div class="row condensed">
+          <div class="filtros-tag">
+              <a href="#" class="button close">3 Habitaciones</a>
           </div>
-          <div class="grid-x grid-margin-x expanded">
-            <div class="large-10 cell ">
-              <span class="label primary">
-                <a href="">
-                  Piscina
-                </a>
-                <a href="">
-                  <span class="badge "><i class="fi-x"></i></span>
-                </a>
-              </span>
-              <span class="label primary">
-                <a href="">
-                  3 Habitaciones
-                </a>
-                <a href="">
-                  <span class="badge "><i class="fi-x"></i></span>
-                </a>
-              </span>
-              <span class="label primary">
-                <a href="">
-                  2 Garajes
-                </a>
-                <a href="">
-                  <span class="badge "><i class="fi-x"></i></span>
-                </a>
-              </span>
-              <hr />
-            </div>
-          </div>
-          <div class="grid-x grid-margin-x expanded">
-            <div class="small-4 cell">
-              <p class="help-text">Mostrando 374 apartanentos en Barranquilla</p>
-            </div>
-            <div class="small-2 cell input-group">
-              <span class="text-right middle">Ordenar Por:</span>
-              <select>
-                <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </form>
-      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-        <!-- Card Proyecto individual-->
-        <div class="cell shrink" *ngFor="let project1 of content.proyectos; let i = index">
-          <div class="card" *ngIf="i < 7">
-            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-            <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
-            </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                {{ project1.direccion }}
-              </h6>
-              <p>
-                <small>
-                  {{ project1.subtitulo }}
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">
-                  {{ project1.valor_venta | number }}</span>
-              </p>
-              <hr />
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{project1.titulo}}">Ver Proyecto</a>
-                <a class="button">Contacto</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Fin Card Proyecto individual-->
-        <!-- Card Proyecto individual-->
-        <div class="cell shrink">
-          <div class="card-container-project-publicity">
-            <div class="card-section">
-              <div class="callout secondary">
-                <p>PUBLICIDAD</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Fin Card Proyecto individual-->
-        <!-- Card Proyecto individual-->
-        <div class="cell shrink" *ngFor="let project1 of content.proyectos; let i = index">
-          <div class="card" *ngIf="i > 7">
-            <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-            <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
-            </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                {{ project1.direccion }}
-              </h6>
-              <p>
-                <small>
-                  {{ project1.subtitulo }}
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">
-                  {{ project1.valor_venta | number }}</span>
-              </p>
-              <hr />
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{project1.titulo}}">Ver Proyecto</a>
-                <a class="button">Contacto</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Fin Card Proyecto individual-->
       </div>
+      </div>
+    </form>
+    <!--fin filtros-->
+    <hr>
+</div>
+
+<hr class="white">
+<div class="row">
+    <div class="medium-3 columns end" *ngFor="let projects of project; let i = index">
+        <div class="card" *ngIf="i >= 1">
+            <div class="container-photo">
+                <a href="#" class=""><img [src]="projects.url_img" alt="" class="proyecto"></a>
+                <div class="container-tools">
+                    <div class="tags">
+                        <div class="tag"><a href="#">VIS</a></div>
+                        <div class="tag"><a href="#">Mi casa ya</a></div>
+                    </div>
+                    <div class="add">
+                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-section">
+                <h2>{{ projects.direccion }}</h2>
+                <div class="descripcion">
+                    {{ projects.sub_titulo }}
+                </div>
+                <div class="precio text-center">
+                    <div>Desde:</div>
+                    <span>{{ projects.valor_venta | number }}</span>
+                </div>
+                <hr>
+            </div>
+            <div class="card-section">
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                            <div class="data"> {{ projects.medida_apartamento }}m</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                            <div class="data"> {{ projects.n_habitaciones }} alcobas</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                            <div class="data"> {{ projects.n_garages }} garajes</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                            <div class="data"> {{ projects.n_banos }} baños</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="card-section">
+                <div class="button-group align-spaced ">
+                    <a class="button" href="#">Ver
+                        Proyecto</a>
+                    <a class="button">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="medium-3 columns end">
+        <div class="card">
+            <div class="container-photo">
+                <a href="proyecto.php" class=""><img src="/assets/images/content/proyecto.jpg" alt="" class="proyecto"></a>
+                <div class="container-tools">
+                    <div class="tags">
+                        <div class="tag"><a href="#">VIS</a></div>
+                        <div class="tag"><a href="#">Mi casa ya</a></div>
+                    </div>
+                    <div class="add">
+                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-section">
+                <h2>Parque Central de Occidente</h2>
+                <div class="descripcion">
+                    Apartamento en el Centro Internacional del Caribe, Barranquilla.
+                </div>
+                <div class="precio text-center">
+                    <div>Desde:</div>
+                    <span>$190.000.000</span>
+                </div>
+                <hr>
+            </div>
+            <div class="card-section">
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                            <div class="data">72 m</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                            <div class="data">3 alcobas</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                            <div class="data">2 garajes</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                            <div class="data">2 baños</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="card-section">
+                <div class="button-group align-spaced ">
+                    <a class="button" href="proyecto.php">Ver
+                        Proyecto</a>
+                    <a class="button">Contacto</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<hr class="white">

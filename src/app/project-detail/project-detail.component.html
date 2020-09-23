@@ -1,1017 +1,642 @@
-<div class="grid-container large-8">
-  <div class="grid-x grid-padding-x">
-    <div class="large-3 medium-3 small-3 cell">
-      <div class="callout secondary">
-        <img class="project-images-card" [src]="response.url_img" alt="">
-      </div>
-    </div>
-    <div class="cell large-9 medium-9">
-      <i class="fi-heart large icon-topbar-style"></i>
-      <span class="rounded link-category-project">
-        <a href="">
-          VIS
-        </a>
-      </span>
-      <span class="link-category-project">
-        <a href="">
-          MI CASA YA
-        </a>
-      </span>
-
-      <h2 class="text-capitalize Text Wrap">
-        {{ response.sub_titulo }}
-      </h2>
-      <p>
-        <small>
-          {{ response.direccion }}
-        </small>
-      </p>
-      <div class="grid-x grid-padding-x">
-        <div class="cell medium-3">
-          <p class="text-left">
-            <small>
-              Desde:
-            </small>
-            <br>
-            <span class="text-bold stat "> {{ response.valor_venta | number }}</span>
-          </p>
-        </div>
-        <div class="cell medium-9 large-9">
-          <div class="button-group align-right" data-responsive-accordion-tabs="tabs medium-accordion large-tabs"
-            role="tablist" id="options-tabs-projects" data-tabs id="options-tabs-projects">
-            <a class="search_button button" href="#contactar" role="tab">Contacto</a>
-            <a class="button" href="#video-project" role="tab">Ver Video</a>
-            <a class="button" href="#images-project" role="tab">Im&aacute;genes</a>
-            <a class="button" href="#travel-project" role="tab">Recorrido</a>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row columns">
+  <div class="medium-2 columns">
+      <img src="/assets/images/content/proyectologo.jpg" alt="" class="logo-proyecto">
   </div>
-  <section>
-    <div data-tabs-content="options-tabs-projects">
-      <div class="tabs-panel is-active" id="images-project">
-        <div class="grid-x grid-padding-x medium-12">
-          <div class="cell">
-            <div class="orbit" role="region" aria-label="" data-orbit>
-              <div class="orbit-controls">
-                <button class="orbit-previous" tabindex="0"><span class="show-for-sr">Previous Slide</span>◀︎</button>
-                <button class="orbit-next" tabindex="0"><span class="show-for-sr">Next Slide</span>▶︎</button>
-              </div>
-              <ul class="orbit-container">
-                <li class="orbit-slide is-active">
-                  <div class="grid-x grid-padding-x align-stretch medium-12">
-                    <div class="cell small-6 flex-container flex-dir-column">
-                      <img class="main_img_slide" [src]="dataPath + galeria[0]">
-                    </div>
-                    <div class="cell small-3">
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[1]">
-                      </div>
-                      <div class=" flex-child-shrink">&nbsp;</div>
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[2]">
-                      </div>
-                    </div>
-                    <div class="cell small-3">
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[3]">
-                      </div>
-                      <div class=" flex-child-shrink">&nbsp;</div>
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[4]">
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="orbit-slide">
-                  <div class="grid-x grid-padding-x align-stretch">
-                    <div class="cell small-3 ">
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[5]">
-                      </div>
-                      <div class=" flex-child-shrink">&nbsp;</div>
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[6]">
-                      </div>
-                    </div>
-                    <div class="cell small-3">
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[7]">
-                      </div>
-                      <div class=" flex-child-shrink">&nbsp;</div>
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[8]">
-                      </div>
-                    </div>
-                    <div class="cell small-3">
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[9]">
-                      </div>
-                      <div class=" flex-child-shrink">&nbsp;</div>
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[10]">
-                      </div>
-                    </div>
-                    <div class="cell small-3">
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[11]">
-                      </div>
-                      <div class=" flex-child-shrink">&nbsp;</div>
-                      <div class=" flex-child-shrink">
-                        <img [src]="dataPath + galeria[12]">
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <!-- More slides... -->
-              </ul>
-            </div>
+  <div class="medium-10 columns">
+      <div class="row">
+          <div class="medium-12 columns">
+              <h1>{{ response.sub_titulo }}</h1>
           </div>
-        </div>
+          <div class="medium-6 columns">
+              <div class="head-proyecto">
+                  <div>Desde:</div>
+                  <div class="precio">{{ response.valor_venta | number }}</div>
+              </div>
+          </div>
+          <div class="medium-6 columns">
+              <div class="botones">
+                  <a href="#" class="button secondary ">Contacto</a>
+                  <a href="#" class="button ">Ver video</a>
+                  <a href="#" class="button ">Imágenes</a>
+                  <a href="#" class="button ">Recorrido</a>
+              </div>
+          </div>
       </div>
-      <div class="tabs-panel" id="video-project">
-        <div class="responsive-embed">
-          <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="tabs-panel" id="travel-project">
-        <div class="responsive-embed">
-          <iframe width="420" height="315" src="https://www.youtube.com/embed/bL2wxHaDK6E" frameborder="0"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="grid-x grid-padding-x">
-      <div class="cell auto icon_attribute_project">
-        <i class="fi-map attributes-project attributes-project"></i>
-        <span class="text-project-attributes">{{ response.medida_apartamento }}<sup>2</sup> &aacute;rea
-          construida</span>
-      </div>
-      <div class="cell auto icon_attribute_project">
-        <i class="fi-map attributes-project "></i>
-        <span class="text-project-attributes">{{ response.barrio }}<sup>2</sup> &aacute;rea privada</span>
-      </div>
-      <div class="cell auto icon_attribute_project">
-        <i class="fi-map attributes-project "></i>
-        <span class="text-project-attributes">{{ response.n_habitaciones }} alcobas</span>
-      </div>
-      <div class="cell auto icon_attribute_project">
-        <i class="fi-map attributes-project "></i>
-        <span class="text-project-attributes">{{ response.n_garages }} garaje</span>
-      </div>
-      <div class="cell auto icon_attribute_project">
-        <i class="fi-map attributes-project "></i>
-        <span class="text-project-attributes">{{ response.n_banos }} ba&ntilde;os</span>
-      </div>
-      <div class="cell auto icon_attribute_project">
-        <i class="fi-map attributes-project "></i>
-        <span class="text-project-attributes">{{ response.n_garages }} deposito</span>
-      </div>
-      <div class="cell auto icon_attribute_project">
-        <i class="fi-map attributes-project "></i>
-        <span class="text-project-attributes">sobre planos</span>
-      </div>
-    </div>
-  </section>
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell auto text-center">
-      <hr />
-      <a class="link_load_attributes_project" href="">
-        M&aacute;s caracteristicas del inmueble
-      </a>
-    </div>
   </div>
-  <section>
-    <div class="grid-x grid-padding-x align-stretch">
-      <div class="large-1 flex-child-shrink">&nbsp;</div>
-      <div class="cell large-7">
-        <div class="button-group stacked-for-small">
-          <button class="button primary" href="#">Mapa</button>
-          <button class="button secondary" href="#">Planos</button>
-          <button class="button secondary" href="#">Street view</button>
-        </div>
-        <div>
-          <i class="fi-map">{{ response.direccion }}</i>
-        </div>
-        <div class="responsive-embed">
-          <iframe width="90%" height="315" [src]="maps_url" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="cell large-8">
-          <div class="grid-x grid-padding-x align-stretch">
-            <div class="cell small-12 medium-12 flex-container flex-dir-column">
-              <div class="flex-child-auto">
-                <h5 class="text-left text-bold">Zonas de inter&eacute;s</h5>
-              </div>
-            </div>
-            <div class="cell small-6 medium-4 flex-container flex-dir-column">
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-1" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-1" name="interest-1" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-2" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-2" name="interest-2" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-3" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-3" name="interest-3" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-            </div>
-            <div class="cell small-6 medium-4 flex-container flex-dir-column">
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-4" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-4" name="interest-4" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-5" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-5" name="interest-5" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-6" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-6" name="interest-6" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-            </div>
-            <div class="cell small-12 medium-4 flex-container flex-dir-column">
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-7" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-7" name="interest-7" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-                <label for="interest-8" class="control control-radio">
-                  <i class="fi-shopping-cart">Supermercado</i>
-                  <input id="interest-8" name="interest-8" type="radio" value="">
-                  <div class="control_indicator"></div>
-                </label>
-              </div>
-              <div class="flex-child-shrink cell small-5 large-5 medium-5 control-group">
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class=" cell large-4">
-        <h4 class="">¿Necesitas asesor&iacute;a?</h4>
-        <p class="text-center">D&eacute;janos tus datos para contactarte o agendar una visita:</p>
-        <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" role="tablist"
-          data-tabs-id="form-contact-tabs" id="form-contact-tabs">
-          <li class="tabs-title is-active"><a href="#contactar" aria-selected="true">Contactar</a></li>
-          <li class="tabs-title"><a href="#agendar">Agendar Visita</a></li>
-        </ul>
-        <!--Seccion formulario asesoria-->
-        <div class="tabs-content" data-tabs-content="form-contact-tabs">
-          <div class="tabs-panel is-active" id="contactar">
-            <!--Seccion formulario contacto-->
-            <form data-abide novalidate [formGroup]="form">
-              <div data-abide-error class="alert callout" style="display: none;">
-                <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
-              </div>
-              <div class="grid-container">
-                <div class="grid-x grid-margin-x">
-                  <div class="cell small-12">
-                    <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name"
-                      name="name" required pattern="text">
-                    <span class="form-error">
-                      Debe digitar un nombre de contacto
-                    </span>
-                  </div>
-                  <div class="cell small-12">
-                    <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError"
-                      formControlName="lastname" name="lastnanme" required pattern="text">
-                    <span class="form-error">
-                      Debe digitar un apellido de contacto
-                    </span>
-                  </div>
-                  <div class="cell small-12">
-                    <input type="email" placeholder="Email*" aria-errormessage="emailError" formControlName="email"
-                      name="email" required pattern="email">
-                    <span class="form-error">
-                      Debe digitar un correo de contacto valido
-                    </span>
-                  </div>
-                  <div class="cell small-12">
-                    <input type="tel" placeholder="Tel&eacute;fono*" aria-errormessage="phoneError"
-                      formControlName="phone" name="phone" required>
-                    <span class="form-error">
-                      Debe digitar un n&uacute;mbre de contacto
-                    </span>
-                  </div>
-                  <div class="cell small-12">
-                    <select id="select" required formControlName="contact" name="contact">
-                      <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
-                      <option value="telefono">Tel&eacute;fonica</option>
-                      <option value="email">Correo Electr&oacute;nico</option>
-                      <option value="correo">Correo Postal</option>
-                    </select>
-                    <span class="form-error">
-                      Debe seleccionar un medio de contacto
-                    </span>
-                  </div>
-                  <fieldset class="cell large-12">
-                    <legend>Buscas vivienda para:*.</legend>
-                  </fieldset>
-                  <fieldset class="cell small-5 large-5 medium-5 control-group">
-                    <label for="houseForHabitar" class="control control-radio">
-                      Habitar
-                      <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch" value="habitar"
-                        id="houseForHabitar">
-                      <div class="control_indicator"></div>
-                    </label>
-                  </fieldset>
-                  <fieldset class="cell small-6 large-6 medium-6 control-group">
-                    <label for="houseForInvertir" class="control control-radio">
-                      Invertir
-                      <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch"
-                        value="invertir" id="houseForInvertir">
-                      <div class="control_indicator"></div>
-                    </label>
-                  </fieldset>
-                  <span class="form-error">
-                    Debe elegir el tipo de busqueda
-                  </span>
-                  <fieldset class="cell large-12">
-                    <input id="checkbox1" type="checkbox"><label for="checkbox1" class="small">Declaro haber leido el
-                      <a href="http://" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a> y estar
-                      conforme con el mismo.</label>
-                    <span class="form-error">
-                      Debe aceptor el Aviso de Privacidad
-                    </span>
-                  </fieldset>
-                  <div class="grid-x grid-margin-x">
-                    <fieldset class="cell large-12 align-center">
-                      <button class="button" (click)="onSubmit(form.value)" value="Submit">Enviar</button>
-                      <button class="button" value="Popup" data-open="modalThanks" aria-haspopup="true">popup</button>
-                    </fieldset>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <!--Fin Seccion formulario contacto-->
-          </div>
-          <div class="tabs-panel" id="agendar">
-            <!--Seccion formulario agendar-->
-            <form data-abide novalidate [formGroup]="form2">
-              <div data-abide-error class="alert callout" style="display: none;">
-                <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
-              </div>
-              <div class="grid-container">
-                <div class="grid-x grid-margin-x">
-                  <div class="cell small-12">
-                    <h6 class="text-center">Agendar Visita</h6>
-                    <p class="text-left">Programa la fecha y la jornada en la que deseas visitar y conocer el proyecto
-                    </p>
-                  </div>
-                  <div class="cell small-6 align-stretch">
-                    <div class="flex-child-shrink minus-agenda">
-                      <span onclick="delDayDate()">&lt;</span>
-                    </div>
-                    <div class=" flex-child-shrink">
-                      <time class="date-as-calendar position-pixels">
-                        <span class="labelMonthAgenda" id="MonthAgendaLabel"></span>
-                        <span class="labelDayStringAgenda text-justify" id="DayAgenda"></span>
-                        <span class="labelDayAgenda" id="DayAgendaLabel"></span>
-                      </time>
-                      <input type="hidden" id="dateAgenda" name="dateAgenda" formControlName="dateAgenda">
-                    </div>
-                    <div class=" flex-child-shrink plus-agenda">
-                      <span onclick="addDayDate()">&gt;</span>
-                    </div>
-                  </div>
-                  <div class="cell small-6">
-                    <div class="control-group">
-                      <label for="journalMorning" class="control control-radio">
-                        Ma&ntilde;ana
-                        <input type="radio" name="journalOption" formControlName="journalOption" value="morning"
-                          id="journalMorning">
-                        <div class="control_indicator"></div>
-                      </label>
-                    </div>
-                    <fieldset class="cell large-12">
-                      <label for="journalAfternoon" class="control control-radio">
-                        Tarde
-                        <input type="radio" name="journalOption" formControlName="journalOption" value="afternoon"
-                          id="journalAfternoon">
-                        <div class="control_indicator"></div>
-                      </label>
-                      <span class="form-error">
-                        Debe elegir el tipo de jornada
-                      </span>
-                    </fieldset>
-                  </div>
-                  <div class="cell small-12 container-date-agenda">
-                    <div class="grid-x grid-padding-x align-stretch">
-                      <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
-                          value="invertir" id="horario1">
-                        <label class="label_item" for="horario1">
-                          <div class="date-agenda-option text-bold text-center">
-                            <time>08:00 AM</time>
-                          </div>
-                        </label>
-                      </div>
-                      <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
-                          value="invertir" id="horario2">
-                        <label class="label_item" for="horario2">
-                          <div class="date-agenda-option text-bold text-center">
-                            <time>09:00 AM</time>
-                          </div>
-                        </label>
-                      </div>
-                      <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
-                          value="invertir" id="horario3">
-                        <label class="label_item" for="horario3">
-                          <div class="date-agenda-option text-bold text-center">
-                            <time>10:00 AM</time>
-                          </div>
-                        </label>
-                      </div>
-                      <div class="large-3 flex-child-shrink">
-                        <input type="radio" class="radio_item" name="house_for" formControlName="house_for"
-                          value="invertir" id="horario4">
-                        <label class="label_item" for="horario4">
-                          <div class="date-agenda-option text-bold text-center">
-                            <time>11:00 AM</time>
-                          </div>
-                        </label>
-                      </div>
-                      <span class="form-error">
-                        Debe seleccionar un horario
-                      </span>
-                    </div>
-                  </div>
-                  <div class="cell small-12">
-                    <input type="text" name="name" formControlName="name" placeholder="Nombre*"
-                      aria-errormessage="nameError" required pattern="text">
-                    <span class="form-error">
-                      Debe digitar un nombre de contacto
-                    </span>
-                  </div>
-                  <div class="cell small-12">
-                    <input type="email" name="email" formControlName="email" placeholder="Email*"
-                      aria-errormessage="emailError" required pattern="email">
-                    <span class="form-error">
-                      Debe digitar un correo de contacto valido
-                    </span>
-                  </div>
-                  <div class="cell small-12">
-                    <input type="tel" name="phone" formControlName="phone" placeholder="Tel&eacute;fono*"
-                      aria-errormessage="phoneError" required>
-                    <span class="form-error">
-                      Debe digitar un n&uacute;mbre de contacto
-                    </span>
-                  </div>
-                  <fieldset class="cell large-12">
-                    <input id="checkbox1" type="checkbox"><label for="checkbox1" class="small">Declaro haber leido
-                      el
-                      <a href="http://" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a> y estar
-                      conforme con el mismo.</label>
-                    <span class="form-error">
-                      Debe aceptor el Aviso de Privacidad
-                    </span>
-                  </fieldset>
-                  <div class="grid-x grid-margin-x">
-                    <fieldset class="cell large-12 align-center">
-                        <button class="button" type="submit" (click)="onSubmitDates(form2.value)" value="Submit">Enviar</button>
-                    </fieldset>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <!--Fin Seccion formulario agendar-->
-          </div>
-        </div>
-        <!--Fin Seccion formulario asesoria-->
-      </div>
-
-    </div>
-  </section>
 </div>
-<section>
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell large-12">
-      <h4 class="text-center">Otras &aacute;reas disponibles</h4>
-    </div>
-    <div class="cell large-2"></div>
-    <div class="cell large-8">
-      <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-        <!-- Card Proyecto individual-->
-        <div class="cell shrink" *ngFor="let relacionado of response.relacionados; let i = index">
-          <div class="card">
-            <div class="overlap-container">
-              <img class="project-images-card" [src]="relacionado.url_img">
-              <!-- <div class="card-section-over">
-                <div class="cell ">
-                  <a class="align-bookmark-project" href="">
-                    <i class="fi-heart large icon-topbar-style"></i>
-                  </a>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.medida_apartamento }} m<sup>2</sup>
-                    <span class="badge alert-info-project">!</span>
-                  </span>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.n_garages }}
-                  </span>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.n_habitaciones }}
-                  </span>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.n_banos }}
-                  </span>
-                </div>
-              </div> -->
-            </div>
-            <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
-            </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                {{ relacionado.direccion }}
-              </h6>
-              <p>
-                <small>
-                  {{ relacionado.sub_titulo }}
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">
-                  {{ relacionado.valor_venta | number }}</span>
-              </p>
-              <hr />
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{relacionado.titulo}}">Ver Proyecto</a>
-                <!-- <a class="button">Ver Proyecto</a> -->
-                <a class="button">Contacto</a>
-              </div>
-            </div>
+<hr class="white">
+<!--slide-->
+<div class="row columns">
+  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+      <div class="orbit-wrapper">
+
+          <ul class="orbit-container">
+              <li class="is-active orbit-slide">
+                  <div class="row">
+                      <div class="medium-6 columns destacado">
+                          <figure class="orbit-figure">
+                              <img class="orbit-image" [src]="dataPath + galeria[0]" alt="">
+                          </figure>
+                      </div>
+                      <div class="medium-6 columns">
+                          <div class="row">
+                              <div class="medium-6 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[1]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-6 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[2]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-6 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[3]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-6 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[4]" alt="">
+                                  </figure>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+              <li class="is-active orbit-slide">
+                  <div class="row">
+                      <div class="medium-12 columns">
+                          <div class="row">
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[5]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[6]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[7]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[8]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[9]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[10]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[11]" alt="">
+                                  </figure>
+                              </div>
+                              <div class="medium-3 columns">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" [src]="dataPath + galeria[12]" alt="">
+                                  </figure>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div class="container-controls">
+          <nav class="orbit-bullets">
+              <button class="is-active" data-slide="0">
+                  <span class="show-for-sr">First slide details.</span>
+                  <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+              </button>
+              <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+          </nav>
+          <div class="orbit-controls">
+              <button class="orbit-previous"><span class="show-for-sr">Previous
+                      Slide</span>&#9664;&#xFE0E;</button>
+              <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
           </div>
-        </div>
-        <!-- Fin Card Proyecto individual-->
       </div>
-    </div>
-    <div class="cell large-2"></div>
   </div>
-</section>
-<section>
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell medium-12">
-      <h4 class="text-center">Caracteristicas del proyecto</h4>
-    </div>
-    <div class="cell large-2"></div>
-    <div class="cell large-8">
-      <div class="grid-x grid-padding-x align-stretch small-up-2 medium-up-4">
-        <div class="flex-child-shrink cell medium-4 auto icon_attribute_project"
-          *ngFor="let adicional of response.adicionales; let i = index">
-          <i class="fi-map attributes-project attributes-project"></i>
-          <span class="text-project-attributes">{{ adicional.nombre }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="cell large-2"></div>
-  </div>
-</section>
-<section>
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell large-12">
-      <h4 class="text-center">!Utiliza nuestros simuladores¡</h4>
-    </div>
-    <div class="cell large-12">
-      <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" role="tablist"
-        data-tabs-id="form-contact-tabs" id="form-contact-tabs">
-        <li class="tabs-title is-active"><a href="#simulator-home-benefit" aria-selected="true">Simulador Subsidio de
-            Vivienda</a></li>
-        <li class="tabs-title"><a href="#simulator-initial-fee">Simulador Cuota Inicial</a></li>
-        <li class="tabs-title"><a href="#simulator-borrowing-capacity">Simulador Capacidad de Endeudamiento</a></li>
-        <li class="tabs-title"><a href="#simulator-home-credit">Simulador Credito para Vivienda</a></li>
-      </ul>
-      <!--Seccion formulario asesoria-->
-      <div class="tabs-content" data-tabs-content="form-contact-tabs">
-        <div class="tabs-panel is-active" id="simulator-home-benefit">
-          <!--Seccion formulario contacto-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-4">
-                <label class="text-center" for="">
-                  Cuent&aacute;nos cuelaes son tus ingresos mensuales:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <hr>
-                <label class="text-center" for="">
-                  Cuales son los ingresos de la persona con la que solicitara
-                  el subsidio de vivienda (opcional)
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <hr>
-                <label class="text-center" for="">
-                  Los ingresos totales son:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  departamento, ciudad o municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    Con el total de ingresos puedes obtener un subsidio por:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>20</span>
-                  <br>
-                  <span>Salarios minimos legales vigentes</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <span>
-                    Equivalentes a:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>20</span>
-                  <br>
-                  <span>Salarios minimos legales vigentes</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">M&aacute;s infromaci&oacute;n</button>
-                </div>
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario contacto-->
-        </div>
-        <div class="tabs-panel" id="simulator-initial-fee">
-          <!--Seccion formulario agendar-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-up-4">
-                <label class="text-center" for="">
-                  Los ingresos mensuales:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  Departamento, Ciudad o Municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    Seg&uacute;n tus ingresos mensuales, podr&iacute;as recibir un prestamo por:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 350.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <span>
-                    Podr&iacute;s comprar una vivienda de:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 500.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">Ver proyectos afines</button>
-                </div>
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario agendar-->
-        </div>
-        <div class="tabs-panel" id="simulator-borrowing-capacity">
-          <!--Seccion formulario agendar-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-up-4">
-                <label class="text-center" for="">
-                  Los ingresos mensuales:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  Departamento, Ciudad o Municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    Seg&uacute;n tus ingresos mensuales, podr&iacute;as recibir un prestamo por:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 350.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <span>
-                    Podr&iacute;s comprar una vivienda de:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 500.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">Ver proyectos afines</button>
-                </div>
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario agendar-->
-        </div>
-        <div class="tabs-panel" id="simulator-home-credit">
-          <!--Seccion formulario agendar-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-2">
-              </div>
-              <div class="flex-child-shrink cell medium-up-4">
-                <label class="text-center" for="">
-                  Valor de la vivienda a financiar:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <hr>
-                <label class="text-center" for="">
-                  Plazo de financiamiento
-                </label>
-                <input type="range" min="1" max="100" step="1" id="range-financing-term">
-                <hr>
-                <label class="text-center" for="">
-                  Escoger una de las dos opciones:
-                </label>
-                <div class="button-group align-spaced">
-                  <button class="button search_button">Cr&eacute;dito Hipotecario</button>
-                  <button class="button">Leasing Habitacional</button>
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  Departamento, Ciudad o Municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    C&aacute;lculo aproximado para poder adquirir tu vivienda:
-                  </span>
-                </div>
-                <div class="grid-x grid-padding-x align-stretch medium-up-2">
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>350.000.000</span>
-                    <br>
-                    <span>Monto pr&eacute;stamo</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>150.000.000</span>
-                    <br>
-                    <span>Cuota Inicial 30%</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>16.338.047</span>
-                    <br>
-                    <span>Ingresos m&iacute;nimos mensuales</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>120</span>
-                    <br>
-                    <span>Plazo en meses</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>11.65%</span>
-                    <br>
-                    <span>Tasa de inter&eacute;s</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>4.950.923</span>
-                    <br>
-                    <span>Cuota Mensual</span>
-                  </div>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">Ver proyectos afines</button>
-                </div>
-                <div class="flex-child-shrink cell medium-2">
-                </div>
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario agendar-->
-        </div>
-      </div>
-      <!--Fin Seccion formulario asesoria-->
-    </div>
-  </div>
-</section>
-<section>
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell large-12">
-      <h4 class="text-center">Proyectos Similares</h4>
-    </div>
-    <div class="cell large-2"></div>
-    <div class="cell large-8">
-      <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-        <!-- Card Proyecto individual-->
-        <div class="cell shrink" *ngFor="let relacionado of response.relacionados; let i = index">
-          <div class="card">
-            <div class="overlap-container">
-              <img class="project-images-card" [src]="relacionado.url_img">
-              <!-- <div class="card-section-over">
-                <div class="cell ">
-                  <a class="align-bookmark-project" href="">
-                    <i class="fi-heart large icon-topbar-style"></i>
-                  </a>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.medida_apartamento }} m<sup>2</sup>
-                    <span class="badge alert-info-project">!</span>
-                  </span>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.n_garages }}
-                  </span>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.n_habitaciones }}
-                  </span>
-                </div>
-                <div class="cell">
-                  <i class="fi-heart large icon-topbar-style"></i>
-                  <span class="text-info-project-card">
-                    {{ relacionado.n_banos }}
-                  </span>
-                </div>
-              </div> -->
-            </div>
-            <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
-            </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                {{ relacionado.direccion }}
-              </h6>
-              <p>
-                <small>
-                  {{ relacionado.sub_titulo }}
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">
-                  {{ relacionado.valor_venta | number }}</span>
-              </p>
-              <hr />
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{relacionado.titulo}}">Ver Proyecto</a>
-                <!-- <a class="button">Ver Proyecto</a> -->
-                <a class="button">Contacto</a>
-              </div>
-            </div>
+</div>
+<!--fin slide-->
+<div class="row columns">
+  <div class="features">
+      <div class="small-6 medium-2 columns">
+          <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+              <div class="data">{{ response.medida_apartamento }}m área constuida</div>
           </div>
-        </div>
-        <!-- Fin Card Proyecto individual-->
       </div>
+      <div class="small-6 medium-2 columns">
+          <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+              <div class="data">{{ response.n_habitaciones }} Habitaciones</div>
+          </div>
+      </div>
+      <div class="small-6 medium-2 columns">
+          <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+              <div class="data">{{ response.n_garages }} Garages</div>
+          </div>
+      </div>
+      <div class="small-6 medium-2 columns">
+        <div class="item-big">
+            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+            <div class="data">{{ response.medida_apartamento }}m área constuida</div>
+        </div>
     </div>
-    <div class="cell large-2"></div>
+    <div class="small-6 medium-2 columns">
+        <div class="item-big">
+            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+            <div class="data">{{ response.n_habitaciones }} Habitaciones</div>
+        </div>
+    </div>
+    <div class="small-6 medium-2 columns">
+        <div class="item-big">
+            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+            <div class="data">{{ response.n_garages }} Garages</div>
+        </div>
+    </div>
   </div>
-</section>
-<section>
-  <div class="grid-x grid-padding-x align-stretch callout secondary">
-    <div class="cell large-12">
-      <h4 class="text-center">Compara con otras viviendas</h4>
-    </div>
-    <div class="cell large-12 text-center">
-      <p>Compara con otras viviendas para elegir la que mas te convenga.</p>
-    </div>
-    <div class="cell large-12 text-center">
-      <button class="button primary">Comparar</button>
-    </div>
+</div>
+<hr class="white">
+<!--fin features-->
+<!--mas caracteristicas-->
+<div class="row columns">
+  <ul class="accordion" data-accordion data-allow-all-closed="true">
+      <li class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
+          <div class="accordion-content" data-tab-content>
+              <div class="row">
+                  <div class="medium-3 columns end" *ngFor="let adicionales of response.adicionales; let i = index">
+                      <div class="feature"><span><img src="/assets/images/feature.png" alt=""></span>{{ adicionales.nombre }}</div>
+                  </div>
+              </div>
+          </div>
+      </li>
+  </ul>
+</div>
+<!--  -->
+<div class="row columns">
+  <div class="medium-8 columns">
+      <div class="mapa">
+          <div class="nav-tabs">
+              <a href="#" class="button active">Mapa</a>
+              <a href="#" class="button ">Planos</a>
+              <a href="#" class="button ">Street view</a>
+          </div>
+          <div class="direccion">
+              <img src="/assets/images/map.png" alt=""> {{ response.direccion }},  Bogotá
+          </div>
+          <iframe
+              [src]="maps_url"
+              width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+              tabindex="0">
+          </iframe>
+      </div>
+      <hr class="white">
+      <div class="row columns">
+          <h2>Zonas de interés</h2>
+          <div class="small-6 medium-4 columns end zona">
+              <div class="row">
+                  <div class="small-8 columns">
+                      <input id="checkbox1" type="checkbox"><label for="right-label"
+                          class="text-left">Supermercados</label>
+                  </div>
+                  <div class="small-4 columns">
+                      <img src="/assets/images/supermercado.png" alt="">
+                  </div>
+              </div>
+          </div>
+          <div class="small-6 medium-4 columns end zona">
+              <div class="row">
+                  <div class="small-8 columns">
+                      <input id="checkbox1" type="checkbox"><label for="right-label"
+                          class="text-left">Supermercados</label>
+                  </div>
+                  <div class="small-4 columns">
+                      <img src="/assets/images/supermercado.png" alt="">
+                  </div>
+              </div>
+          </div>
+
+          <div class="small-6 medium-4 columns end zona">
+              <div class="row">
+                  <div class="small-8 columns">
+                      <input id="checkbox1" type="checkbox"><label for="right-label"
+                          class="text-left">Supermercados</label>
+                  </div>
+                  <div class="small-4 columns">
+                      <img src="/assets/images/supermercado.png" alt="">
+                  </div>
+              </div>
+          </div>
+
+          <div class="small-6 medium-4 columns end zona">
+              <div class="row">
+                  <div class="small-8 columns">
+                      <input id="checkbox1" type="checkbox"><label for="right-label"
+                          class="text-left">Supermercados</label>
+                  </div>
+                  <div class="small-4 columns">
+                      <img src="/assets/images/supermercado.png" alt="">
+                  </div>
+              </div>
+          </div>
+
+
+      </div>
   </div>
-</section>
-<div class="tiny reveal text-center container-modal" id="modalThanks" role="dialog" tabindex="-1">
-  <p>!Gracias¡</p>
-  <p>Pronto te llegar&aacute; toda la informaci&oacute;n a tu correo</p>
-  <button class="close-button" data-close="" aria-label="Close reveal" type="button">
-    <span aria-hidden="true">×</span>
-  </button>
+  <div class="medium-4 columns text-center">
+      <h2 class="deco">¿Necesitas asesoría?</h2>
+      <p>Déjanos tus datos para contactarte o agendar una visita.</p>
+      <form data-abide novalidate [formGroup]="form">
+        <div class="formulario">
+            <div data-abide-error class="alert callout" style="display: none;">
+              <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
+            </div>
+            <ul class="tabs" data-tabs id="contacto">
+                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Contacto</a></li>
+                <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Agendar visita</a></li>
+            </ul>
+            <div class="tabs-content" data-tabs-content="contacto">
+                <div class="tabs-panel is-active" id="panel1">
+                    <div class="container-form">
+                        <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name"
+                        name="name" required pattern="text">
+                        <span class="form-error">
+                          Debe digitar un nombre de contacto
+                        </span>
+                        <input type="text" placeholder="Apellido" aria-errormessage="lastnameError"
+                        formControlName="lastname" name="lastnanme" required pattern="text">
+                        <span class="form-error">
+                          Debe digitar un apellido de contacto
+                        </span>
+                        <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email"
+                        name="email" required pattern="email">
+                        <span class="form-error">
+                          Debe digitar un correo de contacto valido
+                        </span>
+                        <input type="text" placeholder="Teléfono" aria-errormessage="phoneError"
+                        formControlName="phone" name="phone" required>
+                        <span class="form-error">
+                          Debe digitar un n&uacute;mbre de contacto
+                        </span>
+                        <select id="select" required formControlName="contact" name="contact">
+                          <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                          <option value="telefono">Tel&eacute;fonica</option>
+                          <option value="email">Correo Electr&oacute;nico</option>
+                          <option value="correo">Correo Postal</option>
+                        </select>
+                        <fieldset class="text-left">
+                            <legend>Buscas vivienda para:</legend>
+                            <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch" value="habitar"
+                            id="houseForHabitar"><label for="">Habitar</label>
+                            <input type="radio" name="houseFor" formControlName="typeSearch" name="typeSearch"
+                            value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+                        </fieldset>
+                        <div class="text-left terminos">
+                            <input id="checkbox1" type="checkbox"><label for="right-label" class="text-left">Declaro
+                                haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los
+                                mismos.</label>
+                        </div>
+                        <a href="" class="button secondary expanded" (click)="onSubmit(form.value)">Enviar</a>
+                    </div>
+                </div>
+                <div class="tabs-panel" id="panel2">
+                    <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut
+                        in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor
+                        neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                </div>
+            </div>
+        </div>
+      </form>
+      <div class="row columns">
+          <div class="container-constructora">
+              <div class="small-3 columns">
+                  <img src="/assets/images/content/constructora.jpg" alt="">
+              </div>
+              <div class="small-9 columns text-center">
+                  <h3>Atención en sala de ventas</h3>
+                  <p>Lunes a viernes: 7am a 5pm</p>
+                  <p>Sabados y domingos: 9am a 5 pm</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<hr class="white">
+<div class="row columns">
+  <h2 class="deco text-center">Otras áreas disponibles</h2>
+  <div class="medium-4 columns" *ngFor="let relacionados of response.relacionados; let i = index">
+      <div class="card">
+          <div class="container-photo">
+              <a href="#" class=""><img [src]="relacionados.url_img" alt="" class="proyecto"></a>
+              <div class="container-tools">
+                  <div class="tags">
+                      <div class="tag"><a href="#">VIS</a></div>
+                      <div class="tag"><a href="#">Mi casa ya</a></div>
+                  </div>
+                  <div class="add">
+                      <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                  </div>
+              </div>
+          </div>
+          <div class="card-section">
+              <h2>{{ relacionados.direccion }}</h2>
+              <div class="descripcion">
+                  {{ relacionados.sub_titulo }}
+              </div>
+              <div class="precio text-center">
+                  <div>Desde:</div>
+                  <span>{{ relacionados.valor_venta | number }}</span>
+              </div>
+              <hr>
+          </div>
+          <div class="card-section">
+              <div class="row">
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                          <div class="data"> {{relacionados.medida_apartamento}}m</div>
+                      </div>
+                  </div>
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                          <div class="data"> {{relacionados.n_habitaciones}} alcobas</div>
+                      </div>
+                  </div>
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                          <div class="data"> {{relacionados.n_garages}} garajes</div>
+                      </div>
+                  </div>
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                          <div class="data"> {{relacionados.n_banos}} baños</div>
+                      </div>
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button" routerLink="/proyecto/{{relacionados.titulo}}">Ver
+                    Proyecto</a>
+                  <a class="button">Contacto</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<hr class="white">
+<div class="row columns">
+  <h2 class="deco text-center">Características del proyecto</h2>
+  <div class="medium-3 columns end">
+      <div class="caracteristica">
+          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
+      </div>
+  </div>
+  <div class="medium-3 columns end">
+      <div class="caracteristica">
+          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
+      </div>
+  </div>
+  <div class="medium-3 columns end">
+      <div class="caracteristica">
+          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
+      </div>
+  </div>
+  <div class="medium-3 columns end">
+      <div class="caracteristica">
+          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
+      </div>
+  </div>
+</div>
+<hr class="white">
+<hr class="white">
+<div class="container-gray">
+  <div class="row columns text-center">
+      <div class="subtitle">¿Quieres calcular?</div>
+      <h2 class="deco">Utiliza nuestros simuladores</h2>
+  </div>
+  <div class="row columns">
+      <div class="medium-8 medium-offset-2 columns">
+          <div class="row valores">
+              <div class="medium-4 columns text-center">
+                  <div class="dato">Couta inicial</div>
+                  <div class="valor">30%</div>
+              </div>
+              <div class="medium-4 columns text-center">
+                  <div class="dato">Separación</div>
+                  <div class="valor">$5.000.000</div>
+              </div>
+              <div class="medium-4 columns text-center">
+                  <div class="dato">Banco</div>
+                  <div class="valor">Davivienda</div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--simuladores-->
+  <div class="row columns">
+      <div class="simuladores">
+          <ul class="tabs" data-tabs id="simuladores">
+              <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Simulador cuota inicial</a></li>
+              <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Simulador subsidio de vivienda</a>
+              </li>
+              <li class="tabs-title"><a data-tabs-target="panel3" href="#panel3">Simulador capacidad endeudamiento</a>
+              </li>
+              <li class="tabs-title"><a data-tabs-target="panel4" href="#panel4">Simulador credito de vivienda</a>
+              </li>
+          </ul>
+          <div class="tabs-content" data-tabs-content="simuladores">
+              <div class="tabs-panel is-active" id="panel1">
+                  <div class="container-form">
+                      <div class="row">
+                          <div class="medium-4 columns text-center">
+                              <p> Si cuentas con ahorros para la cuota inicial, ingresa el valor</p>
+                              <div class="input-group">
+                                  <span class="input-group-label">$</span>
+                                  <input class="input-group-field" type="number">
+                              </div>
+                              <hr>
+                              <p> Si deseas incluir primas, ingresa el valor</p>
+                              <div class="input-group">
+                                  <span class="input-group-label">$</span>
+                                  <input class="input-group-field" type="number">
+                              </div>
+                              <hr>
+                              <p>Escoje una de las dos opciones:</p>
+                              <fieldset>
+                                  <input type="radio" name="" value="" id="" required><label for="">Crédito
+                                      hipotecario</label>
+                                  <input type="radio" name="" value="" id=""><label for="">Leasing
+                                      habitacional</label>
+                              </fieldset>
+                          </div>
+                          <div class="medium-4 columns text-center">
+                              <p> Fecha estimada de entrega</p>
+                              <input type="text" placeholder="MM - AAAA">
+                              <hr>
+                              <p> Plazo actual para cuota inicial</p>
+                              <input type="text" placeholder="No. meses">
+
+                          </div>
+                          <div class="medium-4 columns text-center">
+                              <p> Simulación</p>
+                          </div>
+                          <div class="medium-12 columns text-center">
+                              <a href="#" class="button secondary ">Simular</a>
+
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="tabs-panel" id="panel2">
+                  <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut
+                      in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor
+                      neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--fin simuladores-->
+</div>
+<hr class="white">
+<div class="row columns">
+  <div class="medium-12 columns text-center">
+      <a href="#" class="button  ">Otros proyectos de la constructora</a>
+  </div>
+</div>
+<hr class="white">
+<div class="row columns">
+  <hr class="white">
+  <h2 class="deco text-center">Propiedades similares</h2>
+  <!--slide-->
+  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+      <div class="orbit-wrapper">
+
+          <ul class="orbit-container">
+              <li class="is-active orbit-slide">
+                  <div class="row">
+                      <div class="medium-4 columns end" *ngFor="let propiedades of response.otras_propiedades; let i = index">
+                          <!-- Card Proyecto individual-->
+                          <div class="card">
+                              <div class="container-photo">
+                                  <img [src]="propiedades.url_img" alt="" class="proyecto">
+                                  <div class="container-tools">
+                                      <div class="tags">
+                                          <div class="tag"><a href="#">VIS</a></div>
+                                          <div class="tag"><a href="#">Mi casa ya</a></div>
+                                      </div>
+                                      <div class="add">
+                                          <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-section">
+                                  <h2>{{ propiedades.direccion }}</h2>
+                                  <div class="descripcion">
+                                      {{ propiedades.sub_titulo }}
+                                  </div>
+                                  <div class="precio text-center">
+                                      <div>Desde:</div>
+                                      <span>{{ propiedades.valor_venta | number }}</span>
+                                  </div>
+                                  <hr>
+                              </div>
+                              <div class="card-section">
+                                  <div class="row">
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
+                                              </div>
+                                              <div class="data"> {{propiedades.medida_apartamento}} m</div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
+                                              </div>
+                                              <div class="data"> {{propiedades.n_habitaciones}} alcobas</div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
+                                              </div>
+                                              <div class="data"> {{propiedades.n_garages}} garajes</div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt="">
+                                              </div>
+                                              <div class="data"> {{propiedades.n_banos}} baños</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr>
+                              </div>
+                              <div class="card-section">
+                                  <div class="button-group align-spaced ">
+                                      <a class="button" routerLink="/proyecto/{{propiedades.titulo}}">Ver
+                                          Proyecto</a>
+                                      <a class="button">Contacto</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Fin Card Proyecto individual-->
+                      </div>
+                  </div>
+              </li>
+
+          </ul>
+      </div>
+      <div class="container-controls">
+          <nav class="orbit-bullets">
+              <button class="is-active" data-slide="0">
+                  <span class="show-for-sr">First slide details.</span>
+                  <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+              </button>
+              <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+          </nav>
+          <div class="orbit-controls">
+              <button class="orbit-previous"><span class="show-for-sr">Previous
+                      Slide</span>&#9664;&#xFE0E;</button>
+              <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+          </div>
+      </div>
+  </div>
+  <!--fin slide-->
+</div>
+<div class="row columns text-center">
+  <div class="medium-6 medium-offset-3 columns">
+      <a href="#">
+          <div class="comparador-btn-2">
+              <div class="container-comparador">
+                  <h2 class="deco">Compara con otras viviendas</h2>
+                  <div class="subtitle mb1">Compara con otras viviendas para elegir la que mas te convenga</div>
+                  <div class="text-center"><a href="comparador.php" class="button ">Comparar</a></div>
+              </div>
+          </div>
+      </a>
+  </div>
 </div>

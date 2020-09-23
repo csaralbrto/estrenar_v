@@ -1,249 +1,274 @@
-<div class="grid-x grid-padding-x">
-  <div class="cell small-2 medium-2 large-2"></div>
-  <div class="cell small-8 medium-8 large-8">
-    <h2 class="" title="" aria-label="">Blog</h2>
-  </div>
-  <div class="cell small-2 medium-2 large-2"></div>
-  <div class="cell small-12 medium-12 large-12">
-    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-      <div class="orbit-wrapper">
-        <div class="orbit-controls">
-          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-        </div>
-        <ul class="orbit-container">
-          <li class="is-active orbit-slide">
-            <figure class="orbit-figure">
-              <img class="orbit-image" [src]="responseNewExperience[0].article_image" alt="Space">
-              <figcaption class="orbit-caption">{{responseNewExperience[0].title}}</figcaption>
-            </figure>
-          </li>
-          <li class="orbit-slide">
-            <figure class="orbit-figure">
-              <img class="orbit-image" [src]="responseNewExperience[1].article_image" alt="Space">
-              <figcaption class="orbit-caption">{{responseNewExperience[1].title}}</figcaption>
-            </figure>
-          </li>
-          <li class="orbit-slide">
-            <figure class="orbit-figure">
-              <img class="orbit-image" [src]="responseNewExperience[2].article_image" alt="Space">
-              <figcaption class="orbit-caption">{{responseNewExperience[2].title}}</figcaption>
-            </figure>
-          </li>
-          <li class="orbit-slide">
-            <figure class="orbit-figure">
-              <img class="orbit-image" [src]="responseNewExperience[3].article_image" alt="Space">
-              <figcaption class="orbit-caption">{{responseNewExperience[3].title}}</figcaption>
-            </figure>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="grid-x cell small-2 medium-2 large-2"></div>
-  <div class="grid-x cell small-6 medium-6 large-6">
-    <div class="cell small-12 medium-12 large-12">
-      <i class="smallIcon"></i>
-      <h4>Lo m&aacute;s le&iacute;do</h4>
-    </div>
-    <div class="cell small-6 medium-6 large-6">
-      <!-- Card Blog individual-->
-      <div class="cell shrink" *ngFor="let mostRead of responseMostRead; let i = index"> 
-        <div class="card">
-          <img class="project-images-card" [src]="mostRead.article_image">
-          <div class="card-section">
-            <span class="label secondary">
-              <a routerLink="/blog/{{mostRead.uuid + dataArticle}}">{{ mostRead.article_type }}</a>
-            </span>
-          </div>
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              {{ mostRead.title }}
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis
-                velit soluta quae corporis, similique est praesentium tenetur, nisi, deserunt laudantium neque totam
-                dolorem cupiditate quibusdam id.
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">{{ mostRead.changed }}</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <i class="smallIcon"></i>
-      <h4>La Experiencia de Estrenar</h4>
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <div class="overlay-container">
-        <img [src]="responseNewExperience[0].article_image" />
-        <div class="overlay">
-          <span>{{ responseNewExperience[0].title }}</span>
-          <i class="fi-address-book"></i>
-          <span>{{ responseNewExperience[0].user_name || responseNewExperience[0].changed }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="grid-x cell small-12 medium-12 large-12 small-up-1 large-up-3 medium-up-3 ">
-      <!-- Card Blog individual-->
-      <div class="cell shrink" *ngFor="let newExperience of responseNewExperience; let i = index">
-        <div class="card" *ngIf="i >= 1">
-          <img class="project-images-card" [src]="newExperience.article_image">
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              {{ newExperience.title }}
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis1
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">{{ newExperience.changed }}</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-    </div>
-
-    <div class="cell small-12 medium-12 large-12">
-      <i class="smallIcon"></i>
-      <h4>Nuestro lado eco</h4>
-    </div>
-    <div class="grid-x cell small-12 medium-12 large-12 small-up-1 large-up-2 medium-up-2 ">
-      <!-- Card Blog individual-->
-      <div class="cell shrink" *ngFor="let news of responseNews; let i = index">
-        <div class="card">
-          <img class="project-images-card" [src]="news.article_image">
-          <div class="card-section body-card-project">
-            <h6 class="text-capitalize text-justify">
-              {{ news.title }}
-            </h6>
-            <p>
-              <small>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et porro repudiandae blanditiis officiis1
-              </small>
-            </p>
-          </div>
-          <div class="card-section">
-            <span class="dateLabel">{{ news.changed }}</span>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Blog individual-->
-    </div>
-  </div>
-  <div class="grid-x cell small-4 medium-4 large-4 align-stretch">
-    <div class="cell small-12 medium-12 large-12 shrink">
-      <h4>Recomendados</h4>
-      <div class="cell small-12 medium-12 large-12 shrink" *ngFor="let recommend of responseRecommend; let i = index">
-        <p>{{ recommend.title }}</p>
-        <span class="dateLabel">{{ recommend.changed }}</span>
-      </div>
-      <!-- <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div> -->
-      <div class="cell small-12 medium-12 large-12 text-center ">
-        <div class="image-container-blog-lateral">
-          <img src="https://placehold.it/250x280/?text=Card-1" alt="">
-          <div class="container-info-blog-lateral">
-            <p>Quiero recibir ayuda <br>para buscar vivienda</p>
-            <button class="button search_button">Quiero asesor&iacute;a</button>
-          </div>
-        </div>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <h4>Noticias del Sector</h4>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink" *ngFor="let news of responseNews; let i = index">
-        <p>{{ news.title }}</p>
-        <span class="dateLabel">{{ news.changed }}</span>
-      </div>
-      <!-- <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12 shrink">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, veniam quia? Quidem, unde et alias eius</p>
-        <span class="dateLabel">04.12.2019</span>
-      </div> -->
-    </div>
-  </div>
-  <div class="cell small-2 medium-2 large-2"></div>
-  <div class="grid-x cell small-8 medium-8 large-8 text-center primary">
-    <div class="cell small-12 medium-12 large-12">
-      <h5>Suscr&iacute;bete a nuestro bolet&iacute;n</h5>
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <hr class="logoMinDivider">
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <p>Suscr&iacute;bete a nuestro bolet&iacute;n y recibe nuestros &uacute;ltimos contenidos</p>
-    </div>
-    <div class="cell small-10 medium-10 large-10">
-      <input type="text" name="" id="">
-    </div>
-    <div class="cell small-2 medium-2 large-2">
-      <button class="button search_button">Suscribirse</button>
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <input type="checkbox" name="" id="">
-      <label for="">Declaro haber leido el
-        <a href="http://" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a> y estar
-        conforme con el mismo.</label>
-    </div>
-  </div>
-  <div class="cell small-2 medium-2 large-2"></div>
+<div class="row columns">
+  <h1>Blog</h1>
 </div>
+<div class="row columns">
+  <div class="medium-10 medium-offset-1 columns">
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+          <div class="orbit-wrapper">
+              <ul class="orbit-container">
+                  <li class="is-active orbit-slide">
+                      <figure class="orbit-figure">
+                          <a href="#"><img class="orbit-image" [src]="responseNewExperience[0].article_image" alt=""></a>
+                          <figcaption class="orbit-caption blog">
+                              <div class="section"><a routerLink="/blog/{{responseNewExperience[0].uuid + dataArticle}}">{{ responseNewExperience[0].article_type }}</a></div>
+                              <h2><a routerLink="/blog/{{responseNewExperience[0].uuid + dataArticle}}">{{responseNewExperience[0].title}}</a></h2>
+                              <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience[0].user_name}}</span>{{ responseNewExperience[0].changed }}</div>
+                          </figcaption>
+                      </figure>
+                  </li>
+              </ul>
+          </div>
+          <div class="container-controls">
+              <nav class="orbit-bullets">
+                  <button class="is-active" data-slide="0">
+                      <span class="show-for-sr">First slide details.</span>
+                      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                  </button>
+                  <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+              </nav>
+              <div class="orbit-controls">
+                  <button class="orbit-previous"><span class="show-for-sr">Previous
+                          Slide</span>&#9664;&#xFE0E;</button>
+                  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<hr class="white">
+<div class="row columns">
+  <div class="medium-8 columns">
+      <div class="container-blog">
+          <h2 class="deco-wide">Lo más leido</h2>
+          <div class="row">
+              <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead; let i = index">
+                  <div class="blog-list">
+                      <div class="img">
+                          <img [src]="mostRead.article_image" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
 
-<div class="grid-x cell small-4 medium-4 large-4"></div>
-<div class="grid-x cell small-4 medium-4 large-4">
+                      <div class="section"><a routerLink="/blog/{{mostRead.uuid + dataArticle}}">{{ mostRead.article_type }}</a></div>
+                      <h3><a routerLink="/blog/{{mostRead.uuid + dataArticle}}">{{ mostRead.title }}</a></h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a routerLink="/blog/{{mostRead.uuid + dataArticle}}" class="button">Seguir leyendo</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <hr class="white">
+      <div class="container-blog">
+          <h2 class="deco-wide">La experiencia de estrenar</h2>
+          <div class="row">
+              <div class="medium-12 columns">
+                  <figure class="orbit-figure">
+                      <img class="orbit-image" [src]="responseNewExperience[1].article_image" alt="">
+                      <figcaption class="orbit-caption blog">
+                          <div class="section"><a routerLink="/blog/{{responseNewExperience[1].uuid + dataArticle}}">{{ responseNewExperience[1].article_type }}</a></div>
+                          <h2><a routerLink="/blog/{{responseNewExperience[1].uuid + dataArticle}}">{{ responseNewExperience[1].title }}</a></h2>
+                          <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience[1].user_name}}</span>{{ responseNewExperience[1].changed }}</div>
+                      </figcaption>
+                  </figure>
+              </div>
+              <hr class="white">
+              <div class="medium-4 columns" *ngFor="let newExperience of responseNewExperience; let i = index">
+                  <div class="blog-list" *ngIf="i >= 1">
+                      <div class="img">
+                          <img [src]="newExperience.article_image" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
 
+                      <div class="section"><a routerLink="/blog/{{newExperience.uuid + dataArticle}}">{{ newExperience.article_type }}</a></div>
+                      <h3><a routerLink="/blog/{{newExperience.uuid + dataArticle}}">{{ newExperience.title }}</a></h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a routerLink="/blog/{{newExperience.uuid + dataArticle}}" class="button">Seguir leyendo</a>
+                  </div>
+              </div>
+              <!-- <div class="medium-4 columns">
+                  <div class="blog-list">
+                      <div class="img">
+                          <img src="/assets/images/content/proyecto.jpg" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
+
+                      <div class="section"><a href="#">Decoracion</a></div>
+                      <h3>Tendencias de decoracion de vacaciones</h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a href="#" class="button">Seguir leyendo</a>
+                  </div>
+              </div>
+              <div class="medium-4 columns">
+                  <div class="blog-list">
+                      <div class="img">
+                          <img src="/assets/images/content/proyecto.jpg" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
+
+                      <div class="section"><a href="#">Decoracion</a></div>
+                      <h3>Tendencias de decoracion de vacaciones</h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a href="#" class="button">Seguir leyendo</a>
+                  </div>
+              </div> -->
+          </div>
+      </div>
+      <hr class="white">
+      <div class="container-blog">
+          <h2 class="deco-wide">Nuestro lado ECO</h2>
+          <div class="row">
+              <div class="medium-6 columns" *ngFor="let ecoside of responseEcoSide; let i = index">
+                  <div class="blog-list">
+                      <div class="img">
+                          <img [src]="ecoside.article_image" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
+
+                      <div class="section"><a routerLink="/blog/{{ecoside.uuid + dataArticle}}">{{ ecoside.article_type }}</a></div>
+                      <h3><a routerLink="/blog/{{ecoside.uuid + dataArticle}}">{{ ecoside.title }}</a></h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a routerLink="/blog/{{ecoside.uuid + dataArticle}}" class="button">Seguir leyendo</a>
+                  </div>
+              </div>
+              <!-- <div class="medium-6 columns">
+                  <div class="blog-list">
+                      <div class="img">
+                          <img src="/assets/images/content/proyecto.jpg" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
+
+                      <div class="section"><a href="#">Decoracion</a></div>
+                      <h3>Tendencias de decoracion de vacaciones</h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a href="#" class="button">Seguir leyendo</a>
+                  </div>
+              </div>
+              <div class="medium-6 columns">
+                  <div class="blog-list">
+                      <div class="img">
+                          <img src="/assets/images/content/proyecto.jpg" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
+
+                      <div class="section"><a href="#">Decoracion</a></div>
+                      <h3>Tendencias de decoracion de vacaciones</h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a href="#" class="button">Seguir leyendo</a>
+                  </div>
+              </div>
+              <div class="medium-6 columns">
+                  <div class="blog-list">
+                      <div class="img">
+                          <img src="/assets/images/content/proyecto.jpg" alt="">
+                      </div>
+                      <div class="social">
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          </div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                      </div>
+
+                      <div class="section"><a href="#">Decoracion</a></div>
+                      <h3>Tendencias de decoracion de vacaciones</h3>
+                      <div class="resumen">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                          suscipit sollicitudin mauris.
+                      </div>
+                      <a href="#" class="button">Seguir leyendo</a>
+                  </div>
+              </div> -->
+          </div>
+      </div>
+  </div>
+  <div class="medium-4 columns">
+      <h2 class="deco-wide">Recomendados</h2>
+      <div class="recomendado" *ngFor="let recommend of responseRecommend; let i = index">
+          <h3><a routerLink="/blog/{{recommend.uuid + dataArticle}}">{{ recommend.title }}</a></h3>
+          <div class="fecha">{{ recommend.changed }}</div>
+          <hr>
+      </div>
+      <div class="bannernews">
+          <img src="/assets/images/suscribirse.jpg" alt="" class="fondo">
+          <div class="info">
+              <div class="cta mb1">Recibe consejos para la compra de tu próxima vivienda</div>
+              <a href="#" class="button ">Ver video</a>
+          </div>
+      </div>
+      <hr class="white">
+      <h2 class="deco-wide">Noticias del sector</h2>
+      <div class="recomendado" *ngFor="let news of responseNews; let i = index">
+          <h3><a routerLink="/blog/{{news.uuid + dataArticle}}">{{ news.title }}</a></h3>
+          <div class="fecha">{{ news.changed }}</div>
+          <hr>
+      </div>
+  </div>
+</div>
+<hr class="white">
+<div class="container-blue">
+  <div class="row columns text-center">
+      <h2 class="deco">Suscribirse a nuestro boletín</h2>
+      <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
+      <div>
+    <form action="">
+        <div class="row condensed">
+          <div class="medium-7 medium-offset-2 columns">
+            <input type="text" placeholder="Ingresa tu correo electrónico" />
+          </div>
+          <div class="medium-1 columns end">
+            <a href="#" class="button expanded secondary">Suscribirse</a>
+                      </div>
+                      <div class="medium-7 medium-offset-2 columns end text-left">
+                      <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#"> Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                      </div>
+        </div>
+    </form>
+  </div>
+  </div>
 </div>

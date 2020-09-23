@@ -1,118 +1,149 @@
-<div class="grid-container">
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell large-12 medium-12 small-12">
-      <h2>Comparador</h2>
-    </div>
-    <div class="cell large-12 medium-12 small-12">
-      <table class="scroll-table text-center unstriped">
-        <thead>
-          <tr>
-            <th>
-            </th>
-            <th width="20%" *ngFor="let project of response; let i = index">
-              <div class="card text-center" >
-                <div class="card-section">
-                  <h5>{{ project.direccion }}</h5>
-                </div>
-                <img class="image-comparator" [src]="project.url_img">
-                <div class="card-section">
-                  <div class="grid-x cell large-12 medium-12 small-12">
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-mail"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4 show-for-small-only">
-                      <i class="fi-telephone"></i>
-                    </div>
-                    <div class="cell large-4 medium-4 small-4">
-                      <i class="fi-cloud"></i>
-                    </div>
+<div class="row columns">
+  <h1>Comparador</h1>
+</div>
+<div class="row columns">
+  <div class="comparador">
+      <div class="medium-2 columns">
+          <div class="encabezados">
+              <div class="item"><img src="/assets/images/ic-precio.jpg" alt="" class="ico">Precio</div>
+              <div class="item"><img src="/assets/images/ic-ubicacion.jpg" alt="" class="ico">Ubicacion</div>
+              <div class="item"><img src="/assets/images/ic-vivienda.jpg" alt="" class="ico">Vivienda</div>
+              <div class="item"><img src="/assets/images/ic-estado.jpg" alt="" class="ico">Estado</div>
+              <div class="item"><img src="/assets/images/ic-tipo.jpg" alt="" class="ico">Tipo</div>
+              <div class="item"><img src="/assets/images/ic-alcobas.jpg" alt="" class="ico">Alcobas</div>
+              <div class="item"><img src="/assets/images/ic-water.jpg" alt="" class="ico">Baños</div>
+              <div class="item"><img src="/assets/images/ic-garajes.jpg" alt="" class="ico">Garajes</div>
+              <div class="item"><img src="/assets/images/ic-acabados.jpg" alt="" class="ico">Acabados</div>
+              <div class="item"><img src="/assets/images/ic-estrato.jpg" alt="" class="ico">Estrato</div>
+          </div>
+      </div>
+      <div class="medium-10 columns">
+          <div class="row">
+              <div class="proyecto text-center">
+                  <div class="medium-3 data columns">
+                      <div id="title">Parque Central de Occidente</div>
+                      <div id="foto">
+                          <div class="container-foto">
+                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
+                                      class="proyecto"></a>
+                          </div>
+                      </div>
+                      <div class="tools"></div>
+                      <div id="precio">{{ response[0].valor_venta | number }}</div>
+                      <hr>
+                      <div id="ubicacion">{{ response[0].sub_titulo }}</div>
+                      <hr>
+                      <div id="vivienda">VIS</div>
+                      <hr>
+                      <div id="estado">Sobre planos</div>
+                      <hr>
+                      <div id="tipo">Aaprtamento</div>
+                      <hr>
+                      <div id="albobas">{{ response[0].n_habitaciones }}</div>
+                      <hr>
+                      <div id="water">{{ response[0].n_banos }}</div>
+                      <hr>
+                      <div id="garajes">{{ response[0].n_garages }}</div>
+                      <hr>
+                      <div id="acabados">Con acabados</div>
+                      <hr>
+                      <div id="estrato">{{ response[0].estrato }}</div>
+                      <hr>
                   </div>
-                </div>
+                  <div class="medium-3 data columns">
+                      <div id="title">Parque Central de Occidente</div>
+                      <div id="foto">
+                          <div class="container-foto">
+                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
+                                      class="proyecto"></a>
+                          </div>
+                      </div>
+                      <div class="tools"></div>
+                      <div id="precio">{{ response[1].valor_venta | number }}</div>
+                      <hr>
+                      <div id="ubicacion">{{ response[1].sub_titulo }}</div>
+                      <hr>
+                      <div id="vivienda">VIS</div>
+                      <hr>
+                      <div id="estado">Sobre planos</div>
+                      <hr>
+                      <div id="tipo">Aaprtamento</div>
+                      <hr>
+                      <div id="albobas">{{ response[1].n_habitaciones }}</div>
+                      <hr>
+                      <div id="water">{{ response[1].n_banos }}</div>
+                      <hr>
+                      <div id="garajes">{{ response[1].n_garages }}</div>
+                      <hr>
+                      <div id="acabados">Con acabados</div>
+                      <hr>
+                      <div id="estrato">{{ response[1].estrato }}</div>
+                      <hr>
+                  </div>
+                  <div class="medium-3 data columns">
+                      <div id="title">Parque Central de Occidente</div>
+                      <div id="foto">
+                          <div class="container-foto">
+                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
+                                      class="proyecto"></a>
+                          </div>
+                      </div>
+                      <div class="tools"></div>
+                      <div id="precio">{{ response[2].valor_venta | number }}</div>
+                      <hr>
+                      <div id="ubicacion">{{ response[2].sub_titulo }}</div>
+                      <hr>
+                      <div id="vivienda">VIS</div>
+                      <hr>
+                      <div id="estado">Sobre planos</div>
+                      <hr>
+                      <div id="tipo">Aaprtamento</div>
+                      <hr>
+                      <div id="albobas">{{ response[2].n_habitaciones }}</div>
+                      <hr>
+                      <div id="water">{{ response[2].n_banos }}</div>
+                      <hr>
+                      <div id="garajes">{{ response[2].n_garages }}</div>
+                      <hr>
+                      <div id="acabados">Con acabados</div>
+                      <hr>
+                      <div id="estrato">{{ response[2].estrato }}</div>
+                      <hr>
+                  </div>
+                  <div class="medium-3 data columns">
+                      <div id="title">Parque Central de Occidente</div>
+                      <div id="foto">
+                          <div class="container-foto">
+                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
+                                      class="proyecto"></a>
+                          </div>
+                      </div>
+                      <div class="tools"></div>
+                      <div id="precio">{{ response[3].valor_venta | number }}</div>
+                      <hr>
+                      <div id="ubicacion">{{ response[3].sub_titulo }}</div>
+                      <hr>
+                      <div id="vivienda">VIS</div>
+                      <hr>
+                      <div id="estado">Sobre planos</div>
+                      <hr>
+                      <div id="tipo">Aaprtamento</div>
+                      <hr>
+                      <div id="albobas">{{ response[3].n_habitaciones }}</div>
+                      <hr>
+                      <div id="water">{{ response[3].n_banos }}</div>
+                      <hr>
+                      <div id="garajes">{{ response[3].n_garages }}</div>
+                      <hr>
+                      <div id="acabados">Con acabados</div>
+                      <hr>
+                      <div id="estrato">{{ response[3].estrato }}</div>
+                      <hr>
+                  </div>
               </div>
-            </th>
-  
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th><i class="fi-dollar"></i> Precio</th>
-            <td class="stat bold">{{ response[0].valor_venta | number }}</td>
-            <td class="stat bold">{{ response[1].valor_venta | number }}</td>
-            <td class="stat bold">{{ response[2].valor_venta | number }}</td>
-            <td class="stat bold">{{ response[3].valor_venta | number }}</td>
-          </tr>
-          <tr>
-            <th><i class="fi-marker"></i> Ubicaci&oacute;n</th>
-            <td>{{ response[0].sub_titulo }}</td>
-            <td>{{ response[1].sub_titulo }}</td>
-            <td>{{ response[2].sub_titulo }}</td>
-            <td>{{ response[3].sub_titulo }}</td>
-          </tr>
-          <tr>
-            <th><i class="fi-home"></i> Tipo de vivienda</th>
-            <td>VIS</td>
-            <td>VIS</td>
-            <td>VIS</td>
-            <td>VIS</td>
-          </tr>
-          <tr>
-            <th><i class="fi-map"></i> Estado</th>
-            <td>Sobre Planos</td>
-            <td>En construcción</td>
-            <td>Sobre Planos</td>
-            <td>En construcción</td>
-          </tr>
-          <tr>
-            <th><i class="fi-home"></i> Tipo</th>
-            <td>Apartamento</td>
-            <td>Apartamento</td>
-            <td>Apartamento</td>
-            <td>Apartamento</td>
-          </tr>
-          <tr>
-            <th><i class="fi-ticket"></i> &Aacute;rea</th>
-            <td>{{ response[0].medida_apartamento }} m<sup>2</sup></td>
-            <td>{{ response[1].medida_apartamento }} m<sup>2</sup></td>
-            <td>{{ response[2].medida_apartamento }} m<sup>2</sup></td>
-            <td>{{ response[3].medida_apartamento }} m<sup>2</sup></td>
-          </tr>
-          <tr>
-            <th><i class="fi-address-book"></i> Alcobas</th>
-            <td>{{ response[0].n_habitaciones }}</td>
-            <td>{{ response[1].n_habitaciones }}</td>
-            <td>{{ response[2].n_habitaciones }}</td>
-            <td>{{ response[3].n_habitaciones }}</td>
-          </tr>
-          <tr>
-            <th><i class="fi-address-book"></i> Ba&ntilde;os</th>
-            <td>{{ response[0].n_banos }}</td>
-            <td>{{ response[1].n_banos }}</td>
-            <td>{{ response[2].n_banos }}</td>
-            <td>{{ response[3].n_banos }}</td>
-          </tr>
-          <tr>
-            <th><i class="fi-address-book"></i> Garajes</th>
-            <td>{{ response[0].n_garages }}</td>
-            <td>{{ response[1].n_garages }}</td>
-            <td>{{ response[2].n_garages }}</td>
-            <td>{{ response[3].n_garages }}</td>
-          </tr>
-          <tr>
-            <th><i class="fi-address-book"></i> Acabados</th>
-            <td>Con acabados</td>
-            <td>Con acabados</td>
-            <td>Con acabados</td>
-            <td>Con acabados</td>
-          </tr>
-          <tr>
-            <th><i class="fi-address-book"></i> Estrato</th>
-            <td>{{ response[0].estrato }}</td>
-            <td>{{ response[1].estrato }}</td>
-            <td>{{ response[2].estrato }}</td>
-            <td>{{ response[3].estrato }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          </div>
+      </div>
   </div>
 </div>
+
+<hr class="white">

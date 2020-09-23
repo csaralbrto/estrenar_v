@@ -1,473 +1,150 @@
-<!-- Navegación -->
-<div class="grid-container large-8">
-  <!-- Sección Publicidad -->
-  <div class="grid-x grid-padding-x">
-    <div class="large-12 cell ">
-      <div class="large-3 medium-3 small-3 cell">
-      </div>
-      <div class="large-6 medium-6 small-6 cell">
-        <div class="callout secondary">
-          <p>PUBLICIDAD</p>
-        </div>
-      </div>
-      <div class="large-3 medium-3 small-3 cell">
-      </div>
-    </div>
-  </div>
-  <!--Fin Sección Publicidad -->
 
-  <div class="grid-x grid-padding-x">
-    <div class="grid-x grid-margin-x">
-      <h2 class="" title="" aria-label="">Apartamentos en Barranquilla</h2>
-    </div>
+<div class="row columns text-center">
+  <div class="publicidad">
+      <img src="/assets/images/banner1.jpg" alt="">
   </div>
+</div>
+<div class="row columns">
+  <h1>Proyectos en Baranquilla</h1>
+  <!--filtros-->
   <form [formGroup]="form_filters">
-    <div class="grid-container fluid">
-      <div class="grid-x grid-margin-x">
-        <div class="cell auto">
-          <label>Tipo de inmueble
-            <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)">
-              <option value="Apartamento">Apartamento</option>
-            </select>
-          </label>
+    <div class="filtros">
+        <div class="row condensed">
+            <div class="medium-2 columns">
+                <label>Tipo de inmueble
+                    <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)">
+                        <option value="apartamento">Apartamento</option>
+                        <option value="casa">Casa</option>
+                    </select>
+                </label>
+            </div>
+            <div class="medium-2 columns">
+                <label>Precio
+                    <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)">
+                        <option value="apartamento">60.000.000-700.000.000</option>
+                        <option value="casa">Otro</option>
+                    </select>
+                </label>
+            </div>
+            <div class="medium-2 columns">
+                <label>Ciudad
+                    <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)">
+                    <option value="barranquilla">Barranquilla</option>
+                    <option value="bogota">Bogot&aacute;</option>
+                    </select>
+                </label>
+            </div>
+            <div class="medium-2 columns">
+                <label>Zona
+                    <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)">
+                        <option value="apartamento">Norte</option>
+                        <option value="casa">Sur</option>
+                    </select>
+                </label>
+            </div>
+            <div class="medium-2 columns">
+                <label>Sector
+                    <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)">
+                        <option value="apartamento">Centro Internacional</option>
+                        <option value="casa">Sur</option>
+                    </select>
+                </label>
+            </div>
+            <div class="medium-2 columns">
+                <div class="botones">
+                    <a href="#" class="button ">Más filtros</a>
+                    <a href="#" class="button secondary ">Favoritos</a>
+                </div>
+            </div>
         </div>
-        <div class="cell auto">
-          <label>Precio
-            <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)">
-              <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
-            </select>
-          </label>
+        <div class="row condensed">
+        <div class="filtros-tag">
+            <a href="#" class="button close">3 Habitaciones</a>
         </div>
-        <div class="cell auto">
-          <label>Ciudad
-            <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)">
-              <option value="barranquilla">Barranquilla</option>
-              <option value="bogota">Bogot&aacute;</option>
-            </select>
-          </label>
-        </div>
-        <div class="cell auto">
-          <label>Zona
-            <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)">
-              <option value="norte">Norte</option>
-              <option value="sur">Sur</option>
-            </select>
-          </label>
-        </div>
-        <div class="cell auto">
-          <label>Sector
-            <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)">
-              <option value="husker">Centro Internacional</option>
-            </select>
-          </label>
-        </div>
-        <div class="cell shrink">
-          <div class="button-group align-spaced ">
-            <a class="button" data-open="modalMoreFilters">M&aacute;s Filtros</a>
-            <a class="button search_button">Favoritos</a>
-          </div>
-        </div>
-      </div>
-      <div class="grid-x grid-margin-x expanded">
-        <div class="large-10 cell ">
-          <span class="label primary">
-            <a href="">
-              Piscina
-            </a>
-            <a href="">
-              <span class="badge "><i class="fi-x"></i></span>
-            </a>
-          </span>
-          <span class="label primary">
-            <a href="">
-              3 Habitaciones
-            </a>
-            <a href="">
-              <span class="badge "><i class="fi-x"></i></span>
-            </a>
-          </span>
-          <span class="label primary">
-            <a href="">
-              2 Garajes
-            </a>
-            <a href="">
-              <span class="badge "><i class="fi-x"></i></span>
-            </a>
-          </span>
-          <hr />
-        </div>
-      </div>
-      <div class="grid-x grid-margin-x expanded">
-        <div class="small-4 cell">
-          <p class="help-text">Mostrando 374 apartanentos en Barranquilla</p>
-        </div>
-        <div class="small-2 cell input-group">
-          <span class="text-right middle">Ordenar Por:</span>
-          <select>
-            <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
-          </select>
-        </div>
-      </div>
+    </div>
     </div>
   </form>
+  <!--fin filtros-->
 
-
-  <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-    <!-- Card Proyecto individual-->
-    <div class="cell shrink" *ngFor="let project1 of response_data_project.projects_1; let i = index">
-      <div class="card">
-        <div class="overlap-container">
-          <img class="project-images-card" [src]="project1.url_img">
-          <!-- <div class="card-section-over">
-            <div class="cell ">
-              <a class="align-bookmark-project" href="">
-                <i class="fi-heart large icon-topbar-style"></i>
-              </a>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project1.medida_apartamento }} m<sup>2</sup>
-                <span class="badge alert-info-project">!</span>
-              </span>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project1.n_garages }}
-              </span>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project1.n_habitaciones }}
-              </span>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project1.n_banos }}
-              </span>
-            </div>
-          </div> -->
-        </div>
-        <div class="card-section">
-          <span class="rounded link-category-project">
-            <a href="">
-              VIS
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              MI CASA YA
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              ENTREGA INMEDIATA
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              FERIA
-            </a>
-          </span>
-        </div>
-        <div class="card-section body-card-project">
-          <h6 class="text-capitalize Text Wrap">
-            {{ project1.direccion }}
-          </h6>
-          <p>
-            <small>
-              {{ project1.sub_titulo }}
-            </small>
-          </p>
-          <p class="text-center">
-            <small>
-              DESDE
-            </small>
-            <br>
-            <span class="text-bold">
-              {{ project1.valor_venta | number }}</span>
-          </p>
-          <hr />
-        </div>
-        <div class="card-section">
-          <div class="button-group align-spaced ">
-            <a class="button" routerLink="/proyecto/{{project1.titulo}}">Ver Proyecto</a>
-            <a class="button">Contacto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin Card Proyecto individual-->
-    <!-- Card Proyecto individual-->
-    <!-- <div class="cell shrink">
-      <div class="card">
-        <img class="project-images-card" src="https://via.placeholder.com/260x150.png?text=Imagen+Proyecto">
-        <div class="card-section">
-          <span class="rounded link-category-project">
-            <a href="">
-              VIS
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              MI CASA YA
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              ENTREGA INMEDIATA
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              FERIA
-            </a>
-          </span>
-        </div>
-        <div class="card-section body-card-project">
-          <h6 class="text-capitalize Text Wrap">
-            Paque Central de Occidente
-          </h6>
-          <p>
-            <small>
-              Apartamento en Centro Internacional del Caribe, Barranquilla
-            </small>
-          </p>
-          <p class="text-center">
-            <small>
-              DESDE
-            </small>
-            <br>
-            <span class="text-bold">$129.000.000</span>
-          </p>
-          <hr />
-        </div>
-        <div class="card-section">
-          <div class="button-group align-spaced ">
-            <a class="button">Ver Proyecto</a>
-            <a class="button">Contacto</a>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Fin Card Proyecto individual-->
-    <!-- Card Proyecto individual-->
-    <div class="cell shrink">
-      <div class="card-container-project-publicity">
-        <div class="card-section">
-          <div class="callout secondary">
-            <p>PUBLICIDAD</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin Card Proyecto individual-->
-    <!-- Card Proyecto individual-->
-    <div class="cell shrink" *ngFor="let project2 of response_data_project.projects_2; let i = index">
-      <div class="card">
-        <div class="overlap-container">
-          <img class="project-images-card" [src]="project2.url_img">
-          <!-- <div class="card-section-over">
-            <div class="cell ">
-              <a class="align-bookmark-project" href="">
-                <i class="fi-heart large icon-topbar-style"></i>
-              </a>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project2.medida_apartamento }} m<sup>2</sup>
-                <span class="badge alert-info-project">!</span>
-              </span>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project2.n_garages }}
-              </span>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project2.n_habitaciones }}
-              </span>
-            </div>
-            <div class="cell">
-              <i class="fi-heart large icon-topbar-style"></i>
-              <span class="text-info-project-card">
-                {{ project2.n_banos }}
-              </span>
-            </div>
-          </div> -->
-        </div>
-        <div class="card-section">
-          <span class="rounded link-category-project">
-            <a href="">
-              VIS
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              MI CASA YA
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              ENTREGA INMEDIATA
-            </a>
-          </span>
-          <span class="link-category-project">
-            <a href="">
-              FERIA
-            </a>
-          </span>
-        </div>
-        <div class="card-section body-card-project">
-          <h6 class="text-capitalize Text Wrap">
-            {{ project2.direccion }}
-          </h6>
-          <p>
-            <small>
-              {{ project2.sub_titulo }}
-            </small>
-          </p>
-          <p class="text-center">
-            <small>
-              DESDE
-            </small>
-            <br>
-            <span class="text-bold">
-              {{ project2.valor_venta | number }}</span>
-          </p>
-          <hr />
-        </div>
-        <div class="card-section">
-          <div class="button-group align-spaced ">
-            <a class="button" routerLink="/proyecto/{{project2.titulo}}">Ver Proyecto</a>
-            <!-- <a class="button">Ver Proyecto</a> -->
-            <a class="button">Contacto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin Card Proyecto individual-->
-  </div>
-
+  <hr>
 </div>
-<div class="reveal container-modal" id="modalMoreFilters" aria-labelledby="modalMoreFiltersHeader" data-reveal>
-  <div class="grid-x grid-padding-x">
-    <div class="cell small-12 medium-12 large-12 text-center">
-      <span class="text-bold" id="modalMoreFiltersHeader">M&Aacute;S FILTROS</span>
-      <button class="close-button" data-close aria-label="Cerrar Modal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="grid-x cell small-6 medium-6 large-6">
-      <div class="cell small-6 medium-6 large-6">
-        <span class="text-bold">ESTADO DEL PROYECTO</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <label for="">
-          <input type="checkbox" name="" id="">
-          Sobre planos
-        </label>
-        <label for="">
-          <input type="checkbox" name="" id="">
-          En construcción
-        </label>
-        <label for="">
-          <input type="checkbox" name="" id="">
-          Terminado
-        </label>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <span class="text-bold">INMUEBLE</span>
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <label for=""><i class="fi-map"></i>&Aacute;rea m<sup>2</sup></label>
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <select name="" id="">
-          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
-          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
-          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
-          <option value="">20 m<sup>2</sup> - 40 m<sup>2</sup></option>
-        </select>
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <label for=""><i class="fi-home"></i> Habitaciones</label>
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <input type="number" name="" id="">
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <label for=""><i class="fi-home"></i> Ba&ntilde;os</label>
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <input type="number" name="" id="">
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <label for=""><i class="fi-home"></i> Garajes</label>
-      </div>
-      <div class="cell small-6 medium-6 large-6">
-        <input type="number" name="" id="">
-      </div>
-    </div>
-    <div class="cell small-6 medium-6 large-6">
-      <div class="cell small-12 medium-12 large-12">
-        <span class="text-bold">CONSTRUCTORA</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <input type="search" name="" id="">
-        <i class="fi-magnifying-glass large icon-search-style">
-        </i>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <span class="text-bold">COLECCIONES</span>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <input id="coleccion1" type="checkbox" name="coleccion1" class="radio_item_oval">
-        <label for="coleccion1" class="label-item-oval-small text-center">
-          <div class="option-small-oval text-bold">
-            Pet friendly
+<div class="row ">
+  <div class="medium-3 columns" *ngFor="let project of response_data_project.projects_1; let i = index">
+      <div class="card">
+          <div class="container-photo">
+              <a href="#" class=""><img [src]="project.url_img" alt="" class="proyecto"></a>
+              <div class="container-tools">
+                  <div class="tags">
+                      <div class="tag"><a href="#">VIS</a></div>
+                      <div class="tag"><a href="#">Mi casa ya</a></div>
+                  </div>
+                  <div class="add">
+                      <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                  </div>
+              </div>
           </div>
-        </label>
-        <input id="coleccion2" type="checkbox" name="coleccion2" class="radio_item_oval">
-        <label for="coleccion2" class="label-item-oval-small text-center">
-          <div class="option-small-oval text-bold">
-            Tercera edad
+          <div class="card-section">
+              <h2>{{ project.direccion }}</h2>
+              <div class="descripcion">
+                  {{ project.sub_titulo }}
+              </div>
+              <div class="precio text-center">
+                  <div>Desde:</div>
+                  <span>{{ project.valor_venta | number }}</span>
+              </div>
+              <hr>
           </div>
-        </label>
-        <input id="coleccion3" type="checkbox" name="coleccion3" class="radio_item_oval">
-        <label for="coleccion1" class="label-item-oval-small text-center">
-          <div class="option-small-oval text-bold">
-            Mi Casa Ya
+          <div class="card-section">
+              <div class="row">
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                          <div class="data"> {{ project.medida_apartamento }} m</div>
+                      </div>
+                  </div>
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                          <div class="data"> {{ project.n_habitaciones }} alcobas</div>
+                      </div>
+                  </div>
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                          <div class="data"> {{ project.n_garages }} garajes</div>
+                      </div>
+                  </div>
+                  <div class="small-6 columns">
+                      <div class="item">
+                          <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                          <div class="data"> {{ project.n_banos }} baños</div>
+                      </div>
+                  </div>
+              </div>
+              <hr>
           </div>
-        </label>
-        <input id="coleccion4" type="checkbox" name="coleccion4" class="radio_item_oval">
-        <label for="coleccion4" class="label-item-oval-small text-center">
-          <div class="option-small-oval text-bold">
-            Lorem ipsum
+          <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button" routerLink="/proyecto/{{project.titulo}}">Ver
+                    Proyecto</a>
+                  <a class="button">Contacto</a>
+              </div>
           </div>
-        </label>
-        <input id="coleccion5" type="checkbox" name="coleccion5" class="radio_item_oval">
-        <label for="coleccion5" class="label-item-oval-small text-center">
-          <div class="option-small-oval text-bold">
-            Lorem ipsum
-          </div>
-        </label>
       </div>
-      <div class="grid-x cell small-12 medium-12 large-12">
-        <div class="cell small-6 medium-6 large-6">
-          <a href="">Limpiar filtros</a>
-        </div>
-        <div class="cell small-6 medium-6 large-6">
-          <button class="button search_button">Mostrar 45 apartamentos</button>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+<div class="row columns text-center">
+  <a href="#" class="button secondary">Cargar más</a>
+</div>
+<div class="row columns text-center">
+  <div class="medium-6 medium-offset-3 columns">
+      <a href="#">
+          <div class="comparador-btn-2">
+              <div class="container-comparador">
+                  <h2 class="deco">¿Quieres comparar?</h2>
+                  <div class="subtitle">Selecciona tus proyectos favoritos para hacerlo</div>
+              </div>
+          </div>
+      </a>
   </div>
 </div>

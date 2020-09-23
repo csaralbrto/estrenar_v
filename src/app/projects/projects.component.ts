@@ -43,14 +43,7 @@ export class ProjectsComponent implements OnInit {
           for (let project of this.response_data_project.projects_1) {
             if (project.url_img) {
               this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(52, this.largo);
-              project.url_img = this.dataPath + this.cadena;
-            }
-          }
-          for (let project of this.response_data_project.projects_2) {
-            if (project.url_img) {
-              this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(52, this.largo);
+              this.cadena = project.url_img.substr(31, this.largo);
               project.url_img = this.dataPath + this.cadena;
             }
           }

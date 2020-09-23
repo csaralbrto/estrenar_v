@@ -1,199 +1,87 @@
-<div class="grid-x grid-padding-x">
-  <div class="cell small-12 medium-12 large-12">
-    <div class="callout secondary">Publicidad</div>
+<div class="row columns text-center">
+  <div class="publicidad">
+      <img src="/assets/images/banner1.jpg" alt="">
   </div>
-  <div class="cell small-1 medium-1 large-1"></div>
-  <div class="cell small-7 medium-7 large-7">
-    <h2>{{ response.data.attributes.title }}</h2>
-    <div class="cell small-12 medium-12 large-12">
-      <img src="" alt="">
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <p [innerHTML]=response.data.attributes.body.processed></p>
-      <p>
-        <span>Compartir Post</span>
-      </p>
-      <p>
-        <i class="fi-social-facebook"></i>
-        <i class="fi-social-twitter"></i>
-        <i class="fi-social-google-plus"></i>
-        <i class="fi-social-linkedin"></i>
-      </p>
-    </div>
-    <div class="cell small-12 medium-12 large-12 text-center">
-      <h4>Deja tu comentario</h4>
-      <hr class="logoMinDivider">
-    </div>
-    <div class=" grid-x cell small-12 medium-12 large-12">
-      <div class="cell small-0 medium-3 large-3">
-        <label class="show-for-landscape" for="">Nombre</label>
-      </div>
-      <div class="cell small-12 medium-9 large-9">
-        <input type="text" name="" id="" placeholder="Nombre">
-      </div>
-      <div class="cell small-0 medium-3 large-3">
-        <label class="show-for-landscape" for="">Email</label>
-      </div>
-      <div class="cell small-12 medium-9 large-9">
-        <input type="text" name="" id="" placeholder="Email">
-      </div>
-      <div class="cell small-0 medium-3 large-3">
-        <label class="show-for-landscape" for="">Comentarios</label>
-      </div>
-      <div class="cell small-12 medium-9 large-9">
-        <textarea name="" id="" cols="5" rows="5" placeholder="Comentarios"></textarea>
-      </div>
-    </div>
-    <div class=" grid-x cell small-12 medium-12 large-12">
-      <div class="cell small-12 medium-12 large-12">
-        <div class="cell">
-          <span class="badge"> J </span>
-          <span class="text-bold">Juan Pablo Rinc&oacute;n</span>
-        </div>
-        <div class="cell">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur optio molestias ab non doloremque
-            veniam suscipit deleniti sunt quam autem architecto sequi et similique, aliquid provident impedit quia
-            explicabo. Quia.</p>
-        </div>
-        <div class="cell">
-          <i class="fi-like"></i>
-        </div>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <div class="cell">
-          <span class="badge"> J </span>
-          <span class="text-bold">Juan Pablo Rinc&oacute;n</span>
-        </div>
-        <div class="cell">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur optio molestias ab non doloremque
-            veniam suscipit deleniti sunt quam autem architecto sequi et similique, aliquid provident impedit quia
-            explicabo. Quia.</p>
-        </div>
-        <div class="cell">
-          <i class="fi-like"></i>
-        </div>
-      </div>
-      <div class="cell small-12 medium-12 large-12">
-        <div class="cell">
-          <span class="badge"> J </span>
-          <span class="text-bold">Juan Pablo Rinc&oacute;n</span>
-        </div>
-        <div class="cell">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur optio molestias ab non doloremque
-            veniam suscipit deleniti sunt quam autem architecto sequi et similique, aliquid provident impedit quia
-            explicabo. Quia.</p>
-        </div>
-        <div class="cell">
-          <i class="fi-like"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="cell small-2 medium-2 large-2">
-    <h5>Articulos relacionados</h5>
-    <div class="media-object" *ngFor="let related of responseRelated; let i = index">
-      <div class="media-object-section">
-        <div class="thumbnail">
-          <img [src]="related.article_image">
-        </div>
-      </div>
-      <div class="media-object-section">
-        <span>{{ related.article_type }}</span>
-        <h6>{{ related.title }}</h6>
-        <span class="dateLabel">{{ related.changed }}</span>
-      </div>
-    </div>
-    <!-- <div class="media-object">
-      <div class="media-object-section">
-        <div class="thumbnail">
-          <img src="https://placehold.it/100x100/?text=Card-1">
-        </div>
-      </div>
-      <div class="media-object-section">
-        <span>DISE&Ntilde;O</span>
-        <h6>Tendencias para decoración navideña</h6>
-        <span>04.12.2019</span>
-      </div>
-    </div>
-    <div class="media-object">
-      <div class="media-object-section">
-        <div class="thumbnail">
-          <img src="https://placehold.it/100x100/?text=Card-1">
-        </div>
-      </div>
-      <div class="media-object-section">
-        <span>DISE&Ntilde;O</span>
-        <h6>Tendencias para decoración navideña</h6>
-        <span>04.12.2019</span>
-      </div>
-    </div>
-    <div class="media-object">
-      <div class="media-object-section">
-        <div class="thumbnail">
-          <img src="https://placehold.it/100x100/?text=Card-1">
-        </div>
-      </div>
-      <div class="media-object-section">
-        <span>DISE&Ntilde;O</span>
-        <h6>Tendencias para decoración navideña</h6>
-        <span>04.12.2019</span>
-      </div>
-    </div>
-    <div class="media-object">
-      <div class="media-object-section">
-        <div class="thumbnail">
-          <img src="https://placehold.it/100x100/?text=Card-1">
-        </div>
-      </div>
-      <div class="media-object-section">
-        <span>DISE&Ntilde;O</span>
-        <h6>Tendencias para decoración navideña</h6>
-        <span>04.12.2019</span>
-      </div>
-    </div> -->
-    <div class="responsive-embed">
-      <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="220"
-        data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
-        data-show-facepile="true">
-        <blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a
-            href="https://www.facebook.com/facebook">Facebook</a></blockquote>
-      </div>
-    </div>
-    <div class="responsive-embed">
-      <a class="twitter-timeline" data-width="220" data-height="300"
-        href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-  </div>
-  <div class="cell small-2 medium-2 large-2"></div>
-  <div class="cell small-2 medium-2 large-2"></div>
-  <div class="grid-x cell small-8 medium-8 large-8 text-center primary">
-    <div class="cell small-12 medium-12 large-12">
-      <h5>Suscr&iacute;bete a nuestro bolet&iacute;n</h5>
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <hr class="logoMinDivider">
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <p>Suscr&iacute;bete a nuestro bolet&iacute;n y recibe nuestros &uacute;ltimos contenidos</p>
-    </div>
-    <div class="cell small-10 medium-10 large-10">
-      <input type="text" name="" id="">
-    </div>
-    <div class="cell small-2 medium-2 large-2">
-      <button class="button search_button">Suscribirse</button>
-    </div>
-    <div class="cell small-12 medium-12 large-12">
-      <input type="checkbox" name="" id="">
-      <label for="">Declaro haber leido el
-        <a href="http://" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a> y estar
-        conforme con el mismo.</label>
-    </div>
-  </div>
-  <div class="cell small-2 medium-2 large-2"></div>
 </div>
-
-<div class="grid-x cell small-4 medium-4 large-4"></div>
-<div class="grid-x cell small-4 medium-4 large-4">
-
+<div class="row columns">
+  <div class="medium-9 columns">
+      <div class="blog">
+          <div class="section black" *ngFor="let tags of response.field_tags; let i = index">
+              <a href="#">{{ tags.name }}</a>
+          </div>
+          <h1>Blog</h1>
+          <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{ response.uid.display_name }}</span>{{ response.changed }}</div>
+      </div>
+      <hr class="white">
+      <img class="image mb1" [src]="url_img_path + response.field_media[0].field_media_image.uri.url" alt="">
+      <hr class="white">
+      <div class="container-blog">
+          <p [innerHTML]=response.body.processed></p>
+      </div>
+      <hr class="white">
+      <h2 class="deco text-center">Deja tu comentario</h2>
+      <form [formGroup]="form">
+          <div class="row">
+              <div class="medium-12 columns">
+                  <label>Nombre
+                      <input type="text" placeholder="" formControlName="name"
+                      name="name" required pattern="text">
+                  </label>
+                  <label>Email
+                      <input type="email" placeholder="" formControlName="email"
+                      name="email" required pattern="email">
+                  </label>
+                  <label>
+                      Comentario
+                      <textarea placeholder="" formControlName="comment"
+                      name="comment" required pattern="comment"></textarea>
+                  </label>
+                  <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
+                          Aviso de Privacidad</a> y estar conforme con el mismo</label>
+              </div>
+              <div class="medium-12 columns text-right">
+                  <a href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</a>
+              </div>
+          </div>
+      </form>
+  </div>
+  <div class="medium-3 columns relacionados">
+      <h2>Artículos relacionados</h2>
+      <div class="row" *ngFor="let related of responseRelated; let i = index">
+          <div class="small-4 columns foto">
+              <img [src]="related.article_image" alt="" class="image">
+          </div>
+          <div class="small-8 columns">
+              <div class="blog">
+                  <div class="section black"><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.article_type }}</a></div>
+                  <h3><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.title }}</a></h3>
+                  <div class="user">{{ related.changed }}</div>
+              </div>
+          </div>
+      </div>
+      <hr>
+  </div>
+</div>
+<hr class="white">
+<div class="container-blue">
+  <div class="row columns text-center">
+      <h2 class="deco">Suscribirse a nuestro boletín</h2>
+      <p>Suscribete a nuestro boletin y recibe nuestros últimos contenidos.</p>
+      <div>
+          <form action="">
+              <div class="row condensed">
+                  <div class="medium-7 medium-offset-2 columns">
+                      <input type="text" placeholder="Ingresa tu correo electrónico" />
+                  </div>
+                  <div class="medium-1 columns end">
+                      <a href="#" class="button expanded secondary">Suscribirse</a>
+                  </div>
+                  <div class="medium-7 medium-offset-2 columns end text-left">
+                      <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
+                              Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
 </div>

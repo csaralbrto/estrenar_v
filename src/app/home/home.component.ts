@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HomeService } from './home.service';
@@ -12,11 +12,13 @@ import { environment } from '../../environments/environment';
 })
 export class HomeComponent implements OnInit {
   public response: any;
+  public results = false;
 
   constructor(public Service: HomeService) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
+  home = true;
 
   title_section_list_search = '¿Qué estás buscando?';
   title_section_top_proyects = 'Proyectos destacados';
@@ -25,7 +27,6 @@ export class HomeComponent implements OnInit {
   main_title_page = 'Te ayudamos a encontrar tu lugar ideal';
 
   ngOnInit(): void {
-    $(document).foundation();
     // $('#welcomeModal').foundation('open');
 
     /* Método para obtener toda la info del home */
@@ -38,12 +39,14 @@ export class HomeComponent implements OnInit {
           for (let blog of this.response.blogs) {
             this.largo = blog.banner.length;
             this.cadena = blog.banner.substr(43, this.largo);
+            // this.cadena = blog.banner.substr(22, this.largo);
             blog.banner = this.dataPath + this.cadena;
           }
           for (let constructora of this.response.constructoras) {
             if (constructora.logo) {
               this.largo = constructora.logo.length;
               this.cadena = constructora.logo.substr(43, this.largo);
+              // this.cadena = constructora.logo.substr(22, this.largo);
               constructora.logo = this.dataPath + this.cadena;
             }
           }
@@ -51,6 +54,7 @@ export class HomeComponent implements OnInit {
             if (project.imagen_banner) {
               this.largo = project.imagen_banner.length;
               this.cadena = project.imagen_banner.substr(43, this.largo);
+              // this.cadena = project.imagen_banner.substr(22, this.largo);
               project.imagen_banner = this.dataPath + this.cadena;
             }
           }
@@ -58,6 +62,7 @@ export class HomeComponent implements OnInit {
             if (header_proj1.url_img) {
               this.largo = header_proj1.url_img.length;
               this.cadena = header_proj1.url_img.substr(43, this.largo);
+              // this.cadena = header_proj1.url_img.substr(22, this.largo);
               header_proj1.url_img = this.dataPath + this.cadena;
             }
           }
@@ -65,6 +70,7 @@ export class HomeComponent implements OnInit {
             if (header_proj2.url_img) {
               this.largo = header_proj2.url_img.length;
               this.cadena = header_proj2.url_img.substr(43, this.largo);
+              // this.cadena = header_proj2.url_img.substr(22, this.largo);
               header_proj2.url_img = this.dataPath + this.cadena;
             }
           }
@@ -72,6 +78,7 @@ export class HomeComponent implements OnInit {
             if (header_proj3.url_img) {
               this.largo = header_proj3.url_img.length;
               this.cadena = header_proj3.url_img.substr(43, this.largo);
+              // this.cadena = header_proj3.url_img.substr(22, this.largo);
               header_proj3.url_img = this.dataPath + this.cadena;
             }
           }
@@ -79,9 +86,11 @@ export class HomeComponent implements OnInit {
             if (header_proj4.url_img) {
               this.largo = header_proj4.url_img.length;
               this.cadena = header_proj4.url_img.substr(43, this.largo);
+              // this.cadena = header_proj4.url_img.substr(22, this.largo);
               header_proj4.url_img = this.dataPath + this.cadena;
             }
           }
+          this.results = true;
         }
         /* si responde correctamente */
         if (this.response.error) {
@@ -89,5 +98,10 @@ export class HomeComponent implements OnInit {
         }
       }
     );
+  }
+  ngAfterViewChecked() {
+    if (this.results) {
+      $('app-home').foundation();
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { GlosoryComponent } from './glosory/glosory.component';
 import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.component';
+import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { DataTreatmentsComponent } from './data-treatments/data-treatments.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,8 @@ import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.componen
     QuienesSomosComponent,
     GlosoryComponent,
     PrivacyNoticeComponent,
+    LegalNoticeComponent,
+    DataTreatmentsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
   providers: [],

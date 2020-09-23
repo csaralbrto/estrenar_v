@@ -24,7 +24,7 @@ export class BlogDetailService {
   constructor( private http: Http ) { 
     this.dataBlogPath = environment.endpointTestingApi+ 'node/article/';
     this.blogRelatedPath = environment.endpointTestingApi+ 'articles?items_per_page=4';
-    this.sendComment = environment.endpointTestingApi + 'blog_comment/';
+    this.sendComment = environment.endpointTestingApiPost + 'comment/';
   }
   /* Traer la info del proyecto */
   findProject( params: any ): Observable<any> {
@@ -37,8 +37,14 @@ export class BlogDetailService {
         .pipe(map(( response => response.json() )));
   }
   /* Enviar comentario */
-  sendBlogComment( operation: string, params: any ): Observable<any> {
-    return this.http.post(this.sendComment + operation, params)
-      .pipe(map((response => response.json())));
+  // ( operation: string, params: any ): Observable<any> {
+  //   return this.http.post(this.sendComment + operation, params)
+  //     .pipe(map((response => response.json())));
+  // }
+  /* enviar info de los formularios */
+  sendBlogComment( params: any ): Observable<any> {
+    // console.log(this.sendComment, params);
+    return this.http.post(this.sendComment, params)
+    .pipe(map(( response => response.json() )));
   }
 }

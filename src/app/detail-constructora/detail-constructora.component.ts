@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import { DetailConstructoraService } from './detail-constructora.service';
@@ -14,6 +14,8 @@ import { environment } from '../../environments/environment';
 export class DetailConstructoraComponent implements OnInit {
   public response: any;
   public content: any;
+  public project: any;
+  public results = false;
   public form_filters: FormGroup;
   public stringQuery = '';
   public query_elasticsearch = {
@@ -37,7 +39,7 @@ export class DetailConstructoraComponent implements OnInit {
   ngOnInit(): void {
     this.collectionActive = this.route;
     this.createForm();
-    $(document).foundation();
+    // $(document).foundation();
 
     const title = this.activatedRoute.snapshot.params.path;
     this.Service.findConstructora(title).subscribe(
@@ -45,23 +47,27 @@ export class DetailConstructoraComponent implements OnInit {
       (err) => console.log(),
       () => {
         if (this.response) {
-          console.log(this.response);
-          this.content = this.response.constructora;
           /* si responde correctamente en la respuesta */
           // console.log(this.response);
-          // this.largo = this.response.url_img.length;
-          // this.cadena = this.response.url_img.substr(40, this.largo);
-          // this.response.url_img = this.dataPath + this.cadena;
-          // for (let project of this.response.relacionados) {
-          //   if (project.url_img) {
-          //     this.largo = project.url_img.length;
-          //     this.cadena = project.url_img.substr(40, this.largo);
-          //     project.url_img = this.dataPath + this.cadena;
-          //   }
-          // }
+          for (let project of this.response.constructora.proyectos) {
+              if (project.url_img) {
+                  this.largo = project.url_img.length;
+                  this.cadena = project.url_img.substr(39, this.largo);
+                  project.url_img = this.dataPath + this.cadena;
+                }
+              }
+          this.content = this.response.constructora;
+          this.project = this.response.constructora.proyectos;
+          // console.log(this.project);
+          this.results = true;
         }
       }
     );
+  }
+  ngAfterViewChecked() {
+    if (this.results) {
+      $('app-detail-constructora').foundation();
+    }
   }
 
   change(contructoraID,value) {

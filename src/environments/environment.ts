@@ -14,9 +14,11 @@ export const environment = {
   production: false,
   endpoint: 'https://api-estrenarvivienda.demodayscript.com/',
   endpointApi: 'https://api-estrenarvivienda.demodayscript.com/api/',
+  endpointApiBasicPage: 'https://lab.estrenarvivienda.com/es/router/translate-path?path=/es',
   endpointSearchApi: 'https://api-estrenarvivienda.demodayscript.com/api/search?',
   endpointTesting: 'https://api-estrenarvivienda.demodayscript.com/api/',
   endpointTestingApi: 'https://lab.estrenarvivienda.com/es/api/',
+  endpointTestingApiPost: 'https://lab.estrenarvivienda.com/es/',
   endpointTestingApiElastic: 'http://test-blaa.demodayscript.com/api/elasticsearch?',
 };
 

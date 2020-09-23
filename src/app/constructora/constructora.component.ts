@@ -17,8 +17,7 @@ export class ConstructoraComponent implements OnInit {
   largo = '';
 
   ngOnInit(): void {
-    $('app-projects').foundation();
-
+    $('app-constructora').foundation();
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(
       (data) => (this.response = data),
@@ -29,7 +28,8 @@ export class ConstructoraComponent implements OnInit {
           for (let project of this.response) {
             if (project.url_img) {
               this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(52, this.largo);
+              this.cadena = project.url_img.substr(35, this.largo);
+              // this.cadena = project.url_img.substr(52, this.largo);
               project.url_img = this.dataPath + this.cadena;
             }
           }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BlogService } from './blog.service';
@@ -9,18 +9,19 @@ import { BlogService } from './blog.service';
   styleUrls: ['./blog.component.scss'],
   providers: [BlogService],
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent implements OnInit, AfterViewChecked {
   public response: any;
   dataArticle = '?include=uid,field_article_type,field_media.field_media_image,field_tags';
   public responseNewExperience: any;
   public responseMostRead: any;
   public responseRecommend: any;
+  public responseEcoSide: any;
   public responseNews: any;
+  public results = false;
 
   constructor(public Service: BlogService) {}
 
   ngOnInit(): void {
-    $(document).foundation();
     /* Método para obtener toda la info del blog */
     this.Service.getBlogData().subscribe(
       (data) => (this.response = data),
@@ -54,8 +55,9 @@ export class BlogComponent implements OnInit {
       (data) => (this.responseNewExperience = data),
       (err) => console.log(),
       () => {
-        if (this.response.successful) {
+        if (this.responseNewExperience) {
           /* si responde correctamente */
+          this.results = true;
         }
         if (this.response.error) {
           /* si hay error en la respuesta */
@@ -65,11 +67,14 @@ export class BlogComponent implements OnInit {
 
     /* Método para obtener toda la info de el lado eco */
     this.Service.ecoSide().subscribe(
-      (data) => (this.response = data),
+      (data) => (this.responseEcoSide = data),
       (err) => console.log(),
       () => {
-        if (this.response.successful) {
+        if (this.responseEcoSide) {
           /* si responde correctamente */
+          for (let sideEco of this.responseEcoSide) {
+            sideEco.article_image = sideEco.article_image.split(",",1); 
+          }
         }
         if (this.response.error) {
           /* si hay error en la respuesta */
@@ -118,5 +123,12 @@ export class BlogComponent implements OnInit {
         }
       }
     );
+  }
+
+  ngAfterViewChecked() {
+    if (this.results) {
+      $('app-blog').foundation();
+      $('html,body').scrollTop(0);
+    }
   }
 }

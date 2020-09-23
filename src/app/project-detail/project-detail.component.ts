@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import { ProjectDetailService } from './project-detail.service';
@@ -16,6 +16,7 @@ export class ProjectDetailComponent implements OnInit {
   public response: any;
   public form: FormGroup;
   public form2: FormGroup;
+  public results = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,7 +36,6 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit(): void {
 
     //Asignamos la fecha actual al campo de fecha
-    $(document).foundation();
     this.createForm();
     this.createFormDates();
     todayDate();
@@ -47,7 +47,7 @@ export class ProjectDetailComponent implements OnInit {
       () => {
         if (this.response) {
           /* si responde correctamente en la respuesta */
-          // console.log(this.response);
+          console.log(this.response);
           this.largo = this.response.url_img.length;
           this.cadena = this.response.url_img.substr(40, this.largo);
           this.response.url_img = this.dataPath + this.cadena;
@@ -58,12 +58,25 @@ export class ProjectDetailComponent implements OnInit {
               project.url_img = this.dataPath + this.cadena;
             }
           }
+          for (let project2 of this.response.otras_propiedades) {
+            if (project2.url_img) {
+              this.largo = project2.url_img.length;
+              this.cadena = project2.url_img.substr(40, this.largo);
+              project2.url_img = this.dataPath + this.cadena;
+            }
+          }
           this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ this.response.latitude +","+ this.response.longitude +"&hl=es&z=14&output=embed");
           // console.log(this.response);
           this.galeria = JSON.parse(this.response.galeria);
+          this.results = true;
         }
       }
     );
+  }
+  ngAfterViewChecked() {
+    if (this.results) {
+      $('app-project-detail').foundation();
+    }
   }
 
   createForm() {

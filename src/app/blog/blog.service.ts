@@ -25,7 +25,7 @@ export class BlogService {
     this.dataBlogPath = environment.endpointTestingApi+ 'articles';
     this.mostReadPath = environment.endpointTestingApi+ 'articles?items_per_page=2';
     this.newExperiencePath = environment.endpointTestingApi+ 'articles?items_per_page=4&page=0&article_type=La experiencia de estrenar';
-    this.ecoSidePath = environment.endpointTestingApi+ 'ecoSide';
+    this.ecoSidePath = environment.endpointTestingApi+ 'articles?items_per_page=4&page=0&article_type=Nuestro lado deco';
     this.recommendedPath = environment.endpointTestingApi+ 'articles?items_per_page=5';
     this.blogNewsPath = environment.endpointTestingApi+ 'articles?items_per_page=5&article_type=Noticias del sector';
     this.blogRelatedPath = environment.endpointTestingApi+ 'blogRelated';

@@ -1,92 +1,32 @@
-<!--
-<div data-sticky-container class="hide-for-small-only">
-  <div class="top-bar" data-sticky data-margin-top="0" data-top-anchor="1" data-btm-anchor="content:bottom">
-    <div class="top-bar-left">
-      <div class="title-bar hide-for-medium hide-for-large" data-responsive-toggle="responsive-menu"
-        data-hide-for="medium">
-        <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
-        <div class="title-bar-title">Menu</div>
-      </div>
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text ">
-            <div class="logo_header">
-              <a href="/" alt="Vinculo Logo" title="" role="link">
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="top-bar-right">
-      <ul class="menu">
-        <li>
-          <a href="/proyectos" alt="" title="">{{ menu_title_proyects }}</a>
-        </li>
-        <li>
-          <a href="#0">{{ menu_title_house_VIS }}</a>
-        </li>
-        <li>
-        </li>
-        <li>
-          <a href="constructoras">{{ menu_title_builders }}</a>
-        </li>
-        <li>
-          <a href="/herramientas">{{ menu_title_tools }}</a>
-        </li>
-        <li>
-          <a href="/blog">{{ menu_title_blog }}</a>
-        </li>
-        <li class="contenedor_busqueda_campo">
-          <input type="search" placeholder="Ciudad, Sector o Barrio" id="campoBusqueda" />
-          <i class="fi-magnifying-glass large icon-search-style" tabindex="-1"></i>
-        </li>
-        <li><i class="fi-torso large icon-topbar-style"></i></li>
-        <li>
-          <i class="fi-heart large icon-topbar-style"></i>
-          <span class="numero_personas">{{ number_persons }}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
--->
-<!--
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=583591131736043&autoLogAppEvents=1"
-  nonce="2IPkz6lM"></script>
--->
-
-<div class="container-header">
+<div class="container-header" *ngIf='show_header'>
   <div class="full-w header">
       <div class="small-3 columns">
         <div class="logo">
-            <a href="home.php"><img src="/assets/images/logo-header.png"></a>
+            <a href="/"><img src="/assets/images/logo-ev.png"></a>
         </div>
       </div>
       <div class="medium-9 columns hide-for-small-only">
         <ul class="menu">
           <li>
-          <a href="proyectos.php" alt="" title="">Proyectos</a>
+          <a href="/proyectos" alt="" title="">Proyectos</a>
           </li>
           <li>
           <a href="#">Vivienda VIS</a>
           </li>
           <li>
-          <a href="constructoras.php">Constructoras</a>
+          <a href="/constructoras">Constructoras</a>
           </li>
           <li>
           <a href="#">Herramientas</a>
           </li>
           <li>
-          <a href="blog-listados.php">Blog</a>
+          <a href="/blog">Blog</a>
           </li>
           <li class="contenedor_busqueda_campo">
           <input type="search" placeholder="Ciudad, Sector o Barrio" id="campoBusqueda" />
           </li>
-          <li><a href="#"><img src="/assets/images/loupe.png"></a></li>
-          <li><a href="#"><img src="/assets/images/loupe.png"><span class="num_fav">2</span></a></li>
+          <li><a href="user"><img src="/assets/images/user.png"></a></li>
+          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav">2</span></a></li>
         </ul>
       </div>
   </div>
@@ -112,4 +52,38 @@
       </form>
     </div>
   </div>
+</div>
+<div class="container-header-white" *ngIf='show_white_header'>
+  <div class="full-w header">
+      <div class="small-2 columns">
+          <div class="logo">
+              <a href="/"><img src="/assets/images/logo-ev.png"></a>
+          </div>
+      </div>
+      <div class="medium-10 columns hide-for-small-only">
+          <ul class="menu">
+              <li>
+                  <a href="proyectos" alt="" title="">Proyectos</a>
+              </li>
+              <li>
+                  <a href="#">Vivienda VIS</a>
+              </li>
+              <li>
+                  <a href="constructoras">Constructoras</a>
+              </li>
+              <li>
+                  <a href="herramientas">Herramientas</a>
+              </li>
+              <li>
+                  <a href="blog">Blog</a>
+              </li>
+              <li class="contenedor_busqueda_campo">
+                  <input type="search" placeholder="Ciudad, Sector o Barrio" id="campoBusqueda" />
+              </li>
+              <li><a href="user"><img src="/assets/images/user.png"></a></li>
+              <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav">2</span></a></li>
+          </ul>
+      </div>
+  </div>
+
 </div>

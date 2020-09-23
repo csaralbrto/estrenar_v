@@ -1,6 +1,10 @@
 h1,
-h2 {
+h2,
+.h1,
+.h2 {
     letter-spacing: -1px;
+    font-weight: 400 !important;
+    line-height: 1.2em !important;
 
     &.deco {
         position: relative;
@@ -13,14 +17,16 @@ h2 {
             bottom: -1.6rem;
             left: 50%;
             transform: translateX(-50%);
-            //##background: url(../../images/deco.png);
+            background: url(/assets/images/deco.png);
             content: "";
         }
     }
+
     &.deco-wide {
         position: relative;
         margin-bottom: 2rem;
         padding-left: 3rem;
+
         &:before {
             position: absolute;
             width: 37px;
@@ -28,7 +34,7 @@ h2 {
             bottom: 9px;
             left: 15px;
             transform: translateX(-50%);
-            //##background: url(../../images/deco.png);
+            background: url(/assets/images/deco.png);
             content: "";
         }
     }
@@ -37,9 +43,15 @@ h2 {
 hr.white {
     border-bottom: 1px solid $white;
 }
-.mb1{
+
+.mb1 {
     margin-bottom: 1rem;
 }
+
+.inline {
+    display: inline-block;
+}
+
 .full-w {
     max-width: none;
     margin-right: auto;
@@ -67,7 +79,7 @@ a.button.close {
         height: 20px;
         right: 6px;
         top: 6px;
-        //##background: url(../images/close.png);
+        background: url(/assets/images/close.png);
 
     }
 }
@@ -104,27 +116,41 @@ a.button.close {
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
-.image{
+
+.image {
     border-radius: $global-radius;
     width: 100%;
+    border: 1px solid $light-gray;
 }
+
 .container-gray {
     background: $light-gray;
     padding-top: 3rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid $light-gray;
 }
+
 .container-blue {
     background: $primary-color;
     padding-top: 3rem;
     padding-bottom: 3rem;
     color: $white;
     border-bottom: 1px solid $light-gray;
-    h1, h2, h3, label{
+
+    h1,
+    h2,
+    h3,
+    label {
         color: $white;
     }
-    a{
+
+    a {
         color: $secondary-color;
+    }
+
+    &.form {
+        padding: 4rem !important;
+        border-radius: $global-radius !important;
     }
 }
 
@@ -148,7 +174,9 @@ a.button.close {
 button:focus {
     outline: 0;
 }
-
+p {
+    outline: 0;
+}
 //header
 
 .container-header {
@@ -161,7 +189,7 @@ button:focus {
 
     }
 
-    background: url(/assets/images/back-pool.jpg);
+    background: url(/assets/images/content/header.jpg);
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -295,7 +323,7 @@ button:focus {
 
         &:after {
             position: absolute;
-            //##background: url(../images/left.png);
+            background: url(/assets/images/left.png);
             background-size: contain;
             width: 12px;
             height: 12px;
@@ -311,7 +339,7 @@ button:focus {
 
         &:after {
             position: absolute;
-            //##background: url(../images/right.png);
+            background: url(/assets/images/right.png);
             background-size: contain;
             width: 12px;
             height: 12px;
@@ -540,9 +568,20 @@ button:focus {
     }
 }
 
+.proyectolist {
+    .resultados {
+        margin-top: 4px;
+
+        span {
+            font-weight: 600;
+            color: $primary-color;
+        }
+    }
+}
+
 //Boton comparador
 .comparador-btn {
-    //##background: url(../images/comparador.jpg);
+    background: url(/assets/images/comparador.jpg);
     border-radius: $global-radius;
     position: relative;
     display: flex;
@@ -584,6 +623,22 @@ button:focus {
         h2 {
             font-size: 1.8rem;
         }
+    }
+}
+
+label {
+    line-height: 1.4 !important;
+}
+
+.carga {
+    border-left: 1px solid;
+    padding-left: 2rem;
+    label {
+        line-height: 1.9 !important;
+    }
+    h2, .h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem ;
     }
 }
 
@@ -810,6 +865,7 @@ ul.accordion {
                 border-top-left-radius: $global-radius;
             }
         }
+
         li:last-child {
             a {
                 border-top-right-radius: $global-radius;
@@ -837,6 +893,7 @@ ul.accordion {
         a {
             background: $secondary-color;
             color: $primary-color;
+
             &:hover,
             :focus {
                 background: $primary-color !important;
@@ -866,6 +923,7 @@ ul.accordion {
         }
     }
 }
+
 //Bloque constructora
 .container-constructora {
     font-size: 0.9rem;
@@ -878,33 +936,39 @@ ul.accordion {
     border-radius: $global-radius;
     align-items: center;
     justify-content: center;
-    h3{
+
+    h3 {
         font-size: 1rem;
         font-weight: 500;
         margin-bottom: 0.6rem;
     }
-    p{
+
+    p {
         margin-bottom: 0.4rem;
     }
 }
+
 .zona {
     margin-bottom: 1rem;
 }
-.caracteristica{
-    span{
+
+.caracteristica {
+    span {
         margin-right: 1rem;
     }
 }
 
 //simuladores
-.valores{
+.valores {
     margin-bottom: 2rem;
-    .valor{
+
+    .valor {
         font-size: 1.6rem;
         color: $secondary-color;
         font-weight: 500;
     }
 }
+
 .simuladores {
     .tabs {
         margin: 0;
@@ -917,6 +981,7 @@ ul.accordion {
                 border-top-left-radius: $global-radius;
             }
         }
+
         li:last-child {
             a {
                 border-top-right-radius: $global-radius;
@@ -928,6 +993,11 @@ ul.accordion {
         float: left;
         width: 25%;
         text-align: center;
+
+        &.tool {
+            width: auto;
+        }
+
         &.is-active {
             a {
                 background: $primary-color;
@@ -944,6 +1014,7 @@ ul.accordion {
         a {
             background: $secondary-color;
             color: $primary-color;
+
             &:hover,
             :focus {
                 background: $primary-color !important;
@@ -951,9 +1022,18 @@ ul.accordion {
             }
         }
     }
+
     .tabs-panel {
         padding: 2rem;
+
+        &.cuota {
+            background-image: url(/assets/images/fondo-tool.png);
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
     }
+
     .tabs-content {
         border: 0px solid #eee;
         border-top: 0;
@@ -985,8 +1065,9 @@ ul.accordion {
             text-transform: uppercase;
             font-size: 0.8rem;
         }
-        &.black{
-            a{
+
+        &.black {
+            a {
                 color: $primary-color;
             }
         }
@@ -997,7 +1078,8 @@ ul.accordion {
         margin-bottom: 0.4rem;
         letter-spacing: 0;
     }
-    h1{
+
+    h1 {
         margin-bottom: 0.4rem;
     }
 
@@ -1015,27 +1097,32 @@ ul.accordion {
         }
     }
 }
-.recomendado{
-    h3{
+
+.recomendado {
+    h3 {
         font-size: 1rem;
         margin-bottom: 0.5rem;
         letter-spacing: 0;
     }
-    .fecha{
+
+    .fecha {
         color: $secondary-color;
         font-size: 0.8rem;
         font-weight: 500;
     }
 }
+
 .bannernews {
-    img{
+    img {
         border-radius: $global-radius;
     }
+
     position: relative;
     color: $white;
     font-weight: 500;
     font-size: 1.2rem;
-    .info{
+
+    .info {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -1043,9 +1130,472 @@ ul.accordion {
         padding: 0 2rem;
     }
 }
-.container-blog{
-    p{
-        font-size: 1.1rem;
-        line-height: 1em;
+
+.container-blog {
+    p {
+        line-height: 1.8rem;
     }
+}
+
+.relacionados {
+    h2 {
+        font-size: 1.2rem;
+        letter-spacing: 0;
+    }
+
+    h3 {
+        font-size: 1rem;
+        letter-spacing: 0;
+        margin-bottom: 0.4rem;
+    }
+
+    .columns.foto {
+        padding-right: 0;
+    }
+}
+
+//COnstructoras
+.card.constructora {
+    padding: 1rem;
+    font-size: 0.9rem;
+
+    .title {
+        font-weight: 600;
+    }
+
+    .columns.foto {
+        padding-right: 0;
+    }
+}
+
+.container-info {
+    background: $light-gray;
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-radius: $global-radius;
+
+    .label-info {
+        font-weight: 600;
+        color: $primary-color;
+    }
+
+    .dato {
+        margin-bottom: 0.9rem;
+    }
+}
+
+//slide constructora
+.row.slide-build {
+    position: relative;
+
+    .card-build {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-right: 8%;
+        transform: translateY(-50%);
+    }
+}
+
+//Submenu
+ul.menu-left {
+    margin-left: 0;
+    margin-bottom: 0;
+
+    li {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid $light-gray;
+        margin-bottom: 0.5rem;
+        padding: 0.4rem 0 0.4rem 0;
+        list-style: none;
+
+        a {
+            color: $medium-gray;
+
+            &.active {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+//Wizard
+.progress-meter-text {
+    position: relative !important;
+    top: -34px !important;
+    left: 35% !important;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 1rem !important;
+    color: $black !important;
+    white-space: nowrap;
+    border-radius: 8px;
+    cursor: none;
+}
+
+.progress {
+    outline: none;
+}
+
+.salida {
+    font-size: 1.4rem;
+
+    span {
+        display: inline-block;
+
+        [type='text'],
+        [type='password'],
+        [type='date'],
+        [type='datetime'],
+        [type='datetime-local'],
+        [type='month'],
+        [type='week'],
+        [type='email'],
+        [type='number'],
+        [type='search'],
+        [type='tel'],
+        [type='time'],
+        [type='url'],
+        [type='color'],
+        textarea {
+            display: block;
+            /* -webkit-box-sizing: border-box; */
+            box-sizing: border-box;
+            width: 100%;
+            height: 2.15625rem;
+            margin: 0 0 1rem;
+            padding: .5rem;
+            border: 0px solid #fff !important;
+            border-radius: 8px;
+            background-color: #fff !important;
+            box-shadow: none !important;
+            font-family: inherit;
+            font-size: 1.4rem !important;
+            font-weight: normal;
+            line-height: 1.5;
+            color: #1a1a1a;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    }
+}
+
+.rango {
+    .valores {
+        color: $medium-gray;
+
+        .left,
+        .right {
+            display: inline-block;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+    }
+}
+
+.seleccion {
+    .item {
+        background: $medium-gray;
+        color: $white;
+        display: inline-block;
+        padding: 0.3rem;
+        font-size: 0.8rem;
+        border-radius: $global-radius;
+        margin-right: 0.6rem;
+    }
+}
+
+//comparador
+.comparador {
+    font-size: 0.9rem;
+
+    .proyecto {
+        img.proyecto {
+            border-radius: $global-radius;
+            margin-bottom: 1rem;
+        }
+
+        .data {
+            &.columns {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        #foto,
+        #precio,
+        #title,
+        #ubicacion,
+        #vivienda,
+        #estado,
+        #tipo,
+        #alcobas,
+        #water,
+        #garajes,
+        #acabados,
+        #estrato {
+            padding: 0 2rem;
+        }
+
+        div#foto {
+            min-height: 140px;
+            position: relative;
+
+            .container-foto {
+                position: relative;
+
+                &:after {
+                    position: absolute;
+                    background: url(/assets/images/cerrar.png);
+                    content: "";
+                    right: 0.5rem;
+                    top: 0.5rem;
+
+                    width: 20px;
+                    height: 20px;
+                    background-size: contain;
+                }
+            }
+
+        }
+
+        div#title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            min-height: 46px;
+        }
+
+        div#precio {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: $primary-color;
+        }
+    }
+
+    .encabezados {
+        margin-top: 208px;
+
+        .item {
+            margin: 2rem auto;
+            font-weight: 600;
+            color: $primary-color;
+
+            img {
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+//team
+.team {
+    .section-card {
+        padding: 0.5rem;
+        background: $light-gray;
+
+        .name {
+            color: $primary-color;
+            font-weight: 600;
+        }
+    }
+}
+
+//Micuenta
+
+.container-check {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 1rem;
+}
+
+/* Hide the browser's default checkbox */
+.container-check.container-check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 20px;
+}
+
+/* On mouse-over, add a grey background color */
+.container-check:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-check input:checked~.checkmark {
+    background-color: $secondary-color;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container-check input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-check .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+//Radio
+/* Customize the label (the container) */
+.container-radio {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 1rem;
+}
+
+/* Hide the browser's default radio button */
+.container-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container-radio:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container-radio input:checked~.checkmark {
+    background-color: $secondary-color;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-radio input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-radio .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+//GLosario
+.nav-glossary {
+    margin-bottom: 2rem;
+
+    ul.menu {
+        li {
+            a.active {
+                background: $primary-color;
+                border-radius: $global-radius;
+                color: $white;
+            }
+        }
+    }
+}
+
+.palabra {
+    .title {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+}
+
+//carga
+
+ul.pagination-pointed {
+    li {
+        a {
+            background: $light-gray;
+            padding: 1rem 1.4rem;
+            border-radius: 40px;
+        }
+    }
+
+    li.current {
+        a {
+            padding: 1rem 1.4rem;
+            border-radius: 40px;
+        }
+    }
+}
+.pagination .current {
+    padding: 1rem 1.5rem !important;
+    border-radius: 40px;
+}
+
+//modal
+.reveal{
+    outline: none;
+    color: $white;
 }

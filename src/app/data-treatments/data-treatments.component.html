@@ -1,0 +1,22 @@
+<div class="grid-container">
+    <div class="grid-x grid-padding-x align-stretch">
+      <div class="medium-3 columns">
+        <ul class="menu-left">
+          <li><a href="quienes-somos">¿Quienes somos?</a></li>
+          <li><a href="#">Revista digital</a></li>
+          <li><a href="glosario">Glosario</a></li>
+          <li><a href="contactenos">Contáctenos</a></li>
+          <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
+          <li><a href="aviso-legal">Aviso legal</a></li>
+          <li><a class="active" href="politica-datos">Politica de Tratamiento de datos</a></li>
+          <li><a href="mapa-sitio">Mapa del sitio</a></li>
+        </ul>
+      </div>
+      <div class="grid-x cell small-7 medium-7 large-7">
+        <h2>{{ responseData.title }}</h2>
+        <p [innerHTML]=responseData.body.processed  ></p>
+      </div>
+      <div class="cell small-1 medium-1 large-1"></div>
+    </div>
+  </div>
+  

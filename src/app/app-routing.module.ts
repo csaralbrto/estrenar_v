@@ -18,15 +18,25 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { GlosoryComponent } from './glosory/glosory.component';
 import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.component';
+import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { DataTreatmentsComponent } from './data-treatments/data-treatments.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
+    data: {url: true},
   },
-  { path: 'home', component: HomeComponent, pathMatch: 'full' },
+  { 
+    path: 'home', 
+    component: HomeComponent, 
+    pathMatch: 'full'
+    ,data: {url: true}, 
+  },
+
   { path: 'proyectos', component: ProjectsComponent, pathMatch: 'full' },
+
   {
     path: 'proyecto/:path',
     component: ProjectDetailComponent,
@@ -101,6 +111,16 @@ const routes: Routes = [
   {
     path: 'aviso-privacidad',
     component: PrivacyNoticeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'aviso-legal',
+    component: LegalNoticeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'politica-datos',
+    component: DataTreatmentsComponent,
     pathMatch: 'full',
   },
 ];

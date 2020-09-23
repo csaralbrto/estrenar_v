@@ -1,347 +1,707 @@
-<!-- Navegación -->
-<div class="header-home">
-  <div class="grid-container">
-    <!-- Sección Busqueda -->
-    <form action="">
-      <div class="grid-x grid-padding-x">
-        <div class="large-12 cell align-middle">
-          <h1>{{ main_title_page }}</h1>
-        </div>
-        <div class="large-6 medium-6 small-6 cell">
-          <div>
-            <input type="search" class="search-box" placeholder="¿Qué estás buscando?" />
-            <!-- <i class="fi-magnifying-glass large icon-search-style"></i> -->
-          </div>
-        </div>
-        <div class="large-2 medium-2 small-2 cell">
-          <select name="precio" id="precio">
-            <option value="">Precio</option>
-          </select>
-        </div>
-        <div class="large-2 medium-2 small-2 cell">
-          <select name="precio" id="precio">
-            <option value="">Precio</option>
-          </select>
-        </div>
-        <div class="large-2 medium-2 small-2 cell">
-          <a href="#" class="search_button button large-expanded">Buscar</a>
-        </div>
+
+<app-header [url_header]="'home'"></app-header>
+<!--Bloque1 -->
+<div class="container-gray">
+  <div class="row columns text-center">
+      <div class="publicidad">
+          <img src="/assets/images/banner1.jpg" alt="">
       </div>
-    </form>
-    <!-- Fin Sección Busqueda -->
+  </div>
+  <div class="row columns">
+      <h2 class="text-center deco">¿Qué estas buscando?</h2>
+      <div class="medium-3 columns end">
+          <div class="row">
+              <div class="small-6 columns text-center">
+                  <a class="icono" href="#"><img src="/assets/images/icon-casa.png" alt="casas"></a>
+                  <div class="title-icono">Casa</div>
+              </div>
+              <div class="small-6 columns text-center">
+                  <a class="icono" href="#"><img src="/assets/images/icon-apto.png" alt="casas"></a>
+                  <div class="title-icono">Apartamentos</div>
+              </div>
+              <div class="small-6 columns text-center">
+                  <a class="icono" href="#"><img src="/assets/images/icon-aptoe.png" alt="casas"></a>
+                  <div class="title-icono">Apartaestudios</div>
+              </div>
+              <div class="small-6 columns text-center">
+                  <a class="icono" href="#"><img src="/assets/images/icon-vis.png" alt="casas"></a>
+                  <div class="title-icono">VIS</div>
+              </div>
+          </div>
+      </div>
+      <!--slide-->
+      <div class="medium-9 columns">
+          <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+              <div class="orbit-wrapper">
+
+                  <ul class="orbit-container">
+                      <li class="is-active orbit-slide">
+                          <div class="row">
+                              <div class="medium-8 columns destacado">
+                                  <figure class="orbit-figure">
+                                      <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+                                  </figure>
+                              </div>
+                              <div class="medium-4 columns">
+                                  <div class="row">
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </li>
+                      <li class="orbit-slide">
+                          <div class="row">
+                              <div class="medium-4 columns">
+                                  <div class="row">
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+
+                                  </div>
+                              </div>
+                              <div class="medium-4 columns">
+                                  <div class="row">
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+
+                                  </div>
+                              </div>
+                              <div class="medium-4 columns">
+                                  <div class="row">
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="container-controls">
+                  <nav class="orbit-bullets">
+                      <button class="is-active" data-slide="0">
+                          <span class="show-for-sr">First slide details.</span>
+                          <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                      </button>
+                      <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                  </nav>
+                  <div class="orbit-controls">
+                      <button class="orbit-previous"><span class="show-for-sr">Previous
+                              Slide</span>&#9664;&#xFE0E;</button>
+                      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!--fin slide-->
   </div>
 </div>
+<!--fin bloque1 -->
+<!--Bloque2 -->
+<div class="container">
+  <div class="row columns">
+      <h2 class="text-center deco">Proyectos destacados</h2>
+      <div class="medium-6 columns">
+          <!-- Card Proyecto individual destacado-->
+          <div class="card">
+              <div class="row">
+                  <div class="medium-6 columns">
+                      <div class="container-photo vertical">
+                          <img [src]="response.header_proj1[0].url_img" alt="" class="proyecto">
+                          <div class="container-tools">
+                              <div class="tags">
+                                  <div class="tag"><a href="#">VIS</a></div>
+                                  <div class="tag"><a href="#">Mi casa ya</a></div>
+                              </div>
+                              <div class="add">
+                                  <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="medium-6 columns">
+                      <div class="card-section">
+                          <h2>{{ response.header_proj1[0].direccion }}</h2>
+                          <div class="descripcion">
+                              {{ response.header_proj1[0].sub_titulo }}
+                          </div>
+                          <div class="precio text-center">
+                              <div>Desde:</div>
+                              <span>{{ response.header_proj1[0].valor_venta | number }}</span>
+                          </div>
+                          <hr>
+                      </div>
+                      <div class="card-section">
+                          <div class="row">
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                      <div class="data">{{  response.header_proj1[0].medida_apartamento }} m </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                      <div class="data">{{  response.header_proj1[0].n_habitaciones }} alcobas </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                      <div class="data">{{  response.header_proj1[0].n_garages }} garajes </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                      <div class="data">{{  response.header_proj1[0].n_banos }} baños </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr>
+                      </div>
+                      <div class="card-section">
+                          <div class="button-group align-spaced ">
+                              <a class="button" routerLink="/proyecto/{{response.header_proj1[0].titulo}}">Ver
+                                  Proyecto</a>
+                              <a class="button">Contacto</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
-
-
-
-<div class="back-gray">
-
-  <!-- Sección Publicidad -->
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x publicidad">
-      <div class="cell">
-        <div class="large-6 medium-6 small-6 cell">
-          <div class="callout secondary">
-            <p>PUBLICIDAD</p>
           </div>
-        </div>
+          <div class="comparador-btn">
+              <div class="container-comparador">
+                  <h2>¿Quieres comparar?</h2>
+                  <div class="subtitle">Selecciona tus proyectos favoritos para hacerlo</div>
+              </div>
+          </div>
+          <!-- Fin Card Proyecto individual destacado-->
       </div>
-    </div>
+      <div class="medium-6 columns">
+          <!--slide proyecto-->
+          <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+              <div class="orbit-wrapper">
+
+                  <ul class="orbit-container">
+                      <li class="is-active orbit-slide">
+                          <div class="row">
+                              <div class="medium-6 columns" *ngFor="let projectSlide1 of response.header_proj2; let i = index">
+                                  <!-- Card Proyecto individual-->
+                                  <div class="card">
+                                      <div class="container-photo">
+                                          <img [src]="projectSlide1.url_img" alt="" class="proyecto">
+                                          <div class="container-tools">
+                                              <div class="tags">
+                                                  <div class="tag"><a href="#">VIS</a></div>
+                                                  <div class="tag"><a href="#">Mi casa ya</a></div>
+                                              </div>
+                                              <div class="add">
+                                                  <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card-section">
+                                          <h2>{{ projectSlide1.direccion }}</h2>
+                                          <div class="descripcion">
+                                              {{ projectSlide1.sub_titulo }}
+                                          </div>
+                                          <div class="precio text-center">
+                                              <div>Desde:</div>
+                                              <span>{{ projectSlide1.valor_venta | number }}</span>
+                                          </div>
+                                          <hr>
+                                      </div>
+                                      <div class="card-section">
+                                          <div class="row">
+                                              <div class="small-6 columns">
+                                                  <div class="item">
+                                                      <div class="data-icon"><img src="/assets/images/icon-medida.png"
+                                                              alt=""></div>
+                                                      <div class="data"> {{ projectSlide1.medida_apartamento }} m</div>
+                                                  </div>
+                                              </div>
+                                              <div class="small-6 columns">
+                                                  <div class="item">
+                                                      <div class="data-icon"><img src="/assets/images/icon-alcoba.png"
+                                                              alt=""></div>
+                                                      <div class="data"> {{ projectSlide1.n_habitaciones }} alcobas</div>
+                                                  </div>
+                                              </div>
+                                              <div class="small-6 columns">
+                                                  <div class="item">
+                                                      <div class="data-icon"><img src="/assets/images/icon-garaje.png"
+                                                              alt=""></div>
+                                                      <div class="data"> {{ projectSlide1.n_garages }} garajes</div>
+                                                  </div>
+                                              </div>
+                                              <div class="small-6 columns">
+                                                  <div class="item">
+                                                      <div class="data-icon"><img src="/assets/images/icon-water.png"
+                                                              alt=""></div>
+                                                      <div class="data"> {{ projectSlide1.n_banos }} baños</div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <hr>
+                                      </div>
+                                      <div class="card-section">
+                                          <div class="button-group align-spaced ">
+                                              <a class="button" routerLink="/proyecto/{{projectSlide1.titulo}}">Ver
+                                                  Proyecto</a>
+                                              <a class="button">Contacto</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- Fin Card Proyecto individual-->
+                              </div>
+                          </div>
+                      </li>
+                      <li class="is-active orbit-slide">
+                          <div class="row">
+                            <div class="medium-6 columns" *ngFor="let projectSlide2 of response.header_proj4; let i = index">
+                                <!-- Card Proyecto individual-->
+                                <div class="card">
+                                    <div class="container-photo">
+                                        <img [src]="projectSlide2.url_img" alt="" class="proyecto">
+                                        <div class="container-tools">
+                                            <div class="tags">
+                                                <div class="tag"><a href="#">VIS</a></div>
+                                                <div class="tag"><a href="#">Mi casa ya</a></div>
+                                            </div>
+                                            <div class="add">
+                                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-section">
+                                        <h2>{{ projectSlide2.direccion }}</h2>
+                                        <div class="descripcion">
+                                            {{ projectSlide2.sub_titulo }}
+                                        </div>
+                                        <div class="precio text-center">
+                                            <div>Desde:</div>
+                                            <span>{{ projectSlide2.valor_venta | number }}</span>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="card-section">
+                                        <div class="row">
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-medida.png"
+                                                            alt=""></div>
+                                                    <div class="data"> {{ projectSlide2.medida_apartamento }} m</div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png"
+                                                            alt=""></div>
+                                                    <div class="data"> {{ projectSlide2.n_habitaciones }} alcobas</div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png"
+                                                            alt=""></div>
+                                                    <div class="data"> {{ projectSlide2.n_garages }} garajes</div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-water.png"
+                                                            alt=""></div>
+                                                    <div class="data"> {{ projectSlide2.n_banos }} baños</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="card-section">
+                                        <div class="button-group align-spaced ">
+                                            <a class="button" routerLink="/proyecto/{{projectSlide2.titulo}}">Ver
+                                                Proyecto</a>
+                                            <a class="button">Contacto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fin Card Proyecto individual-->
+                            </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="container-controls">
+                  <nav class="orbit-bullets">
+                      <button class="is-active" data-slide="0">
+                          <span class="show-for-sr">First slide details.</span>
+                          <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                      </button>
+                      <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                  </nav>
+                  <div class="orbit-controls">
+                      <button class="orbit-previous"><span class="show-for-sr">Previous
+                              Slide</span>&#9664;&#xFE0E;</button>
+                      <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <!--fin slide proyecto-->
+
+      </div>
   </div>
-  <!--Fin Sección Publicidad -->
-
-  <!--Sección ¿Qué estas buscando? -->
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell align-middle">
-        <h2 class="titulo-seccion">{{ title_section_list_search }}</h2>
+  <hr class="white">
+  <div class="row text-center">
+      <div class="publicidad">
+          <img src="/assets/images/banner1.jpg" alt="">
       </div>
-    </div>
-
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell ">
-        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+  </div>
+</div>
+<!--fin bloque2 -->
+<!--Bloque3 -->
+<div class="container-gray">
+  <div class="row columns">
+      <h2 class="text-center deco">Constructoras</h2>
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
           <div class="orbit-wrapper">
-            <ul class="orbit-container">
-              <li class="is-active orbit-slide">
-                <figure class="orbit-figure">
-                  <img class="orbit-image" src="https://placehold.it/1200x400/888?text=Imagen-1" alt="Space">
-                  <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-                </figure>
-              </li>
-              <li class="orbit-slide">
-                <div class="media-object">
-                  <div class="media-object-section align-self-middle"
-                    *ngFor="let header_proj1 of response.header_proj1; let i = index">
-                    <div class="thumbnail">
-                      <img src="{{ header_proj1.url_img }}">
-                      <a class="link-carrousel-icon" href="">{{ header_proj1.tipo }}</a>
-                    </div>
-                  </div>
-                  <div class="media-object-section align-self-middle"
-                    *ngFor="let header_proj2 of response.header_proj2; let i = index">
-                    <div class="thumbnail">
-                      <img src="{{ header_proj2.url_img }}">
-                      <a class="link-carrousel-icon" href="">{{ header_proj2.tipo }}</a>
-                    </div>
-                  </div>
-                  <div class="media-object-section main-section"
-                    *ngFor="let header_proj3 of response.header_proj3; let i = index">
-                    <img src="{{ header_proj3.url_img }}">
-                  </div>
-                  <div class="media-object-section align-self-bottom">
-                    <div class="thumbnail"
-                      *ngFor="let header_proj4 of response.header_proj4; let i = index" alt="">
-                      <img src="{{ header_proj4.url_img }}">
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="orbit-slide">
-                <figure class="orbit-figure">
-                  <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
-                  <figcaption class="orbit-caption">Encapsulating</figcaption>
-                </figure>
-              </li>
-              <li class="orbit-slide">
-                <figure class="orbit-figure">
-                  <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
-                  <figcaption class="orbit-caption">Outta This World</figcaption>
-                </figure>
-              </li>
-            </ul>
-          </div>
-          <nav class="orbit-bullets">
-            <button class="is-active" data-slide="0">
-              <span class="show-for-sr">First slide details.</span>
-              <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-            </button>
-            <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-            <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-            <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-          </nav>
-          <div class="orbit-controls">
-            <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
-            <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    <!--Fin Sección ¿Qué estas buscando? -->
 
-</div>
-
-
-
-<div class="grid-container">
-  <!--Sección Proyectos destacados -->
-  <div class="row">
-    <div class="large-12 cell align-middle">
-      <h2 class="titulo-seccion">{{ title_section_top_proyects }}</h2>
-    </div>
-    <!-- <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-      <div class="cell">
-        <div class="card">
-          <img src="https://placehold.it/550x150/777?text=Proyectos">
-          <div class="card-section">
-            <h4>Proyecto 1</h4>
-            <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
+              <ul class="orbit-container">
+                  <li class="is-active orbit-slide">
+                      <div class="row">
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                      </div>
+                  </li>
+                  <li class="orbit-slide">
+                      <div class="row">
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                          <div class="small-4 medium-2 columns">
+                              <figure class="orbit-figure">
+                                  <img class="orbit-image" src="/assets/images/content/constructora2.jpg" alt="">
+                              </figure>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
           </div>
-        </div>
-      </div>
-      <div class="cell">
-        <div class="card">
-          <img src="https://placehold.it/250x350/777?text=Proyectos">
-          <div class="card-section">
-            <h4>Proyecto 2</h4>
-            <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
+          <div class="container-controls">
+              <nav class="orbit-bullets">
+                  <button class="is-active" data-slide="0">
+                      <span class="show-for-sr">First slide details.</span>
+                      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                  </button>
+                  <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+              </nav>
+              <div class="orbit-controls">
+                  <button class="orbit-previous"><span class="show-for-sr">Previous
+                          Slide</span>&#9664;&#xFE0E;</button>
+                  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+              </div>
           </div>
-        </div>
       </div>
-      <div class="cell">
-        <div class="card">
-          <img src="https://placehold.it/250x350/777?text=Proyectos">
-          <div class="card-section">
-            <h4>Proyecto 3</h4>
-            <p>Descripción del proyecto.<br>Descripción del proyecto.<br>Descripción del proyecto.</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-      <div class="cell" *ngFor="let project of response.projects; let i = index">
-        <div class="card">
-          <img src="{{ project.imagen_banner }}">
-          <div class="card-section">
-            <h4>{{ project.nombre }}</h4>
-            <div [innerHTML]=project.descripcion></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Fin Sección Proyectos destacados -->
-</div>
-
-
-<!-- Sección Publicidad -->
-<div class="grid-container">
-  <div class="grid-x grid-padding-x publicidad">
-    <div class="cell">
-      <div class="large-6 medium-6 small-6 cell">
-        <div class="callout secondary">
-          <p>PUBLICIDAD</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
-<!--Fin Sección Publicidad -->
-
-
-
-<!--Sección Constructoras -->
-<div class="back-gray">
-  <div class="grid-container">
-    <div class="large-12 cell align-middle">
-      <h2 class="titulo-seccion">{{ title_section_builders }}</h2>
-    </div>
-    
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell ">
-        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+<!--fin bloque3 -->
+<!--Bloque4 -->
+<div class="container">
+  <div class="row columns">
+      <h2 class="text-center deco">Blog</h2>
+      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
           <div class="orbit-wrapper">
-            <ul class="orbit-container">
-              <li class="orbit-slide">
-                <div class="media-object">
-                  <div class="media-object-section main-section"
-                    *ngFor="let constructora of response.constructoras; let i = index">
-                    <div class="thumbnail builder-card-carrousell">
-                      <img src="{{ response.url }}{{ constructora.logo }}">
-                      <p></p>
-                      <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-<!--               <li class="orbit-slide">
-                <div class="media-object">
-                  <div class="media-object-section main-section"
-                    *ngFor="let constructora of response.constructoras; let i = index">
-                    <div class="builder-card-carrousell">
-                      <img src="{{ response.url }}{{ constructora.logo }}">
-                      <p></p>
-                      <a style="color: #14444E;" href="/constructora/{{constructora.id}}">{{ constructora.name }}</a>
-                    </div>
-                    <div class="builder-card-carrousell">
-                      <img src="https://placehold.it/100x100/777?text=VIS">
-                    </div>
-                    <div class="builder-card-carrousell">
-                      <img src="https://placehold.it/100x100/777?text=Apartaestudios">
-                    </div>
-                    <div class="builder-card-carrousell">
-                      <img src="https://placehold.it/100x100/777?text=VIS">
-                    </div>
-                  </div>
-                </div>
-              </li> -->
-             <!--  <li class="orbit-slide">
-                <figure class="orbit-figure">
-                  <img class="orbit-image" src="https://placehold.it/1200x400/777?text=Imagen-3" alt="Space">
-                  <figcaption class="orbit-caption">Encapsulating</figcaption>
-                </figure>
-              </li>
-              <li class="orbit-slide">
-                <figure class="orbit-figure">
-                  <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
-                  <figcaption class="orbit-caption">Outta This World</figcaption>
-                </figure>
-              </li> -->
-            </ul>
+
+              <ul class="orbit-container">
+                  <li class="is-active orbit-slide">
+                      <div class="row">
+                          <div class="medium-3 columns" *ngFor="let blog of response.blogs; let i = index">
+                              <div class="blog-list" *ngIf="i <= 3">
+                                  <div class="img">
+                                      <img [src]="blog.banner" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>{{ blog.titulo }}</h3>
+                                  <div class="resumen" [innerHTML]=blog.descripcion>
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+                          <!-- <div class="medium-3 columns">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <img src="/assets/images/content/proyecto.jpg" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>Tendencias de decoracion de vacaciones</h3>
+                                  <div class="resumen">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                                      suscipit.
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+                          <div class="medium-3 columns">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <img src="/assets/images/content/proyecto.jpg" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>Tendencias de decoracion de vacaciones</h3>
+                                  <div class="resumen">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+                          <div class="medium-3 columns">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <img src="/assets/images/content/proyecto.jpg" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>Tendencias de decoracion de vacaciones</h3>
+                                  <div class="resumen">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                                      suscipit sollicitudin mauris.
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div> -->
+
+                      </div>
+                  </li>
+                  <!-- <li class="orbit-slide">
+                      <div class="row">
+                          <div class="medium-3 columns">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <img src="/assets/images/content/proyecto.jpg" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>Tendencias de decoracion de vacaciones</h3>
+                                  <div class="resumen">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                                      suscipit sollicitudin mauris.
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+                          <div class="medium-3 columns">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <img src="/assets/images/content/proyecto.jpg" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>Tendencias de decoracion de vacaciones</h3>
+                                  <div class="resumen">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                                      suscipit.
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+                          <div class="medium-3 columns">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <img src="/assets/images/content/proyecto.jpg" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>Tendencias de decoracion de vacaciones</h3>
+                                  <div class="resumen">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+                          <div class="medium-3 columns">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <img src="/assets/images/content/proyecto.jpg" alt="">
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="#">Decoracion</a></div>
+                                  <h3>Tendencias de decoracion de vacaciones</h3>
+                                  <div class="resumen">
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                                      suscipit sollicitudin mauris.
+                                  </div>
+                                  <a href="#" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+
+                      </div>
+                  </li> -->
+              </ul>
           </div>
-          <nav class="orbit-bullets">
-            <button class="is-active" data-slide="0">
-              <span class="show-for-sr">First slide details.</span>
-              <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-            </button>
-            <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-            <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-            <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-          </nav>
-          <div class="orbit-controls">
-            <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#60;</button>
-            <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#62;</button>
+          <div class="container-controls">
+              <nav class="orbit-bullets">
+                  <button class="is-active" data-slide="0">
+                      <span class="show-for-sr">First slide details.</span>
+                      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                  </button>
+                  <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+              </nav>
+              <div class="orbit-controls">
+                  <button class="orbit-previous"><span class="show-for-sr">Previous
+                          Slide</span>&#9664;&#xFE0E;</button>
+                  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
 </div>
-<!--Fin Sección Constructoras -->
 
-<!--Sección Blog -->
-<div class="grid-container blog-home">
-  <div class="row">
-    <div class="large-12 cell align-middle">
-      <h2 class="titulo-seccion">{{ title_section_blog }}</h2>
-      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-        <div class="cell" *ngFor="let blog of response.blogs; let i = index">
-          <div class="card">
-            <img [src]="blog.banner" [title]="blog.banner" width="270" height="195">
-            <div class="card-section">
-              <h3>{{ blog.titulo }}</h3>
-              <p>{{ blog.sub_titulo }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      <!-- <div class="row">
-      <div class="large-12 cell align-middle">
-        <h2>{{ title_section_blog }}</h2>
-      </div>
-      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-        <div class="cell">
-          <div class="card">
-            <img src="https://placehold.it/250x250/777?text=Proyectos">
-            <div class="card-section">
-              <h4>Blog 1</h4>
-              <p></p>
-            </div>
-          </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <img src="https://placehold.it/250x250/777?text=Proyectos">
-            <div class="card-section">
-              <h4>Blog 2</h4>
-              <p></p>
-            </div>
-          </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <img src="https://placehold.it/250x250/777?text=Proyectos">
-            <div class="card-section">
-              <h4>Blog 3</h4>
-              <p></p>
-            </div>
-          </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <img src="https://placehold.it/250x250/777?text=Proyectos">
-            <div class="card-section">
-              <h4>Blog 4</h4>
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
-      <!--Fin Sección Blog -->
+<!--fin bloque4 -->

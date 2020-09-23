@@ -1,0 +1,468 @@
+<div class="grid-container">
+  <div class="grid-x grid-padding-x align-stretch">
+    <div class="cell large-12 medium-12 small-12">
+      <h4>Favoritos</h4>
+    </div>
+    <form [formGroup]="form_filters">
+      <div class="grid-container fluid">
+        <div class="grid-x grid-margin-x">
+          <div class="cell auto">
+            <label>Tipo de inmueble
+              <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)">
+                <option value="Apartamento">Apartamento</option>
+              </select>
+            </label>
+          </div>
+          <div class="cell auto">
+            <label>Precio
+              <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)">
+                <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
+              </select>
+            </label>
+          </div>
+          <div class="cell auto">
+            <label>Ciudad
+              <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)">
+                <option value="barranquilla">Barranquilla</option>
+                <option value="bogota">Bogot&aacute;</option>
+              </select>
+            </label>
+          </div>
+          <div class="cell auto">
+            <label>Zona
+              <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)">
+                <option value="norte">Norte</option>
+                <option value="sur">Sur</option>
+              </select>
+            </label>
+          </div>
+          <div class="cell auto">
+            <label>Sector
+              <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)">
+                <option value="husker">Centro Internacional</option>
+              </select>
+            </label>
+          </div>
+          <div class="cell shrink">
+            <div class="button-group align-spaced ">
+              <a class="button">M&aacute;s Filtros</a>
+              <a class="button search_button">Favoritos</a>
+            </div>
+          </div>
+        </div>
+        <div class="grid-x grid-margin-x expanded">
+          <div class="large-10 cell ">
+            <span class="label primary">
+              <a href="">
+                Piscina
+              </a>
+              <a href="">
+                <span class="badge "><i class="fi-x"></i></span>
+              </a>
+            </span>
+            <span class="label primary">
+              <a href="">
+                3 Habitaciones
+              </a>
+              <a href="">
+                <span class="badge "><i class="fi-x"></i></span>
+              </a>
+            </span>
+            <span class="label primary">
+              <a href="">
+                2 Garajes
+              </a>
+              <a href="">
+                <span class="badge "><i class="fi-x"></i></span>
+              </a>
+            </span>
+            <hr />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="grid-x cell small-12 medium-6 large-6">
+      <div class="cell small-12 medium-12 large-12 input-group">
+        <p class="help-text">Mostrando 374 apartanentos en Barranquilla</p>
+        <label class="text-right">
+          Ordenar Por:
+        </label>
+        <select>
+          <option value="60.000.000-700.000.000">60.000.000-700.000.000</option>
+        </select>
+        <button class="button search_button">Comparar</button>
+      </div>
+      <div class="grid-x grid-margin-x cell small-up-1 medium-up-2 large-up-2 small-12 medium-12 large-12 align-stretch">
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" [src]="response[0].url_img">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                {{ response[0].direccion }}
+              </h6>
+              <p>
+                <small>
+                  {{ response[0].sub_titulo }}
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">{{ response[0].valor_venta | number }}</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button" routerLink="/proyecto/{{response[0].titulo}}">Ver Proyecto</a>
+                <!-- <a class="button">Ver Proyecto</a> -->
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" [src]="response[1].url_img">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                {{ response[1].direccion }}
+              </h6>
+              <p>
+                <small>
+                  {{ response[1].sub_titulo }}
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">{{ response[1].valor_venta | number }}</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button" routerLink="/proyecto/{{response[1].titulo}}">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" [src]="response[2].url_img">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                {{response[2].direccion}}
+              </h6>
+              <p>
+                <small>
+                  {{ response[2].sub_titulo }}
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">{{ response[2].valor_venta | number }}</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button" routerLink="/proyecto/{{response[2].titulo}}">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+        <!-- Card Proyecto individual-->
+        <div class="cell shrink">
+          <div class="card">
+            <img class="project-images-card" [src]="response[3].url_img">
+            <div class="card-section">
+              <span class="rounded link-category-project">
+                <a href="">
+                  VIS
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  MI CASA YA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  ENTREGA INMEDIATA
+                </a>
+              </span>
+              <span class="link-category-project">
+                <a href="">
+                  FERIA
+                </a>
+              </span>
+            </div>
+            <div class="card-section body-card-project">
+              <h6 class="text-capitalize Text Wrap">
+                {{response[3].direccion}}
+              </h6>
+              <p>
+                <small>
+                  {{ response[3].sub_titulo }}
+                </small>
+              </p>
+              <p class="text-center">
+                <small>
+                  DESDE
+                </small>
+                <br>
+                <span class="text-bold">{{ response[3].valor_venta | number }}</span>
+              </p>
+              <hr />
+            </div>
+            <div class="card-section">
+              <div class="button-group align-spaced ">
+                <a class="button" routerLink="/proyecto/{{response[3].titulo}}">Ver Proyecto</a>
+                <a class="button">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Card Proyecto individual-->
+      </div>
+    </div>
+    <div class="grid-x cell small-12 medium-6 large-6">
+      <div class="cell small-12 medium-12 large-12 display-inline">
+        <span class="label primary">
+          <a href="">
+            COP 150M +
+          </a>
+        </span>
+        <span class="label primary">
+          <a href="">
+            COP 150M +
+          </a>
+        </span>
+        <span class="label primary">
+          <a href="">
+            COP 150M +
+          </a>
+        </span>
+        <span class="label primary">
+          <a href="">
+            COP 150M +
+          </a>
+        </span>
+        <span>Ocultar Mapa</span>
+        <div class="switch tiny">
+          <input class="switch-input" id="hiddenMap" type="checkbox" name="hiddenMap">
+          <label class="switch-paddle" for="hiddenMap">
+          </label>
+        </div>
+      </div>
+      <div class="cell small-12 medium-12 large-12">
+        <div class="responsive-embed">
+          <iframe
+            src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+            frameborder="0" allowfullscreen="">
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <div class="cell large-12 medium-12 small-12">
+      <h4>Tus b&uacute;squedas</h4>
+    </div>
+    <div class="grid-x grid-margin-x cell small-up-4 medium-up-4 large-up-4 small-12 medium-12 large-12 align-stretch">
+      <!-- Card Proyecto individual-->
+      <div class="cell shrink" *ngFor="let project of response; let i = index">
+        <div class="card" *ngIf="i > 3 && i < 8 ">
+          <img class="project-images-card" [src]="project.url_img">
+          <div class="card-section">
+            <span class="rounded link-category-project">
+              <a href="">
+                VIS
+              </a>
+            </span>
+            <span class="link-category-project">
+              <a href="">
+                MI CASA YA
+              </a>
+            </span>
+            <span class="link-category-project">
+              <a href="">
+                ENTREGA INMEDIATA
+              </a>
+            </span>
+            <span class="link-category-project">
+              <a href="">
+                FERIA
+              </a>
+            </span>
+          </div>
+          <div class="card-section body-card-project">
+            <h6 class="text-capitalize Text Wrap">
+              {{project.direccion}}
+            </h6>
+            <p>
+              <small>
+                {{response.sub_titulo}}
+              </small>
+            </p>
+            <p class="text-center">
+              <small>
+                DESDE
+              </small>
+              <br>
+              <span class="text-bold">
+                {{project.valor_venta | number }}</span>
+            </p>
+            <hr />
+          </div>
+          <div class="card-section">
+            <div class="button-group align-spaced ">
+              <a class="button" routerLink="/proyecto/{{project.titulo}}">Ver Proyecto</a>
+              <a class="button">Contacto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin Card Proyecto individual-->
+    </div>
+    <div class="cell large-12 medium-12 small-12">
+      <h4>Recomendaciones seg&uacute;n tus b&uacute;squedas</h4>
+    </div>
+    <div class="grid-x grid-margin-x cell small-up-4 medium-up-4 large-up-4 small-12 medium-12 large-12 align-stretch">
+      <!-- Card Proyecto individual-->
+      <div class="cell shrink" *ngFor="let project of response; let i = index">
+        <div class="card" *ngIf="i > 7">
+          <img class="project-images-card" [src]="project.url_img">
+          <div class="card-section">
+            <span class="rounded link-category-project">
+              <a href="">
+                VIS
+              </a>
+            </span>
+            <span class="link-category-project">
+              <a href="">
+                MI CASA YA
+              </a>
+            </span>
+            <span class="link-category-project">
+              <a href="">
+                ENTREGA INMEDIATA
+              </a>
+            </span>
+            <span class="link-category-project">
+              <a href="">
+                FERIA
+              </a>
+            </span>
+          </div>
+          <div class="card-section body-card-project">
+            <h6 class="text-capitalize Text Wrap">
+              {{project.direccion}}
+            </h6>
+            <p>
+              <small>
+                {{response.sub_titulo}}
+              </small>
+            </p>
+            <p class="text-center">
+              <small>
+                DESDE
+              </small>
+              <br>
+              <span class="text-bold">
+                {{project.valor_venta | number }}</span>
+            </p>
+            <hr />
+          </div>
+          <div class="card-section">
+            <div class="button-group align-spaced ">
+              <a class="button" routerLink="/proyecto/{{project.titulo}}">Ver Proyecto</a>
+              <a class="button">Contacto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin Card Proyecto individual-->
+    </div>
+  </div>
+</div>

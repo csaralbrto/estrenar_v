@@ -77,14 +77,14 @@ $foundation-palette: (
   alert: #cc4b37,
 );
 $light-gray: #eeeeee;
-$medium-gray: #cacaca;
+$medium-gray: #a8a8a8;
 $dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$black: #1a1a1a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
 // $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-$body-font-family: 'Roboto', sans-serif;
+$body-font-family: 'Public Sans', sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -102,7 +102,7 @@ $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 $print-hrefs: true;
 
-//@include add-foundation-colors; //##Global
+@include add-foundation-colors;
 
 // 2. Breakpoints
 // --------------
@@ -173,7 +173,7 @@ $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
 $enable-code-inline: true;
 $anchor-color: $primary-color;
-//##$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
@@ -300,7 +300,7 @@ $button-padding: 0.85em 1em;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
-//##$button-background-hover: scale-color($button-background, $lightness: -15%);
+$button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
@@ -577,9 +577,9 @@ $pagination-arrow-next: '\00BB';
 // ----------------
 
 $progress-height: 1rem;
-$progress-background: $medium-gray;
+$progress-background: $light-gray;
 $progress-margin-bottom: $global-margin;
-$progress-meter-background: $primary-color;
+$progress-meter-background: $secondary-color;
 $progress-radius: $global-radius;
 
 // 29. Prototype Arrow
@@ -755,14 +755,14 @@ $responsive-embed-ratios: (
 // 47. Reveal
 // ----------
 
-$reveal-background: $white;
+$reveal-background: $primary-color;
 $reveal-width: 600px;
 $reveal-max-width: $global-width;
 $reveal-padding: $global-padding;
 $reveal-border: 1px solid $medium-gray;
 $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
-$reveal-overlay-background: rgba($black, 0.45);
+$reveal-overlay-background: rgba($black, 0.6);
 
 // 48. Slider
 // ----------
@@ -771,12 +771,12 @@ $slider-width-vertical: 0.5rem;
 $slider-transition: all 0.2s ease-in-out;
 $slider-height: 0.5rem;
 $slider-background: $light-gray;
-$slider-fill-background: $medium-gray;
-$slider-handle-height: 1.4rem;
-$slider-handle-width: 1.4rem;
-$slider-handle-background: $primary-color;
+$slider-fill-background: $primary-color;
+$slider-handle-height: 1.5rem;
+$slider-handle-width: 1.5rem;
+$slider-handle-background: $secondary-color;
 $slider-opacity-disabled: 0.25;
-$slider-radius: $global-radius;
+$slider-radius: 20px;
 
 // 49. Switch
 // ----------
@@ -840,7 +840,7 @@ $tab-content-padding: 1rem;
 $thumbnail-border: 4px solid $white;
 $thumbnail-margin-bottom: $global-margin;
 $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
-//##$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
+$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
 

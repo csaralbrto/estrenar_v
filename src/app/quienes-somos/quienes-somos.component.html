@@ -1,119 +1,56 @@
-<div class="grid-container">
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell small-1 medium-1 large-1"></div>
-    <div class="cell small-3 medium-3 large-3">
-      <ul class="vertical menu information-company">
-        <li class="is-active"><a href="quienes-somos">¿Qui&eacute;nes somos?</a></li>
-        <li><a href="glosario">Glosario</a></li>
-        <li><a href="contactenos">Cont&aacute;ctenos</a></li>
-        <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
-        <li><a href="politica-datos">Pol&iacute;tica de tratamiento de datos</a></li>
-        <li><a href="mapa-sitio">Mapa del sitio</a></li>
+<div class="row columns">
+  <div class="medium-3 columns">
+      <ul class="menu-left">
+          <li><a class="active" href="quienes-somos">¿Quienes somos?</a></li>
+          <li><a href="#">Revista digital</a></li>
+          <li><a href="glosario">Glosario</a></li>
+          <li><a href="contactenos">Contáctenos</a></li>
+          <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
+          <li><a href="aviso-legal">Aviso legal</a></li>
+          <li><a href="politica-datos">Politica de Tratamiento de datos</a></li>
+          <li><a href="mapa-sitio">Mapa del sitio</a></li>
+
       </ul>
-    </div>
-    <div class="grid-x cell small-7 medium-7 large-7">
-      <h2>¿Qui&eacute;nes somos?</h2>
-
-      <h5>!Somos el Portal Especializado en Vivienda Nueva en Colombia¡</h5>
-
-      <p>Estrenar Vivienda significa querer un futuro, vivir un presente en el que puedas tener la tranquilidad de
-        estar en tu hogar, en tu vivienda propia.</p>
-
-      <p>Nuestra historia comenzó en el año 2009 con una revista impresa, que terminó por consolidarse como una de las
-        herramientas de mayor prestigio y credibilidad para la compra de vivienda nueva en el Centro de Colombia, y
-        que hoy en día podría ser una de las de las revistas de mayor circulación en el país.</p>
-
-      <p>Un año después de este gran éxito nace nuestro canal digital, uno de los principales portales web en el
-        sector inmobiliario, que cada día sigue evolucionando, con el único interés de guiar a miles de usuarios en la
-        búsqueda de su nuevo hogar.</p>
-
-      <p>Actualmente contamos con más de 480 proyectos de vivienda nueva y más de 160 constructoras registradas. Lo
-        que nos permite brindar una variedad de opciones que se ajustan a las diferentes necesidades de los usuarios
-        en cuanto a precio, características, ubicación, y las diferentes comodidades que desee. Posicionándonos entre
-        los primeros portales inmobiliarios a nivel nacional, y manteniéndonos como líderes en la oferta de vivienda
-        nueva en Bogotá.</p>
-
-      <p>Por este y otros motivos estamos seguros que Estrenar Vivienda es el lugar ideal para que los colombianos se
-        enamoren de su nuevo hogar, conociendo todas las alternativas de proyectos que tenemos publicados de las más
-        de 160 constructoras que depositan su confianza en nosotros para llegar al público que busca habitar o
-        invertir en una vivienda.</p>
-
-      <p>Ten presente que Encontrar tu nuevo hogar es posible, y que Estrenar Vivienda ¡Es Felicidad!</p>
-
-      <h6>Direcci&oacute;n y Gerencia</h6>
-      <div class="grid-x cell large-12 medium-12 small-12 small-up-1 medium-up-3 large-up-3">
-        <div class="cell">
-          <div class="card">
-            <div class="card-section">
-              <img src="assets/images/personal/persona-1.png">
-            </div>
-            <div class="card-section secondary">
-              <p><span class="text-bold">Roberto Escobar</span></p>
-              <p><span>Director</span></p>
-            </div>
+  </div>
+  <div class="medium-9 columns">
+      <h1>{{ responseData.title }}</h1>
+  
+      <p [innerHTML]=responseData.body.processed  ></p>
+          <hr class="white">
+          <div class="row" *ngFor="let equipo of dataInfoImg; let i = index">
+            <h2 class="columns">{{ equipo.field_ev_team_position }}</h2>
+            <div class="medium-4 columns end">
+                <div class="card team">
+                    <img [src]="imgPath + equipo.field_ev_team_image.uri.url" alt="">
+                      <div class="section-card">
+                          <div class="name">{{ equipo.field_ev_team_name }}</div>
+                          <div class="cargo">{{ equipo.field_ev_team_area }}</div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <div class="card-section">
-              <img src="assets/images/personal/persona-2.png">
-            </div>
-            <div class="card-section secondary">
-              <p><span class="text-bold">Roberto Escobar</span></p>
-              <p><span>Director</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <div class="card-section">
-              <img src="assets/images/personal/persona-3.png">
-            </div>
-            <div class="card-section secondary">
-              <p><span class="text-bold">Roberto Escobar</span></p>
-              <p><span>Director</span></p>
-            </div>
-          </div>
-        </div>
+  </div>
+</div>
+<hr class="white">
+<div class="container-blue">
+  <div class="row columns text-center">
+      <h2 class="deco">Suscribirse a nuestro boletín</h2>
+      <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
+      <div>
+          <form action="">
+              <div class="row condensed">
+                  <div class="medium-7 medium-offset-2 columns">
+                      <input type="text" placeholder="Ingresa tu correo electrónico" />
+                  </div>
+                  <div class="medium-1 columns end">
+                      <a href="#" class="button expanded secondary">Suscribirse</a>
+                  </div>
+                  <div class="medium-7 medium-offset-2 columns end text-left">
+                      <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
+                              Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                  </div>
+              </div>
+          </form>
       </div>
-
-      <h6>Direcci&oacute;n y Gerencia</h6>
-      <div class="grid-x cell large-12 medium-12 small-12 small-up-1 medium-up-3 large-up-3">
-        <div class="cell">
-          <div class="card">
-            <div class="card-section">
-              <img src="assets/images/personal/persona-1.png">
-            </div>
-            <div class="card-section secondary">
-              <p><span class="text-bold">Roberto Escobar</span></p>
-              <p><span>Director</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <div class="card-section">
-              <img src="assets/images/personal/persona-2.png">
-            </div>
-            <div class="card-section secondary">
-              <p><span class="text-bold">Roberto Escobar</span></p>
-              <p><span>Director</span></p>
-            </div>
-          </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <div class="card-section">
-              <img src="assets/images/personal/persona-3.png">
-            </div>
-            <div class="card-section secondary">
-              <p><span class="text-bold">Roberto Escobar</span></p>
-              <p><span>Director</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="cell small-1 medium-1 large-1"></div>
   </div>
 </div>

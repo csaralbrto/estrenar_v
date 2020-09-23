@@ -1,68 +1,50 @@
-<div class="grid-container">
-  <div class="grid-x grid-padding-x align-stretch">
-    <div class="cell large-12">
-    </div>
-    <div class="cell large-2"></div>
-    <div class="cell large-8">
-      <p class="callout secondary">Publicidad</p>
-    </div>
-    <div class="cell large-2"></div>
+<div class="row columns text-center">
+  <div class="publicidad">
+      <img src="/assets/images/banner1.jpg" alt="">
   </div>
 </div>
-<div class="grid-container">
-  <div class="grid-x grid-padding-x">
-    <div class="cell large-12">
-      <h2>Constructoras</h2>
-    </div>
-
-    <form action="">
-      <div class="cell large-12 medium-12">
-        <input type="search" name="" placeholder="Buscar constructora" id="">
-        <i class="fi-magnifying-glass large icon-search-style"></i>
+<div class="row columns">
+  <h1>Constructoras</h1>
+  <div>
+      <form action="">
+          <div class="row">
+              <div class="medium-4 columns end">
+                  <input type="search" placeholder="Buscar constructora" />
+              </div>
+              <div class="medium-4 columns end">
+                  <input type="search" placeholder="Ciudad" />
+              </div>
+              <div class="medium-2 columns end">
+                  <a href="#" class="button expanded">Buscar</a>
+              </div>
+          </div>
+      </form>
+  </div> 
+  <hr>
+</div>
+<div class="row columns">
+  <div class="medium-4 columns end" *ngFor="let project1 of response; let i = index">
+      <div class="card constructora">
+          <div class="row">
+              <div class="small-4 columns foto">
+                  <img [src]="project1.url_img" alt="" class="image">
+              </div>
+              <div class="small-8 columns">
+                  <div class="title">Amarilo</div>
+                  <div class="info">{{ project1.direccion }} Bogotá. +571 5800 0000</div>
+              </div>
+              <hr class="white">
+              <div class="small-12 columns">
+                  <p [innerHTML]=project1.descripcion></p>
+              </div>
+              <div class="small-12 columns text-center">
+              <a href="/proyectos" class="button secondary">Proyectos</a>
+              </div>
+          </div>
       </div>
-      <div class="cell large-12">
-        <input type="text" name="" id="" placeholder="Ciudad">
-      </div>
-    </form>
   </div>
 </div>
-<div class="grid-container">
-  <div class="grid-x grid-padding-x meidum-4 small-1">
-    <div class="medium-4 small-12" *ngFor="let project1 of response; let i = index">
-      <!-- Card Proyecto individual-->
-      <div class="cell shrink">
-        <div class="card">
-          <div class="card-section grid-x grid-padding-x">
-            <div class="cell medium-4">
-              <img [src]="project1.url_img" alt="">
-            </div>
-            <div class="cell medium-8">
-              <h6 class="align-left">Amarillo</h6>
-              <p>
-                <span>{{ project1.direccion }}</span>
-              </p>
-              <p>
-                <span>+57 5800000</span>
-              </p>
-            </div>
-          </div>
-          <div class="card-section">
-            <p [innerHTML]=project1.descripcion></p>
-          </div>
-          <div class="card-section">
-            <div class="button-group align-spaced ">
-              <a href="/proyectos" class="button">Proyectos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
-    </div>
-
-  </div>
-  <div class="grid-x grid-padding-x meidum-4 small-1 text-center">
-    <div class="medium-12 large-12 small-12">
-      <a class="button">Cargar m&aacute;s</a>
-    </div>
-  </div>
+<div class="row columns text-center">
+<a href="#" class="button secondary">Cargar más</a>
 </div>
+<hr class="white">
