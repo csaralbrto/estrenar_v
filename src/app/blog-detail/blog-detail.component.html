@@ -40,7 +40,7 @@
                           Aviso de Privacidad</a> y estar conforme con el mismo</label>
               </div>
               <div class="medium-12 columns text-right">
-                  <a href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</a>
+                  <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</span>
               </div>
           </div>
       </form>
@@ -54,7 +54,7 @@
           <div class="small-8 columns">
               <div class="blog">
                   <div class="section black"><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.article_type }}</a></div>
-                  <h3><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.title }}</a></h3>
+                  <h3><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.title.slice(0,90) }}</a></h3>
                   <div class="user">{{ related.changed }}</div>
               </div>
           </div>
