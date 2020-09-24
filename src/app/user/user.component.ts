@@ -59,11 +59,11 @@ export class UserComponent implements OnInit {
       }
     );
   }
-  logoutUser(values) {
+  logoutUser() {
     /* Se recibe los valores del formulario */
-    const uid = this.path + '&token=' + this.token_logout;
-    console.log(uid);
-    this.Service.updateDataUser( values )
+    const uid_logout = this.path + '&token=' + this.token_logout;
+    console.log(uid_logout);
+    this.Service.updateDataUser(uid_logout)
     .subscribe(
       data =>(this.response = data),
       err => console.log(err),

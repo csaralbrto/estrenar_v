@@ -531,8 +531,8 @@
                                   </div>
 
                                   <div class="section"><a href="#">Decoracion</a></div>
-                                  <h3>{{ blog.titulo }}</h3>
-                                  <div class="resumen" [innerHTML]=blog.descripcion>
+                                  <h3>{{ blog.titulo.slice(0,90) }}</h3>
+                                  <div class="resumen" [innerHTML]=blog.descripcion.slice(0,180)>
                                   </div>
                                   <a href="#" class="button">Seguir leyendo</a>
                               </div>

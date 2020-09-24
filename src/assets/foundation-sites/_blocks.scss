@@ -700,8 +700,9 @@ label {
 
 //Blog listados
 .blog-list {
-    height: 440px;
+    height: 480px;
     position: relative;
+    margin-bottom: 1rem;
 
     .img {
         margin-bottom: 1rem;
@@ -748,6 +749,10 @@ label {
     h3 {
         font-size: 1rem;
         margin-bottom: 0.6rem;
+        text-transform: lowercase;
+        &:first-letter {
+            text-transform: uppercase;
+        }
     }
 
     .resumen {
@@ -1063,7 +1068,7 @@ ul.accordion {
         a {
             color: $white;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.6rem;
         }
 
         &.black {
@@ -1077,6 +1082,13 @@ ul.accordion {
         font-size: 1.4rem;
         margin-bottom: 0.4rem;
         letter-spacing: 0;
+        text-transform: lowercase;
+        a {
+            color: $white;
+        }
+        &:first-letter {
+            text-transform: uppercase;
+        }
     }
 
     h1 {
@@ -1097,12 +1109,35 @@ ul.accordion {
         }
     }
 }
+.blog-detail{
+    .section {
+        display: inline-block;
+        border: 1px solid $primary-color;
+        border-radius: $global-radius;
+        padding: 0rem 0.4rem;
+        margin-left: 0.5rem;
+        a {
+            color: $white;
+            text-transform: uppercase;
+            font-size: 0.6rem;
+        }
 
+        &.black {
+            a {
+                color: $primary-color;
+            }
+        }
+    }
+}
 .recomendado {
     h3 {
         font-size: 1rem;
         margin-bottom: 0.5rem;
         letter-spacing: 0;
+        text-transform: lowercase;
+        &:first-letter {
+            text-transform: uppercase;
+        }
     }
 
     .fecha {

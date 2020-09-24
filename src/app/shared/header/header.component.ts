@@ -21,11 +21,18 @@ export class HeaderComponent implements OnInit {
   menu_title_tools = 'Herramientas';
   menu_title_blog = 'Blog';
   number_persons = 5;
+  path_user = "";
 
   ngOnInit(): void {
     if(this.url_header){
       console.log(this.url_header);
       this.show_header = true;
+      const user_login = localStorage.getItem('uid');
+      if(user_login === null){
+        this.path_user = "login";
+      }else{
+        this.path_user = "user";
+      }
     }else{
       this.show_white_header = true;
     }

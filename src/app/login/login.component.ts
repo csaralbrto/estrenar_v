@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { LoginService } from './login.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { CookieXSRFStrategy } from '@angular/http';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ export class LoginComponent implements OnInit {
   public response: any;
   public results = false;
   public form: FormGroup;
+  error_message = '';
+  public error: any;
 
   constructor( 
     public Service: LoginService,
@@ -26,6 +29,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.results = true;
+    localStorage.clear();
   }
   ngAfterViewChecked() {
     if (this.results) {
@@ -44,18 +48,20 @@ export class LoginComponent implements OnInit {
     this.Service.loginRequest( values )
     .subscribe(
       (data) => (this.response = data),
-      err => console.log(err),
+      err => (this.error = err),
       () => {
         if(this.response){
+          console.log(this.response);
           // $('#modalAlertSuccessful').foundation('open');
           this.form.reset();
           localStorage.setItem('uid',this.response.current_user.uid);
           localStorage.setItem('name_user ',this.response.current_user.name);
           localStorage.setItem('csrf_token',this.response.csrf_token);
           localStorage.setItem('token_logout',this.response.logout_token);
-        }
-        if(this.response.error){
-          // $('#modalAlertError').foundation('open');
+          console.log(localStorage.getItem('token_logout'));
+          this.router.navigate(['/']);
+        }else{
+          this.error_message = this.error._body.message 
         }
       }
     );

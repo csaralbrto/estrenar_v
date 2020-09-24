@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row columns">
-  <div class="medium-9 columns">
+  <div class="medium-9 columns blog-detail">
       <div class="blog">
           <div class="section black" *ngFor="let tags of response.field_tags; let i = index">
               <a href="#">{{ tags.name }}</a>
@@ -21,29 +21,48 @@
       <hr class="white">
       <h2 class="deco text-center">Deja tu comentario</h2>
       <form [formGroup]="form">
-          <div class="row">
-              <div class="medium-12 columns">
-                  <label>Nombre
-                      <input type="text" placeholder="" formControlName="name"
-                      name="name" required pattern="text">
-                  </label>
-                  <label>Email
-                      <input type="email" placeholder="" formControlName="email"
-                      name="email" required pattern="email">
-                  </label>
-                  <label>
-                      Comentario
-                      <textarea placeholder="" formControlName="comment"
-                      name="comment" required pattern="comment"></textarea>
-                  </label>
-                  <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
-                          Aviso de Privacidad</a> y estar conforme con el mismo</label>
-              </div>
-              <div class="medium-12 columns text-right">
-                  <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</span>
-              </div>
-          </div>
-      </form>
+        <div class="row">
+            <div class="medium-12 columns">
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="middle-label" class="text-right middle">Nombre</label>
+                    </div>
+                    <div class="small-10 columns">
+                        <input type="text" id="middle-label" formControlName="name"
+                        name="name" required pattern="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="middle-label" class="text-right middle">Email</label>
+                    </div>
+                    <div class="small-10 columns">
+                        <input type="text" id="middle-label" formControlName="email"
+                        name="email" required pattern="email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label for="middle-label" class="text-right middle">Comentarios</label>
+                    </div>
+                    <div class="small-10 columns">
+                    <textarea formControlName="comment"
+                    name="comment" required pattern="comment"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-10 small-offset-2 columns">
+                        <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a
+                                href="#">
+                                Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                    </div>
+                </div>
+            </div>
+            <div class="medium-12 columns text-right">
+                <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</span>
+            </div>
+        </div>
+    </form>
   </div>
   <div class="medium-3 columns relacionados">
       <h2>Artículos relacionados</h2>
