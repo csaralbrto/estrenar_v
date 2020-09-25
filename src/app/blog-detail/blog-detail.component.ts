@@ -53,9 +53,9 @@ export class BlogDetailComponent implements OnInit {
         if (this.response) {
           /* si responde correctamente */
         }
-        if (this.response.error) {
-          /* si hay error en la respuesta */
-        }
+        // if (this.response.error) {
+        //   /* si hay error en la respuesta */
+        // }
       }
     );
   }

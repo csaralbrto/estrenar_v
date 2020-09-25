@@ -6,8 +6,10 @@
 <div class="row columns">
   <div class="medium-9 columns blog-detail">
       <div class="blog">
-          <div class="section black" *ngFor="let tags of response.field_tags; let i = index">
-              <a href="#">{{ tags.name }}</a>
+          <div  *ngIf="response.field_tags.length > 0">
+              <div class="section black" *ngFor="let tags of response.field_tags; let i = index">
+                  <a href="#">{{ tags.name }}</a>
+              </div>
           </div>
           <h1>Blog</h1>
           <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{ response.uid.display_name }}</span>{{ response.changed }}</div>
