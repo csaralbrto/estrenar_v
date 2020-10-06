@@ -35,60 +35,9 @@ export class HomeComponent implements OnInit {
       (err) => console.log(),
       () => {
         if (this.response) {
-          console.log(this.response.blogs);
-          for (let blog of this.response.blogs) {
-            this.largo = blog.banner.length;
-            this.cadena = blog.banner.substr(43, this.largo);
-            // this.cadena = blog.banner.substr(22, this.largo);
-            blog.banner = this.dataPath + this.cadena;
-          }
-          for (let constructora of this.response.constructoras) {
-            if (constructora.logo) {
-              this.largo = constructora.logo.length;
-              this.cadena = constructora.logo.substr(43, this.largo);
-              // this.cadena = constructora.logo.substr(22, this.largo);
-              constructora.logo = this.dataPath + this.cadena;
-            }
-          }
-          for (let project of this.response.projects) {
-            if (project.imagen_banner) {
-              this.largo = project.imagen_banner.length;
-              this.cadena = project.imagen_banner.substr(43, this.largo);
-              // this.cadena = project.imagen_banner.substr(22, this.largo);
-              project.imagen_banner = this.dataPath + this.cadena;
-            }
-          }
-          for (let header_proj1 of this.response.header_proj1) {
-            if (header_proj1.url_img) {
-              this.largo = header_proj1.url_img.length;
-              this.cadena = header_proj1.url_img.substr(43, this.largo);
-              // this.cadena = header_proj1.url_img.substr(22, this.largo);
-              header_proj1.url_img = this.dataPath + this.cadena;
-            }
-          }
-          for (let header_proj2 of this.response.header_proj2) {
-            if (header_proj2.url_img) {
-              this.largo = header_proj2.url_img.length;
-              this.cadena = header_proj2.url_img.substr(43, this.largo);
-              // this.cadena = header_proj2.url_img.substr(22, this.largo);
-              header_proj2.url_img = this.dataPath + this.cadena;
-            }
-          }
-          for (let header_proj3 of this.response.header_proj3) {
-            if (header_proj3.url_img) {
-              this.largo = header_proj3.url_img.length;
-              this.cadena = header_proj3.url_img.substr(43, this.largo);
-              // this.cadena = header_proj3.url_img.substr(22, this.largo);
-              header_proj3.url_img = this.dataPath + this.cadena;
-            }
-          }
-          for (let header_proj4 of this.response.header_proj4) {
-            if (header_proj4.url_img) {
-              this.largo = header_proj4.url_img.length;
-              this.cadena = header_proj4.url_img.substr(43, this.largo);
-              // this.cadena = header_proj4.url_img.substr(22, this.largo);
-              header_proj4.url_img = this.dataPath + this.cadena;
-            }
+          console.log(this.response);
+          for (let blog of this.response.home_featured_articles) {
+            console.log(blog);
           }
           this.results = true;
         }

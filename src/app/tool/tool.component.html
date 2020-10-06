@@ -1,516 +1,155 @@
-<div class="cell large-12">
-  <h2>Herramientas</h2>
+<div class="row columns">
+    <h1>Herramientas</h1>
 </div>
-
-<div class="grid-container">
-  <div class="grid-x grid-padding-x">
-    <div class="cell">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus magni quam accusamus sit deserunt itaque cum
-        voluptatem. Hic accusantium perferendis alias esse? Explicabo similique dolorem nesciunt aliquid, exercitationem
-        ratione fugiat.</p>
-    </div>
-  </div>
-  <div class="grid-x grid-padding-x">
-    <div class="cell large-4 medium-4 small-12">
-      <h4 class="text-left">¿C&oacute;mo usar la calculadora de subsidio?</h4>
-      <ol>
-        <li>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</li>
-        <li>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</li>
-        <li>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</li>
-        <li>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem</li>
-      </ol>
-    </div>
-    <div class="cell large-8 medium-8 small-12">
-      <div class="cell large-12">
-        <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" role="tablist"
-          data-tabs-id="form-contact-tabs" id="form-contact-tabs">
-          <li class="tabs-title is-active"><a href="#calculator-home-benefit" aria-selected="true">Calculadora de
-              Subsidio</a></li>
-          <li class="tabs-title"><a href="#calculator-initial-fee">Calculadora Notarial</a></li>
-          <li class="tabs-title"><a href="#calculator-borrowing-capacity">Calaculadora endeudamiento</a></li>
+<!--simuladores-->
+<div class="row columns">
+    <div class="simuladores">
+        <ul class="tabs" data-tabs id="simuladores">
+            <li class="tabs-title tool is-active"><a href="#panel1" aria-selected="true">Simulador cuota inicial</a>
+            </li>
+            <li class="tabs-title tool"><a data-tabs-target="panel2" href="#panel2">Simulador subsidio de vivienda</a>
+            </li>
+            <li class="tabs-title tool"><a data-tabs-target="panel3" href="#panel3">Simulador capacidad
+                    endeudamiento</a>
+            </li>
+            <li class="tabs-title tool"><a data-tabs-target="panel4" href="#panel4">Simulador credito de vivienda</a>
+            </li>
         </ul>
-        <!--Seccion formulario asesoria-->
-        <div class="tabs-content" data-tabs-content="form-contact-tabs">
-          <div class="tabs-panel is-active" id="calculator-home-benefit">
-            <!--Seccion formulario contacto-->
-            <form data-abide novalidate>
-              <div class="grid-x grid-padding-x align-stretch medium-6 small-12">
-                <div class="flex-child-shrink cell medium-6 small-12">
-                  <label class="text-center" for="">
-                    Cuent&aacute;nos cuelaes son tus ingresos mensuales:
-                  </label>
-                  <div class="input-group">
-                    <span class="input-group-label">$</span>
-                    <input class="input-group-field" type="number">
-                  </div>
-                  <hr>
-                  <label class="text-center" for="">
-                    Cuales son los ingresos de la persona con la que solicitara
-                    el subsidio de vivienda (opcional)
-                  </label>
-                  <div class="input-group">
-                    <span class="input-group-label">$</span>
-                    <input class="input-group-field" type="number">
-                  </div>
-                  <hr>
-                  <label class="text-center" for="">
-                    Los ingresos totales son:
-                  </label>
-                  <div class="input-group">
-                    <span class="input-group-label">$</span>
-                    <input class="input-group-field" type="number">
-                  </div>
-                  <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                    departamento, ciudad o municipio.</p>
-                </div>
-                <div class="flex-child-shrink cell medium-6 small-12">
-                  <div class="cell medium-12 text-center">
-                    <span class="text-center">
-                      Con el total de ingresos puedes obtener un subsidio por:
-                    </span>
-                  </div>
-                  <div class="cell medium-12 text-center callout secondary">
-                    <span>20</span>
-                    <br>
-                    <span>Salarios minimos legales vigentes</span>
-                  </div>
-                  <div class="cell medium-12 text-center">
-                    <span>
-                      Equivalentes a:
-                    </span>
-                  </div>
-                  <div class="cell medium-12 text-center callout secondary">
-                    <span>20</span>
-                    <br>
-                    <span>Salarios minimos legales vigentes</span>
-                  </div>
-                  <div class="cell medium-12 text-center">
-                    <button class="button search_button">M&aacute;s infromaci&oacute;n</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <!--Fin Seccion formulario contacto-->
-          </div>
-          <div class="tabs-panel" id="calculator-initial-fee">
-            <!--Seccion formulario agendar-->
-            <form data-abide novalidate>
-              <div class="grid-x grid-padding-x align-stretch medium-6">
-                <div class="flex-child-shrink cell medium-6 small-12">
-                  <label class="text-center" for="">
-                    Los ingresos mensuales:
-                  </label>
-                  <div class="input-group">
-                    <span class="input-group-label">$</span>
-                    <input class="input-group-field" type="number">
-                  </div>
-                  <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                    Departamento, Ciudad o Municipio.</p>
-                </div>
-                <div class="flex-child-shrink cell medium-6 small-12">
-                  <div class="cell medium-12 text-center">
-                    <span class="text-center">
-                      Seg&uacute;n tus ingresos mensuales, podr&iacute;as recibir un prestamo por:
-                    </span>
-                  </div>
-                  <div class="cell medium-12 text-center callout secondary">
-                    <span>$ 350.000.000</span>
-                  </div>
-                  <div class="cell medium-12 text-center">
-                    <span>
-                      Podr&iacute;s comprar una vivienda de:
-                    </span>
-                  </div>
-                  <div class="cell medium-12 text-center callout secondary">
-                    <span>$ 500.000.000</span>
-                  </div>
-                  <div class="cell medium-12 text-center">
-                    <button class="button search_button">Ver proyectos afines</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <!--Fin Seccion formulario agendar-->
-          </div>
-          <div class="tabs-panel" id="calculator-borrowing-capacity">
-            <!--Seccion formulario agendar-->
-            <form data-abide novalidate>
-              <div class="grid-x grid-padding-x align-stretch medium-6 small-12">
-                <div class="flex-child-shrink cell medium-6 small-12">
-                  <label class="text-center" for="">
-                    Los ingresos mensuales:
-                  </label>
-                  <div class="input-group">
-                    <span class="input-group-label">$</span>
-                    <input class="input-group-field" type="number">
-                  </div>
-                  <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                    Departamento, Ciudad o Municipio.</p>
-                </div>
-                <div class="flex-child-shrink cell medium-6 small-12">
-                  <div class="cell medium-12 text-center">
-                    <span class="text-center">
-                      Seg&uacute;n tus ingresos mensuales, podr&iacute;as recibir un prestamo por:
-                    </span>
-                  </div>
-                  <div class="cell medium-12 text-center callout secondary">
-                    <span>$ 350.000.000</span>
-                  </div>
-                  <div class="cell medium-12 text-center">
-                    <span>
-                      Podr&iacute;s comprar una vivienda de:
-                    </span>
-                  </div>
-                  <div class="cell medium-12 text-center callout secondary">
-                    <span>$ 500.000.000</span>
-                  </div>
-                  <div class="cell medium-12 text-center">
-                    <button class="button search_button">Ver proyectos afines</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <!--Fin Seccion formulario agendar-->
-          </div>
-        </div>
-      </div>
-    </div>
+        <div class="tabs-content" data-tabs-content="simuladores">
+            <div class="tabs-panel is-active cuota" id="panel1">
+                <div class="container-form">
+                    <div class="row">
+                        <div class="medium-3 medium-offset-4 columns text-center">
+                            <p> Tus ingresos mensuales</p>
+                            <div class="input-group">
+                                <span class="input-group-label">$</span>
+                                <input class="input-group-field" type="number">
+                            </div>
+                        </div>
+                        <div class="medium-5 columns text-center">
+                            <p>Segun tus ingresos mensuales, podrías recibir un prestamo por:</p>
+                            <input type="text" value="$350.000.000">
+                            <hr>
+                            <p> Podrías comprar una vivienda de:</p>
+                            <input type="text" value="$500.000.000">
+                            <hr>
+                            <a href="#" class="button secondary ">Ver proyectos afines</a>
 
-    <div class="cell large-12">
-      <p>Te ofrecemos calculadoras para tu busqueda de vivienda nueva</p>
-    </div>
-    <div class="cell large-12">
-      <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" role="tablist"
-        data-tabs-id="form-contact-tabs" id="form-contact-tabs">
-        <li class="tabs-title is-active"><a href="#simulator-home-benefit" aria-selected="true">Simulador Subsidio de
-            Vivienda</a></li>
-        <li class="tabs-title"><a href="#simulator-initial-fee">Simulador Cuota Inicial</a></li>
-        <li class="tabs-title"><a href="#simulator-borrowing-capacity">Simulador Capacidad de Endeudamiento</a></li>
-        <li class="tabs-title"><a href="#simulator-home-credit">Simulador Credito para Vivienda</a></li>
-      </ul>
-      <!--Seccion formulario asesoria-->
-      <div class="tabs-content" data-tabs-content="form-contact-tabs">
-        <div class="tabs-panel is-active" id="simulator-home-benefit">
-          <!--Seccion formulario contacto-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-4">
-                <label class="text-center" for="">
-                  Cuent&aacute;nos cuelaes son tus ingresos mensuales:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <hr>
-                <label class="text-center" for="">
-                  Cuales son los ingresos de la persona con la que solicitara
-                  el subsidio de vivienda (opcional)
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <hr>
-                <label class="text-center" for="">
-                  Los ingresos totales son:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  departamento, ciudad o municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    Con el total de ingresos puedes obtener un subsidio por:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>20</span>
-                  <br>
-                  <span>Salarios minimos legales vigentes</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <span>
-                    Equivalentes a:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>20</span>
-                  <br>
-                  <span>Salarios minimos legales vigentes</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">M&aacute;s infromaci&oacute;n</button>
-                </div>
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario contacto-->
-        </div>
-        <div class="tabs-panel" id="simulator-initial-fee">
-          <!--Seccion formulario agendar-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-up-4">
-                <label class="text-center" for="">
-                  Los ingresos mensuales:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  Departamento, Ciudad o Municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    Seg&uacute;n tus ingresos mensuales, podr&iacute;as recibir un prestamo por:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 350.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <span>
-                    Podr&iacute;s comprar una vivienda de:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 500.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">Ver proyectos afines</button>
-                </div>
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario agendar-->
-        </div>
-        <div class="tabs-panel" id="simulator-borrowing-capacity">
-          <!--Seccion formulario agendar-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-up-4">
-                <label class="text-center" for="">
-                  Los ingresos mensuales:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  Departamento, Ciudad o Municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    Seg&uacute;n tus ingresos mensuales, podr&iacute;as recibir un prestamo por:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 350.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <span>
-                    Podr&iacute;s comprar una vivienda de:
-                  </span>
-                </div>
-                <div class="cell medium-12 text-center callout secondary">
-                  <span>$ 500.000.000</span>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">Ver proyectos afines</button>
-                </div>
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-              <div class="flex-child-shrink cell medium-1">
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario agendar-->
-        </div>
-        <div class="tabs-panel" id="simulator-home-credit">
-          <!--Seccion formulario agendar-->
-          <form data-abide novalidate>
-            <div class="grid-x grid-padding-x align-stretch medium-up-4">
-              <div class="flex-child-shrink cell medium-2">
-              </div>
-              <div class="flex-child-shrink cell medium-up-4">
-                <label class="text-center" for="">
-                  Valor de la vivienda a financiar:
-                </label>
-                <div class="input-group">
-                  <span class="input-group-label">$</span>
-                  <input class="input-group-field" type="number">
-                </div>
-                <hr>
-                <label class="text-center" for="">
-                  Plazo de financiamiento
-                </label>
-                <input type="range" min="1" max="100" step="1" id="range-financing-term">
-                <hr>
-                <label class="text-center" for="">
-                  Escoger una de las dos opciones:
-                </label>
-                <div class="button-group align-spaced">
-                  <button class="button search_button">Cr&eacute;dito Hipotecario</button>
-                  <button class="button">Leasing Habitacional</button>
-                </div>
-                <p class="help-text" id="">*Los valores calculados son aproximadosy varian dependiendo de la entidad,
-                  Departamento, Ciudad o Municipio.</p>
-              </div>
-              <div class="flex-child-shrink cell medium-4">
-                <div class="cell medium-12 text-center">
-                  <span class="text-center">
-                    C&aacute;lculo aproximado para poder adquirir tu vivienda:
-                  </span>
-                </div>
-                <div class="grid-x grid-padding-x align-stretch medium-up-2">
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>350.000.000</span>
-                    <br>
-                    <span>Monto pr&eacute;stamo</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>150.000.000</span>
-                    <br>
-                    <span>Cuota Inicial 30%</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>16.338.047</span>
-                    <br>
-                    <span>Ingresos m&iacute;nimos mensuales</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>120</span>
-                    <br>
-                    <span>Plazo en meses</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>11.65%</span>
-                    <br>
-                    <span>Tasa de inter&eacute;s</span>
-                  </div>
-                  <div class="flex-child-shrink cell medium-6 text-center callout secondary">
-                    <span>4.950.923</span>
-                    <br>
-                    <span>Cuota Mensual</span>
-                  </div>
-                </div>
-                <div class="cell medium-12 text-center">
-                  <button class="button search_button">Ver proyectos afines</button>
-                </div>
-                <div class="flex-child-shrink cell medium-2">
-                </div>
-              </div>
-            </div>
-          </form>
-          <!--Fin Seccion formulario agendar-->
-        </div>
-      </div>
-      <!--Fin Seccion formulario asesoria-->
-    </div>
+                        </div>
 
-    <div class="cell medium-12">
-      <h2>Proyectos de inter&eacute;s</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="tabs-panel" id="panel2">
+                <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut
+                    in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor
+                    neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+            </div>
+        </div>
     </div>
-
-    <div class="cell medium-12">
-      <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-        <!-- Card Proyecto individual-->
-        <div class="cell shrink"  *ngFor="let project1 of response.projects; let i = index">
-          <div class="card">
-            <img class="project-images-card" [src]="project1.url_img">
+</div>
+<hr class="white">
+<!--fin simuladores-->
+<div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq">
+    <h1 class="deco text-center">Proyectos de interés</h1>
+    <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
+        <div class="card" data-equalizer-watch>
+            <div class="container-photo">
+                <a href="proyecto.php" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                <div class="container-tools">
+                    <div class="tags">
+                      <div  *ngIf="project.project_category.length > 0">
+                          <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                              <a>{{ tags }}</a>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="add">
+                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
             <div class="card-section">
-              <span class="rounded link-category-project">
-                <a href="">
-                  VIS
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  MI CASA YA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  ENTREGA INMEDIATA
-                </a>
-              </span>
-              <span class="link-category-project">
-                <a href="">
-                  FERIA
-                </a>
-              </span>
+              <h2>{{ project.project }}</h2>
+                <div class="descripcion">
+                  {{ project.project_city }},
+                  {{ project.project_zone }},
+                  {{ project.project_neighborhood }}
+                </div>
+                <div class="precio text-center">
+                    <div>Desde:</div>
+                    <span>{{ project.typology_price | number }}</span>
+                </div>
+                <hr>
             </div>
-            <div class="card-section body-card-project">
-              <h6 class="text-capitalize Text Wrap">
-                {{ project1.direccion }}
-              </h6>
-              <p>
-                <small>
-                  {{ project1.sub_titulo }}
-                </small>
-              </p>
-              <p class="text-center">
-                <small>
-                  DESDE
-                </small>
-                <br>
-                <span class="text-bold">{{ project1.valor_venta | number }}</span>
-              </p>
-              <hr />
+            <div class="card-section">
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                            <div class="data"> {{ project.area_built }} m</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                            <div class="data"> {{ project.bathrooms }} alcobas</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                            <div class="data"> garajes {{ project.garages }}</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                            <div class="data"> {{ project.bedrooms }} baños</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
             </div>
             <div class="card-section">
               <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{project1.titulo}}">Ver Proyecto</a>
-                <a class="button">Contacto</a>
-              </div>
+                <a class="button" routerLink="/proyecto/{{project.uuid}}">Ver
+                    Proyecto</a>
+                  <a class="button">Contacto</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- Fin Card Proyecto individual-->
     </div>
+</div>
+<hr class="white">
+<div class="row columns text-center">
+    <a href="#" class="button secondary">Ver más proyectos</a>
+</div>
+<hr class="white">
+<div class="row columns">
+    <h2 class="deco text-center">Artículos de interés</h2>
+    <div class="container-blog">
+            <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
+                <div class="blog-list">
+                    <div class="img">
+                      <img [src]="url_img_path + mostRead.article_image" alt="">
+                    </div>
+                    <div class="social">
+                        <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                        </div>
+                        <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                    </div>
 
-
-    <div class="cell medium-12">
-      <h2>Art&iacute;culos de inter&eacute;s</h2>
-    </div>
-    <div class="row">
-      <div class="large-12 cell align-middle">
-        <div class="grid-x grid-margin-x small-up-2 medium-up-4">
-          <div class="cell" *ngFor="let blog of response.blogs; let i = index">
-            <div class="card">
-              <img [src]="blog.banner" [title]="blog.banner">
-              <div class="card-section">
-                <h4>{{ blog.titulo }}</h4>
-                <p>{{ blog.sub_titulo }}</p>
-              </div>
+                    <div class="section"><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
+                    <h3><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
+                    <div class="resumen">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
+                        suscipit sollicitudin mauris.
+                    </div>
+                    <a routerLink="/blog/{{mostRead.url}}" class="button">Seguir leyendo</a>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
+
     </div>
+</div>
+<hr class="white">

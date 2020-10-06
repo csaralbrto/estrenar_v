@@ -22,29 +22,31 @@
   </div> 
   <hr>
 </div>
-<div class="row columns">
-  <div class="medium-4 columns end" *ngFor="let project1 of response; let i = index">
-      <div class="card constructora">
+<div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq1">
+  <div class="medium-3 columns end" *ngFor="let project1 of constructoras; let i = index">
+      <div class="card constructora" data-equalizer-watch>
           <div class="row">
               <div class="small-4 columns foto">
-                  <img [src]="project1.url_img" alt="" class="image">
+                  <img [src]="url_img_path + project1.builder_logo" alt="" class="image">
               </div>
               <div class="small-8 columns">
-                  <div class="title">Amarilo</div>
-                  <div class="info">{{ project1.direccion }} Bogotá. +571 5800 0000</div>
+                  <div class="title">{{ project1.label }}</div>
+                  <div class="info">{{ project1.builder_address }} {{ project1.builder_location_phone }}</div>
               </div>
               <hr class="white">
               <div class="small-12 columns">
-                  <p [innerHTML]=project1.descripcion></p>
+                  <!-- <p [innerHTML]=project1.descripcion></p> -->
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit hasellus quis est eu nibh venenatis fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis. Cras et augue ac nisl congue eleifend hendrerit eget eros.</p>
               </div>
               <div class="small-12 columns text-center">
-              <a href="/proyectos" class="button secondary">Proyectos</a>
+                <a routerLink="/constructora/{{project1.uuid }}" class="button secondary">Proyectos</a>
               </div>
           </div>
       </div>
   </div>
 </div>
 <div class="row columns text-center">
-<a href="#" class="button secondary">Cargar más</a>
+<a class="button secondary">Cargar más</a>
 </div>
 <hr class="white">

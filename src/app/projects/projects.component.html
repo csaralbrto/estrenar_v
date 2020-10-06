@@ -68,15 +68,18 @@
 
   <hr>
 </div>
-<div class="row ">
-  <div class="medium-3 columns" *ngFor="let project of response_data_project.projects_1; let i = index">
-      <div class="card">
+<div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
+  <div class="medium-3 columns" *ngFor="let project of response_data_project; let i = index">
+      <div class="card" data-equalizer-watch>
           <div class="container-photo">
-              <a href="#" class=""><img [src]="project.url_img" alt="" class="proyecto"></a>
+              <a href="#" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
               <div class="container-tools">
                   <div class="tags">
-                      <div class="tag"><a href="#">VIS</a></div>
-                      <div class="tag"><a href="#">Mi casa ya</a></div>
+                    <div  *ngIf="project.project_category.length > 0">
+                        <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                            <a>{{ tags }}</a>
+                        </div>
+                    </div>
                   </div>
                   <div class="add">
                       <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
@@ -84,13 +87,15 @@
               </div>
           </div>
           <div class="card-section">
-              <h2>{{ project.direccion }}</h2>
+              <h2>{{ project.project }}</h2>
               <div class="descripcion">
-                  {{ project.sub_titulo }}
+                  {{ project.project_city }},
+                  {{ project.project_zone }},
+                  {{ project.project_neighborhood }}
               </div>
               <div class="precio text-center">
                   <div>Desde:</div>
-                  <span>{{ project.valor_venta | number }}</span>
+                  <span>{{ project.typology_price | number }}</span>
               </div>
               <hr>
           </div>
@@ -99,25 +104,25 @@
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                          <div class="data"> {{ project.medida_apartamento }} m</div>
+                          <div class="data"> {{ project.area_built }} m</div>
                       </div>
                   </div>
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                          <div class="data"> {{ project.n_habitaciones }} alcobas</div>
+                          <div class="data"> {{ project.bathrooms }} alcobas</div>
                       </div>
                   </div>
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                          <div class="data"> {{ project.n_garages }} garajes</div>
+                          <div class="data"> garajes {{ project.garages }}</div>
                       </div>
                   </div>
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                          <div class="data"> {{ project.n_banos }} baños</div>
+                          <div class="data"> {{ project.bedrooms }} baños</div>
                       </div>
                   </div>
               </div>
@@ -125,7 +130,7 @@
           </div>
           <div class="card-section">
               <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{project.titulo}}">Ver
+                <a class="button" routerLink="/proyecto/{{project.uuid}}">Ver
                     Proyecto</a>
                   <a class="button">Contacto</a>
               </div>
@@ -134,7 +139,7 @@
   </div>
 </div>
 <div class="row columns text-center">
-  <a href="#" class="button secondary">Cargar más</a>
+  <a  class="button secondary">Cargar más</a>
 </div>
 <div class="row columns text-center">
   <div class="medium-6 medium-offset-3 columns">

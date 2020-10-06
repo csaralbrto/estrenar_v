@@ -2,10 +2,10 @@
     <div class="medium-6 columns">
         <div class="row">
             <div class="small-4 columns">
-                <img class="image" src="/assets/images/content/constructora.jpg" alt="">
+                <img class="image" [src]="url_img_path + content.field_builder_logo.uri.url" alt="">
             </div>
             <div class="small-8 columns">
-                <h1>Constructora {{ content.name }}</h1>
+                <h1>Constructora {{ content.label }}</h1>
             </div>
         </div>
     </div>
@@ -14,11 +14,11 @@
             <div class="row">
                 <div class="medium-4 columns">
                     <div class="label-info">Ciudad oficina principal</div>
-                    <div class="dato">{{ content.ciudad }}</div>
+                    <div class="dato">{{ content.field_builder_location[0].field_location_city.name }}</div>
                     <div class="label-info">Dirección oficina principal</div>
-                    <div class="dato">{{content.address}} </div>
+                    <div class="dato">{{ content.field_builder_location[0].field_location_address }} </div>
                     <div class="label-info">Teléfonos</div>
-                    <div class="dato">{{ content.cel_phone }}</div>
+                    <div class="dato">{{ content.field_builder_location[0].field_location_contact[0].field_contact_phone }}</div>
                 </div>
                 <div class="medium-8 columns">
                     <p>
@@ -34,7 +34,8 @@
 </div>
 <hr class="white">
 <!--slide-->
-<div class="row columns">
+<!-- Se comenta el carrusel ya que no esta llegandfo la información del api -->
+<!-- <div class="row columns">
     <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
         <div class="orbit-wrapper">
 
@@ -184,13 +185,13 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <!--fin slide-->
 <hr class="white">
 <div class="row columns">
-    <h1 class="deco text-center">Proyectos de Constructora {{ content.name }}</h1>
+    <h1 class="deco text-center">Proyectos de Constructora {{ content.label }}</h1>
     <!--filtros-->
     <form [formGroup]="form_filters">
       <div class="filtros">
@@ -254,15 +255,18 @@
 </div>
 
 <hr class="white">
-<div class="row">
-    <div class="medium-3 columns end" *ngFor="let projects of project; let i = index">
-        <div class="card" *ngIf="i >= 1">
+<div class="row" data-equalizer data-equalize-on="medium" id="test-eq1">
+    <div class="medium-3 columns" *ngFor="let project of allProjects; let i = index">
+        <div class="card" data-equalizer-watch>
             <div class="container-photo">
-                <a href="#" class=""><img [src]="projects.url_img" alt="" class="proyecto"></a>
+                <a href="#" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
                 <div class="container-tools">
                     <div class="tags">
-                        <div class="tag"><a href="#">VIS</a></div>
-                        <div class="tag"><a href="#">Mi casa ya</a></div>
+                      <div  *ngIf="project.project_category.length > 0">
+                          <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                              <a>{{ tags }}</a>
+                          </div>
+                      </div>
                     </div>
                     <div class="add">
                         <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
@@ -270,13 +274,15 @@
                 </div>
             </div>
             <div class="card-section">
-                <h2>{{ projects.direccion }}</h2>
+                <h2>{{ project.project }}</h2>
                 <div class="descripcion">
-                    {{ projects.sub_titulo }}
+                    {{ project.project_city }},
+                    {{ project.project_zone }},
+                    {{ project.project_neighborhood }}
                 </div>
                 <div class="precio text-center">
                     <div>Desde:</div>
-                    <span>{{ projects.valor_venta | number }}</span>
+                    <span>{{ project.typology_price | number }}</span>
                 </div>
                 <hr>
             </div>
@@ -285,25 +291,25 @@
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                            <div class="data"> {{ projects.medida_apartamento }}m</div>
+                            <div class="data"> {{ project.area_built }} m</div>
                         </div>
                     </div>
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                            <div class="data"> {{ projects.n_habitaciones }} alcobas</div>
+                            <div class="data"> {{ project.bathrooms }} alcobas</div>
                         </div>
                     </div>
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                            <div class="data"> {{ projects.n_garages }} garajes</div>
+                            <div class="data"> garajes {{ project.garages }}</div>
                         </div>
                     </div>
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                            <div class="data"> {{ projects.n_banos }} baños</div>
+                            <div class="data"> {{ project.bedrooms }} baños</div>
                         </div>
                     </div>
                 </div>
@@ -311,71 +317,8 @@
             </div>
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                    <a class="button" href="#">Ver
-                        Proyecto</a>
-                    <a class="button">Contacto</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="medium-3 columns end">
-        <div class="card">
-            <div class="container-photo">
-                <a href="proyecto.php" class=""><img src="/assets/images/content/proyecto.jpg" alt="" class="proyecto"></a>
-                <div class="container-tools">
-                    <div class="tags">
-                        <div class="tag"><a href="#">VIS</a></div>
-                        <div class="tag"><a href="#">Mi casa ya</a></div>
-                    </div>
-                    <div class="add">
-                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-section">
-                <h2>Parque Central de Occidente</h2>
-                <div class="descripcion">
-                    Apartamento en el Centro Internacional del Caribe, Barranquilla.
-                </div>
-                <div class="precio text-center">
-                    <div>Desde:</div>
-                    <span>$190.000.000</span>
-                </div>
-                <hr>
-            </div>
-            <div class="card-section">
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                            <div class="data">72 m</div>
-                        </div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                            <div class="data">3 alcobas</div>
-                        </div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                            <div class="data">2 garajes</div>
-                        </div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                            <div class="data">2 baños</div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="card-section">
-                <div class="button-group align-spaced ">
-                    <a class="button" href="proyecto.php">Ver
-                        Proyecto</a>
+                  <a class="button" routerLink="/proyecto/{{project.uuid}}">Ver
+                      Proyecto</a>
                     <a class="button">Contacto</a>
                 </div>
             </div>

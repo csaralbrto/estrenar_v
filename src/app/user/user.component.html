@@ -13,10 +13,10 @@
                   <label for="middle-label" class="text-left middle">Nombre</label>
               </div>
               <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="Nombre">
+                  <input type="text" id="middle-label" placeholder="Nombre" value="{{response.field_user_address[0].given_name}}">
               </div>
               <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="Apellidos">
+                  <input type="text" id="middle-label" placeholder="Apellidos" value="{{response.field_user_address[0].family_name}}">
               </div>
           </div>
           <div class="row">
@@ -24,7 +24,7 @@
                   <label for="middle-label" class="text-left middle">Email</label>
               </div>
               <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="">
+                  <input type="email" id="middle-label" placeholder="" value="{{response.mail[0].value}}">
               </div>
 
           </div>
@@ -33,7 +33,7 @@
                   <label for="middle-label" class="text-left middle">Telefono</label>
               </div>
               <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="">
+                  <input type="text" id="middle-label" placeholder="" value="{{response.field_user_phone[0].value}}">
               </div>
 
           </div>

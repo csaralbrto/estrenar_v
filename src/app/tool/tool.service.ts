@@ -13,19 +13,27 @@ export class ToolService {
   public initialQuote: string;
   public subsidyHome: string;
   public debtCapacity: string;
-  public dataPath: string;
+  public dataPathProyect: string;
+  public dataPathArticles: string;
 
   constructor( private http: Http ) { 
     this.loanHome = environment.endpointApi + 'tools/loan_home/';
     this.initialQuote = environment.endpointApi + 'tools/initial_Quote/';
     this.subsidyHome = environment.endpointApi + 'tools/subsidy_home/';
     this.debtCapacity = environment.endpointApi + 'tools/debt_capacity/';
-    this.dataPath = environment.endpointApi+ 'tools/home/';
+    this.dataPathProyect = environment.endpointTestingApi+ 'typologies?items_per_page=8&page=0';
+    this.dataPathArticles = environment.endpointTestingApi+ 'articles?items_per_page=4';
 
   }
   /* Traer toda la info de proyectos */
   getData(): Observable<any> {
-    return this.http.get(this.dataPath)
+    return this.http.get(this.dataPathProyect)
+    .pipe(map(( response => response.json() )));
+  }
+
+  /* Traer toda la info de articulos */
+  getDataArticle(): Observable<any> {
+    return this.http.get(this.dataPathArticles)
     .pipe(map(( response => response.json() )));
   }
 

@@ -11,18 +11,24 @@ import { environment } from '../../environments/environment';
 export class ProjectsService {
   public servicePath: string;
   public dataPath: string;
+  public dataPathVis: string;
   public endpoint: string;
+  public url_location: string;
   public endpointFilter: string;
+  
   constructor( private http: Http, /* private commonFunctions: CommonFunctions */ ) { 
     this.servicePath = environment.endpointApi+ 'project/roomSales';
-    this.dataPath = environment.endpointApi+ 'allProjects';
+    this.dataPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=8';
+    this.dataPathVis = environment.endpointTestingApi+ 'typologies/project_category/7601?items_per_page=8&page=0';
     this.endpoint = environment.endpointApi + 'project/';
     this.endpointFilter = environment.endpointSearchApi;
+    this.url_location = window.location.pathname;
   }
+  
 
   /* Traer toda la info de proyectos */
   getData(): Observable<any> {
-    return this.http.get(this.dataPath)
+    return this.http.get(this.url_location == "/proyectos"? this.dataPath: this.dataPathVis)
     .pipe(map(( response => response.json() )));
   }
   /* Traer proyectos filtrados */

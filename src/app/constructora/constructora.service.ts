@@ -15,7 +15,7 @@ export class ConstructoraService {
 
   constructor( private http: Http ) { 
     this.servicePath = environment.endpointApi+ 'home/url';
-    this.dataPath = environment.endpointApi+ 'constructoras';
+    this.dataPath = environment.endpointTestingApi+ 'builders?search=ama&builder_location_id=9824&items_per_page=4&page=0';
     this.endpoint = environment.endpointApi + 'constructora/';
     this.projectDataConstructora = environment.endpointApi + 'constructora_project/';
   }

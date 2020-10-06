@@ -8,7 +8,7 @@
       <div class="blog">
           <div  *ngIf="response.field_tags.length > 0">
               <div class="section black" *ngFor="let tags of response.field_tags; let i = index">
-                  <a href="#">{{ tags.name }}</a>
+                  <a>{{ tags.name }}</a>
               </div>
           </div>
           <h1>Blog</h1>
@@ -68,9 +68,9 @@
   </div>
   <div class="medium-3 columns relacionados">
       <h2>Artículos relacionados</h2>
-      <div class="row" *ngFor="let related of responseRelated; let i = index">
+      <div class="row" *ngFor="let related of responseRelated.results; let i = index">
           <div class="small-4 columns foto">
-              <img [src]="related.article_image" alt="" class="image">
+              <img [src]="url_img_path + related.article_image" alt="" class="image">
           </div>
           <div class="small-8 columns">
               <div class="blog">

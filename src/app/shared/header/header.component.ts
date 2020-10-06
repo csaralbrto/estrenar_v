@@ -10,6 +10,8 @@ export class HeaderComponent implements OnInit {
   @Input() url_header: string;
   show_header = false
   show_white_header = false
+  not_show_header = false
+  url_location = "";
   constructor(
     private activatedRoute: ActivatedRoute,) {}
 
@@ -24,17 +26,22 @@ export class HeaderComponent implements OnInit {
   path_user = "";
 
   ngOnInit(): void {
-    if(this.url_header){
+    this.url_location = window.location.pathname;
+    if(this.url_location === '/home' || this.url_location === '/'){
       console.log(this.url_header);
       this.show_header = true;
-      const user_login = localStorage.getItem('uid');
-      if(user_login === null){
-        this.path_user = "login";
-      }else{
-        this.path_user = "user";
-      }
+    }else if(this.url_location === '/wizard'){
+      this.not_show_header = true;
+      this.show_white_header = false;
+      this.show_header = false;
     }else{
       this.show_white_header = true;
+    }
+    const user_login = sessionStorage.getItem('access_token');
+    if(user_login === null){
+      this.path_user = "login";
+    }else{
+      this.path_user = "user";
     }
   }
 }

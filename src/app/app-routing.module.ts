@@ -20,6 +20,8 @@ import { GlosoryComponent } from './glosory/glosory.component';
 import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { DataTreatmentsComponent } from './data-treatments/data-treatments.component';
+import { WizardComponent } from './wizard/wizard.component';
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
 
 const routes: Routes = [
   {
@@ -36,6 +38,7 @@ const routes: Routes = [
   },
 
   { path: 'proyectos', component: ProjectsComponent, pathMatch: 'full' },
+  { path: 'vis', component: ProjectsComponent, pathMatch: 'full' },
 
   {
     path: 'proyecto/:path',
@@ -82,6 +85,7 @@ const routes: Routes = [
     path: 'user',
     component: UserComponent,
     pathMatch: 'full',
+    canActivate: [AuthGuard] 
   },
   {
     path: 'login',
@@ -121,6 +125,11 @@ const routes: Routes = [
   {
     path: 'politica-datos',
     component: DataTreatmentsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'wizard',
+    component: WizardComponent,
     pathMatch: 'full',
   },
 ];

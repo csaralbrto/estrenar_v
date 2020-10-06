@@ -9,16 +9,18 @@ import { environment } from '../../environments/environment';
 })
 export class LoginService {
   private dataPath: string;
+  private dataPathOuthToken: string;
   public headers = new Headers();
   public options: any;
 
   constructor(private http: Http) {
     this.dataPath = environment.endpointTestingApiPost + 'user/login?_format=json';
+    this.dataPathOuthToken = environment.endpointTestingApiPost + 'oauth/token';
 
 
-    this.headers.append('Accept', 'application/json');
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Host', 'lab.estrenarvivienda.com'); 
+      this.headers.append('Content-Type', !localStorage.getItem('uid')?'application/json':'x-www-form-urlencoded');
+      this.headers.append('Host', 'lab.estrenarvivienda.com'); 
+
     this.options = new RequestOptions({headers: this.headers});
 }
 
@@ -26,6 +28,12 @@ export class LoginService {
   loginRequest( params: any ): Observable<any> {
     // console.log(this.sendComment, params);
     return this.http.post(this.dataPath, params)
+    .pipe(map(( response => response.json() )));
+  }
+  /* enviar info de los formularios */
+  beforeLoginRequest( params: any ): Observable<any> {
+    console.log(this.dataPathOuthToken, params);
+    return this.http.post(this.dataPathOuthToken, params)
     .pipe(map(( response => response.json() )));
   }
 }

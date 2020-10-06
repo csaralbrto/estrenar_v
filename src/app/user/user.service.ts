@@ -21,13 +21,14 @@ export class UserService {
 
     this.headers.append('Accept', 'application/json');
     this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Authorization', 'Bearer '+sessionStorage.getItem('access_token'));
     this.headers.append('Host', 'lab.estrenarvivienda.com'); 
     this.options = new RequestOptions({headers: this.headers});
   }
 
   /* Traer data del usuario*/
   userData( params: any ): Observable<any> {
-    // console.log(this.dataUser + params);
+    console.log(this.dataUser + params);
     return this.http.get(this.dataUser + params)
     .pipe(map(( response => response.json() )));
   }

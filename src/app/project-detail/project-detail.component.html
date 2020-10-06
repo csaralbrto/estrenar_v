@@ -1,16 +1,16 @@
 <div class="row columns">
   <div class="medium-2 columns">
-      <img src="/assets/images/content/proyectologo.jpg" alt="" class="logo-proyecto">
+      <img [src]="url_img_path + response.field_typology_project.field_project_logo.uri.url " alt="" class="logo-proyecto">
   </div>
   <div class="medium-10 columns">
       <div class="row">
           <div class="medium-12 columns">
-              <h1>{{ response.sub_titulo }}</h1>
+              <h1>{{ response.field_typology_project.name }}</h1>
           </div>
           <div class="medium-6 columns">
               <div class="head-proyecto">
                   <div>Desde:</div>
-                  <div class="precio">{{ response.valor_venta | number }}</div>
+                  <div class="precio">{{ response.field_typology_price | number }}</div>
               </div>
           </div>
           <div class="medium-6 columns">
@@ -30,34 +30,34 @@
   <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
       <div class="orbit-wrapper">
 
-          <ul class="orbit-container">
+          <ul class="orbit-container slideproject">
               <li class="is-active orbit-slide">
                   <div class="row">
                       <div class="medium-6 columns destacado">
                           <figure class="orbit-figure">
-                              <img class="orbit-image" [src]="dataPath + galeria[0]" alt="">
+                              <img class="orbit-image" [src]="url_img_path + galeria[0].uri.url" alt="">
                           </figure>
                       </div>
                       <div class="medium-6 columns">
                           <div class="row">
                               <div class="medium-6 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[1]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[1].uri.url" alt="">
                                   </figure>
                               </div>
                               <div class="medium-6 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[2]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[2].uri.url" alt="">
                                   </figure>
                               </div>
                               <div class="medium-6 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[3]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[3].uri.url" alt="">
                                   </figure>
                               </div>
                               <div class="medium-6 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[4]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[4].uri.url" alt="">
                                   </figure>
                               </div>
                           </div>
@@ -70,42 +70,42 @@
                           <div class="row">
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[5]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[5].uri.url" alt="">
                                   </figure>
                               </div>
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[6]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[6]" alt="">
                                   </figure>
                               </div>
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[7]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[7]" alt="">
                                   </figure>
                               </div>
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[8]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[8]" alt="">
                                   </figure>
                               </div>
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[9]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[9]" alt="">
                                   </figure>
                               </div>
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[10]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[10]" alt="">
                                   </figure>
                               </div>
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[11]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[11]" alt="">
                                   </figure>
                               </div>
                               <div class="medium-3 columns">
                                   <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="dataPath + galeria[12]" alt="">
+                                      <img class="orbit-image" [src]="url_img_path + galeria[12]" alt="">
                                   </figure>
                               </div>
                           </div>
@@ -133,42 +133,12 @@
 <!--fin slide-->
 <div class="row columns">
   <div class="features">
-      <div class="small-6 medium-2 columns">
+      <div class="small-6 medium-3 columns" *ngFor="let caract of caracteristicas; let i = index">
           <div class="item-big">
               <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-              <div class="data">{{ response.medida_apartamento }}m área constuida</div>
+              <div class="data">{{ caract.name_only }}</div>
           </div>
       </div>
-      <div class="small-6 medium-2 columns">
-          <div class="item-big">
-              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-              <div class="data">{{ response.n_habitaciones }} Habitaciones</div>
-          </div>
-      </div>
-      <div class="small-6 medium-2 columns">
-          <div class="item-big">
-              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-              <div class="data">{{ response.n_garages }} Garages</div>
-          </div>
-      </div>
-      <div class="small-6 medium-2 columns">
-        <div class="item-big">
-            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-            <div class="data">{{ response.medida_apartamento }}m área constuida</div>
-        </div>
-    </div>
-    <div class="small-6 medium-2 columns">
-        <div class="item-big">
-            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-            <div class="data">{{ response.n_habitaciones }} Habitaciones</div>
-        </div>
-    </div>
-    <div class="small-6 medium-2 columns">
-        <div class="item-big">
-            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-            <div class="data">{{ response.n_garages }} Garages</div>
-        </div>
-    </div>
   </div>
 </div>
 <hr class="white">
@@ -198,7 +168,7 @@
               <a href="#" class="button ">Street view</a>
           </div>
           <div class="direccion">
-              <img src="/assets/images/map.png" alt=""> {{ response.direccion }},  Bogotá
+              <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
           </div>
           <iframe
               [src]="maps_url"
@@ -340,28 +310,33 @@
 <hr class="white">
 <div class="row columns">
   <h2 class="deco text-center">Otras áreas disponibles</h2>
-  <div class="medium-4 columns" *ngFor="let relacionados of response.relacionados; let i = index">
-      <div class="card">
+  <div class="medium-4 columns" *ngFor="let relacionados of projectsAvailableAreas; let i = index">
+      <div class="card" *ngIf="i < 3">
           <div class="container-photo">
-              <a href="#" class=""><img [src]="relacionados.url_img" alt="" class="proyecto"></a>
+              <a href="#" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
               <div class="container-tools">
-                  <div class="tags">
-                      <div class="tag"><a href="#">VIS</a></div>
-                      <div class="tag"><a href="#">Mi casa ya</a></div>
+                <div class="tags">
+                  <div *ngIf="relacionados.project_category.length > 0">
+                      <div class="tag" *ngFor="let tags of relacionados.project_category; let i = index">
+                          <a>{{ tags }}</a>
+                      </div>
                   </div>
+                </div>
                   <div class="add">
                       <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                   </div>
               </div>
           </div>
           <div class="card-section">
-              <h2>{{ relacionados.direccion }}</h2>
+              <h2>{{ relacionados.project }}</h2>
               <div class="descripcion">
-                  {{ relacionados.sub_titulo }}
+                {{ relacionados.project_city }},
+                {{ relacionados.project_zone }},
+                {{ relacionados.project_neighborhood }}
               </div>
               <div class="precio text-center">
                   <div>Desde:</div>
-                  <span>{{ relacionados.valor_venta | number }}</span>
+                  <span>{{ relacionados.typology_price | number }}</span>
               </div>
               <hr>
           </div>
@@ -370,25 +345,25 @@
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                          <div class="data"> {{relacionados.medida_apartamento}}m</div>
+                          <div class="data"> {{relacionados.area_built}}m</div>
                       </div>
                   </div>
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                          <div class="data"> {{relacionados.n_habitaciones}} alcobas</div>
+                          <div class="data"> {{relacionados.bathrooms}} alcobas</div>
                       </div>
                   </div>
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                          <div class="data"> {{relacionados.n_garages}} garajes</div>
+                          <div class="data"> {{relacionados.garages}} garajes</div>
                       </div>
                   </div>
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                          <div class="data"> {{relacionados.n_banos}} baños</div>
+                          <div class="data"> {{relacionados.bedrooms}} baños</div>
                       </div>
                   </div>
               </div>
@@ -396,7 +371,7 @@
           </div>
           <div class="card-section">
               <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{relacionados.titulo}}">Ver
+                <a class="button" routerLink="/proyecto/{{relacionados.uuid}}">Ver
                     Proyecto</a>
                   <a class="button">Contacto</a>
               </div>
@@ -407,24 +382,9 @@
 <hr class="white">
 <div class="row columns">
   <h2 class="deco text-center">Características del proyecto</h2>
-  <div class="medium-3 columns end">
+  <div class="medium-3 columns end" *ngFor="let caract of caracteristicasProject; let i = index">
       <div class="caracteristica">
-          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
-      </div>
-  </div>
-  <div class="medium-3 columns end">
-      <div class="caracteristica">
-          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
-      </div>
-  </div>
-  <div class="medium-3 columns end">
-      <div class="caracteristica">
-          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
-      </div>
-  </div>
-  <div class="medium-3 columns end">
-      <div class="caracteristica">
-          <span><img src="/assets/images/caracteristica.png" alt=""></span>Conjunto cerrado
+          <span><img src="/assets/images/caracteristica.png" alt=""></span>{{ caract.name_only }}
       </div>
   </div>
 </div>
@@ -536,29 +496,34 @@
           <ul class="orbit-container">
               <li class="is-active orbit-slide">
                   <div class="row">
-                      <div class="medium-4 columns end" *ngFor="let propiedades of response.otras_propiedades; let i = index">
+                      <div class="medium-4 columns end" *ngFor="let propiedades of projectsAvailableAreas; let i = index">
                           <!-- Card Proyecto individual-->
-                          <div class="card">
+                          <div class="card" *ngIf="i > 2 && i < 6">
                               <div class="container-photo">
-                                  <img [src]="propiedades.url_img" alt="" class="proyecto">
+                                  <img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto">
                                   <div class="container-tools">
-                                      <div class="tags">
-                                          <div class="tag"><a href="#">VIS</a></div>
-                                          <div class="tag"><a href="#">Mi casa ya</a></div>
+                                    <div class="tags">
+                                      <div *ngIf="propiedades.project_category.length > 0">
+                                          <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
+                                              <a>{{ tags }}</a>
+                                          </div>
                                       </div>
+                                    </div>
                                       <div class="add">
                                           <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                       </div>
                                   </div>
                               </div>
                               <div class="card-section">
-                                  <h2>{{ propiedades.direccion }}</h2>
+                                  <h2>{{ propiedades.project }}</h2>
                                   <div class="descripcion">
-                                      {{ propiedades.sub_titulo }}
+                                    {{ propiedades.project_city }},
+                                    {{ propiedades.project_zone }},
+                                    {{ propiedades.project_neighborhood }}
                                   </div>
                                   <div class="precio text-center">
                                       <div>Desde:</div>
-                                      <span>{{ propiedades.valor_venta | number }}</span>
+                                      <span>{{ propiedades.typology_price | number }}</span>
                                   </div>
                                   <hr>
                               </div>
@@ -568,28 +533,28 @@
                                           <div class="item">
                                               <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
                                               </div>
-                                              <div class="data"> {{propiedades.medida_apartamento}} m</div>
+                                              <div class="data"> {{propiedades.area_built}} m</div>
                                           </div>
                                       </div>
                                       <div class="small-6 columns">
                                           <div class="item">
                                               <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
                                               </div>
-                                              <div class="data"> {{propiedades.n_habitaciones}} alcobas</div>
+                                              <div class="data"> {{propiedades.bathrooms}} alcobas</div>
                                           </div>
                                       </div>
                                       <div class="small-6 columns">
                                           <div class="item">
                                               <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
                                               </div>
-                                              <div class="data"> {{propiedades.n_garages}} garajes</div>
+                                              <div class="data"> {{propiedades.garages}} garajes</div>
                                           </div>
                                       </div>
                                       <div class="small-6 columns">
                                           <div class="item">
                                               <div class="data-icon"><img src="/assets/images/icon-water.png" alt="">
                                               </div>
-                                              <div class="data"> {{propiedades.n_banos}} baños</div>
+                                              <div class="data"> {{propiedades.bedrooms}} baños</div>
                                           </div>
                                       </div>
                                   </div>
@@ -597,7 +562,7 @@
                               </div>
                               <div class="card-section">
                                   <div class="button-group align-spaced ">
-                                      <a class="button" routerLink="/proyecto/{{propiedades.titulo}}">Ver
+                                      <a class="button" routerLink="/proyecto/{{propiedades.uuid}}">Ver
                                           Proyecto</a>
                                       <a class="button">Contacto</a>
                                   </div>

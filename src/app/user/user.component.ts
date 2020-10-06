@@ -14,10 +14,13 @@ import { environment } from '../../environments/environment';
 export class UserComponent implements OnInit {
   public response: any;
   public dataSubmit: any;
-  public user_id = localStorage.getItem('uid');
-  public token_logout = localStorage.getItem('token_logout');
+  public user_id = sessionStorage.getItem('uid');
+  public token_logout = sessionStorage.getItem('token_logout');
   public path = "?_format=json";
   public results = false;
+  public uid = "";
+  public path_dataload = 'taxonomy_term/user_preferences?include=parent';
+  public data : any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,18 +31,46 @@ export class UserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const uid = this.user_id + this.path;
-    console.log(uid);
-    this.Service.userData(uid).subscribe(
-      (data) => (this.response = data),
-      (err) => console.log(),
-      () => {
-        if (this.response) {
-          console.log('entre a mostrar ',this.response);
-          this.results = true;
-        }
-      }
-    );
+    this.uid = this.user_id + this.path;
+    this.beforeCheck();
+    this.dataLoad();
+  }
+  beforeCheck(){
+    /* Traemos la información del usuario */
+    var url = environment.endpointTestingApiPost+ 'user/' + this.uid;
+    var token = sessionStorage.getItem('access_token');
+    var data = "";
+    fetch(url, {
+      headers: new Headers({
+        'Authorization': 'Bearer '+token
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data)
+      this.response = data;
+    })
+    .catch(error => console.error(error))
+  }
+  dataLoad(){
+    /* Traemos la información del usuario */
+    var url = environment.endpointTestingApi + this.path_dataload;
+    var token = sessionStorage.getItem('access_token');
+    var data = "";
+    fetch(url, {
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Host': 'lab.estrenarvivienda.com'
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // thi
+      console.log(data)
+
+    })
+    .catch(error => console.error(error))
   }
   onSubmit(values) {
     const uid_update = this.user_id + this.path;

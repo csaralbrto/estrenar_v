@@ -1,4 +1,4 @@
-<div class="container-header" *ngIf='show_header'>
+<div class="container-header" *ngIf='show_header == true && not_show_header == false'>
   <div class="full-w header">
       <div class="small-3 columns">
         <div class="logo">
@@ -11,7 +11,7 @@
           <a href="/proyectos" alt="" title="">Proyectos</a>
           </li>
           <li>
-          <a href="#">Vivienda VIS</a>
+          <a href="/vis">Vivienda VIS</a>
           </li>
           <li>
           <a href="/constructoras">Constructoras</a>
@@ -53,7 +53,7 @@
     </div>
   </div>
 </div>
-<div class="container-header-white" *ngIf='show_white_header'>
+<div class="container-header-white" *ngIf='show_white_header == true && not_show_header == false'>
   <div class="full-w header">
       <div class="small-2 columns">
           <div class="logo">
@@ -66,7 +66,7 @@
                   <a href="proyectos" alt="" title="">Proyectos</a>
               </li>
               <li>
-                  <a href="#">Vivienda VIS</a>
+                  <a href="vis">Vivienda VIS</a>
               </li>
               <li>
                   <a href="constructoras">Constructoras</a>

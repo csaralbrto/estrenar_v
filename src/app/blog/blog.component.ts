@@ -18,6 +18,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
   public responseEcoSide: any;
   public responseNews: any;
   public results = false;
+  url_img_path = 'https://www.estrenarvivienda.com/';
 
   constructor(public Service: BlogService) {}
 
@@ -41,7 +42,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       (data) => (this.responseMostRead = data),
       (err) => console.log(),
       () => {
-        if (this.response.successful) {
+        if (this.response) {
           /* si responde correctamente */
         }
         if (this.response.error) {
@@ -72,7 +73,8 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       () => {
         if (this.responseEcoSide) {
           /* si responde correctamente */
-          for (let sideEco of this.responseEcoSide) {
+          console.log('response new experience', this.responseEcoSide);
+          for (let sideEco of this.responseEcoSide.results) {
             sideEco.article_image = sideEco.article_image.split(",",1); 
           }
         }

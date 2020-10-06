@@ -13,8 +13,9 @@ import { environment } from '../../environments/environment';
 })
 export class DetailConstructoraComponent implements OnInit {
   public response: any;
+  public responseProject: any;
   public content: any;
-  public project: any;
+  public allProjects: any;
   public results = false;
   public form_filters: FormGroup;
   public stringQuery = '';
@@ -36,30 +37,47 @@ export class DetailConstructoraComponent implements OnInit {
     dataPath = environment.endpoint;
     cadena = '';
     largo = '';
+    dataConstrutora = '?include=field_builder_logo,field_builder_location.field_location_contact,field_builder_location.field_location';
+    url_img_path = 'https://www.estrenarvivienda.com/';
   ngOnInit(): void {
     this.collectionActive = this.route;
     this.createForm();
     // $(document).foundation();
 
-    const title = this.activatedRoute.snapshot.params.path;
+    const title = this.activatedRoute.snapshot.params.path + this.dataConstrutora;
     this.Service.findConstructora(title).subscribe(
-      (data) => (this.response = data),
+      (data) => (this.response = data.data),
       (err) => console.log(),
       () => {
         if (this.response) {
           /* si responde correctamente en la respuesta */
-          // console.log(this.response);
-          for (let project of this.response.constructora.proyectos) {
-              if (project.url_img) {
-                  this.largo = project.url_img.length;
-                  this.cadena = project.url_img.substr(39, this.largo);
-                  project.url_img = this.dataPath + this.cadena;
-                }
-              }
-          this.content = this.response.constructora;
-          this.project = this.response.constructora.proyectos;
-          // console.log(this.project);
-          this.results = true;
+          console.log(this.response);
+          // for (let project of this.response.constructora.proyectos) {
+          //     if (project.url_img) {
+          //         this.largo = project.url_img.length;
+          //         this.cadena = project.url_img.substr(39, this.largo);
+          //         project.url_img = this.dataPath + this.cadena;
+          //       }
+          //     }
+          this.content = this.response;
+        }
+      }
+    );
+    /* Método para obtener los proyectos de la constructora */
+    this.Service.constructoraProjects().subscribe(
+      (data) => (this.responseProject = data),
+      (err) => console.log(),
+      () => {
+        if (this.responseProject) {
+          this.allProjects = this.responseProject.search_results;
+          for (let project of this.allProjects) {
+            var arrayDeCadenas = project.typology_images.split(',');
+            project.typology_images = arrayDeCadenas[0];
+            var arrayDeCadenas2 = project.project_category.split(',');
+            project.project_category = arrayDeCadenas2;
+            this.results = true;
+          }
+          /* si responde correctamente */
         }
       }
     );

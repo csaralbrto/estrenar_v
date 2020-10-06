@@ -10,9 +10,11 @@ import { environment } from '../../environments/environment';
 export class ProjectDetailService {
   public endpoint: string;
   public endpointForm: string;
+  public endpointProjects: string;
 
   constructor( private http: Http ) {
-    this.endpoint = environment.endpointApi + 'projects/';
+    this.endpoint = environment.endpointTestingApi + 'node/typology/';
+    this.endpointProjects = environment.endpointTestingApi + 'typologies/project/9703?items_per_page=8';
     this.endpointForm = environment.endpointApi + 'saveFormDate/';
    }
 
@@ -25,6 +27,11 @@ export class ProjectDetailService {
   getFormService( params: any ): Observable<any> {
     console.log(this.endpointForm, params);
     return this.http.post(this.endpointForm, params)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Traer areas disponibles */
+  availableAreas(): Observable<any> {
+    return this.http.get(this.endpointProjects)
     .pipe(map(( response => response.json() )));
   }
 }

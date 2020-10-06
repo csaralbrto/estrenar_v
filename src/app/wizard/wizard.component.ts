@@ -24,7 +24,7 @@ export class WizardComponent implements OnInit {
   }
 
   changeStepWizard(idStep) {
-    for (let index = 0; index <= 6; index++) {
+    for (let index = 0; index <= 5; index++) {
       if (idStep == index) {
         $('#wizard' + index).removeAttr('style');
         console.log(index + '-muestro este item ');
@@ -44,12 +44,12 @@ export class WizardComponent implements OnInit {
       (data) => (this.confirm = data),
       (err) => console.log(),
       () => {
-        if (this.confirm.successful) {
-          $('#modalAlertSuccessful').foundation('open');
+        if (this.confirm) {
+          // $('#modalAlertSuccessful').foundation('open');
           this.form.reset();
         }
         if (this.confirm.error) {
-          $('#modalAlertError').foundation('open');
+          // $('#modalAlertError').foundation('open');
         }
       }
     );

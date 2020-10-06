@@ -14,9 +14,13 @@ declare function todayDate(): any;
 })
 export class ProjectDetailComponent implements OnInit {
   public response: any;
+  public responseAvailableAreas: any;
+  public projectsAvailableAreas: any;
   public form: FormGroup;
   public form2: FormGroup;
   public results = false;
+  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.parent,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent';
+  url_img_path = 'https://www.estrenarvivienda.com/';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,6 +33,8 @@ export class ProjectDetailComponent implements OnInit {
   cadena = '';
   largo = '';
   public galeria;
+  public caracteristicas;
+  public caracteristicasProject;
   public confirm: any;
   
   public maps_url;
@@ -40,35 +46,62 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     todayDate();
 
-    const title = this.activatedRoute.snapshot.params.path;
+    const title = this.activatedRoute.snapshot.params.path + this.dataProjectUrl;
     this.Service.findProject(title).subscribe(
-      (data) => (this.response = data),
+      (data) => (this.response = data.data),
       (err) => console.log(),
       () => {
         if (this.response) {
           /* si responde correctamente en la respuesta */
-          console.log(this.response);
-          this.largo = this.response.url_img.length;
-          this.cadena = this.response.url_img.substr(40, this.largo);
-          this.response.url_img = this.dataPath + this.cadena;
-          for (let project of this.response.relacionados) {
-            if (project.url_img) {
-              this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(40, this.largo);
-              project.url_img = this.dataPath + this.cadena;
+          // console.log(this.response.field_typology_project.field_project_location[0].field_location_geo_data);
+          const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
+
+          this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
+          this.galeria = this.response.field_typology_image;
+          this.caracteristicas = this.response.field_typology_feature;
+          /* caracteristicas del inmueble */
+          for (let project of this.caracteristicas) {
+            var name_cara;
+            if(project.parent[0].id === 'virtual'){
+              name_cara = project.name
+            }else{
+              name_cara = project.parent[0].name+': '+ project.name
             }
+            project.name_only = name_cara;
           }
-          for (let project2 of this.response.otras_propiedades) {
-            if (project2.url_img) {
-              this.largo = project2.url_img.length;
-              this.cadena = project2.url_img.substr(40, this.largo);
-              project2.url_img = this.dataPath + this.cadena;
+          this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
+          /* caracteristicas del proyecto */
+          for (let project of this.caracteristicasProject) {
+            var name_cara;
+            if(project.parent[0].id === 'virtual'){
+              name_cara = project.name
+            }else{
+              name_cara = project.parent[0].name+': '+ project.name
             }
+            project.name_only = name_cara;
           }
-          this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ this.response.latitude +","+ this.response.longitude +"&hl=es&z=14&output=embed");
-          // console.log(this.response);
-          this.galeria = JSON.parse(this.response.galeria);
-          this.results = true;
+          this.caracteristicasProject.name_only = name_cara;
+
+          // console.log(this.galeria);
+          // this.results = true;
+        }
+      }
+    );
+    /* Método para obtener areas disponibles */
+    this.Service.availableAreas().subscribe(
+      (data) => (this.responseAvailableAreas = data),
+      (err) => console.log(),
+      () => {
+        if (this.responseAvailableAreas) {
+          this.projectsAvailableAreas = this.responseAvailableAreas.search_results;
+          for (let project of this.projectsAvailableAreas) {
+            var arrayDeCadenas = project.typology_images.split(',');
+            project.typology_images = arrayDeCadenas[0];
+            var arrayDeCadenas2 = project.project_category.split(',');
+            project.project_category = arrayDeCadenas2;
+            this.results = true;
+          }
+          /* si responde correctamente */
         }
       }
     );

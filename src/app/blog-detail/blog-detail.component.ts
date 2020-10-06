@@ -33,7 +33,7 @@ export class BlogDetailComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
 
-    const title = this.activatedRoute.snapshot.params.path;
+    const title = this.activatedRoute.snapshot.params.path + this.dataArticle;
     this.Service.findProject(title).subscribe(
       (data) => (this.response = data.data),
       (err) => console.log(),

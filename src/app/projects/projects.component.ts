@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ProjectsService } from './projects.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./projects.component.scss'],
   providers: [ProjectsService],
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, AfterViewChecked {
   public data: any = {nodes: [], pagination: 0};
   public response_data_project: any;
   public form_filters: FormGroup;
@@ -21,32 +21,38 @@ export class ProjectsComponent implements OnInit {
     'filtro-proyectos': {term: '', fields: ''}
   };
   public collectionActive: string = '';
+  public results = false;
 
   constructor( public Service: ProjectsService, private formBuilder: FormBuilder ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
+  url_img_path = 'https://www.estrenarvivienda.com/';
 
 
   ngOnInit() {
     this.collectionActive = this.route;
     this.createForm();
-    $('app-projects').foundation();
 
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(
-      (data) => (this.response_data_project = data),
+      (data) => (this.response_data_project = data.search_results),
       (err) => console.log(),
       () => {
         if (this.response_data_project) {
-          console.log(this.response_data_project.projects_1);
-          for (let project of this.response_data_project.projects_1) {
-            if (project.url_img) {
-              this.largo = project.url_img.length;
-              this.cadena = project.url_img.substr(31, this.largo);
-              project.url_img = this.dataPath + this.cadena;
-            }
+          console.log(this.response_data_project);
+          for (let project of this.response_data_project) {
+            var arrayDeCadenas = project.typology_images.split(',');
+            project.typology_images = arrayDeCadenas[0];
+            var arrayDeCadenas2 = project.project_category.split(',');
+            project.project_category = arrayDeCadenas2;
+            // if (project.url_img) {
+            //   this.largo = project.url_img.length;
+            //   this.cadena = project.url_img.substr(31, this.largo);
+            //   project.url_img = this.dataPath + this.cadena;
+            // }
           }
+          this.results = true;
         }
         /* si responde correctamente */
         if (this.response_data_project.error) {
@@ -97,6 +103,12 @@ export class ProjectsComponent implements OnInit {
       zone: new FormControl('Seleccione'),
       sector: new FormControl('Seleccione'),
     });
+  }
+  ngAfterViewChecked() {
+    if (this.results) {
+      $('app-projects').foundation();
+      // $('html,body').scrollTop(0);
+    }
   }
 
 }
