@@ -1,18 +1,18 @@
 <div class="row columns">
-    <div class="medium-6 columns">
-        <div class="row">
-            <div class="small-4 columns">
-                <img class="image" [src]="url_img_path + content.field_builder_logo.uri.url" alt="">
+    <div class="medium-5 columns">
+        <div class="row encabezado">
+            <div class="small-5 columns">
+                <img class="image constructor" [src]="url_img_path + content.field_builder_logo.uri.url" alt="">
             </div>
-            <div class="small-8 columns">
+            <div class="small-7 columns">
                 <h1>Constructora {{ content.label }}</h1>
             </div>
         </div>
     </div>
-    <div class="medium-6 columns">
+    <div class="medium-7 columns">
         <div class="container-info">
             <div class="row">
-                <div class="medium-4 columns">
+                <div class="medium-4 columns separator-right">
                     <div class="label-info">Ciudad oficina principal</div>
                     <div class="dato">{{ content.field_builder_location[0].field_location_city.name }}</div>
                     <div class="label-info">Dirección oficina principal</div>
@@ -239,7 +239,7 @@
               <div class="medium-2 columns">
                   <div class="botones">
                       <a href="#" class="button ">Más filtros</a>
-                      <a href="#" class="button secondary ">Favoritos</a>
+                      <a href="#" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
                   </div>
               </div>
           </div>

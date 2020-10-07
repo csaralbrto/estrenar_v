@@ -1,16 +1,22 @@
 <div class="row columns">
-  <div class="medium-2 columns">
+  <div class="medium-3 columns">
       <img [src]="url_img_path + response.field_typology_project.field_project_logo.uri.url " alt="" class="logo-proyecto">
   </div>
-  <div class="medium-10 columns">
+  <div class="medium-9 columns head-proyecto">
       <div class="row">
-          <div class="medium-12 columns">
-              <h1>{{ response.field_typology_project.name }}</h1>
+          <div class="medium-12 columns info-proyecto">
+            <div class="tags blue">
+                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                <div class="tag"><a href="#">VIS</a></div>
+                <div class="tag"><a href="#">Mi casa ya</a></div>
+            </div>
+              <h1 class="project">{{ response.field_typology_project.name }}</h1>
+              <p>Descripcion lorem ipsum adempte nocte concectur muy cerca a residencial</p>
           </div>
           <div class="medium-6 columns">
               <div class="head-proyecto">
                   <div>Desde:</div>
-                  <div class="precio">{{ response.field_typology_price | number }}</div>
+                  <div class="precio">$ {{ response.field_typology_price | number }}</div>
               </div>
           </div>
           <div class="medium-6 columns">
@@ -182,8 +188,11 @@
           <div class="small-6 medium-4 columns end zona">
               <div class="row">
                   <div class="small-8 columns">
-                      <input id="checkbox1" type="checkbox"><label for="right-label"
-                          class="text-left">Supermercados</label>
+                    <label class="container-check">Supermercados
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                      
                   </div>
                   <div class="small-4 columns">
                       <img src="/assets/images/supermercado.png" alt="">
@@ -193,20 +202,10 @@
           <div class="small-6 medium-4 columns end zona">
               <div class="row">
                   <div class="small-8 columns">
-                      <input id="checkbox1" type="checkbox"><label for="right-label"
-                          class="text-left">Supermercados</label>
-                  </div>
-                  <div class="small-4 columns">
-                      <img src="/assets/images/supermercado.png" alt="">
-                  </div>
-              </div>
-          </div>
-
-          <div class="small-6 medium-4 columns end zona">
-              <div class="row">
-                  <div class="small-8 columns">
-                      <input id="checkbox1" type="checkbox"><label for="right-label"
-                          class="text-left">Supermercados</label>
+                    <label class="container-check">Supermercados
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
                   </div>
                   <div class="small-4 columns">
                       <img src="/assets/images/supermercado.png" alt="">
@@ -217,8 +216,24 @@
           <div class="small-6 medium-4 columns end zona">
               <div class="row">
                   <div class="small-8 columns">
-                      <input id="checkbox1" type="checkbox"><label for="right-label"
-                          class="text-left">Supermercados</label>
+                    <label class="container-check">Supermercados
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="small-4 columns">
+                      <img src="/assets/images/supermercado.png" alt="">
+                  </div>
+              </div>
+          </div>
+
+          <div class="small-6 medium-4 columns end zona">
+              <div class="row">
+                  <div class="small-8 columns">
+                    <label class="container-check">Supermercados
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
                   </div>
                   <div class="small-4 columns">
                       <img src="/assets/images/supermercado.png" alt="">
@@ -231,7 +246,7 @@
   </div>
   <div class="medium-4 columns text-center">
       <h2 class="deco">¿Necesitas asesoría?</h2>
-      <p>Déjanos tus datos para contactarte o agendar una visita.</p>
+      <p class="mini">Déjanos tus datos para contactarte o agendar una visita.</p>
       <form data-abide novalidate [formGroup]="form">
         <div class="formulario">
             <div data-abide-error class="alert callout" style="display: none;">
@@ -282,7 +297,7 @@
                                 haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los
                                 mismos.</label>
                         </div>
-                        <a href="" class="button secondary expanded" (click)="onSubmit(form.value)">Enviar</a>
+                        <a href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</a>
                     </div>
                 </div>
                 <div class="tabs-panel" id="panel2">
@@ -295,10 +310,10 @@
       </form>
       <div class="row columns">
           <div class="container-constructora">
-              <div class="small-3 columns">
-                  <img src="/assets/images/content/constructora.jpg" alt="">
+              <div class="small-4 columns">
+                  <img class="constructora" src="/assets/images/content/constructora.jpg" alt="">
               </div>
-              <div class="small-9 columns text-center">
+              <div class="small-8 columns text-center">
                   <h3>Atención en sala de ventas</h3>
                   <p>Lunes a viernes: 7am a 5pm</p>
                   <p>Sabados y domingos: 9am a 5 pm</p>
@@ -308,10 +323,10 @@
   </div>
 </div>
 <hr class="white">
-<div class="row columns">
+<div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq">
   <h2 class="deco text-center">Otras áreas disponibles</h2>
   <div class="medium-4 columns" *ngFor="let relacionados of projectsAvailableAreas; let i = index">
-      <div class="card" *ngIf="i < 3">
+      <div class="card" *ngIf="i < 3" data-equalizer-watch>
           <div class="container-photo">
               <a href="#" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
               <div class="container-tools">
@@ -336,39 +351,11 @@
               </div>
               <div class="precio text-center">
                   <div>Desde:</div>
-                  <span>{{ relacionados.typology_price | number }}</span>
+                  <span>$ {{ relacionados.typology_price | number }}</span>
               </div>
               <hr>
           </div>
-          <div class="card-section">
-              <div class="row">
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                          <div class="data"> {{relacionados.area_built}}m</div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                          <div class="data"> {{relacionados.bathrooms}} alcobas</div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                          <div class="data"> {{relacionados.garages}} garajes</div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                          <div class="data"> {{relacionados.bedrooms}} baños</div>
-                      </div>
-                  </div>
-              </div>
-              <hr>
-          </div>
+
           <div class="card-section">
               <div class="button-group align-spaced ">
                 <a class="button" routerLink="/proyecto/{{relacionados.uuid}}">Ver
@@ -442,15 +429,28 @@
                                   <input class="input-group-field" type="number">
                               </div>
                               <hr>
-                              <p>Escoje una de las dos opciones:</p>
-                              <fieldset>
-                                  <input type="radio" name="" value="" id="" required><label for="">Crédito
-                                      hipotecario</label>
-                                  <input type="radio" name="" value="" id=""><label for="">Leasing
-                                      habitacional</label>
-                              </fieldset>
+                       <div class="text-left">
+                        <p>Escoje una de las dos opciones:</p>
+                        <fieldset>
+                         <div class="row">
+                             <div class="medium-6 columns">
+                              <label class="container-radio">Crédito hipotecario
+                                  <input type="radio" checked="checked">
+                                  <span class="checkmark"></span>
+                              </label>
+                             </div>
+                             <div class="medium-6 columns">
+                          
+                              <label class="container-radio">Leasing habitacional
+                                  <input type="radio">
+                                  <span class="checkmark"></span>
+                              </label> 
+                             </div>
+                         </div>
+                       </fieldset>
+                       </div>
                           </div>
-                          <div class="medium-4 columns text-center">
+                          <div class="medium-4 columns text-center campo-destacado">
                               <p> Fecha estimada de entrega</p>
                               <input type="text" placeholder="MM - AAAA">
                               <hr>
@@ -495,10 +495,10 @@
 
           <ul class="orbit-container">
               <li class="is-active orbit-slide">
-                  <div class="row">
+                  <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
                       <div class="medium-4 columns end" *ngFor="let propiedades of projectsAvailableAreas; let i = index">
                           <!-- Card Proyecto individual-->
-                          <div class="card" *ngIf="i > 2 && i < 6">
+                          <div class="card" *ngIf="i > 2 && i < 6" data-equalizer-watch>
                               <div class="container-photo">
                                   <img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto">
                                   <div class="container-tools">
@@ -523,43 +523,11 @@
                                   </div>
                                   <div class="precio text-center">
                                       <div>Desde:</div>
-                                      <span>{{ propiedades.typology_price | number }}</span>
+                                      <span>$ {{ propiedades.typology_price | number }}</span>
                                   </div>
                                   <hr>
                               </div>
-                              <div class="card-section">
-                                  <div class="row">
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
-                                              </div>
-                                              <div class="data"> {{propiedades.area_built}} m</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
-                                              </div>
-                                              <div class="data"> {{propiedades.bathrooms}} alcobas</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
-                                              </div>
-                                              <div class="data"> {{propiedades.garages}} garajes</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt="">
-                                              </div>
-                                              <div class="data"> {{propiedades.bedrooms}} baños</div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <hr>
-                              </div>
+                              
                               <div class="card-section">
                                   <div class="button-group align-spaced ">
                                       <a class="button" routerLink="/proyecto/{{propiedades.uuid}}">Ver

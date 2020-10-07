@@ -43,7 +43,21 @@ h2,
 hr.white {
     border-bottom: 1px solid $white;
 }
-
+select{
+    background-image: url(/assets/images/select.png) !important;
+    background-size: 12px 12px !important;
+}
+.buscador {
+    position: relative;
+    img.search{
+        position: absolute;
+    right: 10PX;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    }
+}
 .mb1 {
     margin-bottom: 1rem;
 }
@@ -62,11 +76,11 @@ hr.white {
 }
 
 a.button.secondary {
-    color: $white;
+    color: $primary-color;
     font-weight: 500;
 
     &:hover {
-        color: $white;
+        color: $primary-color;
         font-weight: 500;
     }
 }
@@ -85,6 +99,7 @@ a.button.close {
         background: url(/assets/images/close.png);
 
     }
+
 }
 
 .condensed {
@@ -113,6 +128,9 @@ a.button.close {
 }
 .medium-five{
     width: 20% !important;
+    @media screen and (max-width: 600px) {
+        width: 100% !important;
+    }
 }
 .publicidad {
     margin-bottom: 2rem;
@@ -182,8 +200,12 @@ button:focus {
 }
 p {
     outline: 0;
+    .mini{
+        font-size: 0.9rem;
+    }
 }
 //header
+
 
 .container-header {
     .header {
@@ -449,6 +471,9 @@ p {
 //ficha de proyecto
 
 .card {
+    .card-section {
+        padding: 0.5rem;
+    }
     .container-photo.vertical {
         max-height: none !important;
         img.proyecto {
@@ -558,14 +583,17 @@ p {
     }
 
     .precio {
-        margin: 1rem auto;
+        margin: 1rem auto 0 auto;
         font-size: 0.85rem;
 
         span {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: $primary-color;
         }
+    }
+    hr {
+        margin: 0.5rem auto;
     }
 }
 
@@ -606,6 +634,13 @@ p {
         text-align: right;
         margin-left: 0.4rem;
         font-size: 0.8rem;
+        @media screen and (max-width: 600px) {
+            margin-bottom: 1.2rem;
+            width: 60%;
+            text-align: right;
+            margin-left: 0.1rem;
+            font-size: 0.7rem;
+        }
     }
 }
 
@@ -810,18 +845,23 @@ label {
 }
 
 //Proyectos
+h1.project {
+    margin-bottom: 0.4rem;
+    font-size: 2.2rem;
+}
 .botones {
-    margin-top: 24px;
+    margin-top: 18px;
     text-align: right;
 
     .button {
         display: inline-block;
         margin-bottom: 0;
         margin: 0 0.2rem;
+        padding: 0.85em 0.5em;
 
         @media screen and (max-width: 600px) {
-            display: block;
-            width: 100%;
+            display: inline-block;
+            width: auto;
             margin-bottom: 1rem;
         }
     }
@@ -832,9 +872,22 @@ label {
 }
 
 //Detalle proyecto
+.head-proyecto{
+    @media screen and (max-width: 600px) {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+.info-proyecto {
+    margin-bottom: 2rem;
+}
 img.logo-proyecto {
     border: 1px solid $light-gray;
     border-radius: $global-radius;
+    width: 230px;
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
 }
 
 .head-proyecto {
@@ -886,8 +939,15 @@ ul.accordion {
     font-size: 1.2rem;
     margin: 1.3rem 0;
     font-weight: 500;
+    margin-bottom: 3rem;
+    @media screen and (max-width: 600px) {
+        margin-bottom: auto;
+    }
 }
-
+img.constructora {
+    border: 1px solid $light-gray;
+    border-radius: $global-radius;
+}
 .terminos {
     margin-bottom: 1rem;
 
@@ -1046,6 +1106,7 @@ ul.accordion {
 
         &.tool {
             width: auto;
+            margin-right: 0.1rem;
         }
 
         &.is-active {
@@ -1081,6 +1142,18 @@ ul.accordion {
             background-position: left;
             background-repeat: no-repeat;
             background-size: contain;
+        }
+        &.endeudamiento {
+            background-image: url(/assets/images/fondo-tool2.png);
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        &.credito {
+            background-image: url(/assets/images/fondo-tool3.png);
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     }
 
@@ -1251,7 +1324,9 @@ ul.accordion {
     .title {
         font-weight: 600;
     }
-
+    .info {
+        font-size: 0.8rem;
+    }
     .columns.foto {
         padding-right: 0;
         img{
@@ -1608,7 +1683,7 @@ a.tipos {
 
 /* When the checkbox is checked, add a blue background */
 .container-check input:checked~.checkmark {
-    background-color: $secondary-color;
+    background-color: $primary-color;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -1725,7 +1800,14 @@ a.tipos {
         font-weight: 600;
     }
 }
-
+.campo-destacado{
+    [type=text]{
+        height: 5rem;
+        font-size: 2rem;
+        color: $primary-color;
+        font-weight: 600;
+    }
+}
 //carga
 
 ul.pagination-pointed {
@@ -1759,9 +1841,133 @@ ul.pagination-pointed {
     color: $white;
 }
 .filtros-tag {
-&.off{
-    .button {
-             background-color: $medium-gray;
+    @media screen and (max-width: 600px) {
+        padding-left: 1rem;
+    padding-right: 1rem;
+    }
+    &.off{
+        .button {
+                background-color: $medium-gray;
+        }
     }
 }
+.filtros{
+    .row.condensed {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        @media screen and (max-width: 600px) {
+            padding-left: 0rem;
+        padding-right: 0rem;
+        }
+    } 
 }
+
+.tags.blue {
+    display: block;
+    margin-bottom: 1.2rem;
+    .tag {
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        border-radius: $global-radius;
+        border: 1px solid $primary-color;
+        margin-right: 0.4rem;
+        padding: 0.2rem;
+    }
+    a.fav {
+        margin-right: 0.5rem;
+    }
+}
+
+.calculo{
+    .container-calc{
+        background: $white;
+        padding: 0.5rem;
+        border-radius: $global-radius;
+        margin-bottom: 1rem;
+        .caracteristica{
+            color: $primary-color;
+        }
+        .value{
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: $primary-color;
+        }
+    }
+}
+.container-simulacion{
+    background: $white;
+    border-radius: $global-radius;
+    padding: 0.6rem;
+    .item{
+        color: $black;
+        text-align: left;
+        display: block;
+        font-weight: 600;
+        span {
+            text-align: right;
+            float: right;
+            font-weight: 400;
+        }
+    }
+    .simulacion{
+        font-size: 0.7rem;
+        color: $black;
+        height: 200px;
+        overflow-y: auto;
+        tbody th, tbody td {
+            padding: 0.2rem;
+        }
+    }
+}
+.slider{
+    &.white{
+        .slider-fill{
+            background-color: $secondary-color;
+        }
+    }
+}
+img.image.constructor {
+    height: 200px;
+    width: 200px !important;
+}
+.row.encabezado{
+    display: flex;
+    align-items: center;
+}
+.separator-right {
+    border-right: 1px solid $medium-gray
+}
+.ev--bots{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 2.5em;
+    bottom: 60% ;
+    right: 0;
+    background-color: #1c4f59;
+    border-radius: 8px 0 0 8px !important;
+    @media screen and (max-width: 600px) {
+        display: block;
+        flex-direction: row !important;
+        align-items: center;
+        position: fixed;
+        width: 100% !important;
+        bottom: 0 !important;
+        right: 0;
+        background-color: #1c4f59;
+        border-radius: 0px 0 0 0px !important;
+        text-align: center;
+        .ev--bots--facebook {
+            display: inline-block;
+        }
+        .ev--bots--whatsapp {
+            display: inline-block;
+        }
+
+    }
+}
+
+
+

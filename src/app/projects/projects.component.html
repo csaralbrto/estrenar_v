@@ -53,7 +53,7 @@
             <div class="medium-2 columns">
                 <div class="botones">
                     <a href="#" class="button ">Más filtros</a>
-                    <a href="#" class="button secondary ">Favoritos</a>
+                    <a href="#" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
   <div class="medium-3 columns" *ngFor="let project of response_data_project; let i = index">
       <div class="card" data-equalizer-watch>
           <div class="container-photo">
-              <a href="#" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+              <a routerLink="/proyecto/{{project.uuid}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
               <div class="container-tools">
                   <div class="tags">
                     <div  *ngIf="project.project_category.length > 0">
