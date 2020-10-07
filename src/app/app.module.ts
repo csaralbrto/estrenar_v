@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 // import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -73,7 +75,7 @@ import { DataTreatmentsComponent } from './data-treatments/data-treatments.compo
     LegalNoticeComponent,
     DataTreatmentsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule,MatAutocompleteModule],
   providers: [],
   bootstrap: [AppComponent],
 })
