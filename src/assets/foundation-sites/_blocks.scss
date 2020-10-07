@@ -43,7 +43,21 @@ h2,
 hr.white {
     border-bottom: 1px solid $white;
 }
-
+select{
+    background-image: url(/assets/images/select.png) !important;
+    background-size: 12px 12px !important;
+}
+.buscador {
+    position: relative;
+    img.search{
+        position: absolute;
+    right: 10PX;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    }
+}
 .mb1 {
     margin-bottom: 1rem;
 }
@@ -62,11 +76,11 @@ hr.white {
 }
 
 a.button.secondary {
-    color: $white;
+    color: $primary-color;
     font-weight: 500;
 
     &:hover {
-        color: $white;
+        color: $primary-color;
         font-weight: 500;
     }
 }
@@ -85,6 +99,7 @@ a.button.close {
         background: url(/assets/images/close.png);
 
     }
+
 }
 
 .condensed {
@@ -182,8 +197,12 @@ button:focus {
 }
 p {
     outline: 0;
+    .mini{
+        font-size: 0.9rem;
+    }
 }
 //header
+
 
 .container-header {
     .header {
@@ -449,6 +468,9 @@ p {
 //ficha de proyecto
 
 .card {
+    .card-section {
+        padding: 0.5rem;
+    }
     .container-photo.vertical {
         max-height: none !important;
         img.proyecto {
@@ -558,14 +580,17 @@ p {
     }
 
     .precio {
-        margin: 1rem auto;
+        margin: 1rem auto 0 auto;
         font-size: 0.85rem;
 
         span {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: $primary-color;
         }
+    }
+    hr {
+        margin: 0.5rem auto;
     }
 }
 
@@ -810,14 +835,19 @@ label {
 }
 
 //Proyectos
+h1.project {
+    margin-bottom: 0.4rem;
+    font-size: 2.2rem;
+}
 .botones {
-    margin-top: 24px;
+    margin-top: 18px;
     text-align: right;
 
     .button {
         display: inline-block;
         margin-bottom: 0;
         margin: 0 0.2rem;
+        padding: 0.85em 0.5em;
 
         @media screen and (max-width: 600px) {
             display: block;
@@ -832,9 +862,13 @@ label {
 }
 
 //Detalle proyecto
+.info-proyecto {
+    margin-bottom: 2rem;
+}
 img.logo-proyecto {
     border: 1px solid $light-gray;
     border-radius: $global-radius;
+    width: 230px;
 }
 
 .head-proyecto {
@@ -886,8 +920,15 @@ ul.accordion {
     font-size: 1.2rem;
     margin: 1.3rem 0;
     font-weight: 500;
+    margin-bottom: 3rem;
+    @media screen and (max-width: 600px) {
+        margin-bottom: auto;
+    }
 }
-
+img.constructora {
+    border: 1px solid $light-gray;
+    border-radius: $global-radius;
+}
 .terminos {
     margin-bottom: 1rem;
 
@@ -1046,6 +1087,7 @@ ul.accordion {
 
         &.tool {
             width: auto;
+            margin-right: 0.1rem;
         }
 
         &.is-active {
@@ -1081,6 +1123,18 @@ ul.accordion {
             background-position: left;
             background-repeat: no-repeat;
             background-size: contain;
+        }
+        &.endeudamiento {
+            background-image: url(/assets/images/fondo-tool2.png);
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        &.credito {
+            background-image: url(/assets/images/fondo-tool3.png);
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     }
 
@@ -1608,7 +1662,7 @@ a.tipos {
 
 /* When the checkbox is checked, add a blue background */
 .container-check input:checked~.checkmark {
-    background-color: $secondary-color;
+    background-color: $primary-color;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -1725,7 +1779,14 @@ a.tipos {
         font-weight: 600;
     }
 }
-
+.campo-destacado{
+    [type=text]{
+        height: 5rem;
+        font-size: 2rem;
+        color: $primary-color;
+        font-weight: 600;
+    }
+}
 //carga
 
 ul.pagination-pointed {
@@ -1764,4 +1825,76 @@ ul.pagination-pointed {
              background-color: $medium-gray;
     }
 }
+}
+.filtros{
+    .row.condensed {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+.tags.blue {
+    display: block;
+    margin-bottom: 1.2rem;
+    .tag {
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        border-radius: $global-radius;
+        border: 1px solid $primary-color;
+        margin-right: 0.4rem;
+        padding: 0.2rem;
+    }
+    a.fav {
+        margin-right: 0.5rem;
+    }
+}
+
+.calculo{
+    .container-calc{
+        background: $white;
+        padding: 0.5rem;
+        border-radius: $global-radius;
+        margin-bottom: 1rem;
+        .caracteristica{
+            color: $primary-color;
+        }
+        .value{
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: $primary-color;
+        }
+    }
+}
+.container-simulacion{
+    background: $white;
+    border-radius: $global-radius;
+    padding: 0.6rem;
+    .item{
+        color: $black;
+        text-align: left;
+        display: block;
+        font-weight: 600;
+        span {
+            text-align: right;
+            float: right;
+            font-weight: 400;
+        }
+    }
+    .simulacion{
+        font-size: 0.7rem;
+        color: $black;
+        height: 200px;
+        overflow-y: auto;
+        tbody th, tbody td {
+            padding: 0.2rem;
+        }
+    }
+}
+.slider{
+    &.white{
+        .slider-fill{
+            background-color: $secondary-color;
+        }
+    }
 }

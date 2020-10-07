@@ -8,7 +8,7 @@
               <ul class="orbit-container">
                   <li class="is-active orbit-slide">
                       <figure class="orbit-figure">
-                          <a href="#"><img class="orbit-image" [src]="url_img_path + responseNewExperience.results[0].article_image" alt=""></a>
+                          <a routerLink="/blog/{{responseNewExperience.results[0].url}}"><img class="orbit-image" [src]="url_img_path + responseNewExperience.results[0].article_image" alt=""></a>
                           <figcaption class="orbit-caption blog">
                               <div class="section"><a routerLink="/blog/{{responseNewExperience.results[0].url}}">{{ responseNewExperience.results[0].article_type }}</a></div>
                               <h2><a routerLink="/blog/{{responseNewExperience.results[0].url}}">{{responseNewExperience.results[0].title.slice(0,90)}}</a></h2>
@@ -44,7 +44,7 @@
               <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
                   <div class="blog-list">
                       <div class="img">
-                          <img [src]="url_img_path + mostRead.article_image" alt="">
+                          <a routerLink="/blog/{{mostRead.url}}"><img [src]="url_img_path + mostRead.article_image" alt=""></a>
                       </div>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
@@ -69,7 +69,8 @@
           <div class="row">
               <div class="medium-12 columns">
                   <figure class="orbit-figure">
-                      <img class="orbit-image" [src]="url_img_path + responseNewExperience.results[1].article_image" alt="">
+                      <a routerLink="/blog/{{responseNewExperience.results[1].url}}">
+                      <img class="orbit-image" [src]="url_img_path + responseNewExperience.results[1].article_image" alt=""></a>
                       <figcaption class="orbit-caption blog">
                           <div class="section"><a routerLink="/blog/{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].article_type }}</a></div>
                           <h2><a routerLink="/blog/{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].title.slice(0,90) }}</a></h2>
@@ -81,7 +82,7 @@
               <div class="medium-4 columns" *ngFor="let newExperience of responseNewExperience.results; let i = index">
                   <div class="blog-list" *ngIf="i >= 1">
                       <div class="img">
-                          <img [src]="url_img_path + newExperience.article_image" alt="">
+                          <a routerLink="/blog/{{newExperience.url}}"><img [src]="url_img_path + newExperience.article_image" alt=""></a>
                       </div>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
@@ -147,7 +148,7 @@
               <div class="medium-6 columns" *ngFor="let ecoside of responseEcoSide.results; let i = index">
                   <div class="blog-list">
                       <div class="img">
-                          <img [src]="url_img_path + ecoside.article_image" alt="">
+                        <a routerLink="/blog/{{ecoside.url}}"><img [src]="url_img_path + ecoside.article_image" alt=""></a>
                       </div>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
