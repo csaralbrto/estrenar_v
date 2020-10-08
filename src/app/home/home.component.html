@@ -30,7 +30,7 @@
       </div>
       <!--slide-->
       <div class="medium-9 columns">
-          <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+          <div class="orbit home" role="region" aria-label="Favorite Space Pictures" data-orbit>
               <div class="orbit-wrapper">
 
                   <ul class="orbit-container">
@@ -157,19 +157,20 @@
                   <div class="medium-6 columns">
                       <div class="container-photo vertical">
                           <img [src]="url_img_path + response.home_featured_typologies[0].typology_images" alt="" class="proyecto">
-                          <div class="container-tools">
-                            <div class="tags">
-                                <div  *ngIf="response.home_featured_typologies[0].project_category.length > 0">
-                                    <div class="tag" *ngFor="let tags of response.home_featured_typologies[0].project_category; let i = index">
-                                        <a>{{ tags }}</a>
+                            <div class="container-tools">
+                                <div class="tags">
+                                    <div  *ngIf="response.home_featured_typologies[0].project_category.length > 0">
+                                        <div class="tag" *ngFor="let tags of response.home_featured_typologies[0].project_category; let i = index">
+                                            <a>{{ tags }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="add">
+                                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                     </div>
                                 </div>
-                              <div class="add">
-                                  <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                            </div>
+                        </div>
+                    </div>
                   <div class="medium-6 columns">
                       <div class="card-section">
                           <h2>{{ response.home_featured_typologies[0].project }}</h2>
@@ -244,7 +245,7 @@
                                   <!-- Card Proyecto individual-->
                                   <div class="card">
                                       <div class="container-photo">
-                                          <img [src]="url_img_path + response.home_featured_typologies[1].typology_images" alt="" class="proyecto">
+                                          <img [src]="url_img_path + response.home_featured_typologies[1].typology_images" alt="" class="proyecto-card">
                                           <div class="container-tools">
                                             <div class="tags">
                                                 <div  *ngIf="response.home_featured_typologies[1].project_category.length > 0">
@@ -255,8 +256,9 @@
                                               <div class="add">
                                                   <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                               </div>
-                                          </div>
-                                      </div>
+                                            </div>
+                                            </div>
+                                        </div>
                                       <div class="card-section">
                                         <h2>{{ response.home_featured_typologies[1].project }}</h2>
                                         <div class="descripcion">
@@ -270,7 +272,7 @@
                                               <span>{{ response.home_featured_typologies[1].typology_price | number }}</span>
                                           </div>
                                           <hr>
-                                      </div>
+                                      
                                       <div class="card-section">
                                         <div class="row">
                                             <div class="small-6 columns">
@@ -307,14 +309,15 @@
                                               <a class="button">Contacto</a>
                                           </div>
                                       </div>
+                                    </div>
                                   </div>
                                   <!-- Fin Card Proyecto individual-->
-                              </div>
+                             
                               <div class="medium-6 columns">
                                   <!-- Card Proyecto individual-->
                                   <div class="card">
                                       <div class="container-photo">
-                                          <img [src]="url_img_path + response.home_featured_typologies[2].typology_images" alt="" class="proyecto">
+                                          <img [src]="url_img_path + response.home_featured_typologies[2].typology_images" alt="" class="proyecto-card">
                                           <div class="container-tools">
                                             <div class="tags">
                                                 <div  *ngIf="response.home_featured_typologies[2].project_category.length > 0">
@@ -388,7 +391,7 @@
                                 <!-- Card Proyecto individual-->
                                   <div class="card">
                                     <div class="container-photo">
-                                        <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto">
+                                        <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
                                         <div class="container-tools">
                                           <div class="tags">
                                                 <div  *ngIf="response.home_featured_typologies[3].project_category.length > 0">
@@ -458,7 +461,7 @@
                                 <!-- Card Proyecto individual-->
                                   <div class="card">
                                     <div class="container-photo">
-                                        <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto">
+                                        <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
                                         <div class="container-tools">
                                           <div class="tags">
                                                 <div  *ngIf="response.home_featured_typologies[3].project_category.length > 0">
@@ -562,7 +565,7 @@
 <div class="container-gray">
   <div class="row columns">
       <h2 class="text-center deco">Constructoras</h2>
-      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+      <div class="orbit constructoras" role="region" aria-label="Favorite Space Pictures" data-orbit>
           <div class="orbit-wrapper">
 
               <ul class="orbit-container">
