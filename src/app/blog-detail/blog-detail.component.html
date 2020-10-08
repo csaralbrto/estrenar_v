@@ -23,63 +23,68 @@
       <hr class="white">
       <h2 class="deco text-center">Deja tu comentario</h2>
       <form [formGroup]="form">
-        <div class="row">
+        <div class="row form-comment">
             <div class="medium-12 columns">
                 <div class="row">
-                    <div class="small-2 columns">
+                    <div class="medium-2 columns">
                         <label for="middle-label" class="text-right middle">Nombre</label>
                     </div>
-                    <div class="small-10 columns">
+                    <div class="medium-10 columns">
                         <input type="text" id="middle-label" formControlName="name"
                         name="name" required pattern="text">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="small-2 columns">
+                    <div class="medium-2 columns">
                         <label for="middle-label" class="text-right middle">Email</label>
                     </div>
-                    <div class="small-10 columns">
+                    <div class="medium-10 columns">
                         <input type="text" id="middle-label" formControlName="email"
                         name="email" required pattern="email">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="small-2 columns">
+                    <div class="medium-2 columns">
                         <label for="middle-label" class="text-right middle">Comentarios</label>
                     </div>
-                    <div class="small-10 columns">
+                    <div class="medium-10 columns">
                     <textarea formControlName="comment"
                     name="comment" required pattern="comment"></textarea>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="small-10 small-offset-2 columns">
+                    <div class="medium-10 medium-offset-2 columns legal">
                         <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a
                                 href="#">
                                 Aviso de Privacidad</a> y estar conforme con el mismo</label>
                     </div>
                 </div>
             </div>
-            <div class="medium-12 columns text-right">
+            <div class="medium-12 columns send">
                 <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</span>
             </div>
         </div>
     </form>
   </div>
-  <div class="medium-3 columns relacionados">
+  <div class="medium-3 columns relacionados" data-equalize-on="medium" data-equalizer="foo">
+      <hr class="mobile">
       <h2>Artículos relacionados</h2>
-      <div class="row" *ngFor="let related of responseRelated.results; let i = index">
-          <div class="small-4 columns foto">
-              <img [src]="url_img_path + related.article_image" alt="" class="image">
-          </div>
-          <div class="small-8 columns">
-              <div class="blog">
-                  <div class="section black"><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.article_type }}</a></div>
-                  <h3><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.title.slice(0,90) }}</a></h3>
-                  <div class="user">{{ related.changed }}</div>
-              </div>
-          </div>
+    <div class="group" data-equalizer-watch="foo" data-equalizer="bar" data-equalize-on-stack="true">
+        <div class="row" *ngFor="let related of responseRelated.results; let i = index" data-equalizer-watch="bar">
+
+            <div class="small-4 columns foto">
+                <img [src]="url_img_path + related.article_image" alt="" class="image">
+            </div>
+            <div class="small-8 columns" >
+                <div class="blog" >
+                    <div class="section black"><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.article_type }}</a></div>
+                    <h3><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.title.slice(0,90) }}</a></h3>
+                    <div class="user">{{ related.changed }}</div>
+                </div>
+            </div>
+
       </div>
+    </div>
       <hr>
   </div>
 </div>

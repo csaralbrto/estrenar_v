@@ -42,7 +42,7 @@
           <h2 class="deco-wide">Lo más leído</h2>
           <div class="row">
               <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
-                  <div class="blog-list">
+                  <div class="blog-list col2">
                       <div class="img">
                           <a routerLink="/blog/{{mostRead.uuid}}"><img [src]="url_img_path + mostRead.article_image" alt=""></a>
                       </div>
@@ -146,7 +146,7 @@
           <h2 class="deco-wide">Nuestro lado DEKO</h2>
           <div class="row">
               <div class="medium-6 columns" *ngFor="let ecoside of responseEcoSide.results; let i = index">
-                  <div class="blog-list">
+                  <div class="blog-list col2">
                       <div class="img">
                         <a routerLink="/blog/{{ecoside.uuid}}"><img [src]="url_img_path + ecoside.article_image" alt=""></a>
                       </div>

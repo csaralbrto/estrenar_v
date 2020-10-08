@@ -50,6 +50,11 @@ hr.mobile{
         border-bottom: 1px solid $white;
     }
 }
+hr {
+    @media screen and (max-width: 600px) {
+        margin: 0.5rem auto !important;
+    }
+}
 select{
     background-image: url(/assets/images/select.png) !important;
     background-size: 12px 12px !important;
@@ -140,7 +145,15 @@ a.button.close {
     }
 }
 .publicidad {
-    margin-bottom: 2rem;
+    margin: 1rem 0 2rem 0;
+    background: #b2b2b2;
+    height: 45px;
+    display: block;
+    width: 100%;
+    float: left;
+    @media screen and (max-width: 600px) {
+        height: 60px;
+    }
 }
 
 .container {
@@ -221,7 +234,10 @@ p {
         width: 100%;
         margin-bottom: 2rem;
         padding: 2rem 1rem;
-
+        @media screen and (max-width: 600px) {
+            margin-bottom: 0.3rem;
+            padding: 1rem;
+        }
     }
 
     background: url(/assets/images/content/header.jpg);
@@ -251,6 +267,10 @@ p {
                 color: $secondary-color;
                 transition: ease all .4s;
             }
+            @media screen and (max-width: 600px) {
+                
+                padding: 1rem 0 0 1rem;
+            }
         }
 
         span.num_fav {
@@ -269,7 +289,10 @@ p {
         width: 100%;
         margin-bottom: 2rem;
         padding: 2rem 1rem;
-
+        @media screen and (max-width: 600px) {
+            margin-bottom: 0.3rem;
+            padding: 1rem;
+        }
     }
 
     ul.menu {
@@ -284,6 +307,10 @@ p {
             &:hover {
                 color: $primary-color;
                 transition: ease all .4s;
+            }
+            @media screen and (max-width: 600px) {
+                
+                padding: 1rem 0 0 1rem;
             }
         }
 
@@ -320,6 +347,9 @@ p {
         border-radius: $global-radius;
         position: relative;
         height: 440px;
+        @media screen and (max-width: 600px) {
+            height: 240px;
+        }
     }
 }
 .slideproject{
@@ -789,7 +819,13 @@ label {
     height: 480px;
     position: relative;
     margin-bottom: 1rem;
-
+    &.col2{
+        height: 410px;
+    }
+    @media screen and (max-width: 600px) {
+        height: auto;
+        margin-bottom: 2rem;
+    }
     .img {
         margin-bottom: 1rem;
 
@@ -851,6 +887,9 @@ label {
     a.button {
         position: absolute;
         bottom: 0;
+        @media screen and (max-width: 600px) {
+            position: relative;
+        }
     }
 }
 
@@ -1264,7 +1303,10 @@ img.constructora {
         border: 1px solid $primary-color;
         border-radius: $global-radius;
         padding: 0rem 0.4rem;
-        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        @media screen and (max-width: 600px) {
+            margin-bottom: 0.5rem;
+        }
         a {
             color: $white;
             text-transform: uppercase;
@@ -2028,3 +2070,41 @@ img.image.constructor {
     }
 }
 
+.form-comment{
+    label.text-right.middle {
+        text-align: left;
+        padding: 0;
+    }
+    .send{
+        text-align: right;
+        @media screen and (max-width: 600px) {
+            text-align: center;
+        }
+    }
+}
+.legal{
+    @media screen and (max-width: 600px) {
+        input#checkbox1, label {
+            display: inline-block;
+            float: left;
+        }
+        label{
+            width: 80%;
+        }
+    }
+    
+}
+
+
+.demo-toggle-title {
+    margin-top: 0.5rem;
+  }
+  
+  .title-bar .menu-icon {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0.6rem;
+}
+.menu-icon::after {
+    height: 3px;
+}
