@@ -352,6 +352,38 @@ p {
         }
     }
 }
+.orbit{
+    &.home{
+        img.orbit-image {
+            border-radius: $global-radius;
+            position: relative;
+            height: 137px;
+            @media screen and (max-width: 600px) {
+                height: 137px;
+            }
+        }
+        .destacado{
+            img.orbit-image {
+                border-radius: $global-radius;
+                position: relative;
+                height: 290px;
+                @media screen and (max-width: 600px) {
+                    height: 290px;
+                }
+            }
+        }
+    }
+    &.constructoras{
+        img.orbit-image {
+            border-radius: $global-radius;
+            position: relative;
+            height: 160px;
+            @media screen and (max-width: 600px) {
+                height: 160px;
+            }
+        }
+    }
+}
 .slideproject{
     .destacado{
         img.orbit-image {
