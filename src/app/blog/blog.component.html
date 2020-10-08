@@ -8,10 +8,10 @@
               <ul class="orbit-container">
                   <li class="is-active orbit-slide">
                       <figure class="orbit-figure">
-                          <a routerLink="/blog/{{responseNewExperience.results[0].uuid}}"><img class="orbit-image" [src]="url_img_path + responseNewExperience.results[0].article_image" alt=""></a>
+                          <a routerLink="{{responseNewExperience.results[0].url}}"><img class="orbit-image" [src]="url_img_path + responseNewExperience.results[0].article_image" alt=""></a>
                           <figcaption class="orbit-caption blog">
-                              <div class="section"><a routerLink="/blog/{{responseNewExperience.results[0].uuid}}">{{ responseNewExperience.results[0].article_type }}</a></div>
-                              <h2><a routerLink="/blog/{{responseNewExperience.results[0].uuid}}">{{responseNewExperience.results[0].title.slice(0,90)}}</a></h2>
+                              <div class="section"><a routerLink="{{responseNewExperience.results[0].url}}">{{ responseNewExperience.results[0].article_type }}</a></div>
+                              <h2><a routerLink="{{responseNewExperience.results[0].url}}">{{responseNewExperience.results[0].title.slice(0,90)}}</a></h2>
                               <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[0].user_name}}</span>{{ responseNewExperience.results[0].changed }}</div>
                           </figcaption>
                       </figure>
@@ -44,7 +44,7 @@
               <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
                   <div class="blog-list col2">
                       <div class="img">
-                          <a routerLink="/blog/{{mostRead.uuid}}"><img [src]="url_img_path + mostRead.article_image" alt=""></a>
+                          <a routerLink="{{mostRead.url}}"><img [src]="url_img_path + mostRead.article_image" alt=""></a>
                       </div>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
@@ -52,13 +52,13 @@
                           <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
                       </div>
 
-                      <div class="section"><a routerLink="/blog/{{mostRead.uuid}}">{{ mostRead.article_type }}</a></div>
-                      <h3><a routerLink="/blog/{{mostRead.uuid}}">{{ mostRead.title.slice(0,90) }}</a></h3>
+                      <div class="section"><a routerLink="{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
+                      <h3><a routerLink="{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
                       <div class="resumen">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
                           suscipit sollicitudin mauris.
                       </div>
-                      <a routerLink="/blog/{{mostRead.uuid}}" class="button">Seguir leyendo</a>
+                      <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
           </div>
@@ -69,11 +69,11 @@
           <div class="row">
               <div class="medium-12 columns">
                   <figure class="orbit-figure">
-                      <a routerLink="/blog/{{responseNewExperience.results[1].uuid}}">
+                      <a routerLink="{{responseNewExperience.results[1].url}}">
                       <img class="orbit-image" [src]="url_img_path + responseNewExperience.results[1].article_image" alt=""></a>
                       <figcaption class="orbit-caption blog">
-                          <div class="section"><a routerLink="/blog/{{responseNewExperience.results[1].uuid}}">{{ responseNewExperience.results[1].article_type }}</a></div>
-                          <h2><a routerLink="/blog/{{responseNewExperience.results[1].uuid}}">{{ responseNewExperience.results[1].title.slice(0,90) }}</a></h2>
+                          <div class="section"><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].article_type }}</a></div>
+                          <h2><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].title.slice(0,90) }}</a></h2>
                           <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[1].user_name}}</span>{{ responseNewExperience.results[1].changed }}</div>
                       </figcaption>
                   </figure>
@@ -82,7 +82,7 @@
               <div class="medium-4 columns" *ngFor="let newExperience of responseNewExperience.results; let i = index">
                   <div class="blog-list" *ngIf="i >= 1">
                       <div class="img">
-                          <a routerLink="/blog/{{newExperience.uuid}}"><img [src]="url_img_path + newExperience.article_image" alt=""></a>
+                          <a routerLink="{{newExperience.url}}"><img [src]="url_img_path + newExperience.article_image" alt=""></a>
                       </div>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
@@ -90,13 +90,13 @@
                           <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
                       </div>
 
-                      <div class="section"><a routerLink="/blog/{{newExperience.uuid}}">{{ newExperience.article_type }}</a></div>
-                      <h3><a routerLink="/blog/{{newExperience.uuid}}">{{ newExperience.title.slice(0,90) }}</a></h3>
+                      <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
+                      <h3><a routerLink="{{newExperience.url}}">{{ newExperience.title.slice(0,90) }}</a></h3>
                       <div class="resumen">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
                           suscipit sollicitudin mauris.
                       </div>
-                      <a routerLink="/blog/{{newExperience.uuid}}" class="button">Seguir leyendo</a>
+                      <a routerLink="{{newExperience.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
               <!-- <div class="medium-4 columns">
@@ -148,7 +148,7 @@
               <div class="medium-6 columns" *ngFor="let ecoside of responseEcoSide.results; let i = index">
                   <div class="blog-list col2">
                       <div class="img">
-                        <a routerLink="/blog/{{ecoside.uuid}}"><img [src]="url_img_path + ecoside.article_image" alt=""></a>
+                        <a routerLink="{{ecoside.url}}"><img [src]="url_img_path + ecoside.article_image" alt=""></a>
                       </div>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
@@ -156,13 +156,13 @@
                           <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
                       </div>
 
-                      <div class="section"><a routerLink="/blog/{{ecoside.uuid}}">{{ ecoside.article_type }}</a></div>
-                      <h3><a routerLink="/blog/{{ecoside.uuid}}">{{ ecoside.title.slice(0,90).slice(0,90) }}</a></h3>
+                      <div class="section"><a routerLink="{{ecoside.url}}">{{ ecoside.article_type }}</a></div>
+                      <h3><a routerLink="{{ecoside.url}}">{{ ecoside.title.slice(0,90).slice(0,90) }}</a></h3>
                       <div class="resumen">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
                           suscipit sollicitudin mauris.
                       </div>
-                      <a routerLink="/blog/{{ecoside.uuid}}" class="button">Seguir leyendo</a>
+                      <a routerLink="{{ecoside.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
               <!-- <div class="medium-6 columns">
@@ -231,7 +231,7 @@
   <div class="medium-4 columns">
       <h2 class="deco-wide">Recomendados</h2>
       <div class="recomendado" *ngFor="let recommend of responseRecommend.results; let i = index">
-          <h3><a routerLink="/blog/{{recommend.uuid}}">{{ recommend.title.slice(0,90) }}</a></h3>
+          <h3><a routerLink="{{recommend.url}}">{{ recommend.title.slice(0,90) }}</a></h3>
           <div class="fecha">{{ recommend.changed }}</div>
           <hr>
       </div>
@@ -245,7 +245,7 @@
       <hr class="white">
       <h2 class="deco-wide">Noticias del sector</h2>
       <div class="recomendado" *ngFor="let news of responseNews.results; let i = index">
-          <h3><a routerLink="/blog/{{news.uuid}}">{{ news.title.slice(0,90) }}</a></h3>
+          <h3><a routerLink="{{news.url}}">{{ news.title.slice(0,90) }}</a></h3>
           <div class="fecha">{{ news.changed }}</div>
           <hr>
       </div>

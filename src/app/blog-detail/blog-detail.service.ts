@@ -22,7 +22,7 @@ export class BlogDetailService {
   public sendComment: string;
 
   constructor( private http: Http ) { 
-    this.dataBlogPath = environment.endpointTestingApi+ 'node/article/';
+    this.dataBlogPath = environment.endpointTestingApiPost+ 'router/translate-path?path=/es/articulos/';
     this.blogRelatedPath = environment.endpointTestingApi+ 'articles?items_per_page=4';
     this.sendComment = environment.endpointTestingApiPost + 'comment/';
   }

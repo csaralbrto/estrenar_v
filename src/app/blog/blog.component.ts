@@ -29,6 +29,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       (err) => console.log(),
       () => {
         if (this.response) {
+          console.log(this.response);
           /* si responde correctamente */
         }
         if (this.response.error) {

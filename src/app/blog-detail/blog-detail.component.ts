@@ -33,14 +33,32 @@ export class BlogDetailComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
 
-    const title = this.activatedRoute.snapshot.params.path + this.dataArticle;
-    this.Service.findProject(title).subscribe(
-      (data) => (this.response = data.data),
+    // const title = this.activatedRoute.snapshot.params.path ;
+    /* se uso el window location ya que en los parametros no se carga completa la urls */
+    let url_path1  = window.location.pathname.split("/es/articulos/");
+    var url_path = url_path1[1]
+    console.log(url_path);
+    this.Service.findProject(url_path).subscribe(
+      (data) => (this.response = data.jsonapi),
       (err) => console.log(),
       () => {
         if (this.response) {
           console.log('entre a mostrar ',this.response);
-          this.results = true;
+           // this.beforeCheck(this.response.individual);
+           var url = this.response.individual + this.dataArticle;
+           var data = "";
+           fetch(url, {
+           })
+           .then(response => response.json())
+           .then(data => {
+             // console.log(data)
+             this.response = data.data;
+             // console.log(this.response);
+             if (this.response) { 
+              this.results = true;
+             }
+           })
+           .catch(error => console.error(error))
         }
       }
     );
