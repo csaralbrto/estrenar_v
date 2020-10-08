@@ -11,19 +11,19 @@
       <div class="medium-3 columns end">
           <div class="row">
               <div class="small-6 columns text-center">
-                  <a class="icono" href="#"><img src="/assets/images/icon-casa.png" alt="casas"></a>
+                  <a class="icono" href="/proyectos"><img src="/assets/images/icon-casa.png" alt="casas"></a>
                   <div class="title-icono">Casa</div>
               </div>
               <div class="small-6 columns text-center">
-                  <a class="icono" href="#"><img src="/assets/images/icon-apto.png" alt="casas"></a>
+                  <a class="icono" href="/proyectos"><img src="/assets/images/icon-apto.png" alt="casas"></a>
                   <div class="title-icono">Apartamentos</div>
               </div>
               <div class="small-6 columns text-center">
-                  <a class="icono" href="#"><img src="/assets/images/icon-aptoe.png" alt="casas"></a>
+                  <a class="icono" href="/proyectos"><img src="/assets/images/icon-aptoe.png" alt="casas"></a>
                   <div class="title-icono">Apartaestudios</div>
               </div>
               <div class="small-6 columns text-center">
-                  <a class="icono" href="#"><img src="/assets/images/icon-vis.png" alt="casas"></a> 
+                  <a class="icono" href="/vis"><img src="/assets/images/icon-vis.png" alt="casas"></a> 
                   <div class="title-icono">VIS</div>
               </div>
           </div>
@@ -39,7 +39,7 @@
                               <div class="medium-8 columns destacado">
                                   <figure class="orbit-figure">
                                       <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
+                                      <figcaption class="orbit-caption">{{ response.home_featured_collections[0] ? response.home_featured_collections[0].name : "" }}</figcaption>
                                   </figure>
                               </div>
                               <div class="medium-4 columns">
@@ -47,14 +47,14 @@
                                       <div class="medium-12 columns">
                                           <figure class="orbit-figure">
                                               <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[1] ? response.home_featured_collections[1].name : "" }}
                                               </figcaption>
                                           </figure>
                                       </div>
                                       <div class="medium-12 columns">
                                           <figure class="orbit-figure">
                                               <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[2] ? response.home_featured_collections[2].name : "" }}
                                               </figcaption>
                                           </figure>
                                       </div>
@@ -70,33 +70,14 @@
                                       <div class="medium-12 columns">
                                           <figure class="orbit-figure">
                                               <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[3] ? response.home_featured_collections[3].name : "" }}
                                               </figcaption>
                                           </figure>
                                       </div>
                                       <div class="medium-12 columns">
                                           <figure class="orbit-figure">
                                               <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
-                                              </figcaption>
-                                          </figure>
-                                      </div>
-
-                                  </div>
-                              </div>
-                              <div class="medium-4 columns">
-                                  <div class="row">
-                                      <div class="medium-12 columns">
-                                          <figure class="orbit-figure">
-                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
-                                              </figcaption>
-                                          </figure>
-                                      </div>
-                                      <div class="medium-12 columns">
-                                          <figure class="orbit-figure">
-                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[4] ? response.home_featured_collections[4].name : "" }}
                                               </figcaption>
                                           </figure>
                                       </div>
@@ -108,14 +89,33 @@
                                       <div class="medium-12 columns">
                                           <figure class="orbit-figure">
                                               <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[5] ? response.home_featured_collections[5].name : "" }}
                                               </figcaption>
                                           </figure>
                                       </div>
                                       <div class="medium-12 columns">
                                           <figure class="orbit-figure">
                                               <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
-                                              <figcaption class="orbit-caption">Space, the final frontier.
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[6] ? response.home_featured_collections[6].name : "" }}
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+
+                                  </div>
+                              </div>
+                              <div class="medium-4 columns">
+                                  <div class="row">
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[7] ? response.home_featured_collections[7].name : "" }}
+                                              </figcaption>
+                                          </figure>
+                                      </div>
+                                      <div class="medium-12 columns">
+                                          <figure class="orbit-figure">
+                                              <img class="orbit-image" src="/assets/images/content/ficha.jpg" alt="">
+                                              <figcaption class="orbit-caption">{{ response.home_featured_collections[8] ? response.home_featured_collections[8].name : "" }}
                                               </figcaption>
                                           </figure>
                                       </div>
@@ -169,8 +169,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                      </div>
+                  </div>
                   <div class="medium-6 columns">
                       <div class="card-section">
                           <h2>{{ response.home_featured_typologies[0].project }}</h2>
@@ -241,7 +241,7 @@
                   <ul class="orbit-container">
                       <li class="is-active orbit-slide">
                           <div class="row">
-                              <div class="medium-6 columns">
+                            <div class="medium-6 columns">
                                   <!-- Card Proyecto individual-->
                                   <div class="card">
                                       <div class="container-photo">
@@ -310,64 +310,139 @@
                                           </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <!-- Fin Card Proyecto individual-->
-                             
-                              <div class="medium-6 columns">
+                            </div>
+                                <!-- Fin Card Proyecto individual-->
+                            
+                            <div class="medium-6 columns">
+                            <!-- Card Proyecto individual-->
+                            <div class="card">
+                                <div class="container-photo">
+                                    <img [src]="url_img_path + response.home_featured_typologies[2].typology_images" alt="" class="proyecto-card">
+                                    <div class="container-tools">
+                                        <div class="tags">
+                                            <div  *ngIf="response.home_featured_typologies[2].project_category.length > 0">
+                                                <div class="tag" *ngFor="let tags of response.home_featured_typologies[2].project_category; let i = index">
+                                                    <a>{{ tags }}</a>
+                                                </div>
+                                            </div>
+                                        <div class="add">
+                                            <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                <div class="card-section">
+                                    <h2>{{ response.home_featured_typologies[2].project }}</h2>
+                                    <div class="descripcion">
+                                    {{ response.home_featured_typologies[2].project_city }},
+                                    {{ response.home_featured_typologies[2].project_zone }},
+                                    {{ response.home_featured_typologies[2].project_neighborhood }}
+                                    </div>
+                                </div>
+                                    <div class="precio text-center">
+                                        <div>Desde:</div>
+                                        <span>{{ response.home_featured_typologies[2].typology_price | number }}</span>
+                                    </div>
+                                    <hr>
+                                
+                                <div class="card-section">
+                                    <div class="row">
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                                <div class="data">{{  response.home_featured_typologies[2].area_built }} m </div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                                <div class="data">{{  response.home_featured_typologies[2].bedrooms }} alcobas </div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                                <div class="data">{{  response.home_featured_typologies[2].garages }} garajes </div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                                <div class="data">{{  response.home_featured_typologies[2].bathrooms }} baños </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="card-section">
+                                    <div class="button-group align-spaced ">
+                                        <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[2].uuid}}">Ver
+                                            Proyecto</a>
+                                        <a class="button">Contacto</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                          </div>
+                      </li>
+                      <li class="is-active orbit-slide">
+                          <div class="row">
+                            <div class="medium-6 columns">
                                   <!-- Card Proyecto individual-->
                                   <div class="card">
                                       <div class="container-photo">
-                                          <img [src]="url_img_path + response.home_featured_typologies[2].typology_images" alt="" class="proyecto-card">
+                                          <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
                                           <div class="container-tools">
                                             <div class="tags">
-                                                <div  *ngIf="response.home_featured_typologies[2].project_category.length > 0">
-                                                    <div class="tag" *ngFor="let tags of response.home_featured_typologies[1].project_category; let i = index">
+                                                <div  *ngIf="response.home_featured_typologies[3].project_category.length > 0">
+                                                    <div class="tag" *ngFor="let tags of response.home_featured_typologies[3].project_category; let i = index">
                                                         <a>{{ tags }}</a>
                                                     </div>
                                                 </div>
                                               <div class="add">
                                                   <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                               </div>
-                                          </div>
-                                      </div>
+                                            </div>
+                                            </div>
+                                        </div>
                                       <div class="card-section">
-                                        <h2>{{response.home_featured_typologies[2].project }}</h2>
+                                        <h2>{{ response.home_featured_typologies[3].project }}</h2>
                                         <div class="descripcion">
-                                          {{response.home_featured_typologies[2].project_city }},
-                                          {{response.home_featured_typologies[2].project_zone }},
-                                          {{response.home_featured_typologies[2].project_neighborhood }}
+                                          {{ response.home_featured_typologies[3].project_city }},
+                                          {{ response.home_featured_typologies[3].project_zone }},
+                                          {{ response.home_featured_typologies[3].project_neighborhood }}
                                         </div>
                                       </div>
                                           <div class="precio text-center">
                                               <div>Desde:</div>
-                                              <span>{{response.home_featured_typologies[2].typology_price | number }}</span>
+                                              <span>{{ response.home_featured_typologies[3].typology_price | number }}</span>
                                           </div>
                                           <hr>
-                                      </div>
+                                      
                                       <div class="card-section">
                                         <div class="row">
                                             <div class="small-6 columns">
                                                 <div class="item">
                                                     <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                                    <div class="data">{{ response.home_featured_typologies[2].area_built }} m </div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].area_built }} m </div>
                                                 </div>
                                             </div>
                                             <div class="small-6 columns">
                                                 <div class="item">
                                                     <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                                    <div class="data">{{ response.home_featured_typologies[2].bedrooms }} alcobas </div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].bedrooms }} alcobas </div>
                                                 </div>
                                             </div>
                                             <div class="small-6 columns">
                                                 <div class="item">
                                                     <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                                    <div class="data">{{ response.home_featured_typologies[2].garages }} garajes </div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].garages }} garajes </div>
                                                 </div>
                                             </div>
                                             <div class="small-6 columns">
                                                 <div class="item">
                                                     <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                                    <div class="data">{{ response.home_featured_typologies[2].bathrooms }} baños </div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].bathrooms }} baños </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -375,157 +450,82 @@
                                       </div>
                                       <div class="card-section">
                                           <div class="button-group align-spaced ">
-                                              <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[2].uuid}}">Ver
+                                              <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[3].uuid}}">Ver
                                                   Proyecto</a>
                                               <a class="button">Contacto</a>
                                           </div>
                                       </div>
-                                  </div>
-                                  <!-- Fin Card Proyecto individual-->
-                              </div>
-                          </div>
-                      </li>
-                      <li class="is-active orbit-slide">
-                          <div class="row">
-                            <div class="medium-6 columns">
-                                <!-- Card Proyecto individual-->
-                                  <div class="card">
-                                    <div class="container-photo">
-                                        <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
-                                        <div class="container-tools">
-                                          <div class="tags">
-                                                <div  *ngIf="response.home_featured_typologies[3].project_category.length > 0">
-                                                    <div class="tag" *ngFor="let tags of response.home_featured_typologies[3].project_category; let i = index">
-                                                        <a>{{ tags }}</a>
-                                                    </div>
-                                                </div>
-                                            <div class="add">
-                                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div class="card-section">
-                                      <h2>{{ response.home_featured_typologies[3].project }}</h2>
-                                      <div class="descripcion">
-                                        {{ response.home_featured_typologies[3].project_city }},
-                                        {{ response.home_featured_typologies[3].project_zone }},
-                                        {{ response.home_featured_typologies[3].project_neighborhood }}
-                                      </div>
-                                    </div>
-                                        <div class="precio text-center">
-                                            <div>Desde:</div>
-                                            <span>{{ response.home_featured_typologies[3].typology_price | number }}</span>
-                                        </div>
-                                        <hr>
-                                    </div>
-                                    <div class="card-section">
-                                      <div class="row">
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].area_built }} m </div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].bedrooms }} alcobas </div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].garages }} garajes </div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].bathrooms }} baños </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                        <hr>
-                                    </div>
-                                    <div class="card-section">
-                                        <div class="button-group align-spaced ">
-                                            <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[3].uuid}}">Ver
-                                                Proyecto</a>
-                                            <a class="button">Contacto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Fin Card Proyecto individual-->
                             </div>
                             <div class="medium-6 columns">
-                                <!-- Card Proyecto individual-->
+                                  <!-- Card Proyecto individual-->
                                   <div class="card">
-                                    <div class="container-photo">
-                                        <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
-                                        <div class="container-tools">
-                                          <div class="tags">
+                                      <div class="container-photo">
+                                          <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
+                                          <div class="container-tools">
+                                            <div class="tags">
                                                 <div  *ngIf="response.home_featured_typologies[3].project_category.length > 0">
                                                     <div class="tag" *ngFor="let tags of response.home_featured_typologies[3].project_category; let i = index">
                                                         <a>{{ tags }}</a>
                                                     </div>
                                                 </div>
-                                            <div class="add">
-                                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                              <div class="add">
+                                                  <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                              </div>
+                                            </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-section">
-                                      <h2>{{ response.home_featured_typologies[3].project }}</h2>
-                                      <div class="descripcion">
-                                        {{ response.home_featured_typologies[3].project_city }},
-                                        {{ response.home_featured_typologies[3].project_zone }},
-                                        {{ response.home_featured_typologies[3].project_neighborhood }}
+                                      <div class="card-section">
+                                        <h2>{{ response.home_featured_typologies[3].project }}</h2>
+                                        <div class="descripcion">
+                                          {{ response.home_featured_typologies[3].project_city }},
+                                          {{ response.home_featured_typologies[3].project_zone }},
+                                          {{ response.home_featured_typologies[3].project_neighborhood }}
+                                        </div>
+                                      </div>
+                                          <div class="precio text-center">
+                                              <div>Desde:</div>
+                                              <span>{{ response.home_featured_typologies[3].typology_price | number }}</span>
+                                          </div>
+                                          <hr>
+                                      
+                                      <div class="card-section">
+                                        <div class="row">
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].area_built }} m </div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].bedrooms }} alcobas </div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].garages }} garajes </div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                                    <div class="data">{{  response.home_featured_typologies[3].bathrooms }} baños </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                          <hr>
+                                      </div>
+                                      <div class="card-section">
+                                          <div class="button-group align-spaced ">
+                                              <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[3].uuid}}">Ver
+                                                  Proyecto</a>
+                                              <a class="button">Contacto</a>
+                                          </div>
                                       </div>
                                     </div>
-                                        <div class="precio text-center">
-                                            <div>Desde:</div>
-                                            <span>{{ response.home_featured_typologies[3].typology_price | number }}</span>
-                                        </div>
-                                        <hr>
-                                    </div>
-                                    <div class="card-section">
-                                      <div class="row">
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].area_built }} m </div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].bedrooms }} alcobas </div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].garages }} garajes </div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                                  <div class="data">{{  response.home_featured_typologies[3].bathrooms }} baños </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                        <hr>
-                                    </div>
-                                    <div class="card-section">
-                                        <div class="button-group align-spaced ">
-                                            <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[3].uuid}}">Ver
-                                                Proyecto</a>
-                                            <a class="button">Contacto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Fin Card Proyecto individual-->
                             </div>
                           </div>
                       </li>
