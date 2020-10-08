@@ -4,7 +4,7 @@
 <!--simuladores-->
 <div class="row columns">
     <div class="simuladores">
-        <ul class="tabs" data-tabs id="simuladores">
+        <ul class="tabs hide-for-small-only" data-tabs id="simuladores">
             <li class="tabs-title tool is-active"><a href="#panel1" aria-selected="true">Simulador capacidad
                 endeudamiento</a>
             </li>
@@ -15,6 +15,22 @@
             <li class="tabs-title tool"><a data-tabs-target="panel4" href="#panel4">Simulador credito de vivienda</a>
             </li>
         </ul>
+        <div class="nav-calc">
+<ul class="nav-cal-menu show-for-small-only">
+    <li class="opcion">
+        <a href="#panel1" class="active">Simulador capacidad endeudamiento</a>
+    </li>
+    <li class="opcion">
+        <a href="#panel2" >Simulador subsidio de vivienda</a>
+    </li>
+    <li class="opcion">
+        <a href="#panel3" >Simulador cuota inicial</a>
+    </li>
+    <li class="opcion">
+        <a href="#panel4">Simulador credito de vivienda</a>
+    </li>
+</ul>
+        </div>
         <div class="tabs-content" data-tabs-content="simuladores">
             <div class="tabs-panel is-active cuota" id="panel1">
                 <div class="container-form">
@@ -43,7 +59,7 @@
             <div class="tabs-panel endeudamiento" id="panel2">
                 <div class="container-form">
                     <div class="row">
-                        <div class="medium-4 columns text-center">
+                        <div class="medium-4 columns text-center"> 
                             <p> Cuentanos cuales son tus ingresos mensuales</p>
                             <div class="input-group">
                                 <span class="input-group-label">$</span>

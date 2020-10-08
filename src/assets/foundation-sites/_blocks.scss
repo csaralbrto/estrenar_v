@@ -43,6 +43,13 @@ h2,
 hr.white {
     border-bottom: 1px solid $white;
 }
+hr.mobile{
+    display: none;
+    @media screen and (max-width: 600px) {
+        display: block;
+        border-bottom: 1px solid $white;
+    }
+}
 select{
     background-image: url(/assets/images/select.png) !important;
     background-size: 12px 12px !important;
@@ -692,7 +699,10 @@ p {
     height: 210px;
     margin-bottom: 0;
     margin-top: 3rem;
-
+    @media screen and (max-width: 600px) {
+        height: auto;
+        padding: 1rem;
+    }
     .container-comparador {
         text-align: center;
 
@@ -868,6 +878,7 @@ h1.project {
 
     @media screen and (max-width: 600px) {
         margin-top: 0;
+        text-align: center;
     }
 }
 
@@ -941,7 +952,8 @@ ul.accordion {
     font-weight: 500;
     margin-bottom: 3rem;
     @media screen and (max-width: 600px) {
-        margin-bottom: auto;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
     }
 }
 img.constructora {
@@ -1066,6 +1078,9 @@ img.constructora {
     span {
         margin-right: 1rem;
     }
+    @media screen and (max-width: 600px) {
+        font-size: 0.9rem;
+    }
 }
 
 //simuladores
@@ -1076,7 +1091,13 @@ img.constructora {
         font-size: 1.6rem;
         color: $secondary-color;
         font-weight: 500;
+        @media screen and (max-width: 600px) {
+            font-size: 1rem;
+        }
     }
+}
+.nav-tabs{
+    padding: 2rem 2rem 0 2rem;
 }
 
 .simuladores {
@@ -1142,18 +1163,27 @@ img.constructora {
             background-position: left;
             background-repeat: no-repeat;
             background-size: contain;
+            @media screen and (max-width: 600px) {
+                background-image: none;
+            }
         }
         &.endeudamiento {
             background-image: url(/assets/images/fondo-tool2.png);
             background-position: right;
             background-repeat: no-repeat;
             background-size: contain;
+            @media screen and (max-width: 600px) {
+                background-image: none;
+            }
         }
         &.credito {
             background-image: url(/assets/images/fondo-tool3.png);
             background-position: left;
             background-repeat: no-repeat;
             background-size: cover;
+            @media screen and (max-width: 600px) {
+                background-image: none;
+            }
         }
     }
 
@@ -1341,7 +1371,12 @@ img.constructora {
     padding: 1rem;
     font-size: 0.9rem;
     border-radius: $global-radius;
-
+    @media screen and (max-width: 600px) {
+        margin-top: 2rem;
+        .separator-right {
+            border-right: 0px solid $medium-gray
+        }
+    }
     .label-info {
         font-weight: 600;
         color: $primary-color;
@@ -1969,5 +2004,27 @@ img.image.constructor {
     }
 }
 
-
+.nav-calc{
+    border-top: 1px solid $light-gray;
+    ul.nav-cal-menu{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        display: block;
+        width: auto;
+        margin-left: 0;
+        padding: 1rem 0;
+        li.opcion{
+            display: inline-block;
+            margin-right: 0.6rem;
+            a{
+                color: $medium-gray;
+                &.active{
+                    color: $primary-color;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
 
