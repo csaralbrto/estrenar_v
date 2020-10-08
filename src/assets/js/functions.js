@@ -8,6 +8,15 @@ function addDayDate() {
   $("#dateAgenda").val(final);
   drawDateField();
 }
+function test(){
+  $('#autocompletar').autocomplete({
+    data: {
+      "Apple": null,
+      "Microsoft": null,
+      "Google": 'http://placehold.it/250x250',
+    }
+  });
+}
 
 function delDayDate() {
   var dateInit = new Date($("#dateAgenda").val());

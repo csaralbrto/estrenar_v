@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {
   FormGroup,
   FormControl,
@@ -18,6 +18,9 @@ export class WizardComponent implements OnInit, AfterViewChecked {
   public confirm: any;
   public form: FormGroup;
   public responseSearchData: any;
+  public responseSubsidioData: any;
+  public responseTiempoData: any;
+  public responseContactadoData: any;
   public results = false;
   arrayOptions: string[] = [];
   arrayOptions2: string[] = [];
@@ -28,7 +31,7 @@ export class WizardComponent implements OnInit, AfterViewChecked {
     // $(document).foundation();
     this.createForm();
 
-    /* Método para obtener toda la info de proyectos */
+    /* Método para obtener toda la info de locaciones */
     this.Service.getDataSearch().subscribe(
       (data) => (this.responseSearchData = data.data),
       (err) => console.log(),
@@ -48,12 +51,74 @@ export class WizardComponent implements OnInit, AfterViewChecked {
         }
       }
     );
+    /* Método para obtener toda la info subsidio */
+    this.Service.getDataSubsidio().subscribe(
+      (data) => (this.responseSubsidioData = data.data),
+      (err) => console.log(),
+      () => {
+        if (this.responseSubsidioData) {
+          console.log(this.responseSubsidioData);
+          // for (let subsidio of this.responseSubsidioData) {
+          // }
+          console.log(this.arrayOptions);
+          this.results = true;
+        }
+        /* si responde correctamente */
+        if (this.responseSubsidioData.error) {
+          /* si hay error en la respuesta */
+        }
+      }
+    );
+    /* Método para obtener toda la info de tiempos */
+    this.Service.getDataTiempo().subscribe(
+      (data) => (this.responseTiempoData = data.data),
+      (err) => console.log(),
+      () => {
+        if (this.responseTiempoData) {
+          console.log(this.responseTiempoData);
+          // for (let subsidio of this.responseTiempoData) {
+          // }
+          console.log(this.arrayOptions);
+          this.results = true;
+        }
+        /* si responde correctamente */
+        if (this.responseTiempoData.error) {
+          /* si hay error en la respuesta */
+        }
+      }
+    );
+    /* Método para obtener toda la info de ser contactado */
+    this.Service.getDataContacado().subscribe(
+      (data) => (this.responseContactadoData = data.data),
+      (err) => console.log(),
+      () => {
+        if (this.responseContactadoData) {
+          console.log(this.responseContactadoData);
+          // for (let subsidio of this.responseContactadoData) {
+          // }
+          console.log(this.arrayOptions);
+          this.results = true;
+        }
+        /* si responde correctamente */
+        if (this.responseContactadoData.error) {
+          /* si hay error en la respuesta */
+        }
+      }
+    );
   }
+  // autoComplete(){
+  //   $('#autocompletar').autocomplete({
+  //     data: {
+  //       "Apple": null,
+  //       "Microsoft": null,
+  //       "Google": 'http://placehold.it/250x250',
+  //     }
+  //   });
+  // }
   filterValues(value: string) {
     console.log('entre '+ value);
     const filterValue = value.toUpperCase();
-    this.arrayOptions2 = [];
-    this.arrayOptions2 = this.arrayOptions.filter(option => option.toUpperCase().includes(filterValue));
+    return this.arrayOptions.filter(option => option.toUpperCase().includes(filterValue));
 }
   closeWizard() {
     $('#welcomeModal').foundation('close');
@@ -63,10 +128,10 @@ export class WizardComponent implements OnInit, AfterViewChecked {
     for (let index = 0; index <= 5; index++) {
       if (idStep == index) {
         $('#wizard' + index).removeAttr('style');
-        console.log(index + '-muestro este item ');
+        // console.log(index + '-muestro este item ');
       } else {
         console.log(index + '-oculto este item ');
-        $('#wizard' + index).css('display', 'none');
+        // $('#wizard' + index).css('display', 'none');
       }
     }
   }

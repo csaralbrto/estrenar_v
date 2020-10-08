@@ -10,10 +10,16 @@ import { environment } from '../../environments/environment';
 export class WizardService {
   public formData: string;
   public dataSearchPath: string;
+  public dataSubsidioPath: string;
+  public dataTiempoPath: string;
+  public dataContactadoPath: string;
 
   constructor( private http: Http ) {
     this.formData = environment.endpointApi + 'saveWizardData/';
     this.dataSearchPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences_location';
+    this.dataSubsidioPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Subsidio&sort=weight';
+    this.dataTiempoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Tiempo en el que considera comprar&sort=weight';
+    this.dataContactadoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Medio de contacto&sort=weight';
    }
 
   /* Enviar datos en los wizard */
@@ -21,9 +27,24 @@ export class WizardService {
     return this.http.post(this.formData + operation, params)
     .pipe(map(( response => response.json() )));
   }
-  /* Traer toda la info de proyectos */
+  /* Traer toda la info de locaciones */
   getDataSearch(): Observable<any> {
     return this.http.get(this.dataSearchPath)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Traer info de subsidio */
+  getDataSubsidio(): Observable<any> {
+    return this.http.get(this.dataSubsidioPath)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Traer info de tiempos */
+  getDataTiempo(): Observable<any> {
+    return this.http.get(this.dataTiempoPath)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Traer info de medio de ser contactado */
+  getDataContacado(): Observable<any> {
+    return this.http.get(this.dataContactadoPath)
     .pipe(map(( response => response.json() )));
   }
 }

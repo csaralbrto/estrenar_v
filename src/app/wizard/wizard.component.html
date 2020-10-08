@@ -23,30 +23,20 @@
         <hr class="white">
         <h1 class="deco">¿Dónde estas buscando?</h1>
         <hr class="white">
-        <!-- <input type="search" placeholder="Ciudad o zona"> -->
-            <!-- <input
-              matInput
-              formControlName="search"
-              [matAutocomplete]="auto"
-              [matAutocompleteConnectedTo]="origin"
-              (keyup)="filterValues(form.value.search)">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of arrayOptions" [value]="option">{{option}}</mat-option>
-          </mat-autocomplete> -->
-                <input type="text"
-                    placeholder="Pick one"
-                    aria-label="Number"
-                    matInput
-                    (keyup)="filterValues(form.value.search)">
-                    <!-- <select >
-                        <option disabled>Select Oppo Suits</option>
-                        <option *ngFor="let option of arrayOptions2">{{option}}</option>
-                    </select> -->
-                <!-- <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of arrayOptions | async" [value]="option">
-                    <span>{{option}}</span>
-                </mat-option>
-                </mat-autocomplete> -->
+        <input type="search" placeholder="Ciudad o zona" id="autocompletar" class="autocompletar">
+        <!-- <mat-form-field class="example-full-width">
+            <input type="text"
+                   placeholder="Pick one"
+                   aria-label="Number"
+                   matInput
+                   [formControl]="myControl"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of arrayOptions" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> -->
         <hr class="white">
         <div class="inline">
             <button class="button" (click)="changeStepWizard(1);">Siguiente</button>
@@ -142,15 +132,15 @@
             <hr class="white">
             <div class="row text-center diblock">
                 <div class="opcion text-center">
-                    <div class="opcion-seleccion boton">
-                        <input id="casas" type="checkbox"><label for="casas">SI</label>
+                    <div class="opcion-seleccion boton" *ngFor="let option of responseSubsidioData">
+                        <input id="casas" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
                     </div>
                 </div>
-                <div class="opcion text-center">
+                <!-- <div class="opcion text-center">
                     <div class="opcion-seleccion boton">
                         <input id="casas" type="checkbox"><label for="casas">NO</label>
                     </div>
-                </div>
+                </div> -->
             </div>
     
         </div>
@@ -197,25 +187,9 @@
                 <hr class="white">
             </div>
             <div class="row text-center inline">
-                <div class="checkblock text-center">
-                    <input type="radio">
-                    <div class="etiqueta">Inmediatamente</div>
-                </div>
-                <div class="checkblock  text-center">
-                    <input type="radio">
-                    <div class="etiqueta">Menos de 3 meses</div>
-                </div>
-                <div class="checkblock text-center">
-                    <input type="radio">
-                    <div class="etiqueta">Entre 3 y 6 meses</div>
-                </div>
-                <div class="checkblock text-center">
-                    <input type="radio">
-                    <div class="etiqueta">Entre 3 meses y un año</div>
-                </div>
-                <div class="checkblock text-center">
-                    <input type="radio">
-                    <div class="etiqueta">Solo estoy mirando</div>
+                <div class="checkblock text-center" *ngFor="let option of responseTiempoData">
+                    <input type="radio" value="{{option.drupal_internal__tid}}">
+                    <div class="etiqueta">{{option.name}}</div>
                 </div>
             </div>
     
@@ -261,23 +235,11 @@
             <h1 class="deco">¿Por cual medio prefieres ser contactado?</h1>
             <hr class="white">
             <fieldset>
-                <div class="opcion text-center">
+                <div class="opcion text-center" *ngFor="let option of responseContactadoData">
                     <div class="opcion-seleccion">
-                        <input id="casas" type="checkbox"><label for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
+                        <input id="casas" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
                     </div>
-                    <div class="item">Email</div>
-                </div>
-                <div class="opcion text-center">
-                    <div class="opcion-seleccion">
-                        <input id="casas" type="checkbox"><label for="casas"><img src="/assets/images/icon-wsap.png"alt="Casas"></label>
-                    </div>
-                    <div class="item">Whatsapp</div>
-                </div>
-                <div class="opcion text-center">
-                    <div class="opcion-seleccion">
-                        <input id="casas" type="checkbox"><label for="casas"><img src="/assets/images/icon-phone.png"alt="Casas"></label>
-                    </div>
-                    <div class="item">Teléfono o celular</div>
+                    <div class="item">{{option.name}}</div>
                 </div>
             </fieldset>
     

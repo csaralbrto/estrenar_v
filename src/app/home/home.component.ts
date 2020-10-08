@@ -12,6 +12,9 @@ import { environment } from '../../environments/environment';
 })
 export class HomeComponent implements OnInit {
   public response: any;
+  public projects1: any;
+  public projects2: any;
+  public projects3: any;
   public results = false;
 
   constructor(public Service: HomeService) {}
@@ -19,6 +22,7 @@ export class HomeComponent implements OnInit {
   cadena = '';
   largo = '';
   home = true;
+  url_img_path = 'https://www.estrenarvivienda.com/';
 
   title_section_list_search = '¿Qué estás buscando?';
   title_section_top_proyects = 'Proyectos destacados';
@@ -36,9 +40,24 @@ export class HomeComponent implements OnInit {
       () => {
         if (this.response) {
           console.log(this.response);
-          for (let blog of this.response.home_featured_articles) {
-            console.log(blog);
+          for (let project of this.response.home_featured_typologies) {
+            var arrayDeCadenas = project.typology_images.split(',');
+            project.typology_images = arrayDeCadenas[0];
+            var arrayDeCadenas2 = project.project_category.split(',');
+            project.project_category = arrayDeCadenas2;
           }
+          let count = 0;
+          for (let project of this.response.home_featured_typologies) {
+            if(count == 0){
+              this.projects1 = project;
+            }else if(count > 0 && count == 2){
+              this.projects2 = project;
+            }else if(count > 2 && count == 4){
+              this.projects3 = project;
+            }
+            count = count +1;
+          }
+          console.log(this.projects2);
           this.results = true;
         }
         /* si responde correctamente */
