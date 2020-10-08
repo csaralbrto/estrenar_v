@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'vis', component: ProjectsComponent, pathMatch: 'full' },
 
   {
-    path: 'proyecto/:path',
+    path: 'proyecto/es/node/:path',
     component: ProjectDetailComponent,
     pathMatch: 'full',
   },

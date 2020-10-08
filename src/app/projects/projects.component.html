@@ -72,7 +72,7 @@
   <div class="medium-3 columns" *ngFor="let project of response_data_project; let i = index">
       <div class="card" data-equalizer-watch>
           <div class="container-photo">
-              <a routerLink="/proyecto/{{project.uuid}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+              <a routerLink="/proyecto/{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
               <div class="container-tools">
                   <div class="tags">
                     <div  *ngIf="project.project_category.length > 0">
@@ -130,7 +130,7 @@
           </div>
           <div class="card-section">
               <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{project.uuid}}">Ver
+                <a class="button" routerLink="/proyecto/{{project.url}}">Ver
                     Proyecto</a>
                   <a class="button">Contacto</a>
               </div>

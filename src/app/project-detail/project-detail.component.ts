@@ -25,7 +25,7 @@ export class ProjectDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public Service: ProjectDetailService, 
+    public Service: ProjectDetailService,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
   ) {}
@@ -36,7 +36,7 @@ export class ProjectDetailComponent implements OnInit {
   public caracteristicas;
   public caracteristicasProject;
   public confirm: any;
-  
+
   public maps_url;
 
   ngOnInit(): void {
@@ -46,44 +46,58 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     todayDate();
 
-    const title = this.activatedRoute.snapshot.params.path + this.dataProjectUrl;
+    const title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(title).subscribe(
-      (data) => (this.response = data.data),
+      (data) => (this.response = data.jsonapi),
       (err) => console.log(),
       () => {
-        if (this.response) {
-          /* si responde correctamente en la respuesta */
-          // console.log(this.response.field_typology_project.field_project_location[0].field_location_geo_data);
-          const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
+        if(this.response){
+          // this.beforeCheck(this.response.individual);
+          var url = this.response.individual + this.dataProjectUrl;
+          var data = "";
+          fetch(url, {
+          })
+          .then(response => response.json())
+          .then(data => {
+            // console.log(data)
+            this.response = data.data;
+            // console.log(this.response);
+            if (this.response) {
+              /* si responde correctamente en la respuesta */
+              // console.log(this.response);
+              const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
 
-          this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
-          this.galeria = this.response.field_typology_image;
-          this.caracteristicas = this.response.field_typology_feature;
-          /* caracteristicas del inmueble */
-          for (let project of this.caracteristicas) {
-            var name_cara;
-            if(project.parent[0].id === 'virtual'){
-              name_cara = project.name
-            }else{
-              name_cara = project.parent[0].name+': '+ project.name
-            }
-            project.name_only = name_cara;
-          }
-          this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
-          /* caracteristicas del proyecto */
-          for (let project of this.caracteristicasProject) {
-            var name_cara;
-            if(project.parent[0].id === 'virtual'){
-              name_cara = project.name
-            }else{
-              name_cara = project.parent[0].name+': '+ project.name
-            }
-            project.name_only = name_cara;
-          }
-          this.caracteristicasProject.name_only = name_cara;
+              this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
+              this.galeria = this.response.field_typology_image;
+              this.caracteristicas = this.response.field_typology_feature;
+              /* caracteristicas del inmueble */
+              for (let project of this.caracteristicas) {
+                var name_cara;
+                if(project.parent[0].id === 'virtual'){
+                  name_cara = project.name
+                }else{
+                  name_cara = project.parent[0].name+': '+ project.name
+                }
+                project.name_only = name_cara;
+              }
+              this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
+              /* caracteristicas del proyecto */
+              for (let project of this.caracteristicasProject) {
+                var name_cara;
+                if(project.parent[0].id === 'virtual'){
+                  name_cara = project.name
+                }else{
+                  name_cara = project.parent[0].name+': '+ project.name
+                }
+                project.name_only = name_cara;
+              }
+              this.caracteristicasProject.name_only = name_cara;
 
-          // console.log(this.galeria);
-          // this.results = true;
+              // console.log(this.galeria);
+              this.results = true;
+            }
+          })
+          .catch(error => console.error(error))
         }
       }
     );
@@ -105,6 +119,10 @@ export class ProjectDetailComponent implements OnInit {
         }
       }
     );
+  }
+  beforeCheck(url_find){
+    /* Traemos la información del usuario */
+    
   }
   ngAfterViewChecked() {
     if (this.results) {
@@ -171,4 +189,5 @@ export class ProjectDetailComponent implements OnInit {
       }
     );
   }
+
 }
