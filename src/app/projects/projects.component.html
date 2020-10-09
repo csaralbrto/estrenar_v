@@ -12,41 +12,36 @@
         <div class="row condensed">
             <div class="medium-2 columns">
                 <label>Tipo de inmueble
-                    <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)">
-                        <option value="apartamento">Apartamento</option>
-                        <option value="casa">Casa</option>
+                    <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                        <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                     </select>
                 </label>
             </div>
             <div class="medium-2 columns">
                 <label>Precio
-                    <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)">
-                        <option value="apartamento">60.000.000-700.000.000</option>
-                        <option value="casa">Otro</option>
+                    <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                        <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
                     </select>
                 </label>
             </div>
             <div class="medium-2 columns">
                 <label>Ciudad
-                    <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)">
-                    <option value="barranquilla">Barranquilla</option>
-                    <option value="bogota">Bogot&aacute;</option>
+                    <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                        <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
                     </select>
                 </label>
             </div>
             <div class="medium-2 columns">
                 <label>Zona
-                    <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)">
-                        <option value="apartamento">Norte</option>
-                        <option value="casa">Sur</option>
+                    <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0">
+                        <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                     </select>
                 </label>
             </div>
             <div class="medium-2 columns">
                 <label>Sector
-                    <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)">
-                        <option value="apartamento">Centro Internacional</option>
-                        <option value="casa">Sur</option>
+                    <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0">
+                        <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                     </select>
                 </label>
             </div>

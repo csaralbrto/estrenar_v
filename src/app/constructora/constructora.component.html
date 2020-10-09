@@ -12,7 +12,10 @@
                   <input type="search" placeholder="Buscar constructora" />
               </div>
               <div class="medium-4 columns end">
-                  <input type="search" placeholder="Ciudad" />
+                <select id="location" name="location" (change)="change(1)" [(ngModel)]="optionsLocationSelected" *ngIf="filterLocation && filterLocation.length > 0">
+                    <option value="" selected disabled hidden>Ciudad</option>
+                    <option *ngFor="let location of filterLocation; let i = index" [value]="location.url">{{location.values.value}}</option>
+                </select>
               </div>
               <div class="medium-2 columns end">
                   <a href="#" class="button expanded">Buscar</a>
