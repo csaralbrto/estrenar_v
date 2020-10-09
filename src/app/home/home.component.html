@@ -10,24 +10,25 @@
       <h2 class="text-center deco">¿Qué estas buscando?</h2>
       <div class="medium-3 columns end">
           <div class="row">
-              <div class="small-6 columns text-center">
+              <div class="small-3 medium-6 columns text-center">
                   <a class="icono" href="/proyectos"><img src="/assets/images/icon-casa.png" alt="casas"></a>
                   <div class="title-icono">Casa</div>
               </div>
-              <div class="small-6 columns text-center">
+              <div class="small-3 medium-6 columns text-center">
                   <a class="icono" href="/proyectos"><img src="/assets/images/icon-apto.png" alt="casas"></a>
                   <div class="title-icono">Apartamentos</div>
               </div>
-              <div class="small-6 columns text-center">
+              <div class="small-3 medium-6 columns text-center">
                   <a class="icono" href="/proyectos"><img src="/assets/images/icon-aptoe.png" alt="casas"></a>
                   <div class="title-icono">Apartaestudios</div>
               </div>
-              <div class="small-6 columns text-center">
+              <div class="small-3 medium-6 columns text-center">
                   <a class="icono" href="/vis"><img src="/assets/images/icon-vis.png" alt="casas"></a> 
                   <div class="title-icono">VIS</div>
               </div>
           </div>
       </div>
+      <hr class="mobile">
       <!--slide-->
       <div class="medium-9 columns">
           <div class="orbit home" role="region" aria-label="Favorite Space Pictures" data-orbit>
@@ -164,62 +165,64 @@
                                             <a>{{ tags }}</a>
                                         </div>
                                     </div>
-                                    <div class="add">
-                                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                    </div>
+                                </div>
+                                <div class="add">
+                                    <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                 </div>
                             </div>
                       </div>
                   </div>
                   <div class="medium-6 columns">
-                      <div class="card-section">
-                          <h2>{{ response.home_featured_typologies[0].project }}</h2>
-                          <div class="descripcion">
-                            {{ response.home_featured_typologies[0].project_city }},
-                            {{ response.home_featured_typologies[0].project_zone }},
-                            {{ response.home_featured_typologies[0].project_neighborhood }}
-                          </div>
-                          <div class="precio text-center">
-                              <div>Desde:</div>
-                              <span>{{ response.home_featured_typologies[0].typology_price | number }}</span>
-                          </div>
-                          <hr>
-                      </div>
-                      <div class="card-section">
-                          <div class="row">
-                              <div class="small-6 columns">
-                                  <div class="item">
-                                      <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                      <div class="data">{{  response.home_featured_typologies[0].area_built }} m </div>
-                                  </div>
-                              </div>
-                              <div class="small-6 columns">
-                                  <div class="item">
-                                      <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                      <div class="data">{{  response.home_featured_typologies[0].bedrooms }} alcobas </div>
-                                  </div>
-                              </div>
-                              <div class="small-6 columns">
-                                  <div class="item">
-                                      <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                      <div class="data">{{  response.home_featured_typologies[0].garages }} garajes </div>
-                                  </div>
-                              </div>
-                              <div class="small-6 columns">
-                                  <div class="item">
-                                      <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                      <div class="data">{{  response.home_featured_typologies[0].bathrooms }} baños </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <hr>
-                      </div>
-                      <div class="card-section">
-                          <div class="button-group align-spaced ">
-                              <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[0].url}}">Ver
-                                  Proyecto</a>
-                              <a class="button">Contacto</a>
-                          </div>
+                      <div class="cont-destacado">
+                        <div class="card-section">
+                            <h2>{{ response.home_featured_typologies[0].project }}</h2>
+                            <div class="descripcion">
+                              {{ response.home_featured_typologies[0].project_city }},
+                              {{ response.home_featured_typologies[0].project_zone }},
+                              {{ response.home_featured_typologies[0].project_neighborhood }}
+                            </div>
+                            <div class="precio text-center">
+                                <div>Desde:</div>
+                                <span>{{ response.home_featured_typologies[0].typology_price | number }}</span>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="card-section">
+                            <div class="row">
+                                <div class="small-6 columns">
+                                    <div class="item">
+                                        <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                        <div class="data">{{  response.home_featured_typologies[0].area_built }} m </div>
+                                    </div>
+                                </div>
+                                <div class="small-6 columns">
+                                    <div class="item">
+                                        <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                        <div class="data">{{  response.home_featured_typologies[0].bedrooms }} alcobas </div>
+                                    </div>
+                                </div>
+                                <div class="small-6 columns">
+                                    <div class="item">
+                                        <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                        <div class="data">{{  response.home_featured_typologies[0].garages }} garajes </div>
+                                    </div>
+                                </div>
+                                <div class="small-6 columns">
+                                    <div class="item">
+                                        <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                        <div class="data">{{  response.home_featured_typologies[0].bathrooms }} baños </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="card-section">
+                            <div class="button-group align-spaced ">
+                                <a class="button" routerLink="/proyecto/{{response.home_featured_typologies[0].url}}">Ver
+                                    Proyecto</a>
+                                <a class="button">Contacto</a>
+                            </div>
+                        </div>
                       </div>
                   </div>
               </div>
@@ -240,10 +243,10 @@
 
                   <ul class="orbit-container">
                       <li class="is-active orbit-slide">
-                          <div class="row">
+                          <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
                             <div class="medium-6 columns">
                                   <!-- Card Proyecto individual-->
-                                  <div class="card">
+                                  <div class="card"  data-equalizer-watch>
                                       <div class="container-photo">
                                           <img [src]="url_img_path + response.home_featured_typologies[1].typology_images" alt="" class="proyecto-card">
                                           <div class="container-tools">
@@ -253,9 +256,10 @@
                                                         <a>{{ tags }}</a>
                                                     </div>
                                                 </div>
-                                              <div class="add">
-                                                  <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                              </div>
+                                              
+                                            </div>
+                                            <div class="add">
+                                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                             </div>
                                             </div>
                                         </div>
@@ -315,7 +319,7 @@
                             
                             <div class="medium-6 columns">
                             <!-- Card Proyecto individual-->
-                            <div class="card">
+                            <div class="card"  data-equalizer-watch>
                                 <div class="container-photo">
                                     <img [src]="url_img_path + response.home_featured_typologies[2].typology_images" alt="" class="proyecto-card">
                                     <div class="container-tools">
@@ -325,9 +329,10 @@
                                                     <a>{{ tags }}</a>
                                                 </div>
                                             </div>
+                                        
+                                        </div>
                                         <div class="add">
                                             <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                        </div>
                                         </div>
                                         </div>
                                     </div>
@@ -385,11 +390,11 @@
                             </div>
                           </div>
                       </li>
-                      <li class="is-active orbit-slide">
+                      <li class="orbit-slide">
                           <div class="row">
                             <div class="medium-6 columns">
                                   <!-- Card Proyecto individual-->
-                                  <div class="card">
+                                  <div class="card"  data-equalizer-watch>
                                       <div class="container-photo">
                                           <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
                                           <div class="container-tools">
@@ -399,9 +404,10 @@
                                                         <a>{{ tags }}</a>
                                                     </div>
                                                 </div>
-                                              <div class="add">
-                                                  <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                              </div>
+                                             
+                                            </div>
+                                            <div class="add">
+                                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                             </div>
                                             </div>
                                         </div>
@@ -459,7 +465,7 @@
                             </div>
                             <div class="medium-6 columns">
                                   <!-- Card Proyecto individual-->
-                                  <div class="card">
+                                  <div class="card"  data-equalizer-watch>
                                       <div class="container-photo">
                                           <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
                                           <div class="container-tools">
@@ -469,9 +475,10 @@
                                                         <a>{{ tags }}</a>
                                                     </div>
                                                 </div>
-                                              <div class="add">
-                                                  <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                              </div>
+                                              
+                                            </div>
+                                            <div class="add">
+                                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                             </div>
                                             </div>
                                         </div>
