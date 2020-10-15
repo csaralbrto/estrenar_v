@@ -19,12 +19,22 @@ export class DetailConstructoraComponent implements OnInit {
   public results = false;
   public form_filters: FormGroup;
   public stringQuery = '';
+  public filterType: any;
+  public filterPrice: any;
+  public filterCity: any;
+  public filterZone: any;
+  public filterSector: any;
   public query_elasticsearch = {
     'filtro-proyectos': {term: '', fields: ''}
   };
   public data: any = {nodes: [], pagination: 0};
   public collectionActive: string = '';
   public route = 'filtro-proyectos';
+  optionsTypySelected: string = '';
+  optionsPriceSelected: string = '';
+  optionsCitySelected: string = '';
+  optionsZoneSelected: string = '';
+  optionsSectorSelected: string = '';
 
 
   constructor(
@@ -46,7 +56,7 @@ export class DetailConstructoraComponent implements OnInit {
 
     const title = this.activatedRoute.snapshot.params.path + this.dataConstrutora;
     this.Service.findConstructora(title).subscribe(
-      (data) => (this.response = data.data),
+      (data) => (this.response = data),
       (err) => console.log(),
       () => {
         if (this.response) {
@@ -59,7 +69,7 @@ export class DetailConstructoraComponent implements OnInit {
           //         project.url_img = this.dataPath + this.cadena;
           //       }
           //     }
-          this.content = this.response;
+          this.content = this.response.data;
         }
       }
     );

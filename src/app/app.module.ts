@@ -39,6 +39,7 @@ import { GlosoryComponent } from './glosory/glosory.component';
 import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { DataTreatmentsComponent } from './data-treatments/data-treatments.component';
+import { RevistaDigitalComponent } from './revista-digital/revista-digital.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { DataTreatmentsComponent } from './data-treatments/data-treatments.compo
     PrivacyNoticeComponent,
     LegalNoticeComponent,
     DataTreatmentsComponent,
+    RevistaDigitalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule,MatAutocompleteModule],
   providers: [],

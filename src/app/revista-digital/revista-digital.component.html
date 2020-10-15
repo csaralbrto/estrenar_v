@@ -1,0 +1,45 @@
+<div class="row columns">
+    <div class="medium-3 columns">
+        <ul class="menu-left">
+            <li><a  href="quienes-somos">¿Quienes somos?</a></li>
+            <li><a class="active" href="#">Revista digital</a></li>
+            <li><a href="glosario">Glosario</a></li>
+            <li><a href="contactenos">Contáctenos</a></li>
+            <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
+            <li><a href="aviso-legal">Aviso legal</a></li>
+            <li><a href="politica-datos">Politica de Tratamiento de datos</a></li>
+            <li><a href="mapa-sitio">Mapa del sitio</a></li>
+  
+        </ul>
+    </div>
+    <div class="medium-9 columns">
+        <h1>Revista Digital</h1>
+        <p [innerHTML]=responseData.body.processed  ></p>
+        <p [innerHTML]=responseData.body.summary  ></p>
+        <hr class="white">
+        <a href="{{dataInfo}}" target="_blank"><h3>{{ dataTitle }}</h3></a>
+    </div>
+  </div>
+  <hr class="white">
+  <div class="container-blue">
+    <div class="row columns text-center">
+        <h2 class="deco">Suscribirse a nuestro boletín</h2>
+        <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
+        <div>
+            <form action="">
+                <div class="row condensed">
+                    <div class="medium-7 medium-offset-2 columns">
+                        <input type="text" placeholder="Ingresa tu correo electrónico" />
+                    </div>
+                    <div class="medium-1 columns end">
+                        <a href="#" class="button expanded secondary">Suscribirse</a>
+                    </div>
+                    <div class="medium-7 medium-offset-2 columns end text-left">
+                        <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
+                                Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>

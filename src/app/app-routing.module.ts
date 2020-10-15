@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { PostLoginComponent } from './post-login/post-login.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
+import { RevistaDigitalComponent } from './revista-digital/revista-digital.component';
 import { GlosoryComponent } from './glosory/glosory.component';
 import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
@@ -116,6 +117,11 @@ const routes: Routes = [
   {
     path: 'quienes-somos',
     component: QuienesSomosComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'revista-digital',
+    component: RevistaDigitalComponent,
     pathMatch: 'full',
   },
   {

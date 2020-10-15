@@ -386,7 +386,7 @@
 <div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq">
     <h1 class="deco text-center">Proyectos de interés</h1>
     <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
-        <div class="card" data-equalizer-watch>
+        <div class="card" data-equalizer-watch *ngIf="i < 4">
             <div class="container-photo">
                 <a href="proyecto.php" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
                 <div class="container-tools">
@@ -446,7 +446,7 @@
             </div>
             <div class="card-section">
               <div class="button-group align-spaced ">
-                <a class="button" routerLink="/proyecto/{{project.uuid}}">Ver
+                <a class="button" routerLink="{{project.url}}">Ver
                     Proyecto</a>
                   <a class="button">Contacto</a>
                 </div>
@@ -462,8 +462,8 @@
 <div class="row columns">
     <h2 class="deco text-center">Artículos de interés</h2>
     <div class="container-blog">
-            <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
-                <div class="blog-list">
+            <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead; let i = index">
+                <div class="blog-list" *ngIf="i < 4">
                     <div class="img">
                       <img [src]="url_img_path + mostRead.article_image" alt="">
                     </div>
@@ -479,7 +479,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
                         suscipit sollicitudin mauris.
                     </div>
-                    <a routerLink="/blog/{{mostRead.url}}" class="button">Seguir leyendo</a>
+                    <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
                 </div>
             </div>
 

@@ -24,7 +24,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
 
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(
-      (data) => (this.response = data.search_results),
+      (data) => (this.response = data),
       (err) => console.log(),
       () => {
         if (this.response) {
@@ -54,10 +54,11 @@ export class ToolComponent implements OnInit, AfterViewChecked {
         (data) => (this.responseMostRead = data),
         (err) => console.log(),
         () => {
-          if (this.response) {
+          if (this.responseMostRead) {
+            console.log(this.responseMostRead);
             /* si responde correctamente */
           }
-          if (this.response.error) {
+          if (this.responseMostRead.error) {
             /* si hay error en la respuesta */
           }
         }

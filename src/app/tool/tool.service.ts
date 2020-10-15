@@ -21,8 +21,8 @@ export class ToolService {
     this.initialQuote = environment.endpointApi + 'tools/initial_Quote/';
     this.subsidyHome = environment.endpointApi + 'tools/subsidy_home/';
     this.debtCapacity = environment.endpointApi + 'tools/debt_capacity/';
-    this.dataPathProyect = environment.endpointTestingApi+ 'typologies?items_per_page=8&page=0';
-    this.dataPathArticles = environment.endpointTestingApi+ 'articles?items_per_page=4';
+    this.dataPathProyect = environment.endpointTestingApi+ 'typologies/all?items_per_page=4';
+    this.dataPathArticles = environment.endpointTestingApi+ 'articles/all?items_per_page=5';
 
   }
   /* Traer toda la info de proyectos */
