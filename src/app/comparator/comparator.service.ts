@@ -11,12 +11,13 @@ export class ComparatorService {
   public compararData: string;
 
   constructor( private http: Http ) {
-    this.compararData = environment.endpointApi+ 'comparator/';
+    this.compararData = environment.endpointTestingApi+ 'typologies?items_per_page=12&page=0&id=';
    }
   
   /* Traer info al comparador*/
-  comparatorData(): Observable<any> {
-    return this.http.get(this.compararData)
+  comparatorData( params: any ): Observable<any> {
+    console.log(this.compararData + params);
+    return this.http.get(this.compararData + params)
     .pipe(map(( response => response.json() )));
   }
 }

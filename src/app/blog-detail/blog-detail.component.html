@@ -77,8 +77,8 @@
             </div>
             <div class="small-8 columns" >
                 <div class="blog" >
-                    <div class="section black"><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.article_type }}</a></div>
-                    <h3><a routerLink="/blog/{{related.uuid + dataArticle}}">{{ related.title.slice(0,90) }}</a></h3>
+                    <div class="section black"><a href="{{related.url}}">{{ related.article_type }}</a></div>
+                    <h3><a href="{{related.url}}">{{ related.title.slice(0,90) }}</a></h3>
                     <div class="user">{{ related.changed }}</div>
                 </div>
             </div>

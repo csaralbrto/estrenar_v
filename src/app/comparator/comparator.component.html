@@ -3,7 +3,7 @@
 </div>
 <div class="row columns">
   <div class="comparador">
-      <div class="medium-2 columns">
+      <div class="medium-2 columns" style="{{stylesText}}" *ngIf="response_data_project[0]">
           <div class="encabezados">
               <div class="item"><img src="/assets/images/ic-precio.jpg" alt="" class="ico">Precio</div>
               <div class="item"><img src="/assets/images/ic-ubicacion.jpg" alt="" class="ico">Ubicacion</div>
@@ -20,124 +20,124 @@
       <div class="medium-10 columns">
           <div class="row">
               <div class="proyecto text-center">
-                  <div class="medium-3 data columns">
-                      <div id="title">Parque Central de Occidente</div>
+                  <div class="{{classRow}} data columns" *ngIf="response_data_project[0]"> 
+                      <div id="title">{{ response_data_project[0].project_neighborhood }}</div>
                       <div id="foto">
                           <div class="container-foto">
-                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
-                                      class="proyecto"></a>
+                              <span (click)="removeCompare(response_data_project[0].nid);" href="" class=""><img [src]="url_img_path + response_data_project[0].typology_images" alt=""
+                                class="proyecto"></span>
                           </div>
                       </div>
                       <div class="tools"></div>
-                      <div id="precio">{{ response[0].valor_venta | number }}</div>
+                      <div id="precio">{{ response_data_project[0].typology_price | number }}</div>
                       <hr>
-                      <div id="ubicacion">{{ response[0].sub_titulo }}</div>
+                      <div id="ubicacion">{{ response_data_project[0].project_city }}, {{ response_data_project[0].project_zone }}</div>
                       <hr>
-                      <div id="vivienda">VIS</div>
+                      <div id="vivienda">{{ response_data_project[0].project_category }}</div>
                       <hr>
-                      <div id="estado">Sobre planos</div>
+                      <div id="estado">{{ response_data_project[0].project_feature_status }}</div>
                       <hr>
-                      <div id="tipo">Aaprtamento</div>
+                      <div id="tipo">{{ response_data_project[0].property_type }}</div>
                       <hr>
-                      <div id="albobas">{{ response[0].n_habitaciones }}</div>
+                      <div id="albobas">{{ response_data_project[0].bedrooms }}</div>
                       <hr>
-                      <div id="water">{{ response[0].n_banos }}</div>
+                      <div id="water">{{ response_data_project[0].bathrooms }}</div>
                       <hr>
-                      <div id="garajes">{{ response[0].n_garages }}</div>
+                      <div id="garajes">{{ response_data_project[0].garages }}</div>
                       <hr>
-                      <div id="acabados">Con acabados</div>
+                      <div id="acabados">{{ response_data_project[0].finishes }}</div>
                       <hr>
-                      <div id="estrato">{{ response[0].estrato }}</div>
+                      <div id="estrato">{{ response_data_project[0].project_feature_stratum }}</div>
                       <hr>
                   </div>
-                  <div class="medium-3 data columns">
-                      <div id="title">Parque Central de Occidente</div>
+                  <div class="{{classRow}} data columns" *ngIf="response_data_project[1]"> 
+                      <div id="title">{{ response_data_project[1].project_neighborhood }}</div>
                       <div id="foto">
                           <div class="container-foto">
-                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
-                                      class="proyecto"></a>
+                              <span (click)="removeCompare(response_data_project[1].nid);" class=""><img [src]="url_img_path + response_data_project[1].typology_images" alt=""
+                                      class="proyecto"></span>
                           </div>
                       </div>
                       <div class="tools"></div>
-                      <div id="precio">{{ response[1].valor_venta | number }}</div>
+                      <div id="precio">{{ response_data_project[1].typology_price | number }}</div>
                       <hr>
-                      <div id="ubicacion">{{ response[1].sub_titulo }}</div>
+                      <div id="ubicacion">{{ response_data_project[1].project_city }}, {{ response_data_project[1].project_zone }}</div>
                       <hr>
-                      <div id="vivienda">VIS</div>
+                      <div id="vivienda">{{ response_data_project[1].project_category }}</div>
                       <hr>
-                      <div id="estado">Sobre planos</div>
+                      <div id="estado">{{ response_data_project[1].project_feature_status }}</div>
                       <hr>
-                      <div id="tipo">Aaprtamento</div>
+                      <div id="tipo">{{ response_data_project[1].property_type }}</div>
                       <hr>
-                      <div id="albobas">{{ response[1].n_habitaciones }}</div>
+                      <div id="albobas">{{ response_data_project[1].bedrooms }}</div>
                       <hr>
-                      <div id="water">{{ response[1].n_banos }}</div>
+                      <div id="water">{{ response_data_project[1].bathrooms }}</div>
                       <hr>
-                      <div id="garajes">{{ response[1].n_garages }}</div>
+                      <div id="garajes">{{ response_data_project[1].garages }}</div>
                       <hr>
-                      <div id="acabados">Con acabados</div>
+                      <div id="acabados">{{ response_data_project[1].finishes }}</div>
                       <hr>
-                      <div id="estrato">{{ response[1].estrato }}</div>
+                      <div id="estrato">{{ response_data_project[1].project_feature_stratum }}</div>
                       <hr>
                   </div>
-                  <div class="medium-3 data columns">
-                      <div id="title">Parque Central de Occidente</div>
+                  <div class="{{classRow}} data columns" *ngIf="response_data_project[2]"> 
+                      <div id="title">{{ response_data_project[2].project_neighborhood }}</div>
                       <div id="foto">
                           <div class="container-foto">
-                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
-                                      class="proyecto"></a>
+                              <span (click)="removeCompare(response_data_project[2].nid);" class=""><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
+                                      class="proyecto"></span>
                           </div>
                       </div>
                       <div class="tools"></div>
-                      <div id="precio">{{ response[2].valor_venta | number }}</div>
+                      <div id="precio">{{ response_data_project[2].typology_price | number }}</div>
                       <hr>
-                      <div id="ubicacion">{{ response[2].sub_titulo }}</div>
+                      <div id="ubicacion">{{ response_data_project[2].project_city }}, {{ response_data_project[2].project_zone }}</div>
                       <hr>
-                      <div id="vivienda">VIS</div>
+                      <div id="vivienda">{{ response_data_project[2].project_category }}</div>
                       <hr>
-                      <div id="estado">Sobre planos</div>
+                      <div id="estado">{{ response_data_project[2].project_feature_status }}</div>
                       <hr>
-                      <div id="tipo">Aaprtamento</div>
+                      <div id="tipo">{{ response_data_project[2].property_type }}</div>
                       <hr>
-                      <div id="albobas">{{ response[2].n_habitaciones }}</div>
+                      <div id="albobas">{{ response_data_project[2].bedrooms }}</div>
                       <hr>
-                      <div id="water">{{ response[2].n_banos }}</div>
+                      <div id="water">{{ response_data_project[2].bathrooms }}</div>
                       <hr>
-                      <div id="garajes">{{ response[2].n_garages }}</div>
+                      <div id="garajes">{{ response_data_project[2].garages }}</div>
                       <hr>
-                      <div id="acabados">Con acabados</div>
+                      <div id="acabados">{{ response_data_project[2].finishes }}</div>
                       <hr>
-                      <div id="estrato">{{ response[2].estrato }}</div>
+                      <div id="estrato">{{ response_data_project[2].project_feature_stratum }}</div>
                       <hr>
                   </div>
-                  <div class="medium-3 data columns">
-                      <div id="title">Parque Central de Occidente</div>
+                  <div class="{{classRow}} data columns" *ngIf="response_data_project[3]"> 
+                      <div id="title">{{ response_data_project[3].project_neighborhood }}</div>
                       <div id="foto">
                           <div class="container-foto">
-                              <a href="#" class=""><img src="/assets/images/content/proyecto.jpg" alt=""
-                                      class="proyecto"></a>
+                              <span (click)="removeCompare(response_data_project[3].nid);" class=""><img [src]="url_img_path + response_data_project[3].typology_images" alt=""
+                                      class="proyecto"></span>
                           </div>
                       </div>
                       <div class="tools"></div>
-                      <div id="precio">{{ response[3].valor_venta | number }}</div>
+                      <div id="precio">{{ response_data_project[3].typology_price | number }}</div>
                       <hr>
-                      <div id="ubicacion">{{ response[3].sub_titulo }}</div>
+                      <div id="ubicacion">{{ response_data_project[3].project_city }}, {{ response_data_project[3].project_zone }}</div>
                       <hr>
-                      <div id="vivienda">VIS</div>
+                      <div id="vivienda">{{ response_data_project[3].project_category }}</div>
                       <hr>
-                      <div id="estado">Sobre planos</div>
+                      <div id="estado">{{ response_data_project[3].project_feature_status }}</div>
                       <hr>
-                      <div id="tipo">Aaprtamento</div>
+                      <div id="tipo">{{ response_data_project[3].property_type }}</div>
                       <hr>
-                      <div id="albobas">{{ response[3].n_habitaciones }}</div>
+                      <div id="albobas">{{ response_data_project[3].bedrooms }}</div>
                       <hr>
-                      <div id="water">{{ response[3].n_banos }}</div>
+                      <div id="water">{{ response_data_project[3].bathrooms }}</div>
                       <hr>
-                      <div id="garajes">{{ response[3].n_garages }}</div>
+                      <div id="garajes">{{ response_data_project[3].garages }}</div>
                       <hr>
-                      <div id="acabados">Con acabados</div>
+                      <div id="acabados">{{ response_data_project[3].finishes }}</div>
                       <hr>
-                      <div id="estrato">{{ response[3].estrato }}</div>
+                      <div id="estrato">{{ response_data_project[3].project_feature_stratum }}</div>
                       <hr>
                   </div>
               </div>

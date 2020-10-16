@@ -64,7 +64,7 @@ export class ProjectDetailComponent implements OnInit {
             // console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
-              // console.log(this.response);
+              console.log(this.response);
               const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
 
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
@@ -127,6 +127,28 @@ export class ProjectDetailComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-project-detail').foundation();
+    }
+  }
+  addCompare(value) {
+    if (!sessionStorage['id']) {
+      var ids = [];
+      ids.push(value) 
+      sessionStorage.setItem('id',JSON.stringify(ids))
+      var storedIds = JSON.parse(sessionStorage.getItem("id"));
+      this.router.navigate(['comparador']);
+      // console.log('este es el id: ',storedIds);
+    }else{
+      var storedIds = JSON.parse(sessionStorage.getItem("id"));
+      for (let ids of storedIds) {
+        if(ids === value){
+        }else{
+          storedIds.push(value);
+        }
+      }
+      /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
+      sessionStorage.setItem('id',JSON.stringify(storedIds))
+      this.router.navigate(['comparador']);
+      // console.log('este es el id: ',storedIds);
     }
   }
 
