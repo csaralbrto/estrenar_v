@@ -23,7 +23,7 @@
         <hr class="white">
         <h1 class="deco">¿Dónde estas buscando?</h1>
         <hr class="white">
-        <input type="search" placeholder="Ciudad o zona" id="autocompletar" class="autocompletar">
+        <input type="search" name="search" formControlName="search" placeholder="Ciudad o zona" id="autocompletar" class="autocompletar">
         <!-- <mat-form-field class="example-full-width">
             <input type="text"
                    placeholder="Pick one"
@@ -73,8 +73,8 @@
             <hr class="white">
             <p>Presupuesto de compra</p>
             <div class="row">
-                <div class="salida">Desde $<span><input type="number" id="sliderOutput1"></span>hasta $<span><input
-                        type="number" id="sliderOutput2"></span></div>
+                <div class="salida">Desde $<span><input type="number" name="budget_from" formControlName="budget_from" id="sliderOutput1"></span>hasta $<span><input
+                    name="budget_to" formControlName="budget_to" type="number" id="sliderOutput2"></span></div>
             </div>
             <div class="row">
                 <hr class="white">
@@ -133,7 +133,7 @@
             <div class="row text-center diblock">
                 <div class="opcion text-center">
                     <div class="opcion-seleccion boton" *ngFor="let option of responseSubsidioData">
-                        <input id="casas" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
+                        <input id="casas" name="subsidy" formControlName="subsidy" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
                     </div>
                 </div>
                 <!-- <div class="opcion text-center">
@@ -188,7 +188,7 @@
             </div>
             <div class="row text-center inline">
                 <div class="checkblock text-center" *ngFor="let option of responseTiempoData">
-                    <input type="radio" value="{{option.drupal_internal__tid}}">
+                    <input type="radio" name="waitTime" formControlName="waitTime" value="{{option.drupal_internal__tid}}">
                     <div class="etiqueta">{{option.name}}</div>
                 </div>
             </div>
@@ -237,7 +237,7 @@
             <fieldset>
                 <div class="opcion text-center" *ngFor="let option of responseContactadoData">
                     <div class="opcion-seleccion">
-                        <input id="casas" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
+                        <input id="casas" name="contactType" formControlName="contactType" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
                     </div>
                     <div class="item">{{option.name}}</div>
                 </div>
@@ -285,10 +285,13 @@
             <h1 class="deco">Déjanos tus datos para poder ayudarte en tu búsqueda de vivienda</h1>
             <hr class="white">
             <div class="container-form">
-                <input type="text" placeholder="Nombre">
-                <input type="text" placeholder="Apellido">
-                <input type="text" placeholder="Email">
+                <input type="text" name="name" formControlName="name" placeholder="Nombre">
+                <input type="number" name="phone" formControlName="phone" placeholder="Teléfono">
+                <input type="text" name="email" formControlName="email" placeholder="Email" required>
                 <div class="text-left terminos">
+                    <div *ngFor="let option of responseViviendaData">
+                        <input id="typeSearch" name="typeSearch" formControlName="typeSearch" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
+                    </div>
                     <div>
                         <input id="checkbox1" type="checkbox"><label for="right-label" class="text-left">Declaro
                             haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los

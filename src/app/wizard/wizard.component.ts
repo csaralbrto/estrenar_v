@@ -21,6 +21,7 @@ export class WizardComponent implements OnInit, AfterViewChecked {
   public responseSubsidioData: any;
   public responseTiempoData: any;
   public responseContactadoData: any;
+  public responseViviendaData: any;
   public results = false;
   arrayOptions: string[] = [];
   arrayOptions2: string[] = [];
@@ -105,6 +106,24 @@ export class WizardComponent implements OnInit, AfterViewChecked {
         }
       }
     );
+    /* Método para obtener toda la info de vivienda */
+    this.Service.getDataVivienda().subscribe(
+      (data) => (this.responseViviendaData = data.data),
+      (err) => console.log(),
+      () => {
+        if (this.responseViviendaData) {
+          console.log(this.responseViviendaData);
+          // for (let subsidio of this.responseViviendaData) {
+          // }
+          console.log(this.arrayOptions);
+          this.results = true;
+        }
+        /* si responde correctamente */
+        if (this.responseViviendaData.error) {
+          /* si hay error en la respuesta */
+        }
+      }
+    );
   }
   // autoComplete(){
   //   $('#autocompletar').autocomplete({
@@ -130,8 +149,8 @@ export class WizardComponent implements OnInit, AfterViewChecked {
         $('#wizard' + index).removeAttr('style');
         // console.log(index + '-muestro este item ');
       } else {
-        console.log(index + '-oculto este item ');
-        // $('#wizard' + index).css('display', 'none');
+        // console.log(index + '-oculto este item ');
+        $('#wizard' + index).css('display', 'none');
       }
     }
   }
@@ -160,6 +179,7 @@ export class WizardComponent implements OnInit, AfterViewChecked {
       purchase_budget: new FormControl(''),
       subsidyYes: new FormControl(''),
       subsidyNo: new FormControl(''),
+      subsidy: new FormControl(''),
       waitTime: new FormControl(''),
       contactType: new FormControl(''),
       name: new FormControl(''),

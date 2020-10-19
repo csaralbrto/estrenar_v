@@ -13,6 +13,7 @@ export class WizardService {
   public dataSubsidioPath: string;
   public dataTiempoPath: string;
   public dataContactadoPath: string;
+  public dataViviendaPath: string;
 
   constructor( private http: Http ) {
     this.formData = environment.endpointApi + 'saveWizardData/';
@@ -20,6 +21,7 @@ export class WizardService {
     this.dataSubsidioPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Subsidio&sort=weight';
     this.dataTiempoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Tiempo en el que considera comprar&sort=weight';
     this.dataContactadoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Medio de contacto&sort=weight';
+    this.dataViviendaPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Buscas vivienda para&sort=weight';
    }
 
   /* Enviar datos en los wizard */
@@ -45,6 +47,11 @@ export class WizardService {
   /* Traer info de medio de ser contactado */
   getDataContacado(): Observable<any> {
     return this.http.get(this.dataContactadoPath)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Traer info de medio de ser contactado */
+  getDataVivienda(): Observable<any> {
+    return this.http.get(this.dataViviendaPath)
     .pipe(map(( response => response.json() )));
   }
 }
