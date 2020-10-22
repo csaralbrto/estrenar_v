@@ -2157,3 +2157,138 @@ img.image.constructor {
 .menu-icon::after {
     height: 3px;
 }
+
+
+//modal
+.reveal {
+    outline: none;
+    color: $white;
+
+    label {
+        color: $white !important;
+    }
+
+    a {
+        color: $secondary-color;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        margin: 1rem 0;
+    }
+
+    .filtros-tag {
+        margin-bottom: 2rem;
+        a {
+            color: $white !important;
+        }
+
+        .button {
+            border: 1px solid $white;
+            margin-right: 0.3rem;
+
+        }
+    }
+
+    a.button.secondary {
+        margin: 0 2rem;
+    }
+}
+
+.filtros-tag {
+    &.off {
+        .button {
+            background-color: $medium-gray;
+        }
+    }
+}
+
+//COntador
+.reveal {
+    &.filter {
+        width: 900px;
+    }
+}
+
+$input-number-size: 80px;
+.input-number-group .input-number-decrement, .input-number-group .input-number-increment {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+.input-number-group {
+    display: flex;
+    justify-content: center;
+    border-radius: 8px !important;
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        appearance: none;
+    }
+
+    .input-group {
+        border-radius: 8px !important;
+    }
+
+    .input-group-button {
+        line-height: calc(#{$input-number-size}/2 - 5px);
+    }
+
+    .input-number {
+        width: $input-number-size;
+        padding: 0 12px;
+        vertical-align: top;
+        text-align: center;
+        outline: none;
+        display: block;
+        margin: 0;
+    }
+
+    .input-number,
+    .input-number-decrement,
+    .input-number-increment {
+        border: 1px solid $medium-gray;
+        height: $input-number-size/2;
+        user-select: none;
+        border-radius: $global-radius;
+    }
+
+    .input-number-decrement,
+    .input-number-increment {
+        display: inline-block;
+        width: $input-number-size/2;
+        background: $light-gray;
+        color: $body-font-color;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 2rem;
+        font-weight: 400;
+        border-radius: 8px !important;
+    }
+
+    .input-number-decrement {
+        margin-right: 0.3rem;
+    }
+
+    .input-number-increment {
+        margin-left: 0.3rem;
+    }
+}
+
+//Comentario de blog
+.comentario{
+    .visitante{
+        font-weight: 600;
+        margin-bottom: 1rem;
+        strong{
+            text-transform: uppercase;
+            font-weight: 600;
+            background-color: $secondary-color;
+            padding: 0.8rem;
+            margin-right: 1rem;
+            border-radius: 40px;
+        }
+    }
+}
