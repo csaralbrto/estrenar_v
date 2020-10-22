@@ -14,10 +14,12 @@ declare function todayDate(): any;
 })
 export class ProjectDetailComponent implements OnInit {
   public response: any;
+  public responseSubmit: any;
   public responseAvailableAreas: any;
   public projectsAvailableAreas: any;
   public form: FormGroup;
   public form2: FormGroup;
+  public title: any;
   public results = false;
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.parent,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent';
   url_img_path = 'https://www.estrenarvivienda.com/';
@@ -46,12 +48,13 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     todayDate();
 
-    const title = this.activatedRoute.snapshot.params.path;
-    this.Service.findProject(title).subscribe(
+    this.title = this.activatedRoute.snapshot.params.path;
+    this.Service.findProject(this.title).subscribe(
       (data) => (this.response = data.jsonapi),
       (err) => console.log(),
       () => {
         if(this.response){
+          // console.log()
           // this.beforeCheck(this.response.individual);
           var url = this.response.individual + this.dataProjectUrl;
           var data = "";
@@ -175,17 +178,79 @@ export class ProjectDetailComponent implements OnInit {
 
   onSubmit(values) {
     /* Se recibe los valores del formulario */
+    var f = new Date();
+    var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
     values.type_submit = 'contact_form';
-    this.Service.getFormService( values )
+    var url = window.location.pathname;
+    let payload = {
+      "identity": {
+          "mail": values.email,
+          "phone": values.phone
+      },
+      "personal": {
+          "name": values.name,
+          "lastName": values.lastname
+      },
+      "scheduling": {
+          "dateTime": date,
+          "type": "Virtual"
+      },
+      "campaign": {
+          "options": [
+              {
+                  "UTM source": sessionStorage['UTMSource']?sessionStorage.getItem("UTMSource"):""
+              },
+              {
+                  "UTM medium": sessionStorage['UTMMedium']?sessionStorage.getItem("UTMMedium"):""
+              },
+              {
+                  "UTM content": sessionStorage['UTMContent']?sessionStorage.getItem("UTMContent"):""
+              },
+              {
+                  "UTM campaign": sessionStorage['UTMCampaing']?sessionStorage.getItem("UTMCampaing"):""
+              }
+          ]
+      },
+      "additional": {
+          "computedCopy": true
+      },
+      "contextual": {
+          "options": [
+              {
+                  "Ruta": url
+              },
+              {
+                  "Dispositivo": "Escritorio"
+              }
+          ]
+      },
+      "profiling": {
+          "typology": 123,
+          "survey": [
+              {
+                  "Buscas vivienda para": values.typeSearch
+              },
+              {
+                  "Deseas ser contactado vía": values.contact
+              }
+          ]
+      },
+      "main": {
+          "privacyNotice": 5323,
+          "category": "Contacto proyecto"
+      }
+  }
+  console.log(payload);
+    this.Service.getFormService( payload )
     .subscribe(
-      data =>{console.log(data)},
+      data =>(this.responseSubmit = data),
       err => console.log(),
       () => {
-        if(this.confirm){
-          // $('#modalAlertSuccessful').foundation('open');
+        if(this.responseSubmit.id){
+          $('#exampleModal1').foundation('open');
           this.form.reset();
         }
-        if(this.confirm.error){
+        if(!this.responseSubmit.id){
           // $('#modalAlertError').foundation('open');
         }
       }

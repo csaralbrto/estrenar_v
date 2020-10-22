@@ -9,14 +9,22 @@ import { environment } from '../../environments/environment';
 })
 export class HomeService {
   private dataPath: string;
+  private adServerPath: string;
   constructor(private http: Http) {
     this.dataPath = environment.endpointTestingApi + 'ev-home';
+    this.adServerPath = environment.endpointTestingApiAdServer + '16&loc=https://www.estrenarvivienda.com/proyectos-vivienda';
   }
 
   /* Traer toda la info de proyectos destacados, construsctoras, blog, etc */
   getAllData(): Observable<any> {
     return this.http
       .get(this.dataPath)
+      .pipe(map((response) => response.json()));
+  }
+  /* Traer toda la info de proyectos destacados, construsctoras, blog, etc */
+  getAdServerData(): Observable<any> {
+    return this.http
+      .get(this.adServerPath)
       .pipe(map((response) => response.json()));
   }
 }

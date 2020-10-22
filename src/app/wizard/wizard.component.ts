@@ -139,7 +139,8 @@ export class WizardComponent implements OnInit, AfterViewChecked {
     const filterValue = value.toUpperCase();
     return this.arrayOptions.filter(option => option.toUpperCase().includes(filterValue));
 }
-  closeWizard() {
+  closeWizard(values) {
+    console.log(values);
     $('#welcomeModal').foundation('close');
   }
 

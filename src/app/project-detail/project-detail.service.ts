@@ -15,7 +15,7 @@ export class ProjectDetailService {
   constructor( private http: Http ) {
     this.endpoint = environment.endpointTestingApiPost + 'router/translate-path?path=/es/node/';
     this.endpointProjects = environment.endpointTestingApi + 'typologies/project/9703?items_per_page=8';
-    this.endpointForm = environment.endpointApi + 'saveFormDate/';
+    this.endpointForm = environment.endpointTestingApi + 'ev-lead';
    }
 
   /* Traer la info del proyecto */
@@ -25,7 +25,7 @@ export class ProjectDetailService {
   }
   /* enviar info de los formularios */
   getFormService( params: any ): Observable<any> {
-    console.log(this.endpointForm, params);
+    // console.log(this.endpointForm, params);
     return this.http.post(this.endpointForm, params)
     .pipe(map(( response => response.json() )));
   }

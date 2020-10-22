@@ -21,7 +21,7 @@ export class ContentUploadComponent implements OnInit {
   constructor(public Service: ContentUploadService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    $(document).foundation();
+    $('app-content-upload').foundation();
   }
 
   onSubmit(value) {
@@ -99,5 +99,17 @@ export class ContentUploadComponent implements OnInit {
       additional_comments: new FormControl(''),
       typology: new FormControl(''),
     });
+  }
+  changeStepWizard(idStep) {
+    console.log('entre');
+    for (let index = 0; index <= 5; index++) {
+      if (idStep == index) {
+        $('#upload' + index).removeAttr('style');
+        // console.log(index + '-muestro este item ');
+      } else {
+        // console.log(index + '-oculto este item ');
+        $('#upload' + index).css('display', 'none');
+      }
+    }
   }
 }

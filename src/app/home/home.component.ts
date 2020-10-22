@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class HomeComponent implements OnInit {
   public response: any;
+  public responseAdServer: any;
   public projects1: any;
   public projects2: any;
   public projects3: any;
@@ -63,6 +64,15 @@ export class HomeComponent implements OnInit {
         /* si responde correctamente */
         if (this.response.error) {
           /* si hay error en la respuesta */
+        }
+      }
+    );
+    this.Service.getAdServerData().subscribe(
+      (data) => (this.responseAdServer = data),
+      (err) => console.log(),
+      () => {
+        if (this.responseAdServer){
+          console.log(this.responseAdServer)
         }
       }
     );

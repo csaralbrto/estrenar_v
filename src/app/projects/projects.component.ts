@@ -78,6 +78,36 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     );
   }
 
+  decreaseValue(value) {
+    if(value == 1){
+      var val = $('#bedroom').val();
+      val = Number(val)-Number(1);
+      $('#bedroom').val(val);
+    }else if(value == 2){
+      var val = $('#bathroom').val();
+      val = Number(val)-Number(1);
+      $('#bathroom').val(val);
+    }else if(value == 3){
+      var val = $('#garage').val();
+      val = Number(val)-Number(1);
+      $('#garage').val(val);
+    }
+   }
+  incrementValue(value) {
+    if(value == 1){
+      var val = $('#bedroom').val();
+      val = Number(val)+Number(1);
+      $('#bedroom').val(val);
+    }else if(value == 2){
+      var val = $('#bathroom').val();
+      val = Number(val)+Number(1);
+      $('#bathroom').val(val);
+    }else if(value == 3){
+      var val = $('#garage').val();
+      val = Number(val)+Number(1);
+      $('#garage').val(val);
+    }
+  }
   change(value) {
     this.stringQuery = "";
     Object.keys(value).forEach( function(key) {

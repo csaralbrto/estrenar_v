@@ -16,32 +16,66 @@
       <div class="row">
           <div class="medium-8 medium-offset-2 columns">
               <h1>Contáctenos</h1>
-              <div class="container-form">
-                  <input type="text" placeholder="Nombre">
-                  <input type="text" placeholder="Apellido">
-                  <input type="text" placeholder="Email">
-                  <input type="text" placeholder="Teléfono">
-                  <select>
-                      <option value="email">Deseas ser contactado via</option>
-                  </select>
-                  <textarea placeholder="Comentarios"></textarea>
+              <form data-abide novalidate [formGroup]="form">
+                    <div class="container-form">
+                        <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name"
+                        name="name" required pattern="text">
+                        <span class="form-error">
+                        Debe digitar un nombre de contacto
+                        </span>
+                        <input type="text" placeholder="Apellido" aria-errormessage="lastnameError"
+                        formControlName="lastname" name="lastnanme" required pattern="text">
+                        <span class="form-error">
+                        Debe digitar un apellido de contacto
+                        </span>
+                        <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email"
+                        name="email" required pattern="email">
+                        <span class="form-error">
+                        Debe digitar un correo de contacto valido
+                        </span>
+                        <input type="text" placeholder="Teléfono" aria-errormessage="phoneError"
+                        formControlName="phone" name="phone" required>
+                        <span class="form-error">
+                        Debe digitar un n&uacute;mbre de contacto
+                        </span>
+                        <select id="select" required formControlName="city" name="city">
+                        <option value="Ciudad">Ciudad:</option>
+                        <option value="bogota">Bogotá</option>
+                        <option value="barranquilla">Barranquilla</option>
+                        </select>
+                        <select id="select" required formControlName="contact" name="contact">
+                        <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                        <option value="telefono">Tel&eacute;fonica</option>
+                        <option value="email">Correo Electr&oacute;nico</option>
+                        <option value="correo">Correo Postal</option>
+                        </select>
+                        <textarea placeholder="Comentarios" formControlName="comment" name="comment"></textarea>
 
-                  <div class="text-left terminos">
-                      <div>
-                          <input id="checkbox1" type="checkbox"><label for="right-label" class="text-left">Declaro
-                              haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los
-                              mismos.</label>
-                      </div>
-                      <div> <input id="checkbox1" type="checkbox"><label for="right-label" class="text-left">Enviar
-                              una copia del mensaje a su propio Email</label></div>
-                  </div>
-                  <div class="text-center">
-                  <a href="#" class="button secondary ">Enviar</a>
-                  </div>
-              </div>
+                        <div class="text-left terminos">
+                            <div>
+                                <input id="checkbox1" type="checkbox"><label for="right-label" class="text-left">Declaro
+                                    haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los
+                                    mismos.</label>
+                            </div>
+                            <div> <input id="checkbox1" type="checkbox" formControlName="emailCopy" name="emailCopy"><label for="right-label" class="text-left">Enviar
+                                    una copia del mensaje a su propio Email</label></div>
+                        </div>
+                        <div class="text-center">
+                        <span  class="button secondary " (click)="onSubmit(form.value)">Enviar</span>
+                        </div>
+                    </div>
+              </form>
           </div>
       </div>
   </div>
+</div>
+<div class="reveal text-center" id="exampleModal1" data-reveal>
+<img src="../images/logo-ev.png">
+    <h2>¡Gracias!</h2>
+    <p>Pronto te llegará toda la información a tu correo</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 <hr class="white">
 <div class="container-blue">
