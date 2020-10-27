@@ -40,6 +40,7 @@ const routes: Routes = [
 
   { path: 'proyectos', component: ProjectsComponent, pathMatch: 'full' },
   { path: 'vis', component: ProjectsComponent, pathMatch: 'full' },
+  { path: 'vacacionales', component: ProjectsComponent, pathMatch: 'full' },
 
   {
     path: 'es/node/:path',

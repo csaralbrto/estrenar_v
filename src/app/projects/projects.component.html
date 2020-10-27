@@ -252,34 +252,66 @@
 </div>
 <div class="reveal text-center" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>
-    <div class="container-form">
-        <input type="text" placeholder="Nombre">
-        <input type="text" placeholder="Apellido">
-        <input type="text" placeholder="Email">
-        <input type="text" placeholder="Teléfono">
-        <select>
-            <option value="email">Deseas ser contactado via</option>
-        </select>
-        <fieldset class="text-left">
-            <legend>Buscas vivienda para:</legend>
-            <input type="radio" name="" value="" id="" required><label for="">Habitar</label>
-            <input type="radio" name="" value="" id=""><label for="">Invertir</label>
-        </fieldset>
-        <div class="text-left terminos">
-            <input id="checkbox1" type="checkbox"><label for="right-label" class="text-left">Declaro
-                haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los
-                mismos.</label>
+    <form data-abide novalidate [formGroup]="form">
+        <div class="container-form">
+            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name"
+          name="name" required pattern="text">
+          <span style="color: red" id="spanName" class="hide">
+            Debe digitar un nombre de contacto
+          </span>
+          <input type="text" placeholder="Apellido" aria-errormessage="lastnameError"
+          formControlName="lastname" name="lastnanme" required pattern="text">
+          <span style="color: red" id="spannLastName" class="hide">
+            Debe digitar un apellido de contacto
+          </span>
+          <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email"
+          name="email" required pattern="email">
+          <span style="color: red" id="spanEmail" class="hide">
+            Debe digitar un correo de contacto valido
+          </span>
+          <input type="text" placeholder="Teléfono" aria-errormessage="phoneError"
+          formControlName="phone" name="phone" required>
+          <span style="color: red" id="spanPhone" class="hide">
+            Debe digitar un n&uacute;mbre de contacto
+          </span>
+          <select id="select" required formControlName="contact" name="contact">
+            <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+            <option value="telefono">Tel&eacute;fonica</option>
+            <option value="email">Correo Electr&oacute;nico</option>
+            <option value="correo">Correo Postal</option>
+          </select>
+          <span style="color: red" id="spanContact" class="hide">
+            Debe seleccionar una opción
+          </span>
+          <fieldset class="text-left">
+              <legend>Buscas vivienda para:</legend>
+              <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar"
+              id="houseForHabitar"><label for="">Habitar</label>
+              <input type="radio" formControlName="typeSearch" name="typeSearch"
+              value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+          </fieldset>
+          <span style="color: red" id="spanTypesearch" class="hide">
+          Debe seleccionar una opción
+          </span>
+          <div class="text-left terminos">
+              <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                  haber leido los <a>Términos de privacidad</a> y estar conforme con los
+                  mismos.</label>
+                  <span style="color: red" id="spanTerm" class="hide">
+                  Debe aceptar los términos
+                  </span>
+          </div>
+            <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
         </div>
-        <p class="button secondary expanded" data-open="exampleModal1">Enviar</p>
-        <div class="reveal text-center" id="exampleModal1" data-reveal>
-            <img src="../images/logo-ev.png">
-            <h2>¡Gracias!</h2>
-            <p>Pronto te llegará toda la información a tu correo</p>
-            <button class="close-button" data-close aria-label="Close modal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
+    </form>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="reveal text-center" id="exampleModal1" data-reveal>
+<img src="/assets/images/logo-ev.png">
+    <h2>¡Gracias!</h2>
+    <p>Pronto te llegará toda la información a tu correo</p>
     <button class="close-button" data-close aria-label="Close modal" type="button">
         <span aria-hidden="true">&times;</span>
     </button>

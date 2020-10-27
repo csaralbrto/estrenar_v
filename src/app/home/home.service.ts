@@ -10,9 +10,11 @@ import { environment } from '../../environments/environment';
 export class HomeService {
   private dataPath: string;
   private adServerPath: string;
+  private endpointForm: string;
   constructor(private http: Http) {
     this.dataPath = environment.endpointTestingApi + 'ev-home';
     this.adServerPath = environment.endpointTestingApiAdServer + '16&loc=https://www.estrenarvivienda.com/proyectos-vivienda';
+    this.endpointForm = environment.endpointTestingApi + 'ev-lead';
   }
 
   /* Traer toda la info de proyectos destacados, construsctoras, blog, etc */
@@ -26,5 +28,11 @@ export class HomeService {
     return this.http
       .get(this.adServerPath)
       .pipe(map((response) => response.json()));
+  }
+  /* enviar info de los formularios */
+  getFormService( params: any ): Observable<any> {
+    // console.log(this.endpointForm, params);
+    return this.http.post(this.endpointForm, params)
+    .pipe(map(( response => response.json() )));
   }
 }
