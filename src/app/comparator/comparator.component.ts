@@ -72,7 +72,6 @@ export class ComparatorComponent implements OnInit {
     }
   }
   removeCompare(value) {
-    console.log('entro',value);
       var storedIds = JSON.parse(sessionStorage.getItem("id"));
       /* remover el proyecto de los coparadores */
       const index = storedIds.indexOf(value);

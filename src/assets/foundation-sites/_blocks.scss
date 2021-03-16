@@ -667,6 +667,15 @@ p {
         font-size: 0.85rem;
     }
 
+    .typologyText {
+        font-size: 0.85rem;
+        text-align: left;
+    }
+
+    .agmHeight {
+        height: 300px;
+    }
+
     .precio {
         margin: 1rem auto 0 auto;
         font-size: 0.85rem;
@@ -788,6 +797,24 @@ p {
             font-size: 1.8rem;
         }
     }
+}
+
+.typologyCard {
+    background: #eeeeee;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 263px;
+    margin-bottom: 0;
+    margin-top: 0.6rem;
+    padding: 10px;
+    margin-left: 11px;
+    text-align: center;
+}
+.displayIB{
+    display: inline-block;
 }
 
 label {

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { AgmCoreModule } from '@agm/core';
 
 // import { StorageServiceModule } from 'ngx-webstorage-service';
 
@@ -77,7 +78,18 @@ import { RevistaDigitalComponent } from './revista-digital/revista-digital.compo
     DataTreatmentsComponent,
     RevistaDigitalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, ReactiveFormsModule,MatAutocompleteModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    HttpModule, 
+    FormsModule, 
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA',
+      libraries: ['places']
+    })
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

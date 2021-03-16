@@ -118,7 +118,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         this.stringQuery = value[key];
       }
     },this);
-
+    console.log(this.stringQuery);
     // this.beforeCheck(this.response.individual);
     var url = this.stringQuery;
     var data = "";
