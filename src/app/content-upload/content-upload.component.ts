@@ -1,11 +1,6 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormGroup,FormControl,FormBuilder,Validators } from '@angular/forms';
 import { ContentUploadService } from './content-upload.service';
 declare let $: any;
 declare const google: any;
