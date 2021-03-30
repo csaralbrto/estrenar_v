@@ -23,20 +23,24 @@
         <hr class="white">
         <h1 class="deco">¿Dónde estas buscando?</h1>
         <hr class="white">
-        <input type="search" name="search" formControlName="search" placeholder="Ciudad o zona" id="autocompletar" class="autocompletar">
-        <!-- <mat-form-field class="example-full-width">
-            <input type="text"
-                   placeholder="Pick one"
-                   aria-label="Number"
-                   matInput
-                   [formControl]="myControl"
-                   [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of arrayOptions" [value]="option">
-                {{option}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field> -->
+        <!-- <input type="search" name="search" formControlName="search" placeholder="Ciudad o zona" id="autocompletar" class="autocompletar"> -->
+        <div class="ng-autocomplete">
+            <ng-autocomplete 
+                [data]="arrayOptions"
+                [searchKeyword]="keyword"
+                (selected)='selectEvent($event)'
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate">                                 
+            </ng-autocomplete>
+            
+            <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+            </ng-template>
+            
+            <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+            </ng-template>
+        </div>
         <hr class="white">
         <div class="inline">
             <button class="button" (click)="changeStepWizard(1);">Siguiente</button>
@@ -62,7 +66,7 @@
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">Barranquilla</div>
+                <div class="item">{{searchPlaceName}}</div>
             </div>
         </div>
     </div>
@@ -72,23 +76,14 @@
             <h1 class="deco">¿Cuál es tu presupuesto de compra?</h1>
             <hr class="white">
             <p>Presupuesto de compra</p>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="salida">Desde $<span><input type="number" name="budget_from" formControlName="budget_from" id="sliderOutput1"></span>hasta $<span><input
                     name="budget_to" formControlName="budget_to" type="number" id="sliderOutput2"></span></div>
-            </div>
+            </div> -->
             <div class="row">
                 <hr class="white">
                 <div class="rango">
-                    <div class="slider" data-slider data-initial-start="0" data-initial-end="75">
-                        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"
-                            aria-controls="sliderOutput1"></span>
-                        <span class="slider-fill" data-slider-fill></span>
-                        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"
-                            aria-controls="sliderOutput2"></span>
-                    </div>
-                    <div class="valores">
-                        <div class="left">$150M</div><div class="right">$1500M</div>
-                    </div>
+                    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
                 </div>
             </div>
             <div class="inline">
@@ -120,7 +115,7 @@
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">Barranquilla</div>
+                <div class="item">{{searchPlaceName}}</div>
                 <div class="item">$150.000.000</div>
             </div>
         </div>
@@ -133,7 +128,7 @@
             <div class="row text-center diblock">
                 <div class="opcion text-center">
                     <div class="opcion-seleccion boton" *ngFor="let option of responseSubsidioData">
-                        <input id="casas" name="subsidy" formControlName="subsidy" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
+                        <input id="casas" name="subsidy" formControlName="subsidy" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
                     </div>
                 </div>
                 <!-- <div class="opcion text-center">
@@ -174,7 +169,7 @@
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">Barranquilla</div>
+                <div class="item">{{searchPlaceName}}</div>
                 <div class="item">$150.000.000</div>
             </div>
         </div>
@@ -224,7 +219,7 @@
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">Barranquilla</div>
+                <div class="item">{{searchPlaceName}}</div>
                 <div class="item">$150.000.000</div>
             </div>
         </div>
@@ -237,7 +232,7 @@
             <fieldset>
                 <div class="opcion text-center" *ngFor="let option of responseContactadoData">
                     <div class="opcion-seleccion">
-                        <input id="casas" name="contactType" formControlName="contactType" type="checkbox" value="{{option.drupal_internal__tid}}"><label for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
+                        <input id="casas" name="contactType" formControlName="contactType" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
                     </div>
                     <div class="item">{{option.name}}</div>
                 </div>
@@ -274,7 +269,7 @@
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">Barranquilla</div>
+                <div class="item">{{searchPlaceName}}</div>
                 <div class="item">$150.000.000</div>
             </div>
         </div>

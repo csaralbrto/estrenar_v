@@ -1,0 +1,65 @@
+<hr class="white">
+<div class="row columns">
+    <div class="medium-8 medium-offset-2 columns">
+        <form [formGroup]="form">
+            <div class="container-blue form">
+                <h1 class="text-center">Registro</h1>
+                <div class="input-group">
+                    <input class="input-group-field" type="text" placeholder="Nombres *" formControlName="name"
+                    name="name" required pattern="text">
+                </div>
+                <div class="input-group">
+                    <input class="input-group-field" type="text" placeholder="Apellidos *" formControlName="lastname"
+                    name="lastname" required pattern="text">
+                </div>
+                <div class="input-group">
+                    <input class="input-group-field" type="email" placeholder="Correo electrónico *" formControlName="email"
+                    name="email" required>
+                </div>
+                <div class="input-group">
+                    <input class="input-group-field" type="text" placeholder="Teléfono *" formControlName="phone"
+                    name="phone" required pattern="text">
+                </div>
+                <div class="input-group">
+                    <select id="country" name="country" formControlName="country" (change)="change(form.value)" *ngIf="dataCountry && dataCountry.length > 0">
+                        <option value="Seleccione el País">Seleccione el País</option>
+                        <option *ngFor="let option of dataCountry; let i = index" [value]="option.id">{{option.name}}</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select id="city" name="city" formControlName="city">
+                        <option value="Seleccione la Ciudad">Seleccione la Ciudad</option>
+                        <option *ngFor="let option of dataCity; let i = index" [value]="option.id">{{option.name}}</option>
+                    </select>
+                </div>
+                <div><span>Crear Contraseña</span></div>
+                <div class="input-group">
+                    <input class="input-group-field" type="password" placeholder="Contraseña" formControlName="pass"
+                    name="pass" required>
+                </div>
+                <div class="input-group">
+                    <input class="input-group-field" type="password" placeholder="Confirmar Contraseña" formControlName="confirm"
+                    name="confirm" required>
+                </div>
+                <div class="input-group">
+                    <span style="color: red" id="spanPass" class="hide">
+                      Asegurese que las contraseñas coincidan
+                    </span>
+                </div>
+                <div class="input-group">
+                    <label><input type="checkbox" name="term" id="term" formControlName="term" value="1" required> Acepto la <a>Política de privacidad</a> y los <a>Términos de uso</a></label>
+                </div>
+                <!-- <div class="input-group">
+                    <re-captcha (resolved)="resolved($event)" 
+                        formControlName="recaptchaReactive" 
+                        siteKey="6Ld-4oEaAAAAAEESINp60x6Y6EHaIwr52frztDq-">  
+                    </re-captcha>
+                </div> -->
+                <div class="text-center">
+                    <span href="" class="button secondary" (click)="onSubmit(form.value)">Registrarse</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr class="white">

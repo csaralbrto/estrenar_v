@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   public form: FormGroup;
   error_message = '';
   public error: any;
+  public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
+  public cliente_secret = 'drupal';
 
   constructor( 
     public Service: LoginService,
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.results = true;
-    localStorage.clear();
+    sessionStorage.clear();
   }
   ngAfterViewChecked() {
     if (this.results) {
@@ -45,8 +47,8 @@ export class LoginComponent implements OnInit {
   onSubmit(values) {
     /* Se recibe los valores del login */
     console.log(values)
-    localStorage.setItem('user_name',values.name);
-    localStorage.setItem('password',values.pass);
+    sessionStorage.setItem('username',values.name);
+    sessionStorage.setItem('password',values.pass);
     this.Service.loginRequest( values )
     .subscribe(
       (data) => (this.response = data),
@@ -70,13 +72,12 @@ export class LoginComponent implements OnInit {
   }
   beforeLogin(){
     var url = 'https://lab.estrenarvivienda.com/es/oauth/token';
-    // var data = 'grant_type=password&client_id=1431780a-8799-4f29-9715-bfd6d03f7cc4&client_secret=estrenar&username='+localStorage.getItem('user_name')+'&password='+localStorage.getItem('password');
     var urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "password");
-    urlencoded.append("client_id", "1431780a-8799-4f29-9715-bfd6d03f7cc4");
-    urlencoded.append("client_secret", "estrenar");
-    urlencoded.append("username", localStorage.getItem('user_name'));
-    urlencoded.append("password", localStorage.getItem('password'));
+    urlencoded.append("client_id", this.client_id);
+    urlencoded.append("client_secret", this.cliente_secret);
+    urlencoded.append("username", sessionStorage.getItem('user_name'));
+    urlencoded.append("password", sessionStorage.getItem('password'));
       fetch(url, {
         body: urlencoded,
         headers: {
@@ -98,9 +99,7 @@ export class LoginComponent implements OnInit {
         };
          sessionStorage.setItem('access_token',result.access_token);
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
-         sessionStorage.setItem('username',localStorage.getItem('user_name'));
-         sessionStorage.setItem('password',localStorage.getItem('password'));
-         localStorage.clear();
+        //  sessionStorage.clear();
 
          this.router.navigate(['/']);
 

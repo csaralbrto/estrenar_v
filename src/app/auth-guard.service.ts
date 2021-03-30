@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuardService implements CanActivate {
   isAuthenticate = false;
+  public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
+  public cliente_secret = 'drupal';
   constructor(private authService: AuthService, public router: Router) { }
 
 
@@ -23,8 +25,8 @@ export class AuthGuardService implements CanActivate {
         // var data = 'grant_type=password&client_id=1431780a-8799-4f29-9715-bfd6d03f7cc4&client_secret=estrenar&username='+localStorage.getItem('user_name')+'&password='+localStorage.getItem('password');
         var urlencoded = new URLSearchParams();
         urlencoded.append("grant_type", "password");
-        urlencoded.append("client_id", "1431780a-8799-4f29-9715-bfd6d03f7cc4");
-        urlencoded.append("client_secret", "estrenar");
+        urlencoded.append("client_id", this.client_id);
+        urlencoded.append("client_secret", this.cliente_secret);
         urlencoded.append("username", sessionStorage.getItem('username'));
         urlencoded.append("password", sessionStorage.getItem('password'));
           fetch(url, {

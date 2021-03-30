@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   public projects2: any;
   public projects3: any;
   public results = false;
+  public filterPrice: any;
   public form: FormGroup;
 
   constructor(public Service: HomeService, private formBuilder: FormBuilder ) {}
@@ -62,7 +63,7 @@ export class HomeComponent implements OnInit {
             }
             count = count +1;
           }
-          console.log(this.projects2);
+          // console.log(this.projects2);
           this.results = true;
         }
         /* si responde correctamente */

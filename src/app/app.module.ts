@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AgmCoreModule } from '@agm/core';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { Ng5SliderModule } from 'ng5-slider';
 
 // import { StorageServiceModule } from 'ngx-webstorage-service';
 
@@ -41,6 +44,7 @@ import { PrivacyNoticeComponent } from './privacy-notice/privacy-notice.componen
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { DataTreatmentsComponent } from './data-treatments/data-treatments.component';
 import { RevistaDigitalComponent } from './revista-digital/revista-digital.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +81,7 @@ import { RevistaDigitalComponent } from './revista-digital/revista-digital.compo
     LegalNoticeComponent,
     DataTreatmentsComponent,
     RevistaDigitalComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule, 
@@ -85,6 +90,14 @@ import { RevistaDigitalComponent } from './revista-digital/revista-digital.compo
     FormsModule, 
     ReactiveFormsModule,
     MatAutocompleteModule,
+    /* autocomplete */
+    AutocompleteLibModule,
+    /* Slider Range */
+    Ng5SliderModule,
+    /* Recaptcha */
+    RecaptchaModule,  //this is the recaptcha main module
+    RecaptchaFormsModule, //this is the module for form incase form validation
+    /* Google Maps */
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA',
       libraries: ['places']

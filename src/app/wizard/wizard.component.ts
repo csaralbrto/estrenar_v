@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Options, LabelType } from 'ng5-slider';
 import {
   FormGroup,
   FormControl,
@@ -12,21 +13,49 @@ import { WizardService } from './wizard.service';
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.scss'],
-  providers: [WizardService],
+  providers: [WizardService, Options],
 })
-export class WizardComponent implements OnInit, AfterViewChecked {
+export class WizardComponent implements OnInit, AfterViewChecked{
   public confirm: any;
   public form: FormGroup;
   public responseSearchData: any;
+  public responsePresupuestoData: any;
   public responseSubsidioData: any;
   public responseTiempoData: any;
   public responseContactadoData: any;
   public responseViviendaData: any;
   public results = false;
+  public searchPlace: any;
+  public searchPlaceName: any;
+  public minPresupuesto: number;
+  public maxPresupuesto: number;
   arrayOptions: string[] = [];
+  arrayPresupuesto: any;
   arrayOptions2: string[] = [];
+  minValue: number = 140;
+  maxValue: number = 360;
+  minValueFlor: number = 0;
+  maxValueCeil: number = 500;
+  options: Options = {
+    floor: this.minValueFlor,
+    ceil: this.maxValueCeil,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Desde:</b> $' + value;
+        case LabelType.High:
+          return '<b>Hasta:</b> $' + value;
+        default:
+          return '$' + value;
+      }
+    }
+  };
 
-  constructor(public Service: WizardService, private formBuilder: FormBuilder) {}
+  constructor(
+    public Service: WizardService, 
+    private formBuilder: FormBuilder, 
+    public Options: Options,
+    ) {}
 
   ngOnInit(): void {
     // $(document).foundation();
@@ -40,14 +69,48 @@ export class WizardComponent implements OnInit, AfterViewChecked {
         if (this.responseSearchData) {
           // console.log(this.responseSearchData);
           for (let project of this.responseSearchData) {
-            // console.log(project.name)
-            this.arrayOptions.push(project.name);
+            console.log(project.name)
+            this.arrayOptions.push(project);
           }
-          console.log(this.arrayOptions);
           this.results = true;
         }
         /* si responde correctamente */
         if (this.responseSearchData.error) {
+          /* si hay error en la respuesta */
+        }
+      }
+    );
+    /* Método para obtener toda la info de presupuestos */
+    this.Service.getDataPresupuesto().subscribe(
+      (data) => (this.responsePresupuestoData = data.data),
+      (err) => console.log(),
+      () => {
+        if (this.responsePresupuestoData) {
+          console.log(this.responsePresupuestoData);
+          let count = 0;
+          for (let presupuesto of this.responsePresupuestoData) {
+              presupuesto.name = presupuesto.name.replace('$','');
+              presupuesto.name = presupuesto.name.replace('.','');
+              presupuesto.name = presupuesto.name.replace('.','');
+              // console.log(Number(presupuesto.name));
+              if(count == 0){
+                this.minPresupuesto = Number(presupuesto.name);
+              }else{
+                this.maxPresupuesto = Number(presupuesto.name);
+              }
+              count = count + 1; 
+            }
+          // console.log(this.responsePresupuestoData);
+          // this.arrayPresupuesto.push(this.responsePresupuestoData);
+          // this.minPresupuesto = this.arrayPresupuesto[0].name;
+          // this.maxPresupuesto = this.arrayPresupuesto[count].name;
+          // console.log(this.maxPresupuesto);
+          this.minValueFlor = this.minPresupuesto;
+          this.maxValueCeil = this.maxPresupuesto;
+          this.results = true;
+        }
+        /* si responde correctamente */
+        if (this.responsePresupuestoData.error) {
           /* si hay error en la respuesta */
         }
       }
@@ -61,7 +124,6 @@ export class WizardComponent implements OnInit, AfterViewChecked {
           console.log(this.responseSubsidioData);
           // for (let subsidio of this.responseSubsidioData) {
           // }
-          console.log(this.arrayOptions);
           this.results = true;
         }
         /* si responde correctamente */
@@ -79,7 +141,6 @@ export class WizardComponent implements OnInit, AfterViewChecked {
           console.log(this.responseTiempoData);
           // for (let subsidio of this.responseTiempoData) {
           // }
-          console.log(this.arrayOptions);
           this.results = true;
         }
         /* si responde correctamente */
@@ -97,7 +158,6 @@ export class WizardComponent implements OnInit, AfterViewChecked {
           console.log(this.responseContactadoData);
           // for (let subsidio of this.responseContactadoData) {
           // }
-          console.log(this.arrayOptions);
           this.results = true;
         }
         /* si responde correctamente */
@@ -115,7 +175,6 @@ export class WizardComponent implements OnInit, AfterViewChecked {
           console.log(this.responseViviendaData);
           // for (let subsidio of this.responseViviendaData) {
           // }
-          console.log(this.arrayOptions);
           this.results = true;
         }
         /* si responde correctamente */
@@ -124,16 +183,8 @@ export class WizardComponent implements OnInit, AfterViewChecked {
         }
       }
     );
+
   }
-  // autoComplete(){
-  //   $('#autocompletar').autocomplete({
-  //     data: {
-  //       "Apple": null,
-  //       "Microsoft": null,
-  //       "Google": 'http://placehold.it/250x250',
-  //     }
-  //   });
-  // }
   filterValues(value: string) {
     console.log('entre '+ value);
     const filterValue = value.toUpperCase();
@@ -142,8 +193,23 @@ export class WizardComponent implements OnInit, AfterViewChecked {
   closeWizard(values) {
     console.log(values);
     $('#welcomeModal').foundation('close');
+    let payload = {
+      "webform_id": "wizard",
+      "user_preference_location": this.searchPlace,
+      "user_preference": [
+          24,
+          values.subsidy,
+          values.waitTime,
+          values.contactType,
+          values.typeSearch
+      ],
+      "user_name": values.name,
+      "user_phone": values.phone,
+      "user_mail": values.email,
+      "user_privacy_notice": 5323
+    }
+    
   }
-
   changeStepWizard(idStep) {
     for (let index = 0; index <= 5; index++) {
       if (idStep == index) {
@@ -155,8 +221,6 @@ export class WizardComponent implements OnInit, AfterViewChecked {
       }
     }
   }
-
-
   onSubmit(value) {
     this.Service.saveformData('submit', value).subscribe(
       (data) => (this.confirm = data),
@@ -194,5 +258,12 @@ export class WizardComponent implements OnInit, AfterViewChecked {
       $('app-wizard').foundation();
       // $('html,body').scrollTop(0);
     }
+  }
+  /* Autocomplete keyword */
+  keyword = 'name';
+  selectEvent(item) {
+    // console.log('el valor seleccionado es: ',item)
+    this.searchPlace = item.drupal_internal__tid;
+    this.searchPlaceName = item.name;
   }
 }

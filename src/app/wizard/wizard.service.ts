@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
 export class WizardService {
   public formData: string;
   public dataSearchPath: string;
+  public dataPresupuestoPath: string;
   public dataSubsidioPath: string;
   public dataTiempoPath: string;
   public dataContactadoPath: string;
@@ -18,6 +19,7 @@ export class WizardService {
   constructor( private http: Http ) {
     this.formData = environment.endpointApi + 'saveWizardData/';
     this.dataSearchPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences_location';
+    this.dataPresupuestoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Presupuesto de compra&sort=weight';
     this.dataSubsidioPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Subsidio&sort=weight';
     this.dataTiempoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Tiempo en el que considera comprar&sort=weight';
     this.dataContactadoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Medio de contacto&sort=weight';
@@ -32,6 +34,11 @@ export class WizardService {
   /* Traer toda la info de locaciones */
   getDataSearch(): Observable<any> {
     return this.http.get(this.dataSearchPath)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Traer toda la info de presupuestos */
+  getDataPresupuesto(): Observable<any> {
+    return this.http.get(this.dataPresupuestoPath)
     .pipe(map(( response => response.json() )));
   }
   /* Traer info de subsidio */

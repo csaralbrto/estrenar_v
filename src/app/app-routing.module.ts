@@ -12,6 +12,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { UserComponent } from './user/user.component';
+import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { PostLoginComponent } from './post-login/post-login.component';
 import { ContactusComponent } from './contactus/contactus.component';
@@ -99,6 +100,11 @@ const routes: Routes = [
     component: UserComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard] 
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    pathMatch: 'full',
   },
   {
     path: 'login',

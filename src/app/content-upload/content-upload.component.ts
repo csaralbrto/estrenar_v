@@ -502,10 +502,11 @@ export class ContentUploadComponent implements OnInit {
   }
   change(type,value) {
     console.log(type);
-    if(type === 'city' || type === 'zone' || type === 'sectro' ){
+    if(type === 'city' || type === 'zone' || type === 'sector' ){
       this.stringQuery = "";
       Object.keys(value).forEach( function(key) {
         if(value[key] && value[key] !== 'Seleccione' || value[key] && value[key] !== 'Deseas ser contactado'){
+          console.log(value[key]);
           this.stringQuery = value[key];
         }
       },this);

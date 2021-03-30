@@ -3,180 +3,168 @@
       <h1>Mi cuenta</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis.</p>
       <a href="#" class="button secondary">Ver favoritos</a>
-      <a href="#" class="button">Cerrar sesión</a>
+      <a (click)="logoutUser()" class="button">Cerrar sesión</a>
   </div>
-  <div class="medium-8 columns">
-      <h2>Datos personales</h2>
-      <form>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Nombre</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="Nombre" value="{{response.field_user_address[0].given_name}}">
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="Apellidos" value="{{response.field_user_address[0].family_name}}">
-              </div>
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Email</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="email" id="middle-label" placeholder="" value="{{response.mail[0].value}}">
-              </div>
+    <form [formGroup]="form">
+        <div class="medium-8 columns">
+            <h2>Datos personales</h2>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Nombre</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <input name="name" formControlName="name" type="text" id="middle-label" placeholder="Nombre">
+                </div>
+                <div class="medium-5 columns end">
+                    <input name="lastname" formControlName="lastname" type="text" id="middle-label" placeholder="Apellidos">
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Email</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <input name="email" formControlName="email" type="email" id="middle-label" placeholder="">
+                </div>
 
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Telefono</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="" value="{{response.field_user_phone[0].value}}">
-              </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Telefono</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <input name="phone" formControlName="phone" type="text" id="middle-label" placeholder="">
+                </div>
 
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">País</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <select>
-                      <option value="">Seleccione</option>
-                  </select>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">País</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <select id="country" name="country" formControlName="country" (change)="change(form.value)" *ngIf="dataCountry && dataCountry.length > 0">
+                        <option value="Seleccione">Seleccione</option>
+                        <option *ngFor="let option of dataCountry; let i = index" [value]="option.id">{{option.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Ciudad</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <select id="city" name="city" formControlName="city">
+                        <option value="Seleccione">Seleccione</option>
+                        <option *ngFor="let option of dataCity; let i = index" [value]="option.id">{{option.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <hr class="white">
+            <h2>Preferencias</h2>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Ciudad/zona de interes</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <input type="text" id="middle-label" placeholder="">
+                </div>
 
-              </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Presupuesto de compra</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <select id="budget" name="budget" formControlName="budget">
+                        <option value="Seleccione">Seleccione</option>
+                        <option *ngFor="let option of responsePresupuestoData; let i = index" [value]="option.drupal_internal__tid">{{option.name}}</option>
+                    </select>
+                </div>
 
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Ciudad</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <select>
-                      <option value="">Seleccione</option>
-                  </select>
-              </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Subsidio</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <select id="subsidy" name="subsidy" formControlName="subsidy">
+                        <option value="Seleccione">Seleccione</option>
+                        <option *ngFor="let option of responseSubsidioData; let i = index" [value]="option.drupal_internal__tid">{{option.name}}</option>
+                    </select>
 
-          </div>
-      </form>
-      <hr class="white">
-      <h2>Preferencias</h2>
-      <form>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Ciudad/zona de interes</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="">
-              </div>
+                </div>
 
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Presupuesto de compra</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="">
-              </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Tiempo en el que considera comprar</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <select id="time_buy" name="time_buy" formControlName="time_buy">
+                        <option value="Seleccione">Seleccione</option>
+                        <option *ngFor="let option of responseTiempoData; let i = index" [value]="option.drupal_internal__tid">{{option.name}}</option>
+                    </select>
+                </div>
 
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Subsidio</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <select>
-                      <option value="">No</option>
-                  </select>
+            </div>
+            <hr class="white">
+            <h2>Notificaciones</h2>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Buscas vivienda para:</label>
+                </div>
+                <div class="medium-2 columns end" *ngFor="let option of responseViviendaData">
+                    <label class="container-radio">{{option.name}}
+                        <input id="search_house" name="search_house" formControlName="search_house" type="radio" value="{{option.drupal_internal__tid}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
 
-              </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Medio de contacto</label>
+                </div>
+                <div class="medium-3 columns end"  *ngFor="let option of responseContactadoData">
+                    <label class="container-check">{{option.name}}
+                        <input name="contact" formControlName="contact" type="radio" value="{{option.drupal_internal__tid}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            <hr class="white">
+            <h2>Seguridad</h2>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Contraseña actual</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <input type="text" name="pass_actual" formControlName="pass_actual" id="middle-label" placeholder="">
+                </div>
 
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Tiempo en el que considera comprar</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <select>
-                      <option value="">Entre 3 y 6 meses</option>
-                  </select>
-              </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Contraseña nueva</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <input type="text" name="pass" formControlName="pass" id="middle-label" placeholder="">
+                </div>
 
-          </div>
-      </form>
-      <hr class="white">
-      <h2>Notificaciones</h2>
-      <form>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Buscas vivienda para:</label>
-              </div>
-              <div class="medium-10 columns end">
-                  <label class="container-radio">Habitar
-                      <input type="radio" checked="checked" name="radio">
-                      <span class="checkmark"></span>
-                  </label>
-                  <label class="container-radio">Invertir
-                      <input type="radio" checked="checked" name="radio">
-                      <span class="checkmark"></span>
-                  </label>
-              </div>
+            </div>
+            <div class="row">
+                <div class="medium-2 columns end">
+                    <label for="middle-label" class="text-left middle">Confirmar contraseña</label>
+                </div>
+                <div class="medium-5 columns end">
+                    <input type="text" name="confirm" formControlName="confirm" id="middle-label" placeholder="">
+                </div>
 
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Medio de contacto</label>
-              </div>
-              <div class="medium-10 columns end">
-                  <label class="container-check">Email
-                      <input type="checkbox" checked="checked">
-                      <span class="checkmark"></span>
-                  </label>
-                  <label class="container-check">WhatsApp
-                      <input type="checkbox" checked="checked">
-                      <span class="checkmark"></span>
-                  </label>
-                  <label class="container-check">Teléfono o celular
-                      <input type="checkbox" checked="checked">
-                      <span class="checkmark"></span>
-                  </label>
-              </div>
-          </div>
-      </form>
-      <hr class="white">
-      <h2>Seguridad</h2>
-      <form>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Contraseña actual</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="">
-              </div>
-
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Contraseña nueva</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="">
-              </div>
-
-          </div>
-          <div class="row">
-              <div class="medium-2 columns end">
-                  <label for="middle-label" class="text-left middle">Confirmar contraseña</label>
-              </div>
-              <div class="medium-5 columns end">
-                  <input type="text" id="middle-label" placeholder="">
-              </div>
-
-          </div>
-
-      </form>
-  </div>
+            </div>
+        </div>
+    </form>
+    <div class="medium-2 colmuns end" style="float: right;">
+      <a (click)="onSubmit(form.value)" class="button">Actualizar cuenta</a>
+    </div>
 </div>
 <hr class="white">

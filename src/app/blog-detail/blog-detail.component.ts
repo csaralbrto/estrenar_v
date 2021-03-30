@@ -14,8 +14,11 @@ import { data } from 'jquery';
 })
 export class BlogDetailComponent implements OnInit {
   dataArticle = '?include=uid,field_article_type,field_media.field_media_image,field_tags';
+  public responseAll: any;
   public response: any;
   public dataSubmit: any;
+  public entity_id: any;
+  public entity_type: any;
   public responseRelated: any;
   public form: FormGroup;
   public results = false;
@@ -39,11 +42,14 @@ export class BlogDetailComponent implements OnInit {
     var url_path = url_path1[1]
     console.log(url_path);
     this.Service.findProject(url_path).subscribe(
-      (data) => (this.response = data.jsonapi),
+      (data) => (this.responseAll = data),
       (err) => console.log(),
       () => {
-        if (this.response) {
-          console.log('entre a mostrar ',this.response);
+        if (this.responseAll) {
+          this.response = this.responseAll.jsonapi;
+          console.log('entre a mostrar ',this.responseAll);
+          this.entity_id = this.responseAll.entity.id;
+          this.entity_type = this.responseAll.entity.type;
            // this.beforeCheck(this.response.individual);
            var url = this.response.individual + this.dataArticle;
            var data = "";
@@ -51,7 +57,7 @@ export class BlogDetailComponent implements OnInit {
            })
            .then(response => response.json())
            .then(data => {
-             // console.log(data)
+             console.log(data)
              this.response = data.data;
              // console.log(this.response);
              if (this.response) { 
@@ -96,21 +102,22 @@ export class BlogDetailComponent implements OnInit {
   onSubmit(values) {
     /* Se recibe los valores del formulario */
     values.type_submit = 'contact_form';
-    this.dataSubmit = { 
-      "entity_id":[{"target_id":8}],
-      "entity_type":[{"value":"node"}],
+    let payload = { 
+      "entity_id":[{"target_id":this.entity_id}],
+      "entity_type":[{"value":this.entity_type}],
       "comment_type":[{"target_id":"comment"}],
       "field_name":[{"value":"comment"}],
       "subject":[{"value":values.comment.substring(0,15)}],
       "field_comment_mail":[{"value":values.email}],
-      "field_comment_privacy_notice":[{"target_id":336}],
+      "field_comment_privacy_notice":[{"target_id":40}],
       "name":[{"value":values.name}],
       "comment_body":[
         {"value":values.comment,"format":"restricted_html"}
       ]
     };
-    // console.log(this.dataSubmit)
-    this.Service.sendBlogComment( this.dataSubmit )
+    console.log(payload);
+    this.createForm();
+    this.Service.sendBlogComment( payload )
     .subscribe(
       data =>{console.log(data)},
       err => console.log(),

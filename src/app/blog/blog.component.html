@@ -47,9 +47,9 @@
                           <a routerLink="{{mostRead.url}}"><img [src]="url_img_path + mostRead.article_image" alt=""></a>
                       </div>
                       <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{mostRead.comments | number }}</span>
                           </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>{{mostRead.likes}}</span></div>
                       </div>
 
                       <div class="section"><a routerLink="{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
@@ -85,9 +85,9 @@
                           <a routerLink="{{newExperience.url}}"><img [src]="url_img_path + newExperience.article_image" alt=""></a>
                       </div>
                       <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{newExperience.comments}}</span>
                           </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>{{newExperience.likes}}</span></div>
                       </div>
 
                       <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
@@ -99,46 +99,6 @@
                       <a routerLink="{{newExperience.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
-              <!-- <div class="medium-4 columns">
-                  <div class="blog-list">
-                      <div class="img">
-                          <img src="/assets/images/content/proyecto.jpg" alt="">
-                      </div>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
-                      </div>
-
-                      <div class="section"><a href="#">Decoracion</a></div>
-                      <h3>Tendencias de decoracion de vacaciones</h3>
-                      <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
-                      </div>
-                      <a href="#" class="button">Seguir leyendo</a>
-                  </div>
-              </div>
-              <div class="medium-4 columns">
-                  <div class="blog-list">
-                      <div class="img">
-                          <img src="/assets/images/content/proyecto.jpg" alt="">
-                      </div>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
-                      </div>
-
-                      <div class="section"><a href="#">Decoracion</a></div>
-                      <h3>Tendencias de decoracion de vacaciones</h3>
-                      <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
-                      </div>
-                      <a href="#" class="button">Seguir leyendo</a>
-                  </div>
-              </div> -->
           </div>
       </div>
       <hr class="white">
@@ -151,9 +111,9 @@
                         <a routerLink="{{ecoside.url}}"><img [src]="url_img_path + ecoside.article_image" alt=""></a>
                       </div>
                       <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{ecoside.comments}}</span>
                           </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                          <div class="like"><img src="/assets/images/like.png" alt=""><span>{{ecoside.likes}}</span></div>
                       </div>
 
                       <div class="section"><a routerLink="{{ecoside.url}}">{{ ecoside.article_type }}</a></div>
@@ -165,66 +125,6 @@
                       <a routerLink="{{ecoside.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
-              <!-- <div class="medium-6 columns">
-                  <div class="blog-list">
-                      <div class="img">
-                          <img src="/assets/images/content/proyecto.jpg" alt="">
-                      </div>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
-                      </div>
-
-                      <div class="section"><a href="#">Decoracion</a></div>
-                      <h3>Tendencias de decoracion de vacaciones</h3>
-                      <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
-                      </div>
-                      <a href="#" class="button">Seguir leyendo</a>
-                  </div>
-              </div>
-              <div class="medium-6 columns">
-                  <div class="blog-list">
-                      <div class="img">
-                          <img src="/assets/images/content/proyecto.jpg" alt="">
-                      </div>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
-                      </div>
-
-                      <div class="section"><a href="#">Decoracion</a></div>
-                      <h3>Tendencias de decoracion de vacaciones</h3>
-                      <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
-                      </div>
-                      <a href="#" class="button">Seguir leyendo</a>
-                  </div>
-              </div>
-              <div class="medium-6 columns">
-                  <div class="blog-list">
-                      <div class="img">
-                          <img src="/assets/images/content/proyecto.jpg" alt="">
-                      </div>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
-                      </div>
-
-                      <div class="section"><a href="#">Decoracion</a></div>
-                      <h3>Tendencias de decoracion de vacaciones</h3>
-                      <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
-                      </div>
-                      <a href="#" class="button">Seguir leyendo</a>
-                  </div>
-              </div> -->
           </div>
       </div>
   </div>
