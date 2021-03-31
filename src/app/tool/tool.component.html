@@ -16,368 +16,373 @@
             </li>
         </ul>
         <div class="nav-calc">
-<ul class="nav-cal-menu show-for-small-only">
-    <li class="opcion">
-        <a href="#panel1" class="active">Simulador capacidad endeudamiento</a>
-    </li>
-    <li class="opcion">
-        <a href="#panel2" >Simulador subsidio de vivienda</a>
-    </li>
-    <li class="opcion">
-        <a href="#panel3" >Simulador cuota inicial</a>
-    </li>
-    <li class="opcion">
-        <a href="#panel4">Simulador credito de vivienda</a>
-    </li>
-</ul>
+            <ul class="nav-cal-menu show-for-small-only">
+                <li class="opcion">
+                    <a href="#panel1" class="active">Simulador capacidad endeudamiento</a>
+                </li>
+                <li class="opcion">
+                    <a href="#panel2" >Simulador subsidio de vivienda</a>
+                </li>
+                <li class="opcion">
+                    <a href="#panel3" >Simulador cuota inicial</a>
+                </li>
+                <li class="opcion">
+                    <a href="#panel4">Simulador credito de vivienda</a>
+                </li>
+            </ul>
         </div>
         <div class="tabs-content" data-tabs-content="simuladores">
-            <div class="tabs-panel is-active cuota" id="panel1">
-                <div class="container-form">
-                    <div class="row">
-                        <div class="medium-4 medium-offset-4 columns text-center">
-                            <p> Tus ingresos mensuales</p>
-                            <div class="input-group">
-                                <span class="input-group-label">$</span>
-                                <input class="input-group-field" type="number">
+            <form [formGroup]="form">
+                <div class="tabs-panel is-active cuota" id="panel1">
+                    <div class="container-form">
+                        <div class="row">
+                            <div class="medium-4 medium-offset-4 columns text-center">
+                                <p> Tus ingresos mensuales</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" (change)="change(form.value,'capacidad_endeudamiento')" formControlName="ingresos_mensuales_endudamiento" name="ingresos_mensuales_endudamiento" type="number">
+                                </div>
                             </div>
-                        </div>
-                        <div class="medium-4 columns text-center campo-destacado">
-                            <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
-                            <input type="text" value="$350.000.000">
-                            <hr>
-                            <p> Podrías comprar una vivienda de:</p>
-                            <input type="text" value="$500.000.000">
-                            <hr>
-                            <a href="#" class="button secondary ">Ver proyectos afines</a>
+                            <div class="medium-4 columns text-center campo-destacado">
+                                <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
+                                <input type="text" formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento | number }}">
+                                <hr>
+                                <p> Podrías comprar una vivienda de:</p>
+                                <input type="text" formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
+                                <hr>
+                                <a href="#" class="button secondary ">Ver proyectos afines</a>
+                            </div>
 
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="tabs-panel endeudamiento" id="panel2">
-                <div class="container-form">
-                    <div class="row">
-                        <div class="medium-4 columns text-center"> 
-                            <p> Cuentanos cuales son tus ingresos mensuales</p>
-                            <div class="input-group">
-                                <span class="input-group-label">$</span>
-                                <input class="input-group-field" type="number">
-                            </div>
-                            <hr>
-                            <p> Cuales son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
-                            <div class="input-group">
-                                <span class="input-group-label">$</span>
-                                <input class="input-group-field" type="number">
-                            </div>
-                            <hr>
-                            <p> Los ingresos totales son:</p>
-                            <div class="input-group">
-                                <span class="input-group-label">$</span>
-                                <input class="input-group-field" type="number">
-                            </div>
-                            <hr>
-                            <p class="small">
-                                * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
-                            </p>
-                     
-                        </div>
-                        <div class="medium-4 columns text-center campo-destacado">
-                            <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                            <input type="text" placeholder="">
-                            <hr>
-                            <p> Equivalentes a:</p>
-                            <input type="text" placeholder="">
-                            <a href="#" class="button secondary ">Más información</a>
-                        </div>
-                        <div class="medium-4 columns text-center">
-                            <p> </p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="tabs-panel" id="panel3">
-                <div class="container-form">
-                    <div class="row">
-                        <div class="medium-4 columns text-center">
-                            <p> Si cuentas con ahorros para la cuota inicial, ingresa el valor</p>
-                            <div class="input-group">
-                                <span class="input-group-label">$</span>
-                                <input class="input-group-field" type="number">
-                            </div>
-                            <hr>
-                            <p> Si deseas incluir primas, ingresa el valor</p>
-                            <div class="input-group">
-                                <span class="input-group-label">$</span>
-                                <input class="input-group-field" type="number">
-                            </div>
-                            <hr>
-                     <div class="text-left">
-                      <p>Escoje una de las dos opciones:</p>
-                      <fieldset>
-                       <div class="row">
-                           <div class="medium-6 columns">
-                            <label class="container-radio">Crédito hipotecario
-                                <input type="radio" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                           </div>
-                           <div class="medium-6 columns">
-                        
-                            <label class="container-radio">Leasing habitacional
-                                <input type="radio">
-                                <span class="checkmark"></span>
-                            </label> 
-                           </div>
-                       </div>
-                     </fieldset>
-                     </div>
-                        </div>
-                        <div class="medium-4 columns text-center campo-destacado">
-                            <p> Fecha estimada de entrega</p>
-                            <input type="text" placeholder="MM - AAAA">
-                            <hr>
-                            <p> Plazo actual para cuota inicial</p>
-                            <input type="text" placeholder="No. meses">
-
-                        </div>
-                        <div class="medium-4 columns text-center">
-                            <p> Simulación</p>
-                            <div class="container-simulacion">
-                                <div class="row text-left">
-                                    <div class="medium-10 medium-offset-2 columns">
-                                        <div class="item">Valor del inmueble: <span>$200.000.000</span></div>
-                                        <div class="item">Cuota inicial: <span>$50.000.000</span></div>
-                                        <div class="item">Ahorros y primas: <span>$12.000.000</span></div>
-                                        <div class="item">Saldo a diferir: <span>$80.000.000</span></div>
-                                    </div>
+                <div class="tabs-panel endeudamiento" id="panel2">
+                    <div class="container-form">
+                        <div class="row">
+                            <div class="medium-4 columns text-center"> 
+                                <p> Cuentanos cuales son tus ingresos mensuales</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" type="number" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (change)="change(form.value,'subsidio_vivienda')">
                                 </div>
                                 <hr>
-                                <div class="simulacion">
-                                    <div class="row">
-                                        <div class="columns">
-                                          <table class="stack">
-                                            <thead>
-                                              <tr>
-                                                <th width="100">Cuota #</th>
-                                                <th width="100">Fecha</th>
-                                                <th width="150">Valor</th>
-                                                <th width="150">Saldo</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                              <tr>
-                                                <td>001</td>
-                                                <td>03 - 2020</td>
-                                                <td>$10.562.000</td>
-                                                <td>$60.120.000</td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                      </div>
+                                <p> Cuales son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" type="number" formControlName="ingresos_mensuales_persona_vivienda" name="ingresos_mensuales_persona_vivienda" (change)="change(form.value,'subsidio_vivienda')" value="0">
                                 </div>
+                                <hr>
+                                <p> Los ingresos totales son:</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda | number }}">
+                                </div>
+                                <hr>
+                                <p class="small">
+                                    * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
+                                </p>
+                        
                             </div>
-                        </div>
-                        <div class="medium-12 columns text-center">
-                            <a href="#" class="button secondary ">Simular</a>
-
+                            <div class="medium-4 columns text-center campo-destacado">
+                                <p> Con el total de ingresos puedes obtener un subsidio por:</p>
+                                <input type="text" placeholder="" value ="{{ smmlv_vivienda }} SMMLV">
+                                <hr>
+                                <p> Equivalentes a:</p>
+                                <input type="text" placeholder="" value="$ {{ subsidio_vivienda | number }}">
+                                <a href="#" class="button secondary ">Más información</a>
+                            </div>
+                            <div class="medium-4 columns text-center">
+                                <p> </p>
+                            </div>
 
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="tabs-panel credito" id="panel4">
-                <div class="container-form">
-                    <div class="row">
-                        <div class="medium-4 medium-offset-2 columns text-center">
-                            <p> Valor de la vivienda a financiar</p>
-                            <div class="input-group">
-                                <span class="input-group-label">$</span>
-                                <input class="input-group-field" type="number">
+                <div class="tabs-panel" id="panel3">
+                    <div class="container-form">
+                        <div class="row">
+                            <div class="medium-4 columns text-center">
+                                <p> Si cuentas con ahorros para la cuota inicial, ingresa el valor</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" type="number" formControlName="ahorros_cuota" name="ahorros_cuota">
+                                </div>
+                                <hr>
+                                <p> Si deseas incluir primas, ingresa el valor</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" type="number" formControlName="primas_cuota" name="primas_cuota">
+                                </div>
+                                <hr>
+                                <p> Ingrese el valor del inmueble</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota">
+                                </div>
+                                <hr>
+                        <div class="text-left">
+                        <p>Escoje una de las dos opciones:</p>
+                        <fieldset>
+                        <div class="row">
+                            <div class="medium-6 columns">
+                                <label class="container-radio">Crédito hipotecario
+                                    <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
+                                    <span class="checkmark"></span>
+                                </label>
                             </div>
-                            <hr>
-                            <p> Plazo de financiamiento (meses)</p>
-                            <div class="slider white" data-slider data-initial-start="50">
-                                <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
-                                <span class="slider-fill" data-slider-fill></span>
+                            <div class="medium-6 columns">
+                            
+                                <label class="container-radio">Leasing habitacional
+                                    <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
+                                    <span class="checkmark"></span>
+                                </label> 
                             </div>
-                            <div><input type="number" id="sliderOutput1"></div>
-                            <hr>
-                     <div class="text-left">
-                      <p>Escoje una de las dos opciones:</p>
-                      <fieldset>
-                       <div class="row">
-                           <div class="medium-6 columns">
-                            <label class="container-radio">Crédito hipotecario
-                                <input type="radio" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                           </div>
-                           <div class="medium-6 columns">
-                        
-                            <label class="container-radio">Leasing habitacional
-                                <input type="radio">
-                                <span class="checkmark"></span>
-                            </label> 
-                           </div>
-                       </div>
-                     </fieldset>
-                     <p class="small">
-                        * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
-                    </p>
-                     </div>
                         </div>
-                        <div class="medium-4 columns text-center end">
-                            <p>Calculo aproximado para poder adquirir tu vivienda:</p>
-                           <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
-                               <div class="medium-6 columns">
+                        </fieldset>
+                        </div>
+                            </div>
+                            <div class="medium-4 columns text-center campo-destacado">
+                                <p> Fecha estimada de entrega</p>
+                                <input type="text" formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
+                                <hr>
+                                <p> Plazo actual para cuota inicial</p>
+                                <input type="text" placeholder="No. meses">
+
+                            </div>
+                            <div class="medium-4 columns text-center">
+                                <p> Simulación</p>
+                                <div class="container-simulacion">
+                                    <div class="row text-left">
+                                        <div class="medium-10 medium-offset-2 columns">
+                                            <div class="item">Valor del inmueble: <span>$200.000.000</span></div>
+                                            <div class="item">Cuota inicial: <span>$50.000.000</span></div>
+                                            <div class="item">Ahorros y primas: <span>$12.000.000</span></div>
+                                            <div class="item">Saldo a diferir: <span>$80.000.000</span></div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="simulacion">
+                                        <div class="row">
+                                            <div class="columns">
+                                            <table class="stack">
+                                                <thead>
+                                                <tr>
+                                                    <th width="100">Cuota #</th>
+                                                    <th width="100">Fecha</th>
+                                                    <th width="150">Valor</th>
+                                                    <th width="150">Saldo</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001</td>
+                                                    <td>03 - 2020</td>
+                                                    <td>$10.562.000</td>
+                                                    <td>$60.120.000</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="medium-12 columns text-center">
+                                <a href="#" class="button secondary ">Simular</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs-panel credito" id="panel4">
+                    <div class="container-form">
+                        <div class="row">
+                            <div class="medium-4 medium-offset-2 columns text-center">
+                                <p> Valor de la vivienda a financiar</p>
+                                <div class="input-group">
+                                    <span class="input-group-label">$</span>
+                                    <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito">
+                                </div>
+                                <hr>
+                                <p> Plazo de financiamiento (meses)</p>
+                                <div class="slider white" data-slider data-initial-start="50">
+                                    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
+                                    <span class="slider-fill" data-slider-fill></span>
+                                </div>
+                                <div><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutput1"></div>
+                                <hr>
+                        <div class="text-left">
+                        <p>Escoje una de las dos opciones:</p>
+                        <fieldset>
+                        <div class="row">
+                            <div class="medium-6 columns">
+                                <label class="container-radio">Crédito hipotecario
+                                    <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="hipotecario">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="medium-6 columns">
+                                <label class="container-radio">Leasing habitacional
+                                    <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="leasing">
+                                    <span class="checkmark"></span>
+                                </label> 
+                            </div>
+                        </div>
+                        </fieldset>
+                        <p class="small">
+                            * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
+                        </p>
+                        </div>
+                            </div>
+                            <div class="medium-4 columns text-center end">
+                                <p>Calculo aproximado para poder adquirir tu vivienda:</p>
+                                <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
+                                    <div class="medium-6 columns">
+                                            <div class="container-calc" data-equalizer-watch>
+                                                <div class="value">
+                                                    $ {{ monto_prestamo_credito | number }}
+                                                </div>
+                                                <div class="caracteristica">
+                                                    Monto prestamo
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="medium-6 columns">
+                                        <div class="container-calc" data-equalizer-watch>
+                                            <div class="value">
+                                                $ {{ cuota_inicial_vivienda_credito | number }}
+                                            </div>
+                                            <div class="caracteristica">
+                                                Cuota inicial {{ cuota_inicial_porcentaje_vivienda_credito }}
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="medium-6 columns">
                                     <div class="container-calc" data-equalizer-watch>
                                         <div class="value">
-                                            350.000.000
+                                            $ {{ ingresos_mensuales_min_credito | number }}
                                         </div>
                                         <div class="caracteristica">
-                                            Monto prestamo
+                                            Ingresos minimos mensuales
                                         </div>
                                     </div>
-                               </div>
-                               <div class="medium-6 columns">
+                            </div>
+                            <div class="medium-6 columns">
                                 <div class="container-calc" data-equalizer-watch>
                                     <div class="value">
-                                        350.000.000
+                                        {{ plazo_meses_credito }}
                                     </div>
                                     <div class="caracteristica">
-                                        Cuota inicial 30%
+                                        Plazo en meses
                                     </div>
                                 </div>
-                           </div>
-                           <div class="medium-6 columns">
+                        </div>
+                        <div class="medium-6 columns">
                             <div class="container-calc" data-equalizer-watch>
                                 <div class="value">
-                                    16.000.000
+                                    {{ tasa_de_interes_credito }}
                                 </div>
                                 <div class="caracteristica">
-                                    Ingresos minimos mensuales
+                                    Tasa de interés
                                 </div>
                             </div>
-                       </div>
-                       <div class="medium-6 columns">
+                    </div>
+                    <div class="medium-6 columns">
                         <div class="container-calc" data-equalizer-watch>
                             <div class="value">
-                                120
+                                $ {{ cuota_mensual_credito | number }}
                             </div>
                             <div class="caracteristica">
-                                Plazo en meses
+                                Cuota mensual
                             </div>
                         </div>
-                   </div>
-                   <div class="medium-6 columns">
-                    <div class="container-calc" data-equalizer-watch>
-                        <div class="value">
-                            11.65%
+                </div>
+                                </div>
+                                <a href="#" class="button secondary ">Ver proyectos afines</a>
+                            </div>
                         </div>
-                        <div class="caracteristica">
-                            Tasa de interés
-                        </div>
-                    </div>
-               </div>
-               <div class="medium-6 columns">
-                <div class="container-calc" data-equalizer-watch>
-                    <div class="value">
-                        4.000.000
-                    </div>
-                    <div class="caracteristica">
-                        Cuota mensual
                     </div>
                 </div>
-           </div>
-                           </div>
-                            <a href="#" class="button secondary ">Ver proyectos afines</a>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -386,7 +391,7 @@
 <div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq">
     <h1 class="deco text-center">Proyectos de interés</h1>
     <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
-        <div class="card" data-equalizer-watch *ngIf="i < 4">
+        <div class="card" data-equalizer-watch *ngIf="i < 8">
             <div class="container-photo">
                 <a href="proyecto.php" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
                 <div class="container-tools">
@@ -456,7 +461,7 @@
 </div>
 <hr class="white">
 <div class="row columns text-center">
-    <a href="#" class="button secondary">Ver más proyectos</a>
+    <a href="proyectos" class="button secondary">Ver más proyectos</a>
 </div>
 <hr class="white">
 <div class="row columns">
