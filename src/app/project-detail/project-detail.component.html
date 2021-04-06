@@ -139,7 +139,7 @@
 <!--fin slide-->
 <div class="row columns">
   <div class="features">
-      <div class="small-6 medium-3 columns" *ngFor="let caract of caracteristicas; let i = index">
+      <div class="small-6 medium-3 columns end" *ngFor="let caract of caracteristicas; let i = index">
           <div class="item-big">
               <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
               <div class="data">{{ caract.name_only }}</div>
@@ -344,7 +344,7 @@
 <hr class="white">
 <div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq">
   <h2 class="deco text-center">Otras áreas disponibles</h2>
-  <div class="medium-4 columns" *ngFor="let relacionados of projectsAvailableAreas; let i = index">
+  <div class="medium-4 columns end" *ngFor="let relacionados of projectsAvailableAreas; let i = index">
       <div class="card" *ngIf="i < 3" data-equalizer-watch>
           <div class="container-photo">
               <a href="#" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
@@ -389,13 +389,13 @@
 <hr class="white">
 <div class="row columns">
   <h2 class="deco text-center">Características del proyecto</h2>
-  <div class="medium-3 columns end" *ngFor="let caract of caracteristicasProject; let i = index">
+  <div class="medium-4 columns end" *ngFor="let caract of caracteristicasProject; let i = index">
       <div class="caracteristica">
           <span><img src="/assets/images/caracteristica.png" alt=""></span>{{ caract.name_only }}
       </div>
   </div>
 </div>
-<hr class="white">
+<hr class="white"> 
 <hr class="white">
 <div class="container-gray">
   <div class="row columns text-center">

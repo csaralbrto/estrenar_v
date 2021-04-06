@@ -257,9 +257,9 @@ p {
 
     background: url(/assets/images/content/header.jpg);
     background-repeat: no-repeat;
-    background-position: center;
     position: relative;
     height: 50vh;
+    background-size: cover;
 
     
 
@@ -495,7 +495,7 @@ p {
 
     a {
         color: $white;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         transition: ease all 0.3s;
 
         &:hover {
@@ -551,19 +551,25 @@ p {
 }
 
 //ficha de proyecto
-
+.project{
+    .card{
+        min-height: 500px;
+    }
+}
 .card {
+    
     .cont-destacado {
         padding: 1rem 1rem 0 0;
     }
     .card-section {
         padding: 0.5rem;
+
     }
     .container-photo.vertical {
         max-height: none !important;
         img.proyecto {
             width: 100%;
-            height: 304px;
+            height: 340px;
         }
     }
 
@@ -579,7 +585,7 @@ p {
             left: 0;
             width: 100%;
             height: 30%;
-            background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.5));
+            background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.8));
         }
 
         img.proyecto {
@@ -657,10 +663,11 @@ p {
     }
 
     h2 {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 0;
         margin-bottom: 0.6rem;
         font-weight: 600 !important;
+        text-transform: uppercase;
     }
 
     .descripcion {
@@ -760,7 +767,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 171px;
+    height: 152px;
     margin-bottom: 0;
 
     @media screen and (max-width: 600px) {
@@ -824,17 +831,6 @@ label {
     line-height: 1.4 !important;
 }
 
-.carga {
-    border-left: 1px solid;
-    padding-left: 2rem;
-    label {
-        line-height: 1.9 !important;
-    }
-    h2, .h2 {
-        font-size: 1.4rem;
-        margin-bottom: 1rem ;
-    }
-}
 
 .mobile-action-sheet {
     background: $primary-color;
@@ -977,8 +973,11 @@ h1.project {
     font-size: 2.2rem;
 }
 .botones {
-    margin-top: 18px;
+    margin-top: 27px;
     text-align: right;
+    &.list{
+        margin-top: 18px;
+    }
 
     .button {
         display: inline-block;
@@ -1192,6 +1191,9 @@ img.constructora {
 }
 
 .caracteristica {
+    font-size: 0.9rem;
+    min-height: 2rem;
+    margin-bottom: 1rem;
     span {
         margin-right: 1rem;
     }
@@ -1215,6 +1217,11 @@ img.constructora {
 }
 .nav-tabs{
     padding: 2rem 2rem 0 2rem;
+}
+.mapa{
+    .nav-tabs{
+        padding: 2rem 2rem 0 0rem;
+    }
 }
 
 .simuladores {
@@ -2249,7 +2256,7 @@ $input-number-size: 80px;
 
 .input-number-group {
     display: flex;
-    justify-content: center;
+
     border-radius: 8px !important;
 
     input[type=number]::-webkit-inner-spin-button,
@@ -2288,7 +2295,7 @@ $input-number-size: 80px;
     .input-number-increment {
         display: inline-block;
         width: $input-number-size/2;
-        background: $light-gray;
+        background: $primary-color !important;
         color: $body-font-color;
         text-align: center;
         font-weight: bold;
@@ -2321,4 +2328,33 @@ $input-number-size: 80px;
             border-radius: 40px;
         }
     }
+}
+
+li, img:focus {
+
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.upload{
+    font-size: 0.9rem;
+    .carga {
+        border-left: 1px solid;
+        padding-left: 2rem;
+        label {
+            line-height: 1.9 !important;
+            font-size: 0.9rem !important;
+        }
+        h2, .h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem ;
+            font-weight: 700;
+        }
+    }
+    
+}
+.agm-map-container-inner.sebm-google-map-container-inner {
+    border-radius: 8px;
 }

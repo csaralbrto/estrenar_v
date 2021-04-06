@@ -46,7 +46,7 @@
                 </label>
             </div>
             <div class="medium-2 columns">
-                <div class="botones">
+                <div class="botones list">
                     <a class="button" data-open="masfiltrosModal">Más filtros</a>
                     <a href="#" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
                 </div>
@@ -178,7 +178,7 @@
   <hr>
 </div>
 <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-  <div class="medium-3 columns" *ngFor="let project of response_data_project; let i = index">
+  <div class="medium-3 columns end project" *ngFor="let project of response_data_project; let i = index">
       <div class="card" data-equalizer-watch>
           <div class="container-photo">
               <a routerLink="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
@@ -195,7 +195,7 @@
                   </div>
               </div>
           </div>
-          <div class="card-section">
+          <div class="card-section info">
               <h2>{{ project.project }}</h2>
               <div class="descripcion">
                   {{ project.project_city }},
@@ -206,9 +206,10 @@
                   <div>Desde:</div>
                   <span>{{ project.typology_price | number }}</span>
               </div>
-              <hr>
+
           </div>
           <div class="card-section">
+            <hr>
               <div class="row">
                   <div class="small-6 columns">
                       <div class="item">
@@ -225,7 +226,7 @@
                   <div class="small-6 columns">
                       <div class="item">
                           <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                          <div class="data"> garajes {{ project.garages }}</div>
+                          <div class="data"> Garaje {{ project.garages }}</div>
                       </div>
                   </div>
                   <div class="small-6 columns">
