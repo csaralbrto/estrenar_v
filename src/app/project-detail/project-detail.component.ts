@@ -472,4 +472,27 @@ export class ProjectDetailComponent implements OnInit {
       count++;
     }
   }
+  formatDate(dateIn) {
+    var dd = String(dateIn.getDate()).padStart(2, '0');
+    var mm = String(dateIn.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = dateIn.getFullYear();
+    var today = yyyy + '-' + mm + '-' + dd;
+    return today
+  }
+  formatMonthDate(dateIn, value) {
+    dateIn.setMonth(dateIn.getMonth() + value);
+    var mm = String(dateIn.getMonth() + 1); //January is 0!
+    mm = mm.padStart(2, '0');
+    var yyyy = dateIn.getFullYear();
+    var new_date =  mm + '-' + yyyy;
+    return new_date
+  }
+  monthDiff(today, date) 
+  { 
+    var months; 
+    months = (date.getFullYear() - today.getFullYear()) * 12; 
+    months -= today.getMonth() + 1; 
+    months += date.getMonth(); 
+    return months <= 0 ? 0 : Number(months) + Number(1);
+  }
 }
