@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
       confirm: new FormControl(''),
       pass: new FormControl(''),
       term: new FormControl(''),
-      // recaptchaReactive: new FormControl(''),
+      recaptchaReactive: new FormControl(''),
     });
   }
   ngAfterViewChecked() {

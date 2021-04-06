@@ -26,6 +26,11 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   public cuota_inicial_vivienda_credito: any;
   public cuota_inicial_porcentaje_vivienda_credito: any;
   public cuota_mensual_credito: any;
+  public cuotasMensuales: any[] = [];
+  public valorInmuebleCuota: any;
+  public valorCuotaInicial: any;
+  public valorAhorroCuota: any;
+  public saldoDiferirCuota: any;
   constructor( public Service: ToolService, private formBuilder: FormBuilder,  ) {}
   dataPath = environment.endpoint;
   cadena = '';
@@ -120,13 +125,15 @@ export class ToolComponent implements OnInit, AfterViewChecked {
         this.subsidio_vivienda = Number(30) * Number(this.salario_minimo);
         this.smmlv_vivienda = 30;
       }else if(salarios > 2 && salarios <= 4){
-        this.subsidio_vivienda = Number(30) * Number(this.salario_minimo);
-        this.smmlv_vivienda = 30;
+        this.subsidio_vivienda = Number(20) * Number(this.salario_minimo);
+        this.smmlv_vivienda = 20;
       }else if(salarios > 4){
         this.subsidio_vivienda = 0;
-        this.smmlv_vivienda = 0;      
+        this.smmlv_vivienda = 0;  
+        /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */    
       }
     }else if(type == 'credito_vienda'){
+      let monto_del_prestamo_multi = 0;
       let cuota = 0;
       let cuota_inicial = '';
       let tasa_interes = 9;
@@ -138,25 +145,30 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       let plazo_mes = Number(value.plazo_credito);
       let cuota_mensual = 0;
       interes_mensual = ((Number(tasa_interes) / 12) / 100);
-      const base = Number(1) + Number(interes_mensual);
-      const exponente = Number(value.plazo_credito);
-      let r = 1;
-      for(let i = 0; i<exponente; i++){
-          r = r * base;
-      }
-      let formula_general = r;
+      let formula_general_last = Math.pow((1 + Number(interes_mensual)), Number(plazo_mes));
+      // const base = Number(1) + Number(interes_mensual);
+      // const exponente = Number(value.plazo_credito);
+      // let r = 1;
+      // for(let i = 0; i<exponente; i++){
+      //     r = r * base;
+      // }
+      var numerador = Number(formula_general_last) * Number(interes_mensual);
+      var denominador = Number(formula_general_last) - Number(1);
       if(value.tipo_credito_credito == 'hipotecario'){
         cuota = Number(value.valor_vivienda_credito) * Number(0.30);
+        monto_del_prestamo_multi = Number(0.30);
         cuota_inicial = '30%';
       }else if(value.tipo_credito_credito == 'leasing'){
         cuota = Number(value.valor_vivienda_credito) * Number(0.20);
+        monto_del_prestamo_multi = Number(0.20);
         cuota_inicial = '20%';
       }
-      monto_prestamo = (Number(value.valor_vivienda_credito) * (Number(100) - Number(cuota))) / Number(100);
-      ingresos_mensuales_min = (Number(cuota) * Number(3.3));
+      monto_prestamo = (Number(value.valor_vivienda_credito) * (Number(1) - Number(monto_del_prestamo_multi)));
       tasa_de_interes = tasa_interes;
-      cuota_inicial_vivienda = Number(value.valor_vivienda_credito) * (Number(cuota) / Number(100));
-      cuota_mensual = Number(value.valor_vivienda_credito) * ((formula_general * interes_mensual) / (formula_general - 1));
+      cuota_inicial_vivienda = Number(value.valor_vivienda_credito) * Number(monto_del_prestamo_multi);
+      cuota_mensual = Number(value.valor_vivienda_credito) * (Number(1) - Number(monto_del_prestamo_multi)) * ((Number(numerador)) / (Number(denominador)));
+      ingresos_mensuales_min = (Number(cuota_mensual) * Number(3.3));
+
       this.monto_prestamo_credito = monto_prestamo;
       this.ingresos_mensuales_min_credito = ingresos_mensuales_min;
       this.tasa_de_interes_credito = tasa_de_interes;
@@ -166,4 +178,66 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       this.plazo_meses_credito = plazo_mes;
     }
   }
+  clickInfo(value){
+    /* Quitar decimales en los montos de valor y saldo */
+    var today = new Date();
+    let cuota_inicial_porcentaje = 0;
+    let cuota_inicial = '';
+    let ahorros_totales = 0;
+    let saldo_diferir = 0;
+    if(value.tipo_credito_cuota == 'hipotecario'){
+      cuota_inicial_porcentaje = Number(value.valor_inmueble_cuota) * Number(0.30);
+      cuota_inicial = '30%';
+    }else if(value.tipo_credito_cuota == 'leasing'){
+      cuota_inicial_porcentaje = Number(value.valor_inmueble_cuota) * Number(0.20);
+      cuota_inicial = '20%';
+    }
+    var months = this.monthDiff(new Date(today), new Date(value.fecha_cuota));
+    ahorros_totales = Number(value.ahorros_cuota) + Number(value.primas_cuota);
+    saldo_diferir = Number(value.valor_inmueble_cuota) - Number(cuota_inicial_porcentaje);
+    var valor_mes = (Number(saldo_diferir) / Number(months))
+    let count = 1;
+    let saldo = Number(saldo_diferir);
+    this.valorInmuebleCuota = Number(value.valor_inmueble_cuota);
+    this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
+    this.valorAhorroCuota = Number(ahorros_totales);
+    this.saldoDiferirCuota = Number(saldo_diferir);
+    for (let i=0; i < months; i++){
+      var date_now = new Date();
+      saldo = saldo - Number(valor_mes);
+      var monthYear = this.formatMonthDate(date_now,count);
+      let data =  {
+        'count': count,
+        'date': monthYear,
+        'value_cuota': valor_mes,
+        'saldo': saldo,
+      }
+      this.cuotasMensuales.push(data);
+      count++;
+    }
+  }
+  formatDate(dateIn) {
+    var dd = String(dateIn.getDate()).padStart(2, '0');
+    var mm = String(dateIn.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = dateIn.getFullYear();
+    var today = yyyy + '-' + mm + '-' + dd;
+    return today
+  }
+  formatMonthDate(dateIn, value) {
+    dateIn.setMonth(dateIn.getMonth() + value);
+    var mm = String(dateIn.getMonth() + 1); //January is 0!
+    mm = mm.padStart(2, '0');
+    var yyyy = dateIn.getFullYear();
+    var new_date =  mm + '-' + yyyy;
+    return new_date
+  }
+  monthDiff(today, date) 
+  { 
+    var months; 
+    months = (date.getFullYear() - today.getFullYear()) * 12; 
+    months -= today.getMonth() + 1; 
+    months += date.getMonth(); 
+    return months <= 0 ? 0 : Number(months) + Number(1);
+  }
+
 }

@@ -15,22 +15,6 @@
             <li class="tabs-title tool"><a data-tabs-target="panel4" href="#panel4">Simulador credito de vivienda</a>
             </li>
         </ul>
-        <div class="nav-calc">
-            <ul class="nav-cal-menu show-for-small-only">
-                <li class="opcion">
-                    <a href="#panel1" class="active">Simulador capacidad endeudamiento</a>
-                </li>
-                <li class="opcion">
-                    <a href="#panel2" >Simulador subsidio de vivienda</a>
-                </li>
-                <li class="opcion">
-                    <a href="#panel3" >Simulador cuota inicial</a>
-                </li>
-                <li class="opcion">
-                    <a href="#panel4">Simulador credito de vivienda</a>
-                </li>
-            </ul>
-        </div>
         <div class="tabs-content" data-tabs-content="simuladores">
             <form [formGroup]="form">
                 <div class="tabs-panel is-active cuota" id="panel1">
@@ -45,10 +29,10 @@
                             </div>
                             <div class="medium-4 columns text-center campo-destacado">
                                 <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
-                                <input type="text" formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento | number }}">
+                                <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento | number }}">
                                 <hr>
                                 <p> Podrías comprar una vivienda de:</p>
-                                <input type="text" formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
+                                <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
                                 <hr>
                                 <a href="#" class="button secondary ">Ver proyectos afines</a>
                             </div>
@@ -154,10 +138,10 @@
                                 <div class="container-simulacion">
                                     <div class="row text-left">
                                         <div class="medium-10 medium-offset-2 columns">
-                                            <div class="item">Valor del inmueble: <span>$200.000.000</span></div>
-                                            <div class="item">Cuota inicial: <span>$50.000.000</span></div>
-                                            <div class="item">Ahorros y primas: <span>$12.000.000</span></div>
-                                            <div class="item">Saldo a diferir: <span>$80.000.000</span></div>
+                                            <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota | number }}</span></div>
+                                            <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial | number }}</span></div>
+                                            <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota | number }}</span></div>
+                                            <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota | number }}</span></div>
                                         </div>
                                     </div>
                                     <hr>
@@ -166,98 +150,20 @@
                                             <div class="columns">
                                             <table class="stack">
                                                 <thead>
-                                                <tr>
-                                                    <th width="100">Cuota #</th>
-                                                    <th width="100">Fecha</th>
-                                                    <th width="150">Valor</th>
-                                                    <th width="150">Saldo</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th width="100">Cuota #</th>
+                                                        <th width="100">Fecha</th>
+                                                        <th width="150">Valor</th>
+                                                        <th width="150">Saldo</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>03 - 2020</td>
-                                                    <td>$10.562.000</td>
-                                                    <td>$60.120.000</td>
-                                                </tr>
+                                                    <tr *ngFor="let cuota of cuotasMensuales; let i = index">
+                                                        <td>{{ cuota.count }}</td>
+                                                        <td>{{ cuota.date }}</td>
+                                                        <td>$ {{ cuota.value_cuota | number }}</td>
+                                                        <td>$ {{ cuota.saldo | number }}</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                             </div>
@@ -266,7 +172,7 @@
                                 </div>
                             </div>
                             <div class="medium-12 columns text-center">
-                                <a href="#" class="button secondary ">Simular</a>
+                                <a (click)="clickInfo(form.value)" class="button secondary ">Simular</a>
 
 
                             </div>
@@ -359,7 +265,7 @@
                         <div class="medium-6 columns">
                             <div class="container-calc" data-equalizer-watch>
                                 <div class="value">
-                                    {{ tasa_de_interes_credito }}
+                                    % {{ tasa_de_interes_credito }}
                                 </div>
                                 <div class="caracteristica">
                                     Tasa de interés

@@ -48,12 +48,11 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     this.createForm();
     this.createForm2();
     // const title = this.activatedRoute.snapshot.params.path ;
-    /* se uso el window location ya que en los parametros no se carga completa la urls */
+    /* se valida si esxiste o no el item en el session storage */
     let get_filter_price  = sessionStorage['price_search']?sessionStorage.getItem("price_search"):null;
     if(get_filter_price && get_filter_price !== null){
         this.filterByPrice(get_filter_price);
     }
-
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(
       (data) => (this.response = data),
@@ -260,10 +259,10 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           this.filterSector = this.response.facets.project_neighborhood;
         }
         this.results = true;
+        sessionStorage.removeItem("price_search");
       }
     })
     .catch(error => console.error(error))
-    
   }
 
   getDataSearch(){
