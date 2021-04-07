@@ -83,4 +83,14 @@ export class HeaderComponent implements OnInit {
     this.show_white_header = true;
     this.show_header = false;
  }
+ ngAfterContentChecked() {
+  const user_login2 = sessionStorage.getItem('access_token');
+  const user_uid2 = sessionStorage.getItem('uid');
+  // console.log('user_login-> ',user_login,'user_id-> ',user_uid)
+  if(user_login2 === null || user_uid2 === null){
+    this.path_user = "login";
+  }else{
+    this.path_user = "user";
+  }
+ }
 }

@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
-
   createForm() {
     this.form =  this.formBuilder.group({
       name: new FormControl(''),

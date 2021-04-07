@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="row columns">
-  <h1>Proyectos en Baranquilla</h1>
+  <h1>Proyectos</h1>
   <!--filtros-->
   <form [formGroup]="form_filters">
     <div class="filtros">
@@ -33,16 +33,26 @@
             </div>
             <div class="medium-2 columns">
                 <label>Zona
-                    <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0">
+                    <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
                         <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                     </select>
+                    <ng-template #zoneTemplate>
+                        <select disabled="true">
+                            <option value="" selected>Seleccione</option>
+                        </select>
+                    </ng-template>
                 </label>
             </div>
             <div class="medium-2 columns">
                 <label>Sector
-                    <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0">
+                    <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
                         <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                     </select>
+                    <ng-template #sectorTemplate>
+                        <select disabled="true">
+                            <option value="" selected>Seleccione</option>
+                        </select>
+                    </ng-template>
                 </label>
             </div>
             <div class="medium-2 columns">
@@ -54,7 +64,8 @@
         </div>
         <div class="row condensed">
         <div class="filtros-tag">
-            <a href="#" class="button close">3 Habitaciones</a>
+            <!-- Aqui van los tags de más filtros -->
+            <!-- <a href="#" class="button close">3 Habitaciones</a> -->
         </div>
     </div>
     </div>
@@ -62,7 +73,6 @@
   <!--fin filtros-->
 <!-- Modal más filtros -->
 <div class="reveal filter" id="masfiltrosModal" data-reveal>
-
     <div class="row">
         <div class="medium-12 colunms text-center">
             <h2>Más filtros</h2>
@@ -171,8 +181,8 @@
 
     </div>
     <button class="close-button" data-close aria-label="Close modal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 <!-- Fin modal más filtros -->
   <hr>

@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   public results = false;
   public filterPrice: any;
   public form: FormGroup;
+  public stringText: any;
 
   constructor(public Service: HomeService, private formBuilder: FormBuilder ) {}
   dataPath = environment.endpoint;
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     // $('#welcomeModal').foundation('open');
-
+    this.stringText = '...';
     /* Método para obtener toda la info del home */
     this.Service.getAllData().subscribe(
       (data) => (this.response = data),
@@ -85,6 +86,7 @@ export class HomeComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-home').foundation();
+      // jQuery('.slider-home').slick();
     }
   }
   createForm() {

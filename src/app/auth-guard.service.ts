@@ -21,6 +21,7 @@ export class AuthGuardService implements CanActivate {
     } else {
       const token =sessionStorage.getItem('access_token');
       if (token !== null) {
+        return true;
         var url = 'https://lab.estrenarvivienda.com/es/oauth/token';
         // var data = 'grant_type=password&client_id=1431780a-8799-4f29-9715-bfd6d03f7cc4&client_secret=estrenar&username='+localStorage.getItem('user_name')+'&password='+localStorage.getItem('password');
         var urlencoded = new URLSearchParams();
@@ -53,9 +54,12 @@ export class AuthGuardService implements CanActivate {
             sessionStorage.setItem('access_token',result.access_token);
             sessionStorage.setItem('time_out',JSON.stringify(timeObject));
             sessionStorage.setItem('access','ok');
+            console.log('entre al access en el post y es: ', sessionStorage.getItem('access'))
+            return true;
           }
         });
         if(sessionStorage.getItem('access') === 'ok'){
+          console.log('entre al access y es: ', sessionStorage.getItem('access'))
           return true;
         }
       }else{
