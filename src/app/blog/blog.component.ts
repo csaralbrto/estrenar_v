@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BlogService } from './blog.service';
+declare var $: any;
 
 @Component({
   selector: 'app-blog',
@@ -131,7 +132,43 @@ export class BlogComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-blog').foundation();
-      $('html,body').scrollTop(0);
+      // $('html,body').scrollTop(0);
+      if ($('.slider-blog').length) {
+        $('.slider-blog').slick({
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+          centerMode: true,
+          centerPadding: '60px',
+          slidesToShow: 1,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+              }
+            }
+          ]
+        });
+      }
     }
   }
 }

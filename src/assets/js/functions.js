@@ -57,35 +57,35 @@
 //   $("#MonthAgendaLabel").html(stringMonth);
 //   $("#DayAgendaLabel").html(stringDay);
 //   $("#DayAgenda").html(day);
-// }
-jQuery(function() {
-  if ($('.slider-home').length) {
-    $('.slider-home').slick({
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 5000,
-    });
-  }
-  if ($('.slider-projects-home').length) {
-    $('.slider-projects-home').slick({
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 5000,
-    });
-  }
-  if ($('.slider-builders-home').length) {
-    $('.slider-builders-home').slick({
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 5000,
-    });
-  }
-  if ($('.slider-blog-home').length) {
-    $('.slider-blog-home').slick({
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 5000,
-    });
-  }
-})
+// // }
+// jQuery(function() {
+//   if ($('.slider-home').length) {
+//     $('.slider-home').slick({
+//       dots: true,
+//       autoplay: true,
+//       autoplaySpeed: 5000,
+//     });
+//   }
+//   if ($('.slider-projects-home').length) {
+//     $('.slider-projects-home').slick({
+//       dots: true,
+//       autoplay: true,
+//       autoplaySpeed: 5000,
+//     });
+//   }
+//   if ($('.slider-builders-home').length) {
+//     $('.slider-builders-home').slick({
+//       dots: true,
+//       autoplay: true,
+//       autoplaySpeed: 5000,
+//     });
+//   }
+//   if ($('.slider-blog-home').length) {
+//     $('.slider-blog-home').slick({
+//       dots: true,
+//       autoplay: true,
+//       autoplaySpeed: 5000,
+//     });
+//   }
+// })
 

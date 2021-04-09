@@ -3,22 +3,22 @@
 </div>
 <div class="row columns">
   <div class="medium-10 medium-offset-1 columns">
-      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-          <div class="orbit-wrapper">
-              <ul class="orbit-container">
-                  <li class="is-active orbit-slide">
-                      <figure class="orbit-figure">
-                          <a routerLink="{{responseNewExperience.results[0].url}}"><img class="orbit-image" [src]="url_img_path + responseNewExperience.results[0].article_image" alt=""></a>
-                          <figcaption class="orbit-caption blog">
-                              <div class="section"><a routerLink="{{responseNewExperience.results[0].url}}">{{ responseNewExperience.results[0].article_type }}</a></div>
-                              <h2><a routerLink="{{responseNewExperience.results[0].url}}">{{responseNewExperience.results[0].title.slice(0,90)}}</a></h2>
-                              <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[0].user_name}}</span>{{ responseNewExperience.results[0].changed }}</div>
+      <div class="" role="region" aria-label="Favorite Space Pictures" >
+          <div class="">
+              <ul class="slider-blog">
+                  <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
+                      <figure class="">
+                          <a routerLink="{{newExperience.url}}"><img class="" [src]="url_img_path + newExperience.article_image" alt=""></a>
+                          <figcaption class=" blog">
+                              <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
+                              <h2><a routerLink="{{newExperience.url}}">{{newExperience.title.slice(0,90)}}</a></h2>
+                              <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
                           </figcaption>
                       </figure>
                   </li>
               </ul>
           </div>
-          <div class="container-controls">
+          <!-- <div class="container-controls">
               <nav class="orbit-bullets">
                   <button class="is-active" data-slide="0">
                       <span class="show-for-sr">First slide details.</span>
@@ -31,7 +31,7 @@
                           Slide</span>&#9664;&#xFE0E;</button>
                   <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
               </div>
-          </div>
+          </div> -->
       </div>
   </div>
 </div>
