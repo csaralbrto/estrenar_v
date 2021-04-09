@@ -188,79 +188,89 @@
   <div class="medium-8 columns">
       <div class="mapa">
           <div class="nav-tabs">
-              <a href="#" class="button active">Mapa</a>
-              <a href="#" class="button ">Planos</a>
-              <a href="#" class="button ">Street view</a>
+            <ul class="tabs" data-tabs id="propertiesProject">
+              <li class="tabs-title is-active"><a data-tabs-target="mapProject" href="#mapProject">Mapa</a></li>
+              <li class="tabs-title"><a data-tabs-target="planes" href="#planes">Planos</a></li>
+              <li class="tabs-title"><a data-tabs-target="street_view" href="#street_view">Street view</a></li>
+            </ul>
           </div>
-          <div class="direccion">
-              <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
-          </div>
-          <iframe
-              [src]="maps_url"
-              width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-              tabindex="0">
-          </iframe>
-      </div>
-      <hr class="white">
-      <div class="row columns">
-          <h2>Zonas de interés</h2>
-          <div class="small-6 medium-4 columns end zona">
-              <div class="row">
-                  <div class="medium-8 columns">
-                    <label class="container-check">Supermercados
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                      
+          <div class="tabs-content" data-tabs-content="propertiesProject">
+              <div class="tabs-panel is-active" id="mapProject">
+                <div class="direccion">
+                    <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
+                </div>
+                <iframe
+                    [src]="maps_url"
+                    width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0">
+                </iframe>
+                <hr class="white">
+                <div class="row columns">
+                    <h2>Zonas de interés</h2>
+                    <div class="small-6 medium-4 columns end zona">
+                        <div class="row">
+                            <div class="medium-8 columns">
+                              <label class="container-check">Supermercados
+                                  <input type="checkbox" checked="checked">
+                                  <span class="checkmark"></span>
+                              </label>
+                                
+                            </div>
+                            <div class="medium-4 columns hide-for-small-only">
+                                <img src="/assets/images/supermercado.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-6 medium-4 columns end zona">
+                      <div class="row">
+                          <div class="medium-8 columns">
+                            <label class="container-check">Supermercados
+                                <input type="checkbox" >
+                                <span class="checkmark"></span>
+                            </label>
+                              
+                          </div>
+                          <div class="medium-4 columns hide-for-small-only">
+                              <img src="/assets/images/supermercado.png" alt="">
+                          </div>
+                      </div>
                   </div>
-                  <div class="medium-4 columns hide-for-small-only">
-                      <img src="/assets/images/supermercado.png" alt="">
+                  <div class="small-6 medium-4 columns end zona">
+                      <div class="row">
+                          <div class="medium-8 columns">
+                            <label class="container-check">Supermercados
+                                <input type="checkbox" >
+                                <span class="checkmark"></span>
+                            </label>
+                              
+                          </div>
+                          <div class="medium-4 columns hide-for-small-only">
+                              <img src="/assets/images/supermercado.png" alt="">
+                          </div>
+                      </div>
                   </div>
-              </div>
+                  <div class="small-6 medium-4 columns end zona">
+                      <div class="row">
+                          <div class="medium-8 columns">
+                            <label class="container-check">Supermercados
+                                <input type="checkbox" >
+                                <span class="checkmark"></span>
+                            </label>
+                              
+                          </div>
+                          <div class="medium-4 columns hide-for-small-only">
+                              <img src="/assets/images/supermercado.png" alt="">
+                          </div>
+                      </div>
+                  </div>
+          
+                </div>
+            </div>
+            <div class="tabs-panel" id="planes">
+            </div>
+            <div class="tabs-panel" id="street_view">
+            </div>
           </div>
-          <div class="small-6 medium-4 columns end zona">
-            <div class="row">
-                <div class="medium-8 columns">
-                  <label class="container-check">Supermercados
-                      <input type="checkbox" >
-                      <span class="checkmark"></span>
-                  </label>
-                    
-                </div>
-                <div class="medium-4 columns hide-for-small-only">
-                    <img src="/assets/images/supermercado.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="small-6 medium-4 columns end zona">
-            <div class="row">
-                <div class="medium-8 columns">
-                  <label class="container-check">Supermercados
-                      <input type="checkbox" >
-                      <span class="checkmark"></span>
-                  </label>
-                    
-                </div>
-                <div class="medium-4 columns hide-for-small-only">
-                    <img src="/assets/images/supermercado.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="small-6 medium-4 columns end zona">
-            <div class="row">
-                <div class="medium-8 columns">
-                  <label class="container-check">Supermercados
-                      <input type="checkbox" >
-                      <span class="checkmark"></span>
-                  </label>
-                    
-                </div>
-                <div class="medium-4 columns hide-for-small-only">
-                    <img src="/assets/images/supermercado.png" alt="">
-                </div>
-            </div>
-        </div>
-
       </div>
   </div>
   <hr class="mobile">
