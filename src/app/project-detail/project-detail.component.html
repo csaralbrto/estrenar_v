@@ -21,10 +21,12 @@
           </div>
           <div class="medium-6 columns">
               <div class="botones">
-                  <a href="#" class="button secondary ">Contacto</a>
-                  <a href="#" class="button ">Ver video</a>
-                  <a href="#" class="button ">Imágenes</a>
-                  <a href="#" class="button ">Recorrido</a>
+                <ul class="tabs" data-tabs id="propertiesProject">
+                  <li class="tabs-title"><a data-tabs-target="contact" href="#contact" >Contacto</a></li>
+                  <li class="tabs-title"><a data-tabs-target="video" href="#video">Ver video</a></li>
+                  <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
+                  <li class="tabs-title"><a data-tabs-target="tour" href="#tour">Recorrido</a></li>
+                </ul>
               </div>
           </div>
       </div>
@@ -33,108 +35,125 @@
 <hr class="white">
 <!--slide-->
 <div class="row columns">
-  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-      <div class="orbit-wrapper">
-
-          <ul class="orbit-container slideproject">
-              <li class="is-active orbit-slide">
-                  <div class="row">
-                      <div class="medium-6 columns destacado">
-                          <figure class="orbit-figure">
-                              <img class="orbit-image" [src]="url_img_path + galeria[0].uri.url" alt="">
-                          </figure>
-                      </div>
-                      <div class="medium-6 columns">
-                          <div class="row">
-                              <div class="medium-6 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-6 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-6 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-6 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                  </figure>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </li>
-              <li class="is-active orbit-slide">
-                  <div class="row">
-                      <div class="medium-12 columns">
-                          <div class="row">
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[6]" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[7]" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[8]" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[9]" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[10]" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[11]" alt="">
-                                  </figure>
-                              </div>
-                              <div class="medium-3 columns">
-                                  <figure class="orbit-figure">
-                                      <img class="orbit-image" [src]="url_img_path + galeria[12]" alt="">
-                                  </figure>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </li>
-          </ul>
-      </div>
-      <div class="container-controls">
-          <nav class="orbit-bullets">
-              <button class="is-active" data-slide="0">
-                  <span class="show-for-sr">First slide details.</span>
-                  <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-              </button>
-              <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-          </nav>
-          <div class="orbit-controls">
-              <button class="orbit-previous"><span class="show-for-sr">Previous
-                      Slide</span>&#9664;&#xFE0E;</button>
-              <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-          </div>
-      </div>
-  </div>
+    <div class="tabs-content" data-tabs-content="propertiesProject">
+        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
+            <div class="">
+                <ul class="slider-project-img slideproject">
+                    <li class="is-active ">
+                        <div class="row">
+                            <div class="medium-6 columns destacado">
+                                <figure class="">
+                                    <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                </figure>
+                            </div>
+                            <div class="medium-6 columns">
+                                <div class="row">
+                                    <div class="medium-6 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-6 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-6 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-6 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="row">
+                            <div class="medium-12 columns">
+                                <div class="row">
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[6]" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[7]" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[8]" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[9]" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[10]" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[11]" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[12]" alt="">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-controls">
+                <nav class="orbit-bullets">
+                    <button class="is-active" data-slide="0">
+                        <span class="show-for-sr">First slide details.</span>
+                        <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                    </button>
+                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                </nav>
+                <div class="orbit-controls">
+                    <button class="orbit-previous"><span class="show-for-sr">Previous
+                            Slide</span>&#9664;&#xFE0E;</button>
+                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                </div>
+            </div>
+        </div>
+        <div class="tabs-panel" id="video" *ngIf="response.field_typology_video.length > 0">
+            <div class="row">
+                <video width="520" height="250" controls>
+                    <source src="response.field_typology_video.data.src" type="video/mp4">
+                    Tu navegador no soporta los vídeos de HTML5
+                </video>
+            </div>
+        </div>
+        <div class="tabs-panel" id="tour" *ngIf="response.field_virtual_tour !== null">
+            <div class="row">
+                <video width="520" height="250" controls>
+                    <source src="response.field_virtual_tour.data.src" type="video/mp4">
+                    Tu navegador no soporta los vídeos de HTML5
+                </video>
+            </div>
+        </div>
+    </div>
 </div>
 <!--fin slide-->
 <div class="row columns">

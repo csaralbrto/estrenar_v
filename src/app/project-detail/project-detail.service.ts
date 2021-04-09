@@ -20,6 +20,7 @@ export class ProjectDetailService {
 
   /* Traer la info del proyecto */
   findProject( params: any ): Observable<any> {
+    // console.log(this.endpoint, params);
     return this.http.get(this.endpoint + params)
     .pipe(map(( response => response.json() )));
   }

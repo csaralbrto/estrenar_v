@@ -4,7 +4,7 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 import { ProjectDetailService } from './project-detail.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
-declare function todayDate(): any;
+declare var $: any;
 
 @Component({
   selector: 'app-project-detail',
@@ -66,7 +66,6 @@ export class ProjectDetailComponent implements OnInit {
     this.createForm();
     this.createFormDates();
     this.createFormSimuladores();
-    todayDate();
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -150,6 +149,13 @@ export class ProjectDetailComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-project-detail').foundation();
+      if ($('.slider-project-img').length) {
+        $('.slider-project-img').slick({
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+        });
+      }
     }
   }
   addCompare(value) {
