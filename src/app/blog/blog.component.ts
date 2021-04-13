@@ -139,7 +139,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
           autoplay: true,
           autoplaySpeed: 5000,
           centerMode: true,
-          centerPadding: '60px',
+          centerPadding: '260px',
           slidesToShow: 1,
           responsive: [
             {
