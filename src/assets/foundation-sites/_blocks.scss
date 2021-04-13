@@ -240,28 +240,44 @@ p {
 //header
 
 .container-header {
+    position: relative;
+    height: 50vh;
+    overflow: hidden;
     .header {
-        display: block;
+        display: flex;
+        align-items: center;
         float: left;
         width: 100%;
         margin-bottom: 2rem;
         padding: 2rem 1rem;
+        &.header-fix{
+            padding: 0.3rem 1rem;
+            background: $primary-color;
+            position: fixed;
+            transition: ease all 0.4s; 
+            z-index: 1;
+        }
         @media screen and (max-width: 600px) {
             margin-bottom: 0.3rem;
             padding: 1rem;
         }
     }
-
-    background: url(/assets/images/content/header.jpg);
-    background-repeat: no-repeat;
-    position: relative;
-    height: 50vh;
-    background-size: cover;
-
-    h1 {
-        color: $white;
+    .block-search {
+        position: absolute;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        top: 50%;
+        h1 {
+            color: $white;
+        }
     }
-
+    .banner-home {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
     ul.menu {
         float: right;
 
@@ -290,41 +306,59 @@ p {
 
 .container-header-white {
     .header {
-        display: block;
+        display: flex;
+        align-items: center;
         float: left;
         width: 100%;
         margin-bottom: 2rem;
         padding: 2rem 1rem;
+        transition: ease all 0.4s;
         @media screen and (max-width: 600px) {
             margin-bottom: 0.3rem;
             padding: 1rem;
         }
-    }
-
-    ul.menu {
-        float: right;
-
-        a {
-            color: $black;
-            font-size: 1.1rem;
-            font-weight: 400;
-            transition: ease all 0.4s;
-
-            &:hover {
-                color: $primary-color;
+        &.header-fix{
+            padding: 0.3rem 1rem;
+            background: $primary-color;
+            position: fixed;
+            transition: ease all 0.4s; 
+            z-index: 1;
+            ul.menu{
+                a{
+                    color: $white;
+                    &:hover{
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+        ul.menu {
+            float: right;
+    
+            a {
+                color: $black;
+                font-size: 1.1rem;
+                font-weight: 400;
                 transition: ease all 0.4s;
+    
+                &:hover {
+                    color: $primary-color;
+                    transition: ease all 0.4s;
+                }
+                @media screen and (max-width: 600px) {
+                    padding: 1rem 0 0 1rem;
+                }
             }
-            @media screen and (max-width: 600px) {
-                padding: 1rem 0 0 1rem;
+    
+            span.num_fav {
+                font-size: 0.8rem;
+                font-weight: 400;
+                margin: 0 0.6rem;
             }
-        }
-
-        span.num_fav {
-            font-size: 0.8rem;
-            font-weight: 400;
-            margin: 0 0.6rem;
         }
     }
+
+
 }
 
 //Slider
