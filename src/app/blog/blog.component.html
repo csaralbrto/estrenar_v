@@ -8,12 +8,14 @@
               <ul class="slider-blog">
                   <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
                       <figure class="">
-                          <a routerLink="{{newExperience.url}}"><img class="blog" [src]="url_img_path + newExperience.article_image" alt=""></a>
-                          <figcaption class="blog">
-                              <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
-                              <h2><a routerLink="{{newExperience.url}}">{{newExperience.title.slice(0,90)}}</a></h2>
-                              <div class="user"><img class="usr" src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
-                          </figcaption>
+                          <a routerLink="{{newExperience.url}}"><img class="blog" [src]="url_img_path + newExperience.article_image" alt="">
+                            <figcaption class="blog">
+                                <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
+                                <h2><a routerLink="{{newExperience.url}}">{{newExperience.title.slice(0,90)}}</a></h2>
+                                <div class="user"><img class="usr" src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
+                            </figcaption>
+                        </a>
+                          
                       </figure>
                   </li>
               </ul>
@@ -70,12 +72,14 @@
               <div class="medium-12 columns">
                   <figure class="orbit-figure">
                       <a routerLink="{{responseNewExperience.results[1].url}}">
-                      <img class="orbit-image" [src]="url_img_path + responseNewExperience.results[1].article_image" alt=""></a>
+                      <img class="orbit-image" [src]="url_img_path + responseNewExperience.results[1].article_image" alt="">
                       <figcaption class="orbit-caption blog">
-                          <div class="section"><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].article_type }}</a></div>
-                          <h2><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].title.slice(0,90) }}</a></h2>
-                          <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[1].user_name}}</span>{{ responseNewExperience.results[1].changed }}</div>
-                      </figcaption>
+                        <div class="section"><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].article_type }}</a></div>
+                        <h2><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].title.slice(0,90) }}</a></h2>
+                        <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[1].user_name}}</span>{{ responseNewExperience.results[1].changed }}</div>
+                    </figcaption>
+                    </a>
+                      
                   </figure>
               </div>
               <hr class="white">

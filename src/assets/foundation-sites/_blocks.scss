@@ -2494,3 +2494,44 @@ img:focus {
 .agm-map-container-inner.sebm-google-map-container-inner {
     border-radius: 8px;
 }
+
+.nav-tabs {
+    padding: 0 !important;
+    .tabs{
+        border: 0px;
+        .tabs-title {
+            float: left;
+            background: $light-gray;
+            border-radius: 8px;
+            margin-right: 0.5rem;
+            .is-active{
+                background: $primary-color;
+                color: $white;
+                a{
+                    border-radius: 8px;
+                    background: $primary-color;
+                    color: $white;
+                }
+            }
+        }
+        .tabs-title > a:focus, .tabs-title > a[aria-selected=true] {
+            border-radius: 8px;
+            background: $primary-color;
+            color: $white;
+            &:hover{
+                border-radius: 8px;
+            background: $primary-color;
+            color: $white;
+            }
+        }
+        .tabs-title > a:hover {
+            border-radius: 8px;
+            background: $primary-color;
+            color: $white;
+        }
+    }
+}
+.tabs-content {
+    border: 0px solid #eeeeee !important;
+
+}
