@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HeaderService } from './header.service';
 import { environment } from '../../../environments/environment';
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -82,15 +83,42 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/proyectos']);
     this.show_white_header = true;
     this.show_header = false;
- }
- ngAfterContentChecked() {
-  const user_login2 = sessionStorage.getItem('access_token');
-  const user_uid2 = sessionStorage.getItem('uid');
-  // console.log('user_login-> ',user_login,'user_id-> ',user_uid)
-  if(user_login2 === null || user_uid2 === null){
-    this.path_user = "login";
-  }else{
-    this.path_user = "user";
   }
- }
+  ngAfterContentChecked() {
+    const user_login2 = sessionStorage.getItem('access_token');
+    const user_uid2 = sessionStorage.getItem('uid');
+    // console.log('user_login-> ',user_login,'user_id-> ',user_uid)
+    if(user_login2 === null || user_uid2 === null){
+      this.path_user = "login";
+    }else{
+      this.path_user = "user";
+    }
+    $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll > 0) {
+          $(".header").addClass("header-fix");
+        } else {
+          $(".header").removeClass("header-fix");
+        }
+    });
+    this.url_location = window.location.pathname;
+    if(this.url_location === '/home' || this.url_location === '/'){
+      // console.log(this.url_header);
+      this.show_header = true;
+    }else if(this.url_location === '/wizard'){
+      this.not_show_header = true;
+      this.show_white_header = false;
+      this.show_header = false;
+    }else{
+      this.show_white_header = true;
+    }
+  }
+  public searchWord(){
+    var searchWord = $('#searchWord').val();
+    sessionStorage.removeItem('word_search');
+    sessionStorage.setItem('word_search',searchWord)
+    this.router.navigate(['/proyectos']);
+    this.show_white_header = true;
+    this.show_header = false;
+  }
 }

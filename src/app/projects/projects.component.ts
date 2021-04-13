@@ -24,6 +24,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public form: FormGroup;
   public resutls: boolean = false;
   public route = 'filtro-proyectos';
+  public url_search_word = 'https://lab.estrenarvivienda.com/es/api/typologies/all?';
   public stringQuery = '';
   optionsTypySelected: string = '';
   optionsPriceSelected: string = '';
@@ -51,39 +52,46 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     /* se valida si esxiste o no el item en el session storage */
     let get_filter_price  = sessionStorage['price_search']?sessionStorage.getItem("price_search"):null;
     if(get_filter_price && get_filter_price !== null){
+        sessionStorage.removeItem("price_search");
         this.filterByPrice(get_filter_price);
     }
-    /* Método para obtener toda la info de proyectos */
-    this.Service.getData().subscribe(
-      (data) => (this.response = data),
-      (err) => console.log(),
-      () => {
-        if (this.response) {
-          console.log(this.response.search_results);
-          this.response_data_project = this.response.search_results
-          for (let project of this.response_data_project) {
-            var arrayDeCadenas = project.typology_images.split(',');
-            project.typology_images = arrayDeCadenas[0];
-            var arrayDeCadenas2 = project.project_category.split(',');
-            project.project_category = arrayDeCadenas2;
+    let get_filter_word  = sessionStorage['word_search']?sessionStorage.getItem("word_search"):null;
+    if(get_filter_word && get_filter_word !== null){
+        sessionStorage.removeItem("word_search");
+        this.filterByWord(get_filter_word);
+    }else{
+      /* Método para obtener toda la info de proyectos */
+      this.Service.getData().subscribe(
+        (data) => (this.response = data),
+        (err) => console.log(),
+        () => {
+          if (this.response) {
+            console.log(this.response.search_results);
+            this.response_data_project = this.response.search_results
+            for (let project of this.response_data_project) {
+              var arrayDeCadenas = project.typology_images.split(',');
+              project.typology_images = arrayDeCadenas[0];
+              var arrayDeCadenas2 = project.project_category.split(',');
+              project.project_category = arrayDeCadenas2;
+            }
+            if(this.response.facets.property_type){
+              this.filterType = this.response.facets.property_type;
+            }
+            if(this.response.facets.project_city){
+              this.filterCity = this.response.facets.project_city;
+            }
+            if(this.response.facets.typology_price){
+              this.filterPrice = this.response.facets.typology_price;
+            }
+            this.results = true;
           }
-          if(this.response.facets.property_type){
-            this.filterType = this.response.facets.property_type;
+          /* si responde correctamente */
+          if (this.response_data_project.error) {
+            /* si hay error en la respuesta */
           }
-          if(this.response.facets.project_city){
-            this.filterCity = this.response.facets.project_city;
-          }
-          if(this.response.facets.typology_price){
-            this.filterPrice = this.response.facets.typology_price;
-          }
-          this.results = true;
         }
-        /* si responde correctamente */
-        if (this.response_data_project.error) {
-          /* si hay error en la respuesta */
-        }
-      }
-    );
+      );
+    }
   }
 
   decreaseValue(value) {
@@ -260,6 +268,39 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         }
         this.results = true;
         sessionStorage.removeItem("price_search");
+      }
+    })
+    .catch(error => console.error(error))
+  }
+  filterByWord(value) {
+    var url = this.url_search_word + value;
+    var data = "";
+    fetch(url, {
+    })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data)
+      this.response = data;
+      // console.log(this.response);
+      if (this.response) { 
+        // console.log(this.response.search_results);
+        this.response_data_project = this.response
+        for (let project of this.response_data_project) {
+          var arrayDeCadenas = project.typology_images.split(',');
+          project.typology_images = arrayDeCadenas[0];
+          var arrayDeCadenas2 = project.project_category.split(',');
+          project.project_category = arrayDeCadenas2;
+        }
+        if(this.response.facets.property_type){
+          this.filterType = this.response.facets.property_type;
+        }
+        if(this.response.facets.project_city){
+          this.filterCity = this.response.facets.project_city;
+        }
+        if(this.response.facets.typology_price){
+          this.filterPrice = this.response.facets.typology_price;
+        }
+        this.results = true;
       }
     })
     .catch(error => console.error(error))

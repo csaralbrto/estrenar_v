@@ -472,7 +472,7 @@
                 <hr class="white">
                 <h2>Horario de atención</h2>
                 <div class="row">
-                    <div class="medium-12 columns">
+                    <!-- <div class="medium-12 columns">
                         <div class="opcion text-center" *ngFor="let option of schedulesDayProjects">
                             <div [id]="option" class="opcion-seleccion small"(click)="activeSelected(option)">
                                 <input name="dayTimeAtention" formControlName="dayTimeAtention" [value]="option" type="checkbox">
@@ -494,11 +494,21 @@
                                 <option value="pm">PM</option>
                             </select>
                         </label>
-                    </div>
+                    </div> -->
                     <div class="medium-12 columns">
+                        <div>
+                            <label>Lunes a Vierves
+                                <input id="schedule_week" name="schedule_week" formControlName="schedule_week" type="text" placeholder="" value="">
+                            </label>
+                        </div>
+                        <div>
+                            <label>Sábados, Domingos y Festivos
+                                <input id="schedule_weekend" name="schedule_weekend" formControlName="schedule_weekend" type="text" placeholder="" value="">
+                            </label>
+                        </div>
                         <label>
                             Especificaciones (max 150 caracteres)
-                            <textarea placeholder="" rows="10" name="specification" formControlName="specification" id="specification"></textarea>
+                            <textarea placeholder="" rows="5" name="specification" formControlName="specification" id="specification"></textarea>
                         </label>
                     </div>
                 </div>

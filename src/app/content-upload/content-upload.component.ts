@@ -437,8 +437,8 @@ export class ContentUploadComponent implements OnInit {
       phone10: new FormControl(''),
       check_whatsapp: new FormControl(''),
       dayTimeAtention: new FormControl(''),
-      hour: new FormControl(''),
-      schedule: new FormControl(''),
+      schedule_week: new FormControl(''),
+      schedule_weekend: new FormControl(''),
       specification: new FormControl(''),
       contact: new FormControl(''),
     });
