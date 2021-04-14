@@ -24,7 +24,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public form: FormGroup;
   public resutls: boolean = false;
   public route = 'filtro-proyectos';
-  public url_search_word = 'https://lab.estrenarvivienda.com/es/api/typologies/all?';
+  public url_search_word = 'https://lab.estrenarvivienda.com/es/api/typologies/all?search=';
   public stringQuery = '';
   optionsTypySelected: string = '';
   optionsPriceSelected: string = '';

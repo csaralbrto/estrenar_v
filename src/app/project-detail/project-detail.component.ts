@@ -40,7 +40,7 @@ export class ProjectDetailComponent implements OnInit {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
-  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.parent,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent';
+  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent';
   url_img_path = 'https://www.estrenarvivienda.com/';
 
   constructor(
@@ -51,6 +51,7 @@ export class ProjectDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {}
   dataPath = environment.endpoint;
+  dataSrcImg = environment.endpointTestingApiUrl
   cadena = '';
   largo = '';
   public galeria;
@@ -93,27 +94,51 @@ export class ProjectDetailComponent implements OnInit {
               this.galeria = this.response.field_typology_image;
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
-              for (let project of this.caracteristicas) {
+              for (let caracteristica_tipologia of this.caracteristicas) {
                 var name_cara;
-                if(project.parent[0].id === 'virtual'){
-                  name_cara = project.name
+                var img_src;
+                if(caracteristica_tipologia.parent[0].id === 'virtual'){
+                  name_cara = caracteristica_tipologia.name
+                  if(caracteristica_tipologia.field_icon_feature.uri){
+                    img_src = this.dataSrcImg + caracteristica_tipologia.field_icon_feature.uri.url;
+                  }else{
+                    img_src = '/assets/images/icon-medida.png';
+                  }
                 }else{
-                  name_cara = project.parent[0].name+': '+ project.name
+                  name_cara = caracteristica_tipologia.parent[0].name+': '+ caracteristica_tipologia.name
+                  if( caracteristica_tipologia.parent[0].field_icon_feature.uri){
+                    img_src = this.dataSrcImg + caracteristica_tipologia.parent[0].field_icon_feature.uri.url;
+                  }else{
+                    img_src = '/assets/images/icon-medida.png';
+                  }
                 }
-                project.name_only = name_cara;
+                caracteristica_tipologia.name_only = name_cara;
+                caracteristica_tipologia.img_src = img_src
               }
               this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
               /* caracteristicas del proyecto */
-              for (let project of this.caracteristicasProject) {
+              for (let caracteristica_project of this.caracteristicasProject) {
                 var name_cara;
-                if(project.parent[0].id === 'virtual'){
-                  name_cara = project.name
+                var img_src;
+                if(caracteristica_project.parent[0].id === 'virtual'){
+                  name_cara = caracteristica_project.name
+                  if(caracteristica_project.field_icon_feature){
+                    img_src = this.dataSrcImg + caracteristica_project.field_icon_feature.uri.url;
+                  }else{
+                    img_src = '/assets/images/caracteristica.png';
+                  }
                 }else{
-                  name_cara = project.parent[0].name+': '+ project.name
+                  name_cara = caracteristica_project.parent[0].name+': '+ caracteristica_project.name
+                  if(caracteristica_project.parent[0].field_icon_feature){
+                    img_src = this.dataSrcImg + caracteristica_project.parent[0].field_icon_feature.uri.url;
+                  }else{
+                    img_src = '/assets/images/caracteristica.png';
+                  }
                 }
-                project.name_only = name_cara;
+                caracteristica_project.name_only = name_cara;
+                caracteristica_project.img_src = img_src
               }
-              this.caracteristicasProject.name_only = name_cara;
+              // this.caracteristicasProject.name_only = name_cara;
 
               // console.log(this.galeria);
               this.results = true;

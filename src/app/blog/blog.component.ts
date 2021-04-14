@@ -20,11 +20,13 @@ export class BlogComponent implements OnInit, AfterViewChecked {
   public responseNews: any;
   public results = false;
   url_img_path = 'https://www.estrenarvivienda.com/';
+  public stringText: any;
 
   constructor(public Service: BlogService) {}
 
   ngOnInit(): void {
     /* Método para obtener toda la info del blog */
+    this.stringText = '...';
     this.Service.getBlogData().subscribe(
       (data) => (this.response = data),
       (err) => console.log(),
@@ -45,6 +47,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       (err) => console.log(),
       () => {
         if (this.response) {
+          console.log('lo más relido',this.responseMostRead)
           /* si responde correctamente */
         }
         if (this.response.error) {

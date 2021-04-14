@@ -387,8 +387,7 @@
                     <div class="section"><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
                     <h3><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
                     <div class="resumen">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                        suscipit sollicitudin mauris.
+                        <p [innerHTML]=mostRead.description.slice(0,120)+stringText></p>
                     </div>
                     <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
                 </div>

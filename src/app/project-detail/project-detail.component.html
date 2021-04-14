@@ -11,7 +11,10 @@
                 <div class="tag"><a href="#">Mi casa ya</a></div>
             </div>
               <h1 class="project">{{ response.field_typology_project.name }}</h1>
-              <p>Descripcion lorem ipsum adempte nocte concectur muy cerca a residencial</p>
+              <!-- <p>Descripcion lorem ipsum adempte nocte concectur muy cerca a residencial</p> -->
+              <div *ngIf="response.field_typology_description">
+                  <p [innerHTML]=response.field_typology_description.processed></p>
+              </div>
           </div>
           <div class="medium-5 columns">
               <div class="head-proyecto">
@@ -160,7 +163,7 @@
   <div class="features">
       <div class="small-6 medium-3 columns end" *ngFor="let caract of caracteristicas; let i = index">
           <div class="item-big">
-              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+              <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
               <div class="data">{{ caract.name_only }}</div>
           </div>
       </div>
@@ -420,7 +423,7 @@
   <h2 class="deco text-center">Características del proyecto</h2>
   <div class="medium-4 columns end" *ngFor="let caract of caracteristicasProject; let i = index">
       <div class="caracteristica">
-          <span><img src="/assets/images/caracteristica.png" alt=""></span>{{ caract.name_only }}
+          <span><img [src]="caract.img_src" alt=""></span>{{ caract.name_only }}
       </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ToolService } from './tool.service';
 import { environment } from '../../environments/environment';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
+declare var $: any;
 
 @Component({
   selector: 'app-tool',
@@ -39,9 +40,11 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   index = 0;
   public results = false;
   url_img_path = 'https://www.estrenarvivienda.com/';
+  public stringText: any;
 
   ngOnInit(): void {
 
+    this.stringText = '...';
     this.createForm();
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(

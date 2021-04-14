@@ -20,6 +20,7 @@ export const environment = {
   endpointTestingApi: 'https://lab.estrenarvivienda.com/es/api/',
   endpointTestingApiAdServer: 'https://ads.estrenarvivienda.com/www/delivery/asyncspc.php?zones=',
   endpointTestingApiPost: 'https://lab.estrenarvivienda.com/es/',
+  endpointTestingApiUrl: 'https://lab.estrenarvivienda.com',
   endpointTestingApiElastic: 'http://test-blaa.demodayscript.com/api/elasticsearch?',
 };
 

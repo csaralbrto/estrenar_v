@@ -77,16 +77,26 @@
                         </div>
                         <div class="medium-4 columns end">
                             <label>Zona
-                                <select id="zone" name="zone" formControlName="zone" (change)="change('zone',form.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0">
+                                <select id="zone" name="zone" formControlName="zone" (change)="change('zone',form.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
                                     <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                                 </select>
+                                <ng-template #zoneTemplate>
+                                    <select disabled="true">
+                                        <option value="" selected>Seleccione</option>
+                                    </select>
+                                </ng-template>
                             </label>
                         </div>
                         <div class="medium-4 columns end">
                             <label>Sector
-                                <select id="sector" name="sector" formControlName="sector" (change)="change('sector',form.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0">
+                                <select id="sector" name="sector" formControlName="sector" (change)="change('sector',form.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
                                     <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                                 </select>
+                                <ng-template #sectorTemplate>
+                                    <select disabled="true">
+                                        <option value="" selected>Seleccione</option>
+                                    </select>
+                                </ng-template>
                             </label>
                         </div>
                     </div>

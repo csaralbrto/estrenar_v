@@ -57,8 +57,7 @@
                       <div class="section"><a routerLink="{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
                       <h3><a routerLink="{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
                       <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
+                        <p [innerHTML]=mostRead.body.slice(0,90)+stringText></p>
                       </div>
                       <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
                   </div>
@@ -97,8 +96,7 @@
                       <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
                       <h3><a routerLink="{{newExperience.url}}">{{ newExperience.title.slice(0,90) }}</a></h3>
                       <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
+                        <p [innerHTML]=newExperience.body.slice(0,90)+stringText></p>
                       </div>
                       <a routerLink="{{newExperience.url}}" class="button">Seguir leyendo</a>
                   </div>
@@ -123,8 +121,7 @@
                       <div class="section"><a routerLink="{{ecoside.url}}">{{ ecoside.article_type }}</a></div>
                       <h3><a routerLink="{{ecoside.url}}">{{ ecoside.title.slice(0,90).slice(0,90) }}</a></h3>
                       <div class="resumen">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non semper quam,
-                          suscipit sollicitudin mauris.
+                        <p [innerHTML]=ecoside.body.slice(0,90)+stringText></p>
                       </div>
                       <a routerLink="{{ecoside.url}}" class="button">Seguir leyendo</a>
                   </div>
