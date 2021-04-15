@@ -3,6 +3,8 @@ import { ProjectsService } from './projects.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-projects',
@@ -11,6 +13,7 @@ import { environment } from '../../environments/environment';
   providers: [ProjectsService],
 })
 export class ProjectsComponent implements OnInit, AfterViewChecked {
+  tags: MetaTag;
   public data: any = {nodes: [], pagination: 0};
   public response_data_project: any;
   public responseSubmit: any;
@@ -37,7 +40,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public collectionActive: string = '';
   public results = false;
 
-  constructor( public Service: ProjectsService, private formBuilder: FormBuilder ) { }
+  constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -66,7 +69,10 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         (err) => console.log(),
         () => {
           if (this.response) {
-            console.log(this.response.search_results);
+            // console.log(this.response.facets.typology_price);
+            if(this.response.metatag_normalized){
+              this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+            }
             this.response_data_project = this.response.search_results
             for (let project of this.response_data_project) {
               var arrayDeCadenas = project.typology_images.split(',');

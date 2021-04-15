@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { HomeService } from './home.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 declare var $: any;
 
 @Component({
@@ -13,6 +15,7 @@ declare var $: any;
   providers: [HomeService],
 })
 export class HomeComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
   public responseAdServer: any;
   public responseSubmit: any;
@@ -24,7 +27,7 @@ export class HomeComponent implements OnInit {
   public form: FormGroup;
   public stringText: any;
 
-  constructor(public Service: HomeService, private formBuilder: FormBuilder ) {}
+  constructor(public Service: HomeService, private formBuilder: FormBuilder, private meta: Meta ) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -48,6 +51,10 @@ export class HomeComponent implements OnInit {
       () => {
         if (this.response) {
           console.log(this.response);
+          /* se envian los metas al servicio creado */
+          if(this.response.metatag_normalized){
+            this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+          }
           for (let project of this.response.home_featured_typologies) {
             var arrayDeCadenas = project.typology_images.split(',');
             project.typology_images = arrayDeCadenas[0];

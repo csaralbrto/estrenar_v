@@ -5,6 +5,8 @@ import { ContactusService } from './contactus.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 declare function todayDate(): any;
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-contactus',
@@ -12,6 +14,7 @@ declare function todayDate(): any;
   styleUrls: ['./contactus.component.scss']
 })
 export class ContactusComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
   public responseSubmit: any;
   public form: FormGroup;
@@ -23,11 +26,15 @@ export class ContactusComponent implements OnInit {
     public Service: ContactusService,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
+    private meta: Meta,
   ) { }
 
   ngOnInit(): void {
     this.createForm();
     this.results = true;
+    if(this.response.metatag_normalized){
+      this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+    }
   }
   ngAfterViewChecked() {
     if (this.results) {

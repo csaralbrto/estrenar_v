@@ -3,6 +3,8 @@ import { PrivacyNoticeService } from './privacy-notice.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-privacy-notice',
@@ -11,6 +13,7 @@ import { environment } from '../../environments/environment';
   providers: [PrivacyNoticeService],
 })
 export class PrivacyNoticeComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
   public responseData: any;
   public dataInfo: any;
@@ -19,7 +22,7 @@ export class PrivacyNoticeComponent implements OnInit {
   imgPath = 'https://lab.estrenarvivienda.com/';
   dataImg = '?include=field_page_paragraphs.field_ev_team_image';
 
-  constructor( public Service: PrivacyNoticeService, ) { }
+  constructor( public Service: PrivacyNoticeService, private meta: Meta ) { }
 
   ngOnInit(): void {
 
@@ -29,7 +32,10 @@ export class PrivacyNoticeComponent implements OnInit {
       (err) => console.log(),
       () => {
         if (this.response) {
-          console.log(this.response);
+          // console.log(this.response);
+          if(this.response.metatag_normalized){
+            this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+          }
           this.stringQuery = this.response.jsonapi.individual;
           this.getDataSearch();
         }

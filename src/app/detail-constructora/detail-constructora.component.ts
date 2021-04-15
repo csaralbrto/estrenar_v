@@ -4,6 +4,8 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 import { DetailConstructoraService } from './detail-constructora.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-detail-constructora',
@@ -12,6 +14,7 @@ import { environment } from '../../environments/environment';
   providers: [DetailConstructoraService],
 })
 export class DetailConstructoraComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
   public responseProject: any;
   public content: any;
@@ -43,6 +46,7 @@ export class DetailConstructoraComponent implements OnInit {
     public Service: DetailConstructoraService, 
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
+    private meta: Meta,
     ) {}
     dataPath = environment.endpoint;
     cadena = '';
@@ -70,6 +74,9 @@ export class DetailConstructoraComponent implements OnInit {
           //       }
           //     }
           this.content = this.response.data;
+          if(this.content.metatag_normalized){
+            this.tags = new MetaTag(this.content.metatag_normalized, this.meta);
+          }
         }
       }
     );

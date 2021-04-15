@@ -3,6 +3,8 @@ import { RevistaDigitalService } from './revista-digital.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-revista-digital',
@@ -11,6 +13,7 @@ import { environment } from '../../environments/environment';
   providers: [RevistaDigitalService],
 })
 export class RevistaDigitalComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
   public responseData: any;
   public dataInfo: any;
@@ -20,7 +23,7 @@ export class RevistaDigitalComponent implements OnInit {
   imgPath = 'https://lab.estrenarvivienda.com/';
   dataImg = '?include=field_page_paragraphs.field_ev_team_image';
 
-  constructor( public Service: RevistaDigitalService, ) { }
+  constructor( public Service: RevistaDigitalService, private meta: Meta ) { }
 
   ngOnInit(): void {
     /* Método para obtener toda la info */
@@ -47,7 +50,11 @@ export class RevistaDigitalComponent implements OnInit {
         err => console.log(),
         () => {
           if (this.responseData) {
-            console.log(this.responseData);
+            // console.log(this.responseData);
+            /* Metodo para agregar los metas del sitio */
+            if(this.responseData.metatag_normalized){
+              this.tags = new MetaTag(this.responseData.metatag_normalized, this.meta);
+            }
             this.dataInfoImg = this.responseData.field_page_paragraphs;
             var links = this.responseData.field_page_paragraphs;
             for (let link of links ) {

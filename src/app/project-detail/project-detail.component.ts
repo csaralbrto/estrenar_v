@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeUrl, Meta} from '@angular/platform-browser';
 import { ProjectDetailService } from './project-detail.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { MetaTag } from '../class/metatag.class';
 declare var $: any;
 
 @Component({
@@ -13,7 +14,9 @@ declare var $: any;
   providers: [ProjectDetailService],
 })
 export class ProjectDetailComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
+  public newResponse: any;
   public responseSubmit: any;
   public responseAvailableAreas: any;
   public projectsAvailableAreas: any;
@@ -40,7 +43,7 @@ export class ProjectDetailComponent implements OnInit {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
-  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent';
+  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
 
   constructor(
@@ -49,6 +52,7 @@ export class ProjectDetailComponent implements OnInit {
     public Service: ProjectDetailService,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
+    private meta: Meta
   ) {}
   dataPath = environment.endpoint;
   dataSrcImg = environment.endpointTestingApiUrl
@@ -57,7 +61,11 @@ export class ProjectDetailComponent implements OnInit {
   public galeria;
   public caracteristicas;
   public caracteristicasProject;
+  public othersAreas;
   public confirm: any;
+  public typologyUuid: any;
+  public idProject: any;
+  public priceProject: any;
 
   public maps_url;
 
@@ -76,6 +84,10 @@ export class ProjectDetailComponent implements OnInit {
         if(this.response){
           // console.log()
           // this.beforeCheck(this.response.individual);
+          /* captamos el uuid de la tipologia */
+          this.typologyUuid = this.response.individual;
+          this.typologyUuid = this.typologyUuid.split('/typology/');
+          this.typologyUuid = this.typologyUuid[1];
           var url = this.response.individual + this.dataProjectUrl;
           var data = "";
           fetch(url, {
@@ -88,6 +100,11 @@ export class ProjectDetailComponent implements OnInit {
             if (this.response) {
               /* si responde correctamente en la respuesta */
               console.log(this.response);
+              if(this.response.metatag_normalized){
+                this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+              }
+              this.priceProject = this.response.field_typology_price
+              this.idProject = this.response.drupal_internal__nid;
               const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
 
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
@@ -122,14 +139,14 @@ export class ProjectDetailComponent implements OnInit {
                 var img_src;
                 if(caracteristica_project.parent[0].id === 'virtual'){
                   name_cara = caracteristica_project.name
-                  if(caracteristica_project.field_icon_feature){
+                  if(caracteristica_project.field_icon_feature.uri){
                     img_src = this.dataSrcImg + caracteristica_project.field_icon_feature.uri.url;
                   }else{
                     img_src = '/assets/images/caracteristica.png';
                   }
                 }else{
                   name_cara = caracteristica_project.parent[0].name+': '+ caracteristica_project.name
-                  if(caracteristica_project.parent[0].field_icon_feature){
+                  if(caracteristica_project.parent[0].field_icon_feature.uri){
                     img_src = this.dataSrcImg + caracteristica_project.parent[0].field_icon_feature.uri.url;
                   }else{
                     img_src = '/assets/images/caracteristica.png';
@@ -138,9 +155,18 @@ export class ProjectDetailComponent implements OnInit {
                 caracteristica_project.name_only = name_cara;
                 caracteristica_project.img_src = img_src
               }
-              // this.caracteristicasProject.name_only = name_cara;
-
-              // console.log(this.galeria);
+              let new_url = environment.endpointTestingApi + 'typologies/other-areas/' + this.idProject + '/' + this.typologyUuid;
+              fetch(new_url, {
+              })
+              .then(newResponse => newResponse.json())
+              .then(data => {
+                this.newResponse = data;
+                if (this.newResponse) {
+                  // console.log(this.newResponse);
+                  this.othersAreas = this.newResponse
+                }
+              })
+              .catch(error => console.error(error))
               this.results = true;
             }
           })
@@ -149,23 +175,23 @@ export class ProjectDetailComponent implements OnInit {
       }
     );
     /* Método para obtener areas disponibles */
-    this.Service.availableAreas().subscribe(
-      (data) => (this.responseAvailableAreas = data),
-      (err) => console.log(),
-      () => {
-        if (this.responseAvailableAreas) {
-          this.projectsAvailableAreas = this.responseAvailableAreas.search_results;
-          for (let project of this.projectsAvailableAreas) {
-            var arrayDeCadenas = project.typology_images.split(',');
-            project.typology_images = arrayDeCadenas[0];
-            var arrayDeCadenas2 = project.project_category.split(',');
-            project.project_category = arrayDeCadenas2;
-            this.results = true;
-          }
-          /* si responde correctamente */
-        }
-      }
-    );
+    // this.Service.availableAreas().subscribe(
+    //   (data) => (this.responseAvailableAreas = data),
+    //   (err) => console.log(),
+    //   () => {
+    //     if (this.responseAvailableAreas) {
+    //       this.projectsAvailableAreas = this.responseAvailableAreas.search_results;
+    //       for (let project of this.projectsAvailableAreas) {
+    //         var arrayDeCadenas = project.typology_images.split(',');
+    //         project.typology_images = arrayDeCadenas[0];
+    //         var arrayDeCadenas2 = project.project_category.split(',');
+    //         project.project_category = arrayDeCadenas2;
+    //         this.results = true;
+    //       }
+    //       /* si responde correctamente */
+    //     }
+    //   }
+    // );
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
@@ -390,7 +416,7 @@ export class ProjectDetailComponent implements OnInit {
     );
   }
   change(value,type) {
-    console.log(type);
+    // console.log(type);
     if(type == 'capacidad_endeudamiento'){
       this.prestamo_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(32);
       this.vivienda_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(45.714286);
@@ -442,18 +468,18 @@ export class ProjectDetailComponent implements OnInit {
       var numerador = Number(formula_general_last) * Number(interes_mensual);
       var denominador = Number(formula_general_last) - Number(1);
       if(value.tipo_credito_credito == 'hipotecario'){
-        cuota = Number(value.valor_vivienda_credito) * Number(0.30);
+        cuota = Number(this.priceProject) * Number(0.30);
         monto_del_prestamo_multi = Number(0.30);
         cuota_inicial = '30%';
       }else if(value.tipo_credito_credito == 'leasing'){
-        cuota = Number(value.valor_vivienda_credito) * Number(0.20);
+        cuota = Number(this.priceProject) * Number(0.20);
         monto_del_prestamo_multi = Number(0.20);
         cuota_inicial = '20%';
       }
-      monto_prestamo = (Number(value.valor_vivienda_credito) * (Number(1) - Number(monto_del_prestamo_multi)));
+      monto_prestamo = (Number(this.priceProject) * (Number(1) - Number(monto_del_prestamo_multi)));
       tasa_de_interes = tasa_interes;
-      cuota_inicial_vivienda = Number(value.valor_vivienda_credito) * Number(monto_del_prestamo_multi);
-      cuota_mensual = Number(value.valor_vivienda_credito) * (Number(1) - Number(monto_del_prestamo_multi)) * ((Number(numerador)) / (Number(denominador)));
+      cuota_inicial_vivienda = Number(this.priceProject) * Number(monto_del_prestamo_multi);
+      cuota_mensual = Number(this.priceProject) * (Number(1) - Number(monto_del_prestamo_multi)) * ((Number(numerador)) / (Number(denominador)));
       ingresos_mensuales_min = (Number(cuota_mensual) * Number(3.3));
 
       this.monto_prestamo_credito = monto_prestamo;
@@ -473,19 +499,19 @@ export class ProjectDetailComponent implements OnInit {
     let ahorros_totales = 0;
     let saldo_diferir = 0;
     if(value.tipo_credito_cuota == 'hipotecario'){
-      cuota_inicial_porcentaje = Number(value.valor_inmueble_cuota) * Number(0.30);
+      cuota_inicial_porcentaje = Number(this.priceProject) * Number(0.30);
       cuota_inicial = '30%';
     }else if(value.tipo_credito_cuota == 'leasing'){
-      cuota_inicial_porcentaje = Number(value.valor_inmueble_cuota) * Number(0.20);
+      cuota_inicial_porcentaje = Number(this.priceProject) * Number(0.20);
       cuota_inicial = '20%';
     }
     var months = this.monthDiff(new Date(today), new Date(value.fecha_cuota));
     ahorros_totales = Number(value.ahorros_cuota) + Number(value.primas_cuota);
-    saldo_diferir = Number(value.valor_inmueble_cuota) - Number(cuota_inicial_porcentaje);
+    saldo_diferir = Number(this.priceProject) - Number(cuota_inicial_porcentaje);
     var valor_mes = (Number(saldo_diferir) / Number(months))
     let count = 1;
     let saldo = Number(saldo_diferir);
-    this.valorInmuebleCuota = Number(value.valor_inmueble_cuota);
+    this.valorInmuebleCuota = Number(this.priceProject);
     this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
     this.valorAhorroCuota = Number(ahorros_totales);
     this.saldoDiferirCuota = Number(saldo_diferir);
@@ -518,8 +544,7 @@ export class ProjectDetailComponent implements OnInit {
     var new_date =  mm + '-' + yyyy;
     return new_date
   }
-  monthDiff(today, date) 
-  { 
+  monthDiff(today, date) { 
     var months; 
     months = (date.getFullYear() - today.getFullYear()) * 12; 
     months -= today.getMonth() + 1; 

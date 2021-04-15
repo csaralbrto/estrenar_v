@@ -3,6 +3,8 @@ import { GlosoryService } from './glosory.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-glosory',
@@ -11,6 +13,7 @@ import { environment } from '../../environments/environment';
   providers: [GlosoryService],
 })
 export class GlosoryComponent implements OnInit {
+  tags: MetaTag;
   letter = 'a';
   public response: any;
   public responseData: any;
@@ -20,10 +23,9 @@ export class GlosoryComponent implements OnInit {
   public results = false;
 
 
-  constructor( public Service: GlosoryService, ) {}
+  constructor( public Service: GlosoryService, private meta: Meta ) {}
 
   ngOnInit(): void {
-
     /* Método para obtener toda la info */
     this.Service.getDataGlosary(this.stringQuery?this.stringQuery:this.letter)
     .subscribe(
@@ -31,7 +33,10 @@ export class GlosoryComponent implements OnInit {
       err => console.log(),
       () => {
         if (this.response) {
-          console.log(this.response);
+          /* Metodo para agregar los metas del sitio */
+          if(this.response.metatag_normalized){
+            this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+          }
           this.results = true;
         }
       }
@@ -39,9 +44,7 @@ export class GlosoryComponent implements OnInit {
   }
 
   change(value) {
-    // this.data.nodes = [];
     let term = "";
-    // this.query_elasticsearch[this.collectionActive].page = 0;
 
       Object.keys(value).forEach( function(key) {
         if(value[key] && value[key] !== 'Seleccione'){
@@ -50,7 +53,6 @@ export class GlosoryComponent implements OnInit {
           this.stringQuery = term;
         }
       },this);
-      
       /* llamamos la funcion que va a buscar */
       this.getDataSearch();
   }

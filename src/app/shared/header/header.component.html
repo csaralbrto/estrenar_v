@@ -25,9 +25,9 @@
           <li>
           <a href="/blog">Blog</a>
           </li>
-          <li><a href="#"><img src="/assets/images/search.png"></a></li>
+          <li><a><img src="/assets/images/search.png"></a></li>
           <li><a href="{{path_user}}"><img src="/assets/images/user.png"></a></li>
-          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav">2</span></a></li>
+          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
         </ul>
       </div>
       <div class="small-2 columns show-for-small-only text-center">
@@ -37,8 +37,8 @@
       </div>
       <div class="small-5 columns show-for-small-only text-right">
         <ul class="menu mobile">
-          <li><a href="#"><img src="/assets/images/search.png"></a></li>
-          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav">2</span></a></li>
+          <li><a><img src="/assets/images/search.png"></a></li>
+          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
         </ul>
       </div>
   </div>
@@ -68,8 +68,10 @@
         </form>
       </div>
     </div>
-    <div class="banner-home">
-      <img src="/assets/images/content/header.jpg" alt="">
+    <div class="slider-header">
+      <div class="banner-home" *ngFor='let img of bannersImg'>
+        <img [src]="img.image" alt="">
+      </div>
     </div>
 </div>
 
@@ -101,9 +103,9 @@
               <li>
                   <a href="blog">Blog</a>
               </li>
-              <li><a href="#"><img src="/assets/images/search.png"></a></li>
+              <li><a><img src="/assets/images/search.png"></a></li>
               <li><a href="{{path_user}}"><img src="/assets/images/user.png"></a></li>
-              <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav">2</span></a></li>
+              <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
           </ul>
       </div>
       <div class="small-2 columns show-for-small-only text-center">
@@ -113,8 +115,8 @@
       </div>
       <div class="small-5 columns show-for-small-only text-right">
         <ul class="menu mobile">
-          <li><a href="#"><img src="/assets/images/search.png"></a></li>
-          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav">2</span></a></li>
+          <li><a><img src="/assets/images/search.png"></a></li>
+          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
         </ul>
       </div>
   </div>

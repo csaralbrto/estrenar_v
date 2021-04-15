@@ -3,6 +3,8 @@ import { LegalNoticeService } from './legal-notice.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-legal-notice',
@@ -11,6 +13,7 @@ import { environment } from '../../environments/environment';
   providers: [LegalNoticeService],
 })
 export class LegalNoticeComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
   public responseData: any;
   public dataInfo: any;
@@ -19,7 +22,7 @@ export class LegalNoticeComponent implements OnInit {
   imgPath = 'https://lab.estrenarvivienda.com/';
   dataImg = '?include=field_page_paragraphs.field_ev_team_image';
 
-  constructor( public Service: LegalNoticeService, ) { }
+  constructor( public Service: LegalNoticeService, private meta: Meta ) { }
 
   ngOnInit(): void {
 
@@ -47,7 +50,11 @@ export class LegalNoticeComponent implements OnInit {
         err => console.log(),
         () => {
           if (this.responseData) {
-            console.log(this.responseData.field_page_paragraphs);
+            // console.log(this.responseData.field_page_paragraphs);
+            /* Metodo para agregar los metas del sitio */
+            if(this.responseData.metatag_normalized){
+              this.tags = new MetaTag(this.responseData.metatag_normalized, this.meta);
+            }
             this.dataInfoImg = this.responseData.field_page_paragraphs;
 
           }

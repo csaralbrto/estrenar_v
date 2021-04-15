@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ToolService } from './tool.service';
 import { environment } from '../../environments/environment';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 declare var $: any;
 
 @Component({
@@ -11,6 +13,7 @@ declare var $: any;
   providers: [ToolService],
 })
 export class ToolComponent implements OnInit, AfterViewChecked {
+  tags: MetaTag;
   public response: any;
   public responseMostRead: any;
   public form: FormGroup;
@@ -32,7 +35,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
-  constructor( public Service: ToolService, private formBuilder: FormBuilder,  ) {}
+  constructor( public Service: ToolService, private formBuilder: FormBuilder, private meta: Meta ) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -52,7 +55,11 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       (err) => console.log(),
       () => {
         if (this.response) {
-          console.log(this.response);
+          // console.log(this.response);
+          /* Metodo para agregar los metas del sitio */
+          if(this.response.metatag_normalized){
+            this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+          }
           for (let project of this.response) {
             var arrayDeCadenas = project.typology_images.split(',');
             project.typology_images = arrayDeCadenas[0];
@@ -74,7 +81,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
         (err) => console.log(),
         () => {
           if (this.responseMostRead) {
-            console.log(this.responseMostRead);
+            // console.log(this.responseMostRead);
             /* si responde correctamente */
           }
           if (this.responseMostRead.error) {

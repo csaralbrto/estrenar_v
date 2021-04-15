@@ -374,9 +374,9 @@
 </div>
 <hr class="white">
 <hr class="white">
-<div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq">
+<div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq" *ngIf="othersAreas && othersAreas.length > 0">
   <h2 class="deco text-center">Otras áreas disponibles</h2>
-  <div class="medium-4 columns end" *ngFor="let relacionados of projectsAvailableAreas; let i = index">
+  <div class="medium-4 columns end" *ngFor="let relacionados of othersAreas; let i = index">
       <div class="card" *ngIf="i < 3" data-equalizer-watch>
           <div class="container-photo">
               <a href="#" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
@@ -566,9 +566,10 @@
                                 </div>
                                 <hr>
                                 <p> Ingrese el valor del inmueble</p>
+                                <p>$ {{ response.field_typology_price | number }}</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota">
+                                    <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota" [value]="response.field_typology_price" readonly>
                                 </div>
                                 <hr>
                         <div class="text-left">
@@ -651,9 +652,10 @@
                         <div class="row">
                             <div class="medium-4 medium-offset-2 columns text-center">
                                 <p> Valor de la vivienda a financiar</p>
+                                <p>$ {{ response.field_typology_price | number }}</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito">
+                                    <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito" readonly>
                                 </div>
                                 <hr>
                                 <p> Plazo de financiamiento (meses)</p>

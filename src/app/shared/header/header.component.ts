@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   url_location = "";
   public response: any;
   public filterPrice: any;
+  public bannersImg: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     public Service: HeaderService,
@@ -60,7 +61,9 @@ export class HeaderComponent implements OnInit {
       () => {
         if (this.response) {
           if(this.response.price_ranges){
+            console.log('response header: ',this.response);
             this.filterPrice = this.response.price_ranges;
+            this.bannersImg = this.response.home_banner
             // for (let prices of this.response.price_ranges) {
             //   console.log(prices.values.value)
             // }
@@ -83,6 +86,15 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/proyectos']);
     this.show_white_header = true;
     this.show_header = false;
+  }
+  ngAfterViewChecked() {
+    // if ($('.slider-header').length) {
+    // $('.slider-header').slick({
+    //   // dots: true,
+    //   autoplay: true,
+    //   autoplaySpeed: 5000,
+    // });
+    // }
   }
   ngAfterContentChecked() {
     const user_login2 = sessionStorage.getItem('access_token');
@@ -112,6 +124,11 @@ export class HeaderComponent implements OnInit {
     }else{
       this.show_white_header = true;
     }
+    $('.slider-header').slick({
+      // dots: true,
+      autoplay: true,
+      autoplaySpeed: 5000,
+    });
   }
   public searchWord(){
     var searchWord = $('#searchWord').val();

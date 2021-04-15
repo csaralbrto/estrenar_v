@@ -5,6 +5,8 @@ import { BlogDetailService } from './blog-detail.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { data } from 'jquery';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 
 @Component({
   selector: 'app-blog-detail',
@@ -14,6 +16,7 @@ import { data } from 'jquery';
 })
 export class BlogDetailComponent implements OnInit {
   dataArticle = '?include=uid,field_article_type,field_media.field_media_image,field_tags';
+  tags: MetaTag;
   public responseAll: any;
   public response: any;
   public dataSubmit: any;
@@ -28,7 +31,8 @@ export class BlogDetailComponent implements OnInit {
     private router: Router,
     public Service: BlogDetailService, 
     private sanitizer: DomSanitizer,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder, 
+    private meta: Meta
   ) {}
 
   url_img_path = 'https://www.estrenarvivienda.com/';
@@ -48,6 +52,9 @@ export class BlogDetailComponent implements OnInit {
         if (this.responseAll) {
           this.response = this.responseAll.jsonapi;
           console.log('entre a mostrar ',this.responseAll);
+          if(this.responseAll.metatag_normalized){
+            this.tags = new MetaTag(this.responseAll.metatag_normalized, this.meta);
+          }
           this.entity_id = this.responseAll.entity.id;
           this.entity_type = this.responseAll.entity.type;
            // this.beforeCheck(this.response.individual);
