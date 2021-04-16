@@ -97,6 +97,7 @@ export class HeaderComponent implements OnInit {
     // }
   }
   ngAfterContentChecked() {
+    console.log('entre al after conten');
     const user_login2 = sessionStorage.getItem('access_token');
     const user_uid2 = sessionStorage.getItem('uid');
     // console.log('user_login-> ',user_login,'user_id-> ',user_uid)
@@ -117,14 +118,16 @@ export class HeaderComponent implements OnInit {
     if(this.url_location === '/home' || this.url_location === '/'){
       // console.log(this.url_header);
       this.show_header = true;
+      this.show_white_header = false;
     }else if(this.url_location === '/wizard'){
       this.not_show_header = true;
       this.show_white_header = false;
       this.show_header = false;
     }else{
       this.show_white_header = true;
+      this.show_header = false;
     }
-    $('.slider-header').slick({
+    $('.slider-header').not('.slick-initialized').slick({
       // dots: true,
       autoplay: true,
       autoplaySpeed: 5000,
@@ -134,8 +137,20 @@ export class HeaderComponent implements OnInit {
     var searchWord = $('#searchWord').val();
     sessionStorage.removeItem('word_search');
     sessionStorage.setItem('word_search',searchWord)
-    this.router.navigate(['/proyectos']);
     this.show_white_header = true;
     this.show_header = false;
+    // this.router.navigate(['/proyectos']);
+    $("#goProject").click();
+  }
+  public searchInput(){
+    $('#searchProjectsWord').toggleClass('hide');
+  }
+  public findByWord(){
+    var searchWord = $('#searchProjectsWord').val();
+    sessionStorage.removeItem('word_search');
+    sessionStorage.setItem('word_search',searchWord)
+    this.show_white_header = true;
+    this.show_header = false;
+    this.router.navigate(['/proyectos']);
   }
 }

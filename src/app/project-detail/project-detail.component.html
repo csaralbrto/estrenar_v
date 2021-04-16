@@ -774,20 +774,19 @@
   <hr class="white">
   <h2 class="deco text-center">Propiedades similares</h2>
   <!--slide-->
-  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-      <div class="orbit-wrapper">
-
-          <ul class="orbit-container">
-              <li class="is-active orbit-slide">
+  <div class="orbit" role="region" aria-label="Favorite Space Pictures" >
+      <div class="">
+          <ul class="slider-properties-project">
+              <li class="is-active ">
                   <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-                      <div class="medium-4 columns end" *ngFor="let propiedades of projectsAvailableAreas; let i = index">
+                      <div class="medium-4 columns end" *ngFor="let propiedades of propertiesSimilars; let i = index">
                           <!-- Card Proyecto individual-->
                           <div class="card" *ngIf="i > 2 && i < 6" data-equalizer-watch>
                               <div class="container-photo">
                                   <img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto">
                                   <div class="container-tools">
                                     <div class="tags">
-                                      <div *ngIf="propiedades.project_category.length > 0">
+                                      <div *ngIf="propiedades.project_category.length > 1">
                                           <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
                                               <a>{{ tags }}</a>
                                           </div>
@@ -814,7 +813,7 @@
                               
                               <div class="card-section">
                                   <div class="button-group align-spaced ">
-                                      <a class="button" routerLink="/proyecto/{{propiedades.uuid}}">Ver
+                                      <a class="button" routerLink="/proyecto/{{propiedades.url}}">Ver
                                           Proyecto</a>
                                       <a class="button">Contacto</a>
                                   </div>
@@ -824,7 +823,6 @@
                       </div>
                   </div>
               </li>
-
           </ul>
       </div>
       <div class="container-controls">

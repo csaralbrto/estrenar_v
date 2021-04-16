@@ -22,6 +22,29 @@ export const environment = {
   endpointTestingApiPost: 'https://lab.estrenarvivienda.com/es/',
   endpointTestingApiUrl: 'https://lab.estrenarvivienda.com',
   endpointTestingApiElastic: 'http://test-blaa.demodayscript.com/api/elasticsearch?',
+  arrayPrices: [
+    50000000,
+    70000000,
+    90000000,
+    110000000,
+    130000000,
+    150000000,
+    170000000,
+    190000000,
+    210000000,
+    230000000,
+    250000000,
+    270000000,
+    290000000,
+    310000000,
+    330000000,
+    350000000,
+    370000000,
+    390000000,
+    410000000,
+    430000000,
+    450000000,
+  ]
 };
 
 /*

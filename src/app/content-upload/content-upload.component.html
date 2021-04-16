@@ -70,14 +70,19 @@
                     <div class="row">
                         <div class="medium-4 columns end">
                             <label>Ciudad
-                                <select id="city" name="city" formControlName="city" (change)="change('city',form.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                                <select id="city" name="city" formControlName="city" (change)="change('city',form.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity; else cityTemplate">
                                     <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
                                 </select>
+                                <ng-template #cityTemplate>
+                                    <select disabled="true">
+                                        <option value="" selected>Seleccione</option>
+                                    </select>
+                                </ng-template>
                             </label>
                         </div>
                         <div class="medium-4 columns end">
                             <label>Zona
-                                <select id="zone" name="zone" formControlName="zone" (change)="change('zone',form.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                                <select id="zone" name="zone" formControlName="zone" (change)="change('zone',form.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone; else zoneTemplate">
                                     <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                                 </select>
                                 <ng-template #zoneTemplate>
@@ -89,7 +94,7 @@
                         </div>
                         <div class="medium-4 columns end">
                             <label>Sector
-                                <select id="sector" name="sector" formControlName="sector" (change)="change('sector',form.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                                <select id="sector" name="sector" formControlName="sector" (change)="change('sector',form.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector; else sectorTemplate">
                                     <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                                 </select>
                                 <ng-template #sectorTemplate>
@@ -150,18 +155,23 @@
                             <div class="medium-12 columns">
                                 <input type="hidden" id="lat_project" value="{{latitude}}">
                                 <input type="hidden" id="long_project" value="{{longitude}}">
+                                <div>
+                                    <label>Latitud
+                                        <input id="latitude_project" name="latitude_project" formControlName="latitude_project" type="text" placeholder="" value="{{address}}">
+                                    </label>
+                                    <label>Longitud
+                                        <input id="longitude_project" name="longitude_project" formControlName="longitude_project" type="text" placeholder="" value="{{address}}">
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
-
                     <h2>Estrato</h2>
                     <div class="row">
                         <div class="medium-6 columns end">
-                                <select>
-                                    <option value=" ">Seleccione</option>
-                                </select>
+                            <select id="stratum" name="stratum" formControlName="stratum" *ngIf="stratumProjects && stratumProjects.length > 0">
+                                <option *ngFor="let option of stratumProjects; let i = index" [value]="option.id">{{option.name}}</option>
+                            </select>
                         </div>
                     </div>
 
@@ -215,9 +225,11 @@
                 <h1>Carga de contenido</h1>
                 <hr class="white">
                 <h2>Logo del proyecto</h2>
-                <p>La imagen debe estar en formato png, dimensiones maximas.....</p>
                 <!-- <input type="file" id="exampleFileUpload" class="show-for-sr"> -->
                 <label for="logo_project" class="button">Cargar archivo</label>
+                <p>Los archivos deben ser menores que 2 MB.<br>
+                Tipos de archivo permitidos: png jpg jpeg.<br>
+                Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
                 <input 
                     style="visibility:hidden;"
                     formControlName="logo_project" formControlName="logo_project"
@@ -231,9 +243,11 @@
                 <img [src]="imageSrc" *ngIf="imageSrc" style="height: auto; width:200px">
                 <hr class="white">
                 <h2>Imágenes</h2>
-                <p>La imagen debe estar en formato png, dimensiones maximas.....</p>
                 <!-- <div class="row"> -->
                     <label for="images_project" class="button">Añadir imágenes</label>
+                    <p>Los archivos deben ser menores que 2 MB.<br>
+                    Tipos de archivo permitidos: png jpg jpeg.<br>
+                    Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
                     <input 
                         style="visibility:hidden;"
                         formControlName="images_project" formControlName="images_project"

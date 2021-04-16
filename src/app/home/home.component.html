@@ -805,9 +805,9 @@
                                         <img [src]="url_img_path + blog.article_image" alt="">
                                     </div>
                                     <div class="social">
-                                        <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                                        <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>
                                         </div>
-                                        <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                                        <div class="like"><img src="/assets/images/like.png" alt=""><span>{{blog.likes}}</span></div>
                                     </div>
 
                                     <div class="section"><a href="{{blog.url}}">{{ blog.article_type }}</a></div>

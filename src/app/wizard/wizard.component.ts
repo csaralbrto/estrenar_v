@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { WizardService } from './wizard.service';
+declare var $: any;
 
 @Component({
   selector: 'app-wizard',
@@ -248,6 +249,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       waitTime: new FormControl(''),
       contactType: new FormControl(''),
       name: new FormControl(''),
+      last_name: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
       typeSearch: new FormControl(''),

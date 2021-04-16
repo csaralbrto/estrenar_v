@@ -130,6 +130,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
         }
       }
     );
+    $('html,body').scrollTop(0);
   }
 
   ngAfterViewChecked() {
@@ -137,7 +138,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       $('app-blog').foundation();
       // $('html,body').scrollTop(0);
       if ($('.slider-blog').length) {
-        $('.slider-blog').slick({
+        $('.slider-blog').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,

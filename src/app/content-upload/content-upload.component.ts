@@ -157,7 +157,6 @@ export class ContentUploadComponent implements OnInit {
       }
     );
   }
-
   /* Obtener la locacion en coordenadas actual */
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
@@ -400,8 +399,8 @@ export class ContentUploadComponent implements OnInit {
       sector: new FormControl(''),
       address_project: new FormControl(''),
       address_room_sales: new FormControl(''),
-      latitude: new FormControl(''),
-      longitude: new FormControl(''),
+      latitude_project: new FormControl(''),
+      longitude_project: new FormControl(''),
       stratum: new FormControl(''),
       bank: new FormControl(''),
       logo_project: new FormControl(''),

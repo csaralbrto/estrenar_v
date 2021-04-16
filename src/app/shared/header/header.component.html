@@ -8,7 +8,7 @@
       <div class="medium-10 columns hide-for-small-only">
         <ul class="menu">
           <li>
-          <a href="/proyectos" alt="" title="">Proyectos</a>
+          <a href="/proyectos" id="goProject" alt="" title="">Proyectos</a>
           </li>
           <li>
           <a href="/vis">Vivienda VIS</a>
@@ -25,7 +25,7 @@
           <li>
           <a href="/blog">Blog</a>
           </li>
-          <li><a><img src="/assets/images/search.png"></a></li>
+          <li><input (change)=(findByWord()) id="searchProjectsWord" class="hide" type="text"><a (click)=(searchInput())><img src="/assets/images/search.png"></a></li>
           <li><a href="{{path_user}}"><img src="/assets/images/user.png"></a></li>
           <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
         </ul>
@@ -75,7 +75,6 @@
     </div>
 </div>
 
-
 <div class="container-header-white " *ngIf='show_white_header == true && not_show_header == false'>
   <div class="full-w header">
       <div class="small-5 medium-2 columns">
@@ -121,3 +120,4 @@
       </div>
   </div>
 </div>
+<!-- </ng-template> -->

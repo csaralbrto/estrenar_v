@@ -91,32 +91,32 @@ export class HomeComponent implements OnInit {
     //   }
     // );
   }
-  ngAfterViewChecked() {
+  ngAfterContentChecked() {
     if (this.results) {
       $('app-home').foundation();
       if ($('.slider-home').length) {
-        $('.slider-home').slick({
+        $('.slider-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,
         });
       }
       if ($('.slider-projects-home').length) {
-        $('.slider-projects-home').slick({
+        $('.slider-projects-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,
         });
       }
       if ($('.slider-builders-home').length) {
-        $('.slider-builders-home').slick({
+        $('.slider-builders-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,
         });
       }
       if ($('.slider-blog-home').length) {
-        $('.slider-blog-home').slick({
+        $('.slider-blog-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,

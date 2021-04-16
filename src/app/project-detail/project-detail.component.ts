@@ -17,6 +17,7 @@ export class ProjectDetailComponent implements OnInit {
   tags: MetaTag;
   public response: any;
   public newResponse: any;
+  public responseProperties: any;
   public responseSubmit: any;
   public responseAvailableAreas: any;
   public projectsAvailableAreas: any;
@@ -62,10 +63,12 @@ export class ProjectDetailComponent implements OnInit {
   public caracteristicas;
   public caracteristicasProject;
   public othersAreas;
+  public propertiesSimilars;
   public confirm: any;
   public typologyUuid: any;
   public idProject: any;
   public priceProject: any;
+  public cityProject: any;
 
   public maps_url;
 
@@ -103,6 +106,7 @@ export class ProjectDetailComponent implements OnInit {
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
+              this.cityProject = this.response.field_typology_project.field_project_location[0].field_location_city.drupal_internal__tid;
               this.priceProject = this.response.field_typology_price
               this.idProject = this.response.drupal_internal__nid;
               const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
@@ -167,6 +171,24 @@ export class ProjectDetailComponent implements OnInit {
                 }
               })
               .catch(error => console.error(error))
+              let url_properties_similars = environment.endpointTestingApi + 'typologies/project_city/' + this.cityProject + '?page=0&items_per_page=8';
+              fetch(url_properties_similars, {
+              })
+              .then(responseProperties => responseProperties.json())
+              .then(data => {
+                this.responseProperties = data.search_results;
+                if (this.responseProperties) {
+                  console.log(this.responseProperties);
+                  this.propertiesSimilars = this.responseProperties
+                  for (let project of this.propertiesSimilars) {
+                    var arrayDeCadenas = project.typology_images.split(',');
+                    project.typology_images = arrayDeCadenas[0];
+                    var arrayDeCadenas2 = project.project_category.split(',');
+                    project.project_category = arrayDeCadenas2;
+                  }
+                }
+              })
+              .catch(error => console.error(error))
               this.results = true;
             }
           })
@@ -201,12 +223,20 @@ export class ProjectDetailComponent implements OnInit {
     if (this.results) {
       $('app-project-detail').foundation();
       if ($('.slider-project-img').length) {
-        $('.slider-project-img').slick({
+        $('.slider-project-img').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,
         });
       }
+      if ($('.slider-properties-project').length) {
+        $('.slider-properties-project').not('.slick-initialized').slick({
+          // dots: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+        });
+      }
+      
     }
   }
   addCompare(value) {

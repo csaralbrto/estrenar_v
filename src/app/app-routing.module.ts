@@ -96,6 +96,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'es/noticias-del-sector/:path/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'es/noticias-del-sector/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'user',
     component: UserComponent,
     pathMatch: 'full',

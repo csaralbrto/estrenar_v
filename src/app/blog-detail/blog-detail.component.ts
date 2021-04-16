@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { data } from 'jquery';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+declare var $: any;
 
 @Component({
   selector: 'app-blog-detail',
@@ -39,10 +40,11 @@ export class BlogDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    $('html,body').scrollTop(0);
 
     // const title = this.activatedRoute.snapshot.params.path ;
     /* se uso el window location ya que en los parametros no se carga completa la urls */
-    let url_path1  = window.location.pathname.split("/es/articulos/");
+    let url_path1  = window.location.pathname.split("/es/");
     var url_path = url_path1[1]
     console.log(url_path);
     this.Service.findProject(url_path).subscribe(
@@ -89,13 +91,14 @@ export class BlogDetailComponent implements OnInit {
         // }
       }
     );
+    $('html,body').scrollTop(0);
   }
 
   
   ngAfterViewChecked() {
     if (this.results) {
       $('app-blog-detail').foundation();
-      $('html,body').scrollTop(0);
+      // $('html,body').scrollTop(0);
     }
   }
   createForm() {
