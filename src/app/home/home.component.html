@@ -9,7 +9,7 @@
         <!-- </div> -->
     </div>
     <div class="row columns">
-        <h2 class="text-center deco">¿Qué estas buscando?</h2>
+        <h2 class="text-center deco">¿Qué estás buscando?</h2>
         <div class="medium-3 columns end">
             <div class="row">
                 <div class="small-3 medium-6 columns text-center">
@@ -40,7 +40,12 @@
                             <div class="row">
                                 <div class="medium-8 columns destacado">
                                     <figure class="">
-                                        <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                        <div *ngIf="response.home_featured_collections[0]; else imgOther0">
+                                            <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
+                                        </div>
+                                        <ng-template #imgOther0>
+                                            <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                        </ng-template>
                                         <figcaption class="">{{ response.home_featured_collections[0] ?
                                             response.home_featured_collections[0].name : "" }}</figcaption>
                                     </figure>
@@ -49,7 +54,12 @@
                                     <div class="row">
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[1]; else imgOther1">
+                                                    <img class="" [src]="response.home_featured_collections[1].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther1>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[1] ?
                                                     response.home_featured_collections[1].name : "" }}
@@ -58,7 +68,12 @@
                                         </div>
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[2]; else imgOther2">
+                                                    <img class="" [src]="response.home_featured_collections[2].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther2>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[2] ?
                                                     response.home_featured_collections[2].name : "" }}
@@ -76,7 +91,12 @@
                                     <div class="row">
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[3]; else imgOther3">
+                                                    <img class="" [src]="response.home_featured_collections[3].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther3>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[3] ?
                                                     response.home_featured_collections[3].name : "" }}
@@ -85,7 +105,12 @@
                                         </div>
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[4]; else imgOther4">
+                                                    <img class="" [src]="response.home_featured_collections[4].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther4>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[4] ?
                                                     response.home_featured_collections[4].name : "" }}
@@ -99,7 +124,12 @@
                                     <div class="row">
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[5]; else imgOther5">
+                                                    <img class="" [src]="response.home_featured_collections[5].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther5>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[5] ?
                                                     response.home_featured_collections[5].name : "" }}
@@ -108,7 +138,12 @@
                                         </div>
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[6]; else imgOther6">
+                                                    <img class="" [src]="response.home_featured_collections[6].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther6>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[6] ?
                                                     response.home_featured_collections[6].name : "" }}
@@ -122,7 +157,12 @@
                                     <div class="row">
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[7]; else imgOther7">
+                                                    <img class="" [src]="response.home_featured_collections[7].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther7>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[7] ?
                                                     response.home_featured_collections[7].name : "" }}
@@ -131,7 +171,12 @@
                                         </div>
                                         <div class="medium-12 columns">
                                             <figure class="">
-                                                <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                <div *ngIf="response.home_featured_collections[8]; else imgOther8">
+                                                    <img class="" [src]="response.home_featured_collections[8].image.url" alt="">
+                                                </div>
+                                                <ng-template #imgOther8>
+                                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                                                </ng-template>
                                                 <figcaption class="">{{
                                                     response.home_featured_collections[8] ?
                                                     response.home_featured_collections[8].name : "" }}
@@ -210,7 +255,7 @@
             <div class="text-left terminos">
                 <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label"
                     class="text-left">Declaro
-                    haber leido los <a>Términos de privacidad</a> y estar conforme con los
+                    haber leído los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                     mismos.</label>
                 <span style="color: red" id="spanTerm" class="hide">
                     Debe aceptar los términos
@@ -270,7 +315,7 @@
                                 </div>
                                 <div class="precio text-center">
                                     <div>Desde:</div>
-                                    <span>{{ response.home_featured_typologies[0].typology_price | number }}</span>
+                                    <span>$ {{ response.home_featured_typologies[0].typology_price | number }}</span>
                                 </div>
                                
                             </div>
@@ -281,7 +326,7 @@
                                         <div class="item">
                                             <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
                                             </div>
-                                            <div class="data">{{ response.home_featured_typologies[0].area_built }} m
+                                            <div class="data">{{ response.home_featured_typologies[0].area_built }} m2
                                             </div>
                                         </div>
                                     </div>
@@ -373,7 +418,7 @@
                                         </div>
                                         <div class="precio text-center">
                                             <div>Desde:</div>
-                                            <span>{{ response.home_featured_typologies[1].typology_price | number
+                                            <span>$ {{ response.home_featured_typologies[1].typology_price | number
                                                 }}</span>
                                         </div>
 
@@ -386,7 +431,7 @@
                                                         <div class="data-icon"><img src="/assets/images/icon-medida.png"
                                                                 alt=""></div>
                                                         <div class="data">{{
-                                                            response.home_featured_typologies[1].area_built }} m </div>
+                                                            response.home_featured_typologies[1].area_built }} m2 </div>
                                                     </div>
                                                 </div>
                                                 <div class="small-6 columns">
@@ -464,7 +509,7 @@
                                         </div>
                                         <div class="precio text-center">
                                             <div>Desde:</div>
-                                            <span>{{ response.home_featured_typologies[2].typology_price | number
+                                            <span>$ {{ response.home_featured_typologies[2].typology_price | number
                                                 }}</span>
                                         </div>
                                         <hr>
@@ -557,7 +602,7 @@
                                         </div>
                                         <div class="precio text-center">
                                             <div>Desde:</div>
-                                            <span>{{ response.home_featured_typologies[3].typology_price | number
+                                            <span>$ {{ response.home_featured_typologies[3].typology_price | number
                                                 }}</span>
                                         </div>
                                         <hr>
@@ -646,7 +691,7 @@
                                         </div>
                                         <div class="precio text-center">
                                             <div>Desde:</div>
-                                            <span>{{ response.home_featured_typologies[3].typology_price | number
+                                            <span>$ {{ response.home_featured_typologies[3].typology_price | number
                                                 }}</span>
                                         </div>
                                         <hr>
@@ -802,7 +847,7 @@
                                 *ngFor="let blog of response.home_featured_articles; let i = index">
                                 <div class="blog-list">
                                     <div class="img">
-                                        <img [src]="url_img_path + blog.article_image" alt="">
+                                        <a href="{{blog.url}}"><img [src]="url_img_path + blog.article_image" alt=""></a>
                                     </div>
                                     <div class="social">
                                         <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>

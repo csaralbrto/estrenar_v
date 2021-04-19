@@ -137,10 +137,9 @@ export class HeaderComponent implements OnInit {
     var searchWord = $('#searchWord').val();
     sessionStorage.removeItem('word_search');
     sessionStorage.setItem('word_search',searchWord)
+    this.router.navigate(['/proyectos']);
     this.show_white_header = true;
     this.show_header = false;
-    // this.router.navigate(['/proyectos']);
-    $("#goProject").click();
   }
   public searchInput(){
     $('#searchProjectsWord').toggleClass('hide');
@@ -149,8 +148,8 @@ export class HeaderComponent implements OnInit {
     var searchWord = $('#searchProjectsWord').val();
     sessionStorage.removeItem('word_search');
     sessionStorage.setItem('word_search',searchWord)
+    this.router.navigate(['/proyectos']);
     this.show_white_header = true;
     this.show_header = false;
-    this.router.navigate(['/proyectos']);
   }
 }

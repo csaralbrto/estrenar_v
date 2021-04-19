@@ -33,21 +33,22 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   arrayOptions: string[] = [];
   arrayPresupuesto: any;
   arrayOptions2: string[] = [];
-  minValue: number = 140;
-  maxValue: number = 360;
+  minValue: number = 750000000;
+  maxValue: number = 1900000000;
   minValueFlor: number = 0;
-  maxValueCeil: number = 500;
+  maxValueCeil: number = 3000000000;
   options: Options = {
     floor: this.minValueFlor,
     ceil: this.maxValueCeil,
     translate: (value: number, label: LabelType): string => {
+      let number = new Intl.NumberFormat().format(value)
       switch (label) {
         case LabelType.Low:
-          return '<b>Desde:</b> $' + value;
+          return '<b>Desde:</b> $' + number;
         case LabelType.High:
-          return '<b>Hasta:</b> $' + value;
+          return '<b>Hasta:</b> $' + number;
         default:
-          return '$' + value;
+          return '$' + number;
       }
     }
   };

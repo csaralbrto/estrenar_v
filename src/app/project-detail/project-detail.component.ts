@@ -69,6 +69,8 @@ export class ProjectDetailComponent implements OnInit {
   public idProject: any;
   public priceProject: any;
   public cityProject: any;
+  public urlTour: any;
+  public safeURLVideo: any;
 
   public maps_url;
 
@@ -106,6 +108,10 @@ export class ProjectDetailComponent implements OnInit {
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
+              this.urlTour = this.response.field_virtual_tour.uri;
+              this.urlTour = this.urlTour.replace('/watch?v=', "/embed/");
+              this.safeURLVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlTour);
+              console.log(this.urlTour);
               this.cityProject = this.response.field_typology_project.field_project_location[0].field_location_city.drupal_internal__tid;
               this.priceProject = this.response.field_typology_price
               this.idProject = this.response.drupal_internal__nid;

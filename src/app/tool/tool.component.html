@@ -1,31 +1,36 @@
 <div class="row columns">
     <h1>Herramientas</h1>
+    <p>Te ofrecemos calculadoras para su búsqueda de vivienda nueva</p><br>
 </div>
 <!--simuladores-->
 <div class="row columns">
     <div class="simuladores">
         <ul class="tabs hide-for-small-only" data-tabs id="simuladores">
-            <li class="tabs-title tool is-active"><a href="#panel1" aria-selected="true">Simulador capacidad
-                endeudamiento</a>
+            <li class="tabs-title tool is-active">
+                <a data-tabs-target="panel2" href="#panel2">Simulador subsidio de vivienda</a>
             </li>
-            <li class="tabs-title tool"><a data-tabs-target="panel2" href="#panel2">Simulador subsidio de vivienda</a>
+            <li class="tabs-title tool">
+                <a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
             </li>
-            <li class="tabs-title tool"><a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
+            <li class="tabs-title tool">
+                <a href="#panel1" aria-selected="true">Simulador capacidad endeudamiento</a>
             </li>
-            <li class="tabs-title tool"><a data-tabs-target="panel4" href="#panel4">Simulador credito de vivienda</a>
+            <li class="tabs-title tool">
+                <a data-tabs-target="panel4" href="#panel4">Simulador credito de vivienda</a>
             </li>
         </ul>
         <div class="tabs-content" data-tabs-content="simuladores">
             <form [formGroup]="form">
-                <div class="tabs-panel is-active cuota" id="panel1">
+                <div class="tabs-panel cuota" id="panel1">
                     <div class="container-form">
                         <div class="row">
                             <div class="medium-4 medium-offset-4 columns text-center">
                                 <p> Tus ingresos mensuales</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
-                                    <input class="input-group-field" (change)="change(form.value,'capacidad_endeudamiento')" formControlName="ingresos_mensuales_endudamiento" name="ingresos_mensuales_endudamiento" type="number">
+                                    <input class="input-group-field" (change)="change(form.value,'capacidad_endeudamiento')" formControlName="ingresos_mensuales_endudamiento" name="ingresos_mensuales_endudamiento" type="number"><br>
                                 </div>
+                                <p style="font-size: 11px;">Ingresa el monto sin puntos ni comas</p>
                             </div>
                             <div class="medium-4 columns text-center campo-destacado">
                                 <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
@@ -40,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tabs-panel endeudamiento" id="panel2">
+                <div class="tabs-panel endeudamiento is-active" id="panel2">
                     <div class="container-form">
                         <div class="row">
                             <div class="medium-4 columns text-center"> 
@@ -63,7 +68,7 @@
                                 </div>
                                 <hr>
                                 <p class="small">
-                                    * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
+                                    * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
                                 </p>
                         
                             </div>
@@ -215,7 +220,7 @@
                         </div>
                         </fieldset>
                         <p class="small">
-                            * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
+                            * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
                         </p>
                         </div>
                             </div>

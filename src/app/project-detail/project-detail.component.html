@@ -150,10 +150,13 @@
         </div>
         <div class="tabs-panel" id="tour" *ngIf="response.field_virtual_tour !== null">
             <div class="row">
-                <video width="520" height="250" controls>
-                    <source src="response.field_virtual_tour.data.src" type="video/mp4">
+                <!-- <video width="520" height="250" controls>
+                    <source [src]="response.field_virtual_tour.uri" type="video/mp4">
                     Tu navegador no soporta los vídeos de HTML5
-                </video>
+                </video> -->
+                <iframe width="420" height="315"
+                    [src]="urlTour">
+                </iframe>
             </div>
         </div>
     </div>
@@ -333,7 +336,7 @@
                         </span>
                         <div class="text-left terminos">
                             <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
-                                haber leido los <a>Términos de privacidad</a> y estar conforme con los
+                                haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                                 mismos.</label>
                                 <span style="color: red" id="spanTerm" class="hide">
                                 Debe aceptar los términos

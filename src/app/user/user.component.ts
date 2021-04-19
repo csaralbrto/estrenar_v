@@ -389,21 +389,24 @@ export class UserComponent implements OnInit {
     }
   logoutUser() {
     /* Cerramos sesión */
-    var url = environment.endpointTestingApiPost+ 'user/logout?_format=json';
-    var token = sessionStorage.getItem('access_token');
-    var data = "";
-    fetch(url, {
-      headers: new Headers({
-        'Authorization': 'Bearer '+token
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      // console.log(data)
-      sessionStorage.clear();
-       this.router.navigate(['/']);
-    })
-    .catch(error => console.error(error))
+
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+    // var url = environment.endpointTestingApiPost+ 'user/logout?_format=json';
+    // var token = sessionStorage.getItem('access_token');
+    // var data = "";
+    // fetch(url, {
+    //   headers: new Headers({
+    //     'Authorization': 'Bearer '+token
+    //   })
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   // console.log(data)
+    //   sessionStorage.clear();
+    //    this.router.navigate(['/']);
+    // })
+    // .catch(error => console.error(error))
   }
   createForm() {
     this.form =  this.formBuilder.group({

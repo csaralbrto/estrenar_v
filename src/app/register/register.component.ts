@@ -170,7 +170,7 @@ export class RegisterComponent implements OnInit {
          sessionStorage.setItem('access_token',result.access_token);
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
         //  localStorage.clear();
-         this.router.navigate(['/']);
+         this.router.navigate(['/user']);
 
        }
       })
