@@ -5,7 +5,14 @@
   </div>
 </div>
 <div class="row columns">
-  <h1>Proyectos</h1>
+  <div *ngIf="titleLabel; else titleDefaultTemplate">
+    <h1>{{titleLabel}}</h1>
+  </div>
+  <ng-template #titleDefaultTemplate>
+      <div>
+        <h1>Proyectos {{wordLabel}}</h1>
+      </div>
+  </ng-template>
   <!--filtros-->
   <form [formGroup]="form_filters">
     <div class="filtros">

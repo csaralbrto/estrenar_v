@@ -24,6 +24,7 @@ export class ProjectDetailComponent implements OnInit {
   public form: FormGroup;
   public form2: FormGroup;
   public form3: FormGroup;
+  public form4: FormGroup;
   public title: any;
   public results = false;
   public salario_minimo = 877803;
@@ -80,6 +81,7 @@ export class ProjectDetailComponent implements OnInit {
     this.createForm();
     this.createFormDates();
     this.createFormSimuladores();
+    this.createFormModal();
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -108,10 +110,12 @@ export class ProjectDetailComponent implements OnInit {
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
-              this.urlTour = this.response.field_virtual_tour.uri;
-              this.urlTour = this.urlTour.replace('/watch?v=', "/embed/");
-              this.safeURLVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlTour);
-              console.log(this.urlTour);
+              if(this.response.field_virtual_tour !== null){
+                this.urlTour = this.response.field_virtual_tour.uri;
+                this.urlTour = this.urlTour.replace('/watch?v=', "/embed/");
+                this.safeURLVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlTour);
+                console.log(this.urlTour);
+              }
               this.cityProject = this.response.field_typology_project.field_project_location[0].field_location_city.drupal_internal__tid;
               this.priceProject = this.response.field_typology_price
               this.idProject = this.response.drupal_internal__nid;
@@ -119,6 +123,7 @@ export class ProjectDetailComponent implements OnInit {
 
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
               this.galeria = this.response.field_typology_image;
+              console.log('esta es la galeria: ',this.galeria);
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
               for (let caracteristica_tipologia of this.caracteristicas) {
@@ -306,6 +311,17 @@ export class ProjectDetailComponent implements OnInit {
       phone: new FormControl(''),
     });
   }
+  createFormModal() {
+    this.form4 =  this.formBuilder.group({
+      name: new FormControl(''),
+      lastname: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      contact: new FormControl('Deseas ser contactado'),
+      typeSearch: new FormControl(''),
+      term: new FormControl(''),
+    });
+  }
   onSubmit(values) {
     var error = false;
     if(values.name == null || values.name == ""){
@@ -450,6 +466,127 @@ export class ProjectDetailComponent implements OnInit {
         }
       }
     );
+  }
+  onSubmitModal(values) {
+    console.log(values);
+    var error = false;
+    if(values.name == null || values.name == ""){
+      $('#spanNameModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanNameModal').addClass('hide');
+      error = false;
+    }
+    if(values.lastname == null || values.lastname == ""){
+      $('#spannLastNameModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spannLastNameModal').addClass('hide');
+      error = false;
+    }
+    if(values.phone == null || values.phone == ""){
+      $('#spanPhoneModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanPhoneModal').addClass('hide');
+      error = false;
+    }
+    if(values.email == null || values.email == ""){
+      $('#spanEmailModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanEmailModal').addClass('hide');
+      error = false;
+    }
+    if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
+      $('#spanContactModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanContactModal').addClass('hide');
+      error = false;
+    }
+    if(values.term == null || values.term == ""){
+      $('#spanTermModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanTermModal').addClass('hide');
+      error = false;
+    }
+    if(!error){
+      /* Se recibe los valores del formulario */
+      var f = new Date();
+      var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
+      values.type_submit = 'contact_form';
+      var url = window.location.pathname;
+      let payload = {
+          "identity": {
+            "mail": values.email,
+            "phone": values.phone
+        },
+        "personal": {
+            "name": values.name,
+            "lastName": values.lastname
+        },
+        "campaign": {
+            "options": [
+                {
+                    "UTM source": sessionStorage['UTMSource']?sessionStorage.getItem("UTMSource"):""
+                },
+                {
+                    "UTM medium": sessionStorage['UTMMedium']?sessionStorage.getItem("UTMMedium"):""
+                },
+                {
+                    "UTM content": sessionStorage['UTMContent']?sessionStorage.getItem("UTMContent"):""
+                },
+                {
+                    "UTM campaign": sessionStorage['UTMCampaing']?sessionStorage.getItem("UTMCampaing"):""
+                }
+            ]
+        },
+        "additional": {
+            "comment": values.comment,
+            "emailCopy": values.emailCopy
+        },
+        "contextual": {
+            "options": [
+                {
+                    "Ruta": url
+                },
+                {
+                    "Dispositivo": "Escritorio"
+                }
+            ]
+        },
+        "profiling": {
+            "survey": 
+            [
+                {
+                    "Deseas ser contactado vía": values.contact
+                }
+            ],
+            "location": values.city
+        },
+        "main": {
+            "privacyNotice": 5323,
+            "category": "Contáctenos"
+        }
+    }
+    // console.log(payload);
+      this.Service.getFormService( payload )
+      .subscribe(
+        data =>(this.responseSubmit = data),
+        err => console.log(),
+        () => {
+          if(this.responseSubmit.id){
+            $('#exampleModal1').foundation('open');
+            this.form.reset();
+          }
+          if(!this.responseSubmit.id){
+            // $('#modalAlertError').foundation('open');
+          }
+        }
+      );
+    }
   }
   change(value,type) {
     // console.log(type);

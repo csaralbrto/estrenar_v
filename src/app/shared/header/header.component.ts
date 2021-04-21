@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
       () => {
         if (this.response) {
           if(this.response.price_ranges){
-            console.log('response header: ',this.response);
+            // console.log('response header: ',this.response);
             this.filterPrice = this.response.price_ranges;
             this.bannersImg = this.response.home_banner
             // for (let prices of this.response.price_ranges) {
@@ -97,7 +97,6 @@ export class HeaderComponent implements OnInit {
     // }
   }
   ngAfterContentChecked() {
-    console.log('entre al after conten');
     const user_login2 = sessionStorage.getItem('access_token');
     const user_uid2 = sessionStorage.getItem('uid');
     // console.log('user_login-> ',user_login,'user_id-> ',user_uid)
@@ -136,7 +135,9 @@ export class HeaderComponent implements OnInit {
   public searchWord(){
     var searchWord = $('#searchWord').val();
     sessionStorage.removeItem('word_search');
+    sessionStorage.removeItem('wordTitle');
     sessionStorage.setItem('word_search',searchWord)
+    sessionStorage.setItem('wordTitle',searchWord)
     this.router.navigate(['/proyectos']);
     this.show_white_header = true;
     this.show_header = false;

@@ -5,6 +5,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+declare var $: any;
 
 @Component({
   selector: 'app-projects',
@@ -23,6 +24,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public filterCity: any;
   public filterZone: any;
   public filterSector: any;
+  public titleLabel: any;
+  public wordLabel: any;
   public form_filters: FormGroup;
   public form: FormGroup;
   public resutls: boolean = false;
@@ -52,6 +55,18 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     this.createForm();
     this.createForm2();
     // const title = this.activatedRoute.snapshot.params.path ;
+    let title_label  = sessionStorage['projectTitle']?sessionStorage.getItem("projectTitle"):null;
+    // console.log(sessionStorage.getItem("projectTitle"));
+    if(title_label && title_label !== null){
+      this.titleLabel = title_label;
+      sessionStorage.removeItem('projectTitle');
+    }
+    let word_label  = sessionStorage['wordTitle']?sessionStorage.getItem("wordTitle"):null;
+    // console.log(sessionStorage.getItem("projectTitle"));
+    if(word_label && word_label !== null){
+      this.wordLabel = word_label;
+      sessionStorage.removeItem('wordTitle');
+    }
     /* se valida si esxiste o no el item en el session storage */
     let get_filter_price  = sessionStorage['price_search']?sessionStorage.getItem("price_search"):null;
     if(get_filter_price && get_filter_price !== null){
@@ -99,7 +114,6 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       );
     }
   }
-
   decreaseValue(value) {
     if(value == 1){
       var val = $('#bedroom').val();
@@ -138,7 +152,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       }
     },this);
     console.log(this.stringQuery);
-    // this.beforeCheck(this.response.individual);
+    // this.beforeCheck(this.response.individual);}
     var url = this.stringQuery;
     var data = "";
     fetch(url, {
@@ -311,7 +325,6 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     })
     .catch(error => console.error(error))
   }
-
   getDataSearch(){
     this.Service.getDataFilter(this.stringQuery)
       .subscribe(
@@ -320,7 +333,6 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         () => {}
       );
   }
-
   createForm() {
     this.form_filters =  this.formBuilder.group({
       type: new FormControl('Seleccione'),

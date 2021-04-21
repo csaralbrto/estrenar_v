@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   public form: FormGroup;
   public stringText: any;
 
-  constructor(public Service: HomeService, private formBuilder: FormBuilder, private meta: Meta ) {}
+  constructor(public Service: HomeService, private formBuilder: FormBuilder, private meta: Meta, private router: Router, ) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -255,5 +255,13 @@ export class HomeComponent implements OnInit {
         }
       );
     }
+  }
+  findTypes(value){
+    var searchWord = value;
+    sessionStorage.removeItem('word_search');
+    sessionStorage.removeItem('projectTitle');
+    sessionStorage.setItem('word_search',searchWord);
+    sessionStorage.setItem('projectTitle',searchWord);
+    this.router.navigate(['/proyectos']);
   }
 }
