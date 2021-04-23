@@ -290,33 +290,36 @@
     <h2>Contactar</h2>
     <form data-abide novalidate [formGroup]="form4">
         <div class="container-form">
-            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name"
-                required pattern="text">
-            <span style="color: red" id="spanNameModal" class="hide">
+            <span id="spanNameModal" class="error hide">
                 Debe digitar un nombre de contacto
             </span>
+            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name"
+                required pattern="text">
+                <span id="spannLastNameModal" class="error hide">
+                    Debe digitar un apellido de contacto
+                </span>
             <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname"
                 name="lastnanme" required pattern="text">
-            <span style="color: red" id="spannLastNameModal" class="hide">
-                Debe digitar un apellido de contacto
-            </span>
+                <span id="spanEmailModal" class="error hide">
+                    Debe digitar un correo de contacto valido
+                </span>
             <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email"
                 required pattern="email">
-            <span style="color: red" id="spanEmailModal" class="hide">
-                Debe digitar un correo de contacto valido
-            </span>
+                <span id="spanPhoneModal" class="error hide">
+                    Debe digitar un n&uacute;mbre de contacto
+                </span>
             <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone"
                 name="phone" required>
-            <span style="color: red" id="spanPhoneModal" class="hide">
-                Debe digitar un n&uacute;mbre de contacto
-            </span>
+                <span id="spanContactModal" class="error hide">
+                    Debe seleccionar una opción
+                </span>
             <select id="select" required formControlName="contact" name="contact">
                 <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
                 <option value="telefono">Tel&eacute;fonica</option>
                 <option value="email">Correo Electr&oacute;nico</option>
                 <option value="correo">Correo Postal</option>
             </select>
-            <span style="color: red" id="spanContactModal" class="hide">
+            <span id="spanTypesearchModal" class="error hide">
                 Debe seleccionar una opción
             </span>
             <fieldset class="text-left">
@@ -326,17 +329,16 @@
                 <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir"
                     id="houseForInvertir"><label for="">Invertir</label>
             </fieldset>
-            <span style="color: red" id="spanTypesearchModal" class="hide">
-                Debe seleccionar una opción
-            </span>
-            <div class="text-left terminos">
+            
+            <div class="text-left terminos"> 
+                <span id="spanTermModal" class="error hide">
+                    Debe aceptar los términos
+                </span>
                 <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label"
                     class="text-left">Declaro
                     haber leído los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                     mismos.</label>
-                <span style="color: red" id="spanTermModal" class="hide">
-                    Debe aceptar los términos
-                </span>
+               
             </div>
             <span href="" class="button secondary" (click)="onSubmitModal(form4.value)">Enviar</span>
         </div>
@@ -477,25 +479,28 @@
             <div class="tabs-content" data-tabs-content="contacto">
                 <div class="tabs-panel is-active" id="panel1">
                     <div class="container-form">
+                        <span id="spanName" class="error hide">
+                            Debe digitar un nombre de contacto
+                        </span>
                         <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name"
                         name="name" required pattern="text">
-                        <span style="color: red" id="spanName" class="hide">
-                            Debe digitar un nombre de contacto
+                        <span id="spannLastName" class="error hide">
+                            Debe digitar un apellido de contacto
                         </span>
                         <input type="text" placeholder="Apellido" aria-errormessage="lastnameError"
                         formControlName="lastname" name="lastnanme" required pattern="text">
-                        <span style="color: red" id="spannLastName" class="hide">
-                            Debe digitar un apellido de contacto
+                        <span id="spanEmail" class="error hide">
+                            Debe digitar un correo de contacto valido
                         </span>
                         <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email"
                         name="email" required pattern="email">
-                        <span style="color: red" id="spanEmail" class="hide">
-                            Debe digitar un correo de contacto valido
+                        <span id="spanPhone" class="error hide">
+                            Debe digitar un n&uacute;mbre de contacto
                         </span>
                         <input type="text" placeholder="Teléfono" aria-errormessage="phoneError"
                         formControlName="phone" name="phone" required>
-                        <span style="color: red" id="spanPhone" class="hide">
-                            Debe digitar un n&uacute;mbre de contacto
+                        <span id="spanContact" class="error hide">
+                            Debe seleccionar una opción
                         </span>
                         <select id="select" required formControlName="contact" name="contact">
                             <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
@@ -503,9 +508,9 @@
                             <option value="email">Correo Electr&oacute;nico</option>
                             <option value="correo">Correo Postal</option>
                         </select>
-                        <span style="color: red" id="spanContact" class="hide">
+                        <span id="spanTypesearch" class="hide">
                             Debe seleccionar una opción
-                        </span>
+                            </span>
                         <fieldset class="text-left">
                             <legend>Buscas vivienda para:</legend>
                             <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar"
@@ -513,16 +518,15 @@
                             <input type="radio" formControlName="typeSearch" name="typeSearch"
                             value="invertir" id="houseForInvertir"><label for="">Invertir</label>
                         </fieldset>
-                        <span style="color: red" id="spanTypesearch" class="hide">
-                        Debe seleccionar una opción
-                        </span>
+                       
                         <div class="text-left terminos">
+                            <span id="spanTerm" class="hide">
+                                Debe aceptar los términos
+                                </span>
                             <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
                                 haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                                 mismos.</label>
-                                <span style="color: red" id="spanTerm" class="hide">
-                                Debe aceptar los términos
-                                </span>
+                               
                         </div>
                         <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
                     </div>
