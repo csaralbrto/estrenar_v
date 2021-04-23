@@ -213,7 +213,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
     
   }
   changeStepWizard(idStep) {
-    for (let index = 0; index <= 5; index++) {
+    for (let index = 0; index <= 6; index++) {
       if (idStep == index) {
         $('#wizard' + index).removeAttr('style');
         // console.log(index + '-muestro este item ');

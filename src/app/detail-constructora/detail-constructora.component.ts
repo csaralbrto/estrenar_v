@@ -119,10 +119,12 @@ export class DetailConstructoraComponent implements OnInit {
           }
         }
       );
+      $('html,body').scrollTop(0);
     }
     ngAfterViewChecked() {
       if (this.results) {
         $('app-detail-constructora').foundation();
+        // $('html,body').scrollTop(0);
       }
     }
     change(contructoraID,value) {
