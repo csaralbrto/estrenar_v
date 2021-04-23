@@ -213,54 +213,54 @@
     <h2>Contactar</h2>
     <form data-abide novalidate [formGroup]="form">
         <div class="container-form">
-            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name"
-                required pattern="text">
-            <span style="color: red" id="spanName" class="hide">
+            <span id="spanName" class="error hide">
                 Debe digitar un nombre de contacto
+              </span>
+            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name"
+          name="name" required pattern="text">
+          <span id="spannLastName" class="error hide">
+            Debe digitar un apellido de contacto
+          </span>
+          <input type="text" placeholder="Apellido" aria-errormessage="lastnameError"
+          formControlName="lastname" name="lastnanme" required pattern="text">
+          <span id="spanEmail" class="error hide">
+            Debe digitar un correo de contacto valido
+          </span>
+          <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email"
+          name="email" required pattern="email">
+          <span id="spanPhone" class="error hide">
+            Debe digitar un n&uacute;mbre de contacto
+          </span>
+          <input type="text" placeholder="Teléfono" aria-errormessage="phoneError"
+          formControlName="phone" name="phone" required>
+          <span id="spanContact" class="error hide">
+            Debe seleccionar una opción
+          </span>
+          <select id="select" required formControlName="contact" name="contact">
+            <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+            <option value="telefono">Tel&eacute;fonica</option>
+            <option value="email">Correo Electr&oacute;nico</option>
+            <option value="correo">Correo Postal</option>
+          </select>
+          <span id="spanTypesearch" class="error hide">
+            Debe seleccionar una opción
             </span>
-            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname"
-                name="lastnanme" required pattern="text">
-            <span style="color: red" id="spannLastName" class="hide">
-                Debe digitar un apellido de contacto
+          <fieldset class="text-left">
+              <legend>Buscas vivienda para:</legend>
+              <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar"
+              id="houseForHabitar"><label for="">Habitar</label>
+              <input type="radio" formControlName="typeSearch" name="typeSearch"
+              value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+          </fieldset>
+          <span id="spanTerm" class="error hide">
+            Debe aceptar los términos
             </span>
-            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email"
-                required pattern="email">
-            <span style="color: red" id="spanEmail" class="hide">
-                Debe digitar un correo de contacto valido
-            </span>
-            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone"
-                name="phone" required>
-            <span style="color: red" id="spanPhone" class="hide">
-                Debe digitar un n&uacute;mbre de contacto
-            </span>
-            <select id="select" required formControlName="contact" name="contact">
-                <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
-                <option value="telefono">Tel&eacute;fonica</option>
-                <option value="email">Correo Electr&oacute;nico</option>
-                <option value="correo">Correo Postal</option>
-            </select>
-            <span style="color: red" id="spanContact" class="hide">
-                Debe seleccionar una opción
-            </span>
-            <fieldset class="text-left">
-                <legend>Buscas vivienda para:</legend>
-                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar"
-                    id="houseForHabitar"><label for="">Habitar</label>
-                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir"
-                    id="houseForInvertir"><label for="">Invertir</label>
-            </fieldset>
-            <span style="color: red" id="spanTypesearch" class="hide">
-                Debe seleccionar una opción
-            </span>
-            <div class="text-left terminos">
-                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label"
-                    class="text-left">Declaro
-                    haber leído los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
-                    mismos.</label>
-                <span style="color: red" id="spanTerm" class="hide">
-                    Debe aceptar los términos
-                </span>
-            </div>
+          <div class="text-left terminos">
+              <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                  haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
+                  mismos.</label>
+                
+          </div>
             <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
         </div>
     </form>
