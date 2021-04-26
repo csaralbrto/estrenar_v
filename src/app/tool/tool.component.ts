@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToolService } from './tool.service';
 import { environment } from '../../environments/environment';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
@@ -35,7 +36,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
-  constructor( public Service: ToolService, private formBuilder: FormBuilder, private meta: Meta ) {}
+  constructor( public Service: ToolService, private formBuilder: FormBuilder, private meta: Meta, private router: Router, ) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -248,6 +249,11 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     months -= today.getMonth() + 1; 
     months += date.getMonth(); 
     return months <= 0 ? 0 : Number(months) + Number(1);
+  }
+  searchProjectByPrice(value){
+    sessionStorage.removeItem('price_projects');
+    sessionStorage.setItem('price_projects',value)
+    this.router.navigate(['/proyectos']);
   }
 
 }
