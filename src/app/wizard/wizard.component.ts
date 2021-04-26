@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Options, LabelType } from 'ng5-slider';
 import {
@@ -57,6 +58,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
     public Service: WizardService, 
     private formBuilder: FormBuilder, 
     public Options: Options,
+    private router: Router,
     ) {}
 
   ngOnInit(): void {
@@ -194,7 +196,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
 }
   closeWizard(values) {
     console.log(values);
-    $('#welcomeModal').foundation('close');
+    // $('#welcomeModal').foundation('close');
     let payload = {
       "webform_id": "wizard",
       "user_preference_location": this.searchPlace,
@@ -210,6 +212,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       "user_mail": values.email,
       "user_privacy_notice": 5323
     }
+    this.router.navigate(['/']);
     
   }
   changeStepWizard(idStep) {

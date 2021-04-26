@@ -311,15 +311,33 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           var arrayDeCadenas2 = project.project_category.split(',');
           project.project_category = arrayDeCadenas2;
         }
-        if(this.response.facets.property_type){
-          this.filterType = this.response.facets.property_type;
-        }
-        if(this.response.facets.project_city){
-          this.filterCity = this.response.facets.project_city;
-        }
-        if(this.response.facets.typology_price){
-          this.filterPrice = this.response.facets.typology_price;
-        }
+        /* Método para obtener toda la info de proyectos */
+        this.Service.getData().subscribe(
+          (data) => (this.response = data),
+          (err) => console.log(),
+          () => {
+            if (this.response) {
+              // console.log(this.response.facets.typology_price);
+              if(this.response.metatag_normalized){
+                this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+              }
+              if(this.response.facets.property_type){
+                this.filterType = this.response.facets.property_type;
+              }
+              if(this.response.facets.project_city){
+                this.filterCity = this.response.facets.project_city;
+              }
+              if(this.response.facets.typology_price){
+                this.filterPrice = this.response.facets.typology_price;
+              }
+              this.results = true;
+            }
+            /* si responde correctamente */
+            if (this.response_data_project.error) {
+              /* si hay error en la respuesta */
+            }
+          }
+        );
         this.results = true;
       }
     })

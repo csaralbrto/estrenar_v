@@ -20,11 +20,13 @@ export class BlogDetailComponent implements OnInit {
   tags: MetaTag;
   public responseAll: any;
   public response: any;
+  public responseComments: any;
   public dataSubmit: any;
   public entity_id: any;
   public entity_type: any;
   public responseRelated: any;
   public form: FormGroup;
+  public urlComments = 'https://lab.estrenarvivienda.com/es/api/comment/comment?filter[entity_id.id]=';
   public results = false;
 
   constructor(
@@ -63,17 +65,27 @@ export class BlogDetailComponent implements OnInit {
            var url = this.response.individual + this.dataArticle;
            var data = "";
            fetch(url, {
-           })
-           .then(response => response.json())
-           .then(data => {
-             console.log(data)
-             this.response = data.data;
-             // console.log(this.response);
-             if (this.response) { 
-              this.results = true;
-             }
-           })
-           .catch(error => console.error(error))
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            this.response = data.data;
+            // console.log(this.response);
+            if (this.response) { 
+              var urlComments = this.urlComments + this.response.id + '&page[limit]=20';
+              var dataComments = "";
+              fetch(urlComments, {
+              })
+              .then(responseComments => responseComments.json())
+              .then(data => {
+                this.responseComments = data.data;
+                console.log('comentarios: ',this.responseComments)
+              })
+              .catch(error => console.error(error))
+             this.results = true;
+            }
+          })
+          .catch(error => console.error(error))
         }
       }
     );
