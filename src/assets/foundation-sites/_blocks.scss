@@ -195,6 +195,9 @@ a.button.close {
 
     a {
         color: $secondary-color;
+        &:hover{
+            color: $white;
+        }
     }
 
     &.form {
@@ -466,7 +469,7 @@ p {
 .slick-blog {
     ul {
         margin: 0;
-        overflow: hidden;
+        //overflow: hidden;
         li.is-active {
             padding: 0 1rem;
         }
@@ -484,10 +487,11 @@ p {
             background: rgb(0, 0, 0);
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 96%);
             color: #fefefe;
-            padding: 3rem;
+            padding: 3rem 3rem 0 3rem;
+
             width: 100%;
             border-radius: 0 0 8px 8px;
-            height: 200px;
+            height: 160px;
         }
         img.blog {
             border-radius: 8px;
@@ -1134,6 +1138,9 @@ label {
     .resumen {
         margin-bottom: 1rem;
         font-size: 0.9rem;
+        p{
+            line-height: 1.4rem;
+        }
     }
 
     a.button {
@@ -1583,7 +1590,7 @@ span.error {
         color: $secondary-color;
         font-size: 0.6rem;
 
-        img.usr {
+        img, img.usr {
             margin-right: 0.6rem;
             display: inline-block !important;
         }
@@ -1872,14 +1879,8 @@ ul.menu-left {
     text-align: left;
     margin-right: 1rem;
     .opcion-seleccion {
-        background: $light-gray;
-        border-radius: 120px;
-        padding: 1.5rem;
-        margin: auto;
-        margin-bottom: 0.8rem;
         display: inline-block;
-        width: 100px;
-        height: 100px;
+        margin: 0.6rem;
         &.small {
             width: 80px;
             height: 80px !important;
@@ -1892,6 +1893,15 @@ ul.menu-left {
         }
         label {
             margin: 0;
+            background: #eeeeee;
+            border-radius: 120px;
+            padding: 1.5rem;
+            margin-bottom: 0.8rem;
+            width: 100px;
+            height: 100px;
+            line-height: 1.5 !important;
+            font-size: 2rem;
+            display: block;
         }
         .item-tex {
             display: block;
@@ -2225,6 +2235,7 @@ ul.pagination-pointed {
     }
 }
 .filtros-tag {
+    display: inline-block;
     @media screen and (max-width: 600px) {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -2232,6 +2243,7 @@ ul.pagination-pointed {
     &.off {
         .button {
             background-color: $medium-gray;
+           margin-right: 1rem;
         }
     }
 }
@@ -2459,6 +2471,9 @@ img.image.constructor {
             background-color: $medium-gray;
         }
     }
+    .button{
+        margin-right: 1rem;
+    }
 }
 
 //COntador
@@ -2636,6 +2651,60 @@ li.search {
     }
 }
 
+.slider-blog{
+    .slick-dots {
+        width: auto;
+        right: 3rem;
+       bottom: -2rem !important;
+        li button {
+            font-size: 0;
+            margin: 0;
+            &:before {
+                font-size: 2rem;
+                color: $secondary-color;
+            }
+        }
+    }
+    .slick-prev,
+    .slick-next {
+        font-size: 0;
+        line-height: 0;
+        position: absolute;
+        top: unset;
+        bottom: -1.5rem;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        transform: none;
+        cursor: pointer;
+        color: $primary-color;
+        border: none;
+        outline: none;
+        background: transparent;
+
+    }
+    .slick-prev {
+        left: unset;
+        right: 1.4rem;
+        bottom: -2rem !important;
+        &::before {
+            content: "ᐸ";
+            color: $primary-color;
+            font-size: 18px;
+        }
+    }
+    .slick-next {
+        right: 0rem;
+        bottom: -2rem !important;
+        &::before {
+            content: "ᐳ";
+            color: $primary-color;
+            font-size: 18px;
+        }
+    }
+}
+
 .slider-blog-home{
     .slick-dots {
         width: auto;
@@ -2684,4 +2753,58 @@ li.search {
             font-size: 18px;
         }
     }
+}
+.medium-6.columns.featured{
+    padding-left: 0.2rem;
+}
+.has-tip {
+    position: relative;
+    display: inline-block;
+    border-bottom: dotted 0px #ffffff !important;
+    font-weight: 700;
+    background: $secondary-color;
+    border-radius: 1rem;
+    width: 16px;
+    display: inline-block;
+    height: 16px;
+    text-align: center;
+    color: white;
+    margin-left: 0.4rem;
+}
+.comentarios{
+    .name{
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        color: $primary-color;
+        font-weight: 600;
+    }
+    p.mensaje{
+        font-size: 0.9rem;
+        text-transform: lowercase;
+    }
+    p.mensaje:first-letter {
+        text-transform: uppercase;
+    }
+}
+.autocomplete-container {
+    box-shadow: none !important;
+    .input-container input {
+        font-size: 14px;
+        box-sizing: border-box;
+        border: 1px solid #c0c0c0;
+        box-shadow: none;
+        outline: 0;
+        background-color: $light-gray !important;
+        color: rgba(0,0,0,.87);
+        width: 100%;
+        padding: 0 15px;
+        line-height: 40px;
+        height: 40px;
+    }
+}
+.ng5-slider .ng5-slider-pointer {
+    background-color: $primary-color !important;
+}
+.ng5-slider .ng5-slider-selection {
+    background: $secondary-color !important;
 }
