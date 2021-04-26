@@ -39,7 +39,7 @@
                                 <p> Podrías comprar una vivienda de:</p>
                                 <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
                                 <hr>
-                                <a href="#" class="button secondary ">Ver proyectos afines</a>
+                                <a (click)="searchProjectByPrice(vivienda_endeudamiento)"  class="button secondary ">Ver proyectos afines</a>
                             </div>
 
                         </div>
@@ -288,7 +288,7 @@
                         </div>
                 </div>
                                 </div>
-                                <a href="#" class="button secondary ">Ver proyectos afines</a>
+                                <a (click)="searchProjectByPrice(monto_prestamo_credito)" class="button secondary ">Ver proyectos afines</a>
                             </div>
                         </div>
                     </div>
