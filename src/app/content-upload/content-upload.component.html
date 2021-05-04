@@ -5,10 +5,10 @@
                 <div>
                     <ul class="pagination-pointed pagination text-center" role="navigation" aria-label="Pagination">
                         <li class="current">1</li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(2)" aria-label="Page 2">2</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(3)" aria-label="Page 3">3</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(4)" aria-label="Page 4">4</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5)" aria-label="Page 4">5</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(2,1)" aria-label="Page 2">2</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(3,1)" aria-label="Page 3">3</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(4,1)" aria-label="Page 4">4</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5,1)" aria-label="Page 4">5</a></li>
                     </ul>
                 </div>
                 <hr class="white">
@@ -24,15 +24,25 @@
                     <div class="row">
                         <div class="medium-6 columns end">
                             <label>Constructora
-                                <select id="type" name="company_constructor" formControlName="company_constructor" *ngIf="builders && builders.length > 0">
+                                <select id="builder" name="company_constructor" formControlName="company_constructor" *ngIf="builders && builders.length > 0">
                                     <option *ngFor="let option of builders; let i = index" [value]="option.id">{{option.name}}</option>
                                 </select>
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanBuilder" class="hide">
+                                    Debe seleccionar una Constructora 
+                                </span>
+                            </div>
                         </div>
                         <div class="medium-6 columns end">
                             <label>Nombre del proyecto
-                                <input name="name_proyect" formControlName="name_proyect" type="text" placeholder="">
+                                <input id="name_proyect" name="name_proyect" formControlName="name_proyect" type="text" placeholder="">
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanNameProject" class="hide">
+                                    Debe ingresar el nombre del proyecto 
+                                </span>
+                            </div>
                         </div>
                         <hr class="white">
                         <hr class="white">
@@ -40,9 +50,14 @@
                             <legend>Tipo de inmueble</legend>
                             <div class="opcion text-center" *ngFor="let option of typeProjects">
                                 <div class="opcion-seleccion">
-                                    <input id="casas" name="type_property" formControlName="type_property" type="checkbox" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
+                                    <input id="type_property" name="type_property" formControlName="type_property" type="checkbox" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
                                 </div>
                                 <div class="item">{{option.name}}</div>
+                            </div>
+                            <div  class="">
+                                <span style="color: red" id="spanType" class="hide">
+                                    Debe seleccionar una opción 
+                                </span>
                             </div>
                         </fieldset>
                         <hr class="white">
@@ -51,18 +66,28 @@
                             <legend>Estado del proyecto</legend>
                             <div class="opcion text-center" *ngFor="let option of stateProjects">
                                 <div class="opcion-seleccion">
-                                    <input id="casas" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png"
+                                    <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png"
                                             alt="Casas"></label>
                                 </div>
                                 <div class="item">{{option.name}}</div>
+                            </div>
+                            <div  class="">
+                                <span style="color: red" id="spanState" class="hide">
+                                    Debe seleccionar una opción 
+                                </span>
                             </div>
                         </fieldset>
                         <hr class="white">
                         <hr class="white">
                         <div class="medium-6 columns end">
                             <label>Fecha aproximada de entrega
-                                <input name="date_of_delivery" formControlName="date_of_delivery" type="date" placeholder="">
+                                <input id="date_of_delivery" name="date_of_delivery" formControlName="date_of_delivery" type="date" placeholder="">
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanDate" class="hide">
+                                    Debe ingresar una fecha
+                                </span>
+                            </div>
                         </div>
                     </div>
                 <hr class="white">
@@ -79,6 +104,11 @@
                                     </select>
                                 </ng-template>
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanCity" class="hide">
+                                    Debe seleccionar una opción 
+                                </span>
+                            </div>
                         </div>
                         <div class="medium-4 columns end">
                             <label>Zona
@@ -91,6 +121,11 @@
                                     </select>
                                 </ng-template>
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanZone" class="hide">
+                                    Debe seleccionar una opción 
+                                </span>
+                            </div>
                         </div>
                         <div class="medium-4 columns end">
                             <label>Sector
@@ -103,6 +138,11 @@
                                     </select>
                                 </ng-template>
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanSector" class="hide">
+                                    Debe seleccionar una opción 
+                                </span>
+                            </div>
                         </div>
                     </div>
                 <hr class="white">
@@ -119,6 +159,11 @@
                                 <label>Escriba la dirección de la sala de ventas
                                     <input id="address_room_sales" name="address_room_sales" formControlName="address_room_sales" type="text" placeholder="">
                                 </label>
+                                <div  class="">
+                                    <span style="color: red" id="spanSales" class="hide">
+                                        Debe ingresar una dirección
+                                    </span>
+                                </div>
                             </div>
                             <div>
                                 <label class="container-check">Proyecto
@@ -130,6 +175,11 @@
                                 <label>Escriba la dirección del proyecto
                                     <input id="address_project" name="address_project" formControlName="address_project" type="text" placeholder="" value="{{address}}">
                                 </label>
+                                <div  class="">
+                                    <span style="color: red" id="spanProject" class="hide">
+                                        Debe ingresar una dirección
+                                    </span>
+                                </div>
                             </div>
                             <div>
                                 <label class="container-check">Oficina
@@ -173,6 +223,11 @@
                                 <option *ngFor="let option of stratumProjects; let i = index" [value]="option.id">{{option.name}}</option>
                             </select>
                         </div>
+                        <div  class="">
+                            <span style="color: red" id="spanStratum" class="hide">
+                                Debe seleccionar una opción
+                            </span>
+                        </div>
                     </div>
 
                 <hr class="white">
@@ -184,6 +239,11 @@
                                     <option *ngFor="let option of banks; let i = index" [value]="option.id">{{option.name}}</option>
                                 </select>
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanBank" class="hide">
+                                    Debe seleccionar una opción
+                                </span>
+                            </div>
                         </div>
                     </div>
                 <hr class="white">
@@ -198,7 +258,7 @@
                 <a href="#" class="button disabled">Anterior</a>
             </div>
             <div class="medium-4 columns end text-right">
-                <a (click)="changeStepWizard(2)" class="button">Siguiente</a>
+                <a (click)="changeStepWizard(2,1)" class="button">Siguiente</a>
             </div>
         </div>
         <hr class="white">
@@ -208,11 +268,11 @@
             <div class="medium-4 columns text-center">
                 <div>
                     <ul class="pagination-pointed pagination text-center" role="navigation" aria-label="Pagination">
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(1)" aria-label="Page 1">1</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(1,2)" aria-label="Page 1">1</a></li>
                         <li class="current">2</li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(3)" aria-label="Page 3">3</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(4)" aria-label="Page 4">4</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5)" aria-label="Page 4">5</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(3,2)" aria-label="Page 3">3</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(4,2)" aria-label="Page 4">4</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5,2)" aria-label="Page 4">5</a></li>
                     </ul>
                 </div>
                 <hr class="white">
@@ -241,37 +301,33 @@
                     <div *ngIf="f.file.errors.required">File is required.</div>
                 </div> -->
                 <img [src]="imageSrc" *ngIf="imageSrc" style="height: auto; width:200px">
+                <div  class="">
+                    <span style="color: red" id="spanimageSrc" class="hide">
+                        Debe cargar la imagen del projecto
+                    </span>
+                </div>
                 <hr class="white">
                 <h2>Imágenes</h2>
                 <!-- <div class="row"> -->
-                    <label for="images_project" class="button">Añadir imágenes</label>
-                    <p>Los archivos deben ser menores que 2 MB.<br>
-                    Tipos de archivo permitidos: png jpg jpeg.<br>
-                    Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
-                    <input 
-                        style="visibility:hidden;"
-                        formControlName="images_project" formControlName="images_project"
-                        id="images_project" 
-                        type="file" 
-                        class="form-control"
-                        multiple="" 
-                        (change)="onFilesChange($event)">
+                <label for="images_project" class="button">Añadir imágenes</label>
+                <p>Los archivos deben ser menores que 2 MB.<br>
+                Tipos de archivo permitidos: png jpg jpeg.<br>
+                Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
+                <input 
+                    style="visibility:hidden;"
+                    formControlName="images_project" formControlName="images_project"
+                    id="images_project" 
+                    type="file" 
+                    class="form-control"
+                    multiple="" 
+                    (change)="onFilesChange($event)">
 
-                        <img *ngFor='let url of images'  [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
-                    <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-                        <div *ngIf="f.file.errors.required">File is required.</div>
-                    </div> -->
-                    <!-- <div class="medium-6 columns end">
-                        <figure class="orbit-figure">
-                            <img class="orbit-image" src="/assets/images/content/proyecto-view.jpg" alt="">
-                        </figure>
+                    <img *ngFor='let url of images'  [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+                    <div  class="">
+                        <span style="color: red" id="spanimages" class="hide">
+                            Debe al menos una imagen para el proyecto 
+                        </span>
                     </div>
-                    <div class="medium-6 columns end">
-                        <figure class="orbit-figure">
-                            <a href="#"><img class="orbit-image" src="/assets/images/proyecto-load.jpg" alt=""></a>
-                        </figure>
-                    </div> -->
-                <!-- </div> -->
                 <hr class="white">
                 <h2>Video</h2>
                     <div class="row">
@@ -279,6 +335,11 @@
                             <label>URL
                                 <input name="url_video" formControlName="url_video" id="url_video" type="text" placeholder="">
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanVideo" class="hide">
+                                    Debe ingresar una url correcta 
+                                </span>
+                            </div>
                         </div>
             
                     </div>
@@ -291,10 +352,10 @@
                 <a (click)="saveTemporary(form.value,formTypology.value)" class="button hide">Guardar</a>
             </div>
             <div class="medium-4 columns text-left">
-                <a (click)="changeStepWizard(1)" class="button">Anterior</a>
+                <a (click)="changeStepWizard(1,2)" class="button">Anterior</a>
             </div>
             <div class="medium-4 columns end text-right">
-                <a (click)="changeStepWizard(3)" class="button">Siguiente</a>
+                <a (click)="changeStepWizard(3,2)" class="button">Siguiente</a>
             </div>
         </div>
         <hr class="white">
@@ -304,11 +365,11 @@
             <div class="medium-4 columns text-center">
                 <div>
                     <ul class="pagination-pointed pagination text-center" role="navigation" aria-label="Pagination">
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(1)" aria-label="Page 1">1</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(2)" aria-label="Page 2">2</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(1,3)" aria-label="Page 1">1</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(2,3)" aria-label="Page 2">2</a></li>
                         <li class="current">3</li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(4)" aria-label="Page 4">4</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5)" aria-label="Page 4">5</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(4,3)" aria-label="Page 4">4</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5,3)" aria-label="Page 4">5</a></li>
                     </ul>
                 </div>
                 <hr class="white">
@@ -325,6 +386,11 @@
                         <div class="filtros-tag" *ngFor="let option of featuresProjectsArray">
                             <a class="button close" (click)="onFeaturesClick('projects',option,'remove')">{{option.name}}</a>
                         </div>
+                        <div  class="">
+                            <span style="color: red" id="spanFeature" class="hide">
+                                Debe seleccionar alguna características del proyecto
+                            </span>
+                        </div>
                         <hr>
                         <div class="filtros-tag off" *ngFor="let option of featuresProjects">
                             <a class="button" (click)="onFeaturesClick('projects',option,'add')">{{option.name}}</a>
@@ -335,21 +401,41 @@
                             <label>Número de torres
                                 <input type="number" name="number_towers" formControlName="number_towers" id="number_towers" placeholder="">
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanNumberTowers" class="hide">
+                                    Debe ingresar alguna cantidad
+                                </span>
+                            </div>
                         </div>
                         <div class="medium-6 columns end">
                             <label>Pisos por torres
                                 <input type="number" name="floors_towers" formControlName="floors_towers" id="floors_towers" placeholder="">
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanFloorsTowers" class="hide">
+                                    Debe ingresar alguna cantidad 
+                                </span>
+                            </div>
                         </div>
                         <div class="medium-6 columns end">
                             <label>Apartamentos por piso/Casas por manzanas
                                 <input type="number" name="apartments_towers" formControlName="apartments_towers" id="apartments_towers" placeholder="">
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanApartmentsTowers" class="hide">
+                                    Debe ingresar alguna cantidad
+                                </span>
+                            </div>
                         </div>
                         <div class="medium-6 columns end">
                             <label>Ascensor por torres
                                 <input type="number" name="elevator_towers" formControlName="elevator_towers" id="elevator_towers" placeholder="">
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanElevatorTowers" class="hide">
+                                    Debe ingresar alguna cantidad
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <hr class="white">
@@ -360,6 +446,11 @@
                                     <option *ngFor="let option of collectionProjects; let i = index" [value]="option.id">{{option.name}}</option>
                                 </select>
                             </label>
+                            <div  class="">
+                                <span style="color: red" id="spanColection" class="hide">
+                                    Debe seleccionar alguna opción
+                                </span>
+                            </div>
                         </div>
             
                     </div>
@@ -372,10 +463,10 @@
                 <a (click)="saveTemporary(form.value,formTypology.value)" class="button hide">Guardar</a>
             </div>
             <div class="medium-4 columns text-left">
-                <a (click)="changeStepWizard(2)" class="button">Anterior</a>
+                <a (click)="changeStepWizard(2,3)" class="button">Anterior</a>
             </div>
             <div class="medium-4 columns end text-right">
-                <a (click)="changeStepWizard(4)" class="button">Siguiente</a>
+                <a (click)="changeStepWizard(4,3)" class="button">Siguiente</a>
             </div>
         </div>
         <hr class="white">
@@ -385,11 +476,11 @@
             <div class="medium-4 columns text-center">
                 <div>
                     <ul class="pagination-pointed pagination text-center" role="navigation" aria-label="Pagination">
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(1)" aria-label="Page 1">1</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(2)" aria-label="Page 2">2</a></li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(3)" aria-label="Page 3">3</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(1,4)" aria-label="Page 1">1</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(2,4)" aria-label="Page 2">2</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(3,4)" aria-label="Page 3">3</a></li>
                         <li class="current">4</li>
-                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5)" aria-label="Page 5">5</a></li>
+                        <li><a class="pagination-pointed-button" (click)="changeStepWizard(5,4)" aria-label="Page 5">5</a></li>
                     </ul>
                 </div>
                 <hr class="white">
@@ -407,17 +498,32 @@
                         <label>Nombre
                             <input type="text" id="name" name="name" formControlName="name" placeholder="">
                         </label>
+                        <div  class="">
+                            <span style="color: red" id="spanName" class="hide">
+                                Debe ingresar algún nombre
+                            </span>
+                        </div>
                     </div>
                     <div class="medium-6 columns end">
                         <label>Email
                             <input type="email" id="email" name="email" formControlName="email" placeholder="">
                         </label>
+                        <div  class="">
+                            <span style="color: red" id="spanEmail" class="hide">
+                                Debe ingresar algún Correo electrónico
+                            </span>
+                        </div>
                         <a (click)="addEmailsOrPhone('email')">Agregar un Correo</a>
                     </div>
                     <div class="medium-6 columns">
                         <label>Celular
                             <input type="text" id="phone" name="phone" formControlName="phone" placeholder="">
                         </label>
+                        <div  class="">
+                            <span style="color: red" id="spanPhone" class="hide">
+                                Debe ingresar algún número de teléfono
+                            </span>
+                        </div>
                         <a (click)="addEmailsOrPhone('phone')">Agregar Número</a><br>
                         <input id="checkbox1" type="checkbox" name="check_whatsapp" formControlName="check_whatsapp" id="check_whatsapp"><label for="checkbox1">Este es el mismo número de Whatsapp</label>
                     </div>
@@ -484,39 +590,26 @@
                 <hr class="white">
                 <h2>Horario de atención</h2>
                 <div class="row">
-                    <!-- <div class="medium-12 columns">
-                        <div class="opcion text-center" *ngFor="let option of schedulesDayProjects">
-                            <div [id]="option" class="opcion-seleccion small"(click)="activeSelected(option)">
-                                <input name="dayTimeAtention" formControlName="dayTimeAtention" [value]="option" type="checkbox">
-                                <div class="item-tex">{{option}}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="medium-6 columns end">
-                        <label>
-                            <select id="hour" name="hour" formControlName="hour" *ngIf="schedulesHoursProjects && schedulesHoursProjects.length > 0">
-                                <option *ngFor="let option of schedulesHoursProjects; let i = index" [value]="option.id">{{option.name}}</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="medium-2 columns end">
-                        <label>
-                            <select id="schedule" name="schedule" formControlName="schedule">
-                                <option value="am">AM</option>
-                                <option value="pm">PM</option>
-                            </select>
-                        </label>
-                    </div> -->
                     <div class="medium-12 columns">
                         <div>
                             <label>Lunes a Viernes
                                 <input id="schedule_week" name="schedule_week" formControlName="schedule_week" type="text" placeholder="" value="">
                             </label>
                         </div>
+                        <div  class="">
+                            <span style="color: red" id="spanSchedule1" class="hide">
+                                Debe ingresar algún horario
+                            </span>
+                        </div>
                         <div>
                             <label>Sábados, Domingos y Festivos
                                 <input id="schedule_weekend" name="schedule_weekend" formControlName="schedule_weekend" type="text" placeholder="" value="">
                             </label>
+                        </div>
+                        <div  class="">
+                            <span style="color: red" id="spanSchedule2" class="hide">
+                                Debe ingresar algún horario
+                            </span>
                         </div>
                         <label>
                             Especificaciones (max 150 caracteres)
@@ -533,7 +626,7 @@
                 <a (click)="saveTemporary(form.value,formTypology.value)" class="button hide">Guardar</a>
             </div>
             <div class="medium-4 columns text-left">
-                <a (click)="changeStepWizard(3)" class="button">Anterior</a>
+                <a (click)="changeStepWizard(3,4)" class="button">Anterior</a>
             </div>
             <div class="medium-4 columns end text-right">
                 <a (click)="onSubmit(form.value)" class="button">Siguiente</a>
@@ -548,10 +641,10 @@
           <div class="medium-4 columns text-center">
               <div>
                   <ul class="pagination-pointed pagination text-center" role="navigation" aria-label="Pagination">
-                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(1)" aria-label="Page 1">1</a></li>
-                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(2)" aria-label="Page 2">2</a></li>
-                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(3)" aria-label="Page 3">3</a></li>
-                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(4)" aria-label="Page 4">4</a></li>
+                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(1,5)" aria-label="Page 1">1</a></li>
+                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(2,5)" aria-label="Page 2">2</a></li>
+                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(3,5)" aria-label="Page 3">3</a></li>
+                      <li><a class="pagination-pointed-button" (click)="changeStepWizard(4,5)" aria-label="Page 4">4</a></li>
                       <li class="current">5</li>
                   </ul>
               </div>
@@ -570,21 +663,41 @@
                       <label>Etiqueta de precio
                           <input id="label_price" name="label_price" formControlName="label_price" type="number" placeholder="">
                       </label>
+                      <div  class="">
+                          <span style="color: red" id="spanPriceLabel" class="hide">
+                              Debe ingresar algún monto
+                          </span>
+                      </div>
                   </div>
                   <div class="medium-6 columns end">
                       <label>Precio desde:
                           <input id="price_from" name="price_from" formControlName="price_from" type="number" placeholder="">
                       </label>
+                      <div  class="">
+                          <span style="color: red" id="spanPriceFrom" class="hide">
+                              Debe ingresar algún monto
+                          </span>
+                      </div>
                   </div>
                   <div class="medium-6 columns end">
                       <label>Cuota inicial
                           <input id="initial_fee" name="initial_fee" formControlName="initial_fee" type="number" placeholder="">
                       </label>
+                      <div  class="">
+                          <span style="color: red" id="spanFee" class="hide">
+                              Debe ingresar algún monto
+                          </span>
+                      </div>
                   </div>
                   <div class="medium-6 columns end">
                       <label>Separación
                           <input id="separation" name="separation" formControlName="separation" type="number" placeholder="">
                       </label>
+                      <div  class="">
+                          <span style="color: red" id="spanSeparation" class="hide">
+                              Debe ingresar algún monto
+                          </span>
+                      </div>
                   </div>
               </div>
               <hr class="white">
@@ -594,11 +707,21 @@
                       <label>Area cosntruida
                           <input id="constructed_area" name="constructed_area" formControlName="constructed_area" type="text" placeholder="">
                       </label>
+                      <div  class="">
+                          <span style="color: red" id="spanArea" class="hide">
+                              Debe llenar este campo
+                          </span>
+                      </div>
                   </div>
                   <div class="medium-6 columns end">
                       <label>Area privada
                           <input id="private_area" name="private_area" formControlName="private_area" type="text" placeholder="">
                       </label>
+                      <div  class="">
+                          <span style="color: red" id="spanPrivate" class="hide">
+                              Debe llenar este campo
+                          </span>
+                      </div>
                   </div>
               </div>
               <hr class="white">
@@ -606,9 +729,14 @@
               <div class="row">
                   <div class="medium-6 columns end">
                       <label>
-                        <select id="type" multiple name="type_of_property" formControlName="type_of_property" *ngIf="propertyTypeTypology && propertyTypeTypology.length > 0">
+                        <select id="type_of_property" multiple name="type_of_property" formControlName="type_of_property" *ngIf="propertyTypeTypology && propertyTypeTypology.length > 0">
                             <option *ngFor="let option of propertyTypeTypology; let i = index" [value]="option.id">{{option.name}}</option>
                         </select>
+                        <div  class="">
+                            <span style="color: red" id="spanTypeProperty" class="hide">
+                                Debe seleccionar una opción 
+                            </span>
+                        </div>
                       </label>
                   </div>
                   <hr class="white">
@@ -616,9 +744,14 @@
                       <legend>Estado del inmueble</legend>
                       <div class="opcion text-center" *ngFor="let option of finishesTypology">
                           <div class="opcion-seleccion">
-                              <input id="casas" name="finishes" formControlName="finishes" type="checkbox" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
+                              <input id="finishes" name="finishes" formControlName="finishes" type="checkbox" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
                           </div>
                           <div class="item">{{option.name}}</div>
+                      </div>
+                      <div  class="">
+                          <span style="color: red" id="spanfinishes" class="hide">
+                              Debe seleccionar una opción 
+                          </span>
                       </div>
                   </fieldset>
               </div>
@@ -634,6 +767,11 @@
                         type="file" 
                         class="form-control"
                         (change)="onFilePlanesChange($event)">
+                <div  class="">
+                    <span style="color: red" id="spanmaps" class="hide">
+                        Debe cargar el plano del inmueble
+                    </span>
+                </div>
                 </div>
               </div>
               <hr class="white">
@@ -655,6 +793,11 @@
                             <input type="text" [name]="'title' + i" [formControlName]="'title' + i" placeholder="Titulo">
                             <input type="text" [name]="'alt' + i" [formControlName]="'alt' + i" placeholder="Alt"> 
                         </div>
+                        <div  class="">
+                            <span style="color: red" id="spanimages_property" class="hide">
+                                Debe inmágenes del inmueble
+                            </span>
+                        </div>
                   </div>
               </div>
               <hr class="white">
@@ -665,12 +808,22 @@
                         <label>Url
                             <input id="video_property" name="video_property" formControlName="video_property" type="text" placeholder="">
                         </label>
+                        <div  class="">
+                            <span style="color: red" id="spanvideo_property" class="hide">
+                                Debe ingresar una url correcta 
+                            </span>
+                        </div>
                     </div>
                     <div class="medium-6 columns">
                         <h2>Recorrido</h2>
                         <label>Url
                             <input id="tour" name="tour" formControlName="tour" type="text" placeholder="">
                         </label>
+                        <div  class="">
+                            <span style="color: red" id="spanTour" class="hide">
+                                Debe ingresar una url correcta 
+                            </span>
+                        </div>
                     </div>
                 </div>
                 
@@ -753,6 +906,11 @@
                             <a class="button close" (click)="onFeaturesClick('typology',option,'remove')">{{option.name}}</a>
                             </div>
                         </div>
+                        <div  class="">
+                            <span style="color: red" id="spanFeature" class="hide">
+                                Debe seleccionar alguna características del inmueble
+                            </span>
+                        </div>
                         <hr>
                         <div class="filtros-tag off" *ngFor="let option of featuresTypology">
                             <div class="columns medium-4 small-4">
@@ -765,7 +923,12 @@
                     <hr class="white">
                     <div class="medium-6 columns end">
                         <label>Área balcón
-                            <input type="text" placeholder="">
+                            <input id="balcon_area" name="balcon_area" type="text" placeholder="">
+                            <div  class="">
+                                <span style="color: red" id="spanFeature" class="hide">
+                                    Debe ingresar el área del balcón
+                                </span>
+                            </div>
                         </label>
                         <input id="checkbox1" type="checkbox" name="immediate_delivery" id="immediate_delivery" formControlName="immediate_delivery"><label for="checkbox1">Entrega inmediata</label>
                     </div>
@@ -810,7 +973,7 @@
               <a (click)="saveTemporary(form.value,formTypology.value)" class="button hide">Guardar</a>
           </div>
           <div class="medium-4 columns text-left">
-              <a (click)="changeStepWizard(4)" class="button">Anterior</a>
+              <a (click)="changeStepWizard(4,5)" class="button">Anterior</a>
           </div>
           <div class="medium-4 columns end text-right">
               <a (click)="sendAllInfo" class="button">Solicitar publicación</a>

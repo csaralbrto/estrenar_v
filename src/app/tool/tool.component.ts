@@ -157,14 +157,9 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       let cuota_mensual = 0;
       interes_mensual = ((Number(tasa_interes) / 12) / 100);
       let formula_general_last = Math.pow((1 + Number(interes_mensual)), Number(plazo_mes));
-      // const base = Number(1) + Number(interes_mensual);
-      // const exponente = Number(value.plazo_credito);
-      // let r = 1;
-      // for(let i = 0; i<exponente; i++){
-      //     r = r * base;
-      // }
       var numerador = Number(formula_general_last) * Number(interes_mensual);
       var denominador = Number(formula_general_last) - Number(1);
+      
       if(value.tipo_credito_credito == 'hipotecario'){
         cuota = Number(value.valor_vivienda_credito) * Number(0.30);
         monto_del_prestamo_multi = Number(0.30);
@@ -251,8 +246,9 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     return months <= 0 ? 0 : Number(months) + Number(1);
   }
   searchProjectByPrice(value){
+    let valor = value.toFixed(); 
     sessionStorage.removeItem('price_projects');
-    sessionStorage.setItem('price_projects',value)
+    sessionStorage.setItem('price_projects',valor)
     this.router.navigate(['/proyectos']);
   }
 

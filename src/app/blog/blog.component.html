@@ -140,7 +140,7 @@
           <img src="/assets/images/suscribirse.jpg" alt="" class="fondo">
           <div class="info">
               <div class="cta mb1">Recibe consejos para la compra de tu próxima vivienda</div>
-              <a href="#" class="button ">Ver video</a>
+              <a href="/register" class="button ">Regístrate</a>
           </div>
       </div>
       <hr class="white">
@@ -161,14 +161,24 @@
     <form action="">
         <div class="row condensed">
           <div class="medium-7 medium-offset-2 columns">
-            <input type="text" placeholder="Ingresa tu correo electrónico" />
+            <input id="email_subscribe" type="email" placeholder="Ingresa tu correo electrónico" />
+            <div  class="">
+                <span style="color: red" id="spanEmail" class="hide">
+                    Debe ingresar un correo electrónico 
+                </span>
+            </div>
           </div>
           <div class="medium-1 columns end">
-            <a href="#" class="button expanded secondary">Suscribirse</a>
-                      </div>
-                      <div class="medium-7 medium-offset-2 columns end text-left">
-                      <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#"> Aviso de Privacidad</a> y estar conforme con el mismo</label>
-                      </div>
+            <a (click)="subscribe()" class="button expanded secondary">Suscribirse</a>
+            </div>
+            <div class="medium-7 medium-offset-2 columns end text-left">
+                <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="/aviso-privacidad"> Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                <div  class="">
+                    <span style="color: red" id="spanPass" class="hide">
+                        Declare haber leído el aviso de privacidad 
+                    </span>
+                </div>
+            </div>
         </div>
     </form>
   </div>

@@ -56,35 +56,29 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     this.createForm2();
     // const title = this.activatedRoute.snapshot.params.path ;
     let title_label  = sessionStorage['projectTitle']?sessionStorage.getItem("projectTitle"):null;
+    let word_label  = sessionStorage['wordTitle']?sessionStorage.getItem("wordTitle"):null;
+    let get_filter_price  = sessionStorage['price_search']?sessionStorage.getItem("price_search"):null;
+    let get_project_price  = sessionStorage['price_projects']?sessionStorage.getItem("price_projects"):null;
+    let get_filter_word  = sessionStorage['word_search']?sessionStorage.getItem("word_search"):null;
     // console.log(sessionStorage.getItem("projectTitle"));
     if(title_label && title_label !== null){
       this.titleLabel = title_label;
       sessionStorage.removeItem('projectTitle');
-    }
-    let word_label  = sessionStorage['wordTitle']?sessionStorage.getItem("wordTitle"):null;
-    // console.log(sessionStorage.getItem("projectTitle"));
-    if(word_label && word_label !== null){
+      this.filterByWord(this.titleLabel);
+    }else if(word_label && word_label !== null){
       this.wordLabel = word_label;
       sessionStorage.removeItem('wordTitle');
-    }
-    /* se valida si esxiste o no el item en el session storage */
-    let get_filter_price  = sessionStorage['price_search']?sessionStorage.getItem("price_search"):null;
-    if(get_filter_price && get_filter_price !== null){
+      this.filterByWord(this.wordLabel);
+    }else if(get_filter_price && get_filter_price !== null){
         sessionStorage.removeItem("price_search");
         this.filterByPrice(get_filter_price);
-    }
-    /* se valida si esxiste o no el item en el session storage */
-    let get_project_price  = sessionStorage['price_projects']?sessionStorage.getItem("price_projects"):null;
-    if(get_project_price && get_project_price !== null){
+    }else if(get_project_price && get_project_price !== null){
         sessionStorage.removeItem("price_projects");
         this.filterProjectPrice(get_project_price);
-    }
-    let get_filter_word  = sessionStorage['word_search']?sessionStorage.getItem("word_search"):null;
-    if(get_filter_word && get_filter_word !== null){
+    }else if(get_filter_word && get_filter_word !== null){
         sessionStorage.removeItem("word_search");
         this.filterByWord(get_filter_word);
-    } 
-    if(!(title_label) && title_label == null && !(word_label) && word_label == null && !(get_filter_price) && get_filter_price == null && (get_project_price) && get_project_price == null && !(get_filter_word) && get_filter_word == null && this.results ==  false){
+    }else{
       /* Método para obtener toda la info de proyectos */
       this.Service.getData().subscribe(
         (data) => (this.response = data),

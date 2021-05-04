@@ -20,6 +20,7 @@ export class BlogService {
   public blogPath: string;
   public blogRelatedPath: string;
   public sendComment: string;
+  public dataSubscribePath: string;
 
   constructor( private http: Http ) { 
     this.dataBlogPath = environment.endpointTestingApi+ 'articles';
@@ -31,6 +32,7 @@ export class BlogService {
     this.blogRelatedPath = environment.endpointTestingApi+ 'blogRelated';
     this.blogPath = environment.endpointTestingApi + 'blog/';
     this.sendComment = environment.endpointTestingApi + 'blog_comment/';
+    this.dataSubscribePath = environment.endpointTestingApi+ '';
   }
   /* Traer toda la info de blogs */
   getBlogData(): Observable<any> {
@@ -71,6 +73,12 @@ export class BlogService {
   blogRelated(): Observable<any> {
     return this.http.get(this.blogRelatedPath)
         .pipe(map(( response => response.json() )));
+  }
+  /* enviar info del registro */
+  subscribeService( params: any ): Observable<any> {
+    // console.log(this.dataSubscribePath, params);
+    return this.http.post(this.dataSubscribePath, params)
+    .pipe(map(( response => response.json() )));
   }
 
 

@@ -21,6 +21,8 @@ export class BlogComponent implements OnInit, AfterViewChecked {
   public results = false;
   url_img_path = 'https://www.estrenarvivienda.com/';
   public stringText: any;
+  error_message = '';
+  public error: any;
 
   constructor(public Service: BlogService) {}
 
@@ -173,6 +175,29 @@ export class BlogComponent implements OnInit, AfterViewChecked {
           ]
         });
       }
+    }
+  }
+  subscribe(){
+    if($('#email_subscribe').val() == "" || $('#email_subscribe').val() == null){
+      $('#spanEmail').removeClass('hide');
+    }
+    if($("#checkbox1").is(":checked")){
+      console.log('entre');
+      let email_subscribe = $('#email_subscribe').val();
+      this.Service.subscribeService( email_subscribe )
+      .subscribe(
+        (data) => (this.response = data),
+        err => (this.error = err),
+        () => {
+          if(this.response){
+            console.log('respondio',this.response);
+          }else{
+            this.error_message = this.error._body.message 
+          }
+        }
+      );
+    }else{
+      $('#spanPass').removeClass('hide');
     }
   }
 }

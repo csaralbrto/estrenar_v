@@ -326,23 +326,238 @@ export class ContentUploadComponent implements OnInit {
     }
   }
   onSubmit(value) {
-    value.project_characteristics = this.featuresProjectsArray;
-    value.logo_project = this.imageSrc;
-    value.images_project = this.images;
-    console.log(value);
-    this.formProjectArray.push(value);
+    let idStep = 5;
+    let error_step4 = false;
+    let error_name = 0;
+      if($('#name').val() == null || $('#name').val() == ""){
+        $('#spanName').removeClass('hide');
+        error_name = 1;
+        error_step4 = true;
+      }else{
+        $('#spanName').addClass('hide');
+        error_name = 0;
+        error_step4 = false;
+      }
+      let error_phone = 0;
+      if($('#phone').val() == null || $('#phone').val() == ""){
+        $('#spanPhone').removeClass('hide');
+        error_phone = 1;
+        error_step4 = true;
+      }else{
+        $('#spanPhone').addClass('hide');
+        error_phone = 0;
+        error_step4 = false;
+      }
+      let error_email = 0;
+      if($('#email').val() == null || $('#email').val() == ""){
+        $('#spanEmail').removeClass('hide');
+        error_email = 1;
+        error_step4 = true;
+      }else{
+        $('#spanEmail').addClass('hide');
+        error_email = 0;
+        error_step4 = false;
+      }
+      let error_schedule1 = 0
+      if($('#schedule_week').val() == null || $('#schedule_week').val() == ""){
+        $('#spanSchedule1').removeClass('hide');
+        error_schedule1 = 1;
+        error_step4 = true;
+      }else{
+        $('#spanSchedule1').addClass('hide');
+        error_schedule1 = 0;
+        error_step4 = false;
+      }
+      let error_schedule2 = 0
+      if($('#schedule_weekend').val() == null || $('#schedule_weekend').val() == ""){
+        $('#spanSchedule2').removeClass('hide');
+        error_schedule2 = 1;
+        error_step4 = true;
+      }else{
+        $('#spanSchedule2').addClass('hide');
+        error_schedule2 = 0;
+        error_step4 = false;
+      }
+      if(error_name == 1 || error_phone == 1 || error_email == 1 || error_schedule1 == 1 || error_schedule2 == 1){
+        error_step4 = true
+      }
+    if(!error_step4){
+      value.project_characteristics = this.featuresProjectsArray;
+      value.logo_project = this.imageSrc;
+      value.images_project = this.images;
+      console.log(value);
+      this.formProjectArray.push(value);
+      for (let index = 0; index <= 5; index++) {
+        if (idStep == index) {
+          $('#upload' + index).removeAttr('style');
+          // console.log(index + '-muestro este item ');
+        } else {
+          // console.log(index + '-oculto este item ');
+          $('#upload' + index).css('display', 'none');
+        }
+      }
+    }
   }
   onSubmitTypology(value){    
-    console.log(value);
-    value.images_property = this.imagesTypology;
-    value.maps = this.planeSrc;
-    value.property_characteristics = this.featuresTypologyArray;
-    this.featuresTypologyArray = [];
-    this.imagesTypology = [];
-    this.planeSrc = "";
-    this.formTypologyArray.push(value); 
-    console.log('se almaceno en el array de las tipologias',this.formTypologyArray);
-    this.createFormTypology();
+    let error_typology = false
+    let error_label_price
+      if($('#label_price').val() == null || $('#label_price').val() == ""){
+        $('#spanPriceLabel').focus();
+        $('#spanPriceLabel').removeClass('hide');
+        error_label_price = 1;
+        error_typology = true;
+      }else{
+        $('#spanPriceLabel').addClass('hide');
+        error_label_price = 0;
+        error_typology = false;
+      }
+      let error_price_from
+      if($('#price_from').val() == null || $('#price_from').val() == ""){
+        $('#spanPriceFrom').focus();
+        $('#spanPriceFrom').removeClass('hide');
+        error_price_from = 1;
+        error_typology = true;
+      }else{
+        $('#spanPriceFrom').addClass('hide');
+        error_price_from = 0;
+        error_typology = false;
+      }
+      let error_initial_fee
+      if($('#initial_fee').val() == null || $('#initial_fee').val() == ""){
+        $('#spanFee').focus();
+        $('#spanFee').removeClass('hide');
+        error_initial_fee = 1;
+        error_typology = true;
+      }else{
+        $('#spanFee').addClass('hide');
+        error_initial_fee = 0;
+        error_typology = false;
+      }
+      let error_separation
+      if($('#separation').val() == null || $('#separation').val() == ""){
+        $('#spanSeparation').focus();
+        $('#spanSeparation').removeClass('hide');
+        error_separation = 1;
+        error_typology = true;
+      }else{
+        $('#spanSeparation').addClass('hide');
+        error_separation = 0;
+        error_typology = false;
+      }
+      let error_constructed_area
+      if($('#constructed_area').val() == null || $('#constructed_area').val() == ""){
+        $('#spanArea').focus();
+        $('#spanArea').removeClass('hide');
+        error_constructed_area = 1;
+        error_typology = true;
+      }else{
+        $('#spanArea').addClass('hide');
+        error_constructed_area = 0;
+        error_typology = false;
+      }
+      let error_private_area
+      if($('#private_area').val() == null || $('#private_area').val() == ""){
+        $('#spanPrivate').focus();
+        $('#spanPrivate').removeClass('hide');
+        error_private_area = 1;
+        error_typology = true;
+      }else{
+        $('#spanPrivate').addClass('hide');
+        error_private_area = 0;
+        error_typology = false;
+      }
+      let error_type_of_property
+      if($('#type_of_property').val() == null || $('#type_of_property').val() == ""){
+        $('#spanTypeProperty').focus();
+        $('#spanTypeProperty').removeClass('hide');
+        error_type_of_property = 1;
+        error_typology = true;
+      }else{
+        $('#spanTypeProperty').addClass('hide');
+        error_type_of_property = 0;
+        error_typology = false;
+      }
+      let error_finishes
+      if($('#finishes').val() == null || $('#finishes').val() == ""){
+        $('#spanfinishes').focus();
+        $('#spanfinishes').removeClass('hide');
+        error_finishes = 1;
+        error_typology = true;
+      }else{
+        $('#spanfinishes').addClass('hide');
+        error_finishes = 0;
+        error_typology = false;
+      }
+      let error_planeSrc
+      if(this.planeSrc == null || this.planeSrc == ""){
+        $('#spanmaps').focus();
+        $('#spanmaps').removeClass('hide');
+        error_planeSrc = 1;
+        error_typology = true;
+      }else{
+        $('#spanmaps').addClass('hide');
+        error_planeSrc = 0;
+        error_typology = false;
+      }
+      let error_imagesTypology
+      if(!(this.imagesTypology.length > 0)){
+        $('#spanimages_property').focus();
+        $('#spanimages_property').removeClass('hide');
+        error_imagesTypology = 1;
+        error_typology = true;
+      }else{
+        $('#spanimages_property').addClass('hide');
+        error_imagesTypology = 0;
+        error_typology = false;
+      }
+      let error_video_property
+      if($('#video_property').val() == null || $('#video_property').val() == ""){
+        $('#spanvideo_property').focus();
+        $('#spanvideo_property').removeClass('hide');
+        error_video_property = 1;
+        error_typology = true;
+      }else{
+        $('#spanvideo_property').addClass('hide');
+        error_video_property = 0;
+        error_typology = false;
+      }
+      let error_balcon_area
+      if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
+        $('#spanvideo_property').focus();
+        $('#spanvideo_property').removeClass('hide');
+        error_balcon_area = 1;
+        error_typology = true;
+      }else{
+        $('#spanvideo_property').addClass('hide');
+        error_balcon_area = 0;
+        error_typology = false;
+      }
+      let error_featuresTypologyArray
+      if(!(this.featuresTypologyArray.length > 0)){
+        $('#spanFeature').focus();
+        $('#spanFeature').removeClass('hide');
+        error_featuresTypologyArray = 1;
+        error_typology = true;
+      }else{
+        $('#spanFeature').addClass('hide');
+        error_featuresTypologyArray = 0;
+        error_typology = false;
+      }
+      if(error_label_price == 1 || error_price_from == 1 || error_initial_fee == 1 || error_separation == 1 || error_constructed_area == 1 || error_private_area == 1 || error_type_of_property == 1 || error_finishes == 1 || error_planeSrc == 1 || error_imagesTypology == 1 || error_video_property == 1 || error_balcon_area == 1 || error_featuresTypologyArray == 1 ){
+        error_typology = true;
+      }
+    if(!error_typology){
+      console.log(value);
+      value.images_property = this.imagesTypology;
+      value.maps = this.planeSrc;
+      value.property_characteristics = this.featuresTypologyArray;
+      this.featuresTypologyArray = [];
+      this.imagesTypology = [];
+      this.planeSrc = "";
+      this.formTypologyArray.push(value); 
+      console.log('se almaceno en el array de las tipologias',this.formTypologyArray);
+      this.createFormTypology();
+    }
   }
   saveTemporary(projectValue,typologysValue){
     if(this.formProjectArray && this.formProjectArray.length > 0){
@@ -470,15 +685,455 @@ export class ContentUploadComponent implements OnInit {
       typology: new FormControl(''),
     });
   }
-  changeStepWizard(idStep) {
-    console.log('entre');
-    for (let index = 0; index <= 5; index++) {
-      if (idStep == index) {
-        $('#upload' + index).removeAttr('style');
-        // console.log(index + '-muestro este item ');
-      } else {
-        // console.log(index + '-oculto este item ');
-        $('#upload' + index).css('display', 'none');
+  changeStepWizard(idStep,currentStep) {
+    var error = false;
+    if(currentStep == 1){
+      let error_builder = 0;
+      if($('#builder').val() == null || $('#builder').val() == ""){
+        $('#spanBuilder').focus();
+        $('#spanBuilder').removeClass('hide');
+        error_builder = 1;
+        error = true;
+      }else{
+        $('#spanBuilder').addClass('hide');
+        error_builder = 0;
+        error = false;
+      }
+      let error_name_proyect = 0;
+      if($('#name_proyect').val() == null || $('#name_proyect').val() == ""){
+        $('#spanNameProject').focus();
+        $('#spanNameProject').removeClass('hide');
+        error_name_proyect = 1;
+        error = true;
+      }else{
+        $('#spanNameProject').addClass('hide');
+        error_name_proyect = 0;
+        error = false;
+      }
+      // if($("#type_property").is(":checked")){
+      //   $('#spanType').addClass('hide');
+      //   error = false;
+      // }else{
+      //   $('#spanType').focus();
+      //   $('#spanType').removeClass('hide');
+      //   error = true;
+      // }
+      // if($("#status_project").is(":checked")){
+      //   $('#spanState').addClass('hide');
+      //   error = false;
+      // }else{
+      //   $('#spanState').focus();
+      //   $('#spanState').removeClass('hide');
+      //   error = true;
+      // }
+      let error_date_of_delivery = 0;
+      if($('#date_of_delivery').val() == ""){
+        $('#spanDate').focus();
+        $('#spanDate').removeClass('hide');
+        error_date_of_delivery = 1;
+        error = true;
+      }else{
+        $('#spanDate').addClass('hide');
+        error_date_of_delivery = 0;
+        error = false;
+      }
+      let error_city = 0;
+      if($('#city').val() == null || $('#city').val() == ""){
+        $('#spanCity').focus();
+        $('#spanCity').removeClass('hide');
+        error_city = 1;
+        error = true;
+      }else{
+        $('#spanCity').addClass('hide');
+        error_city = 0;
+        error = false;
+      }
+      let error_zone = 0;
+      if($('#zone').val() == null || $('#zone').val() == ""){
+        $('#spanZone').focus();
+        $('#spanZone').removeClass('hide');
+        error_zone = 1;
+        error = true;
+      }else{
+        $('#spanZone').addClass('hide');
+        error_zone = 0;
+        error = false;
+      }
+      let error_sector = 0;
+      if($('#sector').val() == null || $('#sector').val() == ""){
+        $('#spanSector').focus();
+        $('#spanSector').removeClass('hide');
+        error_sector = 1;
+        error = true;
+      }else{
+        $('#spanSector').addClass('hide');
+        error_sector = 0;
+        error = false;
+      }
+      let error_address_room_sales = 0;
+      if($('#address_room_sales').val() == null || $('#address_room_sales').val() == ""){
+        $('#spanSales').focus();
+        $('#spanSales').removeClass('hide');
+        error_address_room_sales = 1;
+        error = true;
+      }else{
+        $('#spanSales').addClass('hide');
+        error_address_room_sales = 0;
+        error = false;
+      }
+      let error_address_project = 0;
+      if($('#address_project').val() == null || $('#address_project').val() == ""){
+        $('#spanProject').focus();
+        $('#spanProject').removeClass('hide');
+        error_address_project = 1;
+        error = true;
+      }else{
+        $('#spanProject').addClass('hide');
+        error_address_project = 0;
+        error = false;
+      }
+      let error_stratum = 0;
+      if($('#stratum').val() == null || $('#stratum').val() == ""){
+        $('#spanStratum').focus();
+        $('#spanStratum').removeClass('hide');
+        error_stratum = 1;
+        error = true;
+      }else{
+        $('#spanStratum').addClass('hide');
+        error_stratum = 0;
+        error = false;
+      }
+      let error_bank = 0;
+      if($('#bank').val() == null || $('#bank').val() == ""){
+        $('#spanBank').focus();
+        $('#spanBank').removeClass('hide');
+        error_bank = 1;
+        error = true;
+      }else{
+        $('#spanBank').addClass('hide');
+        error_bank = 0;
+        error = false;
+      }  
+      if(error_builder == 1 || error_name_proyect == 1 || error_date_of_delivery == 1 || error_city == 1 || error_zone == 1 || error_sector == 1 || error_address_room_sales == 1 || error_address_project == 1 || error_stratum == 1 || error_bank == 1){
+        error = true;
+      } 
+    }else if(currentStep == 2){
+      let error_imageSrc = 0;
+      if(this.imageSrc == null || this.imageSrc == ""){
+        $('#spanimageSrc').removeClass('hide');
+        error_imageSrc = 1;
+        error = true;
+      }else{
+        $('#spanimageSrc').addClass('hide');
+        error_imageSrc = 0;
+        error = false;
+      }
+      let error_images = 0;
+      if(!(this.images.length > 0)){
+        $('#spanimages').removeClass('hide');
+        error_images = 1;
+        error = true;
+      }else{
+        $('#spanimages').addClass('hide');
+        error_images = 0;
+        error = false;
+      }
+      let error_url_video = 0;
+      if($('#url_video').val() == null || $('#url_video').val() == ""){
+        $('#spanVideo').focus();
+        $('#spanVideo').removeClass('hide');
+        error_url_video = 1;
+        error = true;
+      }else{
+        $('#spanVideo').addClass('hide');
+        error_url_video = 0;
+        error = false;
+      }
+      if(error_imageSrc == 1 || error_images == 1 || error_url_video == 1){
+        error = true;
+      }
+    }else if(currentStep == 3){
+      let error_feature = 0;
+      if(!(this.featuresProjectsArray.length > 0)){
+        $('#spanFeature').removeClass('hide');
+        error_feature = 1;
+        error = true;
+      }else{
+        $('#spanFeature').addClass('hide');
+        error_feature = 0;
+        error = false;
+      }
+      let error_number_towers
+      if($('#number_towers').val() == null || $('#number_towers').val() == ""){
+        $('#spanNumberTowers').focus();
+        $('#spanNumberTowers').removeClass('hide');
+        error_number_towers = 1;
+        error = true;
+      }else{
+        $('#spanNumberTowers').addClass('hide');
+        error_number_towers = 0;
+        error = false;
+      }
+      let error_floors_towers
+      if($('#floors_towers').val() == null || $('#floors_towers').val() == ""){
+        $('#spanFloorsTowers').focus();
+        $('#spanFloorsTowers').removeClass('hide');
+        error_floors_towers = 1;
+        error = true;
+      }else{
+        $('#spanFloorsTowers').addClass('hide');
+        error_floors_towers = 0;
+        error = false;
+      }
+      let error_apartments_towers
+      if($('#apartments_towers').val() == null || $('#apartments_towers').val() == ""){
+        $('#spanApartmentsTowers').focus();
+        $('#spanApartmentsTowers').removeClass('hide');
+        error_apartments_towers = 1;
+        error = true;
+      }else{
+        $('#spanApartmentsTowers').addClass('hide');
+        error_apartments_towers = 0;
+        error = false;
+      }
+      let error_elevator_towers
+      if($('#elevator_towers').val() == null || $('#elevator_towers').val() == ""){
+        $('#spanElevatorTowers').focus();
+        $('#spanElevatorTowers').removeClass('hide');
+        error_elevator_towers = 1;
+        error = true;
+      }else{
+        $('#spanElevatorTowers').addClass('hide');
+        error_elevator_towers = 0;
+        error = false;
+      }
+      let error_builder = 0;
+      if($('#colection').val() == null || $('#colection').val() == ""){
+        $('#spanColection').focus();
+        $('#spanColection').removeClass('hide');
+        error_builder = 1;
+        error = true;
+      }else{
+        $('#spanColection').addClass('hide');
+        error_builder = 0;
+        error = false;
+      }
+      if(error_feature == 1 || error_number_towers == 1 || error_floors_towers == 1 || error_apartments_towers == 1 || error_elevator_towers == 1 || error_builder == 1){
+        error =  true; 
+     }
+    }else if (currentStep == 4){
+      let error_name = 0;
+      if($('#name').val() == null || $('#name').val() == ""){
+        $('#spanName').removeClass('hide');
+        error_name = 1;
+        error = true;
+      }else{
+        $('#spanName').addClass('hide');
+        error_name = 0;
+        error = false;
+      }
+      let error_phone = 0;
+      if($('#phone').val() == null || $('#phone').val() == ""){
+        $('#spanPhone').removeClass('hide');
+        error_phone = 1;
+        error = true;
+      }else{
+        $('#spanPhone').addClass('hide');
+        error_phone = 0;
+        error = false;
+      }
+      let error_email = 0;
+      if($('#email').val() == null || $('#email').val() == ""){
+        $('#spanEmail').removeClass('hide');
+        error_email = 1;
+        error = true;
+      }else{
+        $('#spanEmail').addClass('hide');
+        error_email = 0;
+        error = false;
+      }
+      let error_schedule1 = 0
+      if($('#schedule_week').val() == null || $('#schedule_week').val() == ""){
+        $('#spanSchedule1').removeClass('hide');
+        error_schedule1 = 1;
+        error = true;
+      }else{
+        $('#spanSchedule1').addClass('hide');
+        error_schedule1 = 0;
+        error = false;
+      }
+      let error_schedule2 = 0
+      if($('#schedule_weekend').val() == null || $('#schedule_weekend').val() == ""){
+        $('#spanSchedule2').removeClass('hide');
+        error_schedule2 = 1;
+        error = true;
+      }else{
+        $('#spanSchedule2').addClass('hide');
+        error_schedule2 = 0;
+        error = false;
+      }
+      if(error_name == 1 || error_phone == 1 || error_email == 1 || error_schedule1 == 1 || error_schedule2 == 1){
+        error = true
+      }
+    }else if (currentStep == 5){
+      console.log(this.featuresTypologyArray.length);
+      let error_label_price
+      if($('#label_price').val() == null || $('#label_price').val() == ""){
+        $('#spanPriceLabel').focus();
+        $('#spanPriceLabel').removeClass('hide');
+        error_label_price = 1;
+        error = true;
+      }else{
+        $('#spanPriceLabel').addClass('hide');
+        error_label_price = 0;
+        error = false;
+      }
+      let error_price_from
+      if($('#price_from').val() == null || $('#price_from').val() == ""){
+        $('#spanPriceFrom').focus();
+        $('#spanPriceFrom').removeClass('hide');
+        error_price_from = 1;
+        error = true;
+      }else{
+        $('#spanPriceFrom').addClass('hide');
+        error_price_from = 0;
+        error = false;
+      }
+      let error_initial_fee
+      if($('#initial_fee').val() == null || $('#initial_fee').val() == ""){
+        $('#spanFee').focus();
+        $('#spanFee').removeClass('hide');
+        error_initial_fee = 1;
+        error = true;
+      }else{
+        $('#spanFee').addClass('hide');
+        error_initial_fee = 0;
+        error = false;
+      }
+      let error_separation
+      if($('#separation').val() == null || $('#separation').val() == ""){
+        $('#spanSeparation').focus();
+        $('#spanSeparation').removeClass('hide');
+        error_separation = 1;
+        error = true;
+      }else{
+        $('#spanSeparation').addClass('hide');
+        error_separation = 0;
+        error = false;
+      }
+      let error_constructed_area
+      if($('#constructed_area').val() == null || $('#constructed_area').val() == ""){
+        $('#spanArea').focus();
+        $('#spanArea').removeClass('hide');
+        error_constructed_area = 1;
+        error = true;
+      }else{
+        $('#spanArea').addClass('hide');
+        error_constructed_area = 0;
+        error = false;
+      }
+      let error_private_area
+      if($('#private_area').val() == null || $('#private_area').val() == ""){
+        $('#spanPrivate').focus();
+        $('#spanPrivate').removeClass('hide');
+        error_private_area = 1;
+        error = true;
+      }else{
+        $('#spanPrivate').addClass('hide');
+        error_private_area = 0;
+        error = false;
+      }
+      let error_type_of_property
+      if($('#type_of_property').val() == null || $('#type_of_property').val() == ""){
+        $('#spanTypeProperty').focus();
+        $('#spanTypeProperty').removeClass('hide');
+        error_type_of_property = 1;
+        error = true;
+      }else{
+        $('#spanTypeProperty').addClass('hide');
+        error_type_of_property = 0;
+        error = false;
+      }
+      let error_finishes
+      if($('#finishes').val() == null || $('#finishes').val() == ""){
+        $('#spanfinishes').focus();
+        $('#spanfinishes').removeClass('hide');
+        error_finishes = 1;
+        error = true;
+      }else{
+        $('#spanfinishes').addClass('hide');
+        error_finishes = 0;
+        error = false;
+      }
+      let error_planeSrc
+      if(this.planeSrc == null || this.planeSrc == ""){
+        $('#spanmaps').focus();
+        $('#spanmaps').removeClass('hide');
+        error_planeSrc = 1;
+        error = true;
+      }else{
+        $('#spanmaps').addClass('hide');
+        error_planeSrc = 0;
+        error = false;
+      }
+      let error_imagesTypology
+      if(!(this.imagesTypology.length > 0)){
+        $('#spanimages_property').focus();
+        $('#spanimages_property').removeClass('hide');
+        error_imagesTypology = 1;
+        error = true;
+      }else{
+        $('#spanimages_property').addClass('hide');
+        error_imagesTypology = 0;
+        error = false;
+      }
+      let error_video_property
+      if($('#video_property').val() == null || $('#video_property').val() == ""){
+        $('#spanvideo_property').focus();
+        $('#spanvideo_property').removeClass('hide');
+        error_video_property = 1;
+        error = true;
+      }else{
+        $('#spanvideo_property').addClass('hide');
+        error_video_property = 0;
+        error = false;
+      }
+      let error_balcon_area
+      if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
+        $('#spanvideo_property').focus();
+        $('#spanvideo_property').removeClass('hide');
+        error_balcon_area = 1;
+        error = true;
+      }else{
+        $('#spanvideo_property').addClass('hide');
+        error_balcon_area = 0;
+        error = false;
+      }
+      let error_featuresTypologyArray
+      if(!(this.featuresTypologyArray.length > 0)){
+        $('#spanFeature').focus();
+        $('#spanFeature').removeClass('hide');
+        error_featuresTypologyArray = 1;
+        error = true;
+      }else{
+        $('#spanFeature').addClass('hide');
+        error_featuresTypologyArray = 0;
+        error = false;
+      }
+      if(error_label_price == 1 || error_price_from == 1 || error_initial_fee == 1 || error_separation == 1 || error_constructed_area == 1 || error_private_area == 1 || error_type_of_property == 1 || error_finishes == 1 || error_planeSrc == 1 || error_imagesTypology == 1 || error_video_property == 1 || error_balcon_area == 1 || error_featuresTypologyArray == 1 ){
+        error = true;
+      }
+    }
+    // console.log('la varieble de error esta: ',error)
+    if(!error){
+      for (let index = 0; index <= 5; index++) {
+        if (idStep == index) {
+          $('#upload' + index).removeAttr('style');
+          // console.log(index + '-muestro este item ');
+        } else {
+          // console.log(index + '-oculto este item ');
+          $('#upload' + index).css('display', 'none');
+        }
       }
     }
   }
