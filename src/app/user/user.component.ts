@@ -325,6 +325,28 @@ export class UserComponent implements OnInit {
     })
     .catch(error => console.log('error', error));
   }
+  updateFavorites() {
+    if(sessionStorage['favorite']){
+      let favorites = [];
+      var storedIds = JSON.parse(sessionStorage.getItem("favorite"));
+      let count = 0
+      for (let ids of storedIds) {
+        favorites.push({"target_id": ids})
+      }
+      let payload = { 
+      "field_user_favorites": favorites
+      }
+      this.router.navigate(['/favoritos']);
+      // fetch("https://lab.estrenarvivienda.com/es/session/token")
+      // .then(response => response.text())
+      // .then(result => {
+      //   this.xcsrfToken = result
+      //   console.log('voy a before update');
+      //   this.beforeUpdate(this.xcsrfToken, payload);
+      // })
+      // .catch(error => console.log('error', error));
+   }
+  }
   beforeUpdate(xcsrfToken, payload){
     var url = 'https://lab.estrenarvivienda.com/es/oauth/token';
     var urlencoded = new URLSearchParams();
@@ -386,7 +408,7 @@ export class UserComponent implements OnInit {
         console.log(result)
       })
       .catch(error => console.log('error', error));
-    }
+  }
   logoutUser() {
     /* Cerramos sesión */
 

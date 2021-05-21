@@ -14,10 +14,17 @@ export class FavoritesService {
 
   constructor( private http: Http ) {
     this.endpoint = environment.endpointApi + 'favorites/';
-    this.dataPath = environment.endpointApi+ 'allProjectsFavorites';
+    this.dataPath = environment.endpointTestingApi+ 'typologies?items_per_page=12&page=0&id=';
     this.endpointFilter = environment.endpointSearchApi;
    }
 
+
+  /* Traer info al comparador*/
+  favoriteData( params: any ): Observable<any> {
+    console.log(this.dataPath + params);
+    return this.http.get(this.dataPath + params)
+    .pipe(map(( response => response.json() )));
+  }
   /* Traer toda la info de proyectos */
   getData(): Observable<any> {
     return this.http.get(this.dataPath)

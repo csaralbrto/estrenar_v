@@ -5,11 +5,9 @@ h2,
     letter-spacing: -1px;
     font-weight: 400 !important;
     line-height: 1.2em !important;
-
     &.deco {
         position: relative;
         margin-bottom: 3rem;
-
         &:before {
             position: absolute;
             width: 37px;
@@ -21,12 +19,10 @@ h2,
             content: "";
         }
     }
-
     &.deco-wide {
         position: relative;
         margin-bottom: 2rem;
         padding-left: 3rem;
-
         &:before {
             position: absolute;
             width: 37px;
@@ -43,6 +39,7 @@ h2,
 hr.white {
     border-bottom: 1px solid $white;
 }
+
 hr.mobile {
     display: none;
     @media screen and (max-width: 600px) {
@@ -50,15 +47,18 @@ hr.mobile {
         border-bottom: 1px solid $white;
     }
 }
+
 hr {
     @media screen and (max-width: 600px) {
         margin: 0.5rem auto !important;
     }
 }
+
 select {
     background-image: url(/assets/images/select.png) !important;
     background-size: 12px 12px !important;
 }
+
 .buscador {
     position: relative;
     img.search {
@@ -70,6 +70,7 @@ select {
         transform: translateY(-50%);
     }
 }
+
 .mb1 {
     margin-bottom: 1rem;
 }
@@ -90,7 +91,6 @@ select {
 a.button.secondary {
     color: $primary-color;
     font-weight: 500;
-
     &:hover {
         color: $primary-color;
         font-weight: 500;
@@ -100,7 +100,6 @@ a.button.secondary {
 a.button.close {
     padding-right: 2rem;
     position: relative;
-
     &:before {
         position: absolute;
         content: "";
@@ -116,7 +115,6 @@ a.button.close {
     .columns {
         padding-right: 0.2rem;
         padding-left: 0.2rem;
-
         @media screen and (max-width: 600px) {
             padding-right: 1rem;
             padding-left: 1rem;
@@ -129,19 +127,20 @@ a.button.close {
         background-color: $medium-gray;
         color: $black;
         margin-right: 0.3rem;
-
         &.active {
             background-color: $primary-color;
             color: $white;
         }
     }
 }
+
 .medium-five {
     width: 20% !important;
     @media screen and (max-width: 600px) {
         width: 100% !important;
     }
 }
+
 .publicidad {
     margin: 1rem 0 2rem 0;
     background: #b2b2b2;
@@ -192,14 +191,12 @@ a.button.close {
     label {
         color: $white;
     }
-
     a {
         color: $secondary-color;
-        &:hover{
+        &:hover {
             color: $white;
         }
     }
-
     &.form {
         padding: 4rem !important;
         border-radius: $global-radius !important;
@@ -234,14 +231,15 @@ a.button.close {
 button:focus {
     outline: 0;
 }
+
 p {
     outline: 0;
     .mini {
         font-size: 0.9rem;
     }
 }
-//header
 
+//header
 .container-header {
     position: relative;
     height: 50vh;
@@ -253,11 +251,11 @@ p {
         width: 100%;
         margin-bottom: 2rem;
         padding: 2rem 1rem;
-        &.header-fix{
+        &.header-fix {
             padding: 0.3rem 1rem;
             background: $primary-color;
             position: fixed;
-            transition: ease all 0.4s; 
+            transition: ease all 0.4s;
             z-index: 1;
         }
         @media screen and (max-width: 600px) {
@@ -283,13 +281,11 @@ p {
     }
     ul.menu {
         float: right;
-
         a {
             color: $white;
             font-size: 1.1rem;
             font-weight: 500;
             transition: ease all 0.4s;
-
             &:hover {
                 color: $secondary-color;
                 transition: ease all 0.4s;
@@ -298,7 +294,6 @@ p {
                 padding: 1rem 0 0 1rem;
             }
         }
-
         span.num_fav {
             font-size: 0.8rem;
             font-weight: 500;
@@ -320,16 +315,16 @@ p {
             margin-bottom: 0.3rem;
             padding: 1rem;
         }
-        &.header-fix{
+        &.header-fix {
             padding: 0.3rem 1rem;
             background: $primary-color;
             position: fixed;
-            transition: ease all 0.4s; 
+            transition: ease all 0.4s;
             z-index: 2;
-            ul.menu{
-                a{
+            ul.menu {
+                a {
                     color: $white;
-                    &:hover{
+                    &:hover {
                         color: $secondary-color;
                     }
                 }
@@ -337,13 +332,11 @@ p {
         }
         ul.menu {
             float: right;
-    
             a {
                 color: $black;
                 font-size: 1.1rem;
                 font-weight: 400;
                 transition: ease all 0.4s;
-    
                 &:hover {
                     color: $primary-color;
                     transition: ease all 0.4s;
@@ -352,7 +345,6 @@ p {
                     padding: 1rem 0 0 1rem;
                 }
             }
-    
             span.num_fav {
                 font-size: 0.8rem;
                 font-weight: 400;
@@ -360,8 +352,6 @@ p {
             }
         }
     }
-
-
 }
 
 //Slider
@@ -450,12 +440,13 @@ p {
         }
     }
 }
-.slider-header{
+
+.slider-header {
     width: 100%;
     height: auto;
     position: relative;
     display: contents;
-    &:after{
+    &:after {
         position: absolute;
         content: "";
         width: 100%;
@@ -466,6 +457,7 @@ p {
         z-index: -1;
     }
 }
+
 .slick-blog {
     ul {
         margin: 0;
@@ -473,7 +465,7 @@ p {
         li.is-active {
             padding: 0 1rem;
         }
-        li.slick-slide{
+        li.slick-slide {
             width: 1200px;
         }
     }
@@ -488,7 +480,6 @@ p {
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 96%);
             color: #fefefe;
             padding: 3rem 3rem 0 3rem;
-
             width: 100%;
             border-radius: 0 0 8px 8px;
             height: 160px;
@@ -499,12 +490,11 @@ p {
             max-height: 500px;
         }
     }
-    
 }
+
 .orbit-figure {
     position: relative;
     margin-bottom: 0.9rem !important;
-
     .orbit-caption {
         position: absolute;
         bottom: 0;
@@ -516,7 +506,6 @@ p {
         padding: 1rem;
         border-radius: $global-radius;
     }
-
     img.orbit-image {
         border-radius: $global-radius;
         position: relative;
@@ -526,6 +515,7 @@ p {
         }
     }
 }
+
 .orbit {
     &.home {
         img.orbit-image {
@@ -548,6 +538,7 @@ p {
         }
     }
 }
+
 .sl-constructoras {
     img {
         border-radius: $global-radius;
@@ -568,6 +559,7 @@ p {
         }
     }
 }
+
 .slideproject {
     .destacado {
         img.orbit-image {
@@ -602,7 +594,6 @@ p {
     display: inline-block;
     width: 45px;
     height: 33px;
-
     .orbit-previous,
     .orbit-next {
         position: relative;
@@ -613,10 +604,8 @@ p {
         color: $primary-color;
         text-indent: -10000px;
     }
-
     button.orbit-previous {
         position: relative;
-
         &:after {
             position: absolute;
             background: url(/assets/images/left.png);
@@ -629,10 +618,8 @@ p {
             cursor: pointer;
         }
     }
-
     button.orbit-next {
         position: relative;
-
         &:after {
             position: absolute;
             background: url(/assets/images/right.png);
@@ -657,40 +644,33 @@ p {
 }
 
 //Footer
-
 .container-footer {
     background: $primary-color;
     color: $white;
     font-size: 0.8rem;
     padding: 3rem 1rem;
-
     a {
         color: $white;
         font-size: 0.7rem;
         transition: ease all 0.3s;
-
         &:hover {
             color: $secondary-color;
             transition: ease all 0.3s;
         }
     }
-
     h2 {
         font-size: 1rem;
         font-weight: 500;
         margin-bottom: 0.6rem;
         letter-spacing: 0;
     }
-
     ul {
         list-style: none;
         margin-left: 0;
     }
-
     ul.menu-footer {
         li {
             margin-bottom: 0.5rem;
-
             a {
                 font-size: 0.9rem;
             }
@@ -700,11 +680,9 @@ p {
 
 .region-social-media-links {
     margin: 1rem auto;
-
     ul {
         li {
             display: inline-block;
-
             img {
                 max-width: 80%;
             }
@@ -715,7 +693,6 @@ p {
 .legal {
     padding: 2rem 1rem;
     font-size: 0.8rem;
-
     p {
         margin-bottom: 0.4rem;
     }
@@ -727,16 +704,18 @@ p {
         min-height: 500px;
     }
 }
+
 img.proyecto-card {
     min-height: 200px;
 }
+
 .card {
     .cont-destacado {
         padding: 1rem 1rem 0 0;
     }
     .card-section {
         padding: 0.5rem;
-        .small-6.columns{
+        .small-6.columns {
             padding-right: 0.2rem;
         }
     }
@@ -747,7 +726,6 @@ img.proyecto-card {
             height: 340px;
         }
     }
-
     .container-photo {
         display: block;
         max-height: 200px;
@@ -762,23 +740,19 @@ img.proyecto-card {
             height: 30%;
             background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
         }
-
         img.proyecto {
             width: 100%;
             height: 160px;
         }
-
         .tags {
             position: absolute;
             top: 0;
             left: 0;
             padding: 0.5rem;
             z-index: 1;
-
             .tag {
                 display: inline-block;
                 margin-right: 0.3rem;
-
                 a {
                     color: $white;
                     border-radius: $global-radius;
@@ -790,7 +764,6 @@ img.proyecto-card {
                 }
             }
         }
-
         .add {
             position: absolute;
             top: 0;
@@ -799,20 +772,16 @@ img.proyecto-card {
             z-index: 1;
         }
     }
-
     img.proyecto {
         width: 100%;
     }
-
     .tags {
         position: absolute;
         top: 0;
         left: 0;
         padding: 0.5rem;
-
         .tag {
             display: inline-block;
-
             a {
                 color: $white;
                 border-radius: $global-radius;
@@ -824,14 +793,12 @@ img.proyecto-card {
             }
         }
     }
-
     .add {
         position: absolute;
         top: 0;
         right: 0;
         padding: 0.5rem;
     }
-
     h2 {
         font-size: 0.8rem;
         letter-spacing: 0;
@@ -840,27 +807,28 @@ img.proyecto-card {
         text-transform: uppercase;
         min-height: 2rem;
     }
-
     .descripcion {
         font-size: 0.85rem;
     }
-
     .typologyText {
         font-size: 0.85rem;
         text-align: left;
     }
-
     .agmHeight {
         height: 300px;
+    }
+    .agmHeightFavorite {
+        height: 850px !important;
     }
     .fRight {
         float: right;
     }
-
+    .pTop8 {
+        padding-top: 8px;
+    }
     .precio {
         margin: 1rem auto 0 auto;
         font-size: 0.85rem;
-
         span {
             font-size: 1.3rem;
             font-weight: 700;
@@ -875,13 +843,11 @@ img.proyecto-card {
 .item {
     align-items: center;
     justify-content: center;
-
     .data-icon {
         display: inline-block;
         width: 20px;
         height: 20px;
     }
-
     .data {
         display: inline-block;
         text-align: right;
@@ -893,13 +859,11 @@ img.proyecto-card {
 .item-big {
     align-items: center;
     justify-content: center;
-
     .data-icon {
         display: inline-block;
         width: 40px;
         height: 40px;
     }
-
     .data {
         display: inline-block;
         width: auto;
@@ -919,7 +883,6 @@ img.proyecto-card {
 .proyectolist {
     .resultados {
         margin-top: 4px;
-
         span {
             font-weight: 600;
             color: $primary-color;
@@ -937,15 +900,12 @@ img.proyecto-card {
     justify-content: center;
     height: 152px;
     margin-bottom: 0;
-
     @media screen and (max-width: 600px) {
         margin-bottom: 1.2rem;
     }
-
     .container-comparador {
         color: $white;
         text-align: center;
-
         h2 {
             color: $secondary-color;
             font-size: 1.8rem;
@@ -970,7 +930,6 @@ img.proyecto-card {
     }
     .container-comparador {
         text-align: center;
-
         h2 {
             font-size: 1.8rem;
         }
@@ -991,6 +950,7 @@ img.proyecto-card {
     margin-left: 11px;
     text-align: center;
 }
+
 .displayIB {
     display: inline-block;
 }
@@ -1008,42 +968,34 @@ label {
     transform: translateY(100%);
     color: $white;
     padding-top: $global-padding;
-
     label {
         color: $white;
     }
-
     .close-button {
         top: 0;
         font-size: 26px;
         color: darken($primary-color, 20%);
         display: none;
     }
-
     &.is-open .close-button {
         display: block;
     }
-
     .mobile-action-sheet-inner {
         position: relative;
         padding: 0 1rem 0.5rem;
     }
-
     .action-sheet-toggle {
         position: absolute;
         top: -$global-padding;
         left: 50%;
         transform: translate3D(-50%, -100%, 0);
     }
-
     &.position-bottom.is-transition-push::after {
         box-shadow: none;
     }
-
     .button.white {
         border: 1px solid $white;
         color: $white;
-
         &:hover,
         &:active {
             border: 1px solid $white;
@@ -1067,7 +1019,7 @@ label {
     .img {
         margin-bottom: 1rem;
         position: relative;
-        &:after{
+        &:after {
             position: absolute;
             content: "";
             width: 100%;
@@ -1082,10 +1034,8 @@ label {
             height: 200px;
             width: 100%;
             position: relative;
-           
         }
     }
-
     .social {
         top: 0;
         position: absolute;
@@ -1093,7 +1043,6 @@ label {
         padding: 0.4rem;
         display: flex;
         align-items: center;
-
         .comment,
         .like {
             display: flex;
@@ -1101,23 +1050,20 @@ label {
             font-size: 0.7rem;
             font-weight: 500;
             align-items: center;
-
             span {
                 margin-left: 0.5rem;
                 display: inline-block;
                 float: left;
             }
-            img{
+            img {
                 display: inline-block;
                 float: left;
             }
         }
-
         .comment {
             margin-right: 0.8rem;
         }
     }
-
     .section {
         a {
             text-transform: uppercase;
@@ -1125,7 +1071,6 @@ label {
             color: $primary-color;
         }
     }
-
     h3 {
         font-size: 1rem;
         margin-bottom: 0.6rem;
@@ -1134,15 +1079,13 @@ label {
             text-transform: uppercase;
         }
     }
-
     .resumen {
         margin-bottom: 1rem;
         font-size: 0.9rem;
-        p{
+        p {
             line-height: 1.4rem;
         }
     }
-
     a.button {
         position: absolute;
         bottom: 0;
@@ -1157,26 +1100,24 @@ h1.project {
     margin-bottom: 0.4rem;
     font-size: 2.2rem;
 }
+
 .botones {
     margin-top: 27px;
     text-align: right;
     &.list {
         margin-top: 18px;
     }
-
     .button {
         display: inline-block;
         margin-bottom: 0;
         margin: 0 0.2rem;
         padding: 0.85em 0.5em;
-
         @media screen and (max-width: 600px) {
             display: inline-block;
             width: auto;
             margin-bottom: 1rem;
         }
     }
-
     @media screen and (max-width: 600px) {
         margin-top: 0;
         text-align: center;
@@ -1190,9 +1131,11 @@ h1.project {
         margin-bottom: 2rem;
     }
 }
+
 .info-proyecto {
     margin-bottom: 2rem;
 }
+
 img.logo-proyecto {
     border: 1px solid $light-gray;
     border-radius: $global-radius;
@@ -1212,18 +1155,15 @@ img.logo-proyecto {
 
 ul.accordion {
     text-align: center;
-
     .accordion-title {
         border: 0px solid #eee;
         border-bottom: 0px solid $white;
         font-size: 1rem;
         display: inline-block;
-
         &:before {
             right: 0rem;
         }
     }
-
     .accordion-title:hover,
     .accordion-title:focus {
         background-color: transparent;
@@ -1232,17 +1172,15 @@ ul.accordion {
 
 .accordion-content {
     border: 0px solid $white !important;
-
     .feature {
         margin-bottom: 1.4rem;
-
         span {
             margin-right: 1rem;
         }
     }
 }
 
-:last-child:not(.is-active) > .accordion-title {
+:last-child:not(.is-active)>.accordion-title {
     border-bottom: 0px solid #eee !important;
 }
 
@@ -1256,20 +1194,20 @@ ul.accordion {
         font-size: 0.9rem;
     }
 }
+
 img.constructora {
     border: 1px solid $light-gray;
     border-radius: $global-radius;
 }
+
 .terminos {
     margin-bottom: 1rem;
-
     label {
         width: 87%;
         font-size: 0.8rem !important;
     }
-
-    [type="checkbox"] + label,
-    [type="radio"] + label {
+    [type="checkbox"]+label,
+    [type="radio"]+label {
         vertical-align: top;
     }
 }
@@ -1284,7 +1222,7 @@ span.error {
     display: block;
     width: 100%;
     text-align: left;
-    &:after{
+    &:after {
         position: absolute;
         content: "";
         left: 0;
@@ -1295,55 +1233,48 @@ span.error {
         background-size: contain;
     }
 }
+
 .formulario {
     .tabs {
         margin: 0;
         border: 0px solid #eee;
         background: transparent;
         color: $primary-color;
-
         li:first-child {
             a {
                 border-top-left-radius: $global-radius;
             }
         }
-
         li:last-child {
             a {
                 border-top-right-radius: $global-radius;
             }
         }
     }
-
     .tabs-title {
         float: left;
         width: 50%;
-
         &.is-active {
             a {
                 background: $primary-color;
                 color: $white;
-
                 &:hover,
-                :focus {
+                 :focus {
                     background: $primary-color !important;
                     color: $white !important;
                 }
             }
         }
-
         a {
             background: $secondary-color;
             color: $primary-color;
-
             &:hover,
-            :focus {
+             :focus {
                 background: $primary-color !important;
                 color: $white !important;
             }
         }
     }
-
     .tabs-content {
         border: 0px solid #eee;
         border-top: 0;
@@ -1354,11 +1285,9 @@ span.error {
         font-size: 0.9rem;
         border-bottom-left-radius: $global-radius;
         border-bottom-right-radius: $global-radius;
-
         label {
             color: $white;
             font-size: 0.9rem;
-
             a {
                 color: $secondary-color;
             }
@@ -1378,13 +1307,11 @@ span.error {
     border-radius: $global-radius;
     align-items: center;
     justify-content: center;
-
     h3 {
         font-size: 1rem;
         font-weight: 500;
         margin-bottom: 0.6rem;
     }
-
     p {
         margin-bottom: 0.4rem;
     }
@@ -1409,7 +1336,6 @@ span.error {
 //simuladores
 .valores {
     margin-bottom: 2rem;
-
     .valor {
         font-size: 1.6rem;
         color: $secondary-color;
@@ -1419,9 +1345,11 @@ span.error {
         }
     }
 }
+
 .nav-tabs {
     padding: 2rem 2rem 0 2rem;
 }
+
 .mapa {
     .nav-tabs {
         padding: 2rem 2rem 0 0rem;
@@ -1431,10 +1359,10 @@ span.error {
 .simuladores {
     .slider-handle {
         margin-top: 2px;
-    } 
+    }
     .slider.white {
-    display: flex;
-}
+        display: flex;
+    }
     .input-group-field {
         border-radius: 0 8px 8px 0 !important;
     }
@@ -1443,58 +1371,48 @@ span.error {
         border: 0px solid #eee;
         background: transparent;
         color: $primary-color;
-
         li:first-child {
             a {
                 border-top-left-radius: $global-radius;
             }
         }
-
         li:last-child {
             a {
                 border-top-right-radius: $global-radius;
             }
         }
     }
-
     .tabs-title {
         float: left;
         width: 25%;
         text-align: center;
-
         &.tool {
             width: auto;
             margin-right: 0.1rem;
         }
-
         &.is-active {
             a {
                 background: $primary-color;
                 color: $white;
-
                 &:hover,
-                :focus {
+                 :focus {
                     background: $primary-color !important;
                     color: $white !important;
                 }
             }
         }
-
         a {
             background: $secondary-color;
             color: $primary-color;
-
             &:hover,
-            :focus {
+             :focus {
                 background: $primary-color !important;
                 color: $white !important;
             }
         }
     }
-
     .tabs-panel {
         padding: 2rem;
-
         &.cuota {
             background-image: url(/assets/images/fondo-tool.png);
             background-position: left;
@@ -1523,7 +1441,6 @@ span.error {
             }
         }
     }
-
     .tabs-content {
         border: 0px solid #eee;
         border-top: 0;
@@ -1534,24 +1451,24 @@ span.error {
         font-size: 0.9rem;
         border-bottom-left-radius: $global-radius;
         border-bottom-right-radius: $global-radius;
-
         label {
             color: $white;
             font-size: 0.9rem;
-
             a {
                 color: $secondary-color;
             }
         }
     }
-    p{
+    p {
         font-size: 0.9rem;
         line-height: 1.3;
     }
 }
-[type=number]{
+
+[type=number] {
     color: $primary-color;
 }
+
 //Blog
 .blog {
     .section {
@@ -1560,14 +1477,12 @@ span.error {
             text-transform: uppercase;
             font-size: 0.6rem;
         }
-
         &.black {
             a {
                 color: $primary-color;
             }
         }
     }
-
     h2 {
         font-size: 1.4rem;
         margin-bottom: 0.4rem;
@@ -1580,27 +1495,25 @@ span.error {
             text-transform: uppercase;
         }
     }
-
     h1 {
         margin-bottom: 0.4rem;
         margin-top: 0.6rem;
     }
-
     .user {
         color: $secondary-color;
         font-size: 0.6rem;
-
-        img, img.usr {
+        img,
+        img.usr {
             margin-right: 0.6rem;
             display: inline-block !important;
         }
-
         span {
             font-weight: 500;
             margin-right: 1rem;
         }
     }
 }
+
 .blog-detail {
     .section {
         display: inline-block;
@@ -1616,7 +1529,6 @@ span.error {
             text-transform: uppercase;
             font-size: 0.6rem;
         }
-
         &.black {
             a {
                 color: $primary-color;
@@ -1624,6 +1536,7 @@ span.error {
         }
     }
 }
+
 .recomendado {
     h3 {
         font-size: 1rem;
@@ -1634,7 +1547,6 @@ span.error {
             text-transform: uppercase;
         }
     }
-
     .fecha {
         color: $secondary-color;
         font-size: 0.8rem;
@@ -1646,12 +1558,10 @@ span.error {
     img {
         border-radius: $global-radius;
     }
-
     position: relative;
     color: $white;
     font-weight: 500;
     font-size: 1.2rem;
-
     .info {
         position: absolute;
         top: 50%;
@@ -1672,7 +1582,6 @@ span.error {
         font-size: 1.2rem;
         letter-spacing: 0;
     }
-
     h3 {
         font-size: 0.9rem;
         letter-spacing: 0;
@@ -1682,7 +1591,6 @@ span.error {
             text-transform: uppercase;
         }
     }
-
     .columns.foto {
         padding-right: 0;
         img.image {
@@ -1696,7 +1604,6 @@ span.error {
 .card.constructora {
     padding: 1rem;
     font-size: 0.9rem;
-
     .title {
         font-weight: 600;
     }
@@ -1727,7 +1634,6 @@ span.error {
         font-weight: 600;
         color: $primary-color;
     }
-
     .dato {
         margin-bottom: 0.9rem;
     }
@@ -1736,7 +1642,6 @@ span.error {
 //slide constructora
 .row.slide-build {
     position: relative;
-
     .card-build {
         position: absolute;
         right: 0;
@@ -1750,7 +1655,6 @@ span.error {
 ul.menu-left {
     margin-left: 0;
     margin-bottom: 0;
-
     li {
         display: block;
         width: 100%;
@@ -1758,10 +1662,8 @@ ul.menu-left {
         margin-bottom: 0.5rem;
         padding: 0.4rem 0 0.4rem 0;
         list-style: none;
-
         a {
             color: $medium-gray;
-
             &.active {
                 color: $primary-color;
             }
@@ -1791,10 +1693,8 @@ ul.menu-left {
 
 .salida {
     font-size: 1.4rem;
-
     span {
         display: inline-block;
-
         [type="text"],
         [type="password"],
         [type="date"],
@@ -1836,16 +1736,13 @@ ul.menu-left {
 .rango {
     .valores {
         color: $medium-gray;
-
         .left,
         .right {
             display: inline-block;
         }
-
         .left {
             float: left;
         }
-
         .right {
             float: right;
         }
@@ -1863,6 +1760,7 @@ ul.menu-left {
         margin-right: 0.6rem;
     }
 }
+
 .check {
     background: $primary-color;
     border-radius: 120px;
@@ -1871,9 +1769,11 @@ ul.menu-left {
     margin-bottom: 0.8rem;
     display: block;
 }
+
 .diblock {
     display: inline-block;
 }
+
 .opcion {
     display: inline-block;
     text-align: left;
@@ -1913,6 +1813,7 @@ ul.menu-left {
         }
     }
 }
+
 .checkblock {
     display: inline-block;
     margin-left: 0.4rem;
@@ -1921,6 +1822,7 @@ ul.menu-left {
         font-size: 1rem;
     }
 }
+
 a.tipos {
     margin-top: 2rem;
     border-top: 1px solid;
@@ -1929,23 +1831,21 @@ a.tipos {
         margin-left: 0.6rem;
     }
 }
+
 //comparador
 .comparador {
     font-size: 0.9rem;
-
     .proyecto {
         img.proyecto {
             border-radius: $global-radius;
             margin-bottom: 1rem;
         }
-
         .data {
             &.columns {
                 padding-left: 0;
                 padding-right: 0;
             }
         }
-
         #foto,
         #precio,
         #title,
@@ -1960,21 +1860,17 @@ a.tipos {
         #estrato {
             padding: 0 2rem;
         }
-
         div#foto {
             min-height: 140px;
             position: relative;
-
             .container-foto {
                 position: relative;
-
                 &:after {
                     position: absolute;
                     background: url(/assets/images/cerrar.png);
                     content: "";
                     right: 0.5rem;
                     top: 0.5rem;
-
                     width: 20px;
                     height: 20px;
                     background-size: contain;
@@ -1982,28 +1878,23 @@ a.tipos {
                 }
             }
         }
-
         div#title {
             font-weight: 600;
             margin-bottom: 1rem;
             min-height: 46px;
         }
-
         div#precio {
             font-size: 1.3rem;
             font-weight: 600;
             color: $primary-color;
         }
     }
-
     .encabezados {
         margin-top: 208px;
-
         .item {
             margin: 2rem auto;
             font-weight: 600;
             color: $primary-color;
-
             img {
                 margin-right: 1rem;
             }
@@ -2016,7 +1907,6 @@ a.tipos {
     .section-card {
         padding: 0.5rem;
         background: $light-gray;
-
         .name {
             color: $primary-color;
             font-weight: 600;
@@ -2025,7 +1915,6 @@ a.tipos {
 }
 
 //Micuenta
-
 .container-check {
     display: inline-block;
     position: relative;
@@ -2040,7 +1929,9 @@ a.tipos {
     margin-right: 1rem;
 }
 
+
 /* Hide the browser's default checkbox */
+
 .container-check.container-check input {
     position: absolute;
     opacity: 0;
@@ -2049,7 +1940,9 @@ a.tipos {
     width: 0;
 }
 
+
 /* Create a custom checkbox */
+
 .checkmark {
     position: absolute;
     top: -5px;
@@ -2060,29 +1953,39 @@ a.tipos {
     border-radius: 20px;
 }
 
+
 /* On mouse-over, add a grey background color */
-.container-check:hover input ~ .checkmark {
+
+.container-check:hover input~.checkmark {
     background-color: #ccc;
 }
 
+
 /* When the checkbox is checked, add a blue background */
-.container-check input:checked ~ .checkmark {
+
+.container-check input:checked~.checkmark {
     background-color: $primary-color;
 }
 
+
 /* Create the checkmark/indicator (hidden when not checked) */
+
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
+
 /* Show the checkmark when checked */
-.container-check input:checked ~ .checkmark:after {
+
+.container-check input:checked~.checkmark:after {
     display: block;
 }
 
+
 /* Style the checkmark/indicator */
+
 .container-check .checkmark:after {
     left: 9px;
     top: 5px;
@@ -2096,7 +1999,9 @@ a.tipos {
 }
 
 //Radio
+
 /* Customize the label (the container) */
+
 .container-radio {
     display: inline-block;
     position: relative;
@@ -2111,7 +2016,9 @@ a.tipos {
     margin-right: 1rem;
 }
 
+
 /* Hide the browser's default radio button */
+
 .container-radio input {
     position: absolute;
     opacity: 0;
@@ -2120,7 +2027,9 @@ a.tipos {
     width: 0;
 }
 
+
 /* Create a custom radio button */
+
 .checkmark {
     position: absolute;
     top: -5px;
@@ -2131,29 +2040,39 @@ a.tipos {
     border-radius: 50%;
 }
 
+
 /* On mouse-over, add a grey background color */
-.container-radio:hover input ~ .checkmark {
+
+.container-radio:hover input~.checkmark {
     background-color: #ccc;
 }
 
+
 /* When the radio button is checked, add a blue background */
-.container-radio input:checked ~ .checkmark {
+
+.container-radio input:checked~.checkmark {
     background-color: $secondary-color;
 }
 
+
 /* Create the indicator (the dot/circle - hidden when not checked) */
+
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
+
 /* Show the indicator (dot/circle) when checked */
-.container-radio input:checked ~ .checkmark:after {
+
+.container-radio input:checked~.checkmark:after {
     display: block;
 }
 
+
 /* Style the indicator (dot/circle) */
+
 .container-radio .checkmark:after {
     top: 9px;
     left: 9px;
@@ -2166,7 +2085,6 @@ a.tipos {
 //GLosario
 .nav-glossary {
     margin-bottom: 2rem;
-
     ul.menu {
         li {
             a.active {
@@ -2184,6 +2102,7 @@ a.tipos {
         font-weight: 600;
     }
 }
+
 .campo-destacado {
     [type="text"] {
         height: 5rem;
@@ -2192,8 +2111,8 @@ a.tipos {
         font-weight: 600;
     }
 }
-//carga
 
+//carga
 ul.pagination-pointed {
     li {
         a {
@@ -2206,7 +2125,6 @@ ul.pagination-pointed {
             }
         }
     }
-
     li.current {
         a {
             padding: 1rem 1.4rem;
@@ -2214,6 +2132,7 @@ ul.pagination-pointed {
         }
     }
 }
+
 .pagination .current {
     padding: 1rem 1.5rem !important;
     border-radius: 40px;
@@ -2227,13 +2146,14 @@ ul.pagination-pointed {
     .close-button {
         color: #ffffff !important;
     }
-    a{
+    a {
         color: $secondary-color;
-        &:hover{
+        &:hover {
             color: $white;
         }
     }
 }
+
 .filtros-tag {
     display: inline-block;
     @media screen and (max-width: 600px) {
@@ -2243,10 +2163,11 @@ ul.pagination-pointed {
     &.off {
         .button {
             background-color: $medium-gray;
-           margin-right: 1rem;
+            margin-right: 1rem;
         }
     }
 }
+
 .filtros {
     .row.condensed {
         padding-left: 1rem;
@@ -2292,6 +2213,7 @@ ul.pagination-pointed {
         }
     }
 }
+
 .container-simulacion {
     background: $white;
     border-radius: $global-radius;
@@ -2319,6 +2241,7 @@ ul.pagination-pointed {
         }
     }
 }
+
 .slider {
     &.white {
         .slider-fill {
@@ -2326,17 +2249,21 @@ ul.pagination-pointed {
         }
     }
 }
+
 img.image.constructor {
     height: 200px;
     width: 200px !important;
 }
+
 .row.encabezado {
     display: flex;
     align-items: center;
 }
+
 .separator-right {
     border-right: 1px solid $medium-gray;
 }
+
 .ev--bots {
     display: flex;
     flex-direction: column;
@@ -2403,10 +2330,10 @@ img.image.constructor {
         }
     }
 }
+
 .legal {
     @media screen and (max-width: 600px) {
-        input#checkbox1,
-        label {
+        input#checkbox1, label {
             display: inline-block;
             float: left;
         }
@@ -2425,6 +2352,7 @@ img.image.constructor {
     margin-right: 0 !important;
     margin-top: 0.6rem;
 }
+
 .menu-icon::after {
     height: 3px;
 }
@@ -2433,33 +2361,27 @@ img.image.constructor {
 .reveal {
     outline: none;
     color: $white;
-
     label {
         color: $white !important;
     }
-
     a {
         color: $secondary-color;
     }
-
     h3 {
         font-size: 1.1rem;
         text-transform: uppercase;
         margin: 1rem 0;
     }
-
     .filtros-tag {
         margin-bottom: 2rem;
         a {
             color: $white !important;
         }
-
         .button {
             border: 1px solid $white;
             margin-right: 0.3rem;
         }
     }
-
     a.button.secondary {
         margin: 0 2rem;
     }
@@ -2471,7 +2393,7 @@ img.image.constructor {
             background-color: $medium-gray;
         }
     }
-    .button{
+    .button {
         margin-right: 1rem;
     }
 }
@@ -2492,22 +2414,17 @@ $input-number-size: 80px;
 
 .input-number-group {
     display: flex;
-
     border-radius: 8px !important;
-
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
         appearance: none;
     }
-
     .input-group {
         border-radius: 8px !important;
     }
-
     .input-group-button {
         line-height: calc(#{$input-number-size}/ 2 - 5px);
     }
-
     .input-number {
         width: $input-number-size;
         padding: 0 12px;
@@ -2517,7 +2434,6 @@ $input-number-size: 80px;
         display: block;
         margin: 0;
     }
-
     .input-number,
     .input-number-decrement,
     .input-number-increment {
@@ -2526,7 +2442,6 @@ $input-number-size: 80px;
         user-select: none;
         border-radius: $global-radius;
     }
-
     .input-number-decrement,
     .input-number-increment {
         display: inline-block;
@@ -2540,11 +2455,9 @@ $input-number-size: 80px;
         font-weight: 400;
         border-radius: 8px !important;
     }
-
     .input-number-decrement {
         margin-right: 0.3rem;
     }
-
     .input-number-increment {
         margin-left: 0.3rem;
     }
@@ -2574,6 +2487,7 @@ img:focus {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+
 .upload {
     font-size: 0.9rem;
     .carga {
@@ -2591,57 +2505,59 @@ img:focus {
         }
     }
 }
+
 .agm-map-container-inner.sebm-google-map-container-inner {
     border-radius: 8px;
 }
 
 .nav-tabs {
     padding: 0 !important;
-    &.right{
+    &.right {
         display: inline-block;
-    float: right;
+        float: right;
     }
-    .tabs{
+    .tabs {
         border: 0px;
         .tabs-title {
             float: left;
             background: $light-gray;
             border-radius: 8px;
             margin-right: 0.5rem;
-            .is-active{
+            .is-active {
                 background: $primary-color;
                 color: $white;
-                a{
+                a {
                     border-radius: 8px;
                     background: $primary-color;
                     color: $white;
                 }
             }
         }
-        .tabs-title > a:focus, .tabs-title > a[aria-selected=true] {
+        .tabs-title>a:focus,
+        .tabs-title>a[aria-selected=true] {
             border-radius: 8px;
             background: $primary-color;
             color: $white;
-            &:hover{
+            &:hover {
                 border-radius: 8px;
-            background: $primary-color;
-            color: $white;
+                background: $primary-color;
+                color: $white;
             }
         }
-        .tabs-title > a:hover {
+        .tabs-title>a:hover {
             border-radius: 8px;
             background: $primary-color;
             color: $white;
         }
     }
 }
+
 .tabs-content {
     border: 0px solid #eeeeee !important;
-
 }
 
 li.search {
-    a{
+    a {
         display: inline-block;
         float: left;
     }
@@ -2651,64 +2567,11 @@ li.search {
     }
 }
 
-.slider-blog{
+.slider-blog {
     .slick-dots {
         width: auto;
         right: 3rem;
-       bottom: -2rem !important;
-        li button {
-            font-size: 0;
-            margin: 0;
-            &:before {
-                font-size: 2rem;
-                color: $secondary-color;
-            }
-        }
-    }
-    .slick-prev,
-    .slick-next {
-        font-size: 0;
-        line-height: 0;
-        position: absolute;
-        top: unset;
-        bottom: -1.5rem;
-        display: block;
-        width: 20px;
-        height: 20px;
-        padding: 0;
-        transform: none;
-        cursor: pointer;
-        color: $primary-color;
-        border: none;
-        outline: none;
-        background: transparent;
-
-    }
-    .slick-prev {
-        left: unset;
-        right: 1.4rem;
         bottom: -2rem !important;
-        &::before {
-            content: "ᐸ";
-            color: $primary-color;
-            font-size: 18px;
-        }
-    }
-    .slick-next {
-        right: 0rem;
-        bottom: -2rem !important;
-        &::before {
-            content: "ᐳ";
-            color: $primary-color;
-            font-size: 18px;
-        }
-    }
-}
-
-.slider-blog-home{
-    .slick-dots {
-        width: auto;
-        right: 3rem;
         li button {
             font-size: 0;
             margin: 0;
@@ -2739,6 +2602,58 @@ li.search {
     .slick-prev {
         left: unset;
         right: 1.4rem;
+        bottom: -2rem !important;
+        &::before {
+            content: "ᐸ";
+            color: $primary-color;
+            font-size: 18px;
+        }
+    }
+    .slick-next {
+        right: 0rem;
+        bottom: -2rem !important;
+        &::before {
+            content: "ᐳ";
+            color: $primary-color;
+            font-size: 18px;
+        }
+    }
+}
+
+.slider-blog-home {
+    .slick-dots {
+        width: auto;
+        right: 3rem;
+        li button {
+            font-size: 0;
+            margin: 0;
+            &:before {
+                font-size: 2rem;
+                color: $secondary-color;
+            }
+        }
+    }
+    .slick-prev,
+    .slick-next {
+        font-size: 0;
+        line-height: 0;
+        position: absolute;
+        top: unset;
+        bottom: -1.5rem;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        transform: none;
+        cursor: pointer;
+        color: $primary-color;
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+    .slick-prev {
+        left: unset;
+        right: 1.4rem;
         &::before {
             content: "ᐸ";
             color: $primary-color;
@@ -2754,9 +2669,11 @@ li.search {
         }
     }
 }
-.medium-6.columns.featured{
+
+.medium-6.columns.featured {
     padding-left: 0.2rem;
 }
+
 .has-tip {
     position: relative;
     display: inline-block;
@@ -2771,14 +2688,15 @@ li.search {
     color: white;
     margin-left: 0.4rem;
 }
-.comentarios{
-    .name{
+
+.comentarios {
+    .name {
         text-transform: uppercase;
         font-size: 0.9rem;
         color: $primary-color;
         font-weight: 600;
     }
-    p.mensaje{
+    p.mensaje {
         font-size: 0.9rem;
         text-transform: lowercase;
     }
@@ -2786,6 +2704,7 @@ li.search {
         text-transform: uppercase;
     }
 }
+
 .autocomplete-container {
     box-shadow: none !important;
     .input-container input {
@@ -2795,16 +2714,18 @@ li.search {
         box-shadow: none;
         outline: 0;
         background-color: $light-gray !important;
-        color: rgba(0,0,0,.87);
+        color: rgba(0, 0, 0, .87);
         width: 100%;
         padding: 0 15px;
         line-height: 40px;
         height: 40px;
     }
 }
+
 .ng5-slider .ng5-slider-pointer {
     background-color: $primary-color !important;
 }
+
 .ng5-slider .ng5-slider-selection {
     background: $secondary-color !important;
 }

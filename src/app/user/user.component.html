@@ -1,10 +1,10 @@
 <div class="row columns">
-  <div class="medium-4 columns">
-      <h1>Mi cuenta</h1>
-      <p>Tus datos nos ayudan a proporcionarte información más acertada acerca de lo que buscas</p>
-      <a href="#" class="button secondary">Ver favoritos</a>
-      <a (click)="logoutUser()" class="button">Cerrar sesión</a>
-  </div>
+    <div class="medium-4 columns">
+        <h1>Mi cuenta</h1>
+        <p>Tus datos nos ayudan a proporcionarte información más acertada acerca de lo que buscas</p>
+        <a (click)="updateFavorites()" class="button secondary">Ver favoritos</a>
+        <a (click)="logoutUser()" class="button">Cerrar sesión</a>
+    </div>
     <form [formGroup]="form">
         <div class="medium-8 columns">
             <h2>Datos personales</h2>
@@ -125,7 +125,7 @@
                 <div class="medium-2 columns end">
                     <label for="middle-label" class="text-left middle">Medio de contacto</label>
                 </div>
-                <div class="medium-3 columns end"  *ngFor="let option of responseContactadoData">
+                <div class="medium-3 columns end" *ngFor="let option of responseContactadoData">
                     <label class="container-check">{{option.name}}
                         <input name="contact" formControlName="contact" type="radio" value="{{option.drupal_internal__tid}}">
                         <span class="checkmark"></span>
@@ -164,7 +164,7 @@
         </div>
     </form>
     <div class="medium-2 colmuns end" style="float: right;">
-      <a (click)="onSubmit(form.value)" class="button">Actualizar cuenta</a>
+        <a (click)="onSubmit(form.value)" class="button">Actualizar cuenta</a>
     </div>
 </div>
 <hr class="white">

@@ -37,13 +37,16 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   optionsCitySelected: string = '';
   optionsZoneSelected: string = '';
   optionsSectorSelected: string = '';
+  public xcsrfToken: any;
+  public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
+  public cliente_secret = 'drupal';
   public query_elasticsearch = {
     'filtro-proyectos': {term: '', fields: ''}
   };
   public collectionActive: string = '';
   public results = false;
 
-  constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta ) { }
+  constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta, private router: Router ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -580,6 +583,119 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       $('app-projects').foundation();
       // $('html,body').scrollTop(0);
     }
+  }
+  addFavorite(value) {
+    const user_login = sessionStorage.getItem('access_token');
+    const user_uid = sessionStorage.getItem('uid');
+    // if(user_login === null || user_uid === null){
+    //   this.router.navigate(['login']);
+    // }else{
+      if (!sessionStorage['favorite']) {
+        var ids = [];
+        ids.push(value) 
+        sessionStorage.setItem('favorite',JSON.stringify(ids))
+        var storedIds = JSON.parse(sessionStorage.getItem("id"));
+        // this.router.navigate(['comparador']);
+        // console.log('este es el id: ',storedIds);
+      }else{
+        var storedIds = JSON.parse(sessionStorage.getItem("favorite"));
+        if(storedIds.indexOf( value ) !== 1){
+          storedIds.push(value);
+        }
+        /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
+        sessionStorage.setItem('favorite',JSON.stringify(storedIds))
+        // this.router.navigate(['comparador']);
+        // console.log('este es el id: ',storedIds);
+      }
+    // }
+  }
+  goFavorites(){
+    const user_login = sessionStorage.getItem('access_token');
+    const user_uid = sessionStorage.getItem('uid');
+    if(!sessionStorage['favorite']){
+      // this.router.navigate(['login']);
+    }else{
+      let favorites = [];
+      var storedIds = JSON.parse(sessionStorage.getItem("favorite"));
+      let count = 0
+      for (let ids of storedIds) {
+        favorites.push({"target_id": ids})
+      }
+      let payload = { 
+      "field_user_favorites": favorites
+      }
+      this.router.navigate(['favoritos']);
+      // fetch("https://lab.estrenarvivienda.com/es/session/token")
+      // .then(response => response.text())
+      // .then(result => {
+      //   this.xcsrfToken = result
+      //   console.log('voy a before update');
+      //   this.beforeUpdate(this.xcsrfToken, payload);
+      // })
+      // .catch(error => console.log('error', error));
+    }
+  }
+  beforeUpdate(xcsrfToken, payload){
+    var url = 'https://lab.estrenarvivienda.com/es/oauth/token';
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("grant_type", "password");
+    urlencoded.append("client_id", this.client_id);
+    urlencoded.append("client_secret", this.cliente_secret);
+    urlencoded.append("username", this.cliente_secret);
+    urlencoded.append("password", this.cliente_secret);
+      fetch(url, {
+        body: urlencoded,
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
+        redirect: 'follow',
+      })
+      .then(function (a) {
+          return a.json(); 
+      })
+     .then(result => {
+       console.log('result',result)
+       if(result.access_token){
+        var now = new Date();
+        now.setSeconds(now.getSeconds() + result.expires_in)
+        var timeObject = {
+          time : now
+        };
+         localStorage.removeItem('access_token');
+         sessionStorage.setItem('access_token',result.access_token);
+         localStorage.removeItem('time_out');
+         sessionStorage.setItem('time_out',JSON.stringify(timeObject));
+         console.log('voy a update user');
+         this.updateUser(xcsrfToken, payload);
+         
+       }
+      })
+     .catch(error => {
+        console.error(error);
+      });
+  }
+  updateUser(xcsrfToken, payload){
+    console.log('entre a update user',xcsrfToken);
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("X-CSRF-Token", xcsrfToken);
+    myHeaders.append("Authorization", "Bearer " + sessionStorage.getItem('access_token'));
+    var raw = JSON.stringify(payload);
+    let url = 'https://lab.estrenarvivienda.com/es/user/';
+    let url_last = '?_format=json';
+
+    fetch(url + sessionStorage.getItem('uid') + url_last, {
+      method: 'PATCH',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    })
+      .then(response => response.text())
+      .then(result =>{ 
+        console.log(result)
+      })
+      .catch(error => console.log('error', error));
   }
 
 }

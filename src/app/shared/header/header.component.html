@@ -1,123 +1,143 @@
 <div class="container-header" *ngIf='show_header == true && not_show_header == false'>
-  <div class="full-w header">
-    <div class="small-5 medium-1 columns">
-        <div class="logo">
-            <a href="/"><img src="/assets/images/logo-ev.png"></a>
+    <div class="full-w header">
+        <div class="small-5 medium-1 columns">
+            <div class="logo">
+                <a href="/"><img src="/assets/images/logo-ev.png"></a>
+            </div>
         </div>
-      </div>
-      <div class="medium-11 columns hide-for-small-only">
-        <ul class="menu">
-          <li>
-          <a href="/proyectos" id="goProject" alt="" title="">Proyectos</a>
-          </li>
-          <li>
-          <a href="/vis">Vivienda VIS</a>
-          </li>
-          <li>
-            <a href="/vacacionales">Vacacionales</a>
-            </li>
-          <li>
-          <a href="/constructoras">Constructoras</a>
-          </li>
-          <li>
-            <a href="herramientas">Herramientas</a>
-          </li>
-          <li>
-          <a href="/blog">Blog</a>
-          </li>
-          <li class="search"><input (change)=(findByWord()) id="searchProjectsWord" class="hide" type="text"><a (click)=(searchInput())><img src="/assets/images/search.png"></a></li>
-          <li><a href="{{path_user}}"><img src="/assets/images/user.png"></a></li>
-          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
-        </ul>
-      </div>
-      <div class="small-2 columns show-for-small-only text-center">
-        <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-          <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+        <div class="medium-11 columns hide-for-small-only">
+            <ul class="menu">
+                <li>
+                    <a href="/proyectos" id="goProject" alt="" title="">Proyectos</a>
+                </li>
+                <li>
+                    <a href="/vis">Vivienda VIS</a>
+                </li>
+                <li>
+                    <a href="/vacacionales">Vacacionales</a>
+                </li>
+                <li>
+                    <a href="/constructoras">Constructoras</a>
+                </li>
+                <li>
+                    <a href="herramientas">Herramientas</a>
+                </li>
+                <li>
+                    <a href="/blog">Blog</a>
+                </li>
+                <li class="search"><input (change)=(findByWord()) id="searchProjectsWord" class="hide" type="text">
+                    <a (click)=(searchInput())><img src="/assets/images/search.png"></a>
+                </li>
+                <li>
+                    <a href="{{path_user}}"><img src="/assets/images/user.png"></a>
+                </li>
+                <li>
+                    <a href="{{path_favorites}}"><img src="/assets/images/fav.png"><span class="num_fav">{{number_favorites}}</span></a>
+                </li>
+            </ul>
         </div>
-      </div>
-      <div class="small-5 columns show-for-small-only text-right">
-        <ul class="menu mobile">
-          <li><a><img src="/assets/images/search.png"></a></li>
-          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
-        </ul>
-      </div>
-  </div>
-  
+        <div class="small-2 columns show-for-small-only text-center">
+            <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+            </div>
+        </div>
+        <div class="small-5 columns show-for-small-only text-right">
+            <ul class="menu mobile">
+                <li>
+                    <a><img src="/assets/images/search.png"></a>
+                </li>
+                <li>
+                    <a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <!--Fin menu -->
     <div class="row columns text-center block-search">
-      <h1>Te ayudamos a encontrar tu lugar ideal</h1>
-      <div>
-        <form action="">
-            <div class="row condensed">
-              <div class="medium-6 medium-offset-1 columns">
-                <div class="buscador">
-                  <img class="search" src="/assets/images/search.png">
-                  <input id="searchWord" type="search" placeholder="¿Qué estás buscando?"/>
-                </div>
-              </div>
-              <div class="medium-2 columns">
-                  <select id="mySelect" (change)='onOptionsSelected($event)' name="price" *ngIf="filterPrice && filterPrice.length > 0">
+        <h1>Te ayudamos a encontrar tu lugar ideal</h1>
+        <div>
+            <form action="">
+                <div class="row condensed">
+                    <div class="medium-6 medium-offset-1 columns">
+                        <div class="buscador">
+                            <img class="search" src="/assets/images/search.png">
+                            <input id="searchWord" type="search" placeholder="¿Qué estás buscando?" />
+                        </div>
+                    </div>
+                    <div class="medium-2 columns">
+                        <select id="mySelect" (change)='onOptionsSelected($event)' name="price" *ngIf="filterPrice && filterPrice.length > 0">
                     <option value="">Precio</option>
                       <option id="price_val" *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
                   </select>
-              </div>
-              <div class="medium-2 columns end">
-                <a (click)=(searchWord()) class="button expanded secondary">Buscar</a>
-              </div>
-            </div>
-        </form>
-      </div>
+                    </div>
+                    <div class="medium-2 columns end">
+                        <a (click)=(searchWord()) class="button expanded secondary">Buscar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="slider-header">
-      <div class="banner-home" *ngFor='let img of bannersImg'>
-        <img [src]="img.image" alt="">
-      </div>
+        <div class="banner-home" *ngFor='let img of bannersImg'>
+            <img [src]="img.image" alt="">
+        </div>
     </div>
 </div>
 
 <div class="container-header-white " *ngIf='show_white_header == true && not_show_header == false'>
-  <div class="full-w header">
-      <div class="small-5 medium-2 columns">
-          <div class="logo">
-              <a href="/"><img src="/assets/images/logo-ev.png"></a>
-          </div>
-      </div>
-      <div class="medium-10 columns hide-for-small-only">
-          <ul class="menu">
-              <li>
-                  <a href="proyectos" alt="" title="">Proyectos</a>
-              </li>
-              <li>
-                  <a href="vis">Vivienda VIS</a>
-              </li>
-              <li>
-                <a href="vacacionales">Vacacionales</a>
-            </li>
-              <li>
-                  <a href="constructoras">Constructoras</a>
-              </li>
-              <li>
-                  <a href="herramientas">Herramientas</a>
-              </li>
-              <li>
-                  <a href="blog">Blog</a>
-              </li>
-              <li><a><img src="/assets/images/search.png"></a></li>
-              <li><a href="{{path_user}}"><img src="/assets/images/user.png"></a></li>
-              <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
-          </ul>
-      </div>
-      <div class="small-2 columns show-for-small-only text-center">
-        <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-          <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+    <div class="full-w header">
+        <div class="small-5 medium-2 columns">
+            <div class="logo">
+                <a href="/"><img src="/assets/images/logo-ev.png"></a>
+            </div>
         </div>
-      </div>
-      <div class="small-5 columns show-for-small-only text-right">
-        <ul class="menu mobile">
-          <li><a><img src="/assets/images/search.png"></a></li>
-          <li><a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a></li>
-        </ul>
-      </div>
-  </div>
+        <div class="medium-10 columns hide-for-small-only">
+            <ul class="menu">
+                <li>
+                    <a href="proyectos" alt="" title="">Proyectos</a>
+                </li>
+                <li>
+                    <a href="vis">Vivienda VIS</a>
+                </li>
+                <li>
+                    <a href="vacacionales">Vacacionales</a>
+                </li>
+                <li>
+                    <a href="constructoras">Constructoras</a>
+                </li>
+                <li>
+                    <a href="herramientas">Herramientas</a>
+                </li>
+                <li>
+                    <a href="blog">Blog</a>
+                </li>
+                <li>
+                    <a><img src="/assets/images/search.png"></a>
+                </li>
+                <li>
+                    <a href="{{path_user}}"><img src="/assets/images/user.png"></a>
+                </li>
+                <li>
+                    <a href="{{path_favorites}}"><img src="/assets/images/fav.png"><span class="num_fav">{{number_favorites}}</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="small-2 columns show-for-small-only text-center">
+            <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+            </div>
+        </div>
+        <div class="small-5 columns show-for-small-only text-right">
+            <ul class="menu mobile">
+                <li>
+                    <a><img src="/assets/images/search.png"></a>
+                </li>
+                <li>
+                    <a href="{{path_favorites}}"><img src="/assets/images/fav.png"><span class="num_fav">{{number_favorites}}</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 <!-- </ng-template> -->

@@ -33,7 +33,7 @@ export class ComparatorComponent implements OnInit {
         stringQuery = stringQuery+ids+"+";
       }
       stringQuery = stringQuery.substring(0, stringQuery.length - 1);
-      // console.log(stringQuery);
+      console.log(stringQuery);
       this.Service.comparatorData(stringQuery)
       .subscribe(
         data => this.response = data,

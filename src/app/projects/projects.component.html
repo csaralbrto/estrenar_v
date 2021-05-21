@@ -1,45 +1,44 @@
-
 <div class="row columns text-center">
-  <div class="publicidad">
-      <img src="/assets/images/banner1.jpg" alt="">
-  </div>
+    <div class="publicidad">
+        <img src="/assets/images/banner1.jpg" alt="">
+    </div>
 </div>
 <div class="row columns">
-  <div *ngIf="titleLabel; else titleDefaultTemplate">
-    <h1>{{titleLabel}}</h1>
-  </div>
-  <ng-template #titleDefaultTemplate>
-      <div>
-        <h1>Proyectos {{wordLabel}}</h1>
-      </div>
-  </ng-template>
-  <!--filtros-->
-  <form [formGroup]="form_filters">
-    <div class="filtros">
-        <div class="row condensed">
-            <div class="medium-2 columns">
-                <label>Tipo de inmueble
+    <div *ngIf="titleLabel; else titleDefaultTemplate">
+        <h1>{{titleLabel}}</h1>
+    </div>
+    <ng-template #titleDefaultTemplate>
+        <div>
+            <h1>Proyectos {{wordLabel}}</h1>
+        </div>
+    </ng-template>
+    <!--filtros-->
+    <form [formGroup]="form_filters">
+        <div class="filtros">
+            <div class="row condensed">
+                <div class="medium-2 columns">
+                    <label>Tipo de inmueble
                     <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
                         <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                     </select>
                 </label>
-            </div>
-            <div class="medium-2 columns">
-                <label>Precio
+                </div>
+                <div class="medium-2 columns">
+                    <label>Precio
                     <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
                         <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
                     </select>
                 </label>
-            </div>
-            <div class="medium-2 columns">
-                <label>Ciudad
+                </div>
+                <div class="medium-2 columns">
+                    <label>Ciudad
                     <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
                         <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
                     </select>
                 </label>
-            </div>
-            <div class="medium-2 columns">
-                <label>Zona
+                </div>
+                <div class="medium-2 columns">
+                    <label>Zona
                     <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
                         <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                     </select>
@@ -49,9 +48,9 @@
                         </select>
                     </ng-template>
                 </label>
-            </div>
-            <div class="medium-2 columns">
-                <label>Sector
+                </div>
+                <div class="medium-2 columns">
+                    <label>Sector
                     <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
                         <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                     </select>
@@ -61,209 +60,207 @@
                         </select>
                     </ng-template>
                 </label>
+                </div>
+                <div class="medium-2 columns">
+                    <div class="botones list">
+                        <a class="button" data-open="masfiltrosModal">Más filtros</a>
+                        <a href="#" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+                    </div>
+                </div>
             </div>
-            <div class="medium-2 columns">
-                <div class="botones list">
-                    <a class="button" data-open="masfiltrosModal">Más filtros</a>
-                    <a href="#" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+            <div class="row condensed">
+                <div class="filtros-tag">
+                    <!-- Aqui van los tags de más filtros -->
+                    <!-- <a href="#" class="button close">3 Habitaciones</a> -->
                 </div>
             </div>
         </div>
-        <div class="row condensed">
-        <div class="filtros-tag">
-            <!-- Aqui van los tags de más filtros -->
-            <!-- <a href="#" class="button close">3 Habitaciones</a> -->
-        </div>
-    </div>
-    </div>
-  </form>
-  <!--fin filtros-->
-<!-- Modal más filtros -->
-<div class="reveal filter" id="masfiltrosModal" data-reveal>
-    <div class="row">
-        <div class="medium-12 colunms text-center">
-            <h2>Más filtros</h2>
-        </div>
-        <div class="medium-6 columns">
-            <h3>Estado del proyecto</h3>
-            <div>
-                <label class="container-check">Sobre planos
+    </form>
+    <!--fin filtros-->
+    <!-- Modal más filtros -->
+    <div class="reveal filter" id="masfiltrosModal" data-reveal>
+        <div class="row">
+            <div class="medium-12 colunms text-center">
+                <h2>Más filtros</h2>
+            </div>
+            <div class="medium-6 columns">
+                <h3>Estado del proyecto</h3>
+                <div>
+                    <label class="container-check">Sobre planos
                     <input type="checkbox" checked="checked">
                     <span class="checkmark"></span>
                 </label>
-            </div>
-            <div>
-                <label class="container-check">En construcción
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="container-check">Terminado
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <h3>Inmueble</h3>
-            <div class="row">
-                <div class="small-6 columns">
-                    <div> Área m2</div>
                 </div>
-                <div class="small-6 columns">
-                    <select>
+                <div>
+                    <label class="container-check">En construcción
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                </div>
+                <div>
+                    <label class="container-check">Terminado
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                </div>
+                <h3>Inmueble</h3>
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div> Área m2</div>
+                    </div>
+                    <div class="small-6 columns">
+                        <select>
                         <option value=" ">Seleccione</option>
                     </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="small-6 columns">
-                    <div> Habitaciones</div>
-                </div>
-                <div class="small-6 columns">
-                    <div class="input-group input-number-group">
-                        <div class="input-group-button">
-                            <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
-                        </div>
-                        <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
-                        <div class="input-group-button">
-                            <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="small-6 columns">
-                    <div> Baños</div>
-                </div>
-                <div class="small-6 columns">
-                    <div class="input-group input-number-group">
-                        <div class="input-group-button">
-                            <span class="input-number-decrement" (click)=(decreaseValue(2))>-</span>
-                        </div>
-                        <input class="input-number" type="number" id="bathroom" value="1" min="0" max="1000">
-                        <div class="input-group-button">
-                            <span class="input-number-increment" (click)=(incrementValue(2))>+</span>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="small-6 columns">
-                    <div> Garajes</div>
-                </div>
-                <div class="small-6 columns">
-
-                    <div class="input-group input-number-group">
-                        <div class="input-group-button">
-                            <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div> Habitaciones</div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="input-group input-number-group">
+                            <div class="input-group-button">
+                                <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
+                            </div>
+                            <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
+                            <div class="input-group-button">
+                                <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
+                            </div>
                         </div>
-                        <input class="input-number" type="number" id="garage" value="1" min="0" max="1000">
-                        <div class="input-group-button">
-                            <span class="input-number-increment" (click)=(incrementValue(3))>+</span>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div> Baños</div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="input-group input-number-group">
+                            <div class="input-group-button">
+                                <span class="input-number-decrement" (click)=(decreaseValue(2))>-</span>
+                            </div>
+                            <input class="input-number" type="number" id="bathroom" value="1" min="0" max="1000">
+                            <div class="input-group-button">
+                                <span class="input-number-increment" (click)=(incrementValue(2))>+</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div> Garajes</div>
+                    </div>
+                    <div class="small-6 columns">
 
+                        <div class="input-group input-number-group">
+                            <div class="input-group-button">
+                                <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
+                            </div>
+                            <input class="input-number" type="number" id="garage" value="1" min="0" max="1000">
+                            <div class="input-group-button">
+                                <span class="input-number-increment" (click)=(incrementValue(3))>+</span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="medium-6 columns">
-            <div class="row">
-                <h3>Constructora</h3>
-                <label>
+            <div class="medium-6 columns">
+                <div class="row">
+                    <h3>Constructora</h3>
+                    <label>
                     <input type="search" placeholder="Buscar">
                 </label>
-            </div>
-            <div class="row">
-                <h3>Colecciones</h3>
-                <div class="filtros-tag">
-                    <a href="#" class="button">Colección 1</a><a href="#" class="button">Colección 2</a>
+                </div>
+                <div class="row">
+                    <h3>Colecciones</h3>
+                    <div class="filtros-tag">
+                        <a href="#" class="button">Colección 1</a><a href="#" class="button">Colección 2</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="#">Limpiar filtros</a><a href="#" class="button secondary">Mostrar 45
+                    apartamentos</a>
                 </div>
             </div>
-            <div class="row">
-                <a href="#">Limpiar filtros</a><a href="#" class="button secondary">Mostrar 45
-                    apartamentos</a>
-            </div>
-        </div>
 
-    </div>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
+        </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
         <span aria-hidden="true">&times;</span>
     </button>
-</div>
-<!-- Fin modal más filtros -->
-  <hr>
+    </div>
+    <!-- Fin modal más filtros -->
+    <hr>
 </div>
 <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-  <div class="medium-3 columns end project" *ngFor="let project of response_data_project; let i = index">
-      <div class="card" data-equalizer-watch>
-          <div class="container-photo">
-              <a routerLink="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
-              <div class="container-tools">
-                  <div class="tags">
-                    <div  *ngIf="project.project_category.length > 0">
-                        <div class="tag" *ngFor="let tags of project.project_category; let i = index">
-                            <a routerLink="{{project.url}}" class="">{{ tags }}</a>
+    <div class="medium-3 columns end project" *ngFor="let project of response_data_project; let i = index">
+        <div class="card" data-equalizer-watch>
+            <div class="container-photo">
+                <a routerLink="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                <div class="container-tools">
+                    <div class="tags">
+                        <div *ngIf="project.project_category.length > 0">
+                            <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                                <a routerLink="{{project.url}}" class="">{{ tags }}</a>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="add">
-                      <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                  </div>
-              </div>
-          </div>
-          <div class="card-section info">
-              <h2>{{ project.project }}</h2>
-              <div class="descripcion">
-                  {{ project.project_city }},
-                  {{ project.project_zone }},
-                  {{ project.project_neighborhood }}
-              </div>
-              <div class="precio text-center">
-                  <div>Desde:</div>
-                  <span>$ {{ project.typology_price | number }}</span>
-              </div>
+                    <div class="add">
+                        <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-section info">
+                <h2>{{ project.project }}</h2>
+                <div class="descripcion">
+                    {{ project.project_city }}, {{ project.project_zone }}, {{ project.project_neighborhood }}
+                </div>
+                <div class="precio text-center">
+                    <div>Desde:</div>
+                    <span>$ {{ project.typology_price | number }}</span>
+                </div>
 
-          </div>
-          <div class="card-section">
-            <hr>
-              <div class="row">
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                          <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                          <div class="data"> {{ project.bathrooms }} alcobas</div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                          <div class="data"> Garaje {{ project.garages }}</div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                          <div class="data"> {{ project.bedrooms }} baños</div>
-                      </div>
-                  </div>
-              </div>
-              <hr>
-          </div>
-          <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button" routerLink="{{project.url}}">Ver
+            </div>
+            <div class="card-section">
+                <hr>
+                <div class="row">
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                            <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                            <div class="data"> {{ project.bathrooms }} alcobas</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                            <div class="data"> Garaje {{ project.garages }}</div>
+                        </div>
+                    </div>
+                    <div class="small-6 columns">
+                        <div class="item">
+                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                            <div class="data"> {{ project.bedrooms }} baños</div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="card-section">
+                <div class="button-group align-spaced ">
+                    <a class="button" routerLink="{{project.url}}">Ver
                     Proyecto</a>
-                  <a class="button" data-open="exampleModal2">Contacto</a>
-              </div>
-          </div>
-      </div>
-  </div>
+                    <a class="button" data-open="exampleModal2">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="reveal text-center" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>
@@ -272,51 +269,45 @@
             <span id="spanName" class="error hide">
                 Debe digitar un nombre de contacto
               </span>
-            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name"
-          name="name" required pattern="text">
-          <span id="spannLastName" class="error hide">
+            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+            <span id="spannLastName" class="error hide">
             Debe digitar un apellido de contacto
           </span>
-          <input type="text" placeholder="Apellido" aria-errormessage="lastnameError"
-          formControlName="lastname" name="lastnanme" required pattern="text">
-          <span id="spanEmail" class="error hide">
+            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+            <span id="spanEmail" class="error hide">
             Debe digitar un correo de contacto valido
           </span>
-          <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email"
-          name="email" required pattern="email">
-          <span id="spanPhone" class="error hide">
+            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+            <span id="spanPhone" class="error hide">
             Debe digitar un n&uacute;mbre de contacto
           </span>
-          <input type="text" placeholder="Teléfono" aria-errormessage="phoneError"
-          formControlName="phone" name="phone" required>
-          <span id="spanContact" class="error hide">
+            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+            <span id="spanContact" class="error hide">
             Debe seleccionar una opción
           </span>
-          <select id="select" required formControlName="contact" name="contact">
+            <select id="select" required formControlName="contact" name="contact">
             <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
             <option value="telefono">Tel&eacute;fonica</option>
             <option value="email">Correo Electr&oacute;nico</option>
             <option value="correo">Correo Postal</option>
           </select>
-          <span id="spanTypesearch" class="error hide">
+            <span id="spanTypesearch" class="error hide">
             Debe seleccionar una opción
             </span>
-          <fieldset class="text-left">
-              <legend>Buscas vivienda para:</legend>
-              <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar"
-              id="houseForHabitar"><label for="">Habitar</label>
-              <input type="radio" formControlName="typeSearch" name="typeSearch"
-              value="invertir" id="houseForInvertir"><label for="">Invertir</label>
-          </fieldset>
-          <span id="spanTerm" class="error hide">
+            <fieldset class="text-left">
+                <legend>Buscas vivienda para:</legend>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+            </fieldset>
+            <span id="spanTerm" class="error hide">
             Debe aceptar los términos
             </span>
-          <div class="text-left terminos">
-              <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+            <div class="text-left terminos">
+                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
                   haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                   mismos.</label>
-                
-          </div>
+
+            </div>
             <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
         </div>
     </form>
@@ -325,7 +316,7 @@
     </button>
 </div>
 <div class="reveal text-center" id="exampleModal1" data-reveal>
-<img src="/assets/images/logo-ev.png">
+    <img src="/assets/images/logo-ev.png">
     <h2>¡Gracias!</h2>
     <p>Pronto te llegará toda la información a tu correo</p>
     <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -333,17 +324,17 @@
     </button>
 </div>
 <div class="row columns text-center">
-  <a  class="button secondary">Cargar más</a>
+    <a class="button secondary">Cargar más</a>
 </div>
 <div class="row columns text-center">
-  <div class="medium-6 medium-offset-3 columns">
-      <a href="#">
-          <div class="comparador-btn-2">
-              <div class="container-comparador">
-                  <h2 class="deco">¿Quieres comparar?</h2>
-                  <div class="subtitle">Selecciona tus proyectos favoritos para hacerlo</div>
-              </div>
-          </div>
-      </a>
-  </div>
+    <div class="medium-6 medium-offset-3 columns">
+        <a href="#">
+            <div class="comparador-btn-2">
+                <div class="container-comparador">
+                    <h2 class="deco">¿Quieres comparar?</h2>
+                    <div class="subtitle">Selecciona tus proyectos favoritos para hacerlo</div>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>

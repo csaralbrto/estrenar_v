@@ -264,4 +264,38 @@ export class HomeComponent implements OnInit {
     sessionStorage.setItem('projectTitle',searchWord);
     this.router.navigate(['/proyectos']);
   }
+  goFavorites(){
+    const user_login = sessionStorage.getItem('access_token');
+    const user_uid = sessionStorage.getItem('uid');
+    if(!sessionStorage['favorite']){
+      // this.router.navigate(['login']);
+    }else{
+      this.router.navigate(['favoritos']);
+    }
+  }
+  addFavorite(value) {
+    const user_login = sessionStorage.getItem('access_token');
+    const user_uid = sessionStorage.getItem('uid');
+    // if(user_login === null || user_uid === null){
+    //   this.router.navigate(['login']);
+    // }else{
+      if (!sessionStorage['favorite']) {
+        var ids = [];
+        ids.push(value) 
+        sessionStorage.setItem('favorite',JSON.stringify(ids))
+        var storedIds = JSON.parse(sessionStorage.getItem("id"));
+        // this.router.navigate(['comparador']);
+        // console.log('este es el id: ',storedIds);
+      }else{
+        var storedIds = JSON.parse(sessionStorage.getItem("favorite"));
+        if(storedIds.indexOf( value ) !== 1){
+          storedIds.push(value);
+        }
+        /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
+        sessionStorage.setItem('favorite',JSON.stringify(storedIds))
+        // this.router.navigate(['comparador']);
+        // console.log('este es el id: ',storedIds);
+      }
+    // }
+  }
 }
