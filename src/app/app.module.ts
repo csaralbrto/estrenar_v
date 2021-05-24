@@ -44,6 +44,7 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { DataTreatmentsComponent } from './data-treatments/data-treatments.component';
 import { RevistaDigitalComponent } from './revista-digital/revista-digital.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { RegisterComponent } from './register/register.component';
     DataTreatmentsComponent,
     RevistaDigitalComponent,
     RegisterComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule, 

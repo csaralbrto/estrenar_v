@@ -13,6 +13,7 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { PostLoginComponent } from './post-login/post-login.component';
 import { ContactusComponent } from './contactus/contactus.component';
@@ -114,6 +115,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'olvide-contrasena',
+    component: ForgotPasswordComponent,
     pathMatch: 'full',
   },
   {

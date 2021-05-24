@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { RegisterService } from './register.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+declare var $: any;
 
 @Component({
   selector: 'app-register',

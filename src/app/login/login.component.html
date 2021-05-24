@@ -6,15 +6,13 @@
                 <h1 class="text-center">Iniciar sesión</h1>
                 <div class="input-group">
                     <span class="input-group-label"><img src="/assets/images/user-b.png" alt=""></span>
-                    <input class="input-group-field" type="text" placeholder="Nombre o correo con el que se registró" formControlName="name"
-                    name="name" required pattern="text">
+                    <input class="input-group-field" type="text" placeholder="Nombre o correo con el que se registró" formControlName="name" name="name" required pattern="text">
                 </div>
                 <div class="input-group">
                     <span class="input-group-label"><img src="/assets/images/pass-b.png" alt=""></span>
-                    <input class="input-group-field" type="password" placeholder="Contraseña" formControlName="pass"
-                    name="pass" required>
+                    <input class="input-group-field" type="password" placeholder="Contraseña" formControlName="pass" name="pass" required>
                 </div>
-                <div><a href="#">¿Has olvidado tu contraseña?</a></div>
+                <div><a href="/olvide-contrasena">¿Has olvidado tu contraseña?</a></div>
                 <div class="text-center">
                     <span href="" class="button secondary" (click)="onSubmit(form.value)">Iniciar sesión</span>
                     <div><a href="register">¿No tienes cuenta? Registrate aquí</a></div>
