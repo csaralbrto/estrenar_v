@@ -45,6 +45,8 @@ export class ProjectDetailComponent implements OnInit {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
+  public operacion:any;
+  public valoresPares:any;
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
 
@@ -124,6 +126,23 @@ export class ProjectDetailComponent implements OnInit {
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
               this.galeria = this.response.field_typology_image;
               console.log('esta es la galeria: ',this.galeria);
+              console.log('tamaño de la galeria: ',this.galeria.length);
+              this.operacion= this.galeria.length;
+
+
+              if(this.operacion % 2 == 0)
+              {
+
+                this.valoresPares = "par";
+                  console.log(this.valoresPares);
+              }
+              else
+              {
+                this.valoresPares = "impar";
+                console.log(this.valoresPares);
+              }
+
+
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
               for (let caracteristica_tipologia of this.caracteristicas) {
@@ -228,7 +247,7 @@ export class ProjectDetailComponent implements OnInit {
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
-    
+
   }
   ngAfterViewChecked() {
     if (this.results) {
@@ -247,13 +266,13 @@ export class ProjectDetailComponent implements OnInit {
           autoplaySpeed: 5000,
         });
       }
-      
+
     }
   }
   addCompare(value) {
     if (!sessionStorage['id']) {
       var ids = [];
-      ids.push(value) 
+      ids.push(value)
       sessionStorage.setItem('id',JSON.stringify(ids))
       var storedIds = JSON.parse(sessionStorage.getItem("id"));
       this.router.navigate(['comparador']);
@@ -280,7 +299,7 @@ export class ProjectDetailComponent implements OnInit {
     }else{
       if (!sessionStorage['favorite']) {
         var ids = [];
-        ids.push(value) 
+        ids.push(value)
         sessionStorage.setItem('favorite',JSON.stringify(ids))
         var storedIds = JSON.parse(sessionStorage.getItem("id"));
         // this.router.navigate(['comparador']);
@@ -583,7 +602,7 @@ export class ProjectDetailComponent implements OnInit {
             ]
         },
         "profiling": {
-            "survey": 
+            "survey":
             [
                 {
                     "Deseas ser contactado vía": values.contact
@@ -640,8 +659,8 @@ export class ProjectDetailComponent implements OnInit {
         this.smmlv_vivienda = 20;
       }else if(salarios > 4){
         this.subsidio_vivienda = 0;
-        this.smmlv_vivienda = 0;  
-        /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */    
+        this.smmlv_vivienda = 0;
+        /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */
       }
     }else if(type == 'credito_vienda'){
       let monto_del_prestamo_multi = 0;
@@ -742,11 +761,11 @@ export class ProjectDetailComponent implements OnInit {
     var new_date =  mm + '-' + yyyy;
     return new_date
   }
-  monthDiff(today, date) { 
-    var months; 
-    months = (date.getFullYear() - today.getFullYear()) * 12; 
-    months -= today.getMonth() + 1; 
-    months += date.getMonth(); 
+  monthDiff(today, date) {
+    var months;
+    months = (date.getFullYear() - today.getFullYear()) * 12;
+    months -= today.getMonth() + 1;
+    months += date.getMonth();
     return months <= 0 ? 0 : Number(months) + Number(1);
   }
 }
