@@ -1,254 +1,250 @@
 <div class="row columns">
-  <div class="medium-3 columns">
-      <img [src]="url_img_path + response.field_typology_project.field_project_logo.uri.url " alt="" class="logo-proyecto">
-  </div>
-  <div class="medium-9 columns head-proyecto">
-      <div class="row">
-          <div class="medium-12 columns info-proyecto">
-              <div class="tags blue">
-                  <a (click)="addFavorite(response.drupal_internal__nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                  <div class="tag"><a>VIS</a></div>
-                  <div class="tag"><a>Mi casa ya</a></div>
-              </div>
-              <h1 class="project">{{ response.field_typology_project.name }}</h1>
-              <!-- <p>Descripcion lorem ipsum adempte nocte concectur muy cerca a residencial</p> -->
-              <div *ngIf="response.field_typology_description">
-                  <p [innerHTML]=response.field_typology_description.processed></p>
-              </div>
-          </div>
-          <div class="medium-5 columns">
-              <div class="head-proyecto">
-                  <div>Desde:</div>
-                  <div class="precio">$ {{ response.field_typology_price | number }}</div>
-              </div>
-          </div>
-          <div class="medium-7 columns">
-              <div class="nav-tabs right" *ngIf="response.field_typology_video.length > 0 && urlTour">
-                  <ul class="tabs" data-tabs id="propertiesProject">
-                      <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
-                      <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
-                      <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
-                      <li class="tabs-title"><a data-tabs-target="video" href="#video">Ver video</a></li>
-                      <!-- </div> -->
-                      <!-- <ng-template #tabVideoDisable>
+    <div class="medium-3 columns">
+        <img [src]="url_img_path + response.field_typology_project.field_project_logo.uri.url " alt="" class="logo-proyecto">
+    </div>
+    <div class="medium-9 columns head-proyecto">
+        <div class="row">
+            <div class="medium-12 columns info-proyecto">
+                <div class="tags blue">
+                    <a (click)="addFavorite(response.drupal_internal__nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    <div class="tag"><a>VIS</a></div>
+                    <div class="tag"><a>Mi casa ya</a></div>
+                </div>
+                <h1 class="project">{{ response.field_typology_project.name }}</h1>
+                <!-- <p>Descripcion lorem ipsum adempte nocte concectur muy cerca a residencial</p> -->
+                <div *ngIf="response.field_typology_description">
+                    <p [innerHTML]=response.field_typology_description.processed></p>
+                </div>
+            </div>
+            <div class="medium-5 columns">
+                <div class="head-proyecto">
+                    <div>Desde:</div>
+                    <div class="precio">$ {{ response.field_typology_price | number }}</div>
+                </div>
+            </div>
+            <div class="medium-7 columns">
+                <div class="nav-tabs right" *ngIf="response.field_typology_video.length > 0 && urlTour">
+                    <ul class="tabs" data-tabs id="propertiesProject">
+                        <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
+                        <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
+                        <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
+                        <li class="tabs-title"><a data-tabs-target="video" href="#video">Ver video</a></li>
+                        <!-- </div> -->
+                        <!-- <ng-template #tabVideoDisable>
                   <li class="tabs-title"><a>Ver video</a></li>
                 </ng-template> -->
-                      <li class="tabs-title"><a data-tabs-target="tour" href="#tour">Recorrido</a></li>
-                      <!-- <ng-template #tabTourDisable>
+                        <li class="tabs-title"><a data-tabs-target="tour" href="#tour">Recorrido</a></li>
+                        <!-- <ng-template #tabTourDisable>
                   <li class="tabs-title"><a>Recorrido</a></li>
                 </ng-template> -->
-                  </ul>
-              </div>
-              <div class="nav-tabs right" *ngIf="response.field_typology_video.length">
-                  <ul class="tabs" data-tabs id="propertiesProject">
-                      <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
-                      <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
-                      <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
-                      <li class="tabs-title"><a data-tabs-target="video" href="#video">Ver video</a></li>
-                      <!-- </div> -->
-                      <!-- <ng-template #tabVideoDisable>
+                    </ul>
+                </div>
+                <div class="nav-tabs right" *ngIf="response.field_typology_video.length">
+                    <ul class="tabs" data-tabs id="propertiesProject">
+                        <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
+                        <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
+                        <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
+                        <li class="tabs-title"><a data-tabs-target="video" href="#video">Ver video</a></li>
+                        <!-- </div> -->
+                        <!-- <ng-template #tabVideoDisable>
                   <li class="tabs-title"><a>Ver video</a></li>
                 </ng-template> -->
-                      <li class="tabs-title"><a>Recorrido</a></li>
-                      <!-- <ng-template #tabTourDisable>
+                        <li class="tabs-title"><a>Recorrido</a></li>
+                        <!-- <ng-template #tabTourDisable>
                   <li class="tabs-title"><a>Recorrido</a></li>
                 </ng-template> -->
-                  </ul>
-              </div>
-              <div class="nav-tabs right" *ngIf="urlTour">
-                  <ul class="tabs" data-tabs id="propertiesProject">
-                      <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
-                      <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
-                      <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
-                      <li class="tabs-title"><a>Ver video</a></li>
-                      <!-- </div> -->
-                      <!-- <ng-template #tabVideoDisable>
+                    </ul>
+                </div>
+                <div class="nav-tabs right" *ngIf="urlTour">
+                    <ul class="tabs" data-tabs id="propertiesProject">
+                        <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
+                        <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
+                        <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
+                        <li class="tabs-title"><a>Ver video</a></li>
+                        <!-- </div> -->
+                        <!-- <ng-template #tabVideoDisable>
                   <li class="tabs-title"><a>Ver video</a></li>
                 </ng-template> -->
-                      <li class="tabs-title"><a data-tabs-target="tour" href="#tour">Recorrido</a></li>
-                      <!-- <ng-template #tabTourDisable>
+                        <li class="tabs-title"><a data-tabs-target="tour" href="#tour">Recorrido</a></li>
+                        <!-- <ng-template #tabTourDisable>
                   <li class="tabs-title"><a>Recorrido</a></li>
                 </ng-template> -->
-                  </ul>
-              </div>
-              <div class="nav-tabs right" *ngIf="!(response.field_typology_video.length > 0) && !(urlTour)">
-                  <ul class="tabs" data-tabs id="propertiesProject">
-                      <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
-                      <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
-                      <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
-                      <li class="tabs-title"><a>Ver video</a></li>
-                      <!-- </div> -->
-                      <!-- <ng-template #tabVideoDisable>
+                    </ul>
+                </div>
+                <div class="nav-tabs right" *ngIf="!(response.field_typology_video.length > 0) && !(urlTour)">
+                    <ul class="tabs" data-tabs id="propertiesProject">
+                        <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
+                        <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
+                        <!-- <div *ngIf="response.field_virtual_tour !== null; else tabVideoDisable"> -->
+                        <li class="tabs-title"><a>Ver video</a></li>
+                        <!-- </div> -->
+                        <!-- <ng-template #tabVideoDisable>
                   <li class="tabs-title"><a>Ver video</a></li>
                 </ng-template> -->
-                      <li class="tabs-title"><a>Recorrido</a></li>
-                      <!-- <ng-template #tabTourDisable>
+                        <li class="tabs-title"><a>Recorrido</a></li>
+                        <!-- <ng-template #tabTourDisable>
                   <li class="tabs-title"><a>Recorrido</a></li>
                 </ng-template> -->
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <hr class="white">
 <!--slide-->
 <div class="row columns">
-  <div class="tabs-content" data-tabs-content="propertiesProject">
-      <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
-          <div class="">
-              <ul class="slider-project-img slideproject">
-
-                  <li class="is-active " >
-                    <div class="row">
-                      <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion == 5 || operacion == 6 || operacion == 7 ||operacion == 8 || operacion == 9 || operacion == 10|| operacion == 11 || operacion == 12) " >
-                          <figure class="">
-                              <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
-                          </figure>
-                      </div>
-
-                    <div class="row" *ngIf="valoresPares == 'par'">
-                      <div class="rows-img">
-                        <div class="row1">
-                          <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
-                            </figure>
-                        </div>
-                          <div class="rows-img1" *ngIf="galeria[1]" >
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[1].uri.url" alt="">
-                              </figure>
-                          </div>
-                          <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
-                            </figure>
-                        </div>
-                        </div>
-                        <div class="row1">
-
-                          <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
-                            </figure>
-                        </div>
-
-                          <div class="rows-img1" *ngIf="galeria[3]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[3].uri.url" alt="">
-                              </figure>
-                          </div>
-                          <div class="rows-img2" *ngIf="galeria[4]">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[4].uri.url" alt="">
-                            </figure>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-
-                      <div class="row" *ngIf="valoresPares == 'impar'">
-                          <div class="rows-img" >
-                            <div class="row1">
-                              <div class="rows-img1" *ngIf="operacion == 1">
+    <div class="tabs-content" data-tabs-content="propertiesProject">
+        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
+            <div class="">
+                <ul class="slider-project-img slideproject">
+                    <li class="is-active ">
+                        <div class="row">
+                            <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion == 5 || operacion == 6 || operacion == 7 ||operacion == 8 || operacion == 9 || operacion == 10|| operacion == 11 || operacion == 12) ">
                                 <figure class="">
                                     <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
                                 </figure>
                             </div>
-                              <div class="rows-img1" *ngIf="galeria[1]" >
-                                  <figure class="">
-                                      <img class="" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                </figure>
-                            </div>
-                            </div>
-                            <div class="row1">
-                              <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                </figure>
-                            </div>
-                              <div class="rows-img1" *ngIf="galeria[3]">
-                                  <figure class="">
-                                      <img class="" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div class="rows-img2" *ngIf="galeria[4]">
-                                  <figure class="">
-                                      <img class="" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                  </figure>
-                              </div>
+                            <div class="row" *ngIf="valoresPares == 'par'">
+                                <div class="rows-img">
+                                    <div class="row1">
+                                        <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img1" *ngIf="galeria[1]">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+
+                                        <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
+
+                                        <div class="rows-img1" *ngIf="galeria[3]">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="galeria[4]">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
+                            <div class="row" *ngIf="valoresPares == 'impar'">
+                                <div class="rows-img">
+                                    <div class="row1">
+                                        <div class="rows-img1" *ngIf="operacion == 1">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img1" *ngIf="galeria[1]">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img1" *ngIf="galeria[3]">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="galeria[4]">
+                                            <figure class="">
+                                                <img class="" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
 
-                          </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="" >
 
-
-                      <div class="row"  >
-                        <div class="medium-6 columns destacado" *ngIf=" (operacion == 10 )" >
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
-                            </figure>
+                                </div>
+                            </div>
                         </div>
-                        <div class="rows-img" *ngIf=" ( operacion == 9|| operacion == 10) ">
-                          <div class="row1">
-
-                              <div class="rows-img1" *ngIf=" operacion == 9 ">
+                    </li>
+                    <li class="">
+                        <div class="row">
+                            <div class="medium-6 columns destacado" *ngIf=" (operacion == 10 )">
                                 <figure class="">
                                     <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
                                 </figure>
-                              </div>
-                              <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[6].uri.url"  >
-                                </figure>
                             </div>
-                              <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[6].uri.url"  >
-                                </figure>
-                            </div>
+                            <div class="rows-img" *ngIf=" ( operacion == 9|| operacion == 10) ">
+                                <div class="row1">
 
-                          <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[7].uri.url" alt="">
-                              </figure>
-                          </div>
+                                    <div class="rows-img1" *ngIf=" operacion == 9 ">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
 
-                          </div>
-                          <div class="row1">
+                                    <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[7].uri.url" alt="">
+                                        </figure>
+                                    </div>
 
-                            <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[7].uri.url"  >
-                              </figure>
-                          </div>
-                          <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[8].uri.url" alt="">
-                            </figure>
-                        </div>
+                                </div>
+                                <div class="row1">
 
-                            <div class="rows-img1" *ngIf="galeria[8]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[8].uri.url" alt="">
-                              </figure>
-                          </div>
-                            <div class="rows-img2" *ngIf="galeria[9]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[9].uri.url" alt="">
-                              </figure>
-                          </div>
-                          <!-- <div class="rows-img3" *ngIf="galeria[11]">
+                                    <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[7].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                        </figure>
+                                    </div>
+
+                                    <div class="rows-img1" *ngIf="galeria[8]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="galeria[9]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[9].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <!-- <div class="rows-img3" *ngIf="galeria[11]">
                             <figure class="">
                                 <img class="" [src]="url_img_path + galeria[11].uri.url" alt="">
                             </figure>
@@ -258,893 +254,887 @@
                               <img class="" [src]="url_img_path + galeria[12].uri.url" alt="">
                           </figure>
                       </div> -->
-                          </div>
+                                </div>
 
-                        </div>
-
-
-                        <div class="rows-img" *ngIf=" ( operacion == 6 ||  operacion == 8 || operacion == 11)">
-                          <div class="row1">
-
-                              <div class="rows-img1" >
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                </figure>
-                              </div>
-                               <div class="rows-img2" *ngIf="galeria[6] ">
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[6].uri.url"  >
-                                </figure>
                             </div>
 
-                            <div class="rows-img3" *ngIf="galeria[7]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[7].uri.url"  >
-                              </figure>
-                          </div>
+
+                            <div class="rows-img" *ngIf=" ( operacion == 6 ||  operacion == 8 || operacion == 11)">
+                                <div class="row1">
+
+                                    <div class="rows-img1">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="galeria[6] ">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
+
+                                    <div class="rows-img3" *ngIf="galeria[7]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[7].uri.url">
+                                        </figure>
+                                    </div>
 
 
-                        </div>
-                          <div class="row1">
-                            <div class="rows-img1" *ngIf="galeria[8]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[8].uri.url"  >
-                              </figure>
-                          </div>
-                            <div class="rows-img2" *ngIf=" galeria[9]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[9].uri.url"  >
-                              </figure>
-                          </div>
-                          <div class="rows-img3" *ngIf=" galeria[10]">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[10].uri.url"  >
-                            </figure>
-                        </div>
-                          </div>
+                                </div>
+                                <div class="row1">
+                                    <div class="rows-img1" *ngIf="galeria[8]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[8].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf=" galeria[9]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[9].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img3" *ngIf=" galeria[10]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[10].uri.url">
+                                        </figure>
+                                    </div>
+                                </div>
 
-                        </div>
-
-                        <div class="rows-img" *ngIf=" operacion == 12">
-                          <div class="row1">
-
-                              <div class="rows-img1" >
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                </figure>
-                              </div>
-                               <div class="rows-img2" *ngIf="galeria[6] ">
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[6].uri.url"  >
-                                </figure>
                             </div>
 
-                            <div class="rows-img3" *ngIf="galeria[7]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[7].uri.url"  >
-                              </figure>
-                          </div>
-                          <div class="rows-img4" *ngIf="galeria[8]">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[8].uri.url"  >
-                            </figure>
+                            <div class="rows-img" *ngIf=" operacion == 12">
+                                <div class="row1">
+
+                                    <div class="rows-img1">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="galeria[6] ">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
+
+                                    <div class="rows-img3" *ngIf="galeria[7]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[7].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img4" *ngIf="galeria[8]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[8].uri.url">
+                                        </figure>
+                                    </div>
+
+
+                                </div>
+                                <div class="row1">
+
+                                    <div class="rows-img1" *ngIf=" galeria[9]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[9].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf=" galeria[10]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[10].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img3" *ngIf=" galeria[11]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[11].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img4" *ngIf=" galeria[12]">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + galeria[12].uri.url">
+                                        </figure>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- cierra div del row -->
                         </div>
-
-
-                        </div>
-                          <div class="row1">
-
-                            <div class="rows-img1" *ngIf=" galeria[9]">
-                              <figure class="">
-                                  <img class="" [src]="url_img_path + galeria[9].uri.url"  >
-                              </figure>
-                          </div>
-                          <div class="rows-img2" *ngIf=" galeria[10]">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[10].uri.url"  >
-                            </figure>
-                        </div>
-                        <div class="rows-img3" *ngIf=" galeria[11]">
-                          <figure class="">
-                              <img class="" [src]="url_img_path + galeria[11].uri.url"  >
-                          </figure>
-                      </div>
-                      <div class="rows-img4" *ngIf=" galeria[12]">
-                        <figure class="">
-                            <img class="" [src]="url_img_path + galeria[12].uri.url"  >
-                        </figure>
-                    </div>
-                          </div>
-
-                        </div>
-
-                        <!-- cierra div del row -->
-                      </div>
-
-
-
-
-
-
                     </li>
-              </ul>
-          </div>
-          <div class="container-controls">
-              <nav class="orbit-bullets">
-                  <button class="is-active" data-slide="0">
+                </ul>
+            </div>
+            <div class="container-controls">
+                <nav class="orbit-bullets">
+                    <button class="is-active" data-slide="0">
                       <span class="show-for-sr">First slide details.</span>
                       <span class="show-for-sr" data-slide-active-label>Current Slide</span>
                   </button>
-                  <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-              </nav>
-              <div class="orbit-controls">
-                  <button class="orbit-previous"><span class="show-for-sr">Previous
+                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                </nav>
+                <div class="orbit-controls">
+                    <button class="orbit-previous"><span class="show-for-sr">Previous
                           Slide</span>&#9664;&#xFE0E;</button>
-                  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-              </div>
-          </div>
-      </div>
-      <div class="tabs-panel" id="video" *ngIf="response.field_typology_video.length > 0">
-          <div class="row">
-              <video width="520" height="250" controls>
+                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                </div>
+            </div>
+        </div>
+        <div class="tabs-panel" id="video" *ngIf="response.field_typology_video.length > 0">
+            <div class="row">
+                <video width="520" height="250" controls>
                   <source src="response.field_typology_video.data.src" type="video/mp4">
                   Tu navegador no soporta los vídeos de HTML5
               </video>
-          </div>
-      </div>
-      <div class="tabs-panel" id="tour" *ngIf="urlTour">
-          <div class="row">
-              <!-- <video width="520" height="250" controls>
+            </div>
+        </div>
+        <div class="tabs-panel" id="tour" *ngIf="urlTour">
+            <div class="row">
+                <!-- <video width="520" height="250" controls>
                   <source [src]="response.field_virtual_tour.uri" type="video/mp4">
                       Tu navegador no soporta los vídeos de HTML5
                   </video> -->
-              <iframe width="420" height="315" [src]="urlTour">
+                <iframe width="420" height="315" [src]="urlTour">
               </iframe>
-          </div>
-      </div>
-  </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--fin slide-->
 <div class="row columns">
-  <div class="features">
-      <div class="small-6 medium-3 columns end" *ngFor="let caract of caracteristicas; let i = index">
-          <div class="item-big">
-              <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
-              <div class="data">{{ caract.name_only }}</div>
-          </div>
-      </div>
-  </div>
+    <div class="features">
+        <div class="small-6 medium-3 columns end" *ngFor="let caract of caracteristicas; let i = index">
+            <div class="item-big">
+                <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
+                <div class="data">{{ caract.name_only }}</div>
+            </div>
+        </div>
+    </div>
 </div>
 <hr class="white">
 <!--fin features-->
 <!-- Modal de contacto -->
 <div class="reveal text-center" id="exampleModal2" data-reveal>
-  <h2>Contactar</h2>
-  <form data-abide novalidate [formGroup]="form4">
-      <div class="container-form">
-          <span id="spanNameModal" class="error hide">
+    <h2>Contactar</h2>
+    <form data-abide novalidate [formGroup]="form4">
+        <div class="container-form">
+            <span id="spanNameModal" class="error hide">
               Debe digitar un nombre de contacto
           </span>
-          <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
-          <span id="spannLastNameModal" class="error hide">
+            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+            <span id="spannLastNameModal" class="error hide">
                   Debe digitar un apellido de contacto
               </span>
-          <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
-          <span id="spanEmailModal" class="error hide">
+            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+            <span id="spanEmailModal" class="error hide">
                   Debe digitar un correo de contacto valido
               </span>
-          <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
-          <span id="spanPhoneModal" class="error hide">
+            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+            <span id="spanPhoneModal" class="error hide">
                   Debe digitar un n&uacute;mbre de contacto
               </span>
-          <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
-          <span id="spanContactModal" class="error hide">
+            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+            <span id="spanContactModal" class="error hide">
                   Debe seleccionar una opción
               </span>
-          <select id="select" required formControlName="contact" name="contact">
+            <select id="select" required formControlName="contact" name="contact">
               <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
               <option value="telefono">Tel&eacute;fonica</option>
               <option value="email">Correo Electr&oacute;nico</option>
               <option value="correo">Correo Postal</option>
           </select>
-          <span id="spanTypesearchModal" class="error hide">
+            <span id="spanTypesearchModal" class="error hide">
               Debe seleccionar una opción
           </span>
-          <fieldset class="text-left">
-              <legend>Buscas vivienda para:</legend>
-              <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
-              <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
-          </fieldset>
+            <fieldset class="text-left">
+                <legend>Buscas vivienda para:</legend>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+            </fieldset>
 
-          <div class="text-left terminos">
-              <span id="spanTermModal" class="error hide">
+            <div class="text-left terminos">
+                <span id="spanTermModal" class="error hide">
                   Debe aceptar los términos
               </span>
-              <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
                   haber leído los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                   mismos.</label>
 
-          </div>
-          <span href="" class="button secondary" (click)="onSubmitModal(form4.value)">Enviar</span>
-      </div>
-  </form>
-  <button class="close-button" data-close aria-label="Close modal" type="button">
+            </div>
+            <span href="" class="button secondary" (click)="onSubmitModal(form4.value)">Enviar</span>
+        </div>
+    </form>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <!-- Fin modal de contacto -->
 <!-- Modal de gracias -->
 <div class="reveal text-center" id="exampleModal1" data-reveal>
-  <img src="/assets/images/logo-ev.png">
-  <h2>¡Gracias!</h2>
-  <p>Pronto te llegará toda la información a tu correo</p>
-  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <img src="/assets/images/logo-ev.png">
+    <h2>¡Gracias!</h2>
+    <p>Pronto te llegará toda la información a tu correo</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <!-- Fin modal gracias -->
 <!--mas caracteristicas-->
 <div class="row columns" *ngIf="response.adicionales">
-  <ul class="accordion" data-accordion data-allow-all-closed="true">
-      <li class="accordion-item" data-accordion-item>
-          <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
-          <div class="accordion-content" data-tab-content>
-              <div class="row">
-                  <div class="medium-3 columns end" *ngFor="let adicionales of response.adicionales; let i = index">
-                      <div class="feature"><span><img src="/assets/images/feature.png" alt=""></span>{{ adicionales.nombre }}</div>
-                  </div>
-              </div>
-          </div>
-      </li>
-  </ul>
+    <ul class="accordion" data-accordion data-allow-all-closed="true">
+        <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
+            <div class="accordion-content" data-tab-content>
+                <div class="row">
+                    <div class="medium-3 columns end" *ngFor="let adicionales of response.adicionales; let i = index">
+                        <div class="feature"><span><img src="/assets/images/feature.png" alt=""></span>{{ adicionales.nombre }}</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>
 <!--  -->
 <div class="row columns">
-  <div class="medium-8 columns">
-      <div class="mapa">
-          <div class="nav-tabs">
-              <ul class="tabs" data-tabs id="propertiesProject">
-                  <li class="tabs-title is-active"><a data-tabs-target="mapProject" href="#mapProject">Mapa</a></li>
-                  <li class="tabs-title"><a data-tabs-target="planes" href="#planes">Planos</a></li>
-                  <li class="tabs-title"><a data-tabs-target="street_view" href="#street_view">Street view</a></li>
-              </ul>
-          </div>
-          <div class="tabs-content" data-tabs-content="propertiesProject">
-              <div class="tabs-panel is-active" id="mapProject">
-                  <div class="direccion">
-                      <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
-                  </div>
-                  <iframe [src]="maps_url" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+    <div class="medium-8 columns">
+        <div class="mapa">
+            <div class="nav-tabs">
+                <ul class="tabs" data-tabs id="propertiesProject">
+                    <li class="tabs-title is-active"><a data-tabs-target="mapProject" href="#mapProject">Mapa</a></li>
+                    <li class="tabs-title"><a data-tabs-target="planes" href="#planes">Planos</a></li>
+                    <li class="tabs-title"><a data-tabs-target="street_view" href="#street_view">Street view</a></li>
+                </ul>
+            </div>
+            <div class="tabs-content" data-tabs-content="propertiesProject">
+                <div class="tabs-panel is-active" id="mapProject">
+                    <div class="direccion">
+                        <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
+                    </div>
+                    <iframe [src]="maps_url" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
               </iframe>
-                  <hr class="white">
-                  <div class="row columns">
-                      <h2>Zonas de interés</h2>
-                      <div class="small-6 medium-4 columns end zona">
-                          <div class="row">
-                              <div class="medium-8 columns">
-                                  <label class="container-check">Supermercados
+                    <hr class="white">
+                    <div class="row columns">
+                        <h2>Zonas de interés</h2>
+                        <div class="small-6 medium-4 columns end zona">
+                            <div class="row">
+                                <div class="medium-8 columns">
+                                    <label class="container-check">Supermercados
                                 <input type="checkbox" checked="checked">
                                 <span class="checkmark"></span>
                             </label>
 
-                              </div>
-                              <div class="medium-4 columns hide-for-small-only">
-                                  <img src="/assets/images/supermercado.png" alt="">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="small-6 medium-4 columns end zona">
-                          <div class="row">
-                              <div class="medium-8 columns">
-                                  <label class="container-check">Supermercados
+                                </div>
+                                <div class="medium-4 columns hide-for-small-only">
+                                    <img src="/assets/images/supermercado.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-6 medium-4 columns end zona">
+                            <div class="row">
+                                <div class="medium-8 columns">
+                                    <label class="container-check">Supermercados
                               <input type="checkbox" >
                               <span class="checkmark"></span>
                           </label>
 
-                              </div>
-                              <div class="medium-4 columns hide-for-small-only">
-                                  <img src="/assets/images/supermercado.png" alt="">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="small-6 medium-4 columns end zona">
-                          <div class="row">
-                              <div class="medium-8 columns">
-                                  <label class="container-check">Supermercados
+                                </div>
+                                <div class="medium-4 columns hide-for-small-only">
+                                    <img src="/assets/images/supermercado.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-6 medium-4 columns end zona">
+                            <div class="row">
+                                <div class="medium-8 columns">
+                                    <label class="container-check">Supermercados
                               <input type="checkbox" >
                               <span class="checkmark"></span>
                           </label>
 
-                              </div>
-                              <div class="medium-4 columns hide-for-small-only">
-                                  <img src="/assets/images/supermercado.png" alt="">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="small-6 medium-4 columns end zona">
-                          <div class="row">
-                              <div class="medium-8 columns">
-                                  <label class="container-check">Supermercados
+                                </div>
+                                <div class="medium-4 columns hide-for-small-only">
+                                    <img src="/assets/images/supermercado.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-6 medium-4 columns end zona">
+                            <div class="row">
+                                <div class="medium-8 columns">
+                                    <label class="container-check">Supermercados
                               <input type="checkbox" >
                               <span class="checkmark"></span>
                           </label>
 
-                              </div>
-                              <div class="medium-4 columns hide-for-small-only">
-                                  <img src="/assets/images/supermercado.png" alt="">
-                              </div>
-                          </div>
-                      </div>
+                                </div>
+                                <div class="medium-4 columns hide-for-small-only">
+                                    <img src="/assets/images/supermercado.png" alt="">
+                                </div>
+                            </div>
+                        </div>
 
-                  </div>
-              </div>
-              <div class="tabs-panel" id="planes">
-              </div>
-              <div class="tabs-panel" id="street_view">
-              </div>
-          </div>
-      </div>
-  </div>
-  <hr class="mobile">
-  <div class="medium-4 columns text-center">
-      <h2 class="deco">¿Necesitas asesoría?</h2>
-      <p class="mini">Déjanos tus datos para contactarte o agendar una visita.</p>
-      <form data-abide novalidate [formGroup]="form">
-          <div class="formulario">
-              <div data-abide-error class="alert callout" style="display: none;">
-                  <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
-              </div>
-              <ul class="tabs" data-tabs id="contacto">
-                  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Contacto</a></li>
-                  <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Agendar visita</a></li>
-              </ul>
-              <div class="tabs-content" data-tabs-content="contacto">
-                  <div class="tabs-panel is-active" id="panel1">
-                      <div class="container-form">
-                          <span id="spanName" class="error hide">
+                    </div>
+                </div>
+                <div class="tabs-panel" id="planes">
+                </div>
+                <div class="tabs-panel" id="street_view">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mobile">
+    <div class="medium-4 columns text-center">
+        <h2 class="deco">¿Necesitas asesoría?</h2>
+        <p class="mini">Déjanos tus datos para contactarte o agendar una visita.</p>
+        <form data-abide novalidate [formGroup]="form">
+            <div class="formulario">
+                <div data-abide-error class="alert callout" style="display: none;">
+                    <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
+                </div>
+                <ul class="tabs" data-tabs id="contacto">
+                    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Contacto</a></li>
+                    <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Agendar visita</a></li>
+                </ul>
+                <div class="tabs-content" data-tabs-content="contacto">
+                    <div class="tabs-panel is-active" id="panel1">
+                        <div class="container-form">
+                            <span id="spanName" class="error hide">
                           Debe digitar un nombre de contacto
                       </span>
-                          <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
-                          <span id="spannLastName" class="error hide">
+                            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+                            <span id="spannLastName" class="error hide">
                           Debe digitar un apellido de contacto
                       </span>
-                          <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
-                          <span id="spanEmail" class="error hide">
+                            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+                            <span id="spanEmail" class="error hide">
                           Debe digitar un correo de contacto valido
                       </span>
-                          <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
-                          <span id="spanPhone" class="error hide">
+                            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+                            <span id="spanPhone" class="error hide">
                           Debe digitar un n&uacute;mbre de contacto
                       </span>
-                          <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
-                          <span id="spanContact" class="error hide">
+                            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+                            <span id="spanContact" class="error hide">
                           Debe seleccionar una opción
                       </span>
-                          <select id="select" required formControlName="contact" name="contact">
+                            <select id="select" required formControlName="contact" name="contact">
                           <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
                           <option value="telefono">Tel&eacute;fonica</option>
                           <option value="email">Correo Electr&oacute;nico</option>
                           <option value="correo">Correo Postal</option>
                       </select>
-                          <span id="spanTypesearch" class="hide">
+                            <span id="spanTypesearch" class="hide">
                           Debe seleccionar una opción
                           </span>
-                          <fieldset class="text-left">
-                              <legend>Buscas vivienda para:</legend>
-                              <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
-                              <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
-                          </fieldset>
+                            <fieldset class="text-left">
+                                <legend>Buscas vivienda para:</legend>
+                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+                            </fieldset>
 
-                          <div class="text-left terminos">
-                              <span id="spanTerm" class="hide">
+                            <div class="text-left terminos">
+                                <span id="spanTerm" class="hide">
                               Debe aceptar los términos
                               </span>
-                              <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
                               haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                               mismos.</label>
 
-                          </div>
-                          <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
-                      </div>
-                  </div>
-                  <div class="tabs-panel" id="panel2">
-                      <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor neque eu tellus rhoncus ut eleifend
-                          nibh porttitor.</p>
-                  </div>
-              </div>
-          </div>
-      </form>
-      <div class="row columns">
-          <div class="container-constructora">
-              <div class="small-4 columns">
-                  <img class="constructora" src="/assets/images/content/constructora.jpg" alt="">
-              </div>
-              <div class="small-8 columns text-center">
-                  <h3>Atención en sala de ventas</h3>
-                  <p>Lunes a viernes: 7am a 5pm</p>
-                  <p>Sabados y domingos: 9am a 5 pm</p>
-              </div>
-          </div>
-      </div>
-      <div class="reveal text-center" id="exampleModal1" data-reveal>
-          <img src="/assets/images/logo-ev.png">
-          <h2>¡Gracias!</h2>
-          <p>Pronto te llegará toda la información a tu correo</p>
-          <button class="close-button" data-close aria-label="Close modal" type="button">
+                            </div>
+                            <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
+                        </div>
+                    </div>
+                    <div class="tabs-panel" id="panel2">
+                        <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor neque eu tellus rhoncus ut eleifend
+                            nibh porttitor.</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row columns">
+            <div class="container-constructora">
+                <div class="small-4 columns">
+                    <img class="constructora" src="/assets/images/content/constructora.jpg" alt="">
+                </div>
+                <div class="small-8 columns text-center">
+                    <h3>Atención en sala de ventas</h3>
+                    <p>Lunes a viernes: 7am a 5pm</p>
+                    <p>Sabados y domingos: 9am a 5 pm</p>
+                </div>
+            </div>
+        </div>
+        <div class="reveal text-center" id="exampleModal1" data-reveal>
+            <img src="/assets/images/logo-ev.png">
+            <h2>¡Gracias!</h2>
+            <p>Pronto te llegará toda la información a tu correo</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 <hr class="white">
 <hr class="white">
 <div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq" *ngIf="othersAreas && othersAreas.length > 0">
-  <h2 class="deco text-center">Otras áreas disponibles</h2>
-  <div class="medium-4 columns end" *ngFor="let relacionados of othersAreas; let i = index">
-      <div class="card" *ngIf="i < 3" data-equalizer-watch>
-          <div class="container-photo">
-              <a href="#" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
-              <div class="container-tools">
-                  <div class="tags">
-                      <div *ngIf="relacionados.project_category.length > 0">
-                          <div class="tag" *ngFor="let tags of relacionados.project_category; let i = index">
-                              <a>{{ tags }}</a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="add">
-                      <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                  </div>
-              </div>
-          </div>
-          <div class="card-section">
-              <h2>{{ relacionados.project }}</h2>
-              <div class="descripcion">
-                  {{ relacionados.project_city }}, {{ relacionados.project_zone }}, {{ relacionados.project_neighborhood }}
-              </div>
-              <div class="precio text-center">
-                  <div>Desde:</div>
-                  <span>$ {{ relacionados.typology_price | number }}</span>
-              </div>
-              <hr>
-          </div>
+    <h2 class="deco text-center">Otras áreas disponibles</h2>
+    <div class="medium-4 columns end" *ngFor="let relacionados of othersAreas; let i = index">
+        <div class="card" *ngIf="i < 3" data-equalizer-watch>
+            <div class="container-photo">
+                <a href="#" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
+                <div class="container-tools">
+                    <div class="tags">
+                        <div *ngIf="relacionados.project_category.length > 0">
+                            <div class="tag" *ngFor="let tags of relacionados.project_category; let i = index">
+                                <a>{{ tags }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add">
+                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-section">
+                <h2>{{ relacionados.project }}</h2>
+                <div class="descripcion">
+                    {{ relacionados.project_city }}, {{ relacionados.project_zone }}, {{ relacionados.project_neighborhood }}
+                </div>
+                <div class="precio text-center">
+                    <div>Desde:</div>
+                    <span>$ {{ relacionados.typology_price | number }}</span>
+                </div>
+                <hr>
+            </div>
 
-          <div class="card-section">
-              <div class="button-group align-spaced ">
-                  <a class="button" routerLink="/proyecto/{{relacionados.uuid}}">Ver
+            <div class="card-section">
+                <div class="button-group align-spaced ">
+                    <a class="button" routerLink="/proyecto/{{relacionados.uuid}}">Ver
                   Proyecto</a>
-                  <a class="button" data-open="exampleModal2">Contacto</a>
-              </div>
-          </div>
-      </div>
-  </div>
+                    <a class="button" data-open="exampleModal2">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <hr class="white">
 <hr class="white">
 <div class="row columns">
-  <h2 class="deco text-center">Características del proyecto</h2>
-  <div class="medium-4 columns end" *ngFor="let caract of caracteristicasProject; let i = index">
-      <div class="caracteristica">
-          <span><img [src]="caract.img_src" alt=""></span>{{ caract.name_only }}
-      </div>
-  </div>
+    <h2 class="deco text-center">Características del proyecto</h2>
+    <div class="medium-4 columns end" *ngFor="let caract of caracteristicasProject; let i = index">
+        <div class="caracteristica">
+            <span><img [src]="caract.img_src" alt=""></span>{{ caract.name_only }}
+        </div>
+    </div>
 </div>
 <hr class="white">
 <hr class="white">
 <div class="container-gray">
-  <div class="row columns text-center">
-      <div class="subtitle">¿Quieres calcular?</div>
-      <h2 class="deco">Utiliza nuestros simuladores</h2>
-  </div>
-  <div class="row columns">
-      <div class="medium-8 medium-offset-2 columns">
-          <div class="row valores">
-              <div class="small-4 columns text-center">
-                  <div class="dato">Couta inicial</div>
-                  <div class="valor">30%</div>
-              </div>
-              <div class="small-4 columns text-center">
-                  <div class="dato">Separación</div>
-                  <div class="valor">$5.000.000</div>
-              </div>
-              <div class="small-4 columns text-center">
-                  <div class="dato">Banco</div>
-                  <div class="valor">Davivienda</div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!--simuladores-->
-  <div class="row columns">
-      <div class="simuladores">
-          <ul class="tabs hide-for-small-only" data-tabs id="simuladores">
-              <li class="tabs-title is-active"><a href="#simulador1" aria-selected="true">Simulador capacidad
+    <div class="row columns text-center">
+        <div class="subtitle">¿Quieres calcular?</div>
+        <h2 class="deco">Utiliza nuestros simuladores</h2>
+    </div>
+    <div class="row columns">
+        <div class="medium-8 medium-offset-2 columns">
+            <div class="row valores">
+                <div class="small-4 columns text-center">
+                    <div class="dato">Couta inicial</div>
+                    <div class="valor">30%</div>
+                </div>
+                <div class="small-4 columns text-center">
+                    <div class="dato">Separación</div>
+                    <div class="valor">$5.000.000</div>
+                </div>
+                <div class="small-4 columns text-center">
+                    <div class="dato">Banco</div>
+                    <div class="valor">Davivienda</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--simuladores-->
+    <div class="row columns">
+        <div class="simuladores">
+            <ul class="tabs hide-for-small-only" data-tabs id="simuladores">
+                <li class="tabs-title is-active"><a href="#simulador1" aria-selected="true">Simulador capacidad
               endeudamiento</a>
-              </li>
-              <li class="tabs-title"><a data-tabs-target="simulador2" href="#simulador2">Simulador subsidio de vivienda</a>
-              </li>
-              <li class="tabs-title"><a data-tabs-target="simulador3" href="#simulador3">Simulador cuota inicial</a>
-              </li>
-              <li class="tabs-title"><a data-tabs-target="simulador4" href="#simulador4">Simulador credito de vivienda</a>
-              </li>
-          </ul>
-          <div class="nav-calc">
-              <ul class="nav-cal-menu show-for-small-only">
-                  <li class="opcion">
-                      <a href="#simulador1" class="active">Simulador capacidad endeudamiento</a>
-                  </li>
-                  <li class="opcion">
-                      <a href="#simulador2">Simulador subsidio de vivienda</a>
-                  </li>
-                  <li class="opcion">
-                      <a href="#simulador3">Simulador cuota inicial</a>
-                  </li>
-                  <li class="opcion">
-                      <a href="#simulador4">Simulador credito de vivienda</a>
-                  </li>
-              </ul>
-          </div>
-          <div class="tabs-content" data-tabs-content="simuladores">
-              <form [formGroup]="form3">
-                  <div class="tabs-panel is-active cuota" id="simulador1">
-                      <div class="container-form">
-                          <div class="row">
-                              <div class="medium-4 medium-offset-4 columns text-center">
-                                  <p> Tus ingresos mensuales</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" (change)="change(form3.value,'capacidad_endeudamiento')" formControlName="ingresos_mensuales_endudamiento" name="ingresos_mensuales_endudamiento" type="number">
-                                  </div>
-                              </div>
-                              <div class="medium-4 columns text-center campo-destacado">
-                                  <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
-                                  <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento | number }}">
-                                  <hr>
-                                  <p> Podrías comprar una vivienda de:</p>
-                                  <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
-                                  <hr>
-                                  <a class="button secondary ">Ver proyectos afines</a>
-                              </div>
+                </li>
+                <li class="tabs-title"><a data-tabs-target="simulador2" href="#simulador2">Simulador subsidio de vivienda</a>
+                </li>
+                <li class="tabs-title"><a data-tabs-target="simulador3" href="#simulador3">Simulador cuota inicial</a>
+                </li>
+                <li class="tabs-title"><a data-tabs-target="simulador4" href="#simulador4">Simulador credito de vivienda</a>
+                </li>
+            </ul>
+            <div class="nav-calc">
+                <ul class="nav-cal-menu show-for-small-only">
+                    <li class="opcion">
+                        <a href="#simulador1" class="active">Simulador capacidad endeudamiento</a>
+                    </li>
+                    <li class="opcion">
+                        <a href="#simulador2">Simulador subsidio de vivienda</a>
+                    </li>
+                    <li class="opcion">
+                        <a href="#simulador3">Simulador cuota inicial</a>
+                    </li>
+                    <li class="opcion">
+                        <a href="#simulador4">Simulador credito de vivienda</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tabs-content" data-tabs-content="simuladores">
+                <form [formGroup]="form3">
+                    <div class="tabs-panel is-active cuota" id="simulador1">
+                        <div class="container-form">
+                            <div class="row">
+                                <div class="medium-4 medium-offset-4 columns text-center">
+                                    <p> Tus ingresos mensuales</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" (change)="change(form3.value,'capacidad_endeudamiento')" formControlName="ingresos_mensuales_endudamiento" name="ingresos_mensuales_endudamiento" type="number">
+                                    </div>
+                                </div>
+                                <div class="medium-4 columns text-center campo-destacado">
+                                    <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
+                                    <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento | number }}">
+                                    <hr>
+                                    <p> Podrías comprar una vivienda de:</p>
+                                    <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
+                                    <hr>
+                                    <a class="button secondary ">Ver proyectos afines</a>
+                                </div>
 
-                          </div>
-                      </div>
-                  </div>
-                  <div class="tabs-panel endeudamiento" id="simulador2">
-                      <div class="container-form">
-                          <div class="row">
-                              <div class="medium-4 columns text-center">
-                                  <p> Cuentanos cuales son tus ingresos mensuales</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" type="number" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (change)="change(form3.value,'subsidio_vivienda')">
-                                  </div>
-                                  <hr>
-                                  <p> Cuales son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" type="number" formControlName="ingresos_mensuales_persona_vivienda" name="ingresos_mensuales_persona_vivienda" (change)="change(form3.value,'subsidio_vivienda')" value="0">
-                                  </div>
-                                  <hr>
-                                  <p> Los ingresos totales son:</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda | number }}">
-                                  </div>
-                                  <hr>
-                                  <p class="small">
-                                      * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
-                                  </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs-panel endeudamiento" id="simulador2">
+                        <div class="container-form">
+                            <div class="row">
+                                <div class="medium-4 columns text-center">
+                                    <p> Cuentanos cuales son tus ingresos mensuales</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" type="number" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (change)="change(form3.value,'subsidio_vivienda')">
+                                    </div>
+                                    <hr>
+                                    <p> Cuales son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" type="number" formControlName="ingresos_mensuales_persona_vivienda" name="ingresos_mensuales_persona_vivienda" (change)="change(form3.value,'subsidio_vivienda')" value="0">
+                                    </div>
+                                    <hr>
+                                    <p> Los ingresos totales son:</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda | number }}">
+                                    </div>
+                                    <hr>
+                                    <p class="small">
+                                        * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
+                                    </p>
 
-                              </div>
-                              <div class="medium-4 columns text-center campo-destacado">
-                                  <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                                  <input type="text" placeholder="" value="{{ smmlv_vivienda }} SMMLV">
-                                  <hr>
-                                  <p> Equivalentes a:</p>
-                                  <input type="text" placeholder="" value="$ {{ subsidio_vivienda | number }}">
-                                  <a class="button secondary ">Más información</a>
-                              </div>
-                              <div class="medium-4 columns text-center">
-                                  <p> </p>
-                              </div>
+                                </div>
+                                <div class="medium-4 columns text-center campo-destacado">
+                                    <p> Con el total de ingresos puedes obtener un subsidio por:</p>
+                                    <input type="text" placeholder="" value="{{ smmlv_vivienda }} SMMLV">
+                                    <hr>
+                                    <p> Equivalentes a:</p>
+                                    <input type="text" placeholder="" value="$ {{ subsidio_vivienda | number }}">
+                                    <a class="button secondary ">Más información</a>
+                                </div>
+                                <div class="medium-4 columns text-center">
+                                    <p> </p>
+                                </div>
 
-                          </div>
-                      </div>
-                  </div>
-                  <div class="tabs-panel" id="simulador3">
-                      <div class="container-form">
-                          <div class="row">
-                              <div class="medium-4 columns text-center">
-                                  <p> Si cuentas con ahorros para la cuota inicial, ingresa el valor</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" type="number" formControlName="ahorros_cuota" name="ahorros_cuota">
-                                  </div>
-                                  <hr>
-                                  <p> Si deseas incluir primas, ingresa el valor</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" type="number" formControlName="primas_cuota" name="primas_cuota">
-                                  </div>
-                                  <hr>
-                                  <p> Ingrese el valor del inmueble</p>
-                                  <p>$ {{ response.field_typology_price | number }}</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota" [value]="response.field_typology_price" readonly>
-                                  </div>
-                                  <hr>
-                                  <div class="text-left">
-                                      <p>Escoje una de las dos opciones:</p>
-                                      <fieldset>
-                                          <div class="row">
-                                              <div class="medium-6 columns">
-                                                  <label class="container-radio">Crédito hipotecario
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs-panel" id="simulador3">
+                        <div class="container-form">
+                            <div class="row">
+                                <div class="medium-4 columns text-center">
+                                    <p> Si cuentas con ahorros para la cuota inicial, ingresa el valor</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" type="number" formControlName="ahorros_cuota" name="ahorros_cuota">
+                                    </div>
+                                    <hr>
+                                    <p> Si deseas incluir primas, ingresa el valor</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" type="number" formControlName="primas_cuota" name="primas_cuota">
+                                    </div>
+                                    <hr>
+                                    <p> Ingrese el valor del inmueble</p>
+                                    <p>$ {{ response.field_typology_price | number }}</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota" [value]="response.field_typology_price" readonly>
+                                    </div>
+                                    <hr>
+                                    <div class="text-left">
+                                        <p>Escoje una de las dos opciones:</p>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="medium-6 columns">
+                                                    <label class="container-radio">Crédito hipotecario
                                   <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
                                   <span class="checkmark"></span>
                               </label>
-                                              </div>
-                                              <div class="medium-6 columns">
+                                                </div>
+                                                <div class="medium-6 columns">
 
-                                                  <label class="container-radio">Leasing habitacional
+                                                    <label class="container-radio">Leasing habitacional
                                   <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
                                   <span class="checkmark"></span>
                               </label>
-                                              </div>
-                                          </div>
-                                      </fieldset>
-                                  </div>
-                              </div>
-                              <div class="medium-4 columns text-center campo-destacado">
-                                  <p> Fecha estimada de entrega</p>
-                                  <input type="text" formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
-                                  <hr>
-                                  <p> Plazo actual para cuota inicial</p>
-                                  <input type="text" placeholder="No. meses">
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="medium-4 columns text-center campo-destacado">
+                                    <p> Fecha estimada de entrega</p>
+                                    <input type="text" formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
+                                    <hr>
+                                    <p> Plazo actual para cuota inicial</p>
+                                    <input type="text" placeholder="No. meses">
 
-                              </div>
-                              <div class="medium-4 columns text-center">
-                                  <p> Simulación</p>
-                                  <div class="container-simulacion">
-                                      <div class="row text-left">
-                                          <div class="medium-10 medium-offset-2 columns">
-                                              <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota | number }}</span></div>
-                                              <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial | number }}</span></div>
-                                              <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota | number }}</span></div>
-                                              <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota | number }}</span></div>
-                                          </div>
-                                      </div>
-                                      <hr>
-                                      <div class="simulacion">
-                                          <div class="row">
-                                              <div class="columns">
-                                                  <table class="stack">
-                                                      <thead>
-                                                          <tr>
-                                                              <th width="100">Cuota #</th>
-                                                              <th width="100">Fecha</th>
-                                                              <th width="150">Valor</th>
-                                                              <th width="150">Saldo</th>
-                                                          </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                          <tr *ngFor="let cuota of cuotasMensuales; let i = index">
-                                                              <td>{{ cuota.count }}</td>
-                                                              <td>{{ cuota.date }}</td>
-                                                              <td>$ {{ cuota.value_cuota | number }}</td>
-                                                              <td>$ {{ cuota.saldo | number }}</td>
-                                                          </tr>
-                                                      </tbody>
-                                                  </table>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="medium-12 columns text-center">
-                                  <a (click)="clickInfo(form3.value)" class="button secondary ">Simular</a>
+                                </div>
+                                <div class="medium-4 columns text-center">
+                                    <p> Simulación</p>
+                                    <div class="container-simulacion">
+                                        <div class="row text-left">
+                                            <div class="medium-10 medium-offset-2 columns">
+                                                <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota | number }}</span></div>
+                                                <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial | number }}</span></div>
+                                                <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota | number }}</span></div>
+                                                <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota | number }}</span></div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="simulacion">
+                                            <div class="row">
+                                                <div class="columns">
+                                                    <table class="stack">
+                                                        <thead>
+                                                            <tr>
+                                                                <th width="100">Cuota #</th>
+                                                                <th width="100">Fecha</th>
+                                                                <th width="150">Valor</th>
+                                                                <th width="150">Saldo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let cuota of cuotasMensuales; let i = index">
+                                                                <td>{{ cuota.count }}</td>
+                                                                <td>{{ cuota.date }}</td>
+                                                                <td>$ {{ cuota.value_cuota | number }}</td>
+                                                                <td>$ {{ cuota.saldo | number }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="medium-12 columns text-center">
+                                    <a (click)="clickInfo(form3.value)" class="button secondary ">Simular</a>
 
 
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="tabs-panel credito" id="simulador4">
-                      <div class="container-form">
-                          <div class="row">
-                              <div class="medium-4 medium-offset-2 columns text-center">
-                                  <p> Valor de la vivienda a financiar</p>
-                                  <p>$ {{ response.field_typology_price | number }}</p>
-                                  <div class="input-group">
-                                      <span class="input-group-label">$</span>
-                                      <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito" readonly>
-                                  </div>
-                                  <hr>
-                                  <p> Plazo de financiamiento (meses)</p>
-                                  <div class="slider white" data-slider data-initial-start="50">
-                                      <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
-                                      <span class="slider-fill" data-slider-fill></span>
-                                  </div>
-                                  <div><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutput1"></div>
-                                  <hr>
-                                  <div class="text-left">
-                                      <p>Escoje una de las dos opciones:</p>
-                                      <fieldset>
-                                          <div class="row">
-                                              <div class="medium-6 columns">
-                                                  <label class="container-radio">Crédito hipotecario
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs-panel credito" id="simulador4">
+                        <div class="container-form">
+                            <div class="row">
+                                <div class="medium-4 medium-offset-2 columns text-center">
+                                    <p> Valor de la vivienda a financiar</p>
+                                    <p>$ {{ response.field_typology_price | number }}</p>
+                                    <div class="input-group">
+                                        <span class="input-group-label">$</span>
+                                        <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito" readonly>
+                                    </div>
+                                    <hr>
+                                    <p> Plazo de financiamiento (meses)</p>
+                                    <div class="slider white" data-slider data-initial-start="50">
+                                        <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
+                                        <span class="slider-fill" data-slider-fill></span>
+                                    </div>
+                                    <div><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutput1"></div>
+                                    <hr>
+                                    <div class="text-left">
+                                        <p>Escoje una de las dos opciones:</p>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="medium-6 columns">
+                                                    <label class="container-radio">Crédito hipotecario
                                   <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form3.value,'credito_vienda')" value="hipotecario">
                                   <span class="checkmark"></span>
                               </label>
-                                              </div>
-                                              <div class="medium-6 columns">
-                                                  <label class="container-radio">Leasing habitacional
+                                                </div>
+                                                <div class="medium-6 columns">
+                                                    <label class="container-radio">Leasing habitacional
                                   <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form3.value,'credito_vienda')" value="leasing">
                                   <span class="checkmark"></span>
                               </label>
-                                              </div>
-                                          </div>
-                                      </fieldset>
-                                      <p class="small">
-                                          * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
-                                      </p>
-                                  </div>
-                              </div>
-                              <div class="medium-4 columns text-center end">
-                                  <p>Calculo aproximado para poder adquirir tu vivienda:</p>
-                                  <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
-                                      <div class="medium-6 columns">
-                                          <div class="container-calc" data-equalizer-watch>
-                                              <div class="value">
-                                                  $ {{ monto_prestamo_credito | number }}
-                                              </div>
-                                              <div class="caracteristica">
-                                                  Monto prestamo
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="medium-6 columns">
-                                          <div class="container-calc" data-equalizer-watch>
-                                              <div class="value">
-                                                  $ {{ cuota_inicial_vivienda_credito | number }}
-                                              </div>
-                                              <div class="caracteristica">
-                                                  Cuota inicial {{ cuota_inicial_porcentaje_vivienda_credito }}
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="medium-6 columns">
-                                          <div class="container-calc" data-equalizer-watch>
-                                              <div class="value">
-                                                  $ {{ ingresos_mensuales_min_credito | number }}
-                                              </div>
-                                              <div class="caracteristica">
-                                                  Ingresos minimos mensuales
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="medium-6 columns">
-                                          <div class="container-calc" data-equalizer-watch>
-                                              <div class="value">
-                                                  {{ plazo_meses_credito }}
-                                              </div>
-                                              <div class="caracteristica">
-                                                  Plazo en meses
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="medium-6 columns">
-                                          <div class="container-calc" data-equalizer-watch>
-                                              <div class="value">
-                                                  % {{ tasa_de_interes_credito }}
-                                              </div>
-                                              <div class="caracteristica">
-                                                  Tasa de interés
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="medium-6 columns">
-                                          <div class="container-calc" data-equalizer-watch>
-                                              <div class="value">
-                                                  $ {{ cuota_mensual_credito | number }}
-                                              </div>
-                                              <div class="caracteristica">
-                                                  Cuota mensual
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <a class="button secondary ">Ver proyectos afines</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </form>
-          </div>
-      </div>
-  </div>
-  <!--fin simuladores-->
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <p class="small">
+                                            * Los ingresos calculados son aproximados y varian dependiendo de la entidad, departamento, ciudad o municipio.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="medium-4 columns text-center end">
+                                    <p>Calculo aproximado para poder adquirir tu vivienda:</p>
+                                    <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
+                                        <div class="medium-6 columns">
+                                            <div class="container-calc" data-equalizer-watch>
+                                                <div class="value">
+                                                    $ {{ monto_prestamo_credito | number }}
+                                                </div>
+                                                <div class="caracteristica">
+                                                    Monto prestamo
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="medium-6 columns">
+                                            <div class="container-calc" data-equalizer-watch>
+                                                <div class="value">
+                                                    $ {{ cuota_inicial_vivienda_credito | number }}
+                                                </div>
+                                                <div class="caracteristica">
+                                                    Cuota inicial {{ cuota_inicial_porcentaje_vivienda_credito }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="medium-6 columns">
+                                            <div class="container-calc" data-equalizer-watch>
+                                                <div class="value">
+                                                    $ {{ ingresos_mensuales_min_credito | number }}
+                                                </div>
+                                                <div class="caracteristica">
+                                                    Ingresos minimos mensuales
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="medium-6 columns">
+                                            <div class="container-calc" data-equalizer-watch>
+                                                <div class="value">
+                                                    {{ plazo_meses_credito }}
+                                                </div>
+                                                <div class="caracteristica">
+                                                    Plazo en meses
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="medium-6 columns">
+                                            <div class="container-calc" data-equalizer-watch>
+                                                <div class="value">
+                                                    % {{ tasa_de_interes_credito }}
+                                                </div>
+                                                <div class="caracteristica">
+                                                    Tasa de interés
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="medium-6 columns">
+                                            <div class="container-calc" data-equalizer-watch>
+                                                <div class="value">
+                                                    $ {{ cuota_mensual_credito | number }}
+                                                </div>
+                                                <div class="caracteristica">
+                                                    Cuota mensual
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="button secondary ">Ver proyectos afines</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--fin simuladores-->
 </div>
 <hr class="white">
 <div class="row columns">
-  <div class="medium-12 columns text-center">
-      <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.id}}" class="button  ">Otros proyectos de la constructora</a>
-  </div>
+    <div class="medium-12 columns text-center">
+        <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.id}}" class="button  ">Otros proyectos de la constructora</a>
+    </div>
 </div>
 <hr class="white">
 <div class="row columns">
-  <hr class="white">
-  <h2 class="deco text-center">Propiedades similares</h2>
-  <!--slide-->
-  <div class="orbit" role="region" aria-label="Favorite Space Pictures">
-      <div class="">
-          <ul class="slider-properties-project">
-              <li class="is-active ">
-                  <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-                      <div class="medium-4 columns end" *ngFor="let propiedades of propertiesSimilars; let i = index">
-                          <!-- Card Proyecto individual-->
-                          <div class="card" *ngIf="i > 2 && i < 6" data-equalizer-watch>
-                              <div class="container-photo">
-                                  <img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto">
-                                  <div class="container-tools">
-                                      <div class="tags">
-                                          <div *ngIf="propiedades.project_category.length > 1">
-                                              <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
-                                                  <a>{{ tags }}</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="add">
-                                          <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="card-section">
-                                  <h2>{{ propiedades.project }}</h2>
-                                  <div class="descripcion">
-                                      {{ propiedades.project_city }}, {{ propiedades.project_zone }}, {{ propiedades.project_neighborhood }}
-                                  </div>
-                                  <div class="precio text-center">
-                                      <div>Desde:</div>
-                                      <span>$ {{ propiedades.typology_price | number }}</span>
-                                  </div>
-                                  <hr>
-                              </div>
+    <hr class="white">
+    <h2 class="deco text-center">Propiedades similares</h2>
+    <!--slide-->
+    <div class="orbit" role="region" aria-label="Favorite Space Pictures">
+        <div class="">
+            <ul class="slider-properties-project">
+                <li class="is-active ">
+                    <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
+                        <div class="medium-4 columns end" *ngFor="let propiedades of propertiesSimilars; let i = index">
+                            <!-- Card Proyecto individual-->
+                            <div class="card" *ngIf="i > 2 && i < 6" data-equalizer-watch>
+                                <div class="container-photo">
+                                    <img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto">
+                                    <div class="container-tools">
+                                        <div class="tags">
+                                            <div *ngIf="propiedades.project_category.length > 1">
+                                                <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
+                                                    <a>{{ tags }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add">
+                                            <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-section">
+                                    <h2>{{ propiedades.project }}</h2>
+                                    <div class="descripcion">
+                                        {{ propiedades.project_city }}, {{ propiedades.project_zone }}, {{ propiedades.project_neighborhood }}
+                                    </div>
+                                    <div class="precio text-center">
+                                        <div>Desde:</div>
+                                        <span>$ {{ propiedades.typology_price | number }}</span>
+                                    </div>
+                                    <hr>
+                                </div>
 
-                              <div class="card-section">
-                                  <div class="button-group align-spaced ">
-                                      <a class="button" routerLink="/proyecto/{{propiedades.url}}">Ver
+                                <div class="card-section">
+                                    <div class="button-group align-spaced ">
+                                        <a class="button" routerLink="/proyecto/{{propiedades.url}}">Ver
                                         Proyecto</a>
-                                      <a class="button" data-open="exampleModal2">Contacto</a>
-                                  </div>
-                              </div>
-                          </div>
-                          <!-- Fin Card Proyecto individual-->
-                      </div>
-                  </div>
-              </li>
-          </ul>
-      </div>
-      <div class="container-controls">
-          <nav class="orbit-bullets">
-              <button class="is-active" data-slide="0">
+                                        <a class="button" data-open="exampleModal2">Contacto</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Card Proyecto individual-->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="container-controls">
+            <nav class="orbit-bullets">
+                <button class="is-active" data-slide="0">
                 <span class="show-for-sr">First slide details.</span>
                 <span class="show-for-sr" data-slide-active-label>Current Slide</span>
             </button>
-              <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-          </nav>
-          <div class="orbit-controls">
-              <button class="orbit-previous"><span class="show-for-sr">Previous
+                <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+            </nav>
+            <div class="orbit-controls">
+                <button class="orbit-previous"><span class="show-for-sr">Previous
                     Slide</span>&#9664;&#xFE0E;</button>
-              <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-          </div>
-      </div>
-  </div>
-  <!--fin slide-->
+                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+            </div>
+        </div>
+    </div>
+    <!--fin slide-->
 </div>
 <div class="row columns text-center">
-  <div class="medium-6 medium-offset-3 columns">
-      <span>
+    <div class="medium-6 medium-offset-3 columns">
+        <span>
         <div class="comparador-btn-2">
             <div class="container-comparador">
                 <h2 class="deco">Compara con otras viviendas</h2>
