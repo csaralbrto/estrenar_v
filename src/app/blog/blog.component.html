@@ -1,3 +1,10 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box" [fullScreen] = "true">
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
 <div class="row columns">
   <h1>Blog</h1>
 </div>
@@ -15,7 +22,7 @@
                                 <div class="user"><img class="usr" src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
                             </figcaption>
                         </a>
-                          
+
                       </figure>
                   </li>
               </ul>
@@ -78,7 +85,7 @@
                         <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[1].user_name}}</span>{{ responseNewExperience.results[1].changed }}</div>
                     </figcaption>
                     </a>
-                      
+
                   </figure>
               </div>
               <hr class="white">
@@ -164,7 +171,7 @@
             <input id="email_subscribe" type="email" placeholder="Ingresa tu correo electrónico" />
             <div  class="">
                 <span style="color: red" id="spanEmail" class="hide">
-                    Debe ingresar un correo electrónico 
+                    Debe ingresar un correo electrónico
                 </span>
             </div>
           </div>
@@ -175,7 +182,7 @@
                 <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="/aviso-privacidad"> Aviso de Privacidad</a> y estar conforme con el mismo</label>
                 <div  class="">
                     <span style="color: red" id="spanPass" class="hide">
-                        Declare haber leído el aviso de privacidad 
+                        Declare haber leído el aviso de privacidad
                     </span>
                 </div>
             </div>
@@ -184,3 +191,4 @@
   </div>
   </div>
 </div>
+

@@ -1,3 +1,11 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box" [fullScreen] = "true">
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
 <div class="row columns">
   <div class="medium-3 columns">
       <ul class="menu-left">
@@ -55,7 +63,7 @@
                         <option value="email">Correo Electr&oacute;nico</option>
                         <option value="correo">Correo Postal</option>
                         </select>
-                        
+
                         <textarea placeholder="Comentarios" formControlName="comment" name="comment"></textarea>
 
                         <div class="text-left terminos">
@@ -66,7 +74,7 @@
                                 <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
                                     haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                                     mismos.</label>
-                                   
+
                             </div>
                             <div> <input id="checkbox1" type="checkbox" formControlName="emailCopy" name="emailCopy"><label for="right-label" class="text-left">Enviar
                                     una copia del mensaje a su propio Email</label></div>

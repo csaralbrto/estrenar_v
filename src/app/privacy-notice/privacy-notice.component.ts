@@ -5,6 +5,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-privacy-notice',
@@ -22,9 +23,11 @@ export class PrivacyNoticeComponent implements OnInit {
   imgPath = 'https://lab.estrenarvivienda.com/';
   dataImg = '?include=field_page_paragraphs.field_ev_team_image';
 
-  constructor( public Service: PrivacyNoticeService, private meta: Meta ) { }
+  constructor( public Service: PrivacyNoticeService, private meta: Meta,private spinnerService: NgxSpinnerService ) { }
 
   ngOnInit(): void {
+
+    this.startSpinner();
 
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(
@@ -53,14 +56,29 @@ export class PrivacyNoticeComponent implements OnInit {
         err => console.log(),
         () => {
           if (this.responseData) {
+            this.stopSpinner();
           }
           /* si responde correctamente */
           if (this.responseData.error) {
             /* si hay error en la respuesta */
+            this.stopSpinner();
           }
 
         }
       );
+  }
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }

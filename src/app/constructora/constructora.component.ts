@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConstructoraService } from './constructora.service';
 import { environment } from '../../environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-constructora',
@@ -13,7 +14,7 @@ export class ConstructoraComponent implements OnInit {
   public constructoras: any;
   url_img_path = 'https://www.estrenarvivienda.com/';
 
-  constructor( public Service: ConstructoraService ) { }
+  constructor( public Service: ConstructoraService, private spinnerService: NgxSpinnerService ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -22,6 +23,7 @@ export class ConstructoraComponent implements OnInit {
   public filterLocation: any;
 
   ngOnInit(): void {
+    this.startSpinner();
     $('app-constructora').foundation();
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(
@@ -40,16 +42,19 @@ export class ConstructoraComponent implements OnInit {
           if(this.response.facets.builder_location_city){
             this.filterLocation = this.response.facets.builder_location_city;
           }
+          this.stopSpinner();
         }
         /* si responde correctamente */
         if (this.response.error) {
           /* si hay error en la respuesta */
+          this.stopSpinner();
         }
       }
     );
   }
 
   change(value) {
+
     this.stringQuery = $("#location").val();
     console.log(this.stringQuery)
     // this.beforeCheck(this.response.individual);
@@ -62,7 +67,7 @@ export class ConstructoraComponent implements OnInit {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-      if (this.response) { 
+      if (this.response) {
         // console.log(this.response.search_results);
         this.constructoras = this.response.search_results;
         for (let project of this.constructoras) {
@@ -81,11 +86,30 @@ export class ConstructoraComponent implements OnInit {
             }
             this.filterLocation = this.response.facets.builder_location_city;
           }
-        
+
         // this.results = true;
       }
+
     })
     .catch(error => console.error(error))
-    
+
+
+
   }
+
+  // metodos cargando
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
+  }
+
 }

@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { WizardService } from './wizard.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -55,14 +56,16 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   };
 
   constructor(
-    public Service: WizardService, 
-    private formBuilder: FormBuilder, 
+    public Service: WizardService,
+    private formBuilder: FormBuilder,
     public Options: Options,
     private router: Router,
+    private spinnerService: NgxSpinnerService
     ) {}
 
   ngOnInit(): void {
     // $(document).foundation();
+    this.startSpinner();
     this.createForm();
 
     /* Método para obtener toda la info de locaciones */
@@ -102,7 +105,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
               }else{
                 this.maxPresupuesto = Number(presupuesto.name);
               }
-              count = count + 1; 
+              count = count + 1;
             }
           // console.log(this.responsePresupuestoData);
           // this.arrayPresupuesto.push(this.responsePresupuestoData);
@@ -213,7 +216,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       "user_privacy_notice": 5323
     }
     this.router.navigate(['/']);
-    
+
   }
   changeStepWizard(idStep) {
     for (let index = 0; index <= 6; index++) {
@@ -263,6 +266,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
     if (this.results) {
       $('app-wizard').foundation();
       // $('html,body').scrollTop(0);
+      this.stopSpinner();
     }
   }
   /* Autocomplete keyword */
@@ -271,5 +275,18 @@ export class WizardComponent implements OnInit, AfterViewChecked{
     // console.log('el valor seleccionado es: ',item)
     this.searchPlace = item.drupal_internal__tid;
     this.searchPlaceName = item.name;
+  }
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LayoutService } from './layout.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-layaout',
@@ -12,11 +13,11 @@ import { LayoutService } from './layout.service';
 export class LayaoutComponent implements OnInit {
   public response: any;
 
-  constructor( public Service: LayoutService ) { }
+  constructor( public Service: LayoutService,private spinnerService: NgxSpinnerService ) { }
 
   ngOnInit(): void {
 
-      
+    // this.startSpinner();
     /* Método para obtener toda la info de quienes somos */
     this.Service.getwhoWeAreData()
     .subscribe(
@@ -30,7 +31,7 @@ export class LayaoutComponent implements OnInit {
           /* si hay error en la respuesta */
         }
       }
-    );    
+    );
 
     /* Método para obtener el glosario */
     this.Service.getGlossaryData()
@@ -61,7 +62,7 @@ export class LayaoutComponent implements OnInit {
         }
       }
     );
-    
+
     /* Método para obtener aviso legal */
     this.Service.getLegalNoticeData()
     .subscribe(
@@ -76,7 +77,7 @@ export class LayaoutComponent implements OnInit {
         }
       }
     );
-        
+
     /* Método para obtener politica de tratamiento */
     this.Service.getTreatmentPolicyData()
     .subscribe(
@@ -91,7 +92,7 @@ export class LayaoutComponent implements OnInit {
         }
       }
     );
-            
+
     /* Método para obtener el mapa del sitio */
     this.Service.getSitemap()
     .subscribe(
@@ -106,7 +107,7 @@ export class LayaoutComponent implements OnInit {
         }
       }
     );
-                
+
     /* Método para obtener la revista digital */
     this.Service.getWebMagazine()
     .subscribe(
@@ -121,6 +122,19 @@ export class LayaoutComponent implements OnInit {
         }
       }
     );
+  }
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }

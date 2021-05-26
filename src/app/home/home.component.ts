@@ -6,6 +6,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
   public form: FormGroup;
   public stringText: any;
 
-  constructor(public Service: HomeService, private formBuilder: FormBuilder, private meta: Meta, private router: Router, ) {}
+  constructor(public Service: HomeService, private formBuilder: FormBuilder, private meta: Meta, private router: Router, private spinnerService: NgxSpinnerService) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
   main_title_page = 'Te ayudamos a encontrar tu lugar ideal';
 
   ngOnInit(): void {
+    this.startSpinner();
     this.createForm();
     // $('#welcomeModal').foundation('open');
     this.stringText = '...';
@@ -91,8 +93,10 @@ export class HomeComponent implements OnInit {
     //   }
     // );
   }
+
   ngAfterContentChecked() {
     if (this.results) {
+
       $('app-home').foundation();
       if ($('.slider-home').length) {
         $('.slider-home').not('.slick-initialized').slick({
@@ -122,6 +126,7 @@ export class HomeComponent implements OnInit {
           autoplaySpeed: 5000,
         });
       }
+      this.stopSpinner();
     }
   }
   createForm() {
@@ -226,7 +231,7 @@ export class HomeComponent implements OnInit {
             ]
         },
         "profiling": {
-            "survey": 
+            "survey":
             [
                 {
                     "Deseas ser contactado vía": values.contact
@@ -281,7 +286,7 @@ export class HomeComponent implements OnInit {
     // }else{
       if (!sessionStorage['favorite']) {
         var ids = [];
-        ids.push(value) 
+        ids.push(value)
         sessionStorage.setItem('favorite',JSON.stringify(ids))
         var storedIds = JSON.parse(sessionStorage.getItem("id"));
         // this.router.navigate(['comparador']);
@@ -297,5 +302,17 @@ export class HomeComponent implements OnInit {
         // console.log('este es el id: ',storedIds);
       }
     // }
+  }
+  startSpinner(): void {
+
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+  stopSpinner(): void {
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 }

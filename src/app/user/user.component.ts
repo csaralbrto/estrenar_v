@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 import { UserService } from './user.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-user',
@@ -48,12 +49,14 @@ export class UserComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public Service: UserService, 
+    public Service: UserService,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.startSpinner();
     this.uid = this.user_id + this.path;
     this.createForm();
     this.beforeCheck();
@@ -65,6 +68,7 @@ export class UserComponent implements OnInit {
       () => {
         if (this.response) {
           this.dataCountry = this.response;
+
         }
         /* si responde correctamente */
         if (this.response.error) {
@@ -230,6 +234,7 @@ export class UserComponent implements OnInit {
       if(this.userContactadoData){
         this.form.controls.contact.setValue(this.userContactadoData);
       }
+      this.stopSpinner();
     })
     .catch(error => console.error(error))
   }
@@ -333,7 +338,7 @@ export class UserComponent implements OnInit {
       for (let ids of storedIds) {
         favorites.push({"target_id": ids})
       }
-      let payload = { 
+      let payload = {
       "field_user_favorites": favorites
       }
       this.router.navigate(['/favoritos']);
@@ -364,7 +369,7 @@ export class UserComponent implements OnInit {
         redirect: 'follow',
       })
       .then(function (a) {
-          return a.json(); 
+          return a.json();
       })
      .then(result => {
        console.log('result',result)
@@ -380,7 +385,7 @@ export class UserComponent implements OnInit {
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
          console.log('voy a update user');
          this.updateUser(xcsrfToken, payload);
-         
+
        }
       })
      .catch(error => {
@@ -404,7 +409,7 @@ export class UserComponent implements OnInit {
       redirect: 'follow'
     })
       .then(response => response.text())
-      .then(result =>{ 
+      .then(result =>{
         console.log(result)
       })
       .catch(error => console.log('error', error));
@@ -460,12 +465,27 @@ export class UserComponent implements OnInit {
       .then(response => response.json())
       .then(data => {
         this.responseCountry = data;
-        if (this.responseCountry) { 
+        if (this.responseCountry) {
           console.log(this.responseCountry);
           this.dataCity = this.responseCountry;
           this.results = true;
         }
       })
       .catch(error => console.error(error))
+  }
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      // console.log("ingreso spinner..");
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 }

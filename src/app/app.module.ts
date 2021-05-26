@@ -45,6 +45,8 @@ import { DataTreatmentsComponent } from './data-treatments/data-treatments.compo
 import { RevistaDigitalComponent } from './revista-digital/revista-digital.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -84,10 +86,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ForgotPasswordComponent,
   ],
   imports: [
-    BrowserModule, 
-    AppRoutingModule, 
-    HttpModule, 
-    FormsModule, 
+    BrowserModule,
+    AppRoutingModule,
+    HttpModule,
+    FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
     /* autocomplete */
@@ -101,7 +103,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA',
       libraries: ['places']
-    })
+    }),
+    NgxSpinnerModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

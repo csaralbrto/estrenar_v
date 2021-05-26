@@ -4,6 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -39,7 +40,7 @@ export class FavoritesComponent implements OnInit {
   };
   public collectionActive: string = '';
 
-  constructor( public Service: FavoritesService, private formBuilder: FormBuilder, private mapsAPILoader: MapsAPILoader ) { }
+  constructor( public Service: FavoritesService, private formBuilder: FormBuilder, private mapsAPILoader: MapsAPILoader,private spinnerService: NgxSpinnerService ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -50,6 +51,7 @@ export class FavoritesComponent implements OnInit {
   zoom:number;
 
   ngOnInit(): void {
+    this.startSpinner();
     this.collectionActive = this.route;
     this.createForm();
     this.setCurrentLocation();
@@ -120,12 +122,13 @@ export class FavoritesComponent implements OnInit {
   }
   ngAfterViewChecked() {
     if (this.results) {
-      // sessionStorage.removeItem('qtEmails');   
+      // sessionStorage.removeItem('qtEmails');
       $('app-favorites').foundation();
       /* eliminamos los item de email y telefono */
       // sessionStorage.removeItem('qtEmails');
       // sessionStorage.removeItem('qtPhones');
       // $('html,body').scrollTop(0);
+      this.stopSpinner();
     }
   }
   /* Obtener la locacion en coordenadas actual */
@@ -158,7 +161,7 @@ export class FavoritesComponent implements OnInit {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-      if (this.response) { 
+      if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         this.countProjects = this.response_data_project.length;
@@ -229,7 +232,7 @@ export class FavoritesComponent implements OnInit {
       }
     })
     .catch(error => console.error(error))
-    
+
   }
   changeSort() {
     this.stringQuery = $('#sortBy option:selected').val();
@@ -244,7 +247,7 @@ export class FavoritesComponent implements OnInit {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-      if (this.response) { 
+      if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         this.countProjects = this.response_data_project.length;
@@ -315,7 +318,7 @@ export class FavoritesComponent implements OnInit {
       }
     })
     .catch(error => console.error(error))
-    
+
   }
   getDataSearch(){
     this.Service.getDataFilter(this.stringQuery)
@@ -342,4 +345,18 @@ export class FavoritesComponent implements OnInit {
   // changeViewTipeAGM(type) {
   //   this.viewType = type;  //for default 'hybrid'
   //   }
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
+  }
 }

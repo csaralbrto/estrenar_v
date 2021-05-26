@@ -1,3 +1,11 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box" [fullScreen] = "true">
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
 <hr class="white">
 <div class="row columns">
     <div class="medium-8 medium-offset-2 columns">
@@ -66,9 +74,9 @@
                             <label><input type="checkbox" name="term" id="term" formControlName="term" value="1" required> Acepto la <a href="/aviso-privacidad">Política de privacidad</a> y los <a href="/aviso-legal">Términos de uso</a></label>
                         </div>
                         <div  class="mb1">
-                            <re-captcha (resolved)="resolved($event)" 
-                                formControlName="recaptchaReactive" 
-                                siteKey="6Ld-4oEaAAAAAEESINp60x6Y6EHaIwr52frztDq-">  
+                            <re-captcha (resolved)="resolved($event)"
+                                formControlName="recaptchaReactive"
+                                siteKey="6Ld-4oEaAAAAAEESINp60x6Y6EHaIwr52frztDq-">
                             </re-captcha>
                         </div>
                         <div class="text-center">
@@ -77,9 +85,9 @@
                         </div>
                     </div>
                 </div>
-               
 
-             
+
+
             </div>
         </form>
     </div>

@@ -5,6 +5,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -46,7 +47,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public collectionActive: string = '';
   public results = false;
 
-  constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta, private router: Router ) { }
+  constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta, private router: Router,private spinnerService: NgxSpinnerService  ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -55,6 +56,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.collectionActive = this.route;
+    this.startSpinner();
     this.createForm();
     this.createForm2();
     // const title = this.activatedRoute.snapshot.params.path ;
@@ -167,7 +169,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-      if (this.response) { 
+      if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         for (let project of this.response_data_project) {
@@ -225,7 +227,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       }
     })
     .catch(error => console.error(error))
-    
+
   }
   filterByPrice(value) {
     var url = value;
@@ -237,7 +239,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-      if (this.response) { 
+      if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         for (let project of this.response_data_project) {
@@ -312,7 +314,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-      if (this.response) { 
+      if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         for (let project of this.response_data_project) {
@@ -381,7 +383,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-      if (this.response) { 
+      if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response
         for (let project of this.response_data_project) {
@@ -548,7 +550,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             ]
         },
         "profiling": {
-            "survey": 
+            "survey":
             [
                 {
                     "Deseas ser contactado vía": values.contact
@@ -580,6 +582,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   }
   ngAfterViewChecked() {
     if (this.results) {
+      this.stopSpinner();
       $('app-projects').foundation();
       // $('html,body').scrollTop(0);
     }
@@ -592,7 +595,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     // }else{
       if (!sessionStorage['favorite']) {
         var ids = [];
-        ids.push(value) 
+        ids.push(value)
         sessionStorage.setItem('favorite',JSON.stringify(ids))
         var storedIds = JSON.parse(sessionStorage.getItem("id"));
         // this.router.navigate(['comparador']);
@@ -621,7 +624,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       for (let ids of storedIds) {
         favorites.push({"target_id": ids})
       }
-      let payload = { 
+      let payload = {
       "field_user_favorites": favorites
       }
       this.router.navigate(['favoritos']);
@@ -652,7 +655,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         redirect: 'follow',
       })
       .then(function (a) {
-          return a.json(); 
+          return a.json();
       })
      .then(result => {
        console.log('result',result)
@@ -668,7 +671,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
          console.log('voy a update user');
          this.updateUser(xcsrfToken, payload);
-         
+
        }
       })
      .catch(error => {
@@ -692,10 +695,25 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       redirect: 'follow'
     })
       .then(response => response.text())
-      .then(result =>{ 
+      .then(result =>{
         console.log(result)
       })
       .catch(error => console.log('error', error));
+  }
+  // Metodos Cargando
+
+  startSpinner(): void {
+
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }

@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { data } from 'jquery';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -32,15 +33,17 @@ export class BlogDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public Service: BlogDetailService, 
+    public Service: BlogDetailService,
     private sanitizer: DomSanitizer,
-    private formBuilder: FormBuilder, 
-    private meta: Meta
+    private formBuilder: FormBuilder,
+    private meta: Meta,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   url_img_path = 'https://www.estrenarvivienda.com/';
 
   ngOnInit(): void {
+    this.startSpinner();
     this.createForm();
     $('html,body').scrollTop(0);
 
@@ -71,7 +74,7 @@ export class BlogDetailComponent implements OnInit {
             console.log(data)
             this.response = data.data;
             // console.log(this.response);
-            if (this.response) { 
+            if (this.response) {
               var urlComments = this.urlComments + this.response.id + '&page[limit]=20';
               var dataComments = "";
               fetch(urlComments, {
@@ -106,11 +109,12 @@ export class BlogDetailComponent implements OnInit {
     $('html,body').scrollTop(0);
   }
 
-  
+
   ngAfterViewChecked() {
     if (this.results) {
       $('app-blog-detail').foundation();
       // $('html,body').scrollTop(0);
+      this.stopSpinner();
     }
   }
   createForm() {
@@ -124,7 +128,7 @@ export class BlogDetailComponent implements OnInit {
   onSubmit(values) {
     /* Se recibe los valores del formulario */
     values.type_submit = 'contact_form';
-    let payload = { 
+    let payload = {
       "entity_id":[{"target_id":this.entity_id}],
       "entity_type":[{"value":this.entity_type}],
       "comment_type":[{"target_id":"comment"}],
@@ -153,6 +157,21 @@ export class BlogDetailComponent implements OnInit {
         // }
       }
     );
+  }
+  // Metodo cargando
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }

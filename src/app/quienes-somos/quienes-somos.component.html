@@ -1,3 +1,11 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box" [fullScreen] = "true">
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
 <div class="row columns">
   <div class="medium-3 columns">
       <ul class="menu-left">
@@ -14,7 +22,7 @@
   </div>
   <div class="medium-9 columns">
       <h1>{{ responseData.title }}</h1>
-  
+
       <p [innerHTML]=responseData.body.processed  ></p>
           <hr class="white">
           <div class="row" *ngFor="let equipo of dataInfoImg; let i = index">
