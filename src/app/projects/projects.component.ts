@@ -25,9 +25,12 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public filterCity: any;
   public filterZone: any;
   public filterSector: any;
+  public filterAreaBuilt: any;
+  public filterProjectState: any;
   public titleLabel: any;
   public wordLabel: any;
   public form_filters: FormGroup;
+  public form_moreFilters: FormGroup;
   public form: FormGroup;
   public resutls: boolean = false;
   public route = 'filtro-proyectos';
@@ -38,6 +41,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   optionsCitySelected: string = '';
   optionsZoneSelected: string = '';
   optionsSectorSelected: string = '';
+  optionsAreaSelected: string = '';
   public xcsrfToken: any;
   public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
   public cliente_secret = 'drupal';
@@ -59,6 +63,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     this.startSpinner();
     this.createForm();
     this.createForm2();
+    this.createFormMoreFilters();
     // const title = this.activatedRoute.snapshot.params.path ;
     let title_label  = sessionStorage['projectTitle']?sessionStorage.getItem("projectTitle"):null;
     let word_label  = sessionStorage['wordTitle']?sessionStorage.getItem("wordTitle"):null;
@@ -90,18 +95,20 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         (err) => console.log(),
         () => {
           if (this.response) {
-            // console.log(this.response.facets.typology_price);
+            console.log(this.response);
             if(this.response.metatag_normalized){
               this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
             }
             console.log('entre al else');
             this.response_data_project = this.response.search_results
+            /* Iterar sobre los proyectos */
             for (let project of this.response_data_project) {
               var arrayDeCadenas = project.typology_images.split(',');
               project.typology_images = arrayDeCadenas[0];
               var arrayDeCadenas2 = project.project_category.split(',');
               project.project_category = arrayDeCadenas2;
             }
+            /* Iterar sobre los Filtros de proyectos */
             if(this.response.facets.property_type){
               this.filterType = this.response.facets.property_type;
             }
@@ -110,6 +117,18 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             }
             if(this.response.facets.typology_price){
               this.filterPrice = this.response.facets.typology_price;
+            }
+            if(this.response.facets.area_built){
+              this.filterAreaBuilt = this.response.facets.area_built;
+            }
+            if(this.response.facets.project_feature){
+              let project_feature = this.response.facets.project_feature;
+              for (let feature of project_feature) {
+                if(feature.values.value == 'Estado del proyecto'){
+                  this.filterProjectState = feature.children;
+                }
+              }
+              console.log(this.filterProjectState);
             }
             this.results = true;
           }
@@ -172,12 +191,14 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
+        /* Iterar los proyectos a mostrar */
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
           var arrayDeCadenas2 = project.project_category.split(',');
           project.project_category = arrayDeCadenas2;
         }
+        /* Iterar sobre Filtros */
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
           for(let optionType of this.response.facets.property_type){
@@ -441,6 +462,16 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       sector: new FormControl('Seleccione'),
     });
   }
+  createFormMoreFilters() {
+    this.form_moreFilters =  this.formBuilder.group({
+      project_state: new FormControl(),
+      builder: new FormControl('Seleccione'),
+      arear_build: new FormControl('Seleccione'),
+      collections: new FormControl(),
+      // zone: new FormControl('Seleccione'),
+      // sector: new FormControl('Seleccione'),
+    });
+  }
   createForm2() {
     this.form =  this.formBuilder.group({
       name: new FormControl(''),
@@ -701,14 +732,12 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       .catch(error => console.log('error', error));
   }
   // Metodos Cargando
-
   startSpinner(): void {
 
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
    stopSpinner(): void {
     if (this.spinnerService) {
       // console.log("ingrese a parar");

@@ -64,6 +64,8 @@ export class ProjectDetailComponent implements OnInit {
   dataSrcImg = environment.endpointTestingApiUrl
   cadena = '';
   largo = '';
+  video_url = '';
+  tour_url = '';
   public galeria;
   public caracteristicas;
   public caracteristicasProject;
@@ -81,13 +83,11 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //Asignamos la fecha actual al campo de fecha
     this.startSpinner();
     this.createForm();
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
-
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -121,6 +121,21 @@ export class ProjectDetailComponent implements OnInit {
                 this.urlTour = this.urlTour.replace('/watch?v=', "/embed/");
                 this.safeURLVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlTour);
                 console.log(this.urlTour);
+              }
+              if(this.response.field_typology_video.length && this.urlTour){
+                this.video_url = "video";
+                this.tour_url = "tour";
+                $('#video_tab').attr('data-tabs-target', 'video');
+                $('#tour_tab').attr('data-tabs-target', 'tour');
+                $('#video_tab').attr('href', '#video');
+                $('#tour_tab').attr('href', '#tour');
+              }else{
+                this.video_url = "images";
+                this.tour_url =  "images";
+                $('#video_tab').attr('data-tabs-target', 'images');
+                $('#tour_tab').attr('data-tabs-target', 'images');
+                $('#video_tab').attr('href', '#images');
+                $('#tour_tab').attr('href', '#images');
               }
               this.cityProject = this.response.field_typology_project.field_project_location[0].field_location_city.drupal_internal__tid;
               this.priceProject = this.response.field_typology_price
@@ -251,7 +266,6 @@ export class ProjectDetailComponent implements OnInit {
   }
   ngAfterViewChecked() {
     if (this.results) {
-
       $('app-project-detail').foundation();
       if ($('.slider-project-img').length) {
         $('.slider-project-img').not('.slick-initialized').slick({
@@ -268,7 +282,6 @@ export class ProjectDetailComponent implements OnInit {
         });
       }
       this.stopSpinner();
-
     }
   }
   addCompare(value) {
@@ -771,17 +784,18 @@ export class ProjectDetailComponent implements OnInit {
     return months <= 0 ? 0 : Number(months) + Number(1);
   }
   // Metodos Cargando
-
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
    stopSpinner(): void {
     if (this.spinnerService) {
-      console.log("ingrese a parar");
+      // console.log("ingrese a parar");
       this.spinnerService.hide();
     }
+  }
+  contactModal(){
+    $('#exampleModal2').foundation('open');
   }
 }

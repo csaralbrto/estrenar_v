@@ -79,113 +79,103 @@
     <!--fin filtros-->
     <!-- Modal más filtros -->
     <div class="reveal filter" id="masfiltrosModal" data-reveal>
-        <div class="row">
-            <div class="medium-12 colunms text-center">
-                <h2>Más filtros</h2>
-            </div>
-            <div class="medium-6 columns">
-                <h3>Estado del proyecto</h3>
-                <div>
-                    <label class="container-check">Sobre planos
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
+        <form [formGroup]="form_moreFilters">
+            <div class="row">
+                <div class="medium-12 colunms text-center">
+                    <h2>Más filtros</h2>
                 </div>
-                <div>
-                    <label class="container-check">En construcción
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                </div>
-                <div>
-                    <label class="container-check">Terminado
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                </div>
-                <h3>Inmueble</h3>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div> Área m2</div>
+                <div class="medium-6 columns">
+                    <h3>Estado del proyecto</h3>
+                    <div *ngFor="let option of filterProjectState">
+                        <label class="container-check">{{option.values.value}}
+                            <input id="project_state" type="checkbox" name="project_state" formControlName="project_state" value="{{option.url}}">
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
-                    <div class="small-6 columns">
-                        <select>
-                        <option value=" ">Seleccione</option>
-                    </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div> Habitaciones</div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="input-group input-number-group">
-                            <div class="input-group-button">
-                                <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
-                            </div>
-                            <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
-                            <div class="input-group-button">
-                                <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
-                            </div>
+                    <h3>Inmueble</h3>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> Área m2</div>
                         </div>
-
+                        <div class="small-6 columns">
+                            <select id="arear_build" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
+                                <option *ngFor="let type of filterAreaBuilt; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div> Baños</div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="input-group input-number-group">
-                            <div class="input-group-button">
-                                <span class="input-number-decrement" (click)=(decreaseValue(2))>-</span>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> Habitaciones</div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button">
+                                    <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
+                                </div>
+                                <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
+                                <div class="input-group-button">
+                                    <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
+                                </div>
                             </div>
-                            <input class="input-number" type="number" id="bathroom" value="1" min="0" max="1000">
-                            <div class="input-group-button">
-                                <span class="input-number-increment" (click)=(incrementValue(2))>+</span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> Baños</div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button">
+                                    <span class="input-number-decrement" (click)=(decreaseValue(2))>-</span>
+                                </div>
+                                <input class="input-number" type="number" id="bathroom" value="1" min="0" max="1000">
+                                <div class="input-group-button">
+                                    <span class="input-number-increment" (click)=(incrementValue(2))>+</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div> Garajes</div>
-                    </div>
-                    <div class="small-6 columns">
-
-                        <div class="input-group input-number-group">
-                            <div class="input-group-button">
-                                <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
-                            </div>
-                            <input class="input-number" type="number" id="garage" value="1" min="0" max="1000">
-                            <div class="input-group-button">
-                                <span class="input-number-increment" (click)=(incrementValue(3))>+</span>
-                            </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> Garajes</div>
                         </div>
+                        <div class="small-6 columns">
 
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button">
+                                    <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
+                                </div>
+                                <input class="input-number" type="number" id="garage" value="1" min="0" max="1000">
+                                <div class="input-group-button">
+                                    <span class="input-number-increment" (click)=(incrementValue(3))>+</span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="medium-6 columns">
-                <div class="row">
-                    <h3>Constructora</h3>
-                    <label>
-                    <input type="search" placeholder="Buscar">
-                </label>
-                </div>
-                <div class="row">
-                    <h3>Colecciones</h3>
-                    <div class="filtros-tag">
-                        <a href="#" class="button">Colección 1</a><a href="#" class="button">Colección 2</a>
+                <div class="medium-6 columns">
+                    <div class="row">
+                        <h3>Constructora</h3>
+                        <label>
+                        <input type="search" placeholder="Buscar">
+                    </label>
+                    </div>
+                    <div class="row">
+                        <h3>Colecciones</h3>
+                        <div class="filtros-tag">
+                            <a href="#" class="button">Colección 1</a><a href="#" class="button">Colección 2</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a href="#">Limpiar filtros</a><a href="#" class="button secondary">Mostrar 45
+                        apartamentos</a>
                     </div>
                 </div>
-                <div class="row">
-                    <a href="#">Limpiar filtros</a><a href="#" class="button secondary">Mostrar 45
-                    apartamentos</a>
-                </div>
-            </div>
 
-        </div>
+            </div>
+        </form>
         <button class="close-button" data-close aria-label="Close modal" type="button">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -338,10 +328,6 @@
         </a>
     </div>
 </div>
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="square-jelly-box" [fullScreen] = "true">
-  <p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
