@@ -1269,17 +1269,19 @@ export class ContentUploadComponent implements OnInit {
     }
   }
   preview(values){
-    $('#modalInformation').foundation('open');
-    // let error = this.validateForm(values);
-    // if(error){
-    //   $('#modalInformation').foundation('open');
-    // }else{
-    //   values.project_characteristics = this.featuresProjectsArray;
-    //   values.logo_project = this.imageSrc;
-    //   values.images_project = this.images;
-    //   console.log(values);
-    //   this.formProjectArray.push(values);
-    // }
+    let error = this.validateForm(values);
+    if(error){
+      $('#modalInformation').foundation('open');
+    }else{
+      sessionStorage.removeItem("previewProject");
+      values.project_characteristics = this.featuresProjectsArray;
+      values.logo_project = this.imageSrc;
+      values.images_project = this.images;
+      console.log(values);
+      this.formProjectArray.push(values);
+      sessionStorage.setItem('previewProject',JSON.stringify(this.formProjectArray))
+      window.open('/es/preview-project', '_blank'); 
+    }
   }
   validateForm(values){
     var error = false;
@@ -1568,154 +1570,154 @@ export class ContentUploadComponent implements OnInit {
       if(error_name == 1 || error_phone == 1 || error_email == 1 || error_schedule1 == 1 || error_schedule2 == 1){
         error = true
       }
-    
-      console.log(this.featuresTypologyArray.length);
-      let error_label_price
-      if($('#label_price').val() == null || $('#label_price').val() == ""){
-        $('#spanPriceLabel').focus();
-        $('#spanPriceLabel').removeClass('hide');
-        error_label_price = 1;
-        error = true;
-      }else{
-        $('#spanPriceLabel').addClass('hide');
-        error_label_price = 0;
-        error = false;
-      }
-      let error_price_from
-      if($('#price_from').val() == null || $('#price_from').val() == ""){
-        $('#spanPriceFrom').focus();
-        $('#spanPriceFrom').removeClass('hide');
-        error_price_from = 1;
-        error = true;
-      }else{
-        $('#spanPriceFrom').addClass('hide');
-        error_price_from = 0;
-        error = false;
-      }
-      let error_initial_fee
-      if($('#initial_fee').val() == null || $('#initial_fee').val() == ""){
-        $('#spanFee').focus();
-        $('#spanFee').removeClass('hide');
-        error_initial_fee = 1;
-        error = true;
-      }else{
-        $('#spanFee').addClass('hide');
-        error_initial_fee = 0;
-        error = false;
-      }
-      let error_separation
-      if($('#separation').val() == null || $('#separation').val() == ""){
-        $('#spanSeparation').focus();
-        $('#spanSeparation').removeClass('hide');
-        error_separation = 1;
-        error = true;
-      }else{
-        $('#spanSeparation').addClass('hide');
-        error_separation = 0;
-        error = false;
-      }
-      let error_constructed_area
-      if($('#constructed_area').val() == null || $('#constructed_area').val() == ""){
-        $('#spanArea').focus();
-        $('#spanArea').removeClass('hide');
-        error_constructed_area = 1;
-        error = true;
-      }else{
-        $('#spanArea').addClass('hide');
-        error_constructed_area = 0;
-        error = false;
-      }
-      let error_private_area
-      if($('#private_area').val() == null || $('#private_area').val() == ""){
-        $('#spanPrivate').focus();
-        $('#spanPrivate').removeClass('hide');
-        error_private_area = 1;
-        error = true;
-      }else{
-        $('#spanPrivate').addClass('hide');
-        error_private_area = 0;
-        error = false;
-      }
-      let error_type_of_property
-      if($('#type_of_property').val() == null || $('#type_of_property').val() == ""){
-        $('#spanTypeProperty').focus();
-        $('#spanTypeProperty').removeClass('hide');
-        error_type_of_property = 1;
-        error = true;
-      }else{
-        $('#spanTypeProperty').addClass('hide');
-        error_type_of_property = 0;
-        error = false;
-      }
-      let error_finishes
-      if($('#finishes').val() == null || $('#finishes').val() == ""){
-        $('#spanfinishes').focus();
-        $('#spanfinishes').removeClass('hide');
-        error_finishes = 1;
-        error = true;
-      }else{
-        $('#spanfinishes').addClass('hide');
-        error_finishes = 0;
-        error = false;
-      }
-      let error_planeSrc
-      if(this.planeSrc == null || this.planeSrc == ""){
-        $('#spanmaps').focus();
-        $('#spanmaps').removeClass('hide');
-        error_planeSrc = 1;
-        error = true;
-      }else{
-        $('#spanmaps').addClass('hide');
-        error_planeSrc = 0;
-        error = false;
-      }
-      let error_imagesTypology
-      if(!(this.imagesTypology.length > 0)){
-        $('#spanimages_property').focus();
-        $('#spanimages_property').removeClass('hide');
-        error_imagesTypology = 1;
-        error = true;
-      }else{
-        $('#spanimages_property').addClass('hide');
-        error_imagesTypology = 0;
-        error = false;
-      }
-      let error_video_property
-      if($('#video_property').val() == null || $('#video_property').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
-        error_video_property = 1;
-        error = true;
-      }else{
-        $('#spanvideo_property').addClass('hide');
-        error_video_property = 0;
-        error = false;
-      }
-      let error_balcon_area
-      if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
-        error_balcon_area = 1;
-        error = true;
-      }else{
-        $('#spanvideo_property').addClass('hide');
-        error_balcon_area = 0;
-        error = false;
-      }
-      let error_featuresTypologyArray
-      if(!(this.featuresTypologyArray.length > 0)){
-        $('#spanFeature').focus();
-        $('#spanFeature').removeClass('hide');
-        error_featuresTypologyArray = 1;
-        error = true;
-      }else{
-        $('#spanFeature').addClass('hide');
-        error_featuresTypologyArray = 0;
-        error = false;
-      }
-      if(error_label_price == 1 || error_price_from == 1 || error_initial_fee == 1 || error_separation == 1 || error_constructed_area == 1 || error_private_area == 1 || error_type_of_property == 1 || error_finishes == 1 || error_planeSrc == 1 || error_imagesTypology == 1 || error_video_property == 1 || error_balcon_area == 1 || error_featuresTypologyArray == 1 ){
-        error = true;
-      }
+    /* Validación de tipologias */
+      // console.log(this.featuresTypologyArray.length);
+      // let error_label_price
+      // if($('#label_price').val() == null || $('#label_price').val() == ""){
+      //   $('#spanPriceLabel').focus();
+      //   $('#spanPriceLabel').removeClass('hide');
+      //   error_label_price = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanPriceLabel').addClass('hide');
+      //   error_label_price = 0;
+      //   error = false;
+      // }
+      // let error_price_from
+      // if($('#price_from').val() == null || $('#price_from').val() == ""){
+      //   $('#spanPriceFrom').focus();
+      //   $('#spanPriceFrom').removeClass('hide');
+      //   error_price_from = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanPriceFrom').addClass('hide');
+      //   error_price_from = 0;
+      //   error = false;
+      // }
+      // let error_initial_fee
+      // if($('#initial_fee').val() == null || $('#initial_fee').val() == ""){
+      //   $('#spanFee').focus();
+      //   $('#spanFee').removeClass('hide');
+      //   error_initial_fee = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanFee').addClass('hide');
+      //   error_initial_fee = 0;
+      //   error = false;
+      // }
+      // let error_separation
+      // if($('#separation').val() == null || $('#separation').val() == ""){
+      //   $('#spanSeparation').focus();
+      //   $('#spanSeparation').removeClass('hide');
+      //   error_separation = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanSeparation').addClass('hide');
+      //   error_separation = 0;
+      //   error = false;
+      // }
+      // let error_constructed_area
+      // if($('#constructed_area').val() == null || $('#constructed_area').val() == ""){
+      //   $('#spanArea').focus();
+      //   $('#spanArea').removeClass('hide');
+      //   error_constructed_area = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanArea').addClass('hide');
+      //   error_constructed_area = 0;
+      //   error = false;
+      // }
+      // let error_private_area
+      // if($('#private_area').val() == null || $('#private_area').val() == ""){
+      //   $('#spanPrivate').focus();
+      //   $('#spanPrivate').removeClass('hide');
+      //   error_private_area = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanPrivate').addClass('hide');
+      //   error_private_area = 0;
+      //   error = false;
+      // }
+      // let error_type_of_property
+      // if($('#type_of_property').val() == null || $('#type_of_property').val() == ""){
+      //   $('#spanTypeProperty').focus();
+      //   $('#spanTypeProperty').removeClass('hide');
+      //   error_type_of_property = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanTypeProperty').addClass('hide');
+      //   error_type_of_property = 0;
+      //   error = false;
+      // }
+      // let error_finishes
+      // if($('#finishes').val() == null || $('#finishes').val() == ""){
+      //   $('#spanfinishes').focus();
+      //   $('#spanfinishes').removeClass('hide');
+      //   error_finishes = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanfinishes').addClass('hide');
+      //   error_finishes = 0;
+      //   error = false;
+      // }
+      // let error_planeSrc
+      // if(this.planeSrc == null || this.planeSrc == ""){
+      //   $('#spanmaps').focus();
+      //   $('#spanmaps').removeClass('hide');
+      //   error_planeSrc = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanmaps').addClass('hide');
+      //   error_planeSrc = 0;
+      //   error = false;
+      // }
+      // let error_imagesTypology
+      // if(!(this.imagesTypology.length > 0)){
+      //   $('#spanimages_property').focus();
+      //   $('#spanimages_property').removeClass('hide');
+      //   error_imagesTypology = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanimages_property').addClass('hide');
+      //   error_imagesTypology = 0;
+      //   error = false;
+      // }
+      // let error_video_property
+      // if($('#video_property').val() == null || $('#video_property').val() == ""){
+      //   $('#spanvideo_property').focus();
+      //   $('#spanvideo_property').removeClass('hide');
+      //   error_video_property = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanvideo_property').addClass('hide');
+      //   error_video_property = 0;
+      //   error = false;
+      // }
+      // let error_balcon_area
+      // if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
+      //   $('#spanvideo_property').focus();
+      //   $('#spanvideo_property').removeClass('hide');
+      //   error_balcon_area = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanvideo_property').addClass('hide');
+      //   error_balcon_area = 0;
+      //   error = false;
+      // }
+      // let error_featuresTypologyArray
+      // if(!(this.featuresTypologyArray.length > 0)){
+      //   $('#spanFeature').focus();
+      //   $('#spanFeature').removeClass('hide');
+      //   error_featuresTypologyArray = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanFeature').addClass('hide');
+      //   error_featuresTypologyArray = 0;
+      //   error = false;
+      // }
+      // if(error_label_price == 1 || error_price_from == 1 || error_initial_fee == 1 || error_separation == 1 || error_constructed_area == 1 || error_private_area == 1 || error_type_of_property == 1 || error_finishes == 1 || error_planeSrc == 1 || error_imagesTypology == 1 || error_video_property == 1 || error_balcon_area == 1 || error_featuresTypologyArray == 1 ){
+      //   error = true;
+      // }
       return error;
   }
 }

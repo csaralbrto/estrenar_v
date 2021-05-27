@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ProjectPreviewComponent } from './project-preview/project-preview.component';
 import { ToolComponent } from './tool/tool.component';
 import { ConstructoraComponent } from './constructora/constructora.component';
 import { DetailConstructoraComponent } from './detail-constructora/detail-constructora.component';
@@ -49,10 +50,14 @@ const routes: Routes = [
     component: ProjectDetailComponent,
     pathMatch: 'full',
   },
-
   {
     path: 'es/:path/:path',
     component: ProjectDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'es/preview-project',
+    component: ProjectPreviewComponent,
     pathMatch: 'full',
   },
   { path: 'herramientas', component: ToolComponent, pathMatch: 'full' },

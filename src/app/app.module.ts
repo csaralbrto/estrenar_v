@@ -47,6 +47,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProjectPreviewComponent } from './project-preview/project-preview.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RevistaDigitalComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    ProjectPreviewComponent,
   ],
   imports: [
     BrowserModule,
