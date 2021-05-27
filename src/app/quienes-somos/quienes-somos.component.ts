@@ -5,6 +5,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-quienes-somos',
@@ -22,10 +23,10 @@ export class QuienesSomosComponent implements OnInit {
   imgPath = 'https://lab.estrenarvivienda.com/';
   dataImg = '?include=field_page_paragraphs.field_ev_team_image';
 
-  constructor( public Service: QuienesSomosService, private meta: Meta ) { }
+  constructor( public Service: QuienesSomosService, private meta: Meta,private spinnerService: NgxSpinnerService ) { }
 
   ngOnInit(): void {
-
+    this.startSpinner();
     /* Método para obtener toda la info */
     this.Service.getData().subscribe(
       (data) => (this.response = data),
@@ -55,15 +56,32 @@ export class QuienesSomosComponent implements OnInit {
             }
             console.log(this.responseData.field_page_paragraphs);
             this.dataInfoImg = this.responseData.field_page_paragraphs;
+            this.stopSpinner();
 
           }
           /* si responde correctamente */
           if (this.responseData.error) {
             /* si hay error en la respuesta */
+            this.stopSpinner();
           }
 
         }
       );
+
+  }
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }

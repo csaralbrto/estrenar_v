@@ -6,6 +6,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -45,10 +46,11 @@ export class DetailConstructoraComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public Service: DetailConstructoraService, 
+    public Service: DetailConstructoraService,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
     private meta: Meta,
+    private spinnerService: NgxSpinnerService
     ) {}
     dataPath = environment.endpoint;
     cadena = '';
@@ -56,6 +58,7 @@ export class DetailConstructoraComponent implements OnInit {
     dataConstrutora = '?include=field_builder_logo,field_builder_location.field_location_contact,field_builder_location.field_location';
     url_img_path = 'https://www.estrenarvivienda.com/';
     ngOnInit(): void {
+      this.startSpinner();
       this.collectionActive = this.route;
       this.createForm();
 
@@ -125,6 +128,7 @@ export class DetailConstructoraComponent implements OnInit {
       if (this.results) {
         $('app-detail-constructora').foundation();
         // $('html,body').scrollTop(0);
+        this.stopSpinner();
       }
     }
     change(contructoraID,value) {
@@ -155,7 +159,7 @@ export class DetailConstructoraComponent implements OnInit {
         // console.log(data)
         this.response = data;
         // console.log(this.response);
-        if (this.response) { 
+        if (this.response) {
           // console.log(this.response.search_results);
           this.allProjects = this.response.search_results
           for (let project of this.allProjects) {
@@ -222,5 +226,21 @@ export class DetailConstructoraComponent implements OnInit {
         zone: new FormControl('Seleccione'),
         sector: new FormControl('Seleccione'),
       });
+    }
+
+    // metodo cargando
+
+    startSpinner(): void {
+      if (this.spinnerService) {
+        this.spinnerService.show();
+      }
+    }
+
+     stopSpinner(): void {
+
+      if (this.spinnerService) {
+        // console.log("ingrese a parar");
+        this.spinnerService.hide();
+      }
     }
 }

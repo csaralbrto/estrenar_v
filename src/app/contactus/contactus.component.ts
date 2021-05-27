@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 declare function todayDate(): any;
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-contactus',
@@ -27,9 +28,11 @@ export class ContactusComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
     private meta: Meta,
+    private spinnerService: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
+    this.startSpinner();
     this.createForm();
     this.results = true;
     if(this.response.metatag_normalized){
@@ -39,6 +42,7 @@ export class ContactusComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-contactus').foundation();
+      this.stopSpinner();
     }
   }
 
@@ -152,7 +156,7 @@ export class ContactusComponent implements OnInit {
             ]
         },
         "profiling": {
-            "survey": 
+            "survey":
             [
                 {
                     "Deseas ser contactado vía": values.contact
@@ -180,6 +184,19 @@ export class ContactusComponent implements OnInit {
           }
         }
       );
+    }
+  }
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
     }
   }
 }

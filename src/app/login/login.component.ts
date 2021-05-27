@@ -5,6 +5,7 @@ import { LoginService } from './login.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { CookieXSRFStrategy } from '@angular/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -21,14 +22,15 @@ export class LoginComponent implements OnInit {
   public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
   public cliente_secret = 'drupal';
 
-  constructor( 
+  constructor(
     public Service: LoginService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer,
-    private formBuilder: FormBuilder, ) { }
+    private formBuilder: FormBuilder, private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.startSpinner();
     this.createForm();
     this.results = true;
     sessionStorage.clear();
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-login').foundation();
+      this.stopSpinner();
     }
   }
   createForm() {
@@ -65,7 +68,7 @@ export class LoginComponent implements OnInit {
             this.beforeLogin();
           }
         }else{
-          this.error_message = this.error._body.message 
+          this.error_message = this.error._body.message
         }
       }
     );
@@ -87,7 +90,7 @@ export class LoginComponent implements OnInit {
         redirect: 'follow',
       })
       .then(function (a) {
-          return a.json(); 
+          return a.json();
       })
      .then(result => {
        console.log('result',result)
@@ -108,6 +111,19 @@ export class LoginComponent implements OnInit {
      .catch(error => {
         console.error(error);
       });
+  }
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }

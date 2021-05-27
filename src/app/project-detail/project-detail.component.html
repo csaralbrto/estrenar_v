@@ -1,3 +1,11 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box" [fullScreen] = "true">
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
 <div class="row columns">
     <div class="medium-3 columns">
         <img [src]="url_img_path + response.field_typology_project.field_project_logo.uri.url " alt="" class="logo-proyecto">
@@ -100,7 +108,7 @@
                 <ul class="slider-project-img slideproject">
                     <li class="is-active ">
                         <div class="row">
-                            <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion == 5 || operacion == 6 || operacion == 7 ||operacion == 8 || operacion == 9 || operacion == 10|| operacion == 11 || operacion == 12) ">
+                            <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
                                 <figure class="">
                                     <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
                                 </figure>
@@ -301,7 +309,7 @@
 
                             </div>
 
-                            <div class="rows-img" *ngIf=" operacion == 12">
+                            <div class="rows-img" *ngIf=" operacion >= 12">
                                 <div class="row1">
 
                                     <div class="rows-img1">
@@ -1145,3 +1153,4 @@
 </span>
 </div>
 </div>
+

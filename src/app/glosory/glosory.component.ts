@@ -5,6 +5,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-glosory',
@@ -23,9 +24,10 @@ export class GlosoryComponent implements OnInit {
   public results = false;
 
 
-  constructor( public Service: GlosoryService, private meta: Meta ) {}
+  constructor( public Service: GlosoryService, private meta: Meta,private spinnerService: NgxSpinnerService ) {}
 
   ngOnInit(): void {
+    this.startSpinner();
     /* Método para obtener toda la info */
     this.Service.getDataGlosary(this.stringQuery?this.stringQuery:this.letter)
     .subscribe(
@@ -44,8 +46,9 @@ export class GlosoryComponent implements OnInit {
   }
 
   change(value) {
+    // console.log("ingreso..");
+    // this.startSpinner();
     let term = "";
-
       Object.keys(value).forEach( function(key) {
         if(value[key] && value[key] !== 'Seleccione'){
           let p = key;
@@ -66,6 +69,7 @@ export class GlosoryComponent implements OnInit {
         if (this.response) {
           console.log(this.response);
           this.results = true;
+          // this.stopSpinner();
         }
       }
     );
@@ -74,6 +78,22 @@ export class GlosoryComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-glosory').foundation();
+      this.stopSpinner();
+    }
+  }
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      // console.log("ingreso spinner..");
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
     }
   }
 }

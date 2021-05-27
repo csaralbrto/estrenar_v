@@ -1,3 +1,11 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box" [fullScreen] = "true">
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
 <!-- <div class="reveal" id="welcomeModal" data-reveal> -->
 <!-- wizard 1 -->
 <form [formGroup]="form">
@@ -62,18 +70,18 @@
         <hr class="white">
         <!-- <input type="search" name="search" formControlName="search" placeholder="Ciudad o zona" id="autocompletar" class="autocompletar"> -->
         <div class="">
-            <ng-autocomplete 
+            <ng-autocomplete
                 [data]="arrayOptions"
                 [searchKeyword]="keyword"
                 (selected)='selectEvent($event)'
                 [itemTemplate]="itemTemplate"
-                [notFoundTemplate]="notFoundTemplate">                                 
+                [notFoundTemplate]="notFoundTemplate">
             </ng-autocomplete>
-            
+
             <ng-template #itemTemplate let-item>
                 <a [innerHTML]="item.name"></a>
             </ng-template>
-            
+
             <ng-template #notFoundTemplate let-notFound>
                 <div [innerHTML]="notFound"></div>
             </ng-template>
@@ -129,9 +137,9 @@
             <div class="inline">
                 <button class="button" (click)="changeStepWizard(3);">Siguiente</button>
             </div>
-    
+
         </div>
-    
+
     </div>
     </div>
     <!-- Fin wizard 2 -->
@@ -174,9 +182,9 @@
                     </div>
                 </div> -->
             </div>
-    
+
         </div>
-    
+
     </div>
     <hr class="white">
     <div class="row text-center">
@@ -224,9 +232,9 @@
                     <div class="etiqueta">{{option.name}}</div>
                 </div>
             </div>
-    
+
         </div>
-    
+
     </div>
     <hr class="white">
     <div class="row text-center">
@@ -274,9 +282,9 @@
                     <div class="item">{{option.name}}</div>
                 </div>
             </fieldset>
-    
+
         </div>
-    
+
     </div>
     <hr class="white">
     <div class="row text-center">

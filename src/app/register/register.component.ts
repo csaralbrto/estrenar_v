@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { RegisterService } from './register.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -28,9 +29,10 @@ export class RegisterComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer,
-    private formBuilder: FormBuilder, ) { }
+    private formBuilder: FormBuilder,private spinnerService: NgxSpinnerService ) { }
 
   ngOnInit(): void {
+
     this.createForm();
     this.results = true;
     sessionStorage.clear();
@@ -66,12 +68,15 @@ export class RegisterComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-register').foundation();
+
     }
   }
   onSubmit(values) {
+
     var error = false;
     /* Se recibe los valores del login */
     if(values.pass !== values.confirm){
+
       $('#spanPass').removeClass('hide');
       error = true;
     }
@@ -118,8 +123,9 @@ export class RegisterComponent implements OnInit {
               "value": values.lastname
           }
       ]
-    
+
     }
+    this.startSpinner();
     sessionStorage.setItem('username',values.email);
     sessionStorage.setItem('password',values.confirm);
     this.Service.RegisterRequest( payload )
@@ -133,7 +139,7 @@ export class RegisterComponent implements OnInit {
           sessionStorage.setItem('uid',uid);
           this.beforeRegister();
         }else{
-          this.error_message = this.error._body.message 
+          this.error_message = this.error._body.message
         }
       }
     );
@@ -158,7 +164,7 @@ export class RegisterComponent implements OnInit {
         redirect: 'follow',
       })
       .then(function (a) {
-          return a.json(); 
+          return a.json();
       })
      .then(result => {
        console.log('result',result)
@@ -171,6 +177,7 @@ export class RegisterComponent implements OnInit {
          sessionStorage.setItem('access_token',result.access_token);
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
         //  localStorage.clear();
+        this.stopSpinner();
          this.router.navigate(['/user']);
 
        }
@@ -189,12 +196,26 @@ export class RegisterComponent implements OnInit {
       .then(response => response.json())
       .then(data => {
         this.response = data;
-        if (this.response) { 
+        if (this.response) {
           console.log(this.response);
           this.dataCity = this.response;
           this.results = true;
         }
       })
       .catch(error => console.error(error))
+  }
+  // metodos cargando
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 }

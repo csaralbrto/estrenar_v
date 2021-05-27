@@ -5,6 +5,7 @@ import { ProjectDetailService } from './project-detail.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -56,7 +57,8 @@ export class ProjectDetailComponent implements OnInit {
     public Service: ProjectDetailService,
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
-    private meta: Meta
+    private meta: Meta,
+    private spinnerService: NgxSpinnerService
   ) {}
   dataPath = environment.endpoint;
   dataSrcImg = environment.endpointTestingApiUrl
@@ -80,10 +82,12 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit(): void {
 
     //Asignamos la fecha actual al campo de fecha
+    this.startSpinner();
     this.createForm();
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
+
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -247,6 +251,7 @@ export class ProjectDetailComponent implements OnInit {
   }
   ngAfterViewChecked() {
     if (this.results) {
+
       $('app-project-detail').foundation();
       if ($('.slider-project-img').length) {
         $('.slider-project-img').not('.slick-initialized').slick({
@@ -262,6 +267,7 @@ export class ProjectDetailComponent implements OnInit {
           autoplaySpeed: 5000,
         });
       }
+      this.stopSpinner();
 
     }
   }
@@ -763,5 +769,19 @@ export class ProjectDetailComponent implements OnInit {
     months -= today.getMonth() + 1;
     months += date.getMonth();
     return months <= 0 ? 0 : Number(months) + Number(1);
+  }
+  // Metodos Cargando
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+    if (this.spinnerService) {
+      console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 }

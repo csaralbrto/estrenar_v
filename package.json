@@ -13,7 +13,7 @@
   "dependencies": {
     "@agm/core": "^3.0.0-beta.0",
     "@angular-slider/ngx-slider": "^2.0.3",
-    "@angular/animations": "~9.1.9",
+    "@angular/animations": "^9.1.13",
     "@angular/cdk": "^10.2.4",
     "@angular/common": "~9.1.9",
     "@angular/compiler": "~9.1.9",
@@ -33,6 +33,7 @@
     "ng-recaptcha": "^7.0.1",
     "ng2-device-detector": "^1.0.1",
     "ng5-slider": "^1.2.6",
+    "ngx-spinner": "^11.0.1",
     "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.5",

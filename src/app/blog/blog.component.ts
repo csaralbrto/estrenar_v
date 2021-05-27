@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BlogService } from './blog.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -24,9 +25,11 @@ export class BlogComponent implements OnInit, AfterViewChecked {
   error_message = '';
   public error: any;
 
-  constructor(public Service: BlogService) {}
+  constructor(public Service: BlogService,private spinnerService: NgxSpinnerService) {}
 
   ngOnInit(): void {
+    // console.log("arranco");
+    this.startSpinner();
     /* Método para obtener toda la info del blog */
     this.stringText = '...';
     this.Service.getBlogData().subscribe(
@@ -34,7 +37,9 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       (err) => console.log(),
       () => {
         if (this.response) {
+
           console.log(this.response);
+
           /* si responde correctamente */
         }
         if (this.response.error) {
@@ -49,6 +54,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       (err) => console.log(),
       () => {
         if (this.response) {
+
           console.log('lo más relido',this.responseMostRead)
           /* si responde correctamente */
         }
@@ -82,7 +88,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
           /* si responde correctamente */
           console.log('response new experience', this.responseEcoSide);
           for (let sideEco of this.responseEcoSide.results) {
-            sideEco.article_image = sideEco.article_image.split(",",1); 
+            sideEco.article_image = sideEco.article_image.split(",",1);
           }
         }
         if (this.response.error) {
@@ -133,6 +139,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       }
     );
     $('html,body').scrollTop(0);
+
   }
 
   ngAfterViewChecked() {
@@ -175,9 +182,12 @@ export class BlogComponent implements OnInit, AfterViewChecked {
           ]
         });
       }
+      this.stopSpinner();
+
     }
   }
   subscribe(){
+
     if($('#email_subscribe').val() == "" || $('#email_subscribe').val() == null){
       $('#spanEmail').removeClass('hide');
     }
@@ -192,12 +202,38 @@ export class BlogComponent implements OnInit, AfterViewChecked {
           if(this.response){
             console.log('respondio',this.response);
           }else{
-            this.error_message = this.error._body.message 
+            this.error_message = this.error._body.message
           }
         }
       );
     }else{
       $('#spanPass').removeClass('hide');
+    }
+
+  }
+  // Metodos Cargando
+
+   // startSpinner(): void
+  // {
+  //   console.log("ingrese");
+  //   this.spinnerService.show();
+  //   setTimeout(() =>{
+  //     this.spinnerService.hide();
+  //   }, 4000);
+
+  // }
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
     }
   }
 }
