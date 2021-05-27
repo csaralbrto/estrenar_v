@@ -50,6 +50,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   };
   public collectionActive: string = '';
   public results = false;
+  public ValoresProyecto: any;
 
   constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta, private router: Router,private spinnerService: NgxSpinnerService  ) { }
   dataPath = environment.endpoint;
@@ -124,11 +125,15 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             if(this.response.facets.project_feature){
               let project_feature = this.response.facets.project_feature;
               for (let feature of project_feature) {
-                if(feature.values.value == 'Estado del proyecto'){
+                if(feature.values.value == "Estado del proyecto"){
                   this.filterProjectState = feature.children;
+                  this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+                // console.log(this.ValoresProyecto);
+
                 }
               }
-              console.log(this.filterProjectState);
+              // console.log(this.filterProjectState);
+
             }
             this.results = true;
           }

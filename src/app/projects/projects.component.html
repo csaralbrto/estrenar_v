@@ -86,7 +86,7 @@
                 </div>
                 <div class="medium-6 columns">
                     <h3>Estado del proyecto</h3>
-                    <div *ngFor="let option of filterProjectState">
+                    <div *ngFor="let option of ValoresProyecto">
                         <label class="container-check">{{option.values.value}}
                             <input id="project_state" type="checkbox" name="project_state" formControlName="project_state" value="{{option.url}}">
                             <span class="checkmark"></span>
