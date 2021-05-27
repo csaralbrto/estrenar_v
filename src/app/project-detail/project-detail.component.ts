@@ -125,23 +125,19 @@ export class ProjectDetailComponent implements OnInit {
 
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
               this.galeria = this.response.field_typology_image;
-              console.log('esta es la galeria: ',this.galeria);
-              console.log('tamaño de la galeria: ',this.galeria.length);
+              // console.log('esta es la galeria: ',this.galeria);
+              // console.log('tamaño de la galeria: ',this.galeria.length);
               this.operacion= this.galeria.length;
-
-
               if(this.operacion % 2 == 0)
               {
-
                 this.valoresPares = "par";
-                  console.log(this.valoresPares);
+                  // console.log(this.valoresPares);
               }
               else
               {
                 this.valoresPares = "impar";
-                console.log(this.valoresPares);
+                // console.log(this.valoresPares);
               }
-
 
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
