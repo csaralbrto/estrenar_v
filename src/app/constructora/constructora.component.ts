@@ -55,6 +55,7 @@ export class ConstructoraComponent implements OnInit {
 
   change(value) {
 
+    this.startSpinner();
     this.stringQuery = $("#location").val();
     console.log(this.stringQuery)
     // this.beforeCheck(this.response.individual);
@@ -88,6 +89,7 @@ export class ConstructoraComponent implements OnInit {
           }
 
         // this.results = true;
+        this.stopSpinner();
       }
 
     })

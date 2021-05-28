@@ -40,14 +40,15 @@ export class GlosoryComponent implements OnInit {
             this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
           }
           this.results = true;
+          this.stopSpinner();
         }
       }
     );
   }
 
   change(value) {
-    // console.log("ingreso..");
-    // this.startSpinner();
+
+    this.startSpinner();
     let term = "";
       Object.keys(value).forEach( function(key) {
         if(value[key] && value[key] !== 'Seleccione'){
@@ -69,7 +70,8 @@ export class GlosoryComponent implements OnInit {
         if (this.response) {
           console.log(this.response);
           this.results = true;
-          // this.stopSpinner();
+          this.stopSpinner();
+
         }
       }
     );
@@ -78,7 +80,7 @@ export class GlosoryComponent implements OnInit {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-glosory').foundation();
-      this.stopSpinner();
+
     }
   }
 
