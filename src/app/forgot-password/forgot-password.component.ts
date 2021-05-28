@@ -15,7 +15,9 @@ export class ForgotPasswordComponent implements OnInit {
   public response: any;
   public results = false;
   public form: FormGroup;
+  public form2: FormGroup;
   public stringQuery = '';
+  public token = null;
 
   constructor(
     public Service: ForgotPasswordService,
@@ -25,9 +27,35 @@ export class ForgotPasswordComponent implements OnInit {
     private formBuilder: FormBuilder, ) { }
 
   ngOnInit(): void {
+    
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    let token_parameter = url.searchParams.get("token");
+    if(token_parameter === null){
+      this.createForm();
+      this.token = null;
+    }else{
+      this.createForm2();
+      this.token = token_parameter;
+    }
+
   }
   createForm() {
     this.form =  this.formBuilder.group({
+      name: new FormControl(''),
+      lastname: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      country: new FormControl('Seleccione el País'),
+      city: new FormControl('Seleccione la Ciudad'),
+      confirm: new FormControl(''),
+      pass: new FormControl(''),
+      term: new FormControl(''),
+      recaptchaReactive: new FormControl(''),
+    });
+  }
+  createForm2() {
+    this.form2 =  this.formBuilder.group({
       name: new FormControl(''),
       lastname: new FormControl(''),
       email: new FormControl(''),
@@ -46,6 +74,76 @@ export class ForgotPasswordComponent implements OnInit {
     }
   }
   onSubmit(values) {
+    // var error = false;
+    // /* Se recibe los valores del login */
+    // if(values.pass !== values.confirm){
+    //   $('#spanPass').removeClass('hide');
+    //   error = true;
+    // }
+    // let payload = {
+    //   "name": [
+    //     {
+    //       "value": values.email
+    //     }
+    //   ],
+    //   "mail": [
+    //     {
+    //       "value": values.email
+    //     }
+    //   ],
+    //   "field_user_phone": [
+    //     {
+    //       "value": values.phone
+    //     }
+    //   ],
+    //   "pass": [
+    //     {
+    //       "value": values.confirm
+    //     }
+    //   ],
+    //   "field_user_address": [
+    //   ],
+    //   "field_country":[
+    //       {
+    //           "target_id": values.country
+    //       }
+    //   ],
+    //   "field_city":[
+    //       {
+    //           "target_id": values.city
+    //       }
+    //   ],
+    //   "field_first_name": [
+    //       {
+    //           "value": values.name
+    //       }
+    //   ],
+    //   "field_last_name": [
+    //       {
+    //           "value": values.lastname
+    //       }
+    //   ]
+    
+    // }
+    // sessionStorage.setItem('username',values.email);
+    // sessionStorage.setItem('password',values.confirm);
+    // this.Service.RegisterRequest( payload )
+    // .subscribe(
+    //   (data) => (this.response = data),
+    //   err => (this.error = err),
+    //   () => {
+    //     if(this.response){
+    //       console.log('respondio',this.response.uid);
+    //       const uid = this.response.uid[0].value;
+    //       sessionStorage.setItem('uid',uid);
+    //       this.beforeRegister();
+    //     }else{
+    //       this.error_message = this.error._body.message 
+    //     }
+    //   }
+    // );
+  }
+  onSubmit2(values) {
     // var error = false;
     // /* Se recibe los valores del login */
     // if(values.pass !== values.confirm){
