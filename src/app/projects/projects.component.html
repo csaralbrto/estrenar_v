@@ -88,7 +88,7 @@
                     <h3>Estado del proyecto</h3>
                     <div *ngFor="let option of ValoresProyecto">
                         <label class="container-check">{{option.values.value}}
-                            <input id="project_state" type="checkbox" name="project_state" formControlName="project_state" value="{{option.url}}">
+                            <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="change(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{option.url}}">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -112,7 +112,7 @@
                                 <div class="input-group-button">
                                     <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
                                 </div>
-                                <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
+                                <input class="input-number"  type="number" id="bedroom" value="1" min="0" max="1000" >
                                 <div class="input-group-button">
                                     <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
                                 </div>
@@ -158,9 +158,14 @@
                 <div class="medium-6 columns">
                     <div class="row">
                         <h3>Constructora</h3>
-                        <label>
+                        <!-- <label>
                         <input type="search" placeholder="Buscar">
-                    </label>
+                    </label> -->
+                    <!-- <div class="small-6 columns"> -->
+                      <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
+                          <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                      </select>
+                  <!-- </div> -->
                     </div>
                     <div class="row">
                         <h3>Colecciones</h3>
@@ -169,8 +174,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a href="#">Limpiar filtros</a><a href="#" class="button secondary">Mostrar 45
+                        <a (click)="cleanFilter()">Limpiar filtros</a>
+                        <a href="#" class="button secondary" >Mostrar 45
                         apartamentos</a>
+
+
                     </div>
                 </div>
 
