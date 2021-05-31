@@ -151,3 +151,15 @@
   padding: 10px;
   box-shadow: 0 0 2px #c1bcbc;
 }
+#streetview-map {
+  display: none;
+}
+
+#streetview-pano {
+  width: 50%;
+  height: 50%;
+}
+
+#streetview-container {
+  position: relative;
+}

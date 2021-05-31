@@ -1,4 +1,5 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild, Input, ElementRef, ApplicationRef, PLATFORM_ID, Inject } from '@angular/core';
+import { MapsAPILoader } from '@agm/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl, SafeUrl, Meta} from '@angular/platform-browser';
 import { ProjectDetailService } from './project-detail.service';
@@ -6,6 +7,7 @@ import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { MetaTag } from '../class/metatag.class';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { isPlatformBrowser } from '@angular/common';
 declare var $: any;
 
 @Component({
@@ -15,6 +17,16 @@ declare var $: any;
   providers: [ProjectDetailService],
 })
 export class ProjectDetailComponent implements OnInit {
+
+  @ViewChild('streetviewMap') streetviewMap: ElementRef;
+  @ViewChild('streetviewPano') streetviewPano: ElementRef;
+  // @Input() latitude: number;
+  // @Input() longitude: number;
+  @Input() zoom: number = 11;
+  @Input() heading: number = 34;
+  @Input() pitch: number = 10;
+  @Input() scrollwheel: boolean = false;
+
   tags: MetaTag;
   public response: any;
   public newResponse: any;
@@ -48,6 +60,7 @@ export class ProjectDetailComponent implements OnInit {
   public saldoDiferirCuota: any;
   public operacion:any;
   public valoresPares:any;
+  public mapTypeId: any;
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
 
@@ -58,14 +71,24 @@ export class ProjectDetailComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
     private meta: Meta,
-    private spinnerService: NgxSpinnerService
-  ) {}
+    private spinnerService: NgxSpinnerService,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private mapsAPILoader: MapsAPILoader,
+    private appRef: ApplicationRef
+  ) {
+  }
   dataPath = environment.endpoint;
   dataSrcImg = environment.endpointTestingApiUrl
   cadena = '';
   largo = '';
   video_url = '';
   tour_url = '';
+  latitude: number;
+  longitude: number;
+
+  // latitude: 6.1891388;
+  // longitude: 75.5799235;
+  // zoom:number;
   public galeria;
   public caracteristicas;
   public caracteristicasProject;
@@ -88,6 +111,10 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
+    this.setCurrentLocation();
+    this.renderStreetView();
+
+
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -141,6 +168,7 @@ export class ProjectDetailComponent implements OnInit {
               this.priceProject = this.response.field_typology_price
               this.idProject = this.response.drupal_internal__nid;
               const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
+              // mapa Yenifer
 
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
               this.galeria = this.response.field_typology_image;
@@ -260,6 +288,45 @@ export class ProjectDetailComponent implements OnInit {
     //   }
     // );
   }
+
+  private setCurrentLocation() {
+
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = 6.25184;
+        this.longitude = -75.56359;
+        this.zoom = 15;
+        this.mapTypeId = 'hybrid';
+      });
+      // console.log(this.latitude);
+      // console.log(this.longitude);
+
+    }
+  }
+  renderStreetView() {
+    this.latitude = 6.25184;
+    this.longitude = -75.56359;
+    if (isPlatformBrowser(this.platformId)) {
+      this.mapsAPILoader.load().then(() => {
+        const center = { lat: +this.latitude, lng: +this.longitude };
+        console.log(center);
+        const map = new window['google'].maps.Map(
+          this.streetviewMap.nativeElement
+        );
+        const panorama = new window['google'].maps.StreetViewPanorama(
+          this.streetviewPano.nativeElement,
+          {
+            position: center,
+            pov: { heading: this.heading, pitch: this.pitch },
+            scrollwheel: this.scrollwheel,
+          }
+        );
+        map.setStreetView(panorama);
+        this.appRef.tick();
+      });
+    }
+  }
+
   beforeCheck(url_find){
     /* Traemos la información del usuario */
 

@@ -452,8 +452,16 @@
                     <div class="direccion">
                         <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
                     </div>
-                    <iframe [src]="maps_url" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-              </iframe>
+                    <!-- <iframe [src]="maps_url" width="100%" height="500" frameborder="0" style="border:0;" id="pano" allowfullscreen="" aria-hidden="false" tabindex="0">
+              </iframe> -->
+
+              <agm-map  [mapTypeId]='mapTypeId' class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
+                <agm-marker [latitude]="latitude" [longitude]="longitude">
+                    <agm-info-window #infoWindow>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+
                     <hr class="white">
                     <div class="row columns">
                         <h2>Zonas de interés</h2>
@@ -517,6 +525,10 @@
                     </div>
                 </div>
                 <div class="tabs-panel" id="planes">
+                  <div id="streetview-container">
+                    <div id="streetview-map" #streetviewMap></div>
+                    <div id="streetview-pano" #streetviewPano></div>
+                  </div>
                 </div>
                 <div class="tabs-panel" id="street_view">
                 </div>
