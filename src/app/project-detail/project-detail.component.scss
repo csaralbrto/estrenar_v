@@ -2,28 +2,22 @@
 //   background-color: #14444e;
 //   color: #fff;
 // }
-
 // .radio_item {
 //   display: none !important;
 // }
-
 // .radio_item:checked+label {
 //   opacity: 1;
-
 //   .date-agenda-option {
 //     background-color: #a9d13a !important;
 //   }
 // }
-
 // .label-item {
 //   opacity: 0.1;
 //   cursor: pointer;
 // }
-
 // .container-date-agenda {
 //   padding: 4%;
 // }
-
 // .date-agenda-option {
 //   border: 1px solid rgba(10, 10, 10, 0.25);
 //   border-radius: 10px;
@@ -37,7 +31,6 @@
 //   color: #3a6269;
 //   font-weight: bolder;
 // }
-
 // .label_item {
 //   border-radius: 10px;
 //   position: static;
@@ -45,7 +38,6 @@
 //   line-height: initial;
 //   height: 43px;
 // }
-
 // /****************************************/
 // /* Layout rules using position: absolute and pixels. */
 // .position-pixels.date-as-calendar {
@@ -54,7 +46,6 @@
 //   width: 64px;
 //   height: 64px;
 // }
-
 // .position-pixels.date-as-calendar .labelDayAgenda,
 // .position-pixels.date-as-calendar .labelDayStringAgenda,
 // .position-pixels.date-as-calendar .labelMonthAgenda,
@@ -66,35 +57,29 @@
 //   width: 100%;
 //   height: 1em;
 // }
-
 // .position-pixels.date-as-calendar .labelMonthAgenda {
 //   top: 0px;
 //   font-size: 12px;
 //   padding: 2px 0;
 // }
-
 // .position-pixels.date-as-calendar .labelDayAgenda {
 //   top: 40px;
 //   font-size: 10px;
 // }
-
 // .position-pixels.date-as-calendar .labelDayStringAgenda {
 //   top: 13px;
 //   font-size: 24px;
 // }
-
 // .position-pixels.date-as-calendar .year {
 //   top: 50px;
 //   font-size: 14px;
 // }
-
 // .minus-agenda {
 //   position: relative;
 //   float: left;
 //   margin: 20px;
 //   cursor: pointer;
 // }
-
 // .plus-agenda {
 //   position: relative;
 //   float: left;
@@ -116,50 +101,50 @@
 //   font-size: 30px;
 //   text-align: center;
 // }
-
 // Imagenes Dinamicas
 .rows-img .center {
-  text-align: center;
+    text-align: center;
 }
 
 .row1 {
-  display: flex;
-  padding: 10px;
+    display: flex;
+    padding: 10px;
 }
+
 .rows-img1 {
-  // width: 50%;
-  // height: 50%;
-  padding: 10px;
-  box-shadow: 0 0 2px #c1bcbc;
+    // width: 50%;
+    // height: 50%;
+    padding: 10px;
+    box-shadow: 0 0 2px #c1bcbc;
 }
 
 .rows-img2 {
-  // width: 50%;
-  // height: 50%;
-  padding: 10px;
-  box-shadow: 0 0 2px #c1bcbc;
+    // width: 50%;
+    // height: 50%;
+    padding: 10px;
+    box-shadow: 0 0 2px #c1bcbc;
 }
+
 .rows-img3 {
-  // width: 50%;
-  // height: 50%;
-  padding: 10px;
-  box-shadow: 0 0 2px #c1bcbc;
+    // width: 50%;
+    // height: 50%;
+    padding: 10px;
+    box-shadow: 0 0 2px #c1bcbc;
 }
+
 .rows-img4 {
-  // width: 50%;
-  // height: 50%;
-  padding: 10px;
-  box-shadow: 0 0 2px #c1bcbc;
-}
-#streetview-map {
-  display: none;
+    // width: 50%;
+    // height: 50%;
+    padding: 10px;
+    box-shadow: 0 0 2px #c1bcbc;
 }
 
-#streetview-pano {
-  width: 50%;
-  height: 50%;
+app-street-view {
+    width: 400px;
+    height: 400px;
+    display: block;
 }
 
-#streetview-container {
-  position: relative;
+.visibi-hide {
+    visibility: hidden;
 }

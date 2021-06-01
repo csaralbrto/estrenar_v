@@ -18,15 +18,6 @@ declare var $: any;
 })
 export class ProjectDetailComponent implements OnInit {
 
-  @ViewChild('streetviewMap') streetviewMap: ElementRef;
-  @ViewChild('streetviewPano') streetviewPano: ElementRef;
-  // @Input() latitude: number;
-  // @Input() longitude: number;
-  @Input() zoom: number = 11;
-  @Input() heading: number = 34;
-  @Input() pitch: number = 10;
-  @Input() scrollwheel: boolean = false;
-
   tags: MetaTag;
   public response: any;
   public newResponse: any;
@@ -72,7 +63,6 @@ export class ProjectDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private meta: Meta,
     private spinnerService: NgxSpinnerService,
-    @Inject(PLATFORM_ID) private platformId: Object,
     private mapsAPILoader: MapsAPILoader,
     private appRef: ApplicationRef
   ) {
@@ -85,10 +75,12 @@ export class ProjectDetailComponent implements OnInit {
   tour_url = '';
   latitude: number;
   longitude: number;
+  public coor_latitude: any;
+  public coor_longitude: any;
 
   // latitude: 6.1891388;
   // longitude: 75.5799235;
-  // zoom:number;
+  zoom:number;
   public galeria;
   public caracteristicas;
   public caracteristicasProject;
@@ -111,10 +103,6 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
-    this.setCurrentLocation();
-    this.renderStreetView();
-
-
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -171,6 +159,10 @@ export class ProjectDetailComponent implements OnInit {
               // mapa Yenifer
 
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
+            
+              this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
+              this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
+
               this.galeria = this.response.field_typology_image;
               // console.log('esta es la galeria: ',this.galeria);
               // console.log('tamaño de la galeria: ',this.galeria.length);
@@ -263,6 +255,7 @@ export class ProjectDetailComponent implements OnInit {
               })
               .catch(error => console.error(error))
               this.results = true;
+              this.setCurrentLocation();
             }
           })
           .catch(error => console.error(error))
@@ -293,37 +286,14 @@ export class ProjectDetailComponent implements OnInit {
 
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = 6.25184;
-        this.longitude = -75.56359;
+        this.latitude = this.coor_latitude;
+        this.longitude = this.coor_longitude;
         this.zoom = 15;
-        this.mapTypeId = 'hybrid';
+        // this.mapTypeId = 'roadmap';
       });
       // console.log(this.latitude);
       // console.log(this.longitude);
 
-    }
-  }
-  renderStreetView() {
-    this.latitude = 6.25184;
-    this.longitude = -75.56359;
-    if (isPlatformBrowser(this.platformId)) {
-      this.mapsAPILoader.load().then(() => {
-        const center = { lat: +this.latitude, lng: +this.longitude };
-        console.log(center);
-        const map = new window['google'].maps.Map(
-          this.streetviewMap.nativeElement
-        );
-        const panorama = new window['google'].maps.StreetViewPanorama(
-          this.streetviewPano.nativeElement,
-          {
-            position: center,
-            pov: { heading: this.heading, pitch: this.pitch },
-            scrollwheel: this.scrollwheel,
-          }
-        );
-        map.setStreetView(panorama);
-        this.appRef.tick();
-      });
     }
   }
 
@@ -864,5 +834,26 @@ export class ProjectDetailComponent implements OnInit {
   }
   contactModal(){
     $('#exampleModal2').foundation('open');
+  }
+  showHideTab(value){
+    if(value == 1){
+      $('#showMap').attr('aria-selected', 'true');
+      $('#showStreet').attr('aria-selected', 'false');
+      $('#showPlane').attr('aria-selected', 'false');
+      $('#googleMaps').removeClass("hide");
+      $('#googleStreet').addClass("visibi-hide");
+    }else if(value == 3){
+      $('#showStreet').attr('aria-selected', 'true');
+      $('#showMap').attr('aria-selected', 'false');
+      $('#showPlane').attr('aria-selected', 'false');
+      $('#googleMaps').addClass("hide");
+      $('#googleStreet').removeClass("visibi-hide");
+    }else if(value == 2){
+      $('#showStreet').attr('aria-selected', 'false');
+      $('#showMap').attr('aria-selected', 'false');
+      $('#showPlane').attr('aria-selected', 'true');
+      $('#googleMaps').addClass("hide");
+      $('#googleStreet').addClass("visibi-hide");
+    }
   }
 }

@@ -48,6 +48,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectPreviewComponent } from './project-preview/project-preview.component';
+import { StreetViewComponent } from './street-view/street-view.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { ProjectPreviewComponent } from './project-preview/project-preview.compo
     RegisterComponent,
     ForgotPasswordComponent,
     ProjectPreviewComponent,
+    StreetViewComponent,
   ],
   imports: [
     BrowserModule,

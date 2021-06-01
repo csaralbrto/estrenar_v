@@ -440,11 +440,18 @@
 <div class="row columns">
     <div class="medium-8 columns">
         <div class="mapa">
-            <div class="nav-tabs">
+            <!-- <div class="nav-tabs">
                 <ul class="tabs" data-tabs id="propertiesProject">
                     <li class="tabs-title is-active"><a data-tabs-target="mapProject" href="#mapProject">Mapa</a></li>
                     <li class="tabs-title"><a data-tabs-target="planes" href="#planes">Planos</a></li>
                     <li class="tabs-title"><a data-tabs-target="street_view" href="#street_view">Street view</a></li>
+                </ul>
+            </div> -->
+            <div class="nav-tabs">
+                <ul class="tabs">
+                    <li class="tabs-title is-active"><a aria-selected="true" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
+                    <li class="tabs-title"><a id="showPlane" (click)="showHideTab('2')">Planos</a></li>
+                    <li class="tabs-title"><a id="showStreet" (click)="showHideTab('3')">Street view</a></li>
                 </ul>
             </div>
             <div class="tabs-content" data-tabs-content="propertiesProject">
@@ -454,83 +461,83 @@
                     </div>
                     <!-- <iframe [src]="maps_url" width="100%" height="500" frameborder="0" style="border:0;" id="pano" allowfullscreen="" aria-hidden="false" tabindex="0">
               </iframe> -->
+                    <div id="googleMaps">
+                        <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
+                            <agm-marker [latitude]="latitude" [longitude]="longitude">
+                                <agm-info-window #infoWindow>
+                                </agm-info-window>
+                            </agm-marker>
+                        </agm-map>
+                        <hr class="white">
+                        <div class="row columns">
+                            <h2>Zonas de interés</h2>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 columns">
+                                        <label class="container-check">Supermercados
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
 
-              <agm-map  [mapTypeId]='mapTypeId' class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
-                <agm-marker [latitude]="latitude" [longitude]="longitude">
-                    <agm-info-window #infoWindow>
-                    </agm-info-window>
-                </agm-marker>
-            </agm-map>
-
-                    <hr class="white">
-                    <div class="row columns">
-                        <h2>Zonas de interés</h2>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                                <input type="checkbox" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
+                                    <div class="medium-4 columns hide-for-small-only">
+                                        <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                              <input type="checkbox" >
-                              <span class="checkmark"></span>
-                          </label>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 columns">
+                                        <label class="container-check">Supermercados
+                                  <input type="checkbox" >
+                                  <span class="checkmark"></span>
+                              </label>
 
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
+                                    <div class="medium-4 columns hide-for-small-only">
+                                        <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                              <input type="checkbox" >
-                              <span class="checkmark"></span>
-                          </label>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 columns">
+                                        <label class="container-check">Supermercados
+                                  <input type="checkbox" >
+                                  <span class="checkmark"></span>
+                              </label>
 
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
+                                    <div class="medium-4 columns hide-for-small-only">
+                                        <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                              <input type="checkbox" >
-                              <span class="checkmark"></span>
-                          </label>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 columns">
+                                        <label class="container-check">Supermercados
+                                  <input type="checkbox" >
+                                  <span class="checkmark"></span>
+                              </label>
 
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
+                                    <div class="medium-4 columns hide-for-small-only">
+                                        <img src="/assets/images/supermercado.png" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
+                    <!-- <div > -->
+                    <app-street-view id="googleStreet" class="visibi-hide" [latitude]="latitude" [longitude]="longitude"></app-street-view>
+                    <!-- </div> -->
                 </div>
                 <div class="tabs-panel" id="planes">
-                  <div id="streetview-container">
-                    <div id="streetview-map" #streetviewMap></div>
-                    <div id="streetview-pano" #streetviewPano></div>
-                  </div>
                 </div>
                 <div class="tabs-panel" id="street_view">
+                    <app-street-view [latitude]="latitude" [longitude]="longitude"></app-street-view>
                 </div>
             </div>
         </div>
