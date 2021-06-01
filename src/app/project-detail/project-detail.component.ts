@@ -52,6 +52,8 @@ export class ProjectDetailComponent implements OnInit {
   public operacion:any;
   public valoresPares:any;
   public mapTypeId: any;
+  public newplace:any;
+  public keyGoglePlace="AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA";
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
 
@@ -103,6 +105,7 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
+    this.GooglePlaces();
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -159,10 +162,10 @@ export class ProjectDetailComponent implements OnInit {
               // mapa Yenifer
 
               this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
-            
+
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
-              this.response.marketIcon = 
+              this.response.marketIcon =
               {
                 url: './assets/images/markets/pin-verde.svg',
                 scaledSize: {
@@ -302,6 +305,24 @@ export class ProjectDetailComponent implements OnInit {
 
     }
   }
+
+  GooglePlaces(){
+
+    const requestOptions = {
+      method: 'GET',
+    };
+
+    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.latitude+","+this.longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        this.newplace = data;
+        if (this.newplace) {
+         // esta es la información que va a responder las api de google place
+        }
+      })
+      .catch(error => console.log('error', error));
+}
+
 
   beforeCheck(url_find){
     /* Traemos la información del usuario */
