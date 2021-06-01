@@ -162,7 +162,14 @@ export class ProjectDetailComponent implements OnInit {
             
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
-
+              this.response.marketIcon = 
+              {
+                url: './assets/images/markets/pin-verde.svg',
+                scaledSize: {
+                    width: 60,
+                    height: 60
+                }
+              }
               this.galeria = this.response.field_typology_image;
               // console.log('esta es la galeria: ',this.galeria);
               // console.log('tamaño de la galeria: ',this.galeria.length);
@@ -283,7 +290,6 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   private setCurrentLocation() {
-
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = this.coor_latitude;

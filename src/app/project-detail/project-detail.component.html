@@ -463,8 +463,9 @@
               </iframe> -->
                     <div id="googleMaps">
                         <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
-                            <agm-marker [latitude]="latitude" [longitude]="longitude">
+                            <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="response.marketIcon">
                                 <agm-info-window #infoWindow>
+                                    {{ response.field_typology_project.name }}
                                 </agm-info-window>
                             </agm-marker>
                         </agm-map>
@@ -531,7 +532,7 @@
                         </div>
                     </div>
                     <!-- <div > -->
-                    <app-street-view id="googleStreet" class="visibi-hide" [latitude]="latitude" [longitude]="longitude"></app-street-view>
+                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
                     <!-- </div> -->
                 </div>
                 <div class="tabs-panel" id="planes">

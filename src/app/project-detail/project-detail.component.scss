@@ -140,11 +140,15 @@
 }
 
 app-street-view {
-    width: 400px;
-    height: 400px;
+    width: 725px;
+    height: 473px;
     display: block;
 }
 
 .visibi-hide {
     visibility: hidden;
+}
+
+.mb-StreetV {
+    margin-bottom: -31em;
 }
