@@ -111,6 +111,7 @@ export class FavoritesComponent implements OnInit {
             //   }
             // }
           this.results = true;
+          this.stopSpinner();
           }
           /* si responde correctamente */
           if (this.response.error) {
@@ -128,7 +129,7 @@ export class FavoritesComponent implements OnInit {
       // sessionStorage.removeItem('qtEmails');
       // sessionStorage.removeItem('qtPhones');
       // $('html,body').scrollTop(0);
-      this.stopSpinner();
+
     }
   }
   /* Obtener la locacion en coordenadas actual */
@@ -143,6 +144,7 @@ export class FavoritesComponent implements OnInit {
     }
   }
   change(value) {
+    this.startSpinner();
     console.log(value);
     this.stringQuery = "";
     Object.keys(value).forEach( function(key) {
@@ -162,6 +164,7 @@ export class FavoritesComponent implements OnInit {
       this.response = data;
       // console.log(this.response);
       if (this.response) {
+        console.log(this.response);
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         this.countProjects = this.response_data_project.length;
@@ -182,6 +185,7 @@ export class FavoritesComponent implements OnInit {
             }
           }
           this.filterType = this.response.facets.property_type;
+          this.stopSpinner();
         }
         if(this.response.facets.project_city){
           this.optionsCitySelected = '';
@@ -191,8 +195,10 @@ export class FavoritesComponent implements OnInit {
             }
           }
           this.filterCity = this.response.facets.project_city;
+          this.stopSpinner();
         }
         if(this.response.facets.typology_price){
+          // console.log("debo de parar3");
           this.optionsPriceSelected = '';
           for(let optionPrice of this.response.facets.typology_price){
             if(optionPrice.values.active == 'true'){
@@ -200,6 +206,7 @@ export class FavoritesComponent implements OnInit {
             }
           }
           this.filterPrice = this.response.facets.typology_price;
+          this.stopSpinner();
         }
         if(this.response.facets.project_zone){
           this.optionsZoneSelected = '';
@@ -209,6 +216,7 @@ export class FavoritesComponent implements OnInit {
             }
           }
           this.filterZone = this.response.facets.project_zone;
+          this.stopSpinner();
         }
         if(this.response.facets.project_neighborhood){
           this.optionsSectorSelected = '';
@@ -218,6 +226,7 @@ export class FavoritesComponent implements OnInit {
             }
           }
           this.filterSector = this.response.facets.project_neighborhood;
+          this.stopSpinner();
         }
         if(this.response.sorts){
           this.optionsSectorSelected = '';
@@ -227,14 +236,21 @@ export class FavoritesComponent implements OnInit {
             }
           }
           this.filterSort = this.response.sorts;
+          this.stopSpinner();
+          console.log("debo de parar");
         }
         this.results = true;
+
+        // this.stopSpinner();
+
       }
     })
     .catch(error => console.error(error))
 
   }
   changeSort() {
+
+    this.startSpinner();
     this.stringQuery = $('#sortBy option:selected').val();
     // console.log(this.stringQuery);
     // this.beforeCheck(this.response.individual);}
@@ -297,6 +313,7 @@ export class FavoritesComponent implements OnInit {
           this.filterZone = this.response.facets.project_zone;
         }
         if(this.response.facets.project_neighborhood){
+          console.log("cambie");
           // this.optionsSectorSelected = '';
           // for(let optionSector of this.response.facets.project_neighborhood){
           //   if(optionSector.values.active == 'true'){
@@ -306,6 +323,8 @@ export class FavoritesComponent implements OnInit {
           this.filterSector = this.response.facets.project_neighborhood;
         }
         if(this.response.sorts){
+          console.log("cambie2");
+
           // this.optionsSectorSelected = '';
           // for(let optionSector of this.response.sorts){
           //   if(optionSector.values.active == 'true'){
@@ -315,6 +334,7 @@ export class FavoritesComponent implements OnInit {
           this.filterSort = this.response.sorts;
         }
         this.results = true;
+        this.stopSpinner();
       }
     })
     .catch(error => console.error(error))

@@ -53,7 +53,6 @@ export class ProjectDetailComponent implements OnInit {
   public valoresPares:any;
   public mapTypeId: any;
   public newplace:any;
-  public responseSearchNearBy: any;
   public keyGoglePlace="AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA";
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
@@ -106,6 +105,7 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
+    this.GooglePlaces();
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -253,7 +253,7 @@ export class ProjectDetailComponent implements OnInit {
               .then(data => {
                 this.responseProperties = data.search_results;
                 if (this.responseProperties) {
-                  // console.log(this.responseProperties);
+                  console.log(this.responseProperties);
                   this.propertiesSimilars = this.responseProperties
                   for (let project of this.propertiesSimilars) {
                     var arrayDeCadenas = project.typology_images.split(',');
@@ -266,8 +266,6 @@ export class ProjectDetailComponent implements OnInit {
               .catch(error => console.error(error))
               this.results = true;
               this.setCurrentLocation();
-              this.GooglePlaces();
-              this.stopSpinner();
             }
           })
           .catch(error => console.error(error))
@@ -310,29 +308,19 @@ export class ProjectDetailComponent implements OnInit {
 
   GooglePlaces(){
 
-    var settings = {
-      "url": "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=10.900005,-74.802339&radius=3500&type=supermarket&keyword=cruise&key=AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA",
-      "method": "GET",
-      "timeout": 0,
+    const requestOptions = {
+      method: 'GET',
     };
-    
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
-    // const requestOptions = {
-    //   method: 'GET',
-    // };
 
-    // fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + this.coor_latitude + "," + this.coor_longitude + "&radius=3500&type=supermarket&keyword=cruise&key=" + this.keyGoglePlace, requestOptions)
-    //   .then(responseSearchNearBy => responseSearchNearBy.json())
-    //   .then(data => {
-    //     console.log('respondió data ',data)
-    //     this.newplace = data;
-    //     if (this.newplace) {
-    //      // esta es la información que va a responder las api de google place
-    //     }
-    //   })
-    //   .catch(error => console.log('error', error));
+    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.latitude+","+this.longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        this.newplace = data;
+        if (this.newplace) {
+         // esta es la información que va a responder las api de google place
+        }
+      })
+      .catch(error => console.log('error', error));
 }
 
 
@@ -357,7 +345,7 @@ export class ProjectDetailComponent implements OnInit {
           autoplaySpeed: 5000,
         });
       }
-      // this.stopSpinner();
+      this.stopSpinner();
     }
   }
   addCompare(value) {
@@ -767,11 +755,14 @@ export class ProjectDetailComponent implements OnInit {
       let cuota_mensual = 0;
       interes_mensual = ((Number(tasa_interes) / 12) / 100);
       let formula_general_last = Math.pow((1 + Number(interes_mensual)), Number(plazo_mes));
+      // const base = Number(1) + Number(interes_mensual);
+      // const exponente = Number(value.plazo_credito);
+      // let r = 1;
+      // for(let i = 0; i<exponente; i++){
+      //     r = r * base;
+      // }
       var numerador = Number(formula_general_last) * Number(interes_mensual);
       var denominador = Number(formula_general_last) - Number(1);
-      console.log('formula general ',formula_general_last);
-      console.log('numerador  ',numerador);
-      console.log('denominador  ',denominador);
       if(value.tipo_credito_credito == 'hipotecario'){
         cuota = Number(this.priceProject) * Number(0.30);
         monto_del_prestamo_multi = Number(0.30);
@@ -782,11 +773,9 @@ export class ProjectDetailComponent implements OnInit {
         cuota_inicial = '20%';
       }
       monto_prestamo = (Number(this.priceProject) * (Number(1) - Number(monto_del_prestamo_multi)));
-      console.log('monto del prestamo ',monto_del_prestamo_multi);
       tasa_de_interes = tasa_interes;
       cuota_inicial_vivienda = Number(this.priceProject) * Number(monto_del_prestamo_multi);
       cuota_mensual = Number(this.priceProject) * (Number(1) - Number(monto_del_prestamo_multi)) * ((Number(numerador)) / (Number(denominador)));
-      console.log('precio del proyecto ',this.priceProject);
       ingresos_mensuales_min = (Number(cuota_mensual) * Number(3.3));
 
       this.monto_prestamo_credito = monto_prestamo;
@@ -799,7 +788,6 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
   clickInfo(value){
-    this.cuotasMensuales = [];
     /* Quitar decimales en los montos de valor y saldo */
     var today = new Date();
     let cuota_inicial_porcentaje = 0;
@@ -874,25 +862,35 @@ export class ProjectDetailComponent implements OnInit {
   contactModal(){
     $('#exampleModal2').foundation('open');
   }
-  showHideTab(value){
-    if(value == 1){
+  showHideTab(value)
+  {
+    if(value == 1)
+    {
       $('#showMap').attr('aria-selected', 'true');
       $('#showStreet').attr('aria-selected', 'false');
       $('#showPlane').attr('aria-selected', 'false');
       $('#googleMaps').removeClass("hide");
       $('#googleStreet').addClass("visibi-hide");
-    }else if(value == 3){
+      $('#planes').addClass("visibi-hide");
+    }
+    else if(value == 3){
       $('#showStreet').attr('aria-selected', 'true');
       $('#showMap').attr('aria-selected', 'false');
       $('#showPlane').attr('aria-selected', 'false');
       $('#googleMaps').addClass("hide");
       $('#googleStreet').removeClass("visibi-hide");
-    }else if(value == 2){
+      $('#planes').addClass("visibi-hide");
+    }
+    else if(value == 2)
+    {
       $('#showStreet').attr('aria-selected', 'false');
       $('#showMap').attr('aria-selected', 'false');
       $('#showPlane').attr('aria-selected', 'true');
+      $('#planes').removeClass("visibi-hide");
       $('#googleMaps').addClass("hide");
+
       $('#googleStreet').addClass("visibi-hide");
     }
-  }
+}
+
 }

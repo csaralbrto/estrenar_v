@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ComparatorService } from './comparator.service';
 import { environment } from '../../environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-comparator',
@@ -16,13 +17,14 @@ export class ComparatorComponent implements OnInit {
   public classRow: any;
   public stylesText: any;
 
-  constructor( public Service: ComparatorService, private router: Router, ) { }
+  constructor( public Service: ComparatorService, private router: Router,private spinnerService: NgxSpinnerService ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
   url_img_path = 'https://www.estrenarvivienda.com/';
 
   ngOnInit(): void {
+    this.startSpinner();
 
     /* Método para obtener toda la info del comparador */
 
@@ -63,12 +65,13 @@ export class ComparatorComponent implements OnInit {
             }else if(count_results == 4){
               this.classRow = "medium-3";
             }
+            this.stopSpinner();
           }
           if(this.response.error){
             /* si hay error en la respuesta */
           }
         }
-      );    
+      );
     }
   }
   removeCompare(value) {
@@ -85,6 +88,20 @@ export class ComparatorComponent implements OnInit {
       }else{
         this.router.navigate(['home']);
       }
+  }
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }
