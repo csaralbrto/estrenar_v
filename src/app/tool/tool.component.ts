@@ -115,7 +115,6 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     });
   }
   change(value,type) {
-    console.log(type);
     if(type == 'capacidad_endeudamiento'){
       this.prestamo_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(32);
       this.vivienda_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(45.714286);
@@ -159,7 +158,9 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       let formula_general_last = Math.pow((1 + Number(interes_mensual)), Number(plazo_mes));
       var numerador = Number(formula_general_last) * Number(interes_mensual);
       var denominador = Number(formula_general_last) - Number(1);
-      
+      // console.log('formula general ',formula_general_last);
+      // console.log('numerador  ',numerador);
+      // console.log('denominador  ',denominador);
       if(value.tipo_credito_credito == 'hipotecario'){
         cuota = Number(value.valor_vivienda_credito) * Number(0.30);
         monto_del_prestamo_multi = Number(0.30);
@@ -170,6 +171,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
         cuota_inicial = '20%';
       }
       monto_prestamo = (Number(value.valor_vivienda_credito) * (Number(1) - Number(monto_del_prestamo_multi)));
+      // console.log('monto del prestamo ',monto_del_prestamo_multi);
       tasa_de_interes = tasa_interes;
       cuota_inicial_vivienda = Number(value.valor_vivienda_credito) * Number(monto_del_prestamo_multi);
       cuota_mensual = Number(value.valor_vivienda_credito) * (Number(1) - Number(monto_del_prestamo_multi)) * ((Number(numerador)) / (Number(denominador)));

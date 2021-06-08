@@ -1,9 +1,5 @@
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="square-jelly-box" [fullScreen] = "true">
-  <p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 
 <!--Bloque1 -->
@@ -392,8 +388,7 @@
                                         </div>
                                         <div class="precio text-center">
                                             <div>Desde:</div>
-                                            <span>$ {{ response.home_featured_typologies[1].typology_price | number
-                                                }}</span>
+                                            <span>$ {{ response.home_featured_typologies[1].typology_price | number }}</span>
                                         </div>
 
 
@@ -468,10 +463,8 @@
                                         </div>
                                         <div class="precio text-center">
                                             <div>Desde:</div>
-                                            <span>$ {{ response.home_featured_typologies[2].typology_price | number
-                                                }}</span>
+                                            <span>$ {{ response.home_featured_typologies[2].typology_price | number }}</span>
                                         </div>
-                                        <hr>
 
                                         <div class="card-section">
                                             <hr>
