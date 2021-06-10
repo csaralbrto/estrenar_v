@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
@@ -36,7 +37,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
-  constructor( public Service: ToolService, private formBuilder: FormBuilder, private meta: Meta, private router: Router, ) {}
+  constructor( public Service: ToolService, private formBuilder: FormBuilder, private meta: Meta, private router: Router,private spinnerService: NgxSpinnerService ) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -47,6 +48,8 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   public stringText: any;
 
   ngOnInit(): void {
+
+    this.startSpinner();
 
     this.stringText = '...';
     this.createForm();
@@ -68,6 +71,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
             project.project_category = arrayDeCadenas2;
           }
           this.results = true;
+          this.stopSpinner();
           // console.log(this.response.projects_1);
         }
         /* si responde correctamente */
@@ -139,8 +143,8 @@ export class ToolComponent implements OnInit, AfterViewChecked {
         this.smmlv_vivienda = 20;
       }else if(salarios > 4){
         this.subsidio_vivienda = 0;
-        this.smmlv_vivienda = 0;  
-        /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */    
+        this.smmlv_vivienda = 0;
+        /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */
       }
     }else if(type == 'credito_vienda'){
       let monto_del_prestamo_multi = 0;
@@ -239,19 +243,33 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     var new_date =  mm + '-' + yyyy;
     return new_date
   }
-  monthDiff(today, date) 
-  { 
-    var months; 
-    months = (date.getFullYear() - today.getFullYear()) * 12; 
-    months -= today.getMonth() + 1; 
-    months += date.getMonth(); 
+  monthDiff(today, date)
+  {
+    var months;
+    months = (date.getFullYear() - today.getFullYear()) * 12;
+    months -= today.getMonth() + 1;
+    months += date.getMonth();
     return months <= 0 ? 0 : Number(months) + Number(1);
   }
   searchProjectByPrice(value){
-    let valor = value.toFixed(); 
+    let valor = value.toFixed();
     sessionStorage.removeItem('price_projects');
     sessionStorage.setItem('price_projects',valor)
     this.router.navigate(['/proyectos']);
+  }
+
+  startSpinner(): void {
+    if (this.spinnerService) {
+      this.spinnerService.show();
+    }
+  }
+
+   stopSpinner(): void {
+
+    if (this.spinnerService) {
+      // console.log("ingrese a parar");
+      this.spinnerService.hide();
+    }
   }
 
 }

@@ -1,3 +1,10 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  template="<img src='/assets/images/logo-ev.png' />"
+>
+<p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
+
 <div class="row columns">
     <h1>Herramientas</h1>
     <p>Te ofrecemos calculadoras para su búsqueda de vivienda nueva</p><br>
@@ -48,7 +55,7 @@
                 <div class="tabs-panel endeudamiento is-active" id="panel2">
                     <div class="container-form">
                         <div class="row">
-                            <div class="medium-4 columns text-center"> 
+                            <div class="medium-4 columns text-center">
                                 <p> Cuentanos cuales son tus ingresos mensuales</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
@@ -70,7 +77,7 @@
                                 <p class="small">
                                     * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
                                 </p>
-                        
+
                             </div>
                             <div class="medium-5 columns text-center campo-destacado">
                                 <p> Con el total de ingresos puedes obtener un subsidio por:</p>
@@ -120,11 +127,11 @@
                                 </label>
                             </div>
                             <div class="medium-6 columns">
-                            
+
                                 <label class="container-radio">Leasing habitacional
                                     <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
                                     <span class="checkmark"></span>
-                                </label> 
+                                </label>
                             </div>
                         </div>
                         </fieldset>
@@ -215,7 +222,7 @@
                                 <label class="container-radio">Leasing habitacional
                                     <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="leasing">
                                     <span class="checkmark"></span>
-                                </label> 
+                                </label>
                             </div>
                         </div>
                         </fieldset>

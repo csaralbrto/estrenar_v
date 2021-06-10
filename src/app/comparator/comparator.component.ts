@@ -75,12 +75,14 @@ export class ComparatorComponent implements OnInit {
     }
   }
   removeCompare(value) {
+    // console.log("ingrese "+ value);
       var storedIds = JSON.parse(sessionStorage.getItem("id"));
       /* remover el proyecto de los coparadores */
       const index = storedIds.indexOf(value);
       storedIds.splice(index, 1);
       /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
-      sessionStorage.setItem('id',JSON.stringify(storedIds))
+      sessionStorage.removeItem("id");
+      sessionStorage.setItem('id',JSON.stringify(storedIds));
      // this.router.navigate(['comparador']);
       console.log('este es el id: ',storedIds);
       if(storedIds.length > 0){

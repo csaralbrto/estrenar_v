@@ -56,6 +56,7 @@ export class FavoritesComponent implements OnInit {
     this.createForm();
     this.setCurrentLocation();
 
+    // Favoritos
     var stringQuery = "";
     if (sessionStorage['favorite']) {
       var storedIds = JSON.parse(sessionStorage.getItem("favorite"));
@@ -132,6 +133,29 @@ export class FavoritesComponent implements OnInit {
 
     }
   }
+
+
+  removeFavorite(value) {
+    console.log("ingreso "+ value);
+
+    var storedIds = JSON.parse(sessionStorage.getItem("favorite"));
+    /* remover el proyecto de los coparadores */
+    const index = storedIds.indexOf(value);
+    storedIds.splice(index, 1);
+    /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
+    sessionStorage.removeItem("favorite");
+    sessionStorage.setItem('favorite',JSON.stringify(storedIds))
+   // this.router.navigate(['comparador']);
+    console.log('este es el id: ',storedIds);
+    if(storedIds.length > 0){
+      window.location.reload();
+    }else{
+      this.router.navigate(['home']);
+    }
+}
+
+
+
   /* Obtener la locacion en coordenadas actual */
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
