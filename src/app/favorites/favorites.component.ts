@@ -136,7 +136,7 @@ export class FavoritesComponent implements OnInit {
 
 
   removeFavorite(value) {
-    console.log("ingreso "+ value);
+    // console.log("ingreso "+ value);
 
     var storedIds = JSON.parse(sessionStorage.getItem("favorite"));
     /* remover el proyecto de los coparadores */
