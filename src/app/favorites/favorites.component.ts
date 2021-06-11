@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FavoritesService } from './favorites.service';
 import { MapsAPILoader } from '@agm/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -40,7 +40,7 @@ export class FavoritesComponent implements OnInit {
   };
   public collectionActive: string = '';
 
-  constructor( public Service: FavoritesService, private formBuilder: FormBuilder, private mapsAPILoader: MapsAPILoader,private spinnerService: NgxSpinnerService ) { }
+  constructor( public Service: FavoritesService, private formBuilder: FormBuilder, private mapsAPILoader: MapsAPILoader,private spinnerService: NgxSpinnerService,private router: Router ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -382,10 +382,10 @@ export class FavoritesComponent implements OnInit {
       sortBy: new FormControl('Seleccione'),
     });
   }
-  showMap(){
-    $('#favoritesMap').toggleClass('hide')
-    $('#fullFavorites').toggleClass('hide')
-  }
+  // showMap(){
+  //   $('#favoritesMap').toggleClass('hide')
+  //   $('#fullFavorites').toggleClass('hide')
+  // }
   // changeViewTipeAGM(type) {
   //   this.viewType = type;  //for default 'hybrid'
   //   }

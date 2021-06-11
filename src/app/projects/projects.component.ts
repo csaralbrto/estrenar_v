@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ProjectsService } from './projects.service';
+import { MapsAPILoader } from '@agm/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
@@ -30,6 +31,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public filterBuilder: any;
   public titleLabel: any;
   public wordLabel: any;
+  public mapTypeId: any;
   public form_filters: FormGroup;
   public form_moreFilters: FormGroup;
   public form: FormGroup;
@@ -37,6 +39,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public route = 'filtro-proyectos';
   public url_search_word = 'https://lab.estrenarvivienda.com/es/api/typologies/all?search=';
   public stringQuery = '';
+  public eventos : any;
   optionsTypySelected: string = '';
   optionsPriceSelected: string = '';
   optionsCitySelected: string = '';
@@ -45,6 +48,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   optionsAreaSelected: string = '';
   optionsConstructoraSelected: string = '';
   optionFeatureProyectSelected:string ='';
+
+
   // stateSelected: string = '';
   // Mas filtro
   Habitaciones: any;
@@ -59,12 +64,14 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public results = false;
   public ValoresProyecto: any;
 
-  constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta, private router: Router,private spinnerService: NgxSpinnerService  ) { }
+  constructor( public Service: ProjectsService, private formBuilder: FormBuilder, private meta: Meta, private router: Router,private spinnerService: NgxSpinnerService,private mapsAPILoader: MapsAPILoader  ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
   url_img_path = 'https://www.estrenarvivienda.com/';
-
+  latitude: number;
+  longitude: number;
+  zoom:number;
 
   ngOnInit() {
     this.collectionActive = this.route;
@@ -72,6 +79,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     this.createForm();
     this.createForm2();
     this.createFormMoreFilters();
+    this.setCurrentLocation();
     // const title = this.activatedRoute.snapshot.params.path ;
     let title_label  = sessionStorage['projectTitle']?sessionStorage.getItem("projectTitle"):null;
     let word_label  = sessionStorage['wordTitle']?sessionStorage.getItem("wordTitle"):null;
@@ -115,6 +123,10 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               project.typology_images = arrayDeCadenas[0];
               var arrayDeCadenas2 = project.project_category.split(',');
               project.project_category = arrayDeCadenas2;
+              // Nueva linea Yenifer
+              var arrayDeLaton = project.latlon.split(',');
+              project.latitude = arrayDeLaton[0]
+              project.longitude = arrayDeLaton[1]
             }
             /* Iterar sobre los Filtros de proyectos */
             if(this.response.facets.property_type){
@@ -159,6 +171,46 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         }
       );
     }
+  }
+
+  /* Obtener la locacion en coordenadas actual */
+  private setCurrentLocation() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 5;
+        this.mapTypeId = 'hybrid';
+      });
+    }
+  }
+// Ocultar mapa
+  showMap(event){
+    this.eventos = event.target.checked
+    console.log(event.target.checked);
+    if(this.eventos  == true){
+
+      $('#ProyectMap').toggleClass('hide');
+      // $('#fullProyect').toggleClass('hide');
+      $( "#smallScrenn" ).removeClass( 'medium-6 columns' );
+      $( "#smallScrenn" ).addClass( 'medium-12 columns' );
+      $( ".FullScrenn" ).removeClass( 'medium-6 columns end' );
+      $( ".FullScrenn" ).addClass( 'medium-3 columns end' );
+    }
+    else
+    {
+      $('#ProyectMap').toggleClass('hide');
+      $( "#smallScrenn" ).removeClass( 'medium-12 columns' );
+      $( "#smallScrenn" ).addClass( 'medium-6 columns' );
+      $( ".FullScrenn" ).removeClass( 'medium-3 columns end' );
+      $( ".FullScrenn" ).addClass( 'medium-6 columns end' );
+
+
+    }
+
+
+    // window.location.reload();
+
   }
   decreaseValue(value) {
     if(value == 1){
