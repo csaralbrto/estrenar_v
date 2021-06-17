@@ -66,7 +66,7 @@
                 <div class="medium-2 columns">
                     <div class="botones list">
                         <a class="button" data-open="masfiltrosModal">Más filtros</a>
-                        <a href="#" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+                        <a href="{{path_favorites}}" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
                     </div>
                 </div>
             </div>
@@ -83,10 +83,10 @@
     <div class="reveal filter" id="masfiltrosModal" data-reveal>
         <form [formGroup]="form_moreFilters">
             <div class="row">
-              <div class="medium-12 colunms text-center">
-                <h2>Más filtros</h2>
+                <div class="medium-12 colunms text-center">
+                    <h2>Más filtros</h2>
 
-              </div>
+                </div>
                 <div class="medium-6 columns">
                     <h3>Estado del proyecto</h3>
                     <div *ngFor="let option of ValoresProyecto">
@@ -115,7 +115,7 @@
                                 <div class="input-group-button">
                                     <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
                                 </div>
-                                <input class="input-number"  type="number" id="bedroom" value="1" min="0" max="1000" >
+                                <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
                                 <div class="input-group-button">
                                     <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
                                 </div>
@@ -164,11 +164,11 @@
                         <!-- <label>
                         <input type="search" placeholder="Buscar">
                     </label> -->
-                    <!-- <div class="small-6 columns"> -->
-                      <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
+                        <!-- <div class="small-6 columns"> -->
+                        <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
                           <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                       </select>
-                  <!-- </div> -->
+                        <!-- </div> -->
                     </div>
                     <div class="row">
                         <h3>Colecciones</h3>
@@ -178,8 +178,7 @@
                     </div>
                     <div class="row">
                         <a (click)="cleanFilter()">Limpiar filtros</a>
-                        <a href="#" class="button secondary" >Mostrar 45
-                        apartamentos</a>
+                        <a data-close aria-label="Close modal" class="button secondary">Mostrar <span>{{countProjects}}</span> apartamentos</a>
 
 
                     </div>
@@ -266,97 +265,106 @@
 </div> -->
 
 <div class="row">
-  <div class="medium-12 columns fRight pTop8">
-    <label><input (click)='showMap($event)' type="checkbox" id="cbox1"> Ocultar mapa</label>
+    <div class="medium-4 columns proyectolist">
+        <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos</div>
+    </div>
+    <div class="medium-2 columns end">
+        <label>Ordenar por:
+            <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+                <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}  {{type.order}}</option>
+            </select>
+        </label>
+    </div>
+    <div class="medium-1 columns end">
+        <a href="#" class="button secondary ">Comparar</a>
+    </div>
+    <div class="medium-2 columns fRight pTop8">
+        <label><input (click)='showMap($event)' type="checkbox" id="cbox1"> Ocultar mapa</label>
+    </div>
 </div>
-</div>
-<div  class="row ">
-  <div id ="smallScrenn" class="medium-6 columns">
-      <div id="FullScrenn" class="medium-6 columns end FullScrenn" *ngFor="let project of response_data_project; let i = index">
-          <div class="card" data-equalizer-watch>
-              <div class="container-photo">
-                  <a routerLink="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
-                  <div class="container-tools">
-                      <div class="tags">
-                          <div *ngIf="project.project_category.length > 0">
-                              <div class="tag" *ngFor="let tags of project.project_category; let i = index">
-                                  <a routerLink="{{project.url}}" class="">{{ tags }}</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="add">
-                          <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                      </div>
-                  </div>
-              </div>
-              <div class="card-section info">
-                  <h2>{{ project.project }}</h2>
-                  <div class="descripcion">
-                      {{ project.project_city }}, {{ project.project_zone }}, {{ project.project_neighborhood }}
-                  </div>
-                  <div class="precio text-center">
-                      <div>Desde:</div>
-                      <span>$ {{ project.typology_price | number }}</span>
-                  </div>
+<div class="row ">
+    <div id="smallScrenn" class="medium-6 columns">
+        <div id="FullScrenn" class="medium-6 columns end FullScrenn" *ngFor="let project of response_data_project; let i = index">
+            <div class="card" data-equalizer-watch>
+                <div class="container-photo">
+                    <a routerLink="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                    <div class="container-tools">
+                        <div class="tags">
+                            <div *ngIf="project.project_category.length > 0">
+                                <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                                    <a routerLink="{{project.url}}" class="">{{ tags }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add">
+                            <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section info">
+                    <h2>{{ project.project }}</h2>
+                    <div class="descripcion">
+                        {{ project.project_city }}, {{ project.project_zone }}, {{ project.project_neighborhood }}
+                    </div>
+                    <div class="precio text-center">
+                        <div>Desde:</div>
+                        <span>$ {{ project.typology_price | number }}</span>
+                    </div>
 
-              </div>
-              <div class="card-section">
-                  <hr>
-                  <div class="row">
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                              <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                              <div class="data"> {{ project.bathrooms }} alcobas</div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                              <div class="data"> Garaje {{ project.garages }}</div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                              <div class="data"> {{ project.bedrooms }} baños</div>
-                          </div>
-                      </div>
-                  </div>
-                  <hr>
-              </div>
-              <div class="card-section">
-                  <div class="button-group align-spaced ">
-                      <a class="button" routerLink="{{project.url}}">Ver
+                </div>
+                <div class="card-section">
+                    <hr>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                <div class="data"> {{ project.bathrooms }} alcobas</div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                <div class="data"> Garaje {{ project.garages }}</div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                <div class="data"> {{ project.bedrooms }} baños</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="card-section">
+                    <div class="button-group align-spaced ">
+                        <a class="button" routerLink="{{project.url}}">Ver
                       Proyecto</a>
-                      <a class="button" data-open="exampleModal2">Contacto</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div id="ProyectMap" class="medium-6 columns">
+                        <a class="button" data-open="exampleModal2">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ProyectMap" class="medium-6 columns">
 
 
-      <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
-          <agm-marker *ngFor="let marker of response_data_project" [latitude]="marker.latitude" [longitude]="marker.longitude">
-              <agm-info-window #infoWindow>
-                  {{ marker.project }}
-              </agm-info-window>
-          </agm-marker>
+        <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
+            <agm-marker *ngFor="let marker of response_data_project" [latitude]="marker.latitude" [longitude]="marker.longitude">
+                <agm-info-window #infoWindow>
+                    {{ marker.project }}
+                </agm-info-window>
+            </agm-marker>
 
-      </agm-map>
-  </div>
+        </agm-map>
+    </div>
 </div>
-
-
-
-
 <div class="reveal text-center" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>
     <form data-abide novalidate [formGroup]="form">
@@ -507,10 +515,6 @@
   </div>
 </div> -->
 
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  template="<img src='/assets/images/logo-ev.png' />"
-
->
-<p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" template="<img src='/assets/images/logo-ev.png' />">
+    <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
