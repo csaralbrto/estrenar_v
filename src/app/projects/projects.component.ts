@@ -78,7 +78,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   latitude: number;
   longitude: number;
   zoom:number;
-  cont:number = 4;
+  cont:number = 8;
   resultado:number = 4;
   bandera  = false;
 
@@ -233,7 +233,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
 
     this.startSpinner();
     this.resultado = this.resultado + this.cont;
-    // console.log(this.resultado);
+    console.log(this.resultado);
     this.Service.getMoreData(this.resultado).subscribe(
       (data) => (this.response = data),
       (err) => console.log(),
@@ -243,13 +243,15 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           if(this.response.metatag_normalized){
             this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
           }
-          this.response_data_more_project = this.response.search_results
+          this.response_data_more_project = this.response.search_results;
+
           // let total =
           // let datos = this.response_data_project;
           // console.log('entre al MORE ');
           // console.log("viejo "+ datos);
           // console.log("nuevo "+this.response_data_project1);
           this.response_data_project =  this.response_data_more_project;
+          this.countProjects = this.response_data_project.length;
           // this.response_data_project = datos.concat(this.response_data_project1);
           // this.response_data_project = [...this.response_data_project, ...this.response_data_project1];
           // console.log("resultado es "+ this.response_data_project);
@@ -311,9 +313,6 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       console.log("debe de estar desactivado");
       this.bandera = true;
     }
-
-
-
   }
   decreaseValue(value) {
     if(value == 1){
@@ -347,6 +346,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   }
   change(value) {
     this.startSpinner();
+    this.bandera = false;
     this.stringQuery = "";
     Object.keys(value).forEach( function(key) {
       if(value[key] && value[key] !== 'Seleccione'){
@@ -475,7 +475,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           }
           this.filterSort = this.response.sorts;
           this.stopSpinner();
-          console.log("debo de parar");
+          // console.log("debo de parar");
         }
         this.results = true;
         this.stopSpinner();
