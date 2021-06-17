@@ -18,10 +18,11 @@ export class ProjectsService {
   public url: string;
   public endpointFilter: string;
   public endpointForm: string;
-  
-  constructor( private http: Http, /* private commonFunctions: CommonFunctions */ ) { 
+  public urlMas:string;
+
+  constructor( private http: Http, /* private commonFunctions: CommonFunctions */ ) {
     this.servicePath = environment.endpointApi+ 'project/roomSales';
-    this.dataPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=8';
+    this.dataPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=4';
     this.dataPathVis = environment.endpointTestingApi+ 'typologies/project_category/7893?items_per_page=8&page=0';
     this.dataPathVacacionales = environment.endpointTestingApi+ 'typologies/project_category/7975?items_per_page=8&page=0';
     this.endpointForm = environment.endpointTestingApi + 'ev-lead';
@@ -36,7 +37,7 @@ export class ProjectsService {
       this.url = this.dataPathVacacionales
     }
   }
-  
+
 
   /* Traer toda la info de proyectos */
   getData(): Observable<any> {
@@ -64,4 +65,12 @@ export class ProjectsService {
     return this.http.post(this.endpointForm, params)
     .pipe(map(( response => response.json() )));
   }
+  // filtro cargar más
+  getMoreData(itempaper:number): Observable<any>
+  {
+    this.urlMas = environment.endpointTestingApi+ `typologies/project_builder/10?items_per_page=${itempaper}`;
+    return this.http.get(this.urlMas)
+    .pipe(map(( response => response.json() )));
+  }
+
 }

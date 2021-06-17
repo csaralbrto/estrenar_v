@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DateIsoStorageTranscoder } from 'ngx-webstorage-service';
 declare var $: any;
 
 @Component({
@@ -19,6 +20,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   tags: MetaTag;
   public data: any = {nodes: [], pagination: 0};
   public response_data_project: any;
+  public response_data_more_project:any;
   public responseSubmit: any;
   public response: any;
   public filterType: any;
@@ -72,6 +74,9 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   latitude: number;
   longitude: number;
   zoom:number;
+  cont:number = 4;
+  resultado:number = 4;
+  bandera  = false;
 
   ngOnInit() {
     this.collectionActive = this.route;
@@ -115,8 +120,9 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             if(this.response.metatag_normalized){
               this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
             }
-            console.log('entre al else');
+            console.log('entre al else ' + this.response.search_results);
             this.response_data_project = this.response.search_results
+
             /* Iterar sobre los proyectos */
             for (let project of this.response_data_project) {
               var arrayDeCadenas = project.typology_images.split(',');
@@ -205,11 +211,99 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       $( ".FullScrenn" ).removeClass( 'medium-3 columns end' );
       $( ".FullScrenn" ).addClass( 'medium-6 columns end' );
 
-
     }
 
 
     // window.location.reload();
+
+  }
+
+  // cargar más registros
+  MoreRecords()
+  {
+
+    this.startSpinner();
+    this.resultado = this.resultado + this.cont;
+    // console.log(this.resultado);
+    this.Service.getMoreData(this.resultado).subscribe(
+      (data) => (this.response = data),
+      (err) => console.log(),
+      () => {
+        if (this.response) {
+          console.log(this.response);
+          if(this.response.metatag_normalized){
+            this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+          }
+          this.response_data_more_project = this.response.search_results
+          // let total =
+          // let datos = this.response_data_project;
+          // console.log('entre al MORE ');
+          // console.log("viejo "+ datos);
+          // console.log("nuevo "+this.response_data_project1);
+          this.response_data_project =  this.response_data_more_project;
+          // this.response_data_project = datos.concat(this.response_data_project1);
+          // this.response_data_project = [...this.response_data_project, ...this.response_data_project1];
+          // console.log("resultado es "+ this.response_data_project);
+          /* Iterar sobre los proyectos */
+          for (let project of this.response_data_more_project) {
+            var arrayDeCadenas = project.typology_images.split(',');
+            project.typology_images = arrayDeCadenas[0];
+            var arrayDeCadenas2 = project.project_category.split(',');
+            project.project_category = arrayDeCadenas2;
+            // Nueva linea Yenifer
+            var arrayDeLaton = project.latlon.split(',');
+            project.latitude = arrayDeLaton[0]
+            project.longitude = arrayDeLaton[1]
+          }
+          /*
+          if(this.response.facets.property_type){
+            this.filterType = this.response.facets.property_type;
+          }
+          if(this.response.facets.project_city){
+            this.filterCity = this.response.facets.project_city;
+          }
+          if(this.response.facets.typology_price){
+            this.filterPrice = this.response.facets.typology_price;
+          }
+          //Área m2
+          if(this.response.facets.area_built){
+            this.filterAreaBuilt = this.response.facets.area_built;
+          }
+          // estados del proyecto
+          if(this.response.facets.project_feature){
+            let project_feature = this.response.facets.project_feature;
+            for (let feature of project_feature) {
+              if(feature.values.value == "Estado del proyecto"){
+                this.filterProjectState = feature.children;
+                this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+              // console.log(this.ValoresProyecto);
+
+              }
+            }
+            // console.log(this.filterProjectState);
+
+          }
+          // Constructora
+          if(this.response.facets.project_builder)
+          {
+            this.filterBuilder = this.response.facets.project_builder
+          }
+          */
+          this.results = true;
+          this.stopSpinner();
+        }
+        /* si responde correctamente */
+        if (this.response_data_project.error) {
+          /* si hay error en la respuesta */
+        }
+      }
+    );
+    if(this.resultado == 12){
+      console.log("debe de estar desactivado");
+      this.bandera = true;
+    }
+
+
 
   }
   decreaseValue(value) {
@@ -259,6 +353,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     .then(response => response.json())
     .then(data => {
       // console.log(data)
+      // this.showMap(this.eventos)
       this.response = data;
       // console.log(this.response);
       if (this.response) {
