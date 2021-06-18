@@ -207,10 +207,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   }
 // Ocultar mapa
   showMap(event){
-
-
-    if(event == false)
-    {
+    if(event == false){
       console.log("here");
       $('#ProyectMap').addClass('hide');
       $( "#smallScrenn" ).removeClass( 'medium-6 columns' );
@@ -219,9 +216,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       $( ".FullScrenn" ).addClass( 'medium-3 columns end' );
       // $('#cbox1').attr('checked', false);
       this.eventos = false;
-    }
-  else
-    {
+    }else{
       this.eventos = event.target.checked;
       console.log(event.target.checked);
       if(this.eventos  == true){
@@ -238,14 +233,12 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         $( ".FullScrenn" ).removeClass( 'medium-6 columns end' );
         $( ".FullScrenn" ).addClass( 'medium-3 columns end' );
       }
-
     }
 
   }
 
   // cargar más registros
-  MoreRecords()
-  {
+  MoreRecords(){
     console.log(this.eventos);
     this.showMap(false);
 
@@ -361,6 +354,10 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           project.typology_images = arrayDeCadenas[0];
           var arrayDeCadenas2 = project.project_category.split(',');
           project.project_category = arrayDeCadenas2;
+          /* añadir latitud y longitud de proyectos */
+          var arrayDeLaton = project.latlon.split(',');
+          project.latitude = arrayDeLaton[0]
+          project.longitude = arrayDeLaton[1]
         }
         /* Iterar sobre Filtros */
         if(this.response.facets.property_type){
@@ -629,11 +626,17 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
+        this.countProjects = this.response_data_project.length;
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
           var arrayDeCadenas2 = project.project_category.split(',');
           project.project_category = arrayDeCadenas2;
+          var arrayDeLaton = project.latlon.split(',');
+          /* añadir latitud y longitud de proyectos */
+          var arrayDeLaton = project.latlon.split(',');
+          project.latitude = arrayDeLaton[0]
+          project.longitude = arrayDeLaton[1]
         }
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
@@ -680,7 +683,34 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           }
           this.filterSector = this.response.facets.project_neighborhood;
         }
+        //Área m2
+        if(this.response.facets.area_built){
+          this.filterAreaBuilt = this.response.facets.area_built;
+        }
+        // estados del proyecto
+        if(this.response.facets.project_feature){
+          let project_feature = this.response.facets.project_feature;
+          for (let feature of project_feature) {
+            if(feature.values.value == "Estado del proyecto"){
+              this.filterProjectState = feature.children;
+              this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+            // console.log(this.ValoresProyecto);
+
+            }
+          }
+          // console.log(this.filterProjectState);
+
+        }
+        // Constructora
+        if(this.response.facets.project_builder){
+          this.filterBuilder = this.response.facets.project_builder
+        }
+        /* Ordenación */
+        if(this.response.sorts){
+          this.filterSort = this.response.sorts;
+        }
         this.results = true;
+        this.stopSpinner();
       }
     })
     .catch(error => console.error(error))
@@ -704,11 +734,17 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
+        this.countProjects = this.response_data_project.length;
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
           var arrayDeCadenas2 = project.project_category.split(',');
           project.project_category = arrayDeCadenas2;
+          var arrayDeLaton = project.latlon.split(',');
+          /* añadir latitud y longitud de proyectos */
+          var arrayDeLaton = project.latlon.split(',');
+          project.latitude = arrayDeLaton[0]
+          project.longitude = arrayDeLaton[1]
         }
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
@@ -755,7 +791,34 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           }
           this.filterSector = this.response.facets.project_neighborhood;
         }
+        //Área m2
+        if(this.response.facets.area_built){
+          this.filterAreaBuilt = this.response.facets.area_built;
+        }
+        // estados del proyecto
+        if(this.response.facets.project_feature){
+          let project_feature = this.response.facets.project_feature;
+          for (let feature of project_feature) {
+            if(feature.values.value == "Estado del proyecto"){
+              this.filterProjectState = feature.children;
+              this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+            // console.log(this.ValoresProyecto);
+
+            }
+          }
+          // console.log(this.filterProjectState);
+
+        }
+        // Constructora
+        if(this.response.facets.project_builder){
+          this.filterBuilder = this.response.facets.project_builder
+        }
+        /* Ordenación */
+        if(this.response.sorts){
+          this.filterSort = this.response.sorts;
+        }
         this.results = true;
+        this.stopSpinner();
       }
     })
     .catch(error => console.error(error))
@@ -773,11 +836,16 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       if (this.response) {
         // console.log(this.response.search_results);
         this.response_data_project = this.response
+        this.countProjects = this.response_data_project.length;
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
           var arrayDeCadenas2 = project.project_category.split(',');
           project.project_category = arrayDeCadenas2;
+          /* añadir latitud y longitud de proyectos */
+          var arrayDeLaton = project.latlon.split(',');
+          project.latitude = arrayDeLaton[0]
+          project.longitude = arrayDeLaton[1]
         }
         /* Método para obtener toda la info de proyectos */
         this.Service.getData().subscribe(
@@ -798,6 +866,32 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               if(this.response.facets.typology_price){
                 this.filterPrice = this.response.facets.typology_price;
               }
+              //Área m2
+              if(this.response.facets.area_built){
+                this.filterAreaBuilt = this.response.facets.area_built;
+              }
+              // estados del proyecto
+              if(this.response.facets.project_feature){
+                let project_feature = this.response.facets.project_feature;
+                for (let feature of project_feature) {
+                  if(feature.values.value == "Estado del proyecto"){
+                    this.filterProjectState = feature.children;
+                    this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+                  // console.log(this.ValoresProyecto);
+  
+                  }
+                }
+                // console.log(this.filterProjectState);
+  
+              }
+              // Constructora
+              if(this.response.facets.project_builder){
+                this.filterBuilder = this.response.facets.project_builder
+              }
+              /* Ordenación */
+              if(this.response.sorts){
+                this.filterSort = this.response.sorts;
+              }
               this.results = true;
             }
             /* si responde correctamente */
@@ -807,6 +901,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           }
         );
         this.results = true;
+        this.stopSpinner();
       }
     })
     .catch(error => console.error(error))
