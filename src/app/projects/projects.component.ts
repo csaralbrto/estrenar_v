@@ -42,7 +42,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public route = 'filtro-proyectos';
   public url_search_word = 'https://lab.estrenarvivienda.com/es/api/typologies/all?search=';
   public stringQuery = '';
-  public eventos : any;
+  public eventos : boolean = false;
   public countProjects = '';
   optionsTypySelected: string = '';
   optionsPriceSelected: string = '';
@@ -207,22 +207,38 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   }
 // Ocultar mapa
   showMap(event){
-    this.eventos = event.target.checked
-    console.log(event.target.checked);
-    if(this.eventos  == true){
 
-      $('#ProyectMap').toggleClass('hide');
-      // $('#fullProyect').toggleClass('hide');
+
+    if(event == false)
+    {
+      console.log("here");
+      $('#ProyectMap').addClass('hide');
       $( "#smallScrenn" ).removeClass( 'medium-6 columns' );
       $( "#smallScrenn" ).addClass( 'medium-12 columns' );
       $( ".FullScrenn" ).removeClass( 'medium-6 columns end' );
       $( ".FullScrenn" ).addClass( 'medium-3 columns end' );
-    }else{
-      $('#ProyectMap').toggleClass('hide');
-      $( "#smallScrenn" ).removeClass( 'medium-12 columns' );
-      $( "#smallScrenn" ).addClass( 'medium-6 columns' );
-      $( ".FullScrenn" ).removeClass( 'medium-3 columns end' );
-      $( ".FullScrenn" ).addClass( 'medium-6 columns end' );
+      // $('#cbox1').attr('checked', false);
+      this.eventos = false;
+    }
+  else
+    {
+      this.eventos = event.target.checked;
+      console.log(event.target.checked);
+      if(this.eventos  == true){
+        $('#ProyectMap').toggleClass('hide');
+        $( "#smallScrenn" ).removeClass( 'medium-12 columns' );
+        $( "#smallScrenn" ).addClass( 'medium-6 columns' );
+        $( ".FullScrenn" ).removeClass( 'medium-3 columns end' );
+        $( ".FullScrenn" ).addClass( 'medium-6 columns end' );
+      }else{
+        console.log("here");
+        $('#ProyectMap').toggleClass('hide');
+        $( "#smallScrenn" ).removeClass( 'medium-6 columns' );
+        $( "#smallScrenn" ).addClass( 'medium-12 columns' );
+        $( ".FullScrenn" ).removeClass( 'medium-6 columns end' );
+        $( ".FullScrenn" ).addClass( 'medium-3 columns end' );
+      }
+
     }
 
   }
@@ -230,6 +246,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   // cargar más registros
   MoreRecords()
   {
+    console.log(this.eventos);
+    this.showMap(false);
 
     this.startSpinner();
     this.resultado = this.resultado + this.cont;
@@ -239,6 +257,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       (err) => console.log(),
       () => {
         if (this.response) {
+
           console.log(this.response);
           if(this.response.metatag_normalized){
             this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
@@ -256,6 +275,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           // this.response_data_project = [...this.response_data_project, ...this.response_data_project1];
           // console.log("resultado es "+ this.response_data_project);
           /* Iterar sobre los proyectos */
+
           for (let project of this.response_data_more_project) {
             var arrayDeCadenas = project.typology_images.split(',');
             project.typology_images = arrayDeCadenas[0];
@@ -266,40 +286,6 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             project.latitude = arrayDeLaton[0]
             project.longitude = arrayDeLaton[1]
           }
-          /*
-          if(this.response.facets.property_type){
-            this.filterType = this.response.facets.property_type;
-          }
-          if(this.response.facets.project_city){
-            this.filterCity = this.response.facets.project_city;
-          }
-          if(this.response.facets.typology_price){
-            this.filterPrice = this.response.facets.typology_price;
-          }
-          //Área m2
-          if(this.response.facets.area_built){
-            this.filterAreaBuilt = this.response.facets.area_built;
-          }
-          // estados del proyecto
-          if(this.response.facets.project_feature){
-            let project_feature = this.response.facets.project_feature;
-            for (let feature of project_feature) {
-              if(feature.values.value == "Estado del proyecto"){
-                this.filterProjectState = feature.children;
-                this.ValoresProyecto = Object.values(this.filterProjectState[0]);
-              // console.log(this.ValoresProyecto);
-
-              }
-            }
-            // console.log(this.filterProjectState);
-
-          }
-          // Constructora
-          if(this.response.facets.project_builder)
-          {
-            this.filterBuilder = this.response.facets.project_builder
-          }
-          */
           this.results = true;
           this.stopSpinner();
         }
@@ -309,7 +295,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         }
       }
     );
-    if(this.resultado == 12){
+    if(this.resultado >= 12){
       console.log("debe de estar desactivado");
       this.bandera = true;
     }
@@ -346,7 +332,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   }
   change(value) {
     this.startSpinner();
-    this.bandera = false;
+    // this.bandera = false;
+    this.showMap(false);
     this.stringQuery = "";
     Object.keys(value).forEach( function(key) {
       if(value[key] && value[key] !== 'Seleccione'){
@@ -362,7 +349,6 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     .then(response => response.json())
     .then(data => {
       // console.log(data)
-      // this.showMap(this.eventos)
       this.response = data;
       // console.log(this.response);
       if (this.response) {
@@ -487,6 +473,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   changeSort() {
 
     this.startSpinner();
+    this.showMap(false);
     this.stringQuery = $('#sortBy option:selected').val();
     // console.log(this.stringQuery);
     // this.beforeCheck(this.response.individual);}
