@@ -428,10 +428,11 @@ export class ProjectDetailComponent implements OnInit {
     this.form2 =  this.formBuilder.group({
       dateAgenda: new FormControl(''),
       journalOption: new FormControl(''),
-      house_for: new FormControl(''),
+      schedule: new FormControl(''),
       name: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
+      term: new FormControl(''),
     });
   }
   createFormModal() {
