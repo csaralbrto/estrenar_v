@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AgmCoreModule } from '@agm/core';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
@@ -49,6 +54,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectPreviewComponent } from './project-preview/project-preview.component';
 import { StreetViewComponent } from './street-view/street-view.component';
+
 
 @NgModule({
   declarations: [
@@ -109,7 +115,12 @@ import { StreetViewComponent } from './street-view/street-view.component';
       libraries: ['places']
     }),
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule
+
 
   ],
   providers: [],

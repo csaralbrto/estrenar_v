@@ -30,6 +30,7 @@
     "foundation-sites": "^6.6.3",
     "google-maps-angular": "^2.1.4",
     "jquery": "^3.5.1",
+    "moment": "^2.29.1",
     "ng-recaptcha": "^7.0.1",
     "ng2-device-detector": "^1.0.1",
     "ng5-slider": "^1.2.6",

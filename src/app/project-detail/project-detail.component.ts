@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, Input, ElementRef, ApplicationRef, PLATFORM_ID, Inject } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import * as moment from 'moment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl, SafeUrl, Meta} from '@angular/platform-browser';
 import { ProjectDetailService } from './project-detail.service';
@@ -56,6 +57,12 @@ export class ProjectDetailComponent implements OnInit {
   public keyGoglePlace="AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA";
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
+  // Fecha
+  items: any[] = [];
+  currentDate = new Date();
+  currentMonth = "";
+  stopDate = new Date();
+  selectedItem = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -106,6 +113,10 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormSimuladores();
     this.createFormModal();
     this.GooglePlaces();
+    //Fecha
+    this.items = this.getDates(
+      Date.now()
+    );
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -291,6 +302,49 @@ export class ProjectDetailComponent implements OnInit {
     //   }
     // );
   }
+
+  //fecha
+  getDates(startDate: any) {
+    let dateArray = [];
+    let currentDate = moment(startDate);
+    // stopDate = moment(stopDate);
+    // while (currentDate <= stopDate) {
+      dateArray.push(moment(currentDate).format("YYYY-MMM-DD"));
+      currentDate = moment(currentDate).add(1, "days");
+    // }
+    return dateArray;
+  }
+
+  // Fecha seleccionada fecha
+  select(item: any) {
+    this.selectedItem = item;
+  }
+
+  // Cambiar el mes fecha
+  changeMonth(event) {
+    console.log(event.target.value);
+    this.items = this.getDates(
+      event.target.value
+    );
+    console.log(this.items);
+
+
+    // this.currentDate = this.items[e];
+    // this.currentMonth = new Date(this.currentDate).toLocaleString("default",
+    // {
+    //   month: "long"
+    // });
+  }
+
+ // fecha
+  returnWeekDay(item: any) {
+    return new Date(item).toLocaleDateString("default", { weekday: "long" });
+  }
+
+  returnmonth(item: any) {
+    return new Date(item).toLocaleDateString("default", { month: "long" });
+  }
+
 
   private setCurrentLocation() {
     if ('geolocation' in navigator) {

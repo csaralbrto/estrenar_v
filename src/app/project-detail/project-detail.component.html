@@ -614,8 +614,62 @@
                         </div>
                     </div>
                     <div class="tabs-panel" id="panel2">
-                        <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor neque eu tellus rhoncus ut eleifend
-                            nibh porttitor.</p>
+                      <h3>Agendar Visita</h3>
+                        <p>Programa la fecha y la jornada en la que deseas visitar y conocer el proyecto:</p>
+                            <form [formGroup]="form2">
+                              <div class="container-form">
+                                <div class="dates1">
+                                  <div class="dates">
+                                    <!-- <mat-form-field appearance="fill">
+                                      <mat-label>Verbose datepicker</mat-label>
+                                      <input matInput [matDatepicker]="dp" >
+                                      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                      <mat-datepicker #dp></mat-datepicker>
+                                    </mat-form-field> -->
+
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                      <input matInput [matDatepicker]="picker" (dateChange)="changeMonth($event)" >
+                                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                      <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                    <button type="button" class="success button" (click)="picker.open()">
+                                        <div class="month">
+                                          <span>   {{returnmonth(items) | uppercase}}</span>
+                                          <span> <strong class="dia"> {{items | date:'d'}}</strong></span>
+                                          <span class="weekName">{{returnWeekDay(items)}}</span>
+                                        </div>
+                                    </button>
+                                    <!-- <input type="date" name="dateAgenda" id="" formControlName="dateAgenda"> -->
+                                  </div>
+
+                                  <div class="test12">
+                                    <div class="radio1">
+                                      <input type="radio"  name="journalOption" id="" formControlName="journalOption" value="manana"><label for="right-label" class="text-left">Mañana</label>
+                                    </div>
+
+                                    <!-- <br> -->
+                                    <div class="radio2">
+                                      <input type="radio"  name="journalOption" id="" formControlName="journalOption" value="tarde"> <label for="right-label" class="text-left">Tarde</label>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
+
+                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>08:00 AM</b></button>
+                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>09:00 AM</b></button>
+                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>10:00 AM</b></button>
+                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>11:00 AM</b></button>
+                              <input type="text" placeholder="Nombre" formControlName="name" name="name" required pattern="text">
+                              <input type="text" placeholder="Email"  formControlName="email" name="email" required pattern="email">
+                              <input type="text" placeholder="Teléfono" formControlName="phone" name="phone" required>
+                              <div class="text-left terminos">
+                                <input type="checkbox" name="term" formControlName="term"><label for="right-label" class="text-left">Declaro haber leído el Aviso de privacidad y estar conforme con el mismo</label>
+                                </div>
+                              </div>
+                              <button type="button" class="success button" style="color: black;">Agendar visita</button>
+                            </form>
                     </div>
                 </div>
             </div>

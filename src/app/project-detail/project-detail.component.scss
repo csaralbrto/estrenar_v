@@ -103,52 +103,92 @@
 // }
 // Imagenes Dinamicas
 .rows-img .center {
-    text-align: center;
+  text-align: center;
 }
 
 .row1 {
-    display: flex;
-    padding: 10px;
+  display: flex;
+  padding: 10px;
 }
 
 .rows-img1 {
-    // width: 50%;
-    // height: 50%;
-    padding: 10px;
-    box-shadow: 0 0 2px #c1bcbc;
+  // width: 50%;
+  // height: 50%;
+  padding: 10px;
+  box-shadow: 0 0 2px #c1bcbc;
 }
 
 .rows-img2 {
-    // width: 50%;
-    // height: 50%;
-    padding: 10px;
-    box-shadow: 0 0 2px #c1bcbc;
+  // width: 50%;
+  // height: 50%;
+  padding: 10px;
+  box-shadow: 0 0 2px #c1bcbc;
 }
 
 .rows-img3 {
-    // width: 50%;
-    // height: 50%;
-    padding: 10px;
-    box-shadow: 0 0 2px #c1bcbc;
+  // width: 50%;
+  // height: 50%;
+  padding: 10px;
+  box-shadow: 0 0 2px #c1bcbc;
 }
 
 .rows-img4 {
-    // width: 50%;
-    // height: 50%;
-    padding: 10px;
-    box-shadow: 0 0 2px #c1bcbc;
+  // width: 50%;
+  // height: 50%;
+  padding: 10px;
+  box-shadow: 0 0 2px #c1bcbc;
 }
 
 app-street-view {
-    width: 725px;
-    height: 473px;
-    display: block;
+  width: 725px;
+  height: 473px;
+  display: block;
 }
 
 .visibi-hide {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .mb-StreetV {
-    margin-bottom: -31em;
+  margin-bottom: -31em;
+}
+.dates1 {
+  display: flex;
+  justify-content: space-between;
+}
+.radio2 {
+  padding-right: 15px;
+}
+// .mobileDatePicker {
+//   display: flex;
+// }
+// .cdk-virtual-scroll-data-source-example {
+//   display: flex;
+//   flex-direction: row;
+// }
+
+// .cdk-virtual-scroll-data-source-example .example-item {
+//   height: 100%;
+//   /* writing-mode: horizontal-tb; */
+//   margin-right: 0.2rem;
+// }
+.month {
+  padding: 0 1.5rem;
+  // background: #4a4a4a;
+  border-radius: 5px 0px 0px 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px !important;
+  // box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+mat-form-field {
+  // margin-right: 12px;
+  // display: none;
+  visibility: hidden;
+}
+.dia {
+  font-size: 20px;
 }
