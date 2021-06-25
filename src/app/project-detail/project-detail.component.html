@@ -627,18 +627,21 @@
                                       <mat-datepicker #dp></mat-datepicker>
                                     </mat-form-field> -->
 
-                                    <mat-form-field class="example-full-width" appearance="fill">
-                                      <input matInput [matDatepicker]="picker" (dateChange)="changeMonth($event)" >
-                                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                      <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
-                                    <button type="button" class="success button" (click)="picker.open()">
+                                    <!-- <mat-form-field class="example-full-width" appearance="fill"> -->
+
+                                      <button  class="button" type="button"   (click)="picker.open()">
                                         <div class="month">
                                           <span>   {{returnmonth(items) | uppercase}}</span>
                                           <span> <strong class="dia"> {{items | date:'d'}}</strong></span>
                                           <span class="weekName">{{returnWeekDay(items)}}</span>
                                         </div>
+                                        <input matInput  [matDatepicker]="picker" style="visibility: hidden" (dateChange)="changeMonth($event)" >
                                     </button>
+
+
+                                      <mat-datepicker #picker></mat-datepicker>
+
+
                                     <!-- <input type="date" name="dateAgenda" id="" formControlName="dateAgenda"> -->
                                   </div>
 
@@ -657,10 +660,10 @@
 
 
 
-                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>08:00 AM</b></button>
-                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>09:00 AM</b></button>
-                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>10:00 AM</b></button>
-                              <button class="button" type="submit" style="background-color:white; color: teal;"> <b>11:00 AM</b></button>
+                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>08:00 AM</b></button>
+                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>09:00 AM</b></button>
+                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>10:00 AM</b></button>
+                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>11:00 AM</b></button>
                               <input type="text" placeholder="Nombre" formControlName="name" name="name" required pattern="text">
                               <input type="text" placeholder="Email"  formControlName="email" name="email" required pattern="email">
                               <input type="text" placeholder="Teléfono" formControlName="phone" name="phone" required>

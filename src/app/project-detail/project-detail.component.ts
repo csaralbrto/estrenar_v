@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 import { MetaTag } from '../class/metatag.class';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { isPlatformBrowser } from '@angular/common';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
 declare var $: any;
 
 @Component({
@@ -87,6 +88,7 @@ export class ProjectDetailComponent implements OnInit {
   public coor_latitude: any;
   public coor_longitude: any;
 
+
   // latitude: 6.1891388;
   // longitude: 75.5799235;
   zoom:number;
@@ -117,6 +119,7 @@ export class ProjectDetailComponent implements OnInit {
     this.items = this.getDates(
       Date.now()
     );
+
 
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
@@ -307,17 +310,10 @@ export class ProjectDetailComponent implements OnInit {
   getDates(startDate: any) {
     let dateArray = [];
     let currentDate = moment(startDate);
-    // stopDate = moment(stopDate);
-    // while (currentDate <= stopDate) {
       dateArray.push(moment(currentDate).format("YYYY-MMM-DD"));
       currentDate = moment(currentDate).add(1, "days");
-    // }
+    console.log("currentDate "+currentDate);
     return dateArray;
-  }
-
-  // Fecha seleccionada fecha
-  select(item: any) {
-    this.selectedItem = item;
   }
 
   // Cambiar el mes fecha
@@ -327,13 +323,6 @@ export class ProjectDetailComponent implements OnInit {
       event.target.value
     );
     console.log(this.items);
-
-
-    // this.currentDate = this.items[e];
-    // this.currentMonth = new Date(this.currentDate).toLocaleString("default",
-    // {
-    //   month: "long"
-    // });
   }
 
  // fecha
