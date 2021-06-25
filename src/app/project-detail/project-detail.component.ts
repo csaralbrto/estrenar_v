@@ -58,7 +58,7 @@ export class ProjectDetailComponent implements OnInit {
   public keyGoglePlace="AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA";
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
-  // Fecha
+  /* Fecha */
   items: any[] = [];
   currentDate = new Date();
   currentMonth = "";
@@ -87,10 +87,6 @@ export class ProjectDetailComponent implements OnInit {
   longitude: number;
   public coor_latitude: any;
   public coor_longitude: any;
-
-
-  // latitude: 6.1891388;
-  // longitude: 75.5799235;
   zoom:number;
   public galeria;
   public caracteristicas;
@@ -114,7 +110,7 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
-    this.GooglePlaces();
+    // this.GooglePlaces();
     //Fecha
     this.items = this.getDates(
       Date.now()
@@ -173,10 +169,7 @@ export class ProjectDetailComponent implements OnInit {
               this.priceProject = this.response.field_typology_price
               this.idProject = this.response.drupal_internal__nid;
               const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
-              // mapa Yenifer
-
-              this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
-
+              /* mapa Yenifer */
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
               this.response.marketIcon =
@@ -188,20 +181,12 @@ export class ProjectDetailComponent implements OnInit {
                 }
               }
               this.galeria = this.response.field_typology_image;
-              // console.log('esta es la galeria: ',this.galeria);
-              // console.log('tamaño de la galeria: ',this.galeria.length);
               this.operacion= this.galeria.length;
-              if(this.operacion % 2 == 0)
-              {
+              if(this.operacion % 2 == 0){
                 this.valoresPares = "par";
-                  // console.log(this.valoresPares);
-              }
-              else
-              {
+              }else{
                 this.valoresPares = "impar";
-                // console.log(this.valoresPares);
               }
-
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
               for (let caracteristica_tipologia of this.caracteristicas) {
@@ -286,24 +271,6 @@ export class ProjectDetailComponent implements OnInit {
         }
       }
     );
-    /* Método para obtener areas disponibles */
-    // this.Service.availableAreas().subscribe(
-    //   (data) => (this.responseAvailableAreas = data),
-    //   (err) => console.log(),
-    //   () => {
-    //     if (this.responseAvailableAreas) {
-    //       this.projectsAvailableAreas = this.responseAvailableAreas.search_results;
-    //       for (let project of this.projectsAvailableAreas) {
-    //         var arrayDeCadenas = project.typology_images.split(',');
-    //         project.typology_images = arrayDeCadenas[0];
-    //         var arrayDeCadenas2 = project.project_category.split(',');
-    //         project.project_category = arrayDeCadenas2;
-    //         this.results = true;
-    //       }
-    //       /* si responde correctamente */
-    //     }
-    //   }
-    // );
   }
 
   //fecha
@@ -315,7 +282,6 @@ export class ProjectDetailComponent implements OnInit {
     console.log("currentDate "+currentDate);
     return dateArray;
   }
-
   // Cambiar el mes fecha
   changeMonth(event) {
     console.log(event.target.value);
@@ -324,17 +290,13 @@ export class ProjectDetailComponent implements OnInit {
     );
     console.log(this.items);
   }
-
  // fecha
   returnWeekDay(item: any) {
     return new Date(item).toLocaleDateString("default", { weekday: "long" });
   }
-
   returnmonth(item: any) {
     return new Date(item).toLocaleDateString("default", { month: "long" });
   }
-
-
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -343,18 +305,13 @@ export class ProjectDetailComponent implements OnInit {
         this.zoom = 15;
         // this.mapTypeId = 'roadmap';
       });
-      // console.log(this.latitude);
-      // console.log(this.longitude);
 
     }
   }
-
   GooglePlaces(){
-
     const requestOptions = {
       method: 'GET',
     };
-
     fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.latitude+","+this.longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
       .then(response => response.json())
       .then(data => {
@@ -364,9 +321,7 @@ export class ProjectDetailComponent implements OnInit {
         }
       })
       .catch(error => console.log('error', error));
-}
-
-
+  }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
 
@@ -534,7 +489,7 @@ export class ProjectDetailComponent implements OnInit {
       error = false;
     }
     if(!error){
-
+      $('#exampleModal1').foundation('open');
       /* Se recibe los valores del formulario */
       var f = new Date();
       var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
@@ -605,7 +560,6 @@ export class ProjectDetailComponent implements OnInit {
         err => console.log(),
         () => {
           if(this.responseSubmit.id){
-            $('#exampleModal1').foundation('open');
             this.form.reset();
           }
           if(!this.responseSubmit.id){
@@ -617,22 +571,24 @@ export class ProjectDetailComponent implements OnInit {
   }
   onSubmitDates(values) {
     /* Se recibe los valores del formulario de Citas */
+    values.dateAgenda = this.items[0];
     values.type_submit = 'date_form';
-    this.Service.getFormService( values )
-    .subscribe(
-      data => this.confirm = data,
-      err => console.log(),
-      () => {
-        if(this.confirm){
-          // $('#modalAlertSuccessful').foundation('open');
-          console.log('Respondió '+this.confirm);
-          this.form.reset();
-        }
-        if(this.confirm.error){
-          // $('#modalAlertError').foundation('open');
-        }
-      }
-    );
+    $('#exampleModal1').foundation('open');
+    // this.Service.getFormService( values )
+    // .subscribe(
+    //   data => this.confirm = data,
+    //   err => console.log(),
+    //   () => {
+    //     if(this.confirm){
+    //       // $('#modalAlertSuccessful').foundation('open');
+    //       console.log('Respondió '+this.confirm);
+    //       this.form2.reset();
+    //     }
+    //     if(this.confirm.error){
+    //       // $('#modalAlertError').foundation('open');
+    //     }
+    //   }
+    // );
   }
   onSubmitModal(values) {
     console.log(values);
@@ -897,7 +853,7 @@ export class ProjectDetailComponent implements OnInit {
       this.spinnerService.show();
     }
   }
-   stopSpinner(): void {
+  stopSpinner(): void {
     if (this.spinnerService) {
       // console.log("ingrese a parar");
       this.spinnerService.hide();
@@ -906,35 +862,28 @@ export class ProjectDetailComponent implements OnInit {
   contactModal(){
     $('#exampleModal2').foundation('open');
   }
-  showHideTab(value)
-  {
-    if(value == 1)
-    {
+  showHideTab(value){
+    if(value == 1){
       $('#showMap').attr('aria-selected', 'true');
       $('#showStreet').attr('aria-selected', 'false');
       $('#showPlane').attr('aria-selected', 'false');
       $('#googleMaps').removeClass("hide");
       $('#googleStreet').addClass("visibi-hide");
       $('#planes').addClass("visibi-hide");
-    }
-    else if(value == 3){
+    }else if(value == 3){
       $('#showStreet').attr('aria-selected', 'true');
       $('#showMap').attr('aria-selected', 'false');
       $('#showPlane').attr('aria-selected', 'false');
       $('#googleMaps').addClass("hide");
       $('#googleStreet').removeClass("visibi-hide");
       $('#planes').addClass("visibi-hide");
-    }
-    else if(value == 2)
-    {
+    }else if(value == 2){
       $('#showStreet').attr('aria-selected', 'false');
       $('#showMap').attr('aria-selected', 'false');
       $('#showPlane').attr('aria-selected', 'true');
       $('#planes').removeClass("visibi-hide");
       $('#googleMaps').addClass("hide");
-
       $('#googleStreet').addClass("visibi-hide");
     }
-}
-
+  }
 }

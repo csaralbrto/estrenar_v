@@ -2,11 +2,8 @@
     <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner> -->
 
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  template="<img src='/assets/images/logo-ev.png' />"
->
-<p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" template="<img src='/assets/images/logo-ev.png' />">
+    <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 
 <div class="row columns">
@@ -543,8 +540,8 @@
                     <!-- </div> -->
                 </div>
                 <div id="planes" class="visibi-hide">
-                  <p>Información no disponible</p>
-              </div>
+                    <p>Información no disponible</p>
+                </div>
                 <div class="tabs-panel" id="street_view">
                     <app-street-view [latitude]="latitude" [longitude]="longitude"></app-street-view>
                 </div>
@@ -555,71 +552,71 @@
     <div class="medium-4 columns text-center">
         <h2 class="deco">¿Necesitas asesoría?</h2>
         <p class="mini">Déjanos tus datos para contactarte o agendar una visita.</p>
-        <form data-abide novalidate [formGroup]="form">
-            <div class="formulario">
-                <div data-abide-error class="alert callout" style="display: none;">
-                    <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
-                </div>
-                <ul class="tabs" data-tabs id="contacto">
-                    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Contacto</a></li>
-                    <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Agendar visita</a></li>
-                </ul>
-                <div class="tabs-content" data-tabs-content="contacto">
-                    <div class="tabs-panel is-active" id="panel1">
+        <div class="formulario">
+            <div data-abide-error class="alert callout" style="display: none;">
+                <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
+            </div>
+            <ul class="tabs" data-tabs id="contacto">
+                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Contacto</a></li>
+                <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Agendar visita</a></li>
+            </ul>
+            <div class="tabs-content" data-tabs-content="contacto">
+                <div class="tabs-panel is-active" id="panel1">
+                    <form data-abide novalidate [formGroup]="form">
                         <div class="container-form">
                             <span id="spanName" class="error hide">
-                          Debe digitar un nombre de contacto
-                      </span>
+                                Debe digitar un nombre de contacto
+                            </span>
                             <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
                             <span id="spannLastName" class="error hide">
-                          Debe digitar un apellido de contacto
-                      </span>
+                                Debe digitar un apellido de contacto
+                            </span>
                             <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
                             <span id="spanEmail" class="error hide">
-                          Debe digitar un correo de contacto valido
-                      </span>
+                                Debe digitar un correo de contacto valido
+                            </span>
                             <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
                             <span id="spanPhone" class="error hide">
-                          Debe digitar un n&uacute;mbre de contacto
-                      </span>
+                                Debe digitar un n&uacute;mbre de contacto
+                            </span>
                             <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
                             <span id="spanContact" class="error hide">
-                          Debe seleccionar una opción
-                      </span>
+                                Debe seleccionar una opción
+                            </span>
                             <select id="select" required formControlName="contact" name="contact">
-                          <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
-                          <option value="telefono">Tel&eacute;fonica</option>
-                          <option value="email">Correo Electr&oacute;nico</option>
-                          <option value="correo">Correo Postal</option>
-                      </select>
+                                <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                                <option value="telefono">Tel&eacute;fonica</option>
+                                <option value="email">Correo Electr&oacute;nico</option>
+                                <option value="correo">Correo Postal</option>
+                            </select>
                             <span id="spanTypesearch" class="hide">
-                          Debe seleccionar una opción
-                          </span>
+                            Debe seleccionar una opción
+                            </span>
                             <fieldset class="text-left">
                                 <legend>Buscas vivienda para:</legend>
                                 <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
                                 <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
                             </fieldset>
-
                             <div class="text-left terminos">
                                 <span id="spanTerm" class="hide">
-                              Debe aceptar los términos
-                              </span>
+                                Debe aceptar los términos
+                                </span>
                                 <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
-                              haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
-                              mismos.</label>
+                                haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
+                                mismos.</label>
 
                             </div>
                             <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
                         </div>
-                    </div>
-                    <div class="tabs-panel" id="panel2">
-                      <h3>Agendar Visita</h3>
-                        <p>Programa la fecha y la jornada en la que deseas visitar y conocer el proyecto:</p>
-                            <form [formGroup]="form2">
-                              <div class="container-form">
-                                <div class="dates1">
-                                  <div class="dates">
+                    </form>
+                </div>
+                <div class="tabs-panel" id="panel2">
+                    <h3>Agendar Visita</h3>
+                    <p>Programa la fecha y la jornada en la que deseas visitar y conocer el proyecto:</p>
+                    <form [formGroup]="form2">
+                        <div class="container-form">
+                            <div class="dates1">
+                                <div class="dates">
                                     <!-- <mat-form-field appearance="fill">
                                       <mat-label>Verbose datepicker</mat-label>
                                       <input matInput [matDatepicker]="dp" >
@@ -629,7 +626,7 @@
 
                                     <!-- <mat-form-field class="example-full-width" appearance="fill"> -->
 
-                                      <button  class="button" type="button"   (click)="picker.open()">
+                                    <button class="button" type="button" (click)="picker.open()">
                                         <div class="month">
                                           <span>   {{returnmonth(items) | uppercase}}</span>
                                           <span> <strong class="dia"> {{items | date:'d'}}</strong></span>
@@ -637,46 +634,33 @@
                                         </div>
                                         <input matInput  [matDatepicker]="picker" style="visibility: hidden" (dateChange)="changeMonth($event)" >
                                     </button>
-
-
-                                      <mat-datepicker #picker></mat-datepicker>
-
-
-                                    <!-- <input type="date" name="dateAgenda" id="" formControlName="dateAgenda"> -->
-                                  </div>
-
-                                  <div class="test12">
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </div>
+                                <div class="test12">
                                     <div class="radio1">
-                                      <input type="radio"  name="journalOption" id="" formControlName="journalOption" value="manana"><label for="right-label" class="text-left">Mañana</label>
+                                        <input type="radio" name="journalOption" id="" formControlName="journalOption" value="manana"><label for="right-label" class="text-left">Mañana</label>
                                     </div>
-
-                                    <!-- <br> -->
                                     <div class="radio2">
-                                      <input type="radio"  name="journalOption" id="" formControlName="journalOption" value="tarde"> <label for="right-label" class="text-left">Tarde</label>
+                                        <input type="radio" name="journalOption" id="" formControlName="journalOption" value="tarde"> <label for="right-label" class="text-left">Tarde</label>
                                     </div>
-                                  </div>
                                 </div>
-
-
-
-
-                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>08:00 AM</b></button>
-                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>09:00 AM</b></button>
-                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>10:00 AM</b></button>
-                              <button class="button" type="button" style="background-color:white; color: teal;"> <b>11:00 AM</b></button>
-                              <input type="text" placeholder="Nombre" formControlName="name" name="name" required pattern="text">
-                              <input type="text" placeholder="Email"  formControlName="email" name="email" required pattern="email">
-                              <input type="text" placeholder="Teléfono" formControlName="phone" name="phone" required>
-                              <div class="text-left terminos">
-                                <input type="checkbox" name="term" formControlName="term"><label for="right-label" class="text-left">Declaro haber leído el Aviso de privacidad y estar conforme con el mismo</label>
-                                </div>
-                              </div>
-                              <button type="button" class="success button" style="color: black;">Agendar visita</button>
-                            </form>
-                    </div>
+                            </div>
+                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>08:00 AM</b></button>
+                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>09:00 AM</b></button>
+                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>10:00 AM</b></button>
+                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>11:00 AM</b></button>
+                            <input type="text" placeholder="Nombre" formControlName="name" name="name" required pattern="text">
+                            <input type="text" placeholder="Email" formControlName="email" name="email" required pattern="email">
+                            <input type="text" placeholder="Teléfono" formControlName="phone" name="phone" required>
+                            <div class="text-left terminos">
+                                <input type="checkbox" name="term" formControlName="term"><label for="right-label" class="text-left">Declaro haber leído el <a href="/aviso-privacidad">Aviso de privacidad</a> y estar conforme con el mismo</label>
+                            </div>
+                        </div>
+                        <button (click)="onSubmitDates(form2.value)" type="button" class="success button" style="color: black;">Agendar visita</button>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
         <div class="row columns">
             <div class="container-constructora">
                 <div class="small-4 columns">
@@ -903,16 +887,15 @@
                                             <div class="row">
                                                 <div class="medium-6 columns">
                                                     <label class="container-radio">Crédito hipotecario
-                                  <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
-                                  <span class="checkmark"></span>
-                              </label>
+                                                        <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
+                                                        <span class="checkmark"></span>
+                                                    </label>
                                                 </div>
                                                 <div class="medium-6 columns">
-
                                                     <label class="container-radio">Leasing habitacional
-                                  <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
-                                  <span class="checkmark"></span>
-                              </label>
+                                                        <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
+                                                        <span class="checkmark"></span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -920,7 +903,7 @@
                                 </div>
                                 <div class="medium-4 columns text-center campo-destacado">
                                     <p> Fecha estimada de entrega</p>
-                                    <input type="text" formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
+                                    <input formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
                                     <hr>
                                     <p> Plazo actual para cuota inicial</p>
                                     <input type="text" placeholder="No. meses">
