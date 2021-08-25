@@ -68,7 +68,8 @@ export class ProjectsService {
   // filtro cargar más
   getMoreData(itempaper:number): Observable<any>
   {
-    this.urlMas = environment.endpointTestingApi+ `typologies/project_builder/10?items_per_page=${itempaper}`;
+    this.urlMas =`https://lab.estrenarvivienda.com/es/api/typologies/project_collection/%7Bid_collection%7D?items_per_page=${itempaper}`
+    //  environment.endpointTestingApi+ `typologies/project_builder/10?items_per_page=${itempaper}`;
     return this.http.get(this.urlMas)
     .pipe(map(( response => response.json() )));
   }
