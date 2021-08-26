@@ -28,7 +28,7 @@
                                     <option *ngFor="let option of builders; let i = index" [value]="option.id">{{option.name}}</option>
                                 </select>
                             </label>
-                        <div  class="">
+                        <div class="">
                             <span style="color: red" id="spanBuilder" class="hide">
                                     Debe seleccionar una Constructora 
                                 </span>
@@ -66,7 +66,7 @@
                         <legend>Estado del proyecto</legend>
                         <div class="opcion text-center" *ngFor="let option of stateProjects">
                             <div class="opcion-seleccion">
-                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png"
+                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label for="casas"><img [src]="option.icon"
                                             alt="Casas"></label>
                             </div>
                             <div class="item">{{option.name}}</div>

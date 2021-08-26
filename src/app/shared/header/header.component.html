@@ -112,8 +112,8 @@
                 <li>
                     <a href="blog">Blog</a>
                 </li>
-                <li>
-                    <a><img src="/assets/images/search.png"></a>
+                <li class="search"><input (change)=(findByWord()) id="searchProjectsWord" class="hide" type="text">
+                    <a (click)=(searchInput())><img src="/assets/images/search.png"></a>
                 </li>
                 <li>
                     <a href="{{path_user}}"><img src="/assets/images/user.png"></a>

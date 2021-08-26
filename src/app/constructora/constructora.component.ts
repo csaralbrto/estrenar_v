@@ -17,6 +17,7 @@ export class ConstructoraComponent implements OnInit {
   constructor( public Service: ConstructoraService, private spinnerService: NgxSpinnerService ) { }
   dataPath = environment.endpoint;
   cadena = '';
+  public url_search_word = 'https://lab.estrenarvivienda.com/es/api/builders/all?search=';
   largo = '';
   optionsLocationSelected: string = '';
   public stringQuery: any;
@@ -51,6 +52,41 @@ export class ConstructoraComponent implements OnInit {
         }
       }
     );
+  }
+
+  loadMore(){
+    this.startSpinner();
+    let val = this.response.search_results.length;
+    let numb_search = Number(val) + Number(4);
+ 
+    this.Service.loadMore(numb_search).subscribe(
+      (data) => (this.response = data),
+      (err) => console.log(),
+      () => {
+        if (this.response) {
+          console.log(this.response);
+          this.constructoras = this.response.search_results;
+          for (let project of this.constructoras) {
+            var arrayDeCadenas = project.builder_location_phone.split(',');
+            project.builder_location_phone = arrayDeCadenas[0];
+            var arrayDeCadenas2 = project.builder_address.split(',');
+            project.builder_address = arrayDeCadenas2[0];
+          }
+          if(this.response.facets.builder_location_city){
+            this.filterLocation = this.response.facets.builder_location_city;
+          }
+          this.stopSpinner();
+        }
+        /* si responde correctamente */
+        if (this.response.error) {
+          /* si hay error en la respuesta */
+          this.stopSpinner();
+        }
+      }
+    );
+    if(numb_search == 32){
+      $('#buttonLoadMore').addClass('disabled');
+    }
   }
 
   change(value) {
@@ -97,6 +133,40 @@ export class ConstructoraComponent implements OnInit {
 
 
 
+  }
+
+
+  filterByWord() {
+    var value = $('#searchWord').val();
+    var url = this.url_search_word + value;
+    var data = "";
+    fetch(url, {
+    })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data)
+      this.response = data;
+      // console.log(this.response);
+      if (this.response) {
+        console.log(this.response);
+        this.constructoras = this.response;
+        // for (let project of this.constructoras) {
+          // if(this.constructoras.builder_location_phone !== 'undefined'){
+          //   var arrayDeCadenas = this.constructoras.builder_location_phone.split(',');
+          //   this.constructoras.builder_location_phone = arrayDeCadenas[0];
+          // }
+          if(this.constructoras.builder_address){
+            var arrayDeCadenas2 = this.constructoras.builder_address.split(',');
+            this.constructoras.builder_address = arrayDeCadenas2[0];
+          }
+        // }
+        // if(this.response.facets.builder_location_city !== 'undefined'){
+        //   this.filterLocation = this.response.facets.builder_location_city;
+        // }
+        this.stopSpinner();
+      }
+    })
+    .catch(error => console.error(error))
   }
 
   // metodos cargando

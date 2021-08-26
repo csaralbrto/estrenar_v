@@ -315,4 +315,11 @@ export class HomeComponent implements OnInit {
       this.spinnerService.hide();
     }
   }
+  loadCollection(value,name){
+    sessionStorage.removeItem('wordTitleCollection');
+    sessionStorage.removeItem('collection_id');
+    sessionStorage.setItem('wordTitleCollection',name)
+    sessionStorage.setItem('collection_id',value);
+    this.router.navigate(['/proyectos']);
+  }
 }

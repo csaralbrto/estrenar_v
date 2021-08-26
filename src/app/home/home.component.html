@@ -2,12 +2,8 @@
     <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner> -->
 
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  template="<img src='/assets/images/logo-ev.png' />"
-
->
-<p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" template="<img src='/assets/images/logo-ev.png' />">
+    <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 
 <!--Bloque1 -->
@@ -53,7 +49,9 @@
                                 <div class="medium-8 columns destacado">
                                     <figure class="">
                                         <div *ngIf="response.home_featured_collections[0]; else imgOther0">
-                                            <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
+                                            <a (click)=(loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name))>
+                                                <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
+                                            </a>
                                         </div>
                                         <ng-template #imgOther0>
                                             <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -66,7 +64,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[1]; else imgOther1">
-                                                    <img class="" [src]="response.home_featured_collections[1].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[1].id,response.home_featured_collections[1].name))>
+                                                        <img class="" [src]="response.home_featured_collections[1].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther1>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -78,7 +78,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[2]; else imgOther2">
-                                                    <img class="" [src]="response.home_featured_collections[2].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[2].id,response.home_featured_collections[2].name))>
+                                                        <img class="" [src]="response.home_featured_collections[2].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther2>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -99,7 +101,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[3]; else imgOther3">
-                                                    <img class="" [src]="response.home_featured_collections[3].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[3].id,response.home_featured_collections[3].name))>
+                                                        <img class="" [src]="response.home_featured_collections[3].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther3>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -111,7 +115,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[4]; else imgOther4">
-                                                    <img class="" [src]="response.home_featured_collections[4].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[4].id,response.home_featured_collections[4].name))>
+                                                        <img class="" [src]="response.home_featured_collections[4].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther4>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -128,7 +134,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[5]; else imgOther5">
-                                                    <img class="" [src]="response.home_featured_collections[5].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[5].id,response.home_featured_collections[5].name))>
+                                                        <img class="" [src]="response.home_featured_collections[5].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther5>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -140,7 +148,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[6]; else imgOther6">
-                                                    <img class="" [src]="response.home_featured_collections[6].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[6].id,response.home_featured_collections[6].name))>
+                                                        <img class="" [src]="response.home_featured_collections[6].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther6>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -157,7 +167,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[7]; else imgOther7">
-                                                    <img class="" [src]="response.home_featured_collections[7].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[7].id,response.home_featured_collections[7].name))>
+                                                        <img class="" [src]="response.home_featured_collections[7].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther7>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
@@ -169,7 +181,9 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[8]; else imgOther8">
-                                                    <img class="" [src]="response.home_featured_collections[8].image.url" alt="">
+                                                    <a (click)=(loadCollection(response.home_featured_collections[8].id,response.home_featured_collections[8].name))>
+                                                        <img class="" [src]="response.home_featured_collections[8].image.url" alt="">
+                                                    </a>
                                                 </div>
                                                 <ng-template #imgOther8>
                                                     <img class="" src="/assets/images/content/ficha.jpg" alt="">
