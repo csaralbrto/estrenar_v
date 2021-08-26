@@ -123,7 +123,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         this.filterByWord(get_filter_word);
     }else{
       /* Método para obtener toda la info de proyectos */
-      this.Service.getData().subscribe(
+      console.log(this.resultProyecto);
+      this.Service.getData(this.resultProyecto).subscribe(
         (data) => (this.response = data),
         (err) => console.log(),
         () => {

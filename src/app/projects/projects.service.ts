@@ -40,8 +40,16 @@ export class ProjectsService {
 
 
   /* Traer toda la info de proyectos */
-  getData(): Observable<any> {
-    return this.http.get(this.url)
+  // getData(): Observable<any> {
+  //   return this.http.get(this.url)
+  //   .pipe(map(( response => response.json() )));
+  // }
+
+    /* Traer toda la info de proyectos  v2*/
+  getData(contProject): Observable<any> {
+
+    this.urlMas =`https://lab.estrenarvivienda.com/es/api/typologies/project_collection/%7Bid_collection%7D?items_per_page=${contProject}`
+    return this.http.get(this.urlMas)
     .pipe(map(( response => response.json() )));
   }
   /* Traer proyectos filtrados */
