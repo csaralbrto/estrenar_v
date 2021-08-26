@@ -78,9 +78,9 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   latitude: number;
   longitude: number;
   zoom:number;
-  cont:number = 8;
-  resultado:number = 4;
-  bandera  = false;
+  contProyecto:number = 4;
+  resultProyecto:number = 8;
+  banderaProyecto  = false;
 
   ngOnInit() {
     this.collectionActive = this.route;
@@ -123,7 +123,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         this.filterByWord(get_filter_word);
     }else{
       /* Método para obtener toda la info de proyectos */
-      this.Service.getData().subscribe(
+      console.log(this.resultProyecto);
+      this.Service.getData(this.resultProyecto).subscribe(
         (data) => (this.response = data),
         (err) => console.log(),
         () => {
@@ -241,11 +242,13 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   MoreRecords(){
     console.log(this.eventos);
     this.showMap(false);
-
     this.startSpinner();
-    this.resultado = this.resultado + this.cont;
-    console.log(this.resultado);
-    this.Service.getMoreData(this.resultado).subscribe(
+   console.log("contador "+ this.contProyecto);
+   console.log("resultado "+ this.resultProyecto);
+    this.resultProyecto = this.resultProyecto + this.contProyecto;
+    console.log(this.resultProyecto);
+
+    this.Service.getMoreData(this.resultProyecto).subscribe(
       (data) => (this.response = data),
       (err) => console.log(),
       () => {
@@ -288,9 +291,9 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         }
       }
     );
-    if(this.resultado >= 12){
+    if(this.resultProyecto == 32){
       console.log("debe de estar desactivado");
-      this.bandera = true;
+      this.banderaProyecto = true;
     }
   }
   decreaseValue(value) {
@@ -848,7 +851,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           project.longitude = arrayDeLaton[1]
         }
         /* Método para obtener toda la info de proyectos */
-        this.Service.getData().subscribe(
+        this.Service.getData(this.resultProyecto).subscribe(
           (data) => (this.response = data),
           (err) => console.log(),
           () => {
@@ -878,11 +881,11 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
                     this.filterProjectState = feature.children;
                     this.ValoresProyecto = Object.values(this.filterProjectState[0]);
                   // console.log(this.ValoresProyecto);
-  
+
                   }
                 }
                 // console.log(this.filterProjectState);
-  
+
               }
               // Constructora
               if(this.response.facets.project_builder){
