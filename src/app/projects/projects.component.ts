@@ -851,7 +851,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           project.longitude = arrayDeLaton[1]
         }
         /* Método para obtener toda la info de proyectos */
-        this.Service.getData().subscribe(
+        this.Service.getData(this.resultProyecto).subscribe(
           (data) => (this.response = data),
           (err) => console.log(),
           () => {
