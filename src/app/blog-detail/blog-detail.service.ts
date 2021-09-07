@@ -20,11 +20,14 @@ export class BlogDetailService {
   public blogPath: string;
   public blogRelatedPath: string;
   public sendComment: string;
+  public sendNewsletter: string;
+
 
   constructor( private http: Http ) { 
-    this.dataBlogPath = environment.endpointTestingApiPost+ 'router/translate-path?path=/es/';
+    this.dataBlogPath = environment.endpointTestingApiPost+ 'router/translate-path?path=/';
     this.blogRelatedPath = environment.endpointTestingApi+ 'articles?items_per_page=4';
     this.sendComment = environment.endpointTestingApiPost + 'comment/';
+    this.sendNewsletter = environment.endpointTestingApiPost + 'webform_rest/submit?_format=json';
   }
   /* Traer la info del proyecto */
   findProject( params: any ): Observable<any> {
@@ -45,6 +48,12 @@ export class BlogDetailService {
   sendBlogComment( params: any ): Observable<any> {
     // console.log(this.sendComment, params);
     return this.http.post(this.sendComment, params)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Newsletter */
+  suscribeNewsletter( params: any ): Observable<any> {
+    // console.log(this.sendComment, params);
+    return this.http.post(this.sendNewsletter, params)
     .pipe(map(( response => response.json() )));
   }
 }

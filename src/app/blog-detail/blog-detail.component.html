@@ -1,133 +1,143 @@
-
-<ngx-spinner
-bdColor="rgba(51,51,51,0.8)"
-template="<img src='/assets/images/logo-ev.png' />"
->
-<p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" template="<img src='/assets/images/logo-ev.png' />">
+    <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 
 <div class="row columns text-center">
-  <div class="publicidad">
-      <img src="/assets/images/banner1.jpg" alt="">
-  </div>
+    <div class="publicidad">
+        <img src="/assets/images/banner1.jpg" alt="">
+    </div>
 </div>
 <div class="row columns">
-  <div class="medium-9 columns blog-detail">
-      <div class="blog">
-          <div  *ngIf="response.field_tags.length > 0">
-              <div class="section black" *ngFor="let tags of response.field_tags; let i = index">
-                  <a>{{ tags.name }}</a>
-              </div>
-          </div>
-          <h1>Blog</h1>
-          <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{ response.uid.display_name }}</span>{{ response.changed }}</div>
-      </div>
-      <hr class="white">
-      <img class="image mb1" [src]="url_img_path + response.field_media[0].field_media_image.uri.url" alt="">
-      <hr class="white">
-      <div class="container-blog">
-          <p [innerHTML]=response.body.processed></p>
-      </div>
-      <hr class="white">
-      <h2 class="deco text-center">Deja tu comentario</h2>
-      <form [formGroup]="form">
-        <div class="row form-comment">
-            <div class="medium-12 columns">
-                <div class="row">
-                    <div class="medium-2 columns">
-                        <label for="middle-label" class="text-right middle">Nombre</label>
-                    </div>
-                    <div class="medium-10 columns">
-                        <input type="text" id="middle-label" formControlName="name"
-                        name="name" required pattern="text">
-                    </div>
+    <div class="medium-9 columns blog-detail">
+        <div class="blog">
+            <div *ngIf="response.field_tags.length > 0">
+                <div class="section black" *ngFor="let tags of response.field_tags; let i = index">
+                    <a>{{ tags.name }}</a>
                 </div>
-                <div class="row">
-                    <div class="medium-2 columns">
-                        <label for="middle-label" class="text-right middle">Email</label>
+            </div>
+            <h1>Blog</h1>
+            <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{ response.uid.display_name }}</span>{{ response.changed }}</div>
+        </div>
+        <hr class="white">
+        <img class="image mb1" [src]="url_img_path + response.field_media[0].field_media_image.uri.url" alt="">
+        <hr class="white">
+        <div class="container-blog">
+            <p [innerHTML]=response.body.processed></p>
+        </div>
+        <hr class="white">
+        <h2 class="deco text-center">Deja tu comentario</h2>
+        <form [formGroup]="form">
+            <div class="row form-comment">
+                <div class="medium-12 columns">
+                    <div class="row">
+                        <div class="medium-2 columns">
+                            <label for="middle-label" class="text-right middle">Nombre</label>
+                        </div>
+                        <div class="medium-10 columns">
+                            <input type="text" id="middle-label" formControlName="name" name="name" required pattern="text">
+                        </div>
                     </div>
-                    <div class="medium-10 columns">
-                        <input type="text" id="middle-label" formControlName="email"
-                        name="email" required pattern="email">
+                    <div class="row">
+                        <div class="medium-2 columns">
+                            <label for="middle-label" class="text-right middle">Email</label>
+                        </div>
+                        <div class="medium-10 columns">
+                            <input type="text" id="middle-label" formControlName="email" name="email" required pattern="email">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="medium-2 columns">
-                        <label for="middle-label" class="text-right middle">Comentarios</label>
+                    <div class="row">
+                        <div class="medium-2 columns">
+                            <label for="middle-label" class="text-right middle">Comentarios</label>
+                        </div>
+                        <div class="medium-10 columns">
+                            <textarea formControlName="comment" name="comment" required pattern="comment"></textarea>
+                        </div>
                     </div>
-                    <div class="medium-10 columns">
-                    <textarea formControlName="comment"
-                    name="comment" required pattern="comment"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="medium-10 medium-offset-2 columns legal">
-                        <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a
+                    <div class="row">
+                        <div class="medium-10 medium-offset-2 columns legal">
+                            <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a
                                 href="/aviso-privacidad">
                                 Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="medium-12 columns send">
-                <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</span>
-            </div>
-        </div>
-    </form>
-    <div class="row comentarios" *ngFor="let comment of responseComments; let i = index">
-        <div class="columns medium-12">
-            <div class="name">{{comment.name}}</div>
-        </div>
-        <div class="columns medium-12">
-            <p [innerHTML]=comment.comment_body.processed class="mensaje"></p>
-        </div>
-        <div class="columns medium-12">
-            <hr>
-        </div>
-
-    </div>
-  </div>
-  <div class="medium-3 columns relacionados" data-equalize-on="medium" data-equalizer="foo">
-      <hr class="mobile">
-      <h2>Artículos relacionados</h2>
-    <div class="group" data-equalizer-watch="foo" data-equalizer="bar" data-equalize-on-stack="true">
-        <div class="row" *ngFor="let related of responseRelated.results; let i = index" data-equalizer-watch="bar">
-
-            <div class="small-4 columns foto">
-                <img [src]="url_img_path + related.article_image" alt="" class="image">
-            </div>
-            <div class="small-8 columns" >
-                <div class="blog" >
-                    <div class="section black"><a href="{{related.url}}">{{ related.article_type }}</a></div>
-                    <h3><a href="{{related.url}}">{{ related.title.slice(0,90) }}</a></h3>
-                    <div class="user">{{ related.changed }}</div>
+                <div class="medium-12 columns send">
+                    <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</span>
                 </div>
             </div>
+        </form>
+        <div class="row comentarios" *ngFor="let comment of responseComments; let i = index">
+            <div class="columns medium-12">
+                <div class="name">{{comment.name}}</div>
+            </div>
+            <div class="columns medium-12">
+                <p [innerHTML]=comment.comment_body.processed class="mensaje"></p>
+            </div>
+            <div class="columns medium-12">
+                <hr>
+            </div>
 
-      </div>
+        </div>
     </div>
-      <hr>
-  </div>
+    <div class="medium-3 columns relacionados" data-equalize-on="medium" data-equalizer="foo">
+        <hr class="mobile">
+        <h2>Artículos relacionados</h2>
+        <div class="group" data-equalizer-watch="foo" data-equalizer="bar" data-equalize-on-stack="true">
+            <div class="row" *ngFor="let related of responseRelated.results; let i = index" data-equalizer-watch="bar">
+
+                <div class="small-4 columns foto">
+                    <img [src]="url_img_path + related.article_image" alt="" class="image">
+                </div>
+                <div class="small-8 columns">
+                    <div class="blog">
+                        <div class="section black"><a href="{{related.url}}">{{ related.article_type }}</a></div>
+                        <h3><a href="{{related.url}}">{{ related.title.slice(0,90) }}</a></h3>
+                        <div class="user">{{ related.changed }}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+    </div>
 </div>
 <hr class="white">
 <div class="container-blue">
-  <div class="row columns text-center">
-      <h2 class="deco">Suscribirse a nuestro boletín</h2>
-      <p>Suscribete a nuestro boletin y recibe nuestros últimos contenidos.</p>
-      <div>
-          <form action="">
-              <div class="row condensed">
-                  <div class="medium-7 medium-offset-2 columns">
-                      <input type="text" placeholder="Ingresa tu correo electrónico" />
-                  </div>
-                  <div class="medium-1 columns end">
-                      <a href="#" class="button expanded secondary">Suscribirse</a>
-                  </div>
-                  <div class="medium-7 medium-offset-2 columns end text-left">
-                      <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="/aviso-privacidad">
-                              Aviso de Privacidad</a> y estar conforme con el mismo</label>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
+    <div class="row columns text-center">
+        <h2 class="deco">Suscribirse a nuestro boletín</h2>
+        <p>Suscribete a nuestro boletin y recibe nuestros últimos contenidos.</p>
+        <div>
+            <form [formGroup]="form2">
+                <div class="row condensed">
+                    <div class="medium-7 medium-offset-2 columns">
+                        <input type="text" id="email_suscribe" formControlName="email_suscribe" name="email_suscribe" pattern="email" placeholder="Ingresa tu correo electrónico" required>
+                    </div>
+                    <div class="medium-1 columns end">
+                        <a (click)="onSubmitSuscribe(form2.value)" class="button expanded secondary">Suscribirse</a>
+                    </div>
+                    <div class="medium-7 medium-offset-2 columns end text-left">
+                        <input id="checkbox1" type="checkbox">
+                        <label for="checkbox1">Declaro haber leido el <a href="/aviso-privacidad">
+                        Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="reveal text-center" id="exampleModal1" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <h2>¡Gracias!</h2>
+    <p>Por suscribirte a nuestro boletín</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="reveal text-center" id="exampleModal2" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <h2>¡Atención!</h2>
+    <p>Su correo ya ha sido registrado anteriormente</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
 </div>

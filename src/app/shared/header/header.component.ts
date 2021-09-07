@@ -72,12 +72,10 @@ export class HeaderComponent implements OnInit {
       () => {
         if (this.response) {
           if(this.response.price_ranges){
-            // console.log('response header: ',this.response);
             this.filterPrice = this.response.price_ranges;
+          }
+          if(this.response.home_banner){
             this.bannersImg = this.response.home_banner
-            // for (let prices of this.response.price_ranges) {
-            //   console.log(prices.values.value)
-            // }
           }
         }
         /* si responde correctamente */

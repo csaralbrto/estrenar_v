@@ -21,12 +21,14 @@ export class BlogDetailComponent implements OnInit {
   tags: MetaTag;
   public responseAll: any;
   public response: any;
+  public responseNewslaetter: any;
   public responseComments: any;
   public dataSubmit: any;
   public entity_id: any;
   public entity_type: any;
   public responseRelated: any;
   public form: FormGroup;
+  public form2: FormGroup;
   public urlComments = 'https://lab.estrenarvivienda.com/es/api/comment/comment?filter[entity_id.id]=';
   public results = false;
 
@@ -45,6 +47,7 @@ export class BlogDetailComponent implements OnInit {
   ngOnInit(): void {
     this.startSpinner();
     this.createForm();
+    this.createFormSuscribe()
     $('html,body').scrollTop(0);
 
     // const title = this.activatedRoute.snapshot.params.path ;
@@ -124,6 +127,11 @@ export class BlogDetailComponent implements OnInit {
       comment: new FormControl(''),
     });
   }
+  createFormSuscribe() {
+    this.form2 =  this.formBuilder.group({
+      email_suscribe: new FormControl(''),
+    });
+  }
 
   onSubmit(values) {
     /* Se recibe los valores del formulario */
@@ -155,6 +163,32 @@ export class BlogDetailComponent implements OnInit {
         // if(this.confirm.error){
         //   // $('#modalAlertError').foundation('open');
         // }
+      }
+    );
+  }
+  onSubmitSuscribe(values) {
+    this.startSpinner();
+    /* Se recibe los valores del formulario */
+    console.log(values);
+    let payload = {
+      "webform_id":"newsletter",
+      "correo_electronico":values.email_suscribe,
+    };
+    // console.log(payload);
+    this.Service.suscribeNewsletter( payload )
+    .subscribe(
+      data =>(this.responseNewslaetter = data),
+      err => console.log(),
+      () => {
+        // console.log(this.responseNewslaetter.sid);
+        if(this.responseNewslaetter.sid){
+          this.stopSpinner();
+          $('#exampleModal1').foundation('open');
+          this.createFormSuscribe();
+        }else{
+          this.stopSpinner();
+          $('#exampleModal2').foundation('open');
+        }
       }
     );
   }

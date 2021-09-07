@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 import { FormGroup,FormControl,FormBuilder,Validators } from '@angular/forms';
 import { ContentUploadService } from './content-upload.service';
@@ -69,9 +70,13 @@ export class ContentUploadComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  constructor(public Service: ContentUploadService, private formBuilder: FormBuilder,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {}
+  constructor(public Service: ContentUploadService, private formBuilder: FormBuilder,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private router: Router) {}
 
   ngOnInit(): void {
+    let user_role = sessionStorage['role']?sessionStorage.getItem("role"):null;
+    // if(user_role === null || user_role !== '1'){
+    //   this.router.navigate(['/']);
+    // }
     this.createForm();
     this.createFormTypology();
     this.setCurrentLocation();

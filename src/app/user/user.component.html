@@ -1,8 +1,5 @@
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  template="<img src='/assets/images/logo-ev.png' />"
->
-<p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" template="<img src='/assets/images/logo-ev.png' />">
+    <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 
 <div class="row columns">
@@ -10,7 +7,10 @@
         <h1>Mi cuenta</h1>
         <p>Tus datos nos ayudan a proporcionarte información más acertada acerca de lo que buscas</p>
         <a (click)="updateFavorites()" class="button secondary">Ver favoritos</a>
-        <a (click)="logoutUser()" class="button">Cerrar sesión</a>
+        <a (click)="logoutUser()" class="button ml10">Cerrar sesión</a>
+        <div *ngIf="user_role === 1">
+            <a class="button secondary">Ver mis proyectos</a>
+        </div>
     </div>
     <form [formGroup]="form">
         <div class="medium-8 columns">

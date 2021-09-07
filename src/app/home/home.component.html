@@ -290,7 +290,7 @@
                 <div class="row">
                     <div class="medium-6 columns">
                         <div class="container-photo vertical">
-                            <img [src]="url_img_path + response.home_featured_typologies[0].typology_images" alt="" class="proyecto">
+                            <img [src]="response.home_featured_typologies[0].typology_images" alt="" class="proyecto">
                             <div class="container-tools">
                                 <div class="tags">
                                     <div *ngIf="response.home_featured_typologies[0].project_category.length > 0">
@@ -387,7 +387,7 @@
                                     <!-- Card Proyecto individual-->
                                     <div class="card" data-equalizer-watch>
                                         <div class="container-photo">
-                                            <img [src]="url_img_path + response.home_featured_typologies[1].typology_images" alt="" class="proyecto-card">
+                                            <img [src]="response.home_featured_typologies[1].typology_images" alt="" class="proyecto-card">
                                             <div class="container-tools">
                                                 <div class="tags">
                                                     <div *ngIf="response.home_featured_typologies[1].project_category.length > 0">
@@ -462,7 +462,7 @@
                                     <!-- Card Proyecto individual-->
                                     <div class="card" data-equalizer-watch>
                                         <div class="container-photo">
-                                            <img [src]="url_img_path + response.home_featured_typologies[2].typology_images" alt="" class="proyecto-card">
+                                            <img [src]="response.home_featured_typologies[2].typology_images" alt="" class="proyecto-card">
                                             <div class="container-tools">
                                                 <div class="tags">
                                                     <div *ngIf="response.home_featured_typologies[2].project_category.length > 0">
@@ -538,7 +538,7 @@
                                     <!-- Card Proyecto individual-->
                                     <div class="card" data-equalizer-watch>
                                         <div class="container-photo">
-                                            <img [src]="url_img_path + response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
+                                            <img [src]="response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
                                             <div class="container-tools">
                                                 <div class="tags">
                                                     <div *ngIf="response.home_featured_typologies[3].project_category.length > 0">
@@ -612,7 +612,7 @@
                                     <!-- Card Proyecto individual-->
                                     <div class="card" data-equalizer-watch>
                                         <div class="container-photo">
-                                            <img [src]="url_img_path + response.home_featured_typologies[4].typology_images" alt="" class="proyecto-card">
+                                            <img [src]="response.home_featured_typologies[4].typology_images" alt="" class="proyecto-card">
                                             <div class="container-tools">
                                                 <div class="tags">
                                                     <div *ngIf="response.home_featured_typologies[4].project_category.length > 0">
@@ -729,7 +729,7 @@
                             <div class="small-4 medium-2 columns end" *ngFor="let builder of response.home_featured_builders; let i = index">
                                 <div *ngIf="i < 6">
                                     <figure class="">
-                                        <img class="" [src]="url_img_path + builder.builder_logo" alt="">
+                                        <img class="" [src]="builder.builder_logo" alt="">
                                     </figure>
                                 </div>
                             </div>
@@ -740,7 +740,7 @@
                             <div class="small-4 medium-2 columns end" *ngFor="let builder of response.home_featured_builders; let i = index">
                                 <div *ngIf="i >= 6">
                                     <figure class="">
-                                        <img class="" [src]="url_img_path + builder.builder_logo" alt="">
+                                        <img class="" [src]="builder.builder_logo" alt="">
                                     </figure>
                                 </div>
                             </div>
@@ -779,7 +779,7 @@
                             <div class="medium-3 columns end" *ngFor="let blog of response.home_featured_articles; let i = index">
                                 <div class="blog-list">
                                     <div class="img">
-                                        <a href="{{blog.url}}"><img [src]="url_img_path + blog.article_image" alt=""></a>
+                                        <a href="{{blog.url}}"><img [src]="blog.article_image" alt=""></a>
                                     </div>
                                     <div class="social">
                                         <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>

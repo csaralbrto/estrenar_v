@@ -66,7 +66,7 @@
                         <legend>Estado del proyecto</legend>
                         <div class="opcion text-center" *ngFor="let option of stateProjects">
                             <div class="opcion-seleccion">
-                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label for="casas"><img [src]="option.icon"
+                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label for="casas"><img class="img-icon" [src]="option.icon"
                                             alt="Casas"></label>
                             </div>
                             <div class="item">{{option.name}}</div>

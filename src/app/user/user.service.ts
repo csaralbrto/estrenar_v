@@ -19,6 +19,8 @@ export class UserService {
   public dataContactadoPath: string;
   public dataViviendaPath: string;
   public dataPresupuestoPath: string;
+  public dataRolePath: string;
+
 
   constructor( private http: Http ) { 
     this.endpoint = environment.endpointTestingApi + 'ubications/countries?_format=json';
@@ -29,6 +31,7 @@ export class UserService {
     this.dataContactadoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Medio de contacto&sort=weight';
     this.dataViviendaPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Buscas vivienda para&sort=weight';
     this.dataPresupuestoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Presupuesto de compra&sort=weight';
+    this.dataRolePath = environment.endpointTestingApiUrl + '/es/user-roles/' +sessionStorage.getItem('uid') + '?_format=json';
 
 
     this.headers.append('Accept', 'application/json');
@@ -82,6 +85,11 @@ export class UserService {
   /* Traer info de presupuesto */
   getDataPresupuesto(): Observable<any> {
     return this.http.get(this.dataPresupuestoPath)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Traer la info de los roles */
+  getRoleData(): Observable<any> {
+    return this.http.get(this.dataRolePath)
     .pipe(map(( response => response.json() )));
   }
 }

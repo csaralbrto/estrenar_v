@@ -13,7 +13,7 @@ export class ProjectDetailService {
   public endpointProjects: string;
 
   constructor( private http: Http ) {
-    this.endpoint = environment.endpointTestingApiPost + 'router/translate-path?path=/es/node/';
+    this.endpoint = environment.endpointTestingApiPost + 'router/translate-path?path=/node/';
     this.endpointProjects = environment.endpointTestingApi + 'typologies/project/9703?items_per_page=8';
     this.endpointForm = environment.endpointTestingApi + 'ev-lead';
    }

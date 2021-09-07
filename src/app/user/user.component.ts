@@ -17,7 +17,8 @@ export class UserComponent implements OnInit {
   public responseCountry: any;
   public dataSubmit: any;
   public form: FormGroup;
-  public user_id = sessionStorage.getItem('uid');
+  public user_id = sessionStorage.getItem('uid'); 
+  public user_role = sessionStorage['role']?sessionStorage.getItem("role"):null;
   public token_logout = sessionStorage.getItem('token_logout');
   public path = "?_format=json";
   public results = false;
@@ -34,6 +35,7 @@ export class UserComponent implements OnInit {
   public responseContactadoData: any;
   public userContactadoData: any;
   public responseViviendaData: any;
+  public responseRole: any;
   public userViviendaData: any;
   public responsePresupuestoData: any;
   public userPresupuestoData: any;
@@ -190,13 +192,11 @@ export class UserComponent implements OnInit {
         (data) => (this.responseViviendaData = data.data),
         (err) => console.log(),
         () => {
-          if (this.preferencesUser) {
-            if (this.responseViviendaData) {
-              for (let vivienda of this.responseViviendaData) {
-                for (let preference of this.preferencesUser) {
-                  if(vivienda.drupal_internal__tid == preference.target_id){
-                    this.userViviendaData = preference.target_id;
-                  }
+          if (this.responseViviendaData) {
+            for (let vivienda of this.responseViviendaData) {
+              for (let preference of this.preferencesUser) {
+                if(vivienda.drupal_internal__tid == preference.target_id){
+                  this.userViviendaData = preference.target_id;
                 }
               }
             }
@@ -204,6 +204,21 @@ export class UserComponent implements OnInit {
           }
           /* si responde correctamente */
           if (this.responseViviendaData.error) {
+            /* si hay error en la respuesta */
+          }
+        }
+      );
+      /* Método para cargar el role */
+      this.Service.getRoleData().subscribe(
+        (data) => (this.responseRole = data.data),
+        (err) => console.log(),
+        () => {
+          if (this.responseRole) {
+            console.log(this.responseRole);
+            this.results = true;
+          }
+          /* si responde correctamente */
+          if (this.responseRole.error) {
             /* si hay error en la respuesta */
           }
         }

@@ -41,6 +41,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public resutls: boolean = false;
   public route = 'filtro-proyectos';
   public url_search_word = 'https://lab.estrenarvivienda.com/es/api/typologies/all?search=';
+  public url_search_collection = 'https://lab.estrenarvivienda.com/es/api/typologies/project_collection/';
   public stringQuery = '';
   public eventos : boolean = false;
   public countProjects = '';
@@ -103,6 +104,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     let get_filter_price  = sessionStorage['price_search']?sessionStorage.getItem("price_search"):null;
     let get_project_price  = sessionStorage['price_projects']?sessionStorage.getItem("price_projects"):null;
     let get_filter_word  = sessionStorage['word_search']?sessionStorage.getItem("word_search"):null;
+    let get_collection_id  = sessionStorage['collection_id']?sessionStorage.getItem("collection_id"):null;
+    let word_label_collection  = sessionStorage['wordTitleCollection']?sessionStorage.getItem("wordTitleCollection"):null;
     // console.log(sessionStorage.getItem("projectTitle"));
     if(title_label && title_label !== null){
       this.titleLabel = title_label;
@@ -121,6 +124,10 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     }else if(get_filter_word && get_filter_word !== null){
         sessionStorage.removeItem("word_search");
         this.filterByWord(get_filter_word);
+    }else if(get_collection_id && get_collection_id !== null){
+      sessionStorage.removeItem("collection_id");
+      this.wordLabel = word_label_collection
+      this.filterByCollection(get_collection_id);
     }else{
       /* Método para obtener toda la info de proyectos */
       console.log(this.resultProyecto);
@@ -906,6 +913,78 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         this.results = true;
         this.stopSpinner();
       }
+    })
+    .catch(error => console.error(error))
+  }
+  filterByCollection(value) {
+    var url = this.url_search_collection + value + '?items_per_page=8';
+    console.log(url);
+    var data = "";
+    fetch(url, {
+    })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data)
+      this.response = data;
+      // console.log(this.response);
+          if (this.response) {
+            console.log(this.response);
+            if(this.response.metatag_normalized){
+              this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+            }
+            // console.log('entre al else');
+            this.response_data_project = this.response.search_results
+            this.countProjects = this.response_data_project.length;
+            /* Iterar sobre los proyectos */
+            for (let project of this.response_data_project) {
+              var arrayDeCadenas = project.typology_images.split(',');
+              project.typology_images = arrayDeCadenas[0];
+              var arrayDeCadenas2 = project.project_category.split(',');
+              project.project_category = arrayDeCadenas2;
+              // Nueva linea Yenifer
+              var arrayDeLaton = project.latlon.split(',');
+              project.latitude = arrayDeLaton[0]
+              project.longitude = arrayDeLaton[1]
+            }
+            /* Iterar sobre los Filtros de proyectos */
+            if(this.response.facets.property_type){
+              this.filterType = this.response.facets.property_type;
+            }
+            if(this.response.facets.project_city){
+              this.filterCity = this.response.facets.project_city;
+            }
+            if(this.response.facets.typology_price){
+              this.filterPrice = this.response.facets.typology_price;
+            }
+            //Área m2
+            if(this.response.facets.area_built){
+              this.filterAreaBuilt = this.response.facets.area_built;
+            }
+            // estados del proyecto
+            if(this.response.facets.project_feature){
+              let project_feature = this.response.facets.project_feature;
+              for (let feature of project_feature) {
+                if(feature.values.value == "Estado del proyecto"){
+                  this.filterProjectState = feature.children;
+                  this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+                // console.log(this.ValoresProyecto);
+
+                }
+              }
+              // console.log(this.filterProjectState);
+
+            }
+            // Constructora
+            if(this.response.facets.project_builder){
+              this.filterBuilder = this.response.facets.project_builder
+            }
+            /* Ordenación */
+            if(this.response.sorts){
+              this.filterSort = this.response.sorts;
+            }
+            this.results = true;
+            this.stopSpinner();
+          }
     })
     .catch(error => console.error(error))
   }

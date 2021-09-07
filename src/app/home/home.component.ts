@@ -316,6 +316,7 @@ export class HomeComponent implements OnInit {
     }
   }
   loadCollection(value,name){
+    console.log('collection');
     sessionStorage.removeItem('wordTitleCollection');
     sessionStorage.removeItem('collection_id');
     sessionStorage.setItem('wordTitleCollection',name)
