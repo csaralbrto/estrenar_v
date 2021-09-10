@@ -412,7 +412,7 @@
                                             <div>Desde:</div>
                                             <span>$ {{ response.home_featured_typologies[1].typology_price | number }}</span>
                                         </div>
-
+                                        <hr>
 
                                         <div class="card-section">
                                             <hr>
@@ -487,6 +487,7 @@
                                             <div>Desde:</div>
                                             <span>$ {{ response.home_featured_typologies[2].typology_price | number }}</span>
                                         </div>
+                                        <hr>
 
                                         <div class="card-section">
                                             <hr>
@@ -792,9 +793,9 @@
                                     <!-- <div class="resumen" [innerHTML]=blog.descripcion.slice(0,180)>
                                   </div> -->
                                     <div class="resumen">
-                                        <!-- {{ blog.description }} -->
-                                        <p [innerHTML]=blog.description.slice(0,250)+stringText></p>
+                                        <p [innerHTML]=blog.description.slice(0,160)+stringText></p>
                                     </div>
+                                    <hr>
                                     <a href="{{blog.url}}" class="button">Seguir leyendo</a>
                                 </div>
                             </div>

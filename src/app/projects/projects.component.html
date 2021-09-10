@@ -66,7 +66,7 @@
               <div class="medium-2 columns">
                   <div class="botones list">
                       <a class="button" data-open="masfiltrosModal">Más filtros</a>
-                      <a href="{{path_favorites}}" class="button secondary favorito">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+                      <a href="{{path_favorites}}" class="button secondary favorito button-color-ev">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
                   </div>
               </div>
           </div>
@@ -92,7 +92,7 @@
                   <div *ngFor="let option of ValoresProyecto">
                       <label class="container-check">{{option.values.value}}
                           <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="change(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{option.url}}">
-                          <span class="checkmark"></span>
+                          <span class="checkmark-morefilter"></span>
                       </label>
                   </div>
                   <h3>Inmueble</h3>
@@ -112,12 +112,12 @@
                       </div>
                       <div class="small-6 columns">
                           <div class="input-group input-number-group">
-                              <div class="input-group-button">
-                                  <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
+                              <div class="input-group-button-morefilter">
+                                  <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
                               </div>
-                              <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
-                              <div class="input-group-button">
-                                  <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
+                              <input class="input-number input-morefilter" type="number" readonly id="bedroom" value="1" min="0" max="1000">
+                              <div class="input-group-button-morefilter">
+                                  <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
                               </div>
                           </div>
 
@@ -129,12 +129,12 @@
                       </div>
                       <div class="small-6 columns">
                           <div class="input-group input-number-group">
-                              <div class="input-group-button">
-                                  <span class="input-number-decrement" (click)=(decreaseValue(2))>-</span>
+                              <div class="input-group-button-morefilter">
+                                  <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
                               </div>
-                              <input class="input-number" type="number" id="bathroom" value="1" min="0" max="1000">
-                              <div class="input-group-button">
-                                  <span class="input-number-increment" (click)=(incrementValue(2))>+</span>
+                              <input class="input-number input-morefilter" type="number" readonly id="bathroom" value="1" min="0" max="1000">
+                              <div class="input-group-button-morefilter">
+                                  <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
                               </div>
                           </div>
                       </div>
@@ -146,45 +146,44 @@
                       <div class="small-6 columns">
 
                           <div class="input-group input-number-group">
-                              <div class="input-group-button">
-                                  <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
+                              <div class="input-group-button-morefilter">
+                                  <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
                               </div>
-                              <input class="input-number" type="number" id="garage" value="1" min="0" max="1000">
-                              <div class="input-group-button">
-                                  <span class="input-number-increment" (click)=(incrementValue(3))>+</span>
+                              <input class="input-number input-morefilter" type="number" readonly id="garage" value="1" min="0" max="1000">
+                              <div class="input-group-button-morefilter">
+                                  <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
                               </div>
                           </div>
 
                       </div>
                   </div>
               </div>
-              <div class="medium-6 columns">
+              <div class="medium-5 columns">
                   <div class="row">
                       <h3>Constructora</h3>
                       <!-- <label>
                       <input type="search" placeholder="Buscar">
                   </label> -->
                       <!-- <div class="small-6 columns"> -->
-                      <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
-                        <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                    <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
+                      <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                     </select>
                       <!-- </div> -->
                   </div>
+                  <br>
                   <div class="row">
                       <h3>Colecciones</h3>
                       <div class="filtros-tag">
-                          <a href="#" class="button">Colección 1</a><a href="#" class="button">Colección 2</a>
+                          <a class="button">Colección 1</a><a class="button">Colección 2</a>
                       </div>
                   </div>
+                  <br>
+                  <br>
                   <div class="row">
                       <a (click)="cleanFilter()">Limpiar filtros</a>
-                      <a data-close aria-label="Close modal" class="button secondary">Mostrar <span>{{countProjects}}</span> apartamentos</a>
-
-
+                      <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a>
                   </div>
               </div>
-
-
           </div>
       </form>
       <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -268,14 +267,15 @@
       <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos</div>
   </div>
   <div class="medium-2 columns end">
-      <label>Ordenar por:
+      <!-- <label>Ordenar por: -->
           <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+              <option value="">Ordenar por:</option>
               <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}  {{type.order}}</option>
           </select>
-      </label>
+      <!-- </label> -->
   </div>
   <div class="medium-1 columns end">
-      <a href="#" class="button secondary ">Comparar</a>
+      <a class="button secondary ">Comparar</a>
   </div>
   <div class="medium-2 columns fRight pTop8">
       <label><input (click)='showMap($event)' type="checkbox"  [(ngModel)]="eventos" id="cbox1"> Mostrar mapa</label>
@@ -343,8 +343,8 @@
               </div>
               <div class="card-section">
                   <div class="button-group align-spaced ">
-                      <a class="button" routerLink="{{project.url}}">Ver
-                    Proyecto</a>
+                      <a class="button" routerLink="/es/{{project.url}}">Ver
+                        Proyecto</a>
                       <a class="button" data-open="exampleModal2">Contacto</a>
                   </div>
               </div>
@@ -430,7 +430,7 @@
 </div>
 <div class="row columns text-center">
   <div class="medium-6 medium-offset-3 columns">
-      <a href="#">
+      <a>
           <div class="comparador-btn-2">
               <div class="container-comparador">
                   <h2 class="deco">¿Quieres comparar?</h2>

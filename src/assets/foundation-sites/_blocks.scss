@@ -549,6 +549,8 @@ p {
         }
     }
     .slick-dots {
+        width: auto;
+        right: 3rem;
         li button {
             font-size: 0;
             margin: 0;
@@ -556,6 +558,41 @@ p {
                 font-size: 2rem;
                 color: $secondary-color;
             }
+        }
+    }
+    .slick-prev,
+    .slick-next {
+        font-size: 0;
+        line-height: 0;
+        position: absolute;
+        top: unset;
+        bottom: -1.5rem;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        transform: none;
+        cursor: pointer;
+        color: $primary-color;
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+    .slick-prev {
+        left: unset;
+        right: 1.4rem;
+        &::before {
+            content: "ᐸ";
+            color: $primary-color;
+            font-size: 18px;
+        }
+    }
+    .slick-next {
+        right: 0rem;
+        &::before {
+            content: "ᐳ";
+            color: $primary-color;
+            font-size: 18px;
         }
     }
 }
@@ -1953,6 +1990,23 @@ a.tipos {
     border-radius: 20px;
 }
 
+.checkmark-morefilter {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 0%;
+}
+
+.input-morefilter{
+  border: none !important;
+  background: none !important;
+  color: #fff !important;
+  cursor: default !important;
+}
+
 
 /* On mouse-over, add a grey background color */
 
@@ -2186,10 +2240,11 @@ ul.pagination-pointed {
         display: inline-block;
         text-transform: uppercase;
         font-size: 0.7rem;
-        border-radius: $global-radius;
-        border: 1px solid $primary-color;
-        margin-right: 0.4rem;
-        padding: 0.2rem;
+        // border-radius: $global-radius;
+        border-radius: 28.5px;
+        border: 1px solid #14454e;
+        margin-right: 0.7rem;
+        padding: 0.2rem 0.7rem;
     }
     a.fav {
         margin-right: 0.5rem;
@@ -2272,7 +2327,7 @@ img.image.constructor {
     width: 2.5em;
     bottom: 60%;
     right: 0;
-    background-color: #1c4f59;
+    background-color: #14454e;
     border-radius: 8px 0 0 8px !important;
     @media screen and (max-width: 600px) {
         display: block;
@@ -2282,7 +2337,7 @@ img.image.constructor {
         width: 100% !important;
         bottom: 0 !important;
         right: 0;
-        background-color: #1c4f59;
+        background-color: #14454e;
         border-radius: 0px 0 0 0px !important;
         text-align: center;
         .ev--bots--facebook {
@@ -2380,6 +2435,8 @@ img.image.constructor {
         .button {
             border: 1px solid $white;
             margin-right: 0.3rem;
+            border-radius: 20px !important;
+            padding: 0.6em 0.7em;
         }
     }
     a.button.secondary {
@@ -2406,8 +2463,14 @@ img.image.constructor {
 }
 
 $input-number-size: 80px;
+$input-number-morefilter-size: 64px;
 .input-number-group .input-number-decrement,
 .input-number-group .input-number-increment {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+.input-number-group .input-number-decrement-morefilter,
+.input-number-group .input-number-increment-morefilter {
     background: transparent !important;
     color: #ffffff !important;
 }
@@ -2424,6 +2487,9 @@ $input-number-size: 80px;
     }
     .input-group-button {
         line-height: calc(#{$input-number-size}/ 2 - 5px);
+    }
+    .input-group-button-morefilter {
+        line-height: calc(#{$input-number-morefilter-size}/ 2 - 5px);
     }
     .input-number {
         width: $input-number-size;
@@ -2442,6 +2508,13 @@ $input-number-size: 80px;
         user-select: none;
         border-radius: $global-radius;
     }
+    .input-number-decrement-morefilter,
+    .input-number-increment-morefilter {
+        border: 1px solid $medium-gray;
+        height: $input-number-size/2;
+        user-select: none;
+        border-radius: $global-radius;
+    }
     .input-number-decrement,
     .input-number-increment {
         display: inline-block;
@@ -2455,10 +2528,31 @@ $input-number-size: 80px;
         font-weight: 400;
         border-radius: 8px !important;
     }
+    .input-number-decrement-morefilter,
+    .input-number-increment-morefilter{
+      display: inline-block;
+      width: 24px;
+      background: #14454e !important;
+      color: #1a1a1a;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 400;
+      border-radius: 34px !important;
+      height: 26px;
+      margin-top: 7px;
+    }
     .input-number-decrement {
         margin-right: 0.3rem;
     }
     .input-number-increment {
+        margin-left: 0.3rem;
+    }
+    .input-number-decrement-morefilter {
+        margin-right: 0.3rem;
+    }
+    .input-number-increment-morefilter {
         margin-left: 0.3rem;
     }
 }
@@ -2520,24 +2614,34 @@ img:focus {
         border: 0px;
         .tabs-title {
             float: left;
-            background: $light-gray;
+            // background: $light-gray;
+            background: $primary-color;
+            // background: #a8d039;
             border-radius: 8px;
             margin-right: 0.5rem;
+            color: $white !important;
             .is-active {
-                background: $primary-color;
+                // background: $primary-color;
+                background: #a8d039;
                 color: $white;
                 a {
                     border-radius: 8px;
-                    background: $primary-color;
+                    // background: $primary-color;
+                    background: #a8d039;
                     color: $white;
                 }
             }
         }
+        .tabs-title>a{
+          color: $white;
+          padding: 0.75rem 1.1rem;
+        }
         .tabs-title>a:focus,
         .tabs-title>a[aria-selected=true] {
             border-radius: 8px;
-            background: $primary-color;
-            color: $white;
+            // background: $primary-color;
+            background: #a8d039;
+            color: $primary-color;
             &:hover {
                 border-radius: 8px;
                 background: $primary-color;
@@ -2546,8 +2650,9 @@ img:focus {
         }
         .tabs-title>a:hover {
             border-radius: 8px;
-            background: $primary-color;
-            color: $white;
+            // background: $primary-color;
+            background: #a8d039;
+            color: $primary-color;
         }
     }
 }
@@ -2562,9 +2667,13 @@ li.search {
         float: left;
     }
     input#searchProjectsWord {
-        width: 75%;
+        width: 396px;
         float: left;
     }
+}
+
+ul.menu li a img {
+  margin-top: -9px;
 }
 
 .slider-blog {
@@ -2736,4 +2845,30 @@ li.search {
 
 .ml10 {
     margin-left: 10px !important;
+}
+
+.button-show-apartment{
+  border-radius: 28px !important;
+  color: #fff !important;
+}
+.button-color-ev{
+  color: #fff !important;
+}
+#images ul li img {
+  border-radius: 12px;
+}
+ul#propertiesProject li.tabs-title {
+  margin-right: 20px !important;
+}
+
+.tabs-content div#images {
+  padding: 0;
+  margin: 0;
+}
+.tabs-content {
+  padding: 0;
+  margin: 0;
+}
+.medium-6.columns.destacado {
+  margin-top: 22px !important;
 }
