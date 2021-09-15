@@ -450,13 +450,13 @@
             </div> -->
             <div class="nav-tabs">
                 <ul class="tabs">
-                    <li class="tabs-title is-active"><a aria-selected="true" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
-                    <li class="tabs-title"><a id="showPlane" (click)="showHideTab('2')">Planos</a></li>
-                    <li class="tabs-title"><a id="showStreet" (click)="showHideTab('3')">Street view</a></li>
+                    <li class="tabs-title is-active"><a class="tabs-map-button" aria-selected="true" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
+                    <li class="tabs-title"><a class="tabs-map-button" id="showPlane" (click)="showHideTab('2')">Planos</a></li>
+                    <li class="tabs-title"><a class="tabs-map-button" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
                 </ul>
             </div>
             <div class="tabs-content" data-tabs-content="propertiesProject">
-                <div class="tabs-panel is-active" id="mapProject">
+                <div class="tabs-panel is-active pLeft0" id="mapProject">
                     <div class="direccion">
                         <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
                     </div>
@@ -536,10 +536,10 @@
                     <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
                     <!-- </div> -->
                 </div>
-                <div id="planes" class="visibi-hide">
+                <div id="planes" class="visibi-hide pLeft0">
                     <p>Información no disponible</p>
                 </div>
-                <div class="tabs-panel" id="street_view">
+                <div class="tabs-panel pLeft0" id="street_view">
                     <app-street-view [latitude]="latitude" [longitude]="longitude"></app-street-view>
                 </div>
             </div>
@@ -591,19 +591,19 @@
                             </span>
                             <fieldset class="text-left">
                                 <legend>Buscas vivienda para:</legend>
-                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
-                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+                                <input class="raddioForm" type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label class="verticalAlingLabel" for="">Habitar</label>
+                                <input class="raddioForm" type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label class="verticalAlingLabel" for="">Invertir</label>
                             </fieldset>
                             <div class="text-left terminos">
                                 <span id="spanTerm" class="hide">
                                 Debe aceptar los términos
                                 </span>
-                                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                                <input id="checkbox1" type="checkbox" formControlName="term" name="term" class="checkBokForm"><label for="right-label" class="text-left">Declaro
                                 haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
                                 mismos.</label>
 
                             </div>
-                            <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
+                            <span href="" class="button secondary buttonSendInfo" (click)="onSubmit(form.value)">Enviar</span>
                         </div>
                     </form>
                 </div>

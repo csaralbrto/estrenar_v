@@ -38,13 +38,14 @@
                 </div>
                 <div class="small-8 columns">
                     <div class="title">{{ project1.label }}</div>
-                    <div class="info">{{ project1.builder_address }} {{ project1.builder_location_phone }}</div>
+                    <div class="info">
+                      <p [innerHTML]=project1.builder_address.slice(0,30)>{{ project1.builder_location_phone }}</p>
+                    </div>
                 </div>
-                <hr class="white">
                 <div class="small-12 columns">
                     <p [innerHTML]=project1.description *ngIf="project1.description; else lorem_description"></p>
                     <ng-template #lorem_description>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit hasellus quis est eu nibh venenatis fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis. Cras et augue ac nisl congue eleifend hendrerit eget eros.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit hasellus quis est eu nibh venenatis fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis.</p>
                     </ng-template>
                 </div>
                 <div class="small-12 columns text-center">

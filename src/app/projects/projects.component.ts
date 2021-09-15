@@ -40,8 +40,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public form: FormGroup;
   public resutls: boolean = false;
   public route = 'filtro-proyectos';
-  public url_search_word = 'https://lab.estrenarvivienda.com/es/api/typologies/all?search=';
-  public url_search_collection = 'https://lab.estrenarvivienda.com/es/api/typologies/project_collection/';
+  public url_search_word = 'https://lab.estrenarvivienda.com/api/typologies/all?search=';
+  public url_search_collection = 'https://lab.estrenarvivienda.com/api/typologies/project_collection/';
   public stringQuery = '';
   public eventos : boolean = false;
   public countProjects = '';

@@ -1068,7 +1068,7 @@ label {
         }
         img {
             border-radius: $global-radius;
-            height: 200px;
+            height: 250px;
             width: 100%;
             position: relative;
         }
@@ -1325,6 +1325,7 @@ span.error {
         label {
             color: $white;
             font-size: 0.9rem;
+            vertical-align: top;
             a {
                 color: $secondary-color;
             }
@@ -1359,7 +1360,7 @@ span.error {
 }
 
 .caracteristica {
-    font-size: 0.9rem;
+    font-size: 1rem;
     min-height: 2rem;
     margin-bottom: 1rem;
     span {
@@ -1425,7 +1426,7 @@ span.error {
         text-align: center;
         &.tool {
             width: auto;
-            margin-right: 0.1rem;
+            margin-right: 0.8rem;
         }
         &.is-active {
             a {
@@ -2261,7 +2262,7 @@ ul.pagination-pointed {
             color: $primary-color;
         }
         .value {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: $primary-color;
             padding-top: 1rem;
@@ -2871,4 +2872,34 @@ ul#propertiesProject li.tabs-title {
 }
 .medium-6.columns.destacado {
   margin-top: 22px !important;
+}
+
+.tabs-map-button{
+  width: 150px;
+  text-align: center;
+}
+
+.pLeft0{
+  padding-left: 0 !important;
+}
+.raddioForm{
+  width: 19px;
+  height: 16px;
+}
+
+.checkBokForm{
+  width: 18px;
+  height: 16px
+}
+.buttonSendInfo{
+  width: 210px;
+}
+.boldFont{
+  font-weight: 500 !important;
+}
+.paddingTop{
+  padding-top: 3.7rem;
+}
+.colorWhite{
+  color: #fff !important;
 }

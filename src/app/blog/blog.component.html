@@ -47,7 +47,7 @@
 <div class="row columns">
   <div class="medium-8 columns">
       <div class="container-blog">
-          <h2 class="deco-wide">Lo más leído</h2>
+          <h2 class="deco-wide boldFont">Lo más leído</h2>
           <div class="row">
               <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
                   <div class="blog-list col2">
@@ -65,14 +65,14 @@
                       <div class="resumen">
                         <p [innerHTML]=mostRead.body.slice(0,90)+stringText></p>
                       </div>
-                      <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
+                      <a routerLink="/es/articulos{{mostRead.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
           </div>
       </div>
       <hr class="white">
       <div class="container-blog">
-          <h2 class="deco-wide">La experiencia de estrenar</h2>
+          <h2 class="deco-wide boldFont">La experiencia de estrenar</h2>
           <div class="row">
               <div class="medium-12 columns">
                   <figure class="orbit-figure">
@@ -88,7 +88,7 @@
                   </figure>
               </div>
               <hr class="white">
-              <div class="medium-4 columns" *ngFor="let newExperience of responseNewExperience.results; let i = index">
+              <div class="medium-6 columns end" *ngFor="let newExperience of responseNewExperience.results; let i = index">
                   <div class="blog-list" *ngIf="i >= 1">
                       <div class="img">
                           <a routerLink="{{newExperience.url}}"><img [src]="url_img_path + newExperience.article_image" alt=""></a>
@@ -111,7 +111,7 @@
       </div>
       <hr class="white">
       <div class="container-blog">
-          <h2 class="deco-wide">Nuestro lado DEKO</h2>
+          <h2 class="deco-wide boldFont">Nuestro lado DEKO</h2>
           <div class="row">
               <div class="medium-6 columns" *ngFor="let ecoside of responseEcoSide.results; let i = index">
                   <div class="blog-list col2">
@@ -129,14 +129,14 @@
                       <div class="resumen">
                         <p [innerHTML]=ecoside.body.slice(0,90)+stringText></p>
                       </div>
-                      <a routerLink="{{ecoside.url}}" class="button">Seguir leyendo</a>
+                      <a routerLink="/es/articulos{{ecoside.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
           </div>
       </div>
   </div>
   <div class="medium-4 columns">
-      <h2 class="deco-wide">Recomendados</h2>
+      <h2 class="deco-wide boldFont">Recomendados</h2>
       <div class="recomendado" *ngFor="let recommend of responseRecommend.results; let i = index">
           <h3><a routerLink="{{recommend.url}}">{{ recommend.title.slice(0,90) }}</a></h3>
           <div class="fecha">{{ recommend.changed }}</div>
@@ -150,7 +150,7 @@
           </div>
       </div>
       <hr class="white">
-      <h2 class="deco-wide">Noticias del sector</h2>
+      <h2 class="deco-wide boldFont">Noticias del sector</h2>
       <div class="recomendado" *ngFor="let news of responseNews.results; let i = index">
           <h3><a routerLink="{{news.url}}">{{ news.title.slice(0,90) }}</a></h3>
           <div class="fecha">{{ news.changed }}</div>

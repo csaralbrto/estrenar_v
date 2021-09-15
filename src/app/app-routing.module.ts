@@ -34,11 +34,11 @@ const routes: Routes = [
     pathMatch: 'full',
     data: {url: true},
   },
-  { 
-    path: 'home', 
-    component: HomeComponent, 
+  {
+    path: 'home',
+    component: HomeComponent,
     pathMatch: 'full'
-    ,data: {url: true}, 
+    ,data: {url: true},
   },
 
   { path: 'proyectos', component: ProjectsComponent, pathMatch: 'full' },
@@ -112,10 +112,40 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'noticias-del-sector/:path/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'noticias-del-sector/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'es/la-experiencia-de-estrenar/:path/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'es/la-experiencia-de-estrenar/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'la-experiencia-de-estrenar/:path/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'la-experiencia-de-estrenar/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'user',
     component: UserComponent,
     pathMatch: 'full',
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',

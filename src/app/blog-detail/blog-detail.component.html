@@ -31,26 +31,30 @@
                 <div class="medium-12 columns">
                     <div class="row">
                         <div class="medium-2 columns">
-                            <label for="middle-label" class="text-right middle">Nombre</label>
+                            <!-- <label for="middle-label" class="text-right middle">Nombre</label> -->
                         </div>
                         <div class="medium-10 columns">
-                            <input type="text" id="middle-label" formControlName="name" name="name" required pattern="text">
+                            <label for="middle-label" class="text-right middle">Nombre
+                              <input type="text" id="middle-label" formControlName="name" name="name" required pattern="text">
+                            </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="medium-2 columns">
-                            <label for="middle-label" class="text-right middle">Email</label>
                         </div>
                         <div class="medium-10 columns">
+                          <label for="middle-label" class="text-right middle">Email
                             <input type="text" id="middle-label" formControlName="email" name="email" required pattern="email">
+                          </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="medium-2 columns">
-                            <label for="middle-label" class="text-right middle">Comentarios</label>
                         </div>
                         <div class="medium-10 columns">
+                          <label for="middle-label" class="text-right middle">Comentarios
                             <textarea formControlName="comment" name="comment" required pattern="comment"></textarea>
+                          </label>
                         </div>
                     </div>
                     <div class="row">
@@ -62,7 +66,7 @@
                     </div>
                 </div>
                 <div class="medium-12 columns send">
-                    <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar comentario</span>
+                    <span href="" class="button secondary colorWhite" (click)="onSubmit(form.value)">Enviar comentario</span>
                 </div>
             </div>
         </form>
@@ -79,7 +83,7 @@
 
         </div>
     </div>
-    <div class="medium-3 columns relacionados" data-equalize-on="medium" data-equalizer="foo">
+    <div class="medium-3 columns relacionados paddingTop" data-equalize-on="medium" data-equalizer="foo">
         <hr class="mobile">
         <h2>Artículos relacionados</h2>
         <div class="group" data-equalizer-watch="foo" data-equalizer="bar" data-equalize-on-stack="true">

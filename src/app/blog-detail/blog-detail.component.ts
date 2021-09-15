@@ -29,7 +29,7 @@ export class BlogDetailComponent implements OnInit {
   public responseRelated: any;
   public form: FormGroup;
   public form2: FormGroup;
-  public urlComments = 'https://lab.estrenarvivienda.com/es/api/comment/comment?filter[entity_id.id]=';
+  public urlComments = 'https://lab.estrenarvivienda.com/api/comment/comment?filter[entity_id.id]=';
   public results = false;
 
   constructor(
@@ -52,8 +52,9 @@ export class BlogDetailComponent implements OnInit {
 
     // const title = this.activatedRoute.snapshot.params.path ;
     /* se uso el window location ya que en los parametros no se carga completa la urls */
+    console.log(window.location.pathname);
     let url_path1  = window.location.pathname.split("/es/");
-    var url_path = url_path1[1]
+    var url_path = /* url_path1[1] */ window.location.pathname;
     console.log(url_path);
     this.Service.findProject(url_path).subscribe(
       (data) => (this.responseAll = data),
