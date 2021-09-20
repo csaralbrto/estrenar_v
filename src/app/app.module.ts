@@ -111,7 +111,7 @@ import { StreetViewComponent } from './street-view/street-view.component';
     RecaptchaFormsModule, //this is the module for form incase form validation
     /* Google Maps */
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA',
+      apiKey: 'AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM',
       libraries: ['places']
     }),
     NgxSpinnerModule,

@@ -55,7 +55,7 @@ export class ProjectDetailComponent implements OnInit {
   public valoresPares:any;
   public mapTypeId: any;
   public newplace:any;
-  public keyGoglePlace="AIzaSyBLvob9LEVMSK_cNWvrB3jrwyzQ6JgL2hA";
+  public keyGoglePlace="AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM";
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
   url_img_path = 'https://www.estrenarvivienda.com/';
   /* Fecha */
