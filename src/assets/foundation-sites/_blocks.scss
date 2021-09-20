@@ -1,7 +1,9 @@
 h1,
 h2,
+h4,
 .h1,
-.h2 {
+.h2,
+.h4 {
     letter-spacing: -1px;
     font-weight: 400 !important;
     line-height: 1.2em !important;
@@ -77,6 +79,8 @@ select {
 
 .inline {
     display: inline-block;
+    margin-left: 20px;
+    margin-right: 40px;
     button.button {
         margin: 1rem;
     }
@@ -2902,4 +2906,10 @@ ul#propertiesProject li.tabs-title {
 }
 .colorWhite{
   color: #fff !important;
+}
+.mtop10{
+  margin-top: 25px;
+}
+.mBotton10{
+  margin-bottom: 25px;
 }

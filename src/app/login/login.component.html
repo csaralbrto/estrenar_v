@@ -11,10 +11,13 @@
         <form [formGroup]="form">
             <div class="container-blue form">
                 <h1 class="text-center">Iniciar sesión</h1>
+                <label for=""> Usuario</label>
                 <div class="input-group">
                     <span class="input-group-label"><img src="/assets/images/user-b.png" alt=""></span>
                     <input class="input-group-field" type="text" placeholder="Nombre o correo con el que se registró" formControlName="name" name="name" required pattern="text">
                 </div>
+                <br>
+                <label for=""> Contraseña</label>
                 <div class="input-group">
                     <span class="input-group-label"><img src="/assets/images/pass-b.png" alt=""></span>
                     <input class="input-group-field" type="password" placeholder="Contraseña" formControlName="pass" name="pass" required>

@@ -289,4 +289,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       this.spinnerService.hide();
     }
   }
+  restart(){
+    this.changeStepWizard(1);
+  }
 }

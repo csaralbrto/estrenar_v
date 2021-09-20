@@ -88,6 +88,9 @@
         <div class="inline">
             <button class="button" (click)="changeStepWizard(2);">Siguiente</button>
         </div>
+        <div class="row text-center mtop10 mBotton10">
+            <a (click)="restart()">Volver a iniciar</a>
+        </div>
         </div>
     </div>
     </div>
@@ -129,11 +132,16 @@
                     <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
                 </div>
             </div>
-            <div class="inline">
-                <button class="button" (click)="changeStepWizard(1);">Anterior</button>
-            </div>
-            <div class="inline">
+            <div class="row text-center">
+              <div class="inline">
+                  <button class="button" (click)="changeStepWizard(1);">Anterior</button>
+              </div>
+              <div class="inline">
                 <button class="button" (click)="changeStepWizard(3);">Siguiente</button>
+              </div>
+              <div class="row text-center mtop10 mBotton10">
+                  <a (click)="restart()">Volver a iniciar</a>
+              </div>
             </div>
 
         </div>
@@ -192,6 +200,9 @@
         <div class="inline">
             <button class="button" (click)="changeStepWizard(4);">Siguiente</button>
         </div>
+        <div class="row text-center mtop10 mBotton10">
+            <a (click)="restart()">Volver a iniciar</a>
+        </div>
     </div>
     </div>
     <!-- Fin wizard 3 -->
@@ -242,6 +253,9 @@
         <div class="inline">
             <button class="button" (click)="changeStepWizard(5);">Siguiente</button>
         </div>
+        <div class="row text-center mtop10 mBotton10">
+            <a (click)="restart()">Volver a iniciar</a>
+        </div>
     </div>
     </div>
     <!-- Fin wizard 4 -->
@@ -291,6 +305,9 @@
         </div>
         <div class="inline">
             <button class="button" (click)="changeStepWizard(6);">Siguiente</button>
+        </div>
+        <div class="row text-center mtop10 mBotton10">
+            <a (click)="restart()">Volver a iniciar</a>
         </div>
     </div>
     </div>
