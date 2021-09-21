@@ -148,7 +148,7 @@ export class RegisterComponent implements OnInit {
     console.log(`Resolved response token: ${captchaResponse}`);
   }
   beforeRegister(){
-    var url = 'https://lab.estrenarvivienda.com/es/oauth/token';
+    var url = 'https://lab.estrenarvivienda.com/oauth/token';
     var urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "password");
     urlencoded.append("client_id", this.client_id);

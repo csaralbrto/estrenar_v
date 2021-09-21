@@ -286,7 +286,7 @@
       <div id="FullScrenn" class="medium-3 columns end FullScrenn" *ngFor="let project of response_data_project; let i = index">
           <div class="card" data-equalizer-watch>
               <div class="container-photo">
-                  <a routerLink="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                  <a routerLink="/es/{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
                   <div class="container-tools">
                       <div class="tags">
                           <div *ngIf="project.project_category.length > 0">

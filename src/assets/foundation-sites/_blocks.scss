@@ -2096,7 +2096,7 @@ a.tipos {
     height: 25px;
     width: 25px;
     background-color: #eee;
-    border-radius: 50%;
+    border-radius: 15%;
 }
 
 
@@ -2912,4 +2912,10 @@ ul#propertiesProject li.tabs-title {
 }
 .mBotton10{
   margin-bottom: 25px;
+}
+.margin0{
+  margin: 0 !important;
+}
+.paddinTFooter{
+  padding-top: 6px;
 }

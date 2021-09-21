@@ -110,7 +110,6 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
-    // this.GooglePlaces();
     //Fecha
     this.items = this.getDates(
       Date.now()
@@ -307,17 +306,28 @@ export class ProjectDetailComponent implements OnInit {
       });
 
     }
+    this.GooglePlaces();
   }
   GooglePlaces(){
+    let headers_get = new Headers();
+    headers_get.append('Content-Type', 'application/json');
+    headers_get.append('Accept', 'application/json');
+    headers_get.append('Access-Control-Allow-Origin', '*');
+    headers_get.append('Access-Control-Allow-Credentials', 'true');
+
     const requestOptions = {
       method: 'GET',
+      // headers: headers_get,
+      // mode: 'no-cors',
     };
-    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.latitude+","+this.longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
+    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
       .then(response => response.json())
       .then(data => {
         this.newplace = data;
         if (this.newplace) {
          // esta es la información que va a responder las api de google place
+         let respuesta_places = Object.values(this.newplace);
+         console.log('palces de google', respuesta_places);
         }
       })
       .catch(error => console.log('error', error));
