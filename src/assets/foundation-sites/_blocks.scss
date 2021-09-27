@@ -907,8 +907,8 @@ img.proyecto-card {
     }
     .data {
         display: inline-block;
-        width: auto;
-        text-align: right;
+        width: 155px;
+        text-align: left;
         margin-left: 0.4rem;
         font-size: 0.8rem;
         @media screen and (max-width: 600px) {
@@ -1430,9 +1430,13 @@ span.error {
         float: left;
         width: 25%;
         text-align: center;
+        &.project-detail {
+            width: auto;
+            margin-right: 0.4rem;
+        }
         &.tool {
             width: auto;
-            margin-right: 0.8rem;
+            margin-right: 0.4rem;
         }
         &.is-active {
             a {
@@ -2695,6 +2699,59 @@ img:focus {
         }
     }
 }
+.nav-tabs-map {
+    padding: 0 !important;
+    &.right {
+        display: inline-block;
+        float: right;
+    }
+    .tabs {
+        border: 0px;
+        .tabs-title {
+            float: left;
+            background: $light-gray;
+            // background: $primary-color;
+            // background: #a8d039;
+            border-radius: 8px;
+            margin-right: 0.5rem;
+            color: $primary-color !important;
+            .is-active {
+                // background: $primary-color;
+                background: $primary-color;
+                // background: #a8d039;
+                color: $white !important;
+                a {
+                    border-radius: 8px;
+                    background: $primary-color;
+                    // background: #a8d039;
+                    color: $white;
+                }
+            }
+        }
+        .tabs-title>a{
+          color: $primary-color;
+          padding: 0.75rem 1.1rem;
+        }
+        .tabs-title>a:focus,
+        .tabs-title>a[aria-selected=true] {
+            border-radius: 8px;
+            background: $primary-color;
+            // background: #a8d039;
+            color: $white;
+            &:hover {
+                border-radius: 8px;
+                background: $primary-color;
+                color: $white;
+            }
+        }
+        .tabs-title>a:hover {
+            border-radius: 8px;
+            background: $primary-color;
+            // background: #a8d039;
+            color: $white;
+        }
+    }
+}
 
 .tabs-content {
     border: 0px solid #eeeeee !important;
@@ -3023,5 +3080,8 @@ label.container-radio.label-button.checked {
   width: 167px;
 }
 .width-buttonNormal{
-  width: 130px;
+  width: 130px !important;
+}
+.width-btnWizard{
+  width: 132px !important;
 }

@@ -139,7 +139,6 @@ export class ProjectDetailComponent implements OnInit {
             // console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
-              console.log(this.response);
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
@@ -251,7 +250,6 @@ export class ProjectDetailComponent implements OnInit {
               .then(data => {
                 this.responseProperties = data.search_results;
                 if (this.responseProperties) {
-                  console.log(this.responseProperties);
                   this.propertiesSimilars = this.responseProperties
                   for (let project of this.propertiesSimilars) {
                     var arrayDeCadenas = project.typology_images.split(',');
@@ -278,7 +276,6 @@ export class ProjectDetailComponent implements OnInit {
     let currentDate = moment(startDate);
       dateArray.push(moment(currentDate).format("YYYY-MMM-DD"));
       currentDate = moment(currentDate).add(1, "days");
-    console.log("currentDate "+currentDate);
     return dateArray;
   }
   // Cambiar el mes fecha
