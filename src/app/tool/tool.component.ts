@@ -147,6 +147,13 @@ export class ToolComponent implements OnInit, AfterViewChecked {
         /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */
       }
     }else if(type == 'credito_vienda'){
+      if(value.tipo_credito_credito == 'hipotecario'){
+        $('#leasHabitacional').removeClass('checked');
+        $('#credHipotecario').addClass('checked');
+      }else{
+        $('#credHipotecario').removeClass('checked');
+        $('#leasHabitacional').addClass('checked');
+      }
       let monto_del_prestamo_multi = 0;
       let cuota = 0;
       let cuota_inicial = '';

@@ -63,8 +63,12 @@ export class ContentUploadComponent implements OnInit {
   title: string = 'AGM project';
   latitude: number;
   longitude: number;
+  latitude_input: number;
+  longitude_input: number;
   zoom:number;
-  address: string;
+  address_sales_room: string;
+  address_project: string;
+  address_office: string;
   public geoCoder;
 
   @ViewChild('search')
@@ -119,8 +123,8 @@ export class ContentUploadComponent implements OnInit {
           this.typeProjects = this.responseSearchData.projectCategory
           this.stateProjects = this.responseSearchData.currentStatus
           this.stratumProjects = this.responseSearchData.stratum
-          this.featuresProjects = this.responseSearchData.features 
-          this.collectionProjects = this.responseSearchData.collection 
+          this.featuresProjects = this.responseSearchData.features
+          this.collectionProjects = this.responseSearchData.collection
           this.schedulesDayProjects = this.responseSearchData.attention_schedule.days
           this.schedulesHoursProjects = this.responseSearchData.attention_schedule.hours
           this.results = true;
@@ -173,38 +177,80 @@ export class ContentUploadComponent implements OnInit {
       });
     }
   }
+  /* Evento al mover el pin en el mapa */
   markerDragEnd($event: google.maps.MouseEvent) {
     console.log($event);
     this.latitude = $event.latLng.lat();
     this.longitude = $event.latLng.lng();
     this.getAddress(this.latitude, this.longitude);
   }
+  /* Evento para obtener la dirección del pin en el mapa */
   getAddress(latitude, longitude) {
-    // console.log('lat',this.latitude,'long',this.longitude)
     this.geoCoder.geocode(
-      { 'location': 
-        { 
-          lat: latitude, lng: longitude 
-        } 
+      { 'location':
+        {
+          lat: latitude, lng: longitude
+        }
       }, (results, status) => {
-      console.log(results);
-      console.log(status);
-      // if (status === 'OK') {
-      //   if (results[0]) {
-      //     this.zoom = 12;
-      //     this.address = results[0].formatted_address;
-      //   } else {
-      //     window.alert('No results found');
-      //   }
-      // } else {
-      //   window.alert('Geocoder failed due to: ' + status);
-      // }
+      if (status === 'OK') {
+        if (results[0]) {
+          this.zoom = 12;
+          var type_addres = $("input[name='address_input']:checked").val();
+          console.log(type_addres);
+          if(type_addres == "sales_room"){
+            this.address_sales_room = results[0].formatted_address;
+          }else if(type_addres == "project"){
+            this.address_project = results[0].formatted_address;
+          }
+          this.latitude = latitude;
+          this.longitude = longitude;
+        }
+      }
 
     });
   }
+  /* Evento para obtener las coordenadas dependiendo de la dirección */
+
+  changeAddress() {
+    var type_addres = $("input[name='address_input']:checked").val();
+    let AdressFromInput = "";
+    if(type_addres == "sales_room"){
+      AdressFromInput = $("input[name='address_room_sales']").val();
+    }else if(type_addres == "project"){
+      AdressFromInput = $("input[name='address_project']").val();
+    }
+    this.geoCoder.geocode(
+      { 'address':
+        AdressFromInput
+      }, (results, status) => {
+      if (status === 'OK') {
+        if (results[0]) {
+          console.log(results[0])
+          this.latitude = results[0].geometry.location.lat();
+          this.longitude = results[0].geometry.location.lng();
+        }
+      }
+    });
+  }
+  changeCoordenates(lat,lng){
+    this.latitude = lat;
+    this.longitude = lng;
+  }
+  /* Evento para mover el pin del mapa dependiendo de las coordenadas ingresadas */
+  changeLatitude(){
+     this.latitude_input = $("input[name='latitude_project']").val();
+     this.longitude_input = $("input[name='longitude_project']").val();
+     this.getAddress(Number(this.latitude_input), Number(this.longitude_input));
+  }
+  /* Evento para mover el pin del mapa dependiendo de las coordenadas ingresadas */
+  changeLongitude(){
+     this.latitude_input = $("input[name='latitude_project']").val();
+     this.longitude_input = $("input[name='longitude_project']").val();
+     this.getAddress(Number(this.latitude_input), Number(this.longitude_input));
+  }
   ngAfterViewChecked() {
     if (this.results) {
-      // sessionStorage.removeItem('qtEmails');   
+      // sessionStorage.removeItem('qtEmails');
       $('app-content-upload').foundation();
       /* eliminamos los item de email y telefono */
       // sessionStorage.removeItem('qtEmails');
@@ -217,40 +263,40 @@ export class ContentUploadComponent implements OnInit {
   }
   onFilePlanesChange(event) {
     const reader = new FileReader();
-    
+
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-    
+
       reader.onload = () => {
-   
+
         this.planeSrc = reader.result as string;
-     
+
         // this.myForm.patchValue({
         //   fileSource: reader.result
         // });
-   
+
       };
-   
+
     }
   }
   onFileChange(event) {
     const reader = new FileReader();
-    
+
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-    
+
       reader.onload = () => {
-   
+
         this.imageSrc = reader.result as string;
-     
+
         // this.myForm.patchValue({
         //   fileSource: reader.result
         // });
-   
+
       };
-   
+
     }
   }
   onFilesChange(event) {
@@ -261,7 +307,7 @@ export class ContentUploadComponent implements OnInit {
 
                 reader.onload = (event:any) => {
                   console.log(event.target.result);
-                   this.images.push(event.target.result); 
+                   this.images.push(event.target.result);
 
                   //  this.myForm.patchValue({
                   //     fileSource: this.images
@@ -280,7 +326,7 @@ export class ContentUploadComponent implements OnInit {
 
                 reader.onload = (event:any) => {
                   console.log(event.target.result);
-                   this.imagesTypology.push(event.target.result); 
+                   this.imagesTypology.push(event.target.result);
 
                   //  this.myForm.patchValue({
                   //     fileSource: this.images
@@ -295,7 +341,7 @@ export class ContentUploadComponent implements OnInit {
     if(type_feature == 'projects'){
       if (event && event !== null && type == 'add') {
         /* se agrega al array featuresProjectsArray */
-        this.featuresProjectsArray.push(event); 
+        this.featuresProjectsArray.push(event);
         /* Se quita del array featuresProjects */
         const index = this.featuresProjects.indexOf(event);
         this.featuresProjects.splice(index, 1);
@@ -304,7 +350,7 @@ export class ContentUploadComponent implements OnInit {
         const index = this.featuresProjectsArray.indexOf(event);
         this.featuresProjectsArray.splice(index, 1);
         /* se agrega al array featuresProjects */
-        this.featuresProjects.push(event); 
+        this.featuresProjects.push(event);
         // this.featuresProjects.sort(function (a, b) {
         //   return a.length - b.length;
         // });
@@ -313,7 +359,7 @@ export class ContentUploadComponent implements OnInit {
     }else if(type_feature == 'typology'){
       if (event && event !== null && type == 'add') {
         /* se agrega al array featuresProjectsArray */
-        this.featuresTypologyArray.push(event); 
+        this.featuresTypologyArray.push(event);
         /* Se quita del array featuresProjects */
         const index = this.featuresTypology.indexOf(event);
         this.featuresTypology.splice(index, 1);
@@ -322,7 +368,7 @@ export class ContentUploadComponent implements OnInit {
         const index = this.featuresTypologyArray.indexOf(event);
         this.featuresTypologyArray.splice(index, 1);
         /* se agrega al array featuresTypology */
-        this.featuresTypology.push(event); 
+        this.featuresTypology.push(event);
         // this.featuresTypology.sort(function (a, b) {
         //   return a.length - b.length;
         // });
@@ -403,7 +449,7 @@ export class ContentUploadComponent implements OnInit {
       }
     }
   }
-  onSubmitTypology(value){    
+  onSubmitTypology(value){
     let error_typology = false
     let error_label_price
       if($('#label_price').val() == null || $('#label_price').val() == ""){
@@ -559,7 +605,7 @@ export class ContentUploadComponent implements OnInit {
       this.featuresTypologyArray = [];
       this.imagesTypology = [];
       this.planeSrc = "";
-      this.formTypologyArray.push(value); 
+      this.formTypologyArray.push(value);
       console.log('se almaceno en el array de las tipologias',this.formTypologyArray);
       this.createFormTypology();
     }
@@ -571,7 +617,7 @@ export class ContentUploadComponent implements OnInit {
       sessionStorage.setItem("projectInfo", JSON.stringify(projectValue));
     }
     if(this.formTypologyArray && this.formTypologyArray.length > 0){
-      this.formTypologyArray.push(typologysValue); 
+      this.formTypologyArray.push(typologysValue);
       sessionStorage.setItem("projectInfo", JSON.stringify(this.formTypologyArray));
     }else{
       sessionStorage.setItem("projectInfo", JSON.stringify(typologysValue));
@@ -603,7 +649,7 @@ export class ContentUploadComponent implements OnInit {
       }
     );
   }
-  editTypology(index){ 
+  editTypology(index){
     /* se asigna el valor de la tipología a editar */
     this.formTypologyEditArray.push(this.formTypologyArray[index]);
   }
@@ -818,10 +864,10 @@ export class ContentUploadComponent implements OnInit {
         $('#spanBank').addClass('hide');
         error_bank = 0;
         error = false;
-      }  
+      }
       if(error_builder == 1 || error_name_proyect == 1 || error_date_of_delivery == 1 || error_city == 1 || error_zone == 1 || error_sector == 1 || error_address_room_sales == 1 || error_address_project == 1 || error_stratum == 1 || error_bank == 1){
         error = true;
-      } 
+      }
     }else if(currentStep == 2){
       let error_imageSrc = 0;
       if(this.imageSrc == null || this.imageSrc == ""){
@@ -924,7 +970,7 @@ export class ContentUploadComponent implements OnInit {
         error = false;
       }
       if(error_feature == 1 || error_number_towers == 1 || error_floors_towers == 1 || error_apartments_towers == 1 || error_elevator_towers == 1 || error_builder == 1){
-        error =  true; 
+        error =  true;
      }
     }else if (currentStep == 4){
       let error_name = 0;
@@ -1170,7 +1216,7 @@ export class ContentUploadComponent implements OnInit {
         }
       },this);
       console.log(this.stringQuery);
-  
+
       // this.beforeCheck(this.response.individual);
       var url = this.stringQuery;
       var data = "";
@@ -1181,7 +1227,7 @@ export class ContentUploadComponent implements OnInit {
         // console.log(data)
         this.response = data;
         // console.log(this.response);
-        if (this.response) { 
+        if (this.response) {
           // console.log(this.response.search_results);
           this.response_data_project = this.response.search_results
           for (let project of this.response_data_project) {
@@ -1285,7 +1331,7 @@ export class ContentUploadComponent implements OnInit {
       console.log(values);
       this.formProjectArray.push(values);
       sessionStorage.setItem('previewProject',JSON.stringify(this.formProjectArray))
-      window.open('/es/preview-project', '_blank'); 
+      window.open('/es/preview-project', '_blank');
     }
   }
   validateForm(values){
@@ -1415,10 +1461,10 @@ export class ContentUploadComponent implements OnInit {
         $('#spanBank').addClass('hide');
         error_bank = 0;
         error = false;
-      }  
+      }
       if(error_builder1 == 1 || error_name_proyect == 1 || error_date_of_delivery == 1 || error_city == 1 || error_zone == 1 || error_sector == 1 || error_address_room_sales == 1 || error_address_project == 1 || error_stratum == 1 || error_bank == 1){
         error = true;
-      } 
+      }
       let error_imageSrc = 0;
       if(this.imageSrc == null || this.imageSrc == ""){
         $('#spanimageSrc').removeClass('hide');
@@ -1520,7 +1566,7 @@ export class ContentUploadComponent implements OnInit {
         error = false;
       }
       if(error_feature == 1 || error_number_towers == 1 || error_floors_towers == 1 || error_apartments_towers == 1 || error_elevator_towers == 1 || error_builder == 1){
-        error =  true; 
+        error =  true;
      }
       let error_name = 0;
       if($('#name').val() == null || $('#name').val() == ""){

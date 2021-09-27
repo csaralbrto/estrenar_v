@@ -435,7 +435,7 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es/{{response.home_featured_typologies[1].url}}">Ver
+                                                <a class="button" href="/es{{response.home_featured_typologies[1].url}}">Ver
                                                     Proyecto</a>
                                                 <a class="button" data-open="exampleModal2">Contacto</a>
                                             </div>
@@ -510,7 +510,7 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es/{{response.home_featured_typologies[2].url}}">Ver
+                                                <a class="button" href="/es{{response.home_featured_typologies[2].url}}">Ver
                                                     Proyecto</a>
                                                 <a class="button" data-open="exampleModal2">Contacto</a>
                                             </div>
@@ -588,7 +588,7 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es/{{response.home_featured_typologies[3].url}}">Ver
+                                                <a class="button" href="/es{{response.home_featured_typologies[3].url}}">Ver
                                                     Proyecto</a>
                                                 <a class="button" data-open="exampleModal2">Contacto</a>
                                             </div>
@@ -662,7 +662,7 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es/{{response.home_featured_typologies[4].url}}">Ver
+                                                <a class="button" href="/es{{response.home_featured_typologies[4].url}}">Ver
                                                     Proyecto</a>
                                                 <a class="button" data-open="exampleModal2">Contacto</a>
                                             </div>
@@ -745,11 +745,11 @@
                                     </div>
 
                                     <div class="section"><a href="{{blog.url}}">{{ blog.article_type }}</a></div>
-                                    <h3><a href="{{blog.url}}">{{ blog.title.slice(0,90) }}</a></h3>
+                                    <h3><a href="{{blog.url}}">{{ blog.title.slice(0,50)+stringText }}</a></h3>
                                     <!-- <div class="resumen" [innerHTML]=blog.descripcion.slice(0,180)>
                                   </div> -->
                                     <div class="resumen">
-                                        <p [innerHTML]=blog.description.slice(0,120)+stringText></p>
+                                        <p [innerHTML]=blog.description.slice(0,110)+stringText></p>
                                     </div>
                                     <!-- <hr> -->
                                     <a href="{{blog.url}}" class="button">Seguir leyendo</a>

@@ -23,7 +23,7 @@
                 <a href="#panel1" aria-selected="true">Simulador capacidad endeudamiento</a>
             </li>
             <li class="tabs-title tool">
-                <a data-tabs-target="panel4" href="#panel4">Simulador credito de vivienda</a>
+                <a data-tabs-target="panel4" href="#panel4">Simulador crédito de vivienda</a>
             </li>
         </ul>
         <div class="tabs-content" data-tabs-content="simuladores">
@@ -46,7 +46,7 @@
                                 <p> Podrías comprar una vivienda de:</p>
                                 <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
                                 <hr>
-                                <a (click)="searchProjectByPrice(vivienda_endeudamiento)"  class="button secondary ">Ver proyectos afines</a>
+                                <a (click)="searchProjectByPrice(vivienda_endeudamiento)"  class="button secondary btn-projects-afines">Ver proyectos afines</a>
                             </div>
 
                         </div>
@@ -85,7 +85,7 @@
                                 <hr>
                                 <p> Equivalentes a:</p>
                                 <input type="text" placeholder="" value="$ {{ subsidio_vivienda | number }}">
-                                <a href="#" class="button secondary ">Más información</a>
+                                <a href="#" class="button secondary btn-projects-afines">Más información</a>
                             </div>
                             <div class="medium-4 columns text-center">
                                 <p> </p>
@@ -123,14 +123,14 @@
                             <div class="medium-6 columns">
                                 <label class="container-radio">Crédito hipotecario
                                     <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
-                                    <span class="checkmark"></span>
+                                    <span class="checkmark-radio"></span>
                                 </label>
                             </div>
                             <div class="medium-6 columns">
 
                                 <label class="container-radio">Leasing habitacional
                                     <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
-                                    <span class="checkmark"></span>
+                                    <span class="checkmark-radio"></span>
                                 </label>
                             </div>
                         </div>
@@ -213,15 +213,15 @@
                         <fieldset>
                         <div class="row">
                             <div class="medium-6 columns">
-                                <label class="container-radio">Crédito hipotecario
+                                <label id="credHipotecario" class="container-radio label-button">Crédito hipotecario
                                     <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="hipotecario">
-                                    <span class="checkmark"></span>
+                                    <span style="display: none;" class="checkmark"></span>
                                 </label>
                             </div>
                             <div class="medium-6 columns">
-                                <label class="container-radio">Leasing habitacional
+                                <label id="leasHabitacional" class="container-radio label-button">Leasing habitacional
                                     <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="leasing">
-                                    <span class="checkmark"></span>
+                                    <span style="display: none;" class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
@@ -232,20 +232,20 @@
                         </div>
                             </div>
                             <div class="medium-4 columns text-center end">
-                                <h5>Calculo aproximado para poder adquirir tu vivienda:</h5>
+                                <h5>Cálculo aproximado para poder adquirir tu vivienda:</h5>
                                 <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
                                     <div class="medium-6 columns">
-                                            <div class="container-calc" data-equalizer-watch>
+                                            <div class="container-calc panel-value-calc" data-equalizer-watch>
                                                 <div class="value">
                                                     $ {{ monto_prestamo_credito | number }}
                                                 </div>
                                                 <div class="caracteristica">
-                                                    Monto prestamo
+                                                    Monto préstamo
                                                 </div>
                                             </div>
                                     </div>
                                     <div class="medium-6 columns">
-                                        <div class="container-calc" data-equalizer-watch>
+                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
                                             <div class="value">
                                                 $ {{ cuota_inicial_vivienda_credito | number }}
                                             </div>
@@ -255,17 +255,17 @@
                                         </div>
                                 </div>
                                 <div class="medium-6 columns">
-                                    <div class="container-calc" data-equalizer-watch>
+                                    <div class="container-calc panel-value-calc" data-equalizer-watch>
                                         <div class="value">
                                             $ {{ ingresos_mensuales_min_credito | number }}
                                         </div>
-                                        <div class="caracteristica">
+                                        <div class="caracteristica-ing-min">
                                             Ingresos minimos mensuales
                                         </div>
                                     </div>
                             </div>
                             <div class="medium-6 columns">
-                                <div class="container-calc" data-equalizer-watch>
+                                <div class="container-calc panel-value-calc" data-equalizer-watch>
                                     <div class="value">
                                         {{ plazo_meses_credito }}
                                     </div>
@@ -275,7 +275,7 @@
                                 </div>
                         </div>
                         <div class="medium-6 columns">
-                            <div class="container-calc" data-equalizer-watch>
+                            <div class="container-calc panel-value-calc" data-equalizer-watch>
                                 <div class="value">
                                     % {{ tasa_de_interes_credito }}
                                 </div>
@@ -285,7 +285,7 @@
                             </div>
                     </div>
                     <div class="medium-6 columns">
-                        <div class="container-calc" data-equalizer-watch>
+                        <div class="container-calc panel-value-calc" data-equalizer-watch>
                             <div class="value">
                                 $ {{ cuota_mensual_credito | number }}
                             </div>
@@ -295,7 +295,7 @@
                         </div>
                 </div>
                                 </div>
-                                <a (click)="searchProjectByPrice(monto_prestamo_credito)" class="button secondary ">Ver proyectos afines</a>
+                                <a (click)="searchProjectByPrice(monto_prestamo_credito)" class="button secondary btn-projects-afines">Ver proyectos afines</a>
                             </div>
                         </div>
                     </div>

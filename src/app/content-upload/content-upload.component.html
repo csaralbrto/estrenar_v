@@ -152,13 +152,13 @@
                         <div class="medium-12 columns">
                             <div>
                                 <label class="container-check">Sala de ventas
-                                        <input type="checkbox" checked="checked">
+                                        <input type="radio" id="address_room_sales" name="address_input" value="sales_room" checked="checked">
                                         <span class="checkmark"></span>
                                     </label>
                             </div>
                             <div>
                                 <label>Escriba la dirección de la sala de ventas
-                                        <input id="address_room_sales" name="address_room_sales" formControlName="address_room_sales" type="text" placeholder="">
+                                        <input id="address_room_sales" name="address_room_sales" (change)="changeAddress()" formControlName="address_room_sales" type="text" placeholder="" value="{{address_sales_room}}">
                                     </label>
                                 <div class="">
                                     <span style="color: red" id="spanSales" class="hide">
@@ -168,13 +168,13 @@
                             </div>
                             <div>
                                 <label class="container-check">Proyecto
-                                        <input type="checkbox">
+                                        <input type="radio" id="address_project" name="address_input" value="project">
                                         <span class="checkmark"></span>
                                     </label>
                             </div>
                             <div>
                                 <label>Escriba la dirección del proyecto
-                                        <input id="address_project" name="address_project" formControlName="address_project" type="text" placeholder="" value="{{address}}">
+                                        <input id="address_project" name="address_project" (change)="changeAddress()" formControlName="address_project" type="text" placeholder="" value="{{address_project}}">
                                     </label>
                                 <div class="">
                                     <span style="color: red" id="spanProject" class="hide">
@@ -184,7 +184,7 @@
                             </div>
                             <div>
                                 <label class="container-check">Oficina
-                                        <input type="checkbox">
+                                        <input type="radio" id="address_office" name="address_input">
                                         <span class="checkmark"></span>
                                     </label>
                             </div>
@@ -209,59 +209,16 @@
                             <input type="hidden" id="long_project" value="{{longitude}}">
                             <div>
                                 <label>Latitud
-                                        <input id="latitude_project" name="latitude_project" formControlName="latitude_project" type="text" placeholder="" value="{{address}}">
-                                    </label>
+                                    <input id="latitude_project" name="latitude_project" (change)="changeLatitude()" formControlName="latitude_project" type="text" placeholder="" value="{{latitude}}">
+                                </label>
                                 <label>Longitud
-                                        <input id="longitude_project" name="longitude_project" formControlName="longitude_project" type="text" placeholder="" value="{{address}}">
-                                    </label>
+                                    <input id="longitude_project" name="longitude_project" (change)="changeLongitude()" formControlName="longitude_project" type="text" placeholder="" value="{{longitude}}">
+                                </label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr class="white">
-                <!-- <h2>Dirección *</h2>
-                <div class="row">
-                    <div class="medium-6 columns">
-                        <div>
-                            <label class="container-check">Sala de ventas
-                                    <input type="checkbox" checked="checked">
-                                    <span class="checkmark"></span>
-                                </label>
-                        </div>
-                        <div>
-                            <label>Escriba la dirección de la sala de ventas
-                                    <input id="address_room_sales" name="address_room_sales" formControlName="address_room_sales" type="text" placeholder="">
-                                </label>
-                            <div class="">
-                                <span style="color: red" id="spanSales" class="hide">
-                                        Debe ingresar una dirección
-                                    </span>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="container-check">Proyecto
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                        </div>
-                        <div>
-                            <label>Escriba la dirección del proyecto
-                                    <input id="address_project" name="address_project" formControlName="address_project" type="text" placeholder="" value="{{address}}">
-                                </label>
-                            <div class="">
-                                <span style="color: red" id="spanProject" class="hide">
-                                        Debe ingresar una dirección
-                                    </span>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="container-check">Oficina
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                        </div>
-                    </div>
-                </div> -->
                 <h2>Estrato *</h2>
                 <div class="row">
                     <div class="medium-6 columns end">

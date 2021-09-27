@@ -315,22 +315,43 @@ export class ProjectDetailComponent implements OnInit {
     headers_get.append('Access-Control-Allow-Origin', '*');
     headers_get.append('Access-Control-Allow-Credentials', 'true');
 
-    const requestOptions = {
-      method: 'GET',
-      // headers: headers_get,
-      // mode: 'no-cors',
-    };
-    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        this.newplace = data;
-        if (this.newplace) {
-         // esta es la información que va a responder las api de google place
-         let respuesta_places = Object.values(this.newplace);
-         console.log('palces de google', respuesta_places);
-        }
-      })
-      .catch(error => console.log('error', error));
+    // const requestOptions = {
+    //   mode: 'cors',
+    //   method: 'GET',
+    //   headers: headers_get,
+    // };
+    // fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     this.newplace = data;
+    //     if (this.newplace) {
+    //      // esta es la información que va a responder las api de google place
+    //      let respuesta_places = Object.values(this.newplace);
+    //      console.log('palces de google', respuesta_places);
+    //     }
+    //   })
+    //   .catch(error => console.log('error', error));
+
+      // fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=35000&type=supermarket&key="+this.keyGoglePlace, {
+        fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&key=AIzaSyBWs9OyPX4xZ_c_SYCRI3x9wKqXmM1owlM", {
+        method: 'GET',
+        // headers: headers_get,
+        mode: 'no-cors',
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('data es: ',data);
+          // console.log('data es: ',data);
+          // this.newplace = data;
+          // if (this.newplace) {
+          //   // esta es la información que va a responder las api de google place
+          //   let respuesta_places = Object.values(this.newplace);
+          //   console.log('palces de google', respuesta_places);
+          // }
+        })
+        .catch(error => console.log('error', error));
+
+
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */

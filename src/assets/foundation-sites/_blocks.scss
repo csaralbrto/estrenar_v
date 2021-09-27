@@ -79,7 +79,7 @@ select {
 
 .inline {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 33px;
     margin-right: 40px;
     button.button {
         margin: 1rem;
@@ -1047,11 +1047,13 @@ label {
 
 //Blog listados
 .blog-list {
-    height: 480px;
+    height: 500px;
     position: relative;
     margin-bottom: 1rem;
     &.col2 {
-        height: 410px;
+      height: 500px;
+      position: relative;
+      margin-bottom: 1rem;
     }
     @media screen and (max-width: 600px) {
         height: auto;
@@ -2098,6 +2100,14 @@ a.tipos {
     background-color: #eee;
     border-radius: 15%;
 }
+.checkmark-radio{
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
 
 
 /* On mouse-over, add a grey background color */
@@ -2259,11 +2269,15 @@ ul.pagination-pointed {
 .calculo {
     .container-calc {
         background: $white;
-        padding: 0.5rem;
+        padding: 0rem;
         border-radius: $global-radius;
         margin-bottom: 1rem;
         .caracteristica {
             color: $primary-color;
+            padding-top: 10px;
+        }
+        .caracteristica-ing-min{
+          color: $primary-color;
         }
         .value {
             font-size: 1.15rem;
@@ -2423,9 +2437,11 @@ img.image.constructor {
     color: $white;
     label {
         color: $white !important;
+        font-size: 16px;
     }
     a {
         color: $secondary-color;
+        font-size: 14px;
     }
     h3 {
         font-size: 1.1rem;
@@ -2444,9 +2460,24 @@ img.image.constructor {
             padding: 0.6em 0.7em;
         }
     }
-    a.button.secondary {
-        margin: 0 2rem;
+    .input-number{
+      box-shadow: none;
     }
+    a.button.secondary {
+        margin: 0 1.8rem;
+        width: 180px;
+    }
+    .checkmark-morefilter {
+      position: absolute;
+      top: 0px;
+      left: 0;
+      height: 19px;
+      width: 19px;
+      background-color: #14454e;
+      border-radius: 0%;
+      border: solid 2.2px;
+      border-color: #fff;
+  }
 }
 
 .filtros-tag {
@@ -2463,7 +2494,10 @@ img.image.constructor {
 //COntador
 .reveal {
     &.filter {
-        width: 900px;
+      width: 900px;
+      border-radius: 20px;
+      border: none;
+      height: 550px;
     }
 }
 
@@ -2863,7 +2897,7 @@ ul.menu li a img {
   border-radius: 12px;
 }
 ul#propertiesProject li.tabs-title {
-  margin-right: 20px !important;
+  margin-right: 18px !important;
 }
 
 .tabs-content div#images {
@@ -2918,4 +2952,76 @@ ul#propertiesProject li.tabs-title {
 }
 .paddinTFooter{
   padding-top: 6px;
+}
+.paddinLFooter{
+  padding-left: 83px;
+}
+a.button.filtro-btn {
+  width: 90px;
+}
+a.button.secondary.favorito.button-color-ev.fav-btn{
+  width: 85.54px;
+}
+.mTop-columns{
+  margin-top: 0.4px;
+}
+.medium-7.columns.mTop-tabs-project {
+  margin-top: 16px;
+}
+.tab-map-project{
+  padding: 15px !important;
+}
+
+span.button.secondary.buttonSendInfo {
+  padding: 15px;
+  width: 147px !important;
+}
+button.success.button.sendInfoAgenda {
+  padding: 15px !important;
+  width: 147px !important;
+}
+
+a.button.others-projects {
+  width: 222px;
+}
+.padding0{
+  padding: 0 !important;
+}
+
+label.label-button {
+  padding: 0.7rem 0rem 0.7rem 0;
+  border-radius: 8px;
+  color: #0a244f !important;
+  background: #c5c3c8;
+  display: inline-block;
+  margin: 0 0 1rem;
+  text-align: center;
+  width: 157px;
+}
+label.container-radio.label-button.checked {
+  background: #a9d22b;
+  color: #0a244f;
+}
+
+.btn-projects-afines{
+  width: 155px !important;
+}
+
+.mTop-inmuebles{
+  margin-top: 50px;
+}
+
+.input-group.input-number-group {
+  margin-bottom: 0px;
+}
+
+.margin-top10 {
+  margin-top: 10px;
+}
+.panel-value-calc{
+  height: 85px !important;
+  width: 167px;
+}
+.width-buttonNormal{
+  width: 130px;
 }

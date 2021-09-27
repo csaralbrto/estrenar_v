@@ -13,7 +13,10 @@
         <form action="">
             <div class="row">
                 <div class="medium-4 columns end">
+                  <div class="buscador">
+                    <img class="search" src="/assets/images/search.png">
                     <input id="searchWord" type="search" placeholder="Buscar constructora" />
+                  </div>
                 </div>
                 <div class="medium-4 columns end">
                     <select id="location" name="location" (change)="change(1)" [(ngModel)]="optionsLocationSelected" *ngIf="filterLocation && filterLocation.length > 0">
