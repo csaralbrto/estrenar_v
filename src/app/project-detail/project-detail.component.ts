@@ -110,10 +110,12 @@ export class ProjectDetailComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
+    this.GooglePlaces();
     //Fecha
     this.items = this.getDates(
       Date.now()
     );
+
 
 
     this.title = this.activatedRoute.snapshot.params.path;
@@ -139,6 +141,7 @@ export class ProjectDetailComponent implements OnInit {
             // console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
+              console.log(this.response);
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
@@ -180,11 +183,13 @@ export class ProjectDetailComponent implements OnInit {
               }
               this.galeria = this.response.field_typology_image;
               this.operacion= this.galeria.length;
+              console.log("mirar dato "+ this.operacion);
               if(this.operacion % 2 == 0){
                 this.valoresPares = "par";
               }else{
                 this.valoresPares = "impar";
               }
+              console.log("si es par "+ this.valoresPares);
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
               for (let caracteristica_tipologia of this.caracteristicas) {
@@ -250,6 +255,7 @@ export class ProjectDetailComponent implements OnInit {
               .then(data => {
                 this.responseProperties = data.search_results;
                 if (this.responseProperties) {
+                  console.log(this.responseProperties);
                   this.propertiesSimilars = this.responseProperties
                   for (let project of this.propertiesSimilars) {
                     var arrayDeCadenas = project.typology_images.split(',');
@@ -276,6 +282,7 @@ export class ProjectDetailComponent implements OnInit {
     let currentDate = moment(startDate);
       dateArray.push(moment(currentDate).format("YYYY-MMM-DD"));
       currentDate = moment(currentDate).add(1, "days");
+    console.log("currentDate "+currentDate);
     return dateArray;
   }
   // Cambiar el mes fecha
@@ -303,52 +310,22 @@ export class ProjectDetailComponent implements OnInit {
       });
 
     }
-    this.GooglePlaces();
   }
   GooglePlaces(){
-    let headers_get = new Headers();
-    headers_get.append('Content-Type', 'application/json');
-    headers_get.append('Accept', 'application/json');
-    headers_get.append('Access-Control-Allow-Origin', '*');
-    headers_get.append('Access-Control-Allow-Credentials', 'true');
-
-    // const requestOptions = {
-    //   mode: 'cors',
-    //   method: 'GET',
-    //   headers: headers_get,
-    // };
-    // fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     this.newplace = data;
-    //     if (this.newplace) {
-    //      // esta es la información que va a responder las api de google place
-    //      let respuesta_places = Object.values(this.newplace);
-    //      console.log('palces de google', respuesta_places);
-    //     }
-    //   })
-    //   .catch(error => console.log('error', error));
-
-      // fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=35000&type=supermarket&key="+this.keyGoglePlace, {
-        fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&key=AIzaSyBWs9OyPX4xZ_c_SYCRI3x9wKqXmM1owlM", {
-        method: 'GET',
-        // headers: headers_get,
-        mode: 'no-cors',
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('data es: ',data);
-          // console.log('data es: ',data);
-          // this.newplace = data;
-          // if (this.newplace) {
-          //   // esta es la información que va a responder las api de google place
-          //   let respuesta_places = Object.values(this.newplace);
-          //   console.log('palces de google', respuesta_places);
-          // }
-        })
-        .catch(error => console.log('error', error));
-
-
+    const requestOptions = {
+      method: 'GET',
+    };
+    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.latitude+","+this.longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        this.newplace = data;
+        if (this.newplace) {
+          const test =Object.values(this.newplace);
+          console.log("datos mapa "+ test);
+         // esta es la información que va a responder las api de google place
+        }
+      })
+      .catch(error => console.log('error', error));
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
