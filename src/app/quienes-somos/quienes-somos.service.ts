@@ -15,7 +15,7 @@ export class QuienesSomosService {
     this.endpoint = environment.endpointApiBasicPage + '/quienes-somos';
    }
 
-  /* Traer la info de quienes somo */
+  /* Traer la info de quienes somos */
   getData(): Observable<any> {
     return this.http.get(this.endpoint)
     .pipe(map(( response => response.json() )));

@@ -97,7 +97,17 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'articulos/:path/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'es/articulos/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'articulos/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
   },

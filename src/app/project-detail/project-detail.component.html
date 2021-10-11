@@ -462,14 +462,93 @@
                     <div class="direccion">
                         <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
                     </div>
-                    <!-- <iframe [src]="maps_url" width="100%" height="500" frameborder="0" style="border:0;" id="pano" allowfullscreen="" aria-hidden="false" tabindex="0">
-              </iframe> -->
                     <div id="googleMaps">
                         <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
                             <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="response.marketIcon">
                                 <agm-info-window #infoWindow>
                                     {{ response.field_typology_project.name }}
                                 </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGoogleHospital of placesGoogleHospital"
+                              [latitude]="marker_placesGoogleHospital.geometry.location.lat()"
+                              [longitude]="marker_placesGoogleHospital.geometry.location.lng()"
+                              [iconUrl]="icon_hospital"
+                              [visible]="Hospital_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGoogleHospital.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGoogleMall of placesGoogleMall"
+                              [latitude]="marker_placesGoogleMall.geometry.location.lat()"
+                              [longitude]="marker_placesGoogleMall.geometry.location.lng()"
+                              [iconUrl]="icon_mall"
+                              [visible]="Mall_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGoogleMall.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGoogleRestaurant of placesGoogleRestaurant"
+                              [latitude]="marker_placesGoogleRestaurant.geometry.location.lat()"
+                              [longitude]="marker_placesGoogleRestaurant.geometry.location.lng()"
+                              [iconUrl]="icon_restaurant"
+                              [visible]="Restaurant_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGoogleRestaurant.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGoogleBank of placesGoogleBank"
+                              [latitude]="marker_placesGoogleBank.geometry.location.lat()"
+                              [longitude]="marker_placesGoogleBank.geometry.location.lng()"
+                              [iconUrl]="icon_bank"
+                              [visible]="Bank_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGoogleBank.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGoogleUniversity of placesGoogleUniversity"
+                              [latitude]="marker_placesGoogleUniversity.geometry.location.lat()"
+                              [longitude]="marker_placesGoogleUniversity.geometry.location.lng()"
+                              [iconUrl]="icon_university"
+                              [visible]="University_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGoogleUniversity.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGooglepark of placesGooglepark"
+                              [latitude]="marker_placesGooglepark.geometry.location.lat()"
+                              [longitude]="marker_placesGooglepark.geometry.location.lng()"
+                              [iconUrl]="icon_park"
+                              [visible]="park_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGooglepark.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGooglesupermarket of placesGooglesupermarket"
+                              [latitude]="marker_placesGooglesupermarket.geometry.location.lat()"
+                              [longitude]="marker_placesGooglesupermarket.geometry.location.lng()"
+                              [iconUrl]="icon_supermarket"
+                              [visible]="supermarket_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGooglesupermarket.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGooglechurch of placesGooglechurch"
+                              [latitude]="marker_placesGooglechurch.geometry.location.lat()"
+                              [longitude]="marker_placesGooglechurch.geometry.location.lng()"
+                              [iconUrl]="icon_church"
+                              [visible]="church_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGooglechurch.name }}
+                                  </agm-info-window>
+                            </agm-marker>
+                            <agm-marker *ngFor="let marker_placesGoogletransit_station of placesGoogletransit_station"
+                              [latitude]="marker_placesGoogletransit_station.geometry.location.lat()"
+                              [longitude]="marker_placesGoogletransit_station.geometry.location.lng()"
+                              [iconUrl]="icon_transporte"
+                              [visible]="transit_station_visible">
+                                  <agm-info-window #infoWindow>
+                                      {{ marker_placesGoogletransit_station.name }}
+                                  </agm-info-window>
                             </agm-marker>
                         </agm-map>
                         <hr class="white">
@@ -478,66 +557,126 @@
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 columns">
-                                        <label class="container-check">Supermercados
-                                    <input type="checkbox" checked="checked">
-                                    <span class="checkmark"></span>
-                                </label>
-
+                                        <label class="container-check">Hospitales
+                                          <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
+                                          <span class="checkmark"></span>
+                                      </label>
                                     </div>
                                     <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/supermercado.png" alt="">
+                                        <img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
                                     </div>
                                 </div>
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 columns">
-                                        <label class="container-check">Supermercados
-                                  <input type="checkbox" >
-                                  <span class="checkmark"></span>
-                              </label>
-
+                                        <label class="container-check">Restaurantes
+                                            <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                     <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/supermercado.png" alt="">
+                                        <img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
                                     </div>
                                 </div>
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 columns">
-                                        <label class="container-check">Supermercados
-                                  <input type="checkbox" >
-                                  <span class="checkmark"></span>
-                              </label>
-
+                                        <label class="container-check">Bancos
+                                            <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                     <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/supermercado.png" alt="">
+                                        <img src="/assets/images/banco.png" alt="" width="30px" height="30px">
                                     </div>
                                 </div>
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 columns">
-                                        <label class="container-check">Supermercados
-                                  <input type="checkbox" >
-                                  <span class="checkmark"></span>
-                              </label>
-
+                                        <label class="container-check">Educación
+                                            <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                     <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/supermercado.png" alt="">
+                                        <img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 columns">
+                                        <label class="container-check">Centros comerciales
+                                            <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="medium-4 columns hide-for-small-only">
+                                        <img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 columns">
+                                        <label class="container-check">Transporte
+                                            <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="medium-4 columns hide-for-small-only">
+                                        <img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 79px;margin-top: 61px;padding-left: 17px;padding-right: 17px;">
+                              <div class="small-6 medium-4 columns end zona">
+                                  <div class="row">
+                                      <div class="medium-8 columns">
+                                          <label class="container-check">Parques
+                                              <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
+                                              <span class="checkmark"></span>
+                                          </label>
+                                      </div>
+                                      <div class="medium-4 columns hide-for-small-only">
+                                          <img src="/assets/images/parque.png" alt="" width="30px" height="30px">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 medium-4 columns end zona">
+                                  <div class="row">
+                                      <div class="medium-8 columns">
+                                          <label class="container-check">Supermercados
+                                              <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
+                                              <span class="checkmark"></span>
+                                          </label>
+                                      </div>
+                                      <div class="medium-4 columns hide-for-small-only">
+                                          <img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 medium-4 columns end zona">
+                                  <div class="row">
+                                      <div class="medium-8 columns">
+                                          <label class="container-check">Iglesias
+                                              <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
+                                              <span class="checkmark"></span>
+                                          </label>
+                                      </div>
+                                      <div class="medium-4 columns hide-for-small-only">
+                                          <img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- <div > -->
-                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
-                    <!-- </div> -->
-                </div>
+                      <div id="map" class="hide"></div>
+                  </div>
                 <div id="planes" class="visibi-hide pLeft0">
                     <p>Información no disponible</p>
                 </div>
@@ -876,10 +1015,10 @@
                                     <hr>
                                     <p> Ingrese el valor del inmueble</p>
                                     <p>$ {{ response.field_typology_price | number }}</p>
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <span class="input-group-label">$</span>
                                         <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota" [value]="response.field_typology_price" readonly>
-                                    </div>
+                                    </div> -->
                                     <hr>
                                     <div class="text-left">
                                         <p>Escoje una de las dos opciones:</p>
@@ -906,7 +1045,7 @@
                                     <input formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
                                     <hr>
                                     <p> Plazo actual para cuota inicial</p>
-                                    <input type="text" placeholder="No. meses">
+                                    <input style="text-align: center;" type="text" placeholder="No. meses" value="{{ no_months }}" readonly>
 
                                 </div>
                                 <div class="medium-4 columns text-center">

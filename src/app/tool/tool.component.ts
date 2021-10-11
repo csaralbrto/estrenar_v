@@ -37,6 +37,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
+  public no_months: any;
   constructor( public Service: ToolService, private formBuilder: FormBuilder, private meta: Meta, private router: Router,private spinnerService: NgxSpinnerService ) {}
   dataPath = environment.endpoint;
   cadena = '';
@@ -118,6 +119,16 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       tipo_credito_credito: new FormControl(''),
     });
   }
+  onKeyUpformatInput(event){
+    // this.text +=
+    // console.log(event.ingresos_mensuales_vivienda);
+    // if(type == 'ingresos_mensuales_vivienda'){
+    //   let valor = event.ingresos_mensuales_vivienda.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //   this.form.controls.ingresos_mensuales_vivienda.setValue(valor);
+    // }
+    return event.target.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
   change(value,type) {
     if(type == 'capacidad_endeudamiento'){
       this.prestamo_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(32);
@@ -221,6 +232,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
     this.valorAhorroCuota = Number(ahorros_totales);
     this.saldoDiferirCuota = Number(saldo_diferir);
+    this.no_months = months + ' meses';
     for (let i=0; i < months; i++){
       var date_now = new Date();
       saldo = saldo - Number(valor_mes);

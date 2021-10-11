@@ -22,6 +22,7 @@ export class ProjectDetailComponent implements OnInit {
 
   tags: MetaTag;
   public response: any;
+  public responsePlacesGoogle: any;
   public newResponse: any;
   public responseProperties: any;
   public responseSubmit: any;
@@ -51,6 +52,7 @@ export class ProjectDetailComponent implements OnInit {
   public valorCuotaInicial: any;
   public valorAhorroCuota: any;
   public saldoDiferirCuota: any;
+  public no_months: any;
   public operacion:any;
   public valoresPares:any;
   public mapTypeId: any;
@@ -89,6 +91,15 @@ export class ProjectDetailComponent implements OnInit {
   public coor_longitude: any;
   zoom:number;
   public galeria;
+  public placesGoogleHospital: any ;
+  public placesGoogleRestaurant: any ;
+  public placesGoogleBank: any ;
+  public placesGoogleUniversity: any ;
+  public placesGoogleMall: any ;
+  public placesGooglepark: any ;
+  public placesGooglesupermarket: any ;
+  public placesGooglechurch: any ;
+  public placesGoogletransit_station: any ;
   public caracteristicas;
   public caracteristicasProject;
   public othersAreas;
@@ -100,12 +111,30 @@ export class ProjectDetailComponent implements OnInit {
   public cityProject: any;
   public urlTour: any;
   public safeURLVideo: any;
-
+  public Hospital_visible = false;
+  public Restaurant_visible = false;
+  public Bank_visible = false;
+  public University_visible = false;
+  public Mall_visible = false;
+  public park_visible = false;
+  public supermarket_visible = false;
+  public church_visible = false;
+  public transit_station_visible = false;
+  public icon_hospital = './assets/images/markets/pin-hospital.svg';
+  public icon_bank = './assets/images/markets/pin-banco.svg';
+  public icon_mall = './assets/images/markets/pin-cc.svg';
+  public icon_restaurant = './assets/images/markets/pin-restaurant.svg';
+  public icon_university = './assets/images/markets/pin-universidad.svg';
+  public icon_transporte = './assets/images/markets/pinazul-claro.svg';
+  public icon_park = './assets/images/markets/pin-azulo.svg';
+  public icon_supermarket = './assets/images/markets/pinazul-claro.svg';
+  public icon_church = './assets/images/markets/pin-azulo.svg';
   public maps_url;
 
   ngOnInit(): void {
 
     this.startSpinner();
+    // this.GooglePlaces();
     this.createForm();
     this.createFormDates();
     this.createFormSimuladores();
@@ -170,6 +199,7 @@ export class ProjectDetailComponent implements OnInit {
               /* mapa Yenifer */
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
+              // console.log(this.coor_latitude,',',this.coor_longitude);
               this.response.marketIcon =
               {
                 url: './assets/images/markets/pin-verde.svg',
@@ -302,53 +332,110 @@ export class ProjectDetailComponent implements OnInit {
         // this.mapTypeId = 'roadmap';
       });
 
+      this.testGooglePlace();
     }
-    this.GooglePlaces();
   }
-  GooglePlaces(){
-    let headers_get = new Headers();
-    headers_get.append('Content-Type', 'application/json');
-    headers_get.append('Accept', 'application/json');
-    headers_get.append('Access-Control-Allow-Origin', '*');
-    headers_get.append('Access-Control-Allow-Credentials', 'true');
+  testGooglePlace(){
 
-    // const requestOptions = {
-    //   mode: 'cors',
-    //   method: 'GET',
-    //   headers: headers_get,
-    // };
-    // fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     this.newplace = data;
-    //     if (this.newplace) {
-    //      // esta es la información que va a responder las api de google place
-    //      let respuesta_places = Object.values(this.newplace);
-    //      console.log('palces de google', respuesta_places);
-    //     }
-    //   })
-    //   .catch(error => console.log('error', error));
+    let map;//: google.maps.Map;
+    let service;//: google.maps.places.PlacesService;
+    let infowindow;//: google.maps.InfoWindow;
+    const place = new google.maps.LatLng(this.coor_latitude,this.coor_longitude);
 
-      // fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.coor_latitude+","+this.coor_longitude+"&radius=35000&type=supermarket&key="+this.keyGoglePlace, {
-        fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&key=AIzaSyBWs9OyPX4xZ_c_SYCRI3x9wKqXmM1owlM", {
-        method: 'GET',
-        // headers: headers_get,
-        mode: 'no-cors',
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('data es: ',data);
-          // console.log('data es: ',data);
-          // this.newplace = data;
-          // if (this.newplace) {
-          //   // esta es la información que va a responder las api de google place
-          //   let respuesta_places = Object.values(this.newplace);
-          //   console.log('palces de google', respuesta_places);
-          // }
-        })
-        .catch(error => console.log('error', error));
+    //infowindow = new google.maps.InfoWindow();
 
+    map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+      center: place,
+      zoom: 15,
+    });
+    let types_places = [
+      'hospital',
+      'shopping_mall',
+      'restaurant',
+      'bank',
+      'school',
+      'park',
+      'supermarket',
+      'church',
+      'transit_station'
+    ]
+    for (let places of types_places) {
+        var request = {
+          location: place,
+          radius: '1000',
+          type: [places]
+        };
 
+        service = new google.maps.places.PlacesService(map);
+
+        service.nearbySearch(
+          request,
+          (
+            results: google.maps.places.PlaceResult[] | null,
+            status: google.maps.places.PlacesServiceStatus
+          ) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+              // console.log(results);
+              if(places == 'hospital'){
+                this.placesGoogleHospital = results;
+              }else if(places == 'shopping_mall'){
+                this.placesGoogleMall = results;
+              }else if(places == 'restaurant'){
+                this.placesGoogleRestaurant = results
+              }else if(places == 'bank'){
+                this.placesGoogleBank = results;
+              }else if(places == 'school'){
+                this.placesGoogleUniversity = results;
+              }else if(places == 'park'){
+                this.placesGooglepark = results;
+              }else if(places == 'supermarket'){
+                this.placesGooglesupermarket = results;
+              }else if(places == 'church'){
+                this.placesGooglechurch = results;
+              }else if(places == 'transit_station'){
+                this.placesGoogletransit_station = results;
+              }
+            }
+          }
+        );
+    }
+
+  }
+  changePlaces(value){
+    this.spinnerService.show();
+    this.Hospital_visible = false;
+    this.University_visible = false;
+    this.Mall_visible = false;
+    this.Bank_visible = false;
+    this.Restaurant_visible = false;
+    this.park_visible = false
+    this.supermarket_visible = false
+    this.church_visible = false
+    this.transit_station_visible = false
+
+    if(value == "hospital"){
+      this.Hospital_visible = true;
+    }else if(value == 'university'){
+      this.University_visible = true;
+    }else if(value == 'mall'){
+      this.Mall_visible = true;
+    }else if(value == 'banks'){
+      this.Bank_visible = true;
+    }else if(value == 'school'){
+      this.Restaurant_visible = true;
+    }else if(value == 'park'){
+      this.park_visible = true
+    }else if(value == 'supermarket'){
+      this.supermarket_visible = true
+    }else if(value == 'church'){
+      this.church_visible = true
+    }else if(value == 'transit_station'){
+      this.transit_station_visible = true
+    }
+    console.log('entre y el valor es: ',value);
+    setTimeout(function(){
+      // this.spinnerService.hide();
+    }, 9000);
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
@@ -839,6 +926,7 @@ export class ProjectDetailComponent implements OnInit {
     this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
     this.valorAhorroCuota = Number(ahorros_totales);
     this.saldoDiferirCuota = Number(saldo_diferir);
+    this.no_months = months + ' meses';
     for (let i=0; i < months; i++){
       var date_now = new Date();
       saldo = saldo - Number(valor_mes);

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.startSpinner();
+    $('.ev--bots').addClass('hide');
     this.createForm();
     this.results = true;
     sessionStorage.clear();

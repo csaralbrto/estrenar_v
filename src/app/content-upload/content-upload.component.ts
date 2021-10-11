@@ -81,6 +81,7 @@ export class ContentUploadComponent implements OnInit {
     // if(user_role === null || user_role !== '1'){
     //   this.router.navigate(['/']);
     // }
+    $('.ev--bots').addClass('hide');
     this.createForm();
     this.createFormTypology();
     this.setCurrentLocation();

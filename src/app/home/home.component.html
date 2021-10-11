@@ -733,7 +733,7 @@
                 <ul class="slider-blog-home">
                     <li class="is-active ">
                         <div class="row">
-                            <div class="medium-3 columns end" *ngFor="let blog of response.home_featured_articles; let i = index">
+                            <div class="medium-3 columns end" *ngFor="let blog of response.home_featured_articles.slice(0, 4); let i = index">
                                 <div class="blog-list">
                                     <div class="img">
                                         <a href="{{blog.url}}"><img [src]="blog.article_image" alt=""></a>

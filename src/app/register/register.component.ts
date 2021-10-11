@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
 
     this.createForm();
+    $('.ev--bots').addClass('hide');
     this.results = true;
     sessionStorage.clear();
     /* Método para los paises */
@@ -41,6 +42,7 @@ export class RegisterComponent implements OnInit {
       (data) => (this.response = data),
       (err) => console.log(),
       () => {
+        console.log(this.response);
         if (this.response) {
           this.dataCountry = this.response;
         }

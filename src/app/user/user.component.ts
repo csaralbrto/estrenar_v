@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   public responseCountry: any;
   public dataSubmit: any;
   public form: FormGroup;
-  public user_id = sessionStorage.getItem('uid'); 
+  public user_id = sessionStorage.getItem('uid');
   public user_role = sessionStorage['role']?sessionStorage.getItem("role"):null;
   public token_logout = sessionStorage.getItem('token_logout');
   public path = "?_format=json";
@@ -60,6 +60,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.startSpinner();
     this.uid = this.user_id + this.path;
+    $('.ev--bots').addClass('hide');
     this.createForm();
     this.beforeCheck();
     this.dataLoad();

@@ -35,7 +35,13 @@
   <app-root>
   </app-root>
 </body>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM&libraries=places&sensor=false"></script>
+
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<!-- <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM&callback=initMap&libraries=places&v=weekly"
+  async
+></script> -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM&libraries=places&sensor=false&v=weekly" async></script>
 <!-- <script src="assets/js/functions.js" ></script> -->
   <!-- <script>
     $( document ).ready(function() {

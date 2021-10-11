@@ -35,14 +35,14 @@ export class ComparatorComponent implements OnInit {
         stringQuery = stringQuery+ids+"+";
       }
       stringQuery = stringQuery.substring(0, stringQuery.length - 1);
-      console.log(stringQuery);
+      // console.log(stringQuery);
       this.Service.comparatorData(stringQuery)
       .subscribe(
         data => this.response = data,
         err => console.log(),
         () => {
           if(this.response){
-            console.log(this.response);
+            // console.log(this.response);
             /* si responde correctamente */
             this.response_data_project = this.response.search_results
             var count_results = this.response_data_project.length;
@@ -52,7 +52,7 @@ export class ComparatorComponent implements OnInit {
               var arrayDeCadenas2 = project.project_category.split(',');
               project.project_category = arrayDeCadenas2;
             }
-            console.log(count_results);
+            // console.log(count_results);
             if(count_results == 1){
               this.classRow = "medium-3";
               this.stylesText = "margin-top: -24px;";
@@ -72,6 +72,8 @@ export class ComparatorComponent implements OnInit {
           }
         }
       );
+    }else{
+      this.router.navigate(['home']);
     }
   }
   removeCompare(value) {
@@ -84,7 +86,7 @@ export class ComparatorComponent implements OnInit {
       sessionStorage.removeItem("id");
       sessionStorage.setItem('id',JSON.stringify(storedIds));
      // this.router.navigate(['comparador']);
-      console.log('este es el id: ',storedIds);
+      // console.log('este es el id: ',storedIds);
       if(storedIds.length > 0){
         window.location.reload();
       }else{
@@ -99,9 +101,7 @@ export class ComparatorComponent implements OnInit {
   }
 
    stopSpinner(): void {
-
     if (this.spinnerService) {
-      // console.log("ingrese a parar");
       this.spinnerService.hide();
     }
   }

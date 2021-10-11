@@ -59,7 +59,7 @@
                                 <p> Cuentanos cuales son tus ingresos mensuales</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (change)="change(form.value,'subsidio_vivienda')">
+                                    <input class="input-group-field" type="number" id="unput_test" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (keyup)="onKeyUpformatInput($event)" (change)="change(form.value,'subsidio_vivienda')">
                                 </div>
                                 <hr>
                                 <p> Cuales son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
@@ -123,14 +123,14 @@
                             <div class="medium-6 columns">
                                 <label class="container-radio">Crédito hipotecario
                                     <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
-                                    <span class="checkmark-radio"></span>
+                                    <span class="checkmark"></span>
                                 </label>
                             </div>
                             <div class="medium-6 columns">
 
                                 <label class="container-radio">Leasing habitacional
                                     <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
-                                    <span class="checkmark-radio"></span>
+                                    <span class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
@@ -142,8 +142,7 @@
                                 <input type="text" formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
                                 <hr>
                                 <p> Plazo actual para cuota inicial</p>
-                                <input type="text" placeholder="No. meses">
-
+                                <input style="text-align: center;" type="text" placeholder="No. meses" value="{{ no_months }}" readonly>
                             </div>
                             <div class="medium-4 columns text-center">
                                 <p> Simulación</p>
@@ -369,7 +368,7 @@
             </div>
             <div class="card-section">
               <div class="button-group align-spaced ">
-                <a class="button" routerLink="{{project.url}}">Ver
+                <a class="button" routerLink="/es{{project.url}}">Ver
                     Proyecto</a>
                   <a class="button">Contacto</a>
                 </div>

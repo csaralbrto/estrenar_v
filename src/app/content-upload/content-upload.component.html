@@ -207,13 +207,17 @@
                         <div class="medium-12 columns">
                             <input type="hidden" id="lat_project" value="{{latitude}}">
                             <input type="hidden" id="long_project" value="{{longitude}}">
-                            <div>
+                            <div class="medium-12 columns">
+                              <div>
                                 <label>Latitud
                                     <input id="latitude_project" name="latitude_project" (change)="changeLatitude()" formControlName="latitude_project" type="text" placeholder="" value="{{latitude}}">
                                 </label>
+                              </div>
+                              <div>
                                 <label>Longitud
                                     <input id="longitude_project" name="longitude_project" (change)="changeLongitude()" formControlName="longitude_project" type="text" placeholder="" value="{{longitude}}">
                                 </label>
+                              </div>
                             </div>
                         </div>
                     </div>

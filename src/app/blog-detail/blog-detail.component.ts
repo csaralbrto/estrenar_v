@@ -86,7 +86,15 @@ export class BlogDetailComponent implements OnInit {
               .then(responseComments => responseComments.json())
               .then(data => {
                 this.responseComments = data.data;
-                console.log('comentarios: ',this.responseComments)
+                // console.log('comentarios: ',this.responseComments)
+                /* Tomar las 2 iniciales del nombre que viene en el comentario */
+                for (let comments of this.responseComments) {
+                  let array_name = comments.name.split(' ');
+                  let inicial_name1 = array_name[0].charAt(0).toUpperCase();
+                  let inicial_name2 = array_name[1].charAt(0).toUpperCase();
+                  let iniciales = inicial_name1 + inicial_name2;
+                  comments.initials = iniciales
+                }
               })
               .catch(error => console.error(error))
              this.results = true;

@@ -24,9 +24,9 @@
 
       <p [innerHTML]=responseData.body.processed  ></p>
           <hr class="white">
-          <div class="row" *ngFor="let equipo of dataInfoImg; let i = index">
-            <h2 class="columns">{{ equipo.field_ev_team_area }}</h2>
-            <div class="medium-4 columns end">
+          <div class="row">
+            <h2 class="columns">Dirección y Gerencia</h2>
+            <div class="medium-4 columns end" *ngFor="let equipo of dataInfoImg.slice(0, 3); let i = index">
                 <div class="card team">
                     <img [src]="imgPath + equipo.field_ev_team_image.uri.url" alt="">
                       <div class="section-card">
@@ -34,7 +34,27 @@
                           <div class="cargo">{{ equipo.field_ev_team_position }}</div>
                       </div>
                   </div>
-              </div>
+            </div>
+            <h2 class="columns">Coordinación</h2>
+            <div class="medium-4 columns end" *ngFor="let equipo of dataInfoImg.slice(3, 6); let i = index">
+                <div class="card team">
+                    <img [src]="imgPath + equipo.field_ev_team_image.uri.url" alt="">
+                      <div class="section-card">
+                          <div class="name">{{ equipo.field_ev_team_name }}</div>
+                          <div class="cargo">{{ equipo.field_ev_team_position }}</div>
+                      </div>
+                  </div>
+            </div>
+            <h2 class="columns">Área Digital</h2>
+            <div class="medium-4 columns end" *ngFor="let equipo of dataInfoImg.slice(6, 9); let i = index">
+                <div class="card team">
+                    <img [src]="imgPath + equipo.field_ev_team_image.uri.url" alt="">
+                      <div class="section-card">
+                          <div class="name">{{ equipo.field_ev_team_name }}</div>
+                          <div class="cargo">{{ equipo.field_ev_team_position }}</div>
+                      </div>
+                  </div>
+            </div>
           </div>
   </div>
 </div>
