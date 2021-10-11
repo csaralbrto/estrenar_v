@@ -342,21 +342,107 @@ export class ProjectDetailComponent implements OnInit {
       this.testGooglePlace();
     }
   }
-  GooglePlaces(){
-    const requestOptions = {
-      method: 'GET',
-    };
-    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.latitude+","+this.longitude+"&radius=3500&type=supermarket&keyword=cruise&key="+this.keyGoglePlace, requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        this.newplace = data;
-        if (this.newplace) {
-          const test =Object.values(this.newplace);
-          console.log("datos mapa "+ test);
-         // esta es la información que va a responder las api de google place
-        }
-      })
-      .catch(error => console.log('error', error));
+  testGooglePlace(){
+
+    let map;//: google.maps.Map;
+    let service;//: google.maps.places.PlacesService;
+    let infowindow;//: google.maps.InfoWindow;
+    const place = new google.maps.LatLng(this.coor_latitude,this.coor_longitude);
+
+    //infowindow = new google.maps.InfoWindow();
+
+    map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+      center: place,
+      zoom: 15,
+    });
+    let types_places = [
+      'hospital',
+      'shopping_mall',
+      'restaurant',
+      'bank',
+      'school',
+      'park',
+      'supermarket',
+      'church',
+      'transit_station'
+    ]
+    for (let places of types_places) {
+        var request = {
+          location: place,
+          radius: '1000',
+          type: [places]
+        };
+
+        service = new google.maps.places.PlacesService(map);
+
+        service.nearbySearch(
+          request,
+          (
+            results: google.maps.places.PlaceResult[] | null,
+            status: google.maps.places.PlacesServiceStatus
+          ) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+              // console.log(results);
+              if(places == 'hospital'){
+                this.placesGoogleHospital = results;
+              }else if(places == 'shopping_mall'){
+                this.placesGoogleMall = results;
+              }else if(places == 'restaurant'){
+                this.placesGoogleRestaurant = results
+              }else if(places == 'bank'){
+                this.placesGoogleBank = results;
+              }else if(places == 'school'){
+                this.placesGoogleUniversity = results;
+              }else if(places == 'park'){
+                this.placesGooglepark = results;
+              }else if(places == 'supermarket'){
+                this.placesGooglesupermarket = results;
+              }else if(places == 'church'){
+                this.placesGooglechurch = results;
+              }else if(places == 'transit_station'){
+                this.placesGoogletransit_station = results;
+              }
+            }
+          }
+        );
+    }
+
+  }
+  changePlaces(value){
+    this.spinnerService.show();
+    this.Hospital_visible = false;
+    this.University_visible = false;
+    this.Mall_visible = false;
+    this.Bank_visible = false;
+    this.Restaurant_visible = false;
+    this.park_visible = false
+    this.supermarket_visible = false
+    this.church_visible = false
+    this.transit_station_visible = false
+
+    if(value == "hospital"){
+      this.Hospital_visible = true;
+    }else if(value == 'university'){
+      this.University_visible = true;
+    }else if(value == 'mall'){
+      this.Mall_visible = true;
+    }else if(value == 'banks'){
+      this.Bank_visible = true;
+    }else if(value == 'school'){
+      this.Restaurant_visible = true;
+    }else if(value == 'park'){
+      this.park_visible = true
+    }else if(value == 'supermarket'){
+      this.supermarket_visible = true
+    }else if(value == 'church'){
+      this.church_visible = true
+    }else if(value == 'transit_station'){
+      this.transit_station_visible = true
+    }
+    console.log('entre y el valor es: ',value);
+    setTimeout(function(){
+      // this.spinnerService.hide();
+    }, 9000);
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
