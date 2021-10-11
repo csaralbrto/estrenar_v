@@ -47,7 +47,7 @@ export class GlosoryComponent implements OnInit {
   }
 
   change(value) {
-
+    console.log('entre a cambiar')
     this.startSpinner();
     let term = "";
       Object.keys(value).forEach( function(key) {

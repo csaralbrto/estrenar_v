@@ -1,9 +1,11 @@
 <!-- <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
     <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner> -->
-
-<ngx-spinner bdColor="rgba(51,51,51,0.8)" template="<img src='/assets/images/logo-ev.png' />">
-    <p style="font-size: 20px; color: white">Cargando...</p>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  template="<img src='/assets/images/logo-ev.png' />"
+>
+<p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 
 <div class="row columns">
@@ -359,7 +361,7 @@
 <hr class="white">
 <!--fin features-->
 <!-- Modal de contacto -->
-<div class="reveal text-center" id="exampleModal2" data-reveal>
+<div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>
     <form data-abide novalidate [formGroup]="form4">
         <div class="container-form">
@@ -443,13 +445,6 @@
 <div class="row columns">
     <div class="medium-8 columns">
         <div class="mapa">
-            <!-- <div class="nav-tabs">
-                <ul class="tabs" data-tabs id="propertiesProject">
-                    <li class="tabs-title is-active"><a data-tabs-target="mapProject" href="#mapProject">Mapa</a></li>
-                    <li class="tabs-title"><a data-tabs-target="planes" href="#planes">Planos</a></li>
-                    <li class="tabs-title"><a data-tabs-target="street_view" href="#street_view">Street view</a></li>
-                </ul>
-            </div> -->
             <div class="nav-tabs-map">
                 <ul class="tabs">
                     <li class="tabs-title is-active"><a class="tabs-map-button tab-map-project" aria-selected="true" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
@@ -557,118 +552,136 @@
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 columns">
-                                        <label class="container-check">Hospitales
-                                          <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
+                                      <label><img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
+                                        Hospitales
+                                      </label>
+                                    </div>
+                                    <div class="medium-4 columns">
+                                      <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
+                                        <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-9 columns">
+                                      <label><img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
+                                        Restaurantes
+                                      </label>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
                                           <span class="checkmark"></span>
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
+                                </div>
+                            </div>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 columns">
+                                      <label><img src="/assets/images/banco.png" alt="" width="30px" height="30px">
+                                        Bancos
+                                      </label>
+                                    </div>
+                                    <div class="medium-4 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
+                                          <span class="checkmark"></span>
+                                      </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 columns">
-                                        <label class="container-check">Restaurantes
-                                            <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
-                                            <span class="checkmark"></span>
-                                        </label>
+                                      <label><img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
+                                        Educación
+                                      </label>
                                     </div>
-                                    <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
+                                    <div class="medium-4 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-9 columns">
+                                      <label><img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
+                                        Centros comerciales
+                                      </label>
+                                    </div>
+                                    <div class="medium-3 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
+                                          <span class="checkmark"></span>
+                                      </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 columns">
-                                        <label class="container-check">Bancos
-                                            <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
-                                            <span class="checkmark"></span>
-                                        </label>
+                                      <label><img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
+                                        Transporte
+                                      </label>
                                     </div>
-                                    <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/banco.png" alt="" width="30px" height="30px">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 medium-4 columns end zona">
-                                <div class="row">
-                                    <div class="medium-8 columns">
-                                        <label class="container-check">Educación
-                                            <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
+                                    <div class="medium-4 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
-                                <div class="row">
-                                    <div class="medium-8 columns">
-                                        <label class="container-check">Centros comerciales
-                                            <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 medium-4 columns end zona">
-                                <div class="row">
-                                    <div class="medium-8 columns">
-                                        <label class="container-check">Transporte
-                                            <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="medium-4 columns hide-for-small-only">
-                                        <img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" style="padding-top: 79px;margin-top: 61px;padding-left: 17px;padding-right: 17px;">
+                            <div class="row" style="padding-top: 79px;margin-top: 45px;padding-left: 17px;padding-right: 17px;">
                               <div class="small-6 medium-4 columns end zona">
                                   <div class="row">
                                       <div class="medium-8 columns">
-                                          <label class="container-check">Parques
-                                              <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
-                                              <span class="checkmark"></span>
-                                          </label>
+                                        <label><img src="/assets/images/parque.png" alt="" width="30px" height="30px">
+                                          Parques
+                                        </label>
                                       </div>
-                                      <div class="medium-4 columns hide-for-small-only">
-                                          <img src="/assets/images/parque.png" alt="" width="30px" height="30px">
+                                      <div class="medium-4 columns">
+                                        <label class="container-check">
+                                            <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
+                                            <span class="checkmark"></span>
+                                        </label>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 medium-4 columns end zona">
+                                  <div class="row">
+                                      <div class="medium-9 columns">
+                                        <label><img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
+                                          Supermercados
+                                        </label>
+                                      </div>
+                                      <div class="medium-3 columns">
+                                        <label class="container-check">
+                                            <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
+                                            <span class="checkmark"></span>
+                                        </label>
                                       </div>
                                   </div>
                               </div>
                               <div class="small-6 medium-4 columns end zona">
                                   <div class="row">
                                       <div class="medium-8 columns">
-                                          <label class="container-check">Supermercados
-                                              <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
-                                              <span class="checkmark"></span>
-                                          </label>
+                                        <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
+                                          Iglesias
+                                        </label>
                                       </div>
-                                      <div class="medium-4 columns hide-for-small-only">
-                                          <img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="small-6 medium-4 columns end zona">
-                                  <div class="row">
-                                      <div class="medium-8 columns">
-                                          <label class="container-check">Iglesias
-                                              <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
-                                              <span class="checkmark"></span>
-                                          </label>
-                                      </div>
-                                      <div class="medium-4 columns hide-for-small-only">
-                                          <img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
+                                      <div class="medium-4 columns">
+                                        <label class="container-check">
+                                            <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
+                                            <span class="checkmark"></span>
+                                        </label>
                                       </div>
                                   </div>
                               </div>
@@ -1332,15 +1345,16 @@
     <!--fin slide-->
 </div>
 <div class="row columns text-center">
-    <div class="medium-6 medium-offset-3 columns">
-        <span>
-        <div class="comparador-btn-2">
-            <div class="container-comparador">
-                <h2 class="deco">Compara con otras viviendas</h2>
-                <div class="subtitle mb1">Compara con otras viviendas para elegir la que mas te convenga</div>
-                <div class="text-center"><span (click)="addCompare(response.drupal_internal__nid);" class="button ">Comparar</span></div>
+  <div class="medium-6 medium-offset-3 columns">
+      <span>
+      <div class="comparador-btn-2">
+          <div class="container-comparador">
+              <h2 class="deco">Compara con otras viviendas</h2>
+              <div class="subtitle mb1">Compara con otras viviendas para elegir la que mas te convenga</div>
+              <div class="text-center"><span (click)="addCompare(response.drupal_internal__nid);" class="button ">Comparar</span></div>
+          </div>
+      </div>
+      </span>
+  </div>
 </div>
-</div>
-</span>
-</div>
-</div>
+

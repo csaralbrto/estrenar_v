@@ -266,7 +266,7 @@
 
 <div class="row">
   <div class="medium-4 columns proyectolist">
-      <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos</div>
+      <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
   </div>
   <div class="medium-2 columns end">
       <!-- <label>Ordenar por: -->
@@ -305,7 +305,7 @@
               <div class="card-section info info-project">
                   <h2>{{ project.project }}</h2>
                   <div class="descripcion">
-                      {{ project.project_city }}, {{ project.project_zone }}, {{ project.project_neighborhood }}
+                      {{ project.property_type }}, {{ project.project_neighborhood }}, {{ project.project_city }}
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
@@ -366,7 +366,7 @@
       </agm-map>
   </div>
 </div>
-<div class="reveal text-center" id="exampleModal2" data-reveal>
+<div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
   <h2>Contactar</h2>
   <form data-abide novalidate [formGroup]="form">
       <div class="container-form">

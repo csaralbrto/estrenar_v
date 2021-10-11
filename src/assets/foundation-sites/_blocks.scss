@@ -2500,7 +2500,7 @@ img.image.constructor {
     width: 900px;
     border-radius: 20px;
     border: none;
-    height: 550px;
+    height: 558px;
   }
 }
 
@@ -3112,5 +3112,20 @@ label.container-radio.label-button.checked {
 }
 .info-project {
   height: 162px;
+}
+.mLeft10{
+  margin-left: 10px;
+}
+.margin5{
+  margin: 5px;
+}
+.floatRight{
+  float: right !important;
+}
+@media print, screen and (min-width: 40em){
+  .reveal-contact {
+    width: 380px !important;
+    max-width: 75rem !important;
+  }
 }
 

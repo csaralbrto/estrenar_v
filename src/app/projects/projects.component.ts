@@ -45,6 +45,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public stringQuery = '';
   public eventos : boolean = false;
   public countProjects = '';
+  public countAllProjects = '';
   optionsTypySelected: string = '';
   optionsPriceSelected: string = '';
   optionsCitySelected: string = '';
@@ -136,13 +137,14 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         (err) => console.log(),
         () => {
           if (this.response) {
-            console.log(this.response);
+            // console.log(this.response);
             if(this.response.metatag_normalized){
               this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
             }
             // console.log('entre al else');
             this.response_data_project = this.response.search_results
             this.countProjects = this.response_data_project.length;
+            this.countAllProjects = this.response.total;
             /* Iterar sobre los proyectos */
             for (let project of this.response_data_project) {
               var arrayDeCadenas = project.typology_images.split(',');
@@ -274,6 +276,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           // console.log("nuevo "+this.response_data_project1);
           this.response_data_project =  this.response_data_more_project;
           this.countProjects = this.response_data_project.length;
+          this.countAllProjects = this.response.total;
           // this.response_data_project = datos.concat(this.response_data_project1);
           // this.response_data_project = [...this.response_data_project, ...this.response_data_project1];
           // console.log("resultado es "+ this.response_data_project);
@@ -364,6 +367,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         this.countProjects = this.response_data_project.length;
+        this.countAllProjects = this.response.total;
         /* Iterar los proyectos a mostrar */
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
@@ -503,7 +507,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         this.countProjects = this.response_data_project.length;
-        console.log('ordenación: ', this.response.sorts);
+        this.countAllProjects = this.response.total;
+        // console.log('ordenación: ', this.response.sorts);
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
@@ -643,6 +648,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         this.countProjects = this.response_data_project.length;
+        this.countAllProjects = this.response.total;
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
@@ -751,6 +757,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         // console.log(this.response.search_results);
         this.response_data_project = this.response.search_results
         this.countProjects = this.response_data_project.length;
+        this.countAllProjects = this.response.total;
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
@@ -853,6 +860,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         // console.log(this.response.search_results);
         this.response_data_project = this.response
         this.countProjects = this.response_data_project.length;
+        this.countAllProjects = this.response.total;
         for (let project of this.response_data_project) {
           var arrayDeCadenas = project.typology_images.split(',');
           project.typology_images = arrayDeCadenas[0];
@@ -941,6 +949,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             // console.log('entre al else');
             this.response_data_project = this.response.search_results
             this.countProjects = this.response_data_project.length;
+            this.countAllProjects = this.response.total;
             /* Iterar sobre los proyectos */
             for (let project of this.response_data_project) {
               var arrayDeCadenas = project.typology_images.split(',');

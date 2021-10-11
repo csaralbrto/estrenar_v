@@ -132,14 +132,12 @@ export class ProjectDetailComponent implements OnInit {
   public maps_url;
 
   ngOnInit(): void {
-
     this.startSpinner();
     // this.GooglePlaces();
     this.createForm();
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
-    this.GooglePlaces();
     //Fecha
     this.items = this.getDates(
       Date.now()
@@ -170,7 +168,7 @@ export class ProjectDetailComponent implements OnInit {
             // console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
-              console.log(this.response);
+              // console.log(this.response);
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
@@ -213,13 +211,13 @@ export class ProjectDetailComponent implements OnInit {
               }
               this.galeria = this.response.field_typology_image;
               this.operacion= this.galeria.length;
-              console.log("mirar dato "+ this.operacion);
+              // console.log("mirar dato "+ this.operacion);
               if(this.operacion % 2 == 0){
                 this.valoresPares = "par";
               }else{
                 this.valoresPares = "impar";
               }
-              console.log("si es par "+ this.valoresPares);
+              // console.log("si es par "+ this.valoresPares);
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
               for (let caracteristica_tipologia of this.caracteristicas) {
@@ -285,7 +283,7 @@ export class ProjectDetailComponent implements OnInit {
               .then(data => {
                 this.responseProperties = data.search_results;
                 if (this.responseProperties) {
-                  console.log(this.responseProperties);
+                  // console.log(this.responseProperties);
                   this.propertiesSimilars = this.responseProperties
                   for (let project of this.propertiesSimilars) {
                     var arrayDeCadenas = project.typology_images.split(',');
@@ -339,10 +337,10 @@ export class ProjectDetailComponent implements OnInit {
         // this.mapTypeId = 'roadmap';
       });
 
-      this.testGooglePlace();
+      this.GooglePlaces();
     }
   }
-  testGooglePlace(){
+  GooglePlaces(){
 
     let map;//: google.maps.Map;
     let service;//: google.maps.places.PlacesService;
@@ -405,11 +403,13 @@ export class ProjectDetailComponent implements OnInit {
             }
           }
         );
+        this.stopSpinner();
     }
 
   }
   changePlaces(value){
-    this.spinnerService.show();
+    // console.log('entre abrir');
+    this.startSpinner();
     this.Hospital_visible = false;
     this.University_visible = false;
     this.Mall_visible = false;
@@ -431,18 +431,15 @@ export class ProjectDetailComponent implements OnInit {
     }else if(value == 'school'){
       this.Restaurant_visible = true;
     }else if(value == 'park'){
-      this.park_visible = true
+      this.park_visible = true;
     }else if(value == 'supermarket'){
-      this.supermarket_visible = true
+      this.supermarket_visible = true;
     }else if(value == 'church'){
-      this.church_visible = true
+      this.church_visible = true;
     }else if(value == 'transit_station'){
-      this.transit_station_visible = true
+      this.transit_station_visible = true;
     }
-    console.log('entre y el valor es: ',value);
-    setTimeout(function(){
-      // this.spinnerService.hide();
-    }, 9000);
+    setTimeout(() => { this.stopSpinner() }, 5000);
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
@@ -465,7 +462,6 @@ export class ProjectDetailComponent implements OnInit {
           autoplaySpeed: 5000,
         });
       }
-      this.stopSpinner();
     }
   }
   addCompare(value) {
@@ -978,7 +974,7 @@ export class ProjectDetailComponent implements OnInit {
   }
   stopSpinner(): void {
     if (this.spinnerService) {
-      // console.log("ingrese a parar");
+      console.log("ingrese a parar");
       this.spinnerService.hide();
     }
   }

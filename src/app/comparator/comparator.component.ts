@@ -15,6 +15,7 @@ export class ComparatorComponent implements OnInit {
   public response: any;
   public response_data_project: any;
   public classRow: any;
+  public marginTop: any;
   public stylesText: any;
 
   constructor( public Service: ComparatorService, private router: Router,private spinnerService: NgxSpinnerService ) { }
@@ -56,14 +57,18 @@ export class ComparatorComponent implements OnInit {
             if(count_results == 1){
               this.classRow = "medium-3";
               this.stylesText = "margin-top: -24px;";
+              this.marginTop = "margin-top: 262px;"
             }else if(count_results == 2){
               this.classRow = "medium-6";
               this.stylesText = "margin-top: 101px";
+              this.marginTop = "margin-top: 303px;"
             }else if(count_results == 3){
               this.classRow = "medium-4";
               this.stylesText = "margin-top: 36px;";
+              this.marginTop = "margin-top: 262px;"
             }else if(count_results == 4){
               this.classRow = "medium-3";
+              this.marginTop = "margin-top: 241px;"
             }
             this.stopSpinner();
           }

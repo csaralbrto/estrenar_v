@@ -188,6 +188,24 @@
                                         <span class="checkmark"></span>
                                     </label>
                             </div>
+                            <div>
+                              <div class="row">
+                                  <input type="hidden" id="lat_project" value="{{latitude}}">
+                                  <input type="hidden" id="long_project" value="{{longitude}}">
+                                  <div class="medium-6 columns">
+                                    <div>
+                                      <label>Latitud
+                                          <input id="latitude_project" name="latitude_project" (change)="changeLatitude()" formControlName="latitude_project" type="text" placeholder="" value="{{latitude}}">
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="medium-6 columns">
+                                      <label>Longitud
+                                          <input id="longitude_project" name="longitude_project" (change)="changeLongitude()" formControlName="longitude_project" type="text" placeholder="" value="{{longitude}}">
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -203,22 +221,6 @@
                             </agm-map>
                             <!-- <div>Latitude: {{latitude}}</div>
                                 <div>Longitude: {{longitude}}</div>-->
-                        </div>
-                        <div class="medium-12 columns">
-                            <input type="hidden" id="lat_project" value="{{latitude}}">
-                            <input type="hidden" id="long_project" value="{{longitude}}">
-                            <div class="medium-12 columns">
-                              <div>
-                                <label>Latitud
-                                    <input id="latitude_project" name="latitude_project" (change)="changeLatitude()" formControlName="latitude_project" type="text" placeholder="" value="{{latitude}}">
-                                </label>
-                              </div>
-                              <div>
-                                <label>Longitud
-                                    <input id="longitude_project" name="longitude_project" (change)="changeLongitude()" formControlName="longitude_project" type="text" placeholder="" value="{{longitude}}">
-                                </label>
-                              </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,22 +254,21 @@
                         </div>
                     </div>
                 </div>
-                <hr class="white">
+                <!-- <hr class="white"> -->
             </div>
+            <div class="row columns">
+                <!-- <div class="medium-4 columns text-center">
+                    <a (click)="saveTemporary(form.value,formTypology.value)" class="button hide">Guardar</a>
+                </div> -->
+                <!-- <div class="medium-4 columns text-left">
+                    <a href="#" class="button disabled">Anterior</a>
+                </div> -->
+                <div class="medium-4 columns end text-right floatRight">
+                    <a (click)="changeStepWizard(2,1)" class="button">Siguiente</a>
+                </div>
+            </div>
+            <hr class="white">
         </div>
-        <hr class="white">
-        <div class="row columns">
-            <div class="medium-4 columns text-center">
-                <a (click)="saveTemporary(form.value,formTypology.value)" class="button hide">Guardar</a>
-            </div>
-            <div class="medium-4 columns text-left">
-                <a href="#" class="button disabled">Anterior</a>
-            </div>
-            <div class="medium-4 columns end text-right">
-                <a (click)="changeStepWizard(2,1)" class="button">Siguiente</a>
-            </div>
-        </div>
-        <hr class="white">
     </div>
     <div style="display: none;" id="upload2">
         <div class="row columns">
