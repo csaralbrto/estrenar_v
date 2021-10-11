@@ -53,28 +53,28 @@
             <div class="">
                 <ul class="slider-project-img slideproject">
                     <li class="is-active ">
-                        <div class="row">
+                        <!-- <div class="row"> -->
                             <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
                                 <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                    <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
                                 </figure>
                             </div>
-                            <div class="row" *ngIf="valoresPares == 'par'">
+                             <div  *ngIf="valoresPares == 'par'">
                                 <div class="rows-img">
                                     <div class="row1">
                                         <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
                                             </figure>
                                         </div>
                                         <div class="rows-img1" *ngIf="galeria[1]">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
                                             </figure>
                                         </div>
                                         <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
                                             </figure>
                                         </div>
                                     </div>
@@ -82,65 +82,65 @@
 
                                         <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
                                             </figure>
                                         </div>
 
                                         <div class="rows-img1" *ngIf="galeria[3]">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
                                             </figure>
                                         </div>
                                         <div class="rows-img2" *ngIf="galeria[4]">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
                                             </figure>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" *ngIf="valoresPares == 'impar'">
+                            <div *ngIf="valoresPares == 'impar'">
                                 <div class="rows-img">
                                     <div class="row1">
                                         <div class="rows-img1" *ngIf="operacion == 1">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
                                             </figure>
                                         </div>
                                         <div class="rows-img1" *ngIf="galeria[1]">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
                                             </figure>
                                         </div>
                                         <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
                                             </figure>
                                         </div>
                                     </div>
                                     <div class="row1">
                                         <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
                                             </figure>
                                         </div>
                                         <div class="rows-img1" *ngIf="galeria[3]">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
                                             </figure>
                                         </div>
                                         <div class="rows-img2" *ngIf="galeria[4]">
                                             <figure class="">
-                                                <img class="" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
                                             </figure>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </li>
                     <li class="" *ngIf=" operacion >= 6">
-                        <div class="row">
+                        <!-- <div class="row"> -->
                             <div class="medium-6 columns destacado" *ngIf=" operacion == 10 ">
                                 <figure class="">
                                     <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
@@ -151,23 +151,23 @@
 
                                     <div class="rows-img1" *ngIf=" operacion == 9 ">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
                                         </figure>
                                     </div>
                                     <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
                                         </figure>
                                     </div>
 
                                     <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[7].uri.url" alt="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url" alt="">
                                         </figure>
                                     </div>
 
@@ -176,23 +176,23 @@
 
                                     <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[7].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
                                         </figure>
                                     </div>
 
                                     <div class="rows-img1" *ngIf="galeria[8]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
                                         </figure>
                                     </div>
                                     <div class="rows-img2" *ngIf="galeria[9]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[9].uri.url" alt="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url" alt="">
                                         </figure>
                                     </div>
                                     <!-- <div class="rows-img3" *ngIf="galeria[11]">
@@ -215,18 +215,18 @@
 
                                     <div class="rows-img1">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
                                         </figure>
                                     </div>
                                     <div class="rows-img2" *ngIf="galeria[6] ">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
                                         </figure>
                                     </div>
 
                                     <div class="rows-img3" *ngIf="galeria[7]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[7].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
                                         </figure>
                                     </div>
 
@@ -235,17 +235,17 @@
                                 <div class="row1">
                                     <div class="rows-img1" *ngIf="galeria[8]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[8].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img2" *ngIf=" galeria[9]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[9].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img3" *ngIf=" galeria[10]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[10].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
                                         </figure>
                                     </div>
                                 </div>
@@ -257,23 +257,23 @@
 
                                     <div class="rows-img1">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
                                         </figure>
                                     </div>
                                     <div class="rows-img2" *ngIf="galeria[6] ">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[6].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
                                         </figure>
                                     </div>
 
                                     <div class="rows-img3" *ngIf="galeria[7]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[7].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img4" *ngIf="galeria[8]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[8].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
                                         </figure>
                                     </div>
 
@@ -283,22 +283,22 @@
 
                                     <div class="rows-img1" *ngIf=" galeria[9]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[9].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img2" *ngIf=" galeria[10]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[10].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img3" *ngIf=" galeria[11]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[11].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[11].uri.url">
                                         </figure>
                                     </div>
                                     <div class="rows-img4" *ngIf=" galeria[12]">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + galeria[12].uri.url">
+                                            <img class="imagenes" [src]="url_img_path + galeria[12].uri.url">
                                         </figure>
                                     </div>
                                 </div>
@@ -306,7 +306,7 @@
                             </div>
 
                             <!-- cierra div del row -->
-                        </div>
+                        <!-- </div> -->
                     </li>
                 </ul>
             </div>
