@@ -312,20 +312,6 @@
                     </li>
                 </ul>
             </div>
-            <!-- <div class="container-controls">
-                <nav class="orbit-bullets">
-                    <button class="is-active" data-slide="0">
-                      <span class="show-for-sr">First slide details.</span>
-                      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-                  </button>
-                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-                </nav>
-                <div class="orbit-controls">
-                    <button class="orbit-previous"><span class="show-for-sr">Previous
-                          Slide</span>&#9664;&#xFE0E;</button>
-                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-                </div>
-            </div> -->
         </div>
         <div class="tabs-panel" id="video" *ngIf="response.field_typology_video.length > 0">
             <div class="row">
@@ -689,12 +675,10 @@
                         </div>
                     </div>
                       <div id="map" class="hide"></div>
+                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
                   </div>
                 <div id="planes" class="visibi-hide pLeft0">
                     <p>Información no disponible</p>
-                </div>
-                <div class="tabs-panel pLeft0" id="street_view">
-                    <app-street-view [latitude]="latitude" [longitude]="longitude"></app-street-view>
                 </div>
             </div>
         </div>
