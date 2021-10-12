@@ -2099,13 +2099,13 @@ a.tipos {
 /* Create a custom radio button */
 
 .checkmark {
-    position: absolute;
-    top: -5px;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
 }
 .checkmark-radio {
   position: absolute;
@@ -2894,28 +2894,27 @@ ul.menu li a img {
 }
 
 .comentarios {
-
-    .initials{
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      background-color: #a8d139;
-      padding-left: 9px;
-      margin-left: 14px;
-    }
-    .name {
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        color: $primary-color;
-        font-weight: 600;
-    }
-    p.mensaje {
-        font-size: 0.9rem;
-        text-transform: lowercase;
-    }
-    p.mensaje:first-letter {
-        text-transform: uppercase;
-    }
+  .initials {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: #a8d139;
+    padding-left: 9px;
+    margin-left: 14px;
+  }
+  .name {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: $primary-color;
+    font-weight: 600;
+  }
+  p.mensaje {
+    font-size: 0.9rem;
+    text-transform: lowercase;
+  }
+  p.mensaje:first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .autocomplete-container {
@@ -2967,7 +2966,7 @@ ul.menu li a img {
 .imagenes {
   border-radius: 12px;
   width: 100%;
-  height: 240px;
+  height: 190px;
 }
 ul#propertiesProject li.tabs-title {
   margin-right: 18px !important;
@@ -2981,9 +2980,9 @@ ul#propertiesProject li.tabs-title {
   padding: 0;
   margin: 0;
 }
-.medium-6.columns.destacado {
-  margin-top: 22px !important;
-}
+// .medium-6.columns.destacado {
+//   margin-top: 22px !important;
+// }
 
 .tabs-map-button {
   width: 150px;
@@ -3020,10 +3019,10 @@ ul#propertiesProject li.tabs-title {
 .mBotton10 {
   margin-bottom: 25px;
 }
-.mBotton5{
+.mBotton5 {
   margin-bottom: 10px;
 }
-.margin0{
+.margin0 {
   margin: 0 !important;
 }
 .paddinTFooter {
@@ -3100,7 +3099,7 @@ label.container-radio.label-button.checked {
 .margin-top20 {
   margin-top: 20px;
 }
-.panel-value-calc{
+.panel-value-calc {
   height: 85px !important;
   width: 167px;
 }
@@ -3113,19 +3112,18 @@ label.container-radio.label-button.checked {
 .info-project {
   height: 162px;
 }
-.mLeft10{
+.mLeft10 {
   margin-left: 10px;
 }
-.margin5{
+.margin5 {
   margin: 5px;
 }
-.floatRight{
+.floatRight {
   float: right !important;
 }
-@media print, screen and (min-width: 40em){
+@media print, screen and (min-width: 40em) {
   .reveal-contact {
     width: 380px !important;
     max-width: 75rem !important;
   }
 }
-
