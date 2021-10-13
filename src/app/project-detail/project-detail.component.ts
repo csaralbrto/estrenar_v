@@ -58,7 +58,7 @@ export class ProjectDetailComponent implements OnInit {
   public mapTypeId: any;
   public newplace:any;
   public keyGoglePlace="AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM";
-  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city';
+  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city,field_typology_blueprint';
   url_img_path = 'https://www.estrenarvivienda.com/';
   /* Fecha */
   items: any[] = [];
@@ -109,6 +109,8 @@ export class ProjectDetailComponent implements OnInit {
   public idProject: any;
   public priceProject: any;
   public cityProject: any;
+  public blueprintProyect: any;
+  public blueprint: any;
   public urlTour: any;
   public safeURLVideo: any;
   public Hospital_visible = false;
@@ -159,6 +161,7 @@ export class ProjectDetailComponent implements OnInit {
           this.typologyUuid = this.typologyUuid[1];
           var url = this.response.individual + this.dataProjectUrl;
           var data = "";
+          console.log(url);
           fetch(url, {
           })
           .then(response => response.json())
@@ -168,7 +171,7 @@ export class ProjectDetailComponent implements OnInit {
             // console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
-              // console.log(this.response);
+              console.log(this.response);
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
@@ -176,7 +179,7 @@ export class ProjectDetailComponent implements OnInit {
                 this.urlTour = this.response.field_virtual_tour.uri;
                 this.urlTour = this.urlTour.replace('/watch?v=', "/embed/");
                 this.safeURLVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlTour);
-                console.log(this.urlTour);
+                // console.log(this.urlTour);
               }
               if(this.response.field_typology_video.length && this.urlTour){
                 this.video_url = "video";
@@ -200,6 +203,13 @@ export class ProjectDetailComponent implements OnInit {
               /* mapa Yenifer */
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
+              // if(this.response.typology_blueprint){
+                this.blueprintProyect = this.response.field_typology_blueprint;
+                this.blueprint = this.blueprintProyect[0].uri.url;
+                console.log(this.blueprint);
+                // for (let bluePrint of this.blueprintProyect) {
+                // }
+              // }
               // console.log(this.coor_latitude,',',this.coor_longitude);
               this.response.marketIcon =
               {
@@ -462,6 +472,13 @@ export class ProjectDetailComponent implements OnInit {
           autoplaySpeed: 5000,
         });
       }
+      if ($('.slider-blueprints-projects').length) {
+        $('.slider-blueprints-projects').not('.slick-initialized').slick({
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+        });
+      }
     }
   }
   addCompare(value) {
@@ -543,7 +560,7 @@ export class ProjectDetailComponent implements OnInit {
   createFormDates() {
     this.form2 =  this.formBuilder.group({
       dateAgenda: new FormControl(''),
-      journalOption: new FormControl(''),
+      journalOption: new FormControl('manana'),
       schedule: new FormControl(''),
       name: new FormControl(''),
       email: new FormControl(''),
@@ -989,6 +1006,7 @@ export class ProjectDetailComponent implements OnInit {
       $('#googleMaps').removeClass("hide");
       $('#googleStreet').addClass("visibi-hide");
       $('#planes').addClass("visibi-hide");
+      $('#planes').css('height','14px');
     }else if(value == 3){
       $('#showStreet').attr('aria-selected', 'true');
       $('#showMap').attr('aria-selected', 'false');
@@ -996,13 +1014,51 @@ export class ProjectDetailComponent implements OnInit {
       $('#googleMaps').addClass("hide");
       $('#googleStreet').removeClass("visibi-hide");
       $('#planes').addClass("visibi-hide");
+      $('#planes').css('height','14px');
     }else if(value == 2){
       $('#showStreet').attr('aria-selected', 'false');
       $('#showMap').attr('aria-selected', 'false');
       $('#showPlane').attr('aria-selected', 'true');
       $('#planes').removeClass("visibi-hide");
+      $('#planes').css('height','auto');
       $('#googleMaps').addClass("hide");
       $('#googleStreet').addClass("visibi-hide");
+    }
+  }
+  changeJournal(value){
+    if(value == 'morning'){
+      $('#journal-late').addClass('hide');
+      $('#journal-morning').removeClass('hide');
+    }else{
+      $('#journal-late').removeClass('hide');
+      $('#journal-morning').addClass('hide');
+      $('#08am').removeClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }
+  }
+  selectJournal(value){
+    if(value == "08"){
+      $('#08am').addClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }else if(value == "09"){
+      $('#08am').removeClass('bton-active');
+      $('#09am').addClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }else if(value == "10"){
+      $('#08am').removeClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').addClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }else if(value == "11"){
+      $('#08am').removeClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').addClass('bton-active');
     }
   }
 }
