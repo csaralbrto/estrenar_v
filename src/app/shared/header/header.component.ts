@@ -88,7 +88,7 @@ export class HeaderComponent implements OnInit {
   public onOptionsSelected(event) {
     const value = event.target.value;
     // this.selected = value;
-    let url_price  = value.split("/es/api/");
+    let url_price  = value.split("/api/");
     url_price = this.path_api + url_price[1];
     sessionStorage.removeItem('price_search');
     sessionStorage.setItem('price_search',url_price)
@@ -106,6 +106,7 @@ export class HeaderComponent implements OnInit {
     // }
   }
   ngAfterContentChecked() {
+    $('app-header').foundation();
     const user_login2 = sessionStorage.getItem('access_token');
     const user_uid2 = sessionStorage.getItem('uid');
     // console.log('user_login-> ',user_login,'user_id-> ',user_uid)
@@ -176,7 +177,7 @@ export class HeaderComponent implements OnInit {
       for (let ids of storedIds) {
         favorites.push({"target_id": ids})
       }
-      let payload = { 
+      let payload = {
       "field_user_favorites": favorites
       }
       fetch("https://lab.estrenarvivienda.com/es/session/token")
@@ -206,7 +207,7 @@ export class HeaderComponent implements OnInit {
         redirect: 'follow',
       })
       .then(function (a) {
-          return a.json(); 
+          return a.json();
       })
      .then(result => {
        console.log('result',result)
@@ -222,7 +223,7 @@ export class HeaderComponent implements OnInit {
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
          console.log('voy a update user');
          this.updateUser(xcsrfToken, payload);
-         
+
        }
       })
      .catch(error => {
@@ -246,7 +247,7 @@ export class HeaderComponent implements OnInit {
       redirect: 'follow'
     })
       .then(response => response.text())
-      .then(result =>{ 
+      .then(result =>{
         console.log(result)
         this.router.navigate(['/favoritos']);
       })

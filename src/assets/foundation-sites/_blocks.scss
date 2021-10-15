@@ -3012,7 +3012,7 @@ ul.menu li a img {
 }
 @media print, screen and (max-width: 480px) {
   ul#propertiesProject li.tabs-title {
-    margin-right: 7px !important;
+    margin-right: 5px !important;
   }
   ul.slider-blog-home {
     margin-left: 0.85rem;
@@ -3036,15 +3036,30 @@ ul.menu li a img {
   .data.caracteristica-inmueble {
     text-align: left;
   }
+  div#responsive-nav-social {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 60px);
+    background: #f4f6f5;
+    z-index: 9;
+    overflow-y: scroll;
+    top: 4rem;
+    text-align: center;
+    padding-top: 2.5rem;
+  }
 }
 @media print, screen and (min-width: 481px) {
   ul#propertiesProject {
-  .li.tabs-title {
-    margin-right: 15px !important;
+    .li.tabs-title {
+      margin-right: 15px !important;
+    }
+    li.tabs-title:last-child {
+      margin-right: 0px !important;
+    }
   }
-  li.tabs-title:last-child {
-    margin-right: 0px !important;
-  }
+}
+div#responsive-nav-social {
+  // display: none !important;
 }
 // ul#propertiesProject li.tabs-title {
 //   margin-right: 15px !important;
@@ -3272,3 +3287,4 @@ label.container-radio.label-button.checked {
     margin-right: 1rem;
   }
 }
+
