@@ -1088,11 +1088,11 @@ label {
 
 //Blog listados
 .blog-list {
-  height: 500px;
+  height: 460px;
   position: relative;
   margin-bottom: 1rem;
   &.col2 {
-    height: 500px;
+    height: 460px;
     position: relative;
     margin-bottom: 1rem;
   }
@@ -1264,7 +1264,12 @@ ul.accordion {
     }
   }
 }
+.features {
 
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 :last-child:not(.is-active) > .accordion-title {
   border-bottom: 0px solid #eee !important;
 }
@@ -1440,6 +1445,7 @@ span.error {
 }
 
 .mapa {
+  padding: 0 1rem;
   .nav-tabs {
     padding: 2rem 2rem 0 0rem;
   }
@@ -1669,9 +1675,13 @@ span.error {
 .container-blog {
   p {
     line-height: 1.8rem;
+    margin-bottom: 0;
   }
 }
-
+p {
+  margin-bottom: 0;
+  color: $black;
+}
 .relacionados {
   h2 {
     font-size: 1.2rem;
@@ -3139,6 +3149,7 @@ a.button.filtro-btn {
 a.button.secondary.favorito.button-color-ev.fav-btn {
   width: 88px;
   background: #F8C452 !important;
+  border: 1px solid #F8C452 !important;
 }
 .mTop-columns {
   margin-top: 0.4px;
