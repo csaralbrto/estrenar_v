@@ -293,7 +293,7 @@
                 <hr class="white">
                 <h2>Logo del proyecto</h2>
                 <!-- <input type="file" id="exampleFileUpload" class="show-for-sr"> -->
-                <label for="logo_project" class="button">Cargar archivo</label>
+                <label for="logo_project" class="button" style="width: 133px;">Cargar archivo</label>
                 <p>Los archivos deben ser menores que 2 MB.<br> Tipos de archivo permitidos: png jpg jpeg.<br> Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
                 <input style="visibility:hidden;" formControlName="logo_project" formControlName="logo_project" id="logo_project" type="file" class="form-control" (change)="onFileChange($event)">
                 <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
@@ -308,7 +308,7 @@
                 <hr class="white">
                 <h2>Imágenes</h2>
                 <!-- <div class="row"> -->
-                <label for="images_project" class="button">Añadir imágenes</label>
+                <label for="images_project" class="button" style="width: 138px;">Añadir imágenes</label>
                 <p>Los archivos deben ser menores que 2 MB.<br> Tipos de archivo permitidos: png jpg jpeg.<br> Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
                 <input style="visibility:hidden;" formControlName="images_project" formControlName="images_project" id="images_project" type="file" class="form-control" multiple="" (change)="onFilesChange($event)">
 
@@ -503,7 +503,8 @@
                                 Debe ingresar algún Correo electrónico
                             </span>
                         </div>
-                        <a (click)="addEmailsOrPhone('email')">Agregar un Correo</a>
+                        <a (click)="addEmailsOrPhone('email')">Agregar un Correo
+                        <span class="input-number-increment-morefilter increment-sign">+</span></a>
                     </div>
                     <div class="medium-6 columns">
                         <label>Celular
@@ -514,7 +515,8 @@
                                 Debe ingresar algún número de teléfono
                             </span>
                         </div>
-                        <a (click)="addEmailsOrPhone('phone')">Agregar Número</a><br>
+                        <a (click)="addEmailsOrPhone('phone')">Agregar Número
+                        <span class="input-number-increment-morefilter increment-sign">+</span></a><br>
                         <input id="checkbox1" type="checkbox" name="check_whatsapp" formControlName="check_whatsapp" id="check_whatsapp"><label for="checkbox1">Este es el mismo número de Whatsapp</label>
                     </div>
                     <div class="medium-6 columns end">

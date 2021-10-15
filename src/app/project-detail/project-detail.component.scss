@@ -1,121 +1,19 @@
-// .tabs-content {
-//   background-color: #14444e;
-//   color: #fff;
-// }
-// .radio_item {
-//   display: none !important;
-// }
-// .radio_item:checked+label {
-//   opacity: 1;
-//   .date-agenda-option {
-//     background-color: #a9d13a !important;
-//   }
-// }
-// .label-item {
-//   opacity: 0.1;
-//   cursor: pointer;
-// }
-// .container-date-agenda {
-//   padding: 4%;
-// }
-// .date-agenda-option {
-//   border: 1px solid rgba(10, 10, 10, 0.25);
-//   border-radius: 10px;
-//   position: relative;
-//   padding: 8px 17px 0 17px;
-//   font-size: 13px;
-//   line-height: initial;
-//   width: 100%;
-//   height: 43px;
-//   background-color: lightgray;
-//   color: #3a6269;
-//   font-weight: bolder;
-// }
-// .label_item {
-//   border-radius: 10px;
-//   position: static;
-//   font-size: 13px;
-//   line-height: initial;
-//   height: 43px;
-// }
-// /****************************************/
-// /* Layout rules using position: absolute and pixels. */
-// .position-pixels.date-as-calendar {
-//   display: inline-block;
-//   position: relative;
-//   width: 64px;
-//   height: 64px;
-// }
-// .position-pixels.date-as-calendar .labelDayAgenda,
-// .position-pixels.date-as-calendar .labelDayStringAgenda,
-// .position-pixels.date-as-calendar .labelMonthAgenda,
-// .position-pixels.date-as-calendar .year {
-//   display: block;
-//   position: absolute;
-//   left: 0;
-//   right: 0;
-//   width: 100%;
-//   height: 1em;
-// }
-// .position-pixels.date-as-calendar .labelMonthAgenda {
-//   top: 0px;
-//   font-size: 12px;
-//   padding: 2px 0;
-// }
-// .position-pixels.date-as-calendar .labelDayAgenda {
-//   top: 40px;
-//   font-size: 10px;
-// }
-// .position-pixels.date-as-calendar .labelDayStringAgenda {
-//   top: 13px;
-//   font-size: 24px;
-// }
-// .position-pixels.date-as-calendar .year {
-//   top: 50px;
-//   font-size: 14px;
-// }
-// .minus-agenda {
-//   position: relative;
-//   float: left;
-//   margin: 20px;
-//   cursor: pointer;
-// }
-// .plus-agenda {
-//   position: relative;
-//   float: left;
-//   margin-left: 6em;
-//   margin-top: -3.7em;
-//   cursor: pointer;
-//   z-index: 1;
-// }
-// .grid-container {
-//   display: grid;
-//   grid-template-columns: auto auto auto;
-//   background-color: #2196f3;
-//   padding: 10px;
-// }
-// .grid-item {
-//   background-color: rgba(255, 255, 255, 0.8);
-//   border: 1px solid rgba(0, 0, 0, 0.8);
-//   padding: 20px;
-//   font-size: 30px;
-//   text-align: center;
-// }
 // Imagenes Dinamicas
-div figure .imagenPrincipal {
-  border-radius: 12px;
-  height: 440px;
+@media print, screen and (min-width: 481px) {
+  div figure .imagenPrincipal {
+    border-radius: 12px;
+    height: 440px;
+  }
 }
-// .imagenes {
-//   border-radius: 12px;
-//   width: 100%;
-//   height: 240px;
-// }
-// .medium-6 {
-//   display: flex;
-//   padding: 10px;
-//   // height: 100%;
-// }
+@media print, screen and (max-width: 480px) {
+  img.imagenPrincipal {
+    border-radius: 12px;
+    height: 320px !important;
+  }
+  ul.slider-project-img {
+    margin-left: 0.35rem !important;
+  }
+}
 .rows-img .center {
   text-align: center;
 }
@@ -160,24 +58,10 @@ app-street-view {
 }
 .dates1 {
   display: flex;
-  // justify-content: space-between;
 }
 .radio2 {
   padding-right: 15px;
 }
-// .mobileDatePicker {
-//   display: flex;
-// }
-// .cdk-virtual-scroll-data-source-example {
-//   display: flex;
-//   flex-direction: row;
-// }
-
-// .cdk-virtual-scroll-data-source-example .example-item {
-//   height: 100%;
-//   /* writing-mode: horizontal-tb; */
-//   margin-right: 0.2rem;
-// }
 .month {
   padding: 0 1.5rem;
   // background: #4a4a4a;

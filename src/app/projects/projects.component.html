@@ -21,6 +21,7 @@
               <div class="medium-2 columns">
                   <label>Tipo de inmueble
                   <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                    <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
                       <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                   </select>
               </label>
@@ -28,6 +29,7 @@
               <div class="medium-2 columns">
                   <label>Precio
                   <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                    <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
                       <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
                   </select>
               </label>
@@ -35,6 +37,7 @@
               <div class="medium-2 columns">
                   <label>Ciudad
                   <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                    <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
                       <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
                   </select>
               </label>
@@ -42,6 +45,7 @@
               <div class="medium-2 columns">
                   <label>Zona
                   <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                    <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
                       <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                   </select>
                   <ng-template #zoneTemplate>
@@ -54,6 +58,7 @@
               <div class="medium-2 columns">
                   <label>Sector
                   <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                    <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
                       <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                   </select>
                   <ng-template #sectorTemplate>
@@ -80,14 +85,14 @@
   </form>
   <!--fin filtros-->
   <!-- Modal más filtros -->
-  <div class="reveal filter" id="masfiltrosModal" data-reveal>
+  <div class="reveal filter small-12" id="masfiltrosModal" data-reveal>
       <form [formGroup]="form_moreFilters">
           <div class="row">
-              <div class="medium-12 colunms text-center">
-                  <h2>Más filtros</h2>
-
+            <div class="medium-12 small-12 columns">
+              <div class="medium-12 small-12 colunms text-center">
+                  <h1><strong>Más filtros</strong></h1>
               </div>
-              <div class="medium-6 columns">
+              <div class="medium-6 small-12 columns">
                   <h3>Estado del proyecto</h3>
                   <div *ngFor="let option of ValoresProyecto">
                       <label class="container-check">{{option.values.value}}
@@ -160,7 +165,7 @@
                       </div>
                   </div>
               </div>
-              <div class="medium-5 columns">
+              <div class="medium-5 small-12 columns">
                   <div class="row">
                       <h3>Constructora</h3>
                       <!-- <label>
@@ -186,84 +191,16 @@
                       <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a>
                   </div>
               </div>
+            </div>
           </div>
       </form>
       <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-  </button>
+        <span aria-hidden="true">&times;</span>
+      </button>
   </div>
   <!-- Fin modal más filtros -->
   <hr>
 </div>
-<!-- <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-  <div class="medium-3 columns end project" *ngFor="let project of response_data_project; let i = index">
-      <div class="card" data-equalizer-watch>
-          <div class="container-photo">
-              <a routerLink="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
-              <div class="container-tools">
-                  <div class="tags">
-                      <div *ngIf="project.project_category.length > 0">
-                          <div class="tag" *ngFor="let tags of project.project_category; let i = index">
-                              <a routerLink="{{project.url}}" class="">{{ tags }}</a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="add">
-                      <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                  </div>
-              </div>
-          </div>
-          <div class="card-section info">
-              <h2>{{ project.project }}</h2>
-              <div class="descripcion">
-                  {{ project.project_city }}, {{ project.project_zone }}, {{ project.project_neighborhood }}
-              </div>
-              <div class="precio text-center">
-                  <div>Desde:</div>
-                  <span>$ {{ project.typology_price | number }}</span>
-              </div>
-          </div>
-          <div class="card-section">
-              <hr>
-              <div class="row">
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                          <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                          <div class="data"> {{ project.bathrooms }} alcobas</div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                          <div class="data"> Garaje {{ project.garages }}</div>
-                      </div>
-                  </div>
-                  <div class="small-6 columns">
-                      <div class="item">
-                          <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                          <div class="data"> {{ project.bedrooms }} baños</div>
-                      </div>
-                  </div>
-              </div>
-              <hr>
-          </div>
-          <div class="card-section">
-              <div class="button-group align-spaced ">
-                  <a class="button" routerLink="{{project.url}}">Ver
-                  Proyecto</a>
-                  <a class="button" data-open="exampleModal2">Contacto</a>
-              </div>
-          </div>
-      </div>
-  </div>
-</div> -->
-
 <div class="row">
   <div class="medium-4 columns proyectolist">
       <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
@@ -271,7 +208,7 @@
   <div class="medium-2 columns end">
       <!-- <label>Ordenar por: -->
           <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
-              <option value="">Ordenar por:</option>
+              <option value="" *ngIf="optionsSortSelected == ''">Ordenar por:</option>
               <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}  {{type.order}}</option>
           </select>
       <!-- </label> -->

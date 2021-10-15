@@ -2495,12 +2495,15 @@ img.image.constructor {
 }
 
 //COntador
-.reveal {
-  &.filter {
-    width: 900px;
-    border-radius: 20px;
-    border: none;
-    height: 558px;
+
+@media print, screen and (min-width: 481px) {
+  .reveal {
+    &.filter {
+      width: 900px;
+      border-radius: 20px;
+      border: none;
+      height: 558px;
+    }
   }
 }
 
@@ -2968,9 +2971,42 @@ ul.menu li a img {
   width: 100%;
   height: 190px;
 }
-ul#propertiesProject li.tabs-title {
-  margin-right: 18px !important;
+
+@media print, screen and (max-width: 480px) {
+  ul#propertiesProject li.tabs-title {
+    margin-right: 7px !important;
+  }
+  ul.slider-blog-home {
+    margin-left: 0.85rem;
+    margin-right: 0.85rem;
+    list-style-type: disc;
+  }
+  ul.slider-properties-project{
+    margin-left: 0.85rem;
+    margin-right: 0.85rem;
+    list-style-type: disc;
+  }
+  div.logo img{
+    width: 59px;
+  }
+  a.button.secondary.favorito.button-color-ev.fav-btn {
+    margin-left: 12px;
+  }
+  .resultados {
+    margin-bottom: 10px;
+  }
+  .data.caracteristica-inmueble {
+    text-align: left;
+  }
 }
+@media print, screen and (min-width: 481px) {
+  ul#propertiesProject li.tabs-title {
+    margin-right: 15px !important;
+  }
+}
+// ul#propertiesProject li.tabs-title {
+//   margin-right: 15px !important;
+// }
 
 .tabs-content div#images {
   padding: 0;
@@ -3028,8 +3064,10 @@ ul#propertiesProject li.tabs-title {
 .paddinTFooter {
   padding-top: 6px;
 }
-.paddinLFooter {
-  padding-left: 83px;
+@media print, screen and (min-width: 481px) {
+  .paddinLFooter {
+    padding-left: 83px;
+  }
 }
 a.button.filtro-btn {
   width: 90px;
@@ -3137,5 +3175,22 @@ label.container-radio.label-button.checked {
 }
 .bton-active{
   background-color: #a8d139 !important;
+}
+.increment-sign{
+  border: solid 1px;
+  display: inline-block;
+  width: 24px;
+  background: #fefefe !important;
+  color: #1a1a1a;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 34px !important;
+  height: 25px;
+  margin-top: 7px;
+  border-color: #1b4a53;
+  margin-left: 5px;
 }
 

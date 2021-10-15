@@ -218,7 +218,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
 // Ocultar mapa
   showMap(event){
     if(event == false){
-      console.log("here");
+      // console.log("here");
       $('#ProyectMap').addClass('hide');
       $( "#smallScrenn" ).removeClass( 'medium-6 columns' );
       $( "#smallScrenn" ).addClass( 'medium-12 columns' );
@@ -236,7 +236,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         $( ".FullScrenn" ).removeClass( 'medium-3 columns end' );
         $( ".FullScrenn" ).addClass( 'medium-6 columns end' );
       }else{
-        console.log("here");
+        // console.log("here");
         $('#ProyectMap').toggleClass('hide');
         $( "#smallScrenn" ).removeClass( 'medium-6 columns' );
         $( "#smallScrenn" ).addClass( 'medium-12 columns' );
@@ -249,13 +249,13 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
 
   // cargar más registros
   MoreRecords(){
-    console.log(this.eventos);
+    // console.log(this.eventos);
     this.showMap(false);
     this.startSpinner();
-   console.log("contador "+ this.contProyecto);
-   console.log("resultado "+ this.resultProyecto);
+  //  console.log("contador "+ this.contProyecto);
+  //  console.log("resultado "+ this.resultProyecto);
     this.resultProyecto = this.resultProyecto + this.contProyecto;
-    console.log(this.resultProyecto);
+    // console.log(this.resultProyecto);
 
     this.Service.getMoreData(this.resultProyecto).subscribe(
       (data) => (this.response = data),
@@ -263,7 +263,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       () => {
         if (this.response) {
 
-          console.log(this.response);
+          // console.log(this.response);
           if(this.response.metatag_normalized){
             this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
           }
@@ -352,7 +352,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         this.stringQuery = value[key];
       }
     },this);
-    console.log(this.stringQuery);
+    // console.log(this.stringQuery);
     // this.beforeCheck(this.response.individual);}
     var url = this.stringQuery;
     var data = "";
@@ -383,7 +383,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
           for(let optionType of this.response.facets.property_type){
-            if(optionType.values.active == true){
+            if(optionType.values.active == 'true'){
               this.optionsTypySelected = optionType.url;
             }
           }
@@ -392,7 +392,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_city){
           this.optionsCitySelected = '';
           for(let optionCity of this.response.facets.project_city){
-            if(optionCity.values.active == true){
+            if(optionCity.values.active == 'true'){
               this.optionsCitySelected = optionCity.url;
             }
           }
@@ -401,7 +401,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.typology_price){
           this.optionsPriceSelected = '';
           for(let optionPrice of this.response.facets.typology_price){
-            if(optionPrice.values.active == true){
+            if(optionPrice.values.active == 'true'){
               this.optionsPriceSelected = optionPrice.url;
             }
           }
@@ -410,7 +410,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_zone){
           this.optionsZoneSelected = '';
           for(let optionZone of this.response.facets.project_zone){
-            if(optionZone.values.active == true){
+            if(optionZone.values.active == 'true'){
               this.optionsZoneSelected = optionZone.url;
             }
           }
@@ -419,7 +419,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_neighborhood){
           this.optionsSectorSelected = '';
           for(let optionSector of this.response.facets.project_neighborhood){
-            if(optionSector.values.active == true){
+            if(optionSector.values.active == 'true'){
               this.optionsSectorSelected = optionSector.url;
             }
           }
@@ -433,7 +433,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               this.filterProjectState = feature.children;
               this.ValoresProyecto = Object.values(this.filterProjectState[0]);
               for (let features of this.ValoresProyecto) {
-              if(features.values.active == true){
+              if(features.values.active == 'true'){
                 this.optionFeatureProyectSelected = features.url;
               }
             }
@@ -495,6 +495,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     // console.log(this.stringQuery);
     // this.beforeCheck(this.response.individual);}
     var url = this.stringQuery;
+    // console.log(url);
     var data = "";
     fetch(url, {
     })
@@ -521,7 +522,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
           for(let optionType of this.response.facets.property_type){
-            if(optionType.values.active == true){
+            if(optionType.values.active == 'true'){
               this.optionsTypySelected = optionType.url;
             }
           }
@@ -530,7 +531,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_city){
           this.optionsCitySelected = '';
           for(let optionCity of this.response.facets.project_city){
-            if(optionCity.values.active == true){
+            if(optionCity.values.active == 'true'){
               this.optionsCitySelected = optionCity.url;
             }
           }
@@ -539,7 +540,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.typology_price){
           this.optionsPriceSelected = '';
           for(let optionPrice of this.response.facets.typology_price){
-            if(optionPrice.values.active == true){
+            if(optionPrice.values.active == 'true'){
               this.optionsPriceSelected = optionPrice.url;
             }
           }
@@ -548,17 +549,17 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_zone){
           this.optionsZoneSelected = '';
           for(let optionZone of this.response.facets.project_zone){
-            if(optionZone.values.active == true){
+            if(optionZone.values.active == 'true'){
               this.optionsZoneSelected = optionZone.url;
             }
           }
           this.filterZone = this.response.facets.project_zone;
         }
         if(this.response.facets.project_neighborhood){
-          console.log("cambie");
+          // console.log("cambie");
           this.optionsSectorSelected = '';
           for(let optionSector of this.response.facets.project_neighborhood){
-            if(optionSector.values.active == true){
+            if(optionSector.values.active == 'true'){
               this.optionsSectorSelected = optionSector.url;
             }
           }
@@ -572,7 +573,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               this.filterProjectState = feature.children;
               this.ValoresProyecto = Object.values(this.filterProjectState[0]);
               for (let features of this.ValoresProyecto) {
-              if(features.values.active == true){
+              if(features.values.active == 'true'){
                 this.optionFeatureProyectSelected = features.url;
               }
             }
@@ -586,7 +587,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.area_built){
           this.filterAreaBuilt = this.response.facets.area_built
           for (let featureAreaBuilt of this.filterAreaBuilt) {
-            if(featureAreaBuilt.values.active == true)
+            if(featureAreaBuilt.values.active == 'true')
             {
               this.optionsAreaSelected = featureAreaBuilt.url;
             }
@@ -597,7 +598,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             {
               this.filterBuilder = this.response.facets.project_builder
               for (let featureProjectBuilder of this.filterBuilder ) {
-                if(featureProjectBuilder.values.active == true)
+                if(featureProjectBuilder.values.active == 'true')
                 {
                   this.optionsConstructoraSelected = featureProjectBuilder.url;
                 }
@@ -663,7 +664,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
           for(let optionType of this.response.facets.property_type){
-            if(optionType.values.active == true){
+            if(optionType.values.active == 'true'){
               this.optionsTypySelected = optionType.url;
             }
           }
@@ -672,7 +673,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_city){
           this.optionsCitySelected = '';
           for(let optionCity of this.response.facets.project_city){
-            if(optionCity.values.active == true){
+            if(optionCity.values.active == 'true'){
               this.optionsCitySelected = optionCity.url;
             }
           }
@@ -681,7 +682,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.typology_price){
           this.optionsPriceSelected = '';
           for(let optionPrice of this.response.facets.typology_price){
-            if(optionPrice.values.active == true){
+            if(optionPrice.values.active == 'true'){
               this.optionsPriceSelected = optionPrice.url;
             }
           }
@@ -690,7 +691,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_zone){
           this.optionsZoneSelected = '';
           for(let optionZone of this.response.facets.project_zone){
-            if(optionZone.values.active == true){
+            if(optionZone.values.active == 'true'){
               this.optionsZoneSelected = optionZone.url;
             }
           }
@@ -699,7 +700,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_neighborhood){
           this.optionsSectorSelected = '';
           for(let optionSector of this.response.facets.project_neighborhood){
-            if(optionSector.values.active == true){
+            if(optionSector.values.active == 'true'){
               this.optionsSectorSelected = optionSector.url;
             }
           }
@@ -772,7 +773,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
           for(let optionType of this.response.facets.property_type){
-            if(optionType.values.active == true){
+            if(optionType.values.active == 'true'){
               this.optionsTypySelected = optionType.url;
             }
           }
@@ -781,7 +782,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_city){
           this.optionsCitySelected = '';
           for(let optionCity of this.response.facets.project_city){
-            if(optionCity.values.active == true){
+            if(optionCity.values.active == 'true'){
               this.optionsCitySelected = optionCity.url;
             }
           }
@@ -790,7 +791,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.typology_price){
           this.optionsPriceSelected = '';
           for(let optionPrice of this.response.facets.typology_price){
-            if(optionPrice.values.active == true){
+            if(optionPrice.values.active == 'true'){
               this.optionsPriceSelected = optionPrice.url;
             }
           }
@@ -799,7 +800,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_zone){
           this.optionsZoneSelected = '';
           for(let optionZone of this.response.facets.project_zone){
-            if(optionZone.values.active == true){
+            if(optionZone.values.active == 'true'){
               this.optionsZoneSelected = optionZone.url;
             }
           }
@@ -808,7 +809,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         if(this.response.facets.project_neighborhood){
           this.optionsSectorSelected = '';
           for(let optionSector of this.response.facets.project_neighborhood){
-            if(optionSector.values.active == true){
+            if(optionSector.values.active == 'true'){
               this.optionsSectorSelected = optionSector.url;
             }
           }

@@ -1,7 +1,3 @@
-<!-- <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
-    <p style="font-size: 20px; color: white">Cargando...</p>
-</ngx-spinner> -->
-
 <ngx-spinner bdColor="rgba(51,51,51,0.8)" template="<img src='/assets/images/logo-ev.png' />">
     <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
@@ -40,7 +36,7 @@
         </div>
         <hr class="mobile">
         <!--slide-->
-        <div class="medium-9 columns">
+        <div class="medium-9 columns hide-for-small-only">
             <div class="slider" role="region" aria-label="Favorite Space Pictures">
                 <div class="">
                     <ul class="slider-home">
@@ -192,7 +188,6 @@
                                                 </figcaption>
                                             </figure>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -202,6 +197,159 @@
             </div>
         </div>
         <!--fin slide-->
+        <!-- slide mobile -->
+        <div class="medium-9 columns show-for-small-only">
+          <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+              <div class="">
+                <ul class="slider-home">
+                  <li class="is-active ">
+                      <div class="medium-12 columns destacado">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[0]; else imgOther0">
+                                  <a (click)=(loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name))>
+                                      <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther0>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[0] ? response.home_featured_collections[0].name : "" }}</figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[1]; else imgOther1">
+                                  <a (click)=(loadCollection(response.home_featured_collections[1].id,response.home_featured_collections[1].name))>
+                                      <img class="" [src]="response.home_featured_collections[1].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther1>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[1] ? response.home_featured_collections[1].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[2]; else imgOther2">
+                                  <a (click)=(loadCollection(response.home_featured_collections[2].id,response.home_featured_collections[2].name))>
+                                      <img class="" [src]="response.home_featured_collections[2].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther2>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[2] ? response.home_featured_collections[2].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[3]; else imgOther3">
+                                  <a (click)=(loadCollection(response.home_featured_collections[3].id,response.home_featured_collections[3].name))>
+                                      <img class="" [src]="response.home_featured_collections[3].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther3>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[3] ? response.home_featured_collections[3].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[4]; else imgOther4">
+                                  <a (click)=(loadCollection(response.home_featured_collections[4].id,response.home_featured_collections[4].name))>
+                                      <img class="" [src]="response.home_featured_collections[4].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther4>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[4] ? response.home_featured_collections[4].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[5]; else imgOther5">
+                                  <a (click)=(loadCollection(response.home_featured_collections[5].id,response.home_featured_collections[5].name))>
+                                      <img class="" [src]="response.home_featured_collections[5].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther5>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[5] ? response.home_featured_collections[5].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[6]; else imgOther6">
+                                  <a (click)=(loadCollection(response.home_featured_collections[6].id,response.home_featured_collections[6].name))>
+                                      <img class="" [src]="response.home_featured_collections[6].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther6>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[6] ? response.home_featured_collections[6].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[7]; else imgOther7">
+                                  <a (click)=(loadCollection(response.home_featured_collections[7].id,response.home_featured_collections[7].name))>
+                                      <img class="" [src]="response.home_featured_collections[7].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther7>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[7] ? response.home_featured_collections[7].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-12 columns">
+                          <figure class="">
+                              <div *ngIf="response.home_featured_collections[8]; else imgOther8">
+                                  <a (click)=(loadCollection(response.home_featured_collections[8].id,response.home_featured_collections[8].name))>
+                                      <img class="" [src]="response.home_featured_collections[8].image.url" alt="">
+                                  </a>
+                              </div>
+                              <ng-template #imgOther8>
+                                  <img class="" src="/assets/images/content/ficha.jpg" alt="">
+                              </ng-template>
+                              <figcaption class="">{{ response.home_featured_collections[8] ? response.home_featured_collections[8].name : "" }}
+                              </figcaption>
+                          </figure>
+                      </div>
+                  </li>
+                </ul>
+              </div>
+          </div>
+      </div>
+        <!--fin slide mobile-->
     </div>
 </div>
 <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
@@ -268,7 +416,7 @@
 <!--fin bloque1 -->
 <!--Bloque2 -->
 <div class="container">
-    <div class="row columns">
+    <div class="row columns hide-for-small-only">
         <h2 class="text-center deco">Proyectos destacados</h2>
         <div class="medium-6 columns">
             <!-- Card Proyecto individual destacado-->
@@ -351,7 +499,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="comparador-btn">
                 <div class="container-comparador">
@@ -365,7 +512,6 @@
             <!--slide proyecto-->
             <div class="slider" role="region" aria-label="Favorite Space Pictures">
                 <div class="">
-
                     <ul class="slider-projects-home">
                         <li class="is-active ">
                             <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
@@ -677,9 +823,409 @@
             <!--fin slide proyecto-->
         </div>
     </div>
+    <!-- slide destacados mobile -->
+    <div class="row columns show-for-small-only">
+        <h2 class="text-center deco">Proyectos destacados</h2>
+        <div class="medium-12 columns">
+            <!--slide proyecto-->
+          <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+                <ul class="slider-projects-home">
+                  <li class="is-active ">
+                      <div class="medium-6 columns">
+                          <!-- Card Proyecto individual-->
+                          <div class="card" data-equalizer-watch>
+                              <div class="container-photo">
+                                  <img [src]="response.home_featured_typologies[0].typology_images" alt="" class="proyecto-card">
+                                  <div class="container-tools">
+                                      <div class="tags">
+                                          <div *ngIf="response.home_featured_typologies[0].project_category.length > 0">
+                                              <div class="tag" *ngFor="let tags of response.home_featured_typologies[0].project_category; let i = index">
+                                                  <a>{{ tags }}</a>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="add">
+                                          <a (click)="addFavorite(response.home_featured_typologies[0].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-section info">
+                                  <h2>{{ response.home_featured_typologies[0].project }}</h2>
+                                  <div class="descripcion">
+                                      {{ response.home_featured_typologies[0].property_type }}, {{ response.home_featured_typologies[0].project_neighborhood }}, {{ response.home_featured_typologies[0].project_city }}
+                                  </div>
+                              </div>
+                              <div class="precio text-center">
+                                  <div>Desde:</div>
+                                  <span>$ {{ response.home_featured_typologies[0].typology_price | number }}</span>
+                              </div>
+                              <hr>
+
+                              <div class="card-section">
+                                  <hr>
+                                  <div class="row">
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[0].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[0].bedrooms }} alcobas
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[0].garages }} garajes
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[0].bathrooms }} baños
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr>
+                              </div>
+                              <div class="card-section">
+                                  <div class="button-group align-spaced ">
+                                      <a class="button" href="/es{{response.home_featured_typologies[0].url}}">Ver
+                                          Proyecto</a>
+                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-6 columns">
+                          <!-- Card Proyecto individual-->
+                          <div class="card" data-equalizer-watch>
+                              <div class="container-photo">
+                                  <img [src]="response.home_featured_typologies[1].typology_images" alt="" class="proyecto-card">
+                                  <div class="container-tools">
+                                      <div class="tags">
+                                          <div *ngIf="response.home_featured_typologies[1].project_category.length > 0">
+                                              <div class="tag" *ngFor="let tags of response.home_featured_typologies[1].project_category; let i = index">
+                                                  <a>{{ tags }}</a>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="add">
+                                          <a (click)="addFavorite(response.home_featured_typologies[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-section info">
+                                  <h2>{{ response.home_featured_typologies[1].project }}</h2>
+                                  <div class="descripcion">
+                                      {{ response.home_featured_typologies[1].property_type }}, {{ response.home_featured_typologies[1].project_neighborhood }}, {{ response.home_featured_typologies[1].project_city }}
+                                  </div>
+                              </div>
+                              <div class="precio text-center">
+                                  <div>Desde:</div>
+                                  <span>$ {{ response.home_featured_typologies[1].typology_price | number }}</span>
+                              </div>
+                              <hr>
+
+                              <div class="card-section">
+                                  <hr>
+                                  <div class="row">
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[1].bedrooms }} alcobas
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[1].garages }} garajes
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[1].bathrooms }} baños
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr>
+                              </div>
+                              <div class="card-section">
+                                  <div class="button-group align-spaced ">
+                                      <a class="button" href="/es{{response.home_featured_typologies[1].url}}">Ver
+                                          Proyecto</a>
+                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Fin Card Proyecto individual-->
+                  </li>
+                  <li>
+                      <div class="medium-6 columns">
+                          <!-- Card Proyecto individual-->
+                          <div class="card" data-equalizer-watch>
+                              <div class="container-photo">
+                                  <img [src]="response.home_featured_typologies[2].typology_images" alt="" class="proyecto-card">
+                                  <div class="container-tools">
+                                      <div class="tags">
+                                          <div *ngIf="response.home_featured_typologies[2].project_category.length > 0">
+                                              <div class="tag" *ngFor="let tags of response.home_featured_typologies[2].project_category; let i = index">
+                                                  <a>{{ tags }}</a>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="add">
+                                          <a (click)="addFavorite(response.home_featured_typologies[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-section info">
+                                  <h2>{{ response.home_featured_typologies[2].project }}</h2>
+                                  <div class="descripcion">
+                                      {{ response.home_featured_typologies[2].property_type }}, {{ response.home_featured_typologies[2].project_neighborhood }}, {{ response.home_featured_typologies[2].project_city }}
+                                  </div>
+                              </div>
+                              <div class="precio text-center">
+                                  <div>Desde:</div>
+                                  <span>$ {{ response.home_featured_typologies[2].typology_price | number }}</span>
+                              </div>
+                              <hr>
+
+                              <div class="card-section">
+                                  <hr>
+                                  <div class="row">
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[2].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[2].bedrooms }} alcobas
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[2].garages }} garajes
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[2].bathrooms }} baños
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr>
+                              </div>
+                              <div class="card-section">
+                                  <div class="button-group align-spaced ">
+                                      <a class="button" href="/es{{response.home_featured_typologies[2].url}}">Ver
+                                          Proyecto</a>
+                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-6 columns">
+                          <!-- Card Proyecto individual-->
+                          <div class="card" data-equalizer-watch>
+                              <div class="container-photo">
+                                  <img [src]="response.home_featured_typologies[3].typology_images" alt="" class="proyecto-card">
+                                  <div class="container-tools">
+                                      <div class="tags">
+                                          <div *ngIf="response.home_featured_typologies[3].project_category.length > 0">
+                                              <div class="tag" *ngFor="let tags of response.home_featured_typologies[3].project_category; let i = index">
+                                                  <a>{{ tags }}</a>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="add">
+                                          <a (click)="addFavorite(response.home_featured_typologies[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-section info">
+                                  <h2>{{ response.home_featured_typologies[3].project }}</h2>
+                                  <div class="descripcion">
+                                      {{ response.home_featured_typologies[3].property_type }}, {{ response.home_featured_typologies[3].project_neighborhood }}, {{ response.home_featured_typologies[3].project_city }}
+                                  </div>
+                              </div>
+                              <div class="precio text-center">
+                                  <div>Desde:</div>
+                                  <span>$ {{ response.home_featured_typologies[3].typology_price | number
+                                      }}</span>
+                              </div>
+                              <hr>
+
+                              <div class="card-section">
+                                  <hr>
+                                  <div class="row">
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[3].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[3].bedrooms }} alcobas
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[3].garages }} garajes
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[3].bathrooms }} baños
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr>
+                              </div>
+                              <div class="card-section">
+                                  <div class="button-group align-spaced ">
+                                      <a class="button" href="/es{{response.home_featured_typologies[3].url}}">Ver
+                                          Proyecto</a>
+                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="medium-6 columns">
+                          <!-- Card Proyecto individual-->
+                          <div class="card" data-equalizer-watch>
+                              <div class="container-photo">
+                                  <img [src]="response.home_featured_typologies[4].typology_images" alt="" class="proyecto-card">
+                                  <div class="container-tools">
+                                      <div class="tags">
+                                          <div *ngIf="response.home_featured_typologies[4].project_category.length > 0">
+                                              <div class="tag" *ngFor="let tags of response.home_featured_typologies[4].project_category; let i = index">
+                                                  <a>{{ tags }}</a>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="add">
+                                          <a (click)="addFavorite(response.home_featured_typologies[4].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card-section info">
+                                  <h2>{{ response.home_featured_typologies[4].project }}</h2>
+                                  <div class="descripcion">
+                                      {{ response.home_featured_typologies[4].property_type }}, {{ response.home_featured_typologies[4].project_neighborhood }}, {{ response.home_featured_typologies[4].project_city }}
+                                  </div>
+                              </div>
+                              <div class="precio text-center">
+                                  <div>Desde:</div>
+                                  <span>$ {{ response.home_featured_typologies[4].typology_price | number
+                                      }}</span>
+                              </div>
+                              <hr>
+
+                              <div class="card-section">
+                                  <hr>
+                                  <div class="row">
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[4].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[4].bedrooms }} alcobas
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[4].garages }} garajes
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                              <div class="data">{{ response.home_featured_typologies[4].bathrooms }} baños
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr>
+                              </div>
+                              <div class="card-section">
+                                  <div class="button-group align-spaced ">
+                                      <a class="button" href="/es{{response.home_featured_typologies[4].url}}">Ver
+                                          Proyecto</a>
+                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+        </div>
+    </div>
+    <!-- fin slide destacados mobile -->
     <hr class="white">
-
-
+    <!-- banner comparar mobile -->
+    <div class="row columns show-for-small-only" style="padding-top: 25px;">
+      <div class="comparador-btn">
+          <div class="container-comparador">
+              <h2>¿Quieres comparar?</h2>
+              <div class="subtitle">Selecciona tus proyectos favoritos para hacerlo</div>
+          </div>
+      </div>
+        <!--fin slide proyecto-->
+    </div>
+    <!-- fin banner comparar mobile -->
+    <hr class="white">
     <div class="row text-center">
         <hr class="white">
         <div class="publicidad">
@@ -690,7 +1236,7 @@
 <!--fin bloque2 -->
 <!--Bloque3 -->
 <div class="container-gray">
-    <div class="row columns">
+    <div class="row columns hide-for-small-only">
         <h2 class="text-center deco">Constructoras</h2>
         <div class="sl-constructoras" role="region" aria-label="Favorite Space Pictures">
             <div class="">
@@ -721,11 +1267,27 @@
             </div>
         </div>
     </div>
+    <!-- slider constructoras mobile -->
+    <div class="row columns show-for-small-only">
+        <h2 class="text-center deco">Constructoras</h2>
+        <div class="sl-constructoras" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+          <ul class="slider-builders-home">
+            <li class="is-active " *ngFor="let builder of response.home_featured_builders; let i = index">
+              <div class="small-12 medium-12 columns end" >
+                  <figure class="">
+                      <img class="" [src]="builder.builder_logo" alt="" style="margin: 0 auto;">
+                  </figure>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <!-- fin slider constructoras mobile -->
 </div>
 <!--fin bloque3 -->
 <!--Bloque4 -->
 <div class="container">
-    <div class="row columns">
+    <div class="row columns hide-for-small-only">
         <h2 class="text-center deco">Blog</h2>
         <div class="" role="region" aria-label="Favorite Space Pictures">
             <div class="">
@@ -761,7 +1323,38 @@
             </div>
         </div>
     </div>
+    <div class="row columns show-for-small-only">
+        <h2 class="text-center deco">Blog</h2>
+        <div class="" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+            <ul class="slider-blog-home">
+                <li class="is-active" *ngFor="let blog of response.home_featured_articles.slice(0, 4); let i = index">
+                    <div class="row">
+                        <div class="small-12 columns end">
+                            <div class="blog-list">
+                                <div class="img">
+                                    <a href="{{blog.url}}"><img [src]="blog.article_image" alt=""></a>
+                                </div>
+                                <div class="social">
+                                    <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>
+                                    </div>
+                                    <div class="like"><img src="/assets/images/like.png" alt=""><span>{{blog.likes}}</span></div>
+                                </div>
+
+                                <div class="section"><a href="{{blog.url}}">{{ blog.article_type }}</a></div>
+                                <div style="height: 50px !important;margin-top: 5px;">
+                                  <h2><a href="{{blog.url}}">{{ blog.title.slice(0,80)+stringText }}</a></h2>
+                                </div>
+                                <div class="resumen" style="height: 100px !important;">
+                                    <p [innerHTML]=blog.description.slice(0,110)+stringText></p>
+                                </div>
+                                <!-- <hr> -->
+                                <a href="{{blog.url}}" class="button">Seguir leyendo</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-
-
 <!--fin bloque4 -->

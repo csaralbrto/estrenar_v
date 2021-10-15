@@ -34,7 +34,7 @@
                   </label>
                 </div>
             </div>
-            <div class="medium-7 columns mTop-tabs-project">
+            <div class="medium-7 small-12 columns mTop-tabs-project">
                 <div class="nav-tabs right">
                     <ul class="tabs" data-tabs id="propertiesProject">
                         <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
@@ -51,6 +51,7 @@
 <!--slide-->
 <div class="row columns">
     <div class="tabs-content" data-tabs-content="propertiesProject">
+      <div class="row hide-for-small-only">
         <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
             <div class="">
                 <ul class="slider-project-img slideproject">
@@ -313,6 +314,113 @@
                 </ul>
             </div>
         </div>
+      </div>
+      <div class="row show-for-small-only">
+        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
+            <div class="">
+                <ul class="slider-project-img slideproject">
+                  <li class="is-active ">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[1].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[6].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li *ngIf="galeria > 6">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[7].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li *ngIf="galeria > 7">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[8].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li *ngIf="galeria > 8">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[9].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li *ngIf="galeria > 9">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[10].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li *ngIf="galeria > 10">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[11].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li *ngIf="galeria > 11">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[12].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                  <li *ngIf="galeria > 12">
+                      <div class="small-12 columns">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[13].uri.url" alt="" height="371px">
+                          </figure>
+                      </div>
+                  </li>
+                </ul>
+            </div>
+        </div>
+      </div>
         <div class="tabs-panel" id="video" *ngIf="response.field_typology_video.length > 0">
             <div class="row">
                 <video width="520" height="250" controls>
@@ -339,7 +447,7 @@
         <div class="small-6 medium-3 columns end" *ngFor="let caract of caracteristicas; let i = index">
             <div class="item-big">
                 <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
-                <div class="data">{{ caract.name_only }}</div>
+                <div class="data caracteristica-inmueble">{{ caract.name_only }}</div>
             </div>
         </div>
     </div>
@@ -537,12 +645,12 @@
                             <h2>Zonas de interés</h2>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
                                         Hospitales
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                         <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
                                         <span class="checkmark"></span>
@@ -567,12 +675,12 @@
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/banco.png" alt="" width="30px" height="30px">
                                         Bancos
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
                                           <span class="checkmark"></span>
@@ -582,12 +690,12 @@
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
                                         Educación
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
                                           <span class="checkmark"></span>
@@ -597,12 +705,12 @@
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-9 columns">
+                                    <div class="medium-9 smal-9 columns">
                                       <label><img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
                                         Centros comerciales
                                       </label>
                                     </div>
-                                    <div class="medium-3 columns">
+                                    <div class="medium-3 small-3 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
                                           <span class="checkmark"></span>
@@ -612,12 +720,12 @@
                             </div>
                             <div class="small-6 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
                                         Transporte
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
                                           <span class="checkmark"></span>
@@ -628,12 +736,12 @@
                             <div class="row" style="padding-top: 79px;margin-top: 45px;padding-left: 17px;padding-right: 17px;">
                               <div class="small-6 medium-4 columns end zona">
                                   <div class="row">
-                                      <div class="medium-8 columns">
+                                      <div class="medium-8 small-8 columns">
                                         <label><img src="/assets/images/parque.png" alt="" width="30px" height="30px">
                                           Parques
                                         </label>
                                       </div>
-                                      <div class="medium-4 columns">
+                                      <div class="medium-4 small-4 columns">
                                         <label class="container-check">
                                             <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
                                             <span class="checkmark"></span>
@@ -643,12 +751,12 @@
                               </div>
                               <div class="small-6 medium-4 columns end zona">
                                   <div class="row">
-                                      <div class="medium-9 columns">
+                                      <div class="medium-9 small-9 columns">
                                         <label><img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
                                           Supermercados
                                         </label>
                                       </div>
-                                      <div class="medium-3 columns">
+                                      <div class="medium-3 small-3 columns">
                                         <label class="container-check">
                                             <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
                                             <span class="checkmark"></span>
@@ -658,12 +766,12 @@
                               </div>
                               <div class="small-6 medium-4 columns end zona">
                                   <div class="row">
-                                      <div class="medium-8 columns">
+                                      <div class="medium-8 small-8 columns">
                                         <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
                                           Iglesias
                                         </label>
                                       </div>
-                                      <div class="medium-4 columns">
+                                      <div class="medium-4 small-4 columns">
                                         <label class="container-check">
                                             <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
                                             <span class="checkmark"></span>
