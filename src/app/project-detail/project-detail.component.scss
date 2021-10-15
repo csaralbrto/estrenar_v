@@ -20,26 +20,26 @@
 
 .row1 {
   display: flex;
-  padding: 10px;
+  padding: 0;
 }
 
 .rows-img1 {
-  padding: 10px;
+  padding: 0 6px;
   box-shadow: 0 0 2px #c1bcbc;
 }
 
 .rows-img2 {
-  padding: 10px;
+  padding: 0 6px;
   box-shadow: 0 0 2px #c1bcbc;
 }
 
 .rows-img3 {
-  padding: 10px;
+  padding: 0 6px;
   box-shadow: 0 0 2px #c1bcbc;
 }
 
 .rows-img4 {
-  padding: 10px;
+  padding: 0 6px;
   box-shadow: 0 0 2px #c1bcbc;
 }
 
@@ -66,7 +66,7 @@ app-street-view {
   padding: 0 1.5rem;
   // background: #4a4a4a;
   border-radius: 5px 0px 0px 5px;
-  color: white;
+  color: #3F3F3F;
   display: flex;
   flex-direction: column;
   justify-content: center;
