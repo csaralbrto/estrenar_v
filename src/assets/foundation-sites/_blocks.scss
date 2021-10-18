@@ -1,43 +1,3 @@
-h1,
-h2,
-h4,
-.h1,
-.h2,
-.h4 {
-  letter-spacing: -1px;
-  font-weight: 400 !important;
-  line-height: 1.2em !important;
-  &.deco {
-    position: relative;
-    margin-bottom: 3rem;
-    &:before {
-      position: absolute;
-      width: 37px;
-      height: 20px;
-      bottom: -1.6rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: url(/assets/images/deco.png);
-      content: "";
-    }
-  }
-  &.deco-wide {
-    position: relative;
-    margin-bottom: 2rem;
-    padding-left: 3rem;
-    &:before {
-      position: absolute;
-      width: 37px;
-      height: 20px;
-      bottom: 9px;
-      left: 15px;
-      transform: translateX(-50%);
-      background: url(/assets/images/deco.png);
-      content: "";
-    }
-  }
-}
-
 hr.white {
   border-bottom: 1px solid $white;
 }
@@ -1563,6 +1523,7 @@ span.error {
   p {
     font-size: 0.9rem;
     line-height: 1.3;
+    color: white;
   }
 }
 
@@ -2427,13 +2388,18 @@ img.image.constructor {
     margin-left: 0;
     padding: 1rem 0;
     li.opcion {
-      display: inline-block;
-      margin-right: 0.6rem;
+      display: inline-block !important;
+      margin-right: 0.6rem !important;
+      float: none !important;
+      background: none !important;
+      width: auto !important;
       a {
-        color: $medium-gray;
+        color: $medium-gray !important;
+        background: none !important;
         &.active {
-          color: $primary-color;
-          font-weight: 500;
+          background: none !important;
+          color: #14454e !important;
+          font-weight: 500 !important;
         }
       }
     }
@@ -3021,6 +2987,45 @@ ul.menu li a img {
   height: 190px;
 }
 @media print, screen and (max-width: 480px) {
+  h1,
+  h2,
+  h4,
+  .h1,
+  .h2,
+  .h4 {
+    letter-spacing: -1px;
+    font-weight: 400 !important;
+    line-height: 1.2em !important;
+    &.deco {
+      position: relative;
+      margin-bottom: 3rem;
+      &:before {
+        position: absolute;
+        width: 37px;
+        height: 20px;
+        bottom: -1.6rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: url(/assets/images/deco.png);
+        content: "";
+      }
+    }
+    &.deco-wide {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 3rem;
+      &:before {
+        position: absolute;
+        width: 37px;
+        height: 20px;
+        bottom: 1px;
+        left: 15px;
+        transform: translateX(-50%);
+        background: url(/assets/images/deco.png);
+        content: "";
+      }
+    }
+  }
   ul#propertiesProject li.tabs-title {
     margin-right: 5px !important;
   }
@@ -3047,18 +3052,181 @@ ul.menu li a img {
     text-align: left;
   }
   div#responsive-nav-social {
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: calc(100% - 60px);
+    height: /* calc(100% - 60px) */ 100%;
     background: #f4f6f5;
     z-index: 9;
     overflow-y: scroll;
-    top: 4rem;
+    top: 2.9rem;
     text-align: center;
     padding-top: 2.5rem;
   }
+  .bton-mobile{
+    width: 49% !important;
+  }
+  .tabs-title-maps > a {
+    width: 91px;
+  }
+  .mt20M{
+    margin-top: 20px;
+  }
+  .mb20M{
+    margin-bottom: 20px;
+  }
+  .check-mobile{
+    width: 31px;
+    height: 19px;
+  }
+  .font-mobile{
+    font-size: 8px;
+  }
+  ul.slider-blog-mobile {
+    margin-left: 0.05rem;
+  }
+  // .blog a {
+  //   color: #14454e !important;
+  // }
+  .blog h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0;
+    text-transform: lowercase;
+    padding: 9px;
+  }
+  .blog .user {
+    color: #B4CA3D;
+    font-size: 0.6rem;
+    padding-left: 9px;
+  }
+  .blog .section a {
+    color: #fefefe;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    padding-left: 11px;
+  }
+  figcaption.blog {
+    margin-top: -123px;
+  }
+  .blog .user span {
+    font-weight: 500;
+    margin-right: 0.3rem;
+  }
+  .text-center-mobile{
+    text-align: center;
+  }
+  .columns {
+    width: 100%;
+    float: left;
+    padding-right: 0.825rem;
+    padding-left: 0.825rem;
+  }
+  .disp-inBlock{
+    display: inline-block;
+  }
+  .mtop50{
+    margin-top: 50px;
+  }
+  .a-password-redirect a{
+    font-size: 12px;
+    color: #bec9cc;
+  }
+  .a-password-redirect label{
+    font-size: 12px;
+    color: #bec9cc;
+  }
+  .a-password-redirect {
+    margin-bottom: 10px;
+  }
+  .a-register-redirect a{
+    font-size: 12px;
+    color: #bec9cc;
+  }
+  .login-span span{
+    color: #fff !important;
+  }
+  .row-login{
+    padding: 0rem !important;
+    margin: 0rem !important;
+  }
+  .container-blue.form {
+    padding: 4rem 0.85rem 4rem 0.85rem !important;
+    border-radius: 8px !important;
+  }
+  .pagination li {
+    display: inline-block !important;
+  }
+  .upload .carga {
+    border-left: none;
+    padding-left: 0.5rem;
+  }
+  .bton-fRight{
+    float: right !important;
+  }
+  .passed-pass{
+    background: #b4ca3d !important;
+  }
+  h1.contenUpload{
+    font-size: 2rem !important;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  .input-number-group .input-group-button {
+    line-height: 23px !important;
+  }
+  div.input-number-group input.input-number {
+    border: none !important;
+    background-color: #fefefe;
+    box-shadow: none !important;
+  }
+
 }
 @media print, screen and (min-width: 481px) {
+  .passed-pass{
+    background: #b4ca3d !important;
+  }
+
+  h1,
+  h2,
+  h4,
+  .h1,
+  .h2,
+  .h4 {
+    letter-spacing: -1px;
+    font-weight: 400 !important;
+    line-height: 1.2em !important;
+    &.deco {
+      position: relative;
+      margin-bottom: 3rem;
+      &:before {
+        position: absolute;
+        width: 37px;
+        height: 20px;
+        bottom: -1.6rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: url(/assets/images/deco.png);
+        content: "";
+      }
+    }
+    &.deco-wide {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 3rem;
+      &:before {
+        position: absolute;
+        width: 37px;
+        height: 20px;
+        bottom: 9px;
+        left: 15px;
+        transform: translateX(-50%);
+        background: url(/assets/images/deco.png);
+        content: "";
+      }
+    }
+  }
+
   ul#propertiesProject {
     .li.tabs-title {
       margin-right: 15px !important;
@@ -3068,9 +3236,7 @@ ul.menu li a img {
     }
   }
 }
-div#responsive-nav-social {
-  // display: none !important;
-}
+
 // ul#propertiesProject li.tabs-title {
 //   margin-right: 15px !important;
 // }

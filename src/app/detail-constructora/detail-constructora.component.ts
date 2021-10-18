@@ -128,6 +128,13 @@ export class DetailConstructoraComponent implements OnInit {
       if (this.results) {
         $('app-detail-constructora').foundation();
         // $('html,body').scrollTop(0);
+        if ($('.slider-proyects-mobile').length) {
+          $('.slider-proyects-mobile').not('.slick-initialized').slick({
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+          });
+        }
         this.stopSpinner();
       }
     }

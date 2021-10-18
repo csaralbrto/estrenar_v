@@ -183,6 +183,13 @@ export class BlogComponent implements OnInit, AfterViewChecked {
           ]
         });
       }
+      if ($('.slider-blog-mobile').length) {
+        $('.slider-blog-mobile').not('.slick-initialized').slick({
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+        });
+      }
       this.stopSpinner();
 
     }

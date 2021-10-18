@@ -60,7 +60,6 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       (err) => console.log(),
       () => {
         if (this.response) {
-          // console.log(this.response);
           /* Metodo para agregar los metas del sitio */
           if(this.response.metatag_normalized){
             this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
@@ -99,6 +98,20 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked() {
     if (this.results) {
       $('app-tool').foundation();
+      if ($('.slider-proyects-mobile').length) {
+        $('.slider-proyects-mobile').not('.slick-initialized').slick({
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+        });
+      }
+      if ($('.slider-blog-mobile').length) {
+        $('.slider-blog-mobile').not('.slick-initialized').slick({
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+        });
+      }
     }
   }
   createForm() {

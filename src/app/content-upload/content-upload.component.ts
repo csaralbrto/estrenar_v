@@ -1320,6 +1320,56 @@ export class ContentUploadComponent implements OnInit {
       $('#levels_property').val(val);
     }
   }
+  decreaseValueMobile(value) {
+    if(value == 1){
+      var val = $('#bedroomMobile').val();
+      val = Number(val)-Number(1);
+      if(val < 0){
+        val = 0;
+      };
+      $('#bedroomMobile').val(val);
+    }else if(value == 2){
+      var val = $('#bathroomMobile').val();
+      val = Number(val)-Number(1);
+      if(val < 0){
+        val = 0;
+      };
+      $('#bathroomMobile').val(val);
+    }else if(value == 3){
+      var val = $('#garageMobile').val();
+      val = Number(val)-Number(1)
+      if(val < 0){
+        val = 0;
+      };
+      $('#garageMobile').val(val);
+    }else if(value == 4){
+      var val = $('#garageMobile').val();
+      val = Number(val)-Number(1)
+      if(val < 0){
+        val = 0;
+      };
+      $('#levels_propertyMobile').val(val);
+    }
+   }
+  incrementValueMobile(value) {
+    if(value == 1){
+      var val = $('#bedroomMobile').val();
+      val = Number(val)+Number(1);
+      $('#bedroomMobile').val(val);
+    }else if(value == 2){
+      var val = $('#bathroomMobile').val();
+      val = Number(val)+Number(1);
+      $('#bathroomMobile').val(val);
+    }else if(value == 3){
+      var val = $('#garageMobile').val();
+      val = Number(val)+Number(1);
+      $('#garageMobile').val(val);
+    }else if(value == 4){
+      var val = $('#garageMobile').val();
+      val = Number(val)+Number(1)
+      $('#levels_propertyMobile').val(val);
+    }
+  }
   preview(values){
     let error = this.validateForm(values);
     if(error){

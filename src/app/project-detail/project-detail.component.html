@@ -541,9 +541,9 @@
         <div class="mapa">
             <div class="nav-tabs-map">
                 <ul class="tabs">
-                    <li class="tabs-title"><a class="tabs-map-button tab-map-project" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
-                    <li class="tabs-title is-active"><a class="tabs-map-button tab-map-project" aria-selected="true" id="showPlane" (click)="showHideTab('2')">Planos</a></li>
-                    <li class="tabs-title"><a class="tabs-map-button tab-map-project" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
+                    <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
+                    <li class="tabs-title tabs-title-maps is-active"><a class="tabs-map-button tab-map-project" aria-selected="true" id="showPlane" (click)="showHideTab('2')">Planos</a></li>
+                    <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
                 </ul>
             </div>
             <div class="tabs-content" data-tabs-content="propertiesProject">
@@ -643,7 +643,7 @@
                         <hr class="white">
                         <div class="row columns">
                             <h2>Zonas de interés</h2>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
@@ -658,14 +658,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-9 columns">
+                                    <div class="medium-9 small-8 columns">
                                       <label><img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
                                         Restaurantes
                                       </label>
                                     </div>
-                                    <div class="medium-3 columns">
+                                    <div class="medium-3 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
                                           <span class="checkmark"></span>
@@ -673,7 +673,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/banco.png" alt="" width="30px" height="30px">
@@ -688,7 +688,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
@@ -703,14 +703,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-9 smal-9 columns">
+                                    <div class="medium-9 smal-8 columns">
                                       <label><img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
                                         Centros comerciales
                                       </label>
                                     </div>
-                                    <div class="medium-3 small-3 columns">
+                                    <div class="medium-3 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
                                           <span class="checkmark"></span>
@@ -718,7 +718,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
                                     <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
@@ -734,7 +734,7 @@
                                 </div>
                             </div>
                             <div class="row" style="padding-top: 79px;margin-top: 45px;padding-left: 17px;padding-right: 17px;">
-                              <div class="small-6 medium-4 columns end zona">
+                              <div class="small-12 medium-4 columns end zona">
                                   <div class="row">
                                       <div class="medium-8 small-8 columns">
                                         <label><img src="/assets/images/parque.png" alt="" width="30px" height="30px">
@@ -749,7 +749,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="small-6 medium-4 columns end zona">
+                              <div class="small-12 medium-4 columns end zona">
                                   <div class="row">
                                       <div class="medium-9 small-9 columns">
                                         <label><img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
@@ -764,7 +764,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="small-6 medium-4 columns end zona">
+                              <div class="small-12 medium-4 columns end zona">
                                   <div class="row">
                                       <div class="medium-8 small-8 columns">
                                         <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
@@ -982,9 +982,9 @@
 
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                    <a class="button" routerLink="/proyecto/{{relacionados.uuid}}">Ver
+                    <a class="button bton-mobile" routerLink="/proyecto/{{relacionados.uuid}}">Ver
                   Proyecto</a>
-                    <a class="button" data-open="exampleModal2">Contacto</a>
+                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                 </div>
             </div>
         </div>
@@ -1040,18 +1040,18 @@
                 </li>
             </ul>
             <div class="nav-calc">
-                <ul class="nav-cal-menu show-for-small-only">
-                    <li class="opcion">
-                        <a href="#simulador1" class="active">Simulador capacidad endeudamiento</a>
+                <ul class="nav-cal-menu show-for-small-only" data-tabs id="simuladores">
+                    <li class="tabs-title opcion is-active">
+                        <a href="#simulador1" class="active" aria-selected="true">Simulador capacidad endeudamiento</a>
                     </li>
-                    <li class="opcion">
-                        <a href="#simulador2">Simulador subsidio de vivienda</a>
+                    <li class="tabs-title opcion">
+                        <a data-tabs-target="simulador2"  href="#simulador2">Simulador subsidio de vivienda</a>
                     </li>
-                    <li class="opcion">
-                        <a href="#simulador3">Simulador cuota inicial</a>
+                    <li class="tabs-title opcion">
+                        <a data-tabs-target="simulador3" href="#simulador3">Simulador cuota inicial</a>
                     </li>
-                    <li class="opcion">
-                        <a href="#simulador4">Simulador crédito de vivienda</a>
+                    <li class="tabs-title opcion">
+                        <a data-tabs-target="simulador4" href="#simulador4">Simulador crédito de vivienda</a>
                     </li>
                 </ul>
             </div>
@@ -1342,7 +1342,7 @@
     </div>
 </div>
 <hr class="white">
-<div class="row columns">
+<div class="row columns hide-for-small-only">
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
     <!--slide-->
@@ -1383,9 +1383,9 @@
 
                                 <div class="card-section">
                                     <div class="button-group align-spaced ">
-                                        <a class="button" routerLink="/proyecto/{{propiedades.url}}">Ver
+                                        <a class="button bton-mobile" routerLink="/proyecto/{{propiedades.url}}">Ver
                                         Proyecto</a>
-                                        <a class="button" data-open="exampleModal2">Contacto</a>
+                                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                     </div>
                                 </div>
                             </div>
@@ -1427,9 +1427,9 @@
 
                                 <div class="card-section">
                                     <div class="button-group align-spaced ">
-                                        <a class="button" routerLink="/proyecto/{{propiedades.url}}">Ver
+                                        <a class="button bton-mobile" routerLink="/proyecto/{{propiedades.url}}">Ver
                                         Proyecto</a>
-                                        <a class="button" data-open="exampleModal2">Contacto</a>
+                                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                     </div>
                                 </div>
                             </div>
@@ -1439,7 +1439,7 @@
                 </li>
             </ul>
         </div>
-        <div class="container-controls">
+        <!-- <div class="container-controls">
             <nav class="orbit-bullets">
                 <button class="is-active" data-slide="0">
                 <span class="show-for-sr">First slide details.</span>
@@ -1452,7 +1452,329 @@
                     Slide</span>&#9664;&#xFE0E;</button>
                 <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
             </div>
+        </div> -->
+    </div>
+    <!--fin slide-->
+</div>
+<div class="row columns show-for-small-only">
+    <hr class="white">
+    <h2 class="deco text-center">Propiedades similares</h2>
+    <!--slide-->
+    <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+        <div class="">
+          <ul class="slider-properties-project">
+            <li class="is-active" >
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[0].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[0].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[0].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[0].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[0].project_city }}, {{ propertiesSimilars[0].project_zone }}, {{ propertiesSimilars[0].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[0].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[0].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[1].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[1].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[1].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[1].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[1].project_city }}, {{ propertiesSimilars[1].project_zone }}, {{ propertiesSimilars[1].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[1].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[1].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 1">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[2].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[2].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[2].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[2].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[2].project_city }}, {{ propertiesSimilars[2].project_zone }}, {{ propertiesSimilars[2].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[2].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[2].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 2">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[3].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[3].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[3].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[3].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[3].project_city }}, {{ propertiesSimilars[3].project_zone }}, {{ propertiesSimilars[3].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[3].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[3].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 3">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[4].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[4].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[4].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[4].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[4].project_city }}, {{ propertiesSimilars[4].project_zone }}, {{ propertiesSimilars[4].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[4].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[4].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 4">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[5].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[5].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[5].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[5].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[5].project_city }}, {{ propertiesSimilars[5].project_zone }}, {{ propertiesSimilars[5].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[5].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[5].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 5">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[6].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[6].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[6].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[6].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[6].project_city }}, {{ propertiesSimilars[6].project_zone }}, {{ propertiesSimilars[6].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[6].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[6].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 6">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[7].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[7].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[7].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[7].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[7].project_city }}, {{ propertiesSimilars[7].project_zone }}, {{ propertiesSimilars[7].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[7].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[7].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+          </ul>
         </div>
+        <!-- <div class="container-controls">
+            <nav class="orbit-bullets">
+                <button class="is-active" data-slide="0">
+                <span class="show-for-sr">First slide details.</span>
+                <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+            </button>
+                <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+            </nav>
+            <div class="orbit-controls">
+                <button class="orbit-previous"><span class="show-for-sr">Previous
+                    Slide</span>&#9664;&#xFE0E;</button>
+                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+            </div>
+        </div> -->
     </div>
     <!--fin slide-->
 </div>

@@ -16,7 +16,8 @@
                 </div>
             </div>
             <h1>{{ response.title }}</h1>
-            <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{ response.uid.display_name }}</span>{{ response.changed }}</div>
+            <div class="user hide-for-small-only"><img src="/assets/images/user-blog.png" alt=""><span>{{ response.uid.display_name }}</span>{{ response.changed }}</div>
+            <div class="user show-for-small-only"><img src="/assets/images/user-blog.png" alt=""><span>{{ response.uid.display_name }}</span>|  {{ response.changed }}</div>
         </div>
         <hr class="white">
         <img class="image mb1" [src]="url_img_path + response.field_media[0].field_media_image.uri.url" alt="">

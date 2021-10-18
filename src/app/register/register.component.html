@@ -69,18 +69,18 @@
                               Asegurese que las contraseñas coincidan
                             </span>
                         </div>
-                        <div  class="">
+                        <div  class="a-password-redirect">
                             <label><input type="checkbox" name="term" id="term" formControlName="term" value="1" required> Acepto la <a href="/aviso-privacidad">Política de privacidad</a> y los <a href="/aviso-legal">Términos de uso</a></label>
                         </div>
-                        <div  class="mb1">
+                        <div class="mb1">
                             <re-captcha (resolved)="resolved($event)"
                                 formControlName="recaptchaReactive"
                                 siteKey="6Ld-4oEaAAAAAEESINp60x6Y6EHaIwr52frztDq-">
                             </re-captcha>
                         </div>
                         <div class="text-center">
-                            <span href="" class="button secondary" (click)="onSubmit(form.value)">Registrarse</span>
-                            <div><a href="login">¿Ya tienes cuenta? Inicia sesión aquí</a></div>
+                            <span href="" class="button secondary expanded" (click)="onSubmit(form.value)">Registrarse</span>
+                            <div class="a-register-redirect"><a href="login">¿Ya tienes cuenta? Inicia sesión aquí</a></div>
                         </div>
                     </div>
                 </div>

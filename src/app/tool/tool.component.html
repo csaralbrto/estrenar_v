@@ -26,6 +26,22 @@
                 <a data-tabs-target="panel4" href="#panel4">Simulador crédito de vivienda</a>
             </li>
         </ul>
+        <div class="nav-calc">
+            <ul class="nav-cal-menu show-for-small-only" data-tabs id="simuladores">
+                <li class="tabs-title opcion is-active">
+                    <a aria-selected="true" href="#panel2" class="active">Simulador subsidio de vivienda</a>
+                </li>
+                <li class="tabs-title opcion">
+                    <a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
+                </li>
+                <li class="tabs-title opcion">
+                    <a data-tabs-target="panel1" href="#panel1">Simulador capacidad endeudamiento</a>
+                </li>
+                <li class="tabs-title opcion">
+                    <a data-tabs-target="panel4" href="#panel4">Simulador crédito de vivienda</a>
+                </li>
+            </ul>
+        </div>
         <div class="tabs-content" data-tabs-content="simuladores">
             <form [formGroup]="form">
                 <div class="tabs-panel cuota" id="panel1">
@@ -305,7 +321,7 @@
 </div>
 <hr class="white">
 <!--fin simuladores-->
-<div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq">
+<div class="row columns hide-for-small-only" data-equalizer data-equalize-on="medium" id="test-eq">
     <h1 class="deco text-center">Proyectos de interés</h1>
     <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
         <div class="card" data-equalizer-watch *ngIf="i < 8">
@@ -376,14 +392,328 @@
         </div>
     </div>
 </div>
+<!-- Slider mobile porojects -->
+<div class="small-12 columns show-for-small-only">
+  <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+    <ul class="slider-proyects-mobile">
+      <li class="is-active ">
+          <div class="medium-6 columns">
+              <!-- Card Proyecto individual-->
+              <div class="card" data-equalizer-watch>
+                  <div class="container-photo">
+                      <img [src]="url_img_path + response[0].typology_images" alt="" class="proyecto-card">
+                      <div class="container-tools">
+                          <div class="tags">
+                              <div *ngIf="response[0].project_category.length > 0">
+                                  <div class="tag" *ngFor="let tags of response[0].project_category; let i = index">
+                                      <a>{{ tags }}</a>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="add">
+                              <!-- <a (click)="addFavorite(response[0].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-section info">
+                      <h2>{{ response[0].project }}</h2>
+                      <div class="descripcion">
+                          {{ response[0].property_type }}, {{ response[0].project_neighborhood }}, {{ response[0].project_city }}
+                      </div>
+                  </div>
+                  <div class="precio text-center">
+                      <div>Desde:</div>
+                      <span>$ {{ response[0].typology_price | number }}</span>
+                  </div>
+                  <hr>
+
+                  <div class="card-section">
+                      <hr>
+                      <div class="row">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data">{{ response[0].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data">{{ response[0].bedrooms }} alcobas
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data">{{ response[0].garages }} garajes
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data">{{ response[0].bathrooms }} baños
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                  </div>
+                  <div class="card-section">
+                      <div class="button-group align-spaced ">
+                          <a class="button bton-mobile" href="/es{{response[0].url}}">Ver
+                              Proyecto</a>
+                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </li>
+      <li *ngIf="response.length > 0">
+        <div class="medium-6 columns">
+            <!-- Card Proyecto individual-->
+            <div class="card" data-equalizer-watch>
+                <div class="container-photo">
+                    <img [src]="url_img_path + response[1].typology_images" alt="" class="proyecto-card">
+                    <div class="container-tools">
+                        <div class="tags">
+                            <div *ngIf="response[1].project_category.length > 0">
+                                <div class="tag" *ngFor="let tags of response[1].project_category; let i = index">
+                                    <a>{{ tags }}</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="add">
+                            <!-- <a (click)="addFavorite(response[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                            <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section info">
+                    <h2>{{ response[1].project }}</h2>
+                    <div class="descripcion">
+                        {{ response[1].property_type }}, {{ response[1].project_neighborhood }}, {{ response[1].project_city }}
+                    </div>
+                </div>
+                <div class="precio text-center">
+                    <div>Desde:</div>
+                    <span>$ {{ response[1].typology_price | number }}</span>
+                </div>
+                <hr>
+
+                <div class="card-section">
+                    <hr>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                <div class="data">{{ response[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                <div class="data">{{ response[1].bedrooms }} alcobas
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                <div class="data">{{ response[1].garages }} garajes
+                                </div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                <div class="data">{{ response[1].bathrooms }} baños
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="card-section">
+                    <div class="button-group align-spaced ">
+                        <a class="button bton-mobile" href="/es{{response[1].url}}">Ver
+                            Proyecto</a>
+                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <!-- Fin Card Proyecto individual-->
+      </li>
+      <li *ngIf="response.length > 1">
+          <div class="medium-6 columns">
+              <!-- Card Proyecto individual-->
+              <div class="card" data-equalizer-watch>
+                  <div class="container-photo">
+                      <img [src]="url_img_path + response[2].typology_images" alt="" class="proyecto-card">
+                      <div class="container-tools">
+                          <div class="tags">
+                              <div *ngIf="response[2].project_category.length > 0">
+                                  <div class="tag" *ngFor="let tags of response[2].project_category; let i = index">
+                                      <a>{{ tags }}</a>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="add">
+                              <!-- <a (click)="addFavorite(response[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-section info">
+                      <h2>{{ response[2].project }}</h2>
+                      <div class="descripcion">
+                          {{ response[2].property_type }}, {{ response[2].project_neighborhood }}, {{ response[2].project_city }}
+                      </div>
+                  </div>
+                  <div class="precio text-center">
+                      <div>Desde:</div>
+                      <span>$ {{ response[2].typology_price | number }}</span>
+                  </div>
+                  <hr>
+
+                  <div class="card-section">
+                      <hr>
+                      <div class="row">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data">{{ response[2].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data">{{ response[2].bedrooms }} alcobas
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data">{{ response[2].garages }} garajes
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data">{{ response[2].bathrooms }} baños
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                  </div>
+                  <div class="card-section">
+                      <div class="button-group align-spaced ">
+                          <a class="button bton-mobile" href="/es{{response[2].url}}">Ver
+                              Proyecto</a>
+                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </li>
+      <li *ngIf="response.length > 2">
+          <div class="medium-6 columns">
+              <!-- Card Proyecto individual-->
+              <div class="card" data-equalizer-watch>
+                  <div class="container-photo">
+                      <img [src]="url_img_path + response[3].typology_images" alt="" class="proyecto-card">
+                      <div class="container-tools">
+                          <div class="tags">
+                              <div *ngIf="response[3].project_category.length > 0">
+                                  <div class="tag" *ngFor="let tags of response[3].project_category; let i = index">
+                                      <a>{{ tags }}</a>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="add">
+                              <!-- <a (click)="addFavorite(response[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-section info">
+                      <h2>{{ response[3].project }}</h2>
+                      <div class="descripcion">
+                          {{ response[3].property_type }}, {{ response[3].project_neighborhood }}, {{ response[3].project_city }}
+                      </div>
+                  </div>
+                  <div class="precio text-center">
+                      <div>Desde:</div>
+                      <span>$ {{ response[3].typology_price | number
+                          }}</span>
+                  </div>
+                  <hr>
+
+                  <div class="card-section">
+                      <hr>
+                      <div class="row">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data">{{ response[3].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data">{{ response[3].bedrooms }} alcobas
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data">{{ response[3].garages }} garajes
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data">{{ response[3].bathrooms }} baños
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                  </div>
+                  <div class="card-section">
+                      <div class="button-group align-spaced ">
+                          <a class="button bton-mobile" href="/es{{response[3].url}}">Ver
+                              Proyecto</a>
+                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Fin slider mobile porojects -->
 <hr class="white">
-<div class="row columns text-center">
-    <a href="proyectos" class="button secondary">Ver más proyectos</a>
+<div class="row columns text-center mtop50">
+    <a href="proyectos" class="button secondary bton-mobile">Ver más proyectos</a>
 </div>
 <hr class="white">
 <div class="row columns">
     <h2 class="deco text-center">Artículos de interés</h2>
-    <div class="container-blog">
+    <div class="container-blog hide-for-small-only">
             <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead; let i = index">
                 <div class="blog-list" *ngIf="i < 4">
                     <div class="img">
@@ -404,6 +734,38 @@
                 </div>
             </div>
 
+    </div>
+    <div class="row columns show-for-small-only">
+        <div class="" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+            <ul class="slider-blog-mobile">
+                <li class="is-active" *ngFor="let blog of responseMostRead.slice(0, 4); let i = index">
+                    <div class="row">
+                        <div class="small-12 columns end">
+                            <div class="blog-list">
+                                <div class="img">
+                                    <a href="{{blog.url}}"><img [src]="url_img_path + blog.article_image" alt=""></a>
+                                </div>
+                                <div class="social">
+                                    <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>
+                                    </div>
+                                    <div class="like"><img src="/assets/images/like.png" alt=""><span>{{blog.likes}}</span></div>
+                                </div>
+
+                                <div class="section"><a href="{{blog.url}}">{{ blog.article_type }}</a></div>
+                                <div style="height: 50px !important;margin-top: 5px;">
+                                  <h2><a href="{{blog.url}}">{{ blog.title.slice(0,80)+stringText }}</a></h2>
+                                </div>
+                                <div class="resumen" style="height: 100px !important;">
+                                    <p [innerHTML]=blog.description.slice(0,120)+stringText></p>
+                                </div>
+                                <!-- <hr> -->
+                                <a href="{{blog.url}}" class="button">Seguir leyendo</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <hr class="white">

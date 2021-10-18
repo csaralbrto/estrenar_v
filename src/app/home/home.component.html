@@ -491,9 +491,9 @@
                             </div>
                             <div class="card-section">
                                 <div class="button-group align-spaced ">
-                                    <a class="button" href="/es{{response.home_featured_typologies[0].url}}">Ver
+                                    <a class="button bton-mobile" href="/es{{response.home_featured_typologies[0].url}}">Ver
                                         Proyecto</a>
-                                    <a class="button" data-open="exampleModal2">Contacto</a>
+                                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                 </div>
                             </div>
                         </div>
@@ -581,9 +581,9 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es{{response.home_featured_typologies[1].url}}">Ver
+                                                <a class="button bton-mobile" href="/es{{response.home_featured_typologies[1].url}}">Ver
                                                     Proyecto</a>
-                                                <a class="button" data-open="exampleModal2">Contacto</a>
+                                                <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                             </div>
                                         </div>
                                     </div>
@@ -656,9 +656,9 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es{{response.home_featured_typologies[2].url}}">Ver
+                                                <a class="button bton-mobile" href="/es{{response.home_featured_typologies[2].url}}">Ver
                                                     Proyecto</a>
-                                                <a class="button" data-open="exampleModal2">Contacto</a>
+                                                <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                             </div>
                                         </div>
                                     </div>
@@ -734,9 +734,9 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es{{response.home_featured_typologies[3].url}}">Ver
+                                                <a class="button bton-mobile" href="/es{{response.home_featured_typologies[3].url}}">Ver
                                                     Proyecto</a>
-                                                <a class="button" data-open="exampleModal2">Contacto</a>
+                                                <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                             </div>
                                         </div>
                                     </div>
@@ -808,9 +808,9 @@
                                         </div>
                                         <div class="card-section">
                                             <div class="button-group align-spaced ">
-                                                <a class="button" href="/es{{response.home_featured_typologies[4].url}}">Ver
+                                                <a class="button bton-mobile" href="/es{{response.home_featured_typologies[4].url}}">Ver
                                                     Proyecto</a>
-                                                <a class="button" data-open="exampleModal2">Contacto</a>
+                                                <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                             </div>
                                         </div>
                                     </div>
@@ -897,88 +897,88 @@
                               </div>
                               <div class="card-section">
                                   <div class="button-group align-spaced ">
-                                      <a class="button" href="/es{{response.home_featured_typologies[0].url}}">Ver
+                                      <a class="button bton-mobile" href="/es{{response.home_featured_typologies[0].url}}">Ver
                                           Proyecto</a>
-                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                      <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                   </div>
                               </div>
                           </div>
                       </div>
                   </li>
                   <li>
-                      <div class="medium-6 columns">
-                          <!-- Card Proyecto individual-->
-                          <div class="card" data-equalizer-watch>
-                              <div class="container-photo">
-                                  <img [src]="response.home_featured_typologies[1].typology_images" alt="" class="proyecto-card">
-                                  <div class="container-tools">
-                                      <div class="tags">
-                                          <div *ngIf="response.home_featured_typologies[1].project_category.length > 0">
-                                              <div class="tag" *ngFor="let tags of response.home_featured_typologies[1].project_category; let i = index">
-                                                  <a>{{ tags }}</a>
-                                              </div>
-                                          </div>
+                    <div class="medium-6 columns">
+                        <!-- Card Proyecto individual-->
+                        <div class="card" data-equalizer-watch>
+                            <div class="container-photo">
+                                <img [src]="response.home_featured_typologies[1].typology_images" alt="" class="proyecto-card">
+                                <div class="container-tools">
+                                    <div class="tags">
+                                        <div *ngIf="response.home_featured_typologies[1].project_category.length > 0">
+                                            <div class="tag" *ngFor="let tags of response.home_featured_typologies[1].project_category; let i = index">
+                                                <a>{{ tags }}</a>
+                                            </div>
+                                        </div>
 
-                                      </div>
-                                      <div class="add">
-                                          <a (click)="addFavorite(response.home_featured_typologies[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="card-section info">
-                                  <h2>{{ response.home_featured_typologies[1].project }}</h2>
-                                  <div class="descripcion">
-                                      {{ response.home_featured_typologies[1].property_type }}, {{ response.home_featured_typologies[1].project_neighborhood }}, {{ response.home_featured_typologies[1].project_city }}
-                                  </div>
-                              </div>
-                              <div class="precio text-center">
-                                  <div>Desde:</div>
-                                  <span>$ {{ response.home_featured_typologies[1].typology_price | number }}</span>
-                              </div>
-                              <hr>
+                                    </div>
+                                    <div class="add">
+                                        <a (click)="addFavorite(response.home_featured_typologies[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-section info">
+                                <h2>{{ response.home_featured_typologies[1].project }}</h2>
+                                <div class="descripcion">
+                                    {{ response.home_featured_typologies[1].property_type }}, {{ response.home_featured_typologies[1].project_neighborhood }}, {{ response.home_featured_typologies[1].project_city }}
+                                </div>
+                            </div>
+                            <div class="precio text-center">
+                                <div>Desde:</div>
+                                <span>$ {{ response.home_featured_typologies[1].typology_price | number }}</span>
+                            </div>
+                            <hr>
 
-                              <div class="card-section">
-                                  <hr>
-                                  <div class="row">
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                              <div class="data">{{ response.home_featured_typologies[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                              <div class="data">{{ response.home_featured_typologies[1].bedrooms }} alcobas
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                              <div class="data">{{ response.home_featured_typologies[1].garages }} garajes
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                              <div class="data">{{ response.home_featured_typologies[1].bathrooms }} baños
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <hr>
-                              </div>
-                              <div class="card-section">
-                                  <div class="button-group align-spaced ">
-                                      <a class="button" href="/es{{response.home_featured_typologies[1].url}}">Ver
-                                          Proyecto</a>
-                                      <a class="button" data-open="exampleModal2">Contacto</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                            <div class="card-section">
+                                <hr>
+                                <div class="row">
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                            <div class="data">{{ response.home_featured_typologies[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                            <div class="data">{{ response.home_featured_typologies[1].bedrooms }} alcobas
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                            <div class="data">{{ response.home_featured_typologies[1].garages }} garajes
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                            <div class="data">{{ response.home_featured_typologies[1].bathrooms }} baños
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="card-section">
+                                <div class="button-group align-spaced ">
+                                    <a class="button bton-mobile" href="/es{{response.home_featured_typologies[1].url}}">Ver
+                                        Proyecto</a>
+                                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                       <!-- Fin Card Proyecto individual-->
                   </li>
                   <li>
@@ -1048,9 +1048,9 @@
                               </div>
                               <div class="card-section">
                                   <div class="button-group align-spaced ">
-                                      <a class="button" href="/es{{response.home_featured_typologies[2].url}}">Ver
+                                      <a class="button bton-mobile" href="/es{{response.home_featured_typologies[2].url}}">Ver
                                           Proyecto</a>
-                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                      <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                   </div>
                               </div>
                           </div>
@@ -1124,9 +1124,9 @@
                               </div>
                               <div class="card-section">
                                   <div class="button-group align-spaced ">
-                                      <a class="button" href="/es{{response.home_featured_typologies[3].url}}">Ver
+                                      <a class="button bton-mobile" href="/es{{response.home_featured_typologies[3].url}}">Ver
                                           Proyecto</a>
-                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                      <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                   </div>
                               </div>
                           </div>
@@ -1200,9 +1200,9 @@
                               </div>
                               <div class="card-section">
                                   <div class="button-group align-spaced ">
-                                      <a class="button" href="/es{{response.home_featured_typologies[4].url}}">Ver
+                                      <a class="button bton-mobile" href="/es{{response.home_featured_typologies[4].url}}">Ver
                                           Proyecto</a>
-                                      <a class="button" data-open="exampleModal2">Contacto</a>
+                                      <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                   </div>
                               </div>
                           </div>
