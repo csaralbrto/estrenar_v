@@ -34,7 +34,7 @@
                   </label>
                 </div>
             </div>
-            <div class="medium-7 columns mTop-tabs-project">
+            <div class="medium-7 small-12 columns mTop-tabs-project">
                 <div class="nav-tabs right">
                     <ul class="tabs" data-tabs id="propertiesProject">
                         <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
@@ -51,262 +51,274 @@
 <!--slide-->
 <div class="row columns">
     <div class="tabs-content" data-tabs-content="propertiesProject">
-        <div class="row hide-for-small-only">
-          <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
-              <div class="">
-                  <ul class="slider-project-img slideproject">
-                      <li class="is-active ">
-                          <!-- <div class="row"> -->
-                              <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
-                                  <figure class="">
-                                      <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div  *ngIf="valoresPares == 'par'">
-                                  <div class="rows-img">
-                                      <div class="row1">
-                                          <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                          <div class="rows-img1" *ngIf="galeria[1]">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                          <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                      </div>
-                                      <div class="row1">
+      <div class="row hide-for-small-only">
+        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
+            <div class="">
+                <ul class="slider-project-img slideproject">
+                    <li class="is-active ">
+                        <!-- <div class="row"> -->
+                            <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
+                                <figure class="">
+                                    <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                </figure>
+                            </div>
+                             <div  *ngIf="valoresPares == 'par'">
+                                <div class="rows-img">
+                                    <div class="row1">
+                                        <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img1" *ngIf="galeria[1]">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
 
-                                          <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                              </figure>
-                                          </div>
+                                        <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
 
-                                          <div class="rows-img1" *ngIf="galeria[3]">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                          <div class="rows-img2" *ngIf="galeria[4]">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div *ngIf="valoresPares == 'impar'">
-                                  <div class="rows-img">
-                                      <div class="row1">
-                                          <div class="rows-img1" *ngIf="operacion == 1">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                          <div class="rows-img1" *ngIf="galeria[1]">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                          <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                      </div>
-                                      <div class="row1">
-                                          <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                          <div class="rows-img1" *ngIf="galeria[3]">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                          <div class="rows-img2" *ngIf="galeria[4]">
-                                              <figure class="">
-                                                  <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                              </figure>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          <!-- </div> -->
-                      </li>
-                      <li class="" *ngIf=" operacion >= 6">
-                          <!-- <div class="row"> -->
-                              <div class="medium-6 columns destacado" *ngIf=" operacion == 10 ">
-                                  <figure class="">
-                                      <img class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                  </figure>
-                              </div>
-                              <div class="rows-img" *ngIf=" ( operacion == 9|| operacion == 10) ">
-                                  <div class="row1">
+                                        <div class="rows-img1" *ngIf="galeria[3]">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="galeria[4]">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="valoresPares == 'impar'">
+                                <div class="rows-img">
+                                    <div class="row1">
+                                        <div class="rows-img1" *ngIf="operacion == 1">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img1" *ngIf="galeria[1]">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img1" *ngIf="galeria[3]">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="rows-img2" *ngIf="galeria[4]">
+                                            <figure class="">
+                                                <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    </li>
+                    <li class="" *ngIf=" operacion >= 6">
+                        <!-- <div class="row"> -->
+                            <div class="medium-6 columns destacado" *ngIf=" operacion == 10 ">
+                                <figure class="">
+                                    <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                </figure>
+                            </div>
+                            <div class="rows-img" *ngIf=" ( operacion == 9|| operacion == 10) ">
+                                <div class="row1">
 
-                                      <div class="rows-img1" *ngIf=" operacion == 9 ">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                          </figure>
-                                      </div>
+                                    <div class="rows-img1" *ngIf=" operacion == 9 ">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
 
-                                      <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[7].uri.url" alt="">
-                                          </figure>
-                                      </div>
+                                    <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url" alt="">
+                                        </figure>
+                                    </div>
 
-                                  </div>
-                                  <div class="row1">
+                                </div>
+                                <div class="row1">
 
-                                      <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
-                                          </figure>
-                                      </div>
+                                    <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                        </figure>
+                                    </div>
 
-                                      <div class="rows-img1" *ngIf="galeria[8]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img2" *ngIf="galeria[9]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[9].uri.url" alt="">
-                                          </figure>
-                                      </div>
-                                  </div>
+                                    <div class="rows-img1" *ngIf="galeria[8]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="galeria[9]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <!-- <div class="rows-img3" *ngIf="galeria[11]">
+                            <figure class="">
+                                <img class="" [src]="url_img_path + galeria[11].uri.url" alt="">
+                            </figure>
+                        </div>
+                        <div class="rows-img4" *ngIf="galeria[12]">
+                          <figure class="">
+                              <img class="" [src]="url_img_path + galeria[12].uri.url" alt="">
+                          </figure>
+                      </div> -->
+                                </div>
 
-                              </div>
-                              <div class="rows-img" *ngIf=" ( operacion == 6 ||  operacion == 7 ||  operacion == 8 || operacion == 11)">
-                                  <div class="row1">
-
-                                      <div class="rows-img1">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img2" *ngIf="galeria[6] ">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                          </figure>
-                                      </div>
-
-                                      <div class="rows-img3" *ngIf="galeria[7]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                          </figure>
-                                      </div>
+                            </div>
 
 
-                                  </div>
-                                  <div class="row1">
-                                      <div class="rows-img1" *ngIf="galeria[8]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img2" *ngIf=" galeria[9]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img3" *ngIf=" galeria[10]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
-                                          </figure>
-                                      </div>
-                                  </div>
+                            <div class="rows-img" *ngIf=" ( operacion == 6 ||  operacion == 8 || operacion == 11)">
+                                <div class="row1">
 
-                              </div>
+                                    <div class="rows-img1">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="galeria[6] ">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
 
-                              <div class="rows-img" *ngIf=" operacion >= 12">
-                                  <div class="row1">
-
-                                      <div class="rows-img1">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img2" *ngIf="galeria[6] ">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                          </figure>
-                                      </div>
-
-                                      <div class="rows-img3" *ngIf="galeria[7]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img4" *ngIf="galeria[8]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
-                                          </figure>
-                                      </div>
+                                    <div class="rows-img3" *ngIf="galeria[7]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
+                                        </figure>
+                                    </div>
 
 
-                                  </div>
-                                  <div class="row1">
+                                </div>
+                                <div class="row1">
+                                    <div class="rows-img1" *ngIf="galeria[8]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf=" galeria[9]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img3" *ngIf=" galeria[10]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
+                                        </figure>
+                                    </div>
+                                </div>
 
-                                      <div class="rows-img1" *ngIf=" galeria[9]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img2" *ngIf=" galeria[10]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img3" *ngIf=" galeria[11]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[11].uri.url">
-                                          </figure>
-                                      </div>
-                                      <div class="rows-img4" *ngIf=" galeria[12]">
-                                          <figure class="">
-                                              <img class="imagenes" [src]="url_img_path + galeria[12].uri.url">
-                                          </figure>
-                                      </div>
-                                  </div>
+                            </div>
 
-                              </div>
+                            <div class="rows-img" *ngIf=" operacion >= 12">
+                                <div class="row1">
 
-                              <!-- cierra div del row -->
-                          <!-- </div> -->
-                      </li>
-                  </ul>
-              </div>
-          </div>
+                                    <div class="rows-img1">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf="galeria[6] ">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                        </figure>
+                                    </div>
+
+                                    <div class="rows-img3" *ngIf="galeria[7]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img4" *ngIf="galeria[8]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
+                                        </figure>
+                                    </div>
+
+
+                                </div>
+                                <div class="row1">
+
+                                    <div class="rows-img1" *ngIf=" galeria[9]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img2" *ngIf=" galeria[10]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img3" *ngIf=" galeria[11]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[11].uri.url">
+                                        </figure>
+                                    </div>
+                                    <div class="rows-img4" *ngIf=" galeria[12]">
+                                        <figure class="">
+                                            <img class="imagenes" [src]="url_img_path + galeria[12].uri.url">
+                                        </figure>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- cierra div del row -->
+                        <!-- </div> -->
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="row show-for-small-only">
-          <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
-              <div class="">
-                  <ul class="slider-project-img slideproject">
+      </div>
+      <div class="row show-for-small-only">
+        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
+            <div class="">
+                <ul class="slider-project-img slideproject">
                     <li class="is-active ">
                         <div class="small-12 columns">
                             <figure class="">
@@ -405,10 +417,10 @@
                             </figure>
                         </div>
                     </li>
-                  </ul>
-              </div>
-          </div>
+                </ul>
+            </div>
         </div>
+      </div>
         <div class="tabs-panel" id="video" *ngIf="response.field_typology_video.length > 0">
             <div class="row">
                 <video width="520" height="250" controls>
@@ -435,7 +447,7 @@
         <div class="small-6 medium-3 columns end" *ngFor="let caract of caracteristicas; let i = index">
             <div class="item-big">
                 <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
-                <div class="data">{{ caract.name_only }}</div>
+                <div class="data caracteristica-inmueble">{{ caract.name_only }}</div>
             </div>
         </div>
     </div>
@@ -470,7 +482,7 @@
               <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
               <option value="telefono">Tel&eacute;fonica</option>
               <option value="email">Correo Electr&oacute;nico</option>
-              <option value="correo">Correo Postal</option>
+              <option value="whatsapp">Whatsapp</option>
           </select>
             <span id="spanTypesearchModal" class="error hide">
               Debe seleccionar una opción
@@ -529,9 +541,9 @@
         <div class="mapa">
             <div class="nav-tabs-map">
                 <ul class="tabs">
-                    <li class="tabs-title is-active"><a class="tabs-map-button tab-map-project" aria-selected="true" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
-                    <li class="tabs-title"><a class="tabs-map-button tab-map-project" id="showPlane" (click)="showHideTab('2')">Planos</a></li>
-                    <li class="tabs-title"><a class="tabs-map-button tab-map-project" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
+                    <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
+                    <li class="tabs-title tabs-title-maps is-active"><a class="tabs-map-button tab-map-project" aria-selected="true" id="showPlane" (click)="showHideTab('2')">Planos</a></li>
+                    <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
                 </ul>
             </div>
             <div class="tabs-content" data-tabs-content="propertiesProject">
@@ -539,7 +551,7 @@
                     <div class="direccion">
                         <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
                     </div>
-                    <div id="googleMaps">
+                    <div id="googleMaps" class="hide">
                         <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
                             <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="response.marketIcon">
                                 <agm-info-window #infoWindow>
@@ -631,14 +643,14 @@
                         <hr class="white">
                         <div class="row columns">
                             <h2>Zonas de interés</h2>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
                                         Hospitales
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                         <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
                                         <span class="checkmark"></span>
@@ -646,14 +658,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-9 columns">
+                                    <div class="medium-9 small-8 columns">
                                       <label><img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
                                         Restaurantes
                                       </label>
                                     </div>
-                                    <div class="medium-3 columns">
+                                    <div class="medium-3 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
                                           <span class="checkmark"></span>
@@ -661,14 +673,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/banco.png" alt="" width="30px" height="30px">
                                         Bancos
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
                                           <span class="checkmark"></span>
@@ -676,14 +688,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
                                         Educación
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
                                           <span class="checkmark"></span>
@@ -691,14 +703,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-9 columns">
+                                    <div class="medium-9 smal-8 columns">
                                       <label><img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
                                         Centros comerciales
                                       </label>
                                     </div>
-                                    <div class="medium-3 columns">
+                                    <div class="medium-3 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
                                           <span class="checkmark"></span>
@@ -706,14 +718,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="small-6 medium-4 columns end zona">
+                            <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
-                                    <div class="medium-8 columns">
+                                    <div class="medium-8 small-8 columns">
                                       <label><img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
                                         Transporte
                                       </label>
                                     </div>
-                                    <div class="medium-4 columns">
+                                    <div class="medium-4 small-4 columns">
                                       <label class="container-check">
                                           <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
                                           <span class="checkmark"></span>
@@ -722,14 +734,14 @@
                                 </div>
                             </div>
                             <div class="row" style="padding-top: 79px;margin-top: 45px;padding-left: 17px;padding-right: 17px;">
-                              <div class="small-6 medium-4 columns end zona">
+                              <div class="small-12 medium-4 columns end zona">
                                   <div class="row">
-                                      <div class="medium-8 columns">
+                                      <div class="medium-8 small-8 columns">
                                         <label><img src="/assets/images/parque.png" alt="" width="30px" height="30px">
                                           Parques
                                         </label>
                                       </div>
-                                      <div class="medium-4 columns">
+                                      <div class="medium-4 small-4 columns">
                                         <label class="container-check">
                                             <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
                                             <span class="checkmark"></span>
@@ -737,14 +749,14 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="small-6 medium-4 columns end zona">
+                              <div class="small-12 medium-4 columns end zona">
                                   <div class="row">
-                                      <div class="medium-9 columns">
+                                      <div class="medium-9 small-9 columns">
                                         <label><img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
                                           Supermercados
                                         </label>
                                       </div>
-                                      <div class="medium-3 columns">
+                                      <div class="medium-3 small-3 columns">
                                         <label class="container-check">
                                             <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
                                             <span class="checkmark"></span>
@@ -752,14 +764,14 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="small-6 medium-4 columns end zona">
+                              <div class="small-12 medium-4 columns end zona">
                                   <div class="row">
-                                      <div class="medium-8 columns">
+                                      <div class="medium-8 small-8 columns">
                                         <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
                                           Iglesias
                                         </label>
                                       </div>
-                                      <div class="medium-4 columns">
+                                      <div class="medium-4 small-4 columns">
                                         <label class="container-check">
                                             <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
                                             <span class="checkmark"></span>
@@ -771,12 +783,27 @@
                         </div>
                     </div>
                       <div id="map" class="hide"></div>
+                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
                   </div>
-                <div id="planes" class="visibi-hide pLeft0">
+                <div class="pLeft0">
+                  <div id="planes" class="medium-12 columns destacado" *ngIf="response.field_typology_blueprint.length > 0; else notfound">
+                    <div class="sl-blueprint imagenPrincipal" role="region" aria-label="Favorite Space Pictures">
+                        <div class="">
+                            <ul class="slider-blueprints-projects">
+                                <li class="is-active" *ngFor="let blueprint of response.field_typology_blueprint; let i = index">
+                                    <div class="row">
+                                        <figure class="">
+                                            <img class="" [src]="url_img_path + blueprint.uri.url" alt="" style="padding-left: 15px;">
+                                        </figure>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                  <ng-template #notfound>
                     <p>Información no disponible</p>
-                </div>
-                <div class="tabs-panel pLeft0" id="street_view">
-                    <app-street-view [latitude]="latitude" [longitude]="longitude"></app-street-view>
+                  </ng-template>
                 </div>
             </div>
         </div>
@@ -800,19 +827,19 @@
                             <span id="spanName" class="error hide">
                                 Debe digitar un nombre de contacto
                             </span>
-                            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+                            <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
                             <span id="spannLastName" class="error hide">
                                 Debe digitar un apellido de contacto
                             </span>
-                            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+                            <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
                             <span id="spanEmail" class="error hide">
                                 Debe digitar un correo de contacto valido
                             </span>
-                            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+                            <input type="text" placeholder="Email*" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
                             <span id="spanPhone" class="error hide">
                                 Debe digitar un n&uacute;mbre de contacto
                             </span>
-                            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+                            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone">
                             <span id="spanContact" class="error hide">
                                 Debe seleccionar una opción
                             </span>
@@ -820,7 +847,7 @@
                                 <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
                                 <option value="telefono">Tel&eacute;fonica</option>
                                 <option value="email">Correo Electr&oacute;nico</option>
-                                <option value="correo">Correo Postal</option>
+                                <option value="whatsapp">Whatsapp</option>
                             </select>
                             <span id="spanTypesearch" class="hide">
                             Debe seleccionar una opción
@@ -844,22 +871,15 @@
                     </form>
                 </div>
                 <div class="tabs-panel" id="panel2">
-                    <h3>Agendar Visita</h3>
+                  <div class="row">
+                    <h4>Agendar Visita</h4>
+                  </div>
                     <p>Programa la fecha y la jornada en la que deseas visitar y conocer el proyecto:</p>
                     <form [formGroup]="form2">
                         <div class="container-form">
                             <div class="dates1">
                                 <div class="dates">
-                                    <!-- <mat-form-field appearance="fill">
-                                      <mat-label>Verbose datepicker</mat-label>
-                                      <input matInput [matDatepicker]="dp" >
-                                      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                                      <mat-datepicker #dp></mat-datepicker>
-                                    </mat-form-field> -->
-
-                                    <!-- <mat-form-field class="example-full-width" appearance="fill"> -->
-
-                                    <button class="button" type="button" (click)="picker.open()">
+                                    <button class="button" type="button" style="height: 63px;" (click)="picker.open()">
                                         <div class="month">
                                           <span>   {{returnmonth(items) | uppercase}}</span>
                                           <span> <strong class="dia"> {{items | date:'d'}}</strong></span>
@@ -869,22 +889,32 @@
                                     </button>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </div>
-                                <div class="test12">
+                                <div class="test12" style="margin-top: 10px;">
                                     <div class="radio1">
-                                        <input type="radio" name="journalOption" id="" formControlName="journalOption" value="manana"><label for="right-label" class="text-left">Mañana</label>
+                                        <input type="radio" (change)="changeJournal('morning')" name="journalOption" id="" formControlName="journalOption" value="manana" [checked]="true"><label for="right-label" class="text-left">Mañana</label>
                                     </div>
                                     <div class="radio2">
-                                        <input type="radio" name="journalOption" id="" formControlName="journalOption" value="tarde"> <label for="right-label" class="text-left">Tarde</label>
+                                        <input type="radio" (change)="changeJournal('late')" name="journalOption" id="" formControlName="journalOption" value="tarde"> <label for="right-label" class="text-left">Tarde</label>
                                     </div>
                                 </div>
                             </div>
-                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>08:00 AM</b></button>
-                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>09:00 AM</b></button>
-                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>10:00 AM</b></button>
-                            <button class="button" type="button" style="background-color:white; color: teal;"> <b>11:00 AM</b></button>
-                            <input type="text" placeholder="Nombre" formControlName="name" name="name" required pattern="text">
-                            <input type="text" placeholder="Email" formControlName="email" name="email" required pattern="email">
-                            <input type="text" placeholder="Teléfono" formControlName="phone" name="phone" required>
+                            <div class="row">
+                              <div class="columns medium-12" id="journal-morning">
+                                <button class="button bton-agenda" id="08am" (click)="selectJournal('08')" type="button"> <b>08:00 AM</b></button>
+                                <button class="button bton-agenda" id="09am" (click)="selectJournal('09')" type="button"> <b>09:00 AM</b></button>
+                                <button class="button bton-agenda" id="10am" (click)="selectJournal('10')" type="button"> <b>10:00 AM</b></button>
+                                <button class="button bton-agenda" id="11am" (click)="selectJournal('11')" type="button"> <b>11:00 AM</b></button>
+                              </div>
+                              <div class="columns medium-12 hide" id="journal-late">
+                                <button class="button bton-agenda" id="02pm" (click)="selectJournal('02')" type="button"> <b>02:00 PM</b></button>
+                                <button class="button bton-agenda" id="03pm" (click)="selectJournal('03')" type="button"> <b>03:00 PM</b></button>
+                                <button class="button bton-agenda" id="04pm" (click)="selectJournal('04')" type="button"> <b>04:00 PM</b></button>
+                                <button class="button bton-agenda" id="05pm" (click)="selectJournal('05')" type="button"> <b>05:00 PM</b></button>
+                              </div>
+                            </div>
+                            <input type="text" placeholder="Nombre*" formControlName="name" name="name" required pattern="text">
+                            <input type="text" placeholder="Email*" formControlName="email" name="email" required pattern="email">
+                            <input type="text" placeholder="Teléfono" formControlName="phone" name="phone">
                             <div class="text-left terminos">
                                 <input type="checkbox" name="term" formControlName="term"><label for="right-label" class="text-left">Declaro haber leído el <a href="/aviso-privacidad">Aviso de privacidad</a> y estar conforme con el mismo</label>
                             </div>
@@ -952,9 +982,9 @@
 
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                    <a class="button" routerLink="/proyecto/{{relacionados.uuid}}">Ver
+                    <a class="button bton-mobile" routerLink="/proyecto/{{relacionados.uuid}}">Ver
                   Proyecto</a>
-                    <a class="button" data-open="exampleModal2">Contacto</a>
+                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                 </div>
             </div>
         </div>
@@ -1010,18 +1040,18 @@
                 </li>
             </ul>
             <div class="nav-calc">
-                <ul class="nav-cal-menu show-for-small-only">
-                    <li class="opcion">
-                        <a href="#simulador1" class="active">Simulador capacidad endeudamiento</a>
+                <ul class="nav-cal-menu show-for-small-only" data-tabs id="simuladores">
+                    <li class="tabs-title opcion is-active">
+                        <a href="#simulador1" class="active" aria-selected="true">Simulador capacidad endeudamiento</a>
                     </li>
-                    <li class="opcion">
-                        <a href="#simulador2">Simulador subsidio de vivienda</a>
+                    <li class="tabs-title opcion">
+                        <a data-tabs-target="simulador2"  href="#simulador2">Simulador subsidio de vivienda</a>
                     </li>
-                    <li class="opcion">
-                        <a href="#simulador3">Simulador cuota inicial</a>
+                    <li class="tabs-title opcion">
+                        <a data-tabs-target="simulador3" href="#simulador3">Simulador cuota inicial</a>
                     </li>
-                    <li class="opcion">
-                        <a href="#simulador4">Simulador crédito de vivienda</a>
+                    <li class="tabs-title opcion">
+                        <a data-tabs-target="simulador4" href="#simulador4">Simulador crédito de vivienda</a>
                     </li>
                 </ul>
             </div>
@@ -1044,7 +1074,7 @@
                                     <p> Podrías comprar una vivienda de:</p>
                                     <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
                                     <hr>
-                                    <a class="button secondary viewProject">Ver proyectos afines</a>
+                                    <a class="button secondary ">Ver proyectos afines</a>
                                 </div>
 
                             </div>
@@ -1192,7 +1222,7 @@
                     <div class="tabs-panel credito" id="simulador4">
                         <div class="container-form">
                             <div class="row">
-                                <div class="medium-4 medium-offset-2 columns text-center">
+                                <div class="medium-4 medium-offset-4 columns text-center">
                                     <p> Valor de la vivienda a financiar</p>
                                     <p>$ {{ response.field_typology_price | number }}</p>
                                     <div class="input-group">
@@ -1294,7 +1324,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="button secondary viewProject">Ver proyectos afines</a>
+                                    <a class="button secondary ">Ver proyectos afines</a>
                                 </div>
                             </div>
                         </div>
@@ -1312,7 +1342,7 @@
     </div>
 </div>
 <hr class="white">
-<div class="row columns">
+<div class="row columns hide-for-small-only">
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
     <!--slide-->
@@ -1353,9 +1383,9 @@
 
                                 <div class="card-section">
                                     <div class="button-group align-spaced ">
-                                        <a class="button" routerLink="/proyecto/{{propiedades.url}}">Ver
+                                        <a class="button bton-mobile" routerLink="/proyecto/{{propiedades.url}}">Ver
                                         Proyecto</a>
-                                        <a class="button" data-open="exampleModal2">Contacto</a>
+                                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                     </div>
                                 </div>
                             </div>
@@ -1397,9 +1427,9 @@
 
                                 <div class="card-section">
                                     <div class="button-group align-spaced ">
-                                        <a class="button" routerLink="/proyecto/{{propiedades.url}}">Ver
+                                        <a class="button bton-mobile" routerLink="/proyecto/{{propiedades.url}}">Ver
                                         Proyecto</a>
-                                        <a class="button" data-open="exampleModal2">Contacto</a>
+                                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                     </div>
                                 </div>
                             </div>
@@ -1409,7 +1439,7 @@
                 </li>
             </ul>
         </div>
-        <div class="container-controls">
+        <!-- <div class="container-controls">
             <nav class="orbit-bullets">
                 <button class="is-active" data-slide="0">
                 <span class="show-for-sr">First slide details.</span>
@@ -1422,7 +1452,329 @@
                     Slide</span>&#9664;&#xFE0E;</button>
                 <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
             </div>
+        </div> -->
+    </div>
+    <!--fin slide-->
+</div>
+<div class="row columns show-for-small-only">
+    <hr class="white">
+    <h2 class="deco text-center">Propiedades similares</h2>
+    <!--slide-->
+    <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+        <div class="">
+          <ul class="slider-properties-project">
+            <li class="is-active" >
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[0].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[0].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[0].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[0].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[0].project_city }}, {{ propertiesSimilars[0].project_zone }}, {{ propertiesSimilars[0].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[0].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[0].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[1].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[1].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[1].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[1].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[1].project_city }}, {{ propertiesSimilars[1].project_zone }}, {{ propertiesSimilars[1].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[1].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[1].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 1">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[2].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[2].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[2].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[2].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[2].project_city }}, {{ propertiesSimilars[2].project_zone }}, {{ propertiesSimilars[2].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[2].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[2].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 2">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[3].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[3].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[3].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[3].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[3].project_city }}, {{ propertiesSimilars[3].project_zone }}, {{ propertiesSimilars[3].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[3].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[3].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 3">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[4].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[4].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[4].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[4].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[4].project_city }}, {{ propertiesSimilars[4].project_zone }}, {{ propertiesSimilars[4].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[4].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[4].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 4">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[5].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[5].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[5].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[5].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[5].project_city }}, {{ propertiesSimilars[5].project_zone }}, {{ propertiesSimilars[5].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[5].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[5].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 5">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[6].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[6].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[6].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[6].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[6].project_city }}, {{ propertiesSimilars[6].project_zone }}, {{ propertiesSimilars[6].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[6].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[6].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="propertiesSimilars > 6">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <img [src]="url_img_path + propertiesSimilars[7].typology_images" alt="" class="proyecto">
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="propertiesSimilars[7].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of propertiesSimilars[7].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>{{ propertiesSimilars[7].project }}</h2>
+                        <div class="descripcion">
+                            {{ propertiesSimilars[7].project_city }}, {{ propertiesSimilars[7].project_zone }}, {{ propertiesSimilars[7].project_neighborhood }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ propertiesSimilars[7].typology_price | number }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[7].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+          </ul>
         </div>
+        <!-- <div class="container-controls">
+            <nav class="orbit-bullets">
+                <button class="is-active" data-slide="0">
+                <span class="show-for-sr">First slide details.</span>
+                <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+            </button>
+                <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+            </nav>
+            <div class="orbit-controls">
+                <button class="orbit-previous"><span class="show-for-sr">Previous
+                    Slide</span>&#9664;&#xFE0E;</button>
+                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+            </div>
+        </div> -->
     </div>
     <!--fin slide-->
 </div>
