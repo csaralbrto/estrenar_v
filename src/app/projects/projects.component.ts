@@ -744,7 +744,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       value = 0;
     }
     let value2 = Number(value) + Number(20000000);
-    var url = 'https://lab.estrenarvivienda.com/es/api/typologies?page=0&price[min]='+ value + '&price[max]=' + value2 + '&items_per_page=8';
+    var url = 'https://lab.estrenarvivienda.com/api/typologies?page=0&price[min]='+ value + '&price[max]=' + value2 + '&items_per_page=8';
     console.log(url);
     var data = "";
     fetch(url, {

@@ -733,6 +733,7 @@ export class ContentUploadComponent implements OnInit {
       property_characteristics: new FormControl(''),
       balcony_area: new FormControl(''),
       immediate_delivery: new FormControl(''),
+      accept_legal_notice: new FormControl(''),
       additional_comments: new FormControl(''),
       typology: new FormControl(''),
     });

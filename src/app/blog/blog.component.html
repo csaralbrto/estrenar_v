@@ -29,7 +29,7 @@
       </div>
   </div>
   <div class="show-for-small-only">
-      <div class="slick-blog-mobile" role="region" aria-label="Favorite Space Pictures" >
+      <div class="slick-blog-mobile slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
           <div class="">
               <ul class="slider-blog-mobile">
                   <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
@@ -70,7 +70,7 @@
                       <div class="resumen">
                         <p [innerHTML]=mostRead.body.slice(0,90)+stringText></p>
                       </div>
-                      <a routerLink="/es/articulos{{mostRead.url}}" class="button">Seguir leyendo</a>
+                      <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
           </div>
@@ -134,7 +134,7 @@
                       <div class="resumen">
                         <p [innerHTML]=ecoside.body.slice(0,90)+stringText></p>
                       </div>
-                      <a routerLink="/es/articulos{{ecoside.url}}" class="button">Seguir leyendo</a>
+                      <a routerLink="articulos{{ecoside.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
           </div>

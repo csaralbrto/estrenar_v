@@ -18,7 +18,9 @@
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
             </div>
             <div class="medium-8 columns carga">
+              <div class="text-center">
                 <h1 class="contenUpload">Carga de contenido</h1>
+              </div>
                 <hr class="white">
                 <h2 class="contenUpload">Datos del proyecto</h2>
                 <div class="row">
@@ -296,12 +298,14 @@
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
             </div>
             <div class="medium-8 columns carga">
-                <h1 class="contenUpload">Carga de contenido</h1>
+                <div class="text-center">
+                  <h1 class="contenUpload">Carga de contenido</h1>
+                </div>
                 <hr class="white">
                 <h2 class="contenUpload">Logo del proyecto</h2>
                 <!-- <input type="file" id="exampleFileUpload" class="show-for-sr"> -->
-                <label for="logo_project" class="button" style="width: 133px;">Cargar archivo</label>
                 <p>Los archivos deben ser menores que 2 MB.<br> Tipos de archivo permitidos: png jpg jpeg.<br> Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
+                <label for="logo_project" class="button" style="width: 133px;">Cargar archivo</label>
                 <input style="visibility:hidden;" formControlName="logo_project" formControlName="logo_project" id="logo_project" type="file" class="form-control" (change)="onFileChange($event)">
                 <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
                     <div *ngIf="f.file.errors.required">File is required.</div>
@@ -315,13 +319,13 @@
                 <hr class="white">
                 <h2 class="contenUpload">Imágenes</h2>
                 <!-- <div class="row"> -->
+                <p>Los archivos deben ser menores que 2 MB.<br> Tipos de archivo permitidos: png jpg jpeg.<br> Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
                 <div class="hide-for-small-only">
                   <label for="images_project" class="button" style="width: 138px;">Añadir imágenes</label>
                 </div>
                 <div class="show-for-small-only">
                   <label for="images_project" class="button" style="width: 143px;">Añadir imágenes</label>
                 </div>
-                <p>Los archivos deben ser menores que 2 MB.<br> Tipos de archivo permitidos: png jpg jpeg.<br> Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
                 <input style="visibility:hidden;" formControlName="images_project" formControlName="images_project" id="images_project" type="file" class="form-control" multiple="" (change)="onFilesChange($event)">
 
                 <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
@@ -381,7 +385,9 @@
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
             </div>
             <div class="medium-8 columns carga">
-                <h1 class="contenUpload">Carga de contenido</h1>
+                <div class="text-center">
+                  <h1 class="contenUpload">Carga de contenido</h1>
+                </div>
                 <hr class="white">
                 <h2 class="contenUpload">Características del proyecto</h2>
                 <div class="row columns">
@@ -494,7 +500,9 @@
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
             </div>
             <div class="medium-8 columns carga">
-                <h1 class="contenUpload">Carga de contenido</h1>
+                <div class="text-center">
+                  <h1 class="contenUpload">Carga de contenido</h1>
+                </div>
                 <hr class="white">
                 <h2 class="contenUpload">Datos de contacto</h2>
                 <div class="row">
@@ -650,7 +658,8 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <div style="display: none;" id="upload5">
+    <!-- <div style="display: none;" id="upload5"> -->
+      <div id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -669,7 +678,9 @@
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
             </div>
             <div class="medium-8 columns carga">
-                <h1 class="contenUpload">Carga de contenido</h1>
+                <div class="text-center">
+                  <h1 class="contenUpload">Carga de contenido</h1>
+                </div>
                 <hr class="white">
                 <h2 class="contenUpload">Información financiera</h2>
                 <div class="row">
@@ -937,7 +948,7 @@
                             <div>Tipos de Garages</div>
                             <div class="" *ngFor="let option of garageTypesTypology">
                                 <div>
-                                    <input id="casas" type="checkbox" name="type_garages" formControlName="type_garages" value="{{option.id}}"><label for="">{{option.name}}</label>
+                                    <input id="casas" type="checkbox" name="type_garages" formControlName="type_garages" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
                                 </div>
                             </div>
                         </div>
@@ -945,7 +956,7 @@
                             <div>Sala comedor</div>
                             <div class="" *ngFor="let option of livingDiningRoomTypology">
                                 <div>
-                                    <input id="casas" type="checkbox" name="dining_room" formControlName="dining_room" value="{{option.id}}"><label for="">{{option.name}}</label>
+                                    <input id="casas" type="checkbox" name="dining_room" formControlName="dining_room" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
                                 </div>
                             </div>
                         </div>
@@ -982,12 +993,12 @@
                                 </span>
                             </div>
                         </label>
-                        <input id="checkbox1" type="checkbox" name="immediate_delivery" id="immediate_delivery" formControlName="immediate_delivery"><label for="checkbox1">Entrega inmediata</label>
+                        <input id="checkbox1" type="checkbox" name="immediate_delivery" id="immediate_delivery" formControlName="immediate_delivery"><label class="content-label" for="checkbox1">Entrega inmediata</label>
                     </div>
                     <div class="medium-12 columns">
                         <label>
                             Comentarios adicionales
-                            <textarea placeholder="" name="additional_comments" id="additional_comments" formControlName="additional_comments"></textarea>
+                            <textarea rows="6" placeholder="" name="additional_comments" id="additional_comments" formControlName="additional_comments"></textarea>
                         </label>
                     </div>
                 </div>
@@ -1027,7 +1038,13 @@
             <div class="medium-4 small-4 columns end text-right bton-fRight">
                 <a (click)="sendAllInfo" class="button sendProject">Solicitar publicación</a>
             </div>
-        </div>
+          </div>
+          <div class="row">
+            <div class="medium-12 small-12 text-right">
+              <input id="checkbox1" type="checkbox" name="accept_legal_notice" id="accept_legal_notice" formControlName="accept_legal_notice"><label class="content-label" for="checkbox1">Aceptación <a href="/aviso-legal">
+                Aviso Legal</a></label>
+            </div>
+          </div>
         <hr class="white">
     </div>
 </form>

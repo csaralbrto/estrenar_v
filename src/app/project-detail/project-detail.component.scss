@@ -4,11 +4,11 @@
     border-radius: 12px;
     height: 415px;
   }
-  app-street-view {
-    width: 725px;
-    height: 473px;
-    display: block;
-  }
+  // app-street-view {
+  //   width: 725px;
+  //   height: 473px;
+  //   display: block;
+  // }
 }
 @media print, screen and (max-width: 480px) {
   img.imagenPrincipal {
@@ -18,11 +18,11 @@
   ul.slider-project-img {
     margin-left: 0.35rem !important;
   }
-  app-street-view {
-    width: 326px;
-    height: 580px;
-    display: block;
-  }
+  // app-street-view {
+  //   width: 326px;
+  //   height: 580px;
+  //   display: block;
+  // }
 }
 .rows-img .center {
   text-align: center;

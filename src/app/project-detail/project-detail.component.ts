@@ -460,6 +460,7 @@ export class ProjectDetailComponent implements OnInit {
       $('app-project-detail').foundation();
       if ($('.slider-project-img').length) {
         $('.slider-project-img').not('.slick-initialized').slick({
+          arrows: true,
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,

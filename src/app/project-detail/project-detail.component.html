@@ -16,7 +16,7 @@
         <div class="row">
             <div class="medium-12 columns info-proyecto">
                 <div class="tags blue">
-                    <a (click)="addFavorite(response.drupal_internal__nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    <a (click)="addFavorite(response.drupal_internal__nid);" class="fav hide-for-small-only"><img src="/assets/images/add.png" alt=""></a>
                     <div class="tag"><a>VIS</a></div>
                     <div class="tag"><a>Mi casa ya</a></div>
                 </div>
@@ -25,6 +25,9 @@
                 <div *ngIf="response.field_typology_description">
                     <p [innerHTML]=response.field_typology_description.processed.slice(0,200)></p>
                 </div>
+                <div class="tags blue show-for-small-only">
+                  <a (click)="addFavorite(response.drupal_internal__nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+              </div>
             </div>
             <div class="medium-5 columns">
               <!-- <div>Desde:</div> -->
@@ -316,7 +319,7 @@
         </div>
       </div>
       <div class="row show-for-small-only">
-        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
+        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: auto !important;">
             <div class="">
                 <ul class="slider-project-img slideproject">
                     <li class="is-active ">

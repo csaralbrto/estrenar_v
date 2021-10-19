@@ -381,7 +381,7 @@ p {
       background: rgb(0, 0, 0);
       background: linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.6) 4%,
+        rgba(0, 0, 0, 0.37) 80%,
         rgba(0, 0, 0, 0) 93%
       );
       color: #fefefe;
@@ -2238,8 +2238,8 @@ ul.pagination-pointed {
 .filtros-tag {
   display: inline-block;
   @media screen and (max-width: 600px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
   }
   &.off {
     .button {
@@ -3000,7 +3000,7 @@ ul.menu li a img {
     width: 226px !important;
   }
   .sendProject{
-    width: 142px !important;
+    width: 143px !important;
   }
   .viewProject{
     width: 146px !important;
@@ -3213,7 +3213,18 @@ ul.menu li a img {
     border: none !important;
     background-color: #fefefe;
     box-shadow: none !important;
+    color: #17454b !important;
   }
+  .img-home-banner{
+    height: 368px !important;
+  }
+  .padding-builders{
+    padding: 0 0.8rem 0 0.8rem;
+  }
+  .content-label{
+    vertical-align: 1.7px ​!important;
+  }
+
 }
 @media print, screen and (min-width: 481px) {
   .others-projects{
