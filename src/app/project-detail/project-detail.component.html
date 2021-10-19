@@ -333,35 +333,35 @@
                           </figure>
                       </div>
                   </li>
-                  <li>
+                  <li *ngIf="galeria > 1">
                       <div class="small-12 columns">
                           <figure class="">
                               <img class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
                           </figure>
                       </div>
                   </li>
-                  <li>
+                  <li *ngIf="galeria > 2">
                       <div class="small-12 columns">
                           <figure class="">
                               <img class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
                           </figure>
                       </div>
                   </li>
-                  <li>
+                  <li *ngIf="galeria > 3">
                       <div class="small-12 columns">
                           <figure class="">
                               <img class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
                           </figure>
                       </div>
                   </li>
-                  <li>
+                  <li *ngIf="galeria > 4">
                       <div class="small-12 columns">
                           <figure class="">
                               <img class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="" height="371px">
                           </figure>
                       </div>
                   </li>
-                  <li>
+                  <li *ngIf="galeria > 5">
                       <div class="small-12 columns">
                           <figure class="">
                               <img class="imagenPrincipal" [src]="url_img_path + galeria[6].uri.url" alt="" height="371px">
@@ -1074,7 +1074,7 @@
                                     <p> Podrías comprar una vivienda de:</p>
                                     <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
                                     <hr>
-                                    <a class="button secondary ">Ver proyectos afines</a>
+                                    <a class="button secondary viewProject">Ver proyectos afines</a>
                                 </div>
 
                             </div>
@@ -1324,7 +1324,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="button secondary ">Ver proyectos afines</a>
+                                    <a class="button secondary viewProject">Ver proyectos afines</a>
                                 </div>
                             </div>
                         </div>

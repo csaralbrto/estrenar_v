@@ -161,13 +161,24 @@ export class HeaderComponent implements OnInit {
   public searchInput(){
     $('#searchProjectsWord').toggleClass('hide');
   }
-  public findByWord(){
-    var searchWord = $('#searchProjectsWord').val();
-    sessionStorage.removeItem('word_search');
-    sessionStorage.setItem('word_search',searchWord)
-    this.router.navigate(['/proyectos']);
-    this.show_white_header = true;
-    this.show_header = false;
+  public findByWord(value){
+    if(value =="desktop"){
+      var searchWord = $('#searchProjectsWord').val();
+      sessionStorage.removeItem('word_search');
+      sessionStorage.setItem('word_search',searchWord)
+      this.router.navigate(['/proyectos']);
+      this.show_white_header = true;
+      this.show_header = false;
+    }else{
+      var searchWord = $('#searchProjectsWordMobile').val();
+      sessionStorage.removeItem('word_search');
+      sessionStorage.setItem('word_search',searchWord)
+      this.router.navigate(['/proyectos']);
+      $('#responsive-search-input').toggleClass('hide');
+      $('#responsive-search-input').val('');
+      this.show_white_header = true;
+      this.show_header = false;
+    }
   }
   updateFAvorites() {
     if(sessionStorage['favorite']){
@@ -252,5 +263,15 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/favoritos']);
       })
       .catch(error => console.log('error', error));
+  }
+  showSearchInput(){
+    $('#responsive-search-input').toggleClass('hide');
+    $('#closButtonHeader').toggleClass('hide');
+    $('#searchBton').toggleClass('hide');
+  }
+  closeSearchView(){
+    $('#responsive-search-input').toggleClass('hide');
+    $('#closButtonHeader').toggleClass('hide');
+    $('#searchBton').toggleClass('hide');
   }
 }

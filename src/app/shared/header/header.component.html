@@ -25,7 +25,7 @@
                 <li>
                     <a href="/blog">Blog</a>
                 </li>
-                <li class="search"><input (change)=(findByWord()) id="searchProjectsWord" class="hide" type="text" placeholder="Ciudad, Barrio, Sector">
+                <li class="search"><input (change)="findByWord('desktop')" id="searchProjectsWord" class="hide" type="text" placeholder="Ciudad, Barrio, Sector">
                     <a (click)=(searchInput())><img src="/assets/images/search.png"></a>
                 </li>
                 <li>
@@ -44,7 +44,10 @@
         <div class="small-5 columns show-for-small-only text-right">
             <ul class="menu mobile">
                 <li>
-                    <a><img src="/assets/images/search.png"></a>
+                    <a id="searchBton" (click)="showSearchInput()"><img src="/assets/images/search.png"></a>
+                </li>
+                <li>
+                    <a id="closButtonHeader" (click)="closeSearchView()" class="hide"><img height="30px" width="30px" src="/assets/images/close.png"></a>
                 </li>
                 <li>
                     <a href="favoritos"><img src="/assets/images/fav.png"><span class="num_fav"></span></a>
@@ -54,7 +57,7 @@
     </div>
 
     <!--Fin menu -->
-    <div class="row columns text-center block-search">
+    <div class="row columns text-center block-search mtopMHome">
         <h1>Te ayudamos a encontrar tu lugar ideal</h1>
         <div>
             <form action="">
@@ -72,7 +75,7 @@
                   </select>
                     </div>
                     <div class="medium-2 columns end">
-                        <a (click)=(searchWord()) class="button expanded secondary">Buscar</a>
+                        <a (click)=(searchWord()) class="button expanded secondary bton-search-home">Buscar</a>
                     </div>
                 </div>
             </form>
@@ -112,7 +115,7 @@
                 <li>
                     <a href="blog">Blog</a>
                 </li>
-                <li class="search"><input (change)=(findByWord()) id="searchProjectsWord" class="hide" type="text" placeholder="Ciudad, Barrio, Sector">
+                <li class="search"><input (change)="findByWord('desktop')" id="searchProjectsWord" class="hide" type="text" placeholder="Ciudad, Barrio, Sector">
                     <a (click)=(searchInput())><img src="/assets/images/search.png"></a>
                 </li>
                 <li>
@@ -131,7 +134,10 @@
         <div class="small-5 columns show-for-small-only text-right">
             <ul class="menu mobile">
                 <li>
-                    <a><img src="/assets/images/search.png"></a>
+                    <a id="searchBton" (click)="showSearchInput()"><img src="/assets/images/search.png"></a>
+                </li>
+                <li>
+                  <a id="closButtonHeader" (click)="closeSearchView()" class="hide"><img height="30px" width="30px" src="/assets/images/close.png"></a>
                 </li>
                 <li>
                     <a href="{{path_favorites}}"><img src="/assets/images/fav.png"><span class="num_fav">{{number_favorites}}</span></a>
@@ -168,6 +174,12 @@
         <a href="{{path_user}}"><img src="/assets/images/user.png"> Iniciar sesión</a>
       </li>
     </ul>
+  </div>
+  <div id="responsive-search-input" class="hide row columns">
+    <div class="buscador">
+      <img class="search" src="/assets/images/search.png">
+      <input (change)="findByWord('mobile')" id="searchProjectsWordMobile" type="text" placeholder="Ciudad, Barrio, Sector">
+    </div>
   </div>
 </div>
 

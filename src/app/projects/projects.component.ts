@@ -137,7 +137,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         (err) => console.log(),
         () => {
           if (this.response) {
-            // console.log(this.response);
+            console.log(this.response);
             if(this.response.metatag_normalized){
               this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
             }

@@ -140,10 +140,12 @@ a.button.close {
 }
 
 .container-blue {
-  background: $primary-color;
+  // background: $primary-color; comentado por mejoras de estilos
+  background: #fefefe;
   padding-top: 3rem;
   padding-bottom: 3rem;
-  color: $white;
+  // color: $white; comentado por mejoras de estilos
+  color: $primary-color;
   border-bottom: 1px solid $light-gray;
   @media screen and (max-width: 600px) {
     padding-top: 1rem;
@@ -153,12 +155,14 @@ a.button.close {
   h2,
   h3,
   label {
-    color: $white;
+    // color: $white; comentado por mejoras de estilos
+    color: $primary-color;
   }
   a {
     color: $secondary-color;
     &:hover {
-      color: $white;
+      // color: $white; comentado por mejoras de estilos
+      color: $primary-color;
     }
   }
   &.form {
@@ -2211,7 +2215,7 @@ ul.pagination-pointed {
 }
 
 .pagination .current {
-  padding: 1rem 1.5rem !important;
+  padding: 0.8rem 1.3rem !important;
   border-radius: 40px;
 }
 
@@ -2488,7 +2492,7 @@ img.image.constructor {
     left: 0;
     height: 19px;
     width: 19px;
-    background-color: #14454e;
+    background-color: #b4ca3d;
     border-radius: 0%;
     border: solid 2.2px;
     border-color: #fff;
@@ -2514,7 +2518,7 @@ img.image.constructor {
       width: 900px;
       border-radius: 20px;
       border: none;
-      height: 558px;
+      height: 565px;
     }
   }
 }
@@ -2589,7 +2593,7 @@ $input-number-morefilter-size: 64px;
   .input-number-increment-morefilter {
     display: inline-block;
     width: 24px;
-    background: #14454e !important;
+    background: #b4ca3d !important;
     color: #1a1a1a;
     text-align: center;
     font-weight: bold;
@@ -2650,7 +2654,7 @@ img:focus {
     }
     h2,
     .h2 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
       font-weight: 700;
     }
@@ -2703,7 +2707,7 @@ img:focus {
       color: $primary-color;
       &:hover {
         border-radius: 8px;
-        background: $primary-color;
+        background: #B4CA3D;
         color: $white;
       }
     }
@@ -2986,7 +2990,22 @@ ul.menu li a img {
   width: 100%;
   height: 190px;
 }
+.bton-search-home{
+  background: #e4f294 !important;
+}
 @media print, screen and (max-width: 480px) {
+  .mtopMHome{
+    margin-top: 35px !important;
+  }
+  .others-projects{
+    width: 226px !important;
+  }
+  .sendProject{
+    width: 142px !important;
+  }
+  .viewProject{
+    width: 146px !important;
+  }
   h1,
   h2,
   h4,
@@ -3040,7 +3059,7 @@ ul.menu li a img {
     list-style-type: disc;
   }
   div.logo img{
-    width: 59px;
+    width: 48px;
   }
   a.button.secondary.favorito.button-color-ev.fav-btn {
     margin-left: 12px;
@@ -3061,6 +3080,19 @@ ul.menu li a img {
     top: 2.9rem;
     text-align: center;
     padding-top: 2.5rem;
+  }
+  div#responsive-search-input{
+    position: fixed;
+    width: 100%;
+    height: /* calc(100% - 60px) */ 100%;
+    background: #f4f6f5;
+    z-index: 9;
+    overflow-y: scroll;
+    top: 2.9rem;
+    text-align: center;
+    padding-top: 2.5rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
   }
   .bton-mobile{
     width: 49% !important;
@@ -3129,18 +3161,21 @@ ul.menu li a img {
   }
   .a-password-redirect a{
     font-size: 12px;
-    color: #bec9cc;
+    // color: #bec9cc;
+    color: $primary-color;
   }
   .a-password-redirect label{
     font-size: 12px;
-    color: #bec9cc;
+    // color: #bec9cc;
+    color: $primary-color;
   }
   .a-password-redirect {
     margin-bottom: 10px;
   }
   .a-register-redirect a{
     font-size: 12px;
-    color: #bec9cc;
+    // color: #bec9cc;
+    color: $primary-color;
   }
   .login-span span{
     color: #fff !important;
@@ -3183,6 +3218,15 @@ ul.menu li a img {
 
 }
 @media print, screen and (min-width: 481px) {
+  .others-projects{
+    width: 226px !important;
+  }
+  .sendProject{
+    width: 142px !important;
+  }
+  .viewProject{
+    width: 146px !important;
+  }
   .passed-pass{
     background: #b4ca3d !important;
   }
