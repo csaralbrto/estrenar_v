@@ -43,6 +43,7 @@ export class ContentUploadComponent implements OnInit {
   public propertyLevelsTypology: any;
   public livingDiningRoomTypology: any;
   public featuresTypology: any;
+  public featuresTypologyBackup: any;
   public propertyTypeTypology: any;
   public imageSrc: string;
   public planeSrc: string;
@@ -55,6 +56,7 @@ export class ContentUploadComponent implements OnInit {
   public formTypologyEditArray: string[] = [];
   public stringQuery = '';
   public formSave = '';
+  public index_arrayTipology : any;
   arrayOptions: string[] = [];
   optionsTypySelected: string = '';
   optionsCitySelected: string = '';
@@ -140,9 +142,11 @@ export class ContentUploadComponent implements OnInit {
           this.propertyLevelsTypology = this.responseTypologyData.propertyLevels
           this.livingDiningRoomTypology = this.responseTypologyData.livingDiningRoom
           this.featuresTypology = this.responseTypologyData.features
+          this.featuresTypologyBackup = this.responseTypologyData.features
           this.propertyTypeTypology = this.responseTypologyData.propertyType
           console.log(this.garageTypesTypology);
           this.results = true;
+          $('app-content-upload').foundation();
         }
         /* si responde correctamente */
         if (this.responseSearchData.error) {
@@ -197,7 +201,7 @@ export class ContentUploadComponent implements OnInit {
         if (results[0]) {
           this.zoom = 12;
           var type_addres = $("input[name='address_input']:checked").val();
-          console.log(type_addres);
+          // console.log(type_addres);
           if(type_addres == "sales_room"){
             this.address_sales_room = results[0].formatted_address;
           }else if(type_addres == "project"){
@@ -249,15 +253,15 @@ export class ContentUploadComponent implements OnInit {
      this.longitude_input = $("input[name='longitude_project']").val();
      this.getAddress(Number(this.latitude_input), Number(this.longitude_input));
   }
-  ngAfterViewChecked() {
-    if (this.results) {
-      // sessionStorage.removeItem('qtEmails');
-      $('app-content-upload').foundation();
-      /* eliminamos los item de email y telefono */
-      // sessionStorage.removeItem('qtEmails');
-      // sessionStorage.removeItem('qtPhones');
-      // $('html,body').scrollTop(0);
-    }
+  ngAfterContentChecked() {
+    // if (this.results) {
+    //   // sessionStorage.removeItem('qtEmails');
+    //   console.log('entre');
+    //   $('app-content-upload').foundation();
+    //   /* eliminamos los item de email y telefono */
+    //   // sessionStorage.removeItem('qtEmails');
+    //   // sessionStorage.removeItem('qtPhones');
+    // }
   }
   activeSelected(day){
     // $().toogg
@@ -599,6 +603,10 @@ export class ContentUploadComponent implements OnInit {
         error_typology = true;
       }
     if(!error_typology){
+      value.bedrooms = $('#bedroom').val();
+      value.bathrooms = $('#bathroom').val();
+      value.garages = $('#garage').val();
+      value.levels_property = $('#levels_property').val();
       console.log(value);
       value.images_property = this.imagesTypology;
       value.maps = this.planeSrc;
@@ -608,6 +616,179 @@ export class ContentUploadComponent implements OnInit {
       this.planeSrc = "";
       this.formTypologyArray.push(value);
       console.log('se almaceno en el array de las tipologias',this.formTypologyArray);
+      this.featuresTypology = this.featuresTypologyBackup;
+      this.createFormTypology();
+    }
+  }
+  onSubmitEditTypology(value,index_array){
+    let error_typology = false
+    let error_label_price
+      if($('#label_price').val() == null || $('#label_price').val() == ""){
+        $('#spanPriceLabel').focus();
+        $('#spanPriceLabel').removeClass('hide');
+        error_label_price = 1;
+        error_typology = true;
+      }else{
+        $('#spanPriceLabel').addClass('hide');
+        error_label_price = 0;
+        error_typology = false;
+      }
+      let error_price_from
+      if($('#price_from').val() == null || $('#price_from').val() == ""){
+        $('#spanPriceFrom').focus();
+        $('#spanPriceFrom').removeClass('hide');
+        error_price_from = 1;
+        error_typology = true;
+      }else{
+        $('#spanPriceFrom').addClass('hide');
+        error_price_from = 0;
+        error_typology = false;
+      }
+      let error_initial_fee
+      if($('#initial_fee').val() == null || $('#initial_fee').val() == ""){
+        $('#spanFee').focus();
+        $('#spanFee').removeClass('hide');
+        error_initial_fee = 1;
+        error_typology = true;
+      }else{
+        $('#spanFee').addClass('hide');
+        error_initial_fee = 0;
+        error_typology = false;
+      }
+      let error_separation
+      if($('#separation').val() == null || $('#separation').val() == ""){
+        $('#spanSeparation').focus();
+        $('#spanSeparation').removeClass('hide');
+        error_separation = 1;
+        error_typology = true;
+      }else{
+        $('#spanSeparation').addClass('hide');
+        error_separation = 0;
+        error_typology = false;
+      }
+      let error_constructed_area
+      if($('#constructed_area').val() == null || $('#constructed_area').val() == ""){
+        $('#spanArea').focus();
+        $('#spanArea').removeClass('hide');
+        error_constructed_area = 1;
+        error_typology = true;
+      }else{
+        $('#spanArea').addClass('hide');
+        error_constructed_area = 0;
+        error_typology = false;
+      }
+      let error_private_area
+      if($('#private_area').val() == null || $('#private_area').val() == ""){
+        $('#spanPrivate').focus();
+        $('#spanPrivate').removeClass('hide');
+        error_private_area = 1;
+        error_typology = true;
+      }else{
+        $('#spanPrivate').addClass('hide');
+        error_private_area = 0;
+        error_typology = false;
+      }
+      let error_type_of_property
+      if($('#type_of_property').val() == null || $('#type_of_property').val() == ""){
+        $('#spanTypeProperty').focus();
+        $('#spanTypeProperty').removeClass('hide');
+        error_type_of_property = 1;
+        error_typology = true;
+      }else{
+        $('#spanTypeProperty').addClass('hide');
+        error_type_of_property = 0;
+        error_typology = false;
+      }
+      let error_finishes
+      if($('#finishes').val() == null || $('#finishes').val() == ""){
+        $('#spanfinishes').focus();
+        $('#spanfinishes').removeClass('hide');
+        error_finishes = 1;
+        error_typology = true;
+      }else{
+        $('#spanfinishes').addClass('hide');
+        error_finishes = 0;
+        error_typology = false;
+      }
+      let error_planeSrc
+      if(this.planeSrc == null || this.planeSrc == ""){
+        $('#spanmaps').focus();
+        $('#spanmaps').removeClass('hide');
+        error_planeSrc = 1;
+        error_typology = true;
+      }else{
+        $('#spanmaps').addClass('hide');
+        error_planeSrc = 0;
+        error_typology = false;
+      }
+      let error_imagesTypology
+      if(!(this.imagesTypology.length > 0)){
+        $('#spanimages_property').focus();
+        $('#spanimages_property').removeClass('hide');
+        error_imagesTypology = 1;
+        error_typology = true;
+      }else{
+        $('#spanimages_property').addClass('hide');
+        error_imagesTypology = 0;
+        error_typology = false;
+      }
+      let error_video_property
+      if($('#video_property').val() == null || $('#video_property').val() == ""){
+        $('#spanvideo_property').focus();
+        $('#spanvideo_property').removeClass('hide');
+        error_video_property = 1;
+        error_typology = true;
+      }else{
+        $('#spanvideo_property').addClass('hide');
+        error_video_property = 0;
+        error_typology = false;
+      }
+      let error_balcon_area
+      if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
+        $('#spanvideo_property').focus();
+        $('#spanvideo_property').removeClass('hide');
+        error_balcon_area = 1;
+        error_typology = true;
+      }else{
+        $('#spanvideo_property').addClass('hide');
+        error_balcon_area = 0;
+        error_typology = false;
+      }
+      let error_featuresTypologyArray
+      if(!(this.featuresTypologyArray.length > 0)){
+        $('#spanFeature').focus();
+        $('#spanFeature').removeClass('hide');
+        error_featuresTypologyArray = 1;
+        error_typology = true;
+      }else{
+        $('#spanFeature').addClass('hide');
+        error_featuresTypologyArray = 0;
+        error_typology = false;
+      }
+      if(error_label_price == 1 || error_price_from == 1 || error_initial_fee == 1 || error_separation == 1 || error_constructed_area == 1 || error_private_area == 1 || error_type_of_property == 1 || error_finishes == 1 || error_planeSrc == 1 || error_imagesTypology == 1 || error_video_property == 1 || error_balcon_area == 1 || error_featuresTypologyArray == 1 ){
+        error_typology = true;
+      }
+
+    if(!error_typology){
+      value.bedrooms = $('#bedroom').val();
+      value.bathrooms = $('#bathroom').val();
+      value.garages = $('#garage').val();
+      value.levels_property = $('#levels_property').val();
+      console.log(value);
+      value.images_property = this.imagesTypology;
+      value.maps = this.planeSrc;
+      value.property_characteristics = this.featuresTypologyArray;
+      this.featuresTypologyArray = [];
+      this.imagesTypology = [];
+      this.planeSrc = "";
+      this.formTypologyArray.splice(index_array, 1);
+      this.formTypologyArray.push(value);
+      console.log('se almaceno en el array de las tipologias',this.formTypologyArray);
+      this.index_arrayTipology = '';
+      $('#editTypologi'+index_array).removeClass('disabled');
+      $('#addTypologi').toggleClass('hide');
+      $('#addEditTypologi').toggleClass('hide');
+      this.featuresTypology = this.featuresTypologyBackup;
       this.createFormTypology();
     }
   }
@@ -651,8 +832,50 @@ export class ContentUploadComponent implements OnInit {
     );
   }
   editTypology(index){
+    let var_tipology : any;
+    $('#editTypologi'+index).addClass('disabled');
+    $('#addTypologi').toggleClass('hide');
+    $('#addEditTypologi').toggleClass('hide');
     /* se asigna el valor de la tipología a editar */
-    this.formTypologyEditArray.push(this.formTypologyArray[index]);
+    // this.formTypologyEditArray.push(this.formTypologyArray[index]);
+    var_tipology = this.formTypologyArray[index];
+    console.log(var_tipology);
+    /* se agrega el valor a los campos del formulario */
+    // this.formTypology.controls.name.setValue(this.response.field_first_name[0].value);
+      this.formTypology.controls.accept_legal_notice.setValue(var_tipology.accept_legal_notice);
+      this.formTypology.controls.additional_comments.setValue(var_tipology.additional_comments);
+      this.formTypology.controls.balcony_area.setValue(var_tipology.balcony_area);
+      this.formTypology.controls.bathrooms.setValue(var_tipology.bathrooms);
+      this.formTypology.controls.bedrooms.setValue(var_tipology.bedrooms);
+      this.formTypology.controls.constructed_area.setValue(var_tipology.constructed_area);
+      this.formTypology.controls.dining_room.setValue(var_tipology.dining_room);
+      this.formTypology.controls.finishes.setValue(var_tipology.finishes);
+      this.formTypology.controls.garages.setValue(var_tipology.garages);
+      this.formTypology.controls.immediate_delivery.setValue(var_tipology.immediate_delivery);
+      this.formTypology.controls.initial_fee.setValue(var_tipology.initial_fee);
+      this.formTypology.controls.label_price.setValue(var_tipology.label_price);
+      this.formTypology.controls.levels_property.setValue(var_tipology.levels_property);
+      this.formTypology.controls.price_from.setValue(var_tipology.price_from);
+      this.formTypology.controls.private_area.setValue(var_tipology.private_area);
+      this.formTypology.controls.separation.setValue(var_tipology.separation);
+      this.formTypology.controls.social_bathrooms.setValue(var_tipology.social_bathrooms);
+      this.formTypology.controls.tour.setValue(var_tipology.tour);
+      this.formTypology.controls.type_garages.setValue(var_tipology.type_garages);
+      this.formTypology.controls.type_of_property.setValue(var_tipology.type_of_property);
+      this.formTypology.controls.video_property.setValue(var_tipology.video_property);
+
+      this.imagesTypology = var_tipology.images_property;
+      this.planeSrc = var_tipology.maps;
+      this.featuresTypologyArray = var_tipology.property_characteristics;
+      this.featuresTypology = this.featuresTypologyBackup;
+      this.index_arrayTipology = index;
+
+      for(let features of this.featuresTypologyArray){
+        const index = this.featuresTypology.indexOf(features);
+        this.featuresTypology.splice(index, 1);
+      }
+      $('html,body').scrollTop(0);
+
   }
   createForm() {
     this.form =  this.formBuilder.group({
@@ -1182,6 +1405,7 @@ export class ContentUploadComponent implements OnInit {
       for (let index = 0; index <= 5; index++) {
         if (idStep == index) {
           $('#upload' + index).removeAttr('style');
+          $('html,body').scrollTop(0);
           // console.log(index + '-muestro este item ');
         } else {
           // console.log(index + '-oculto este item ');
@@ -1329,6 +1553,7 @@ export class ContentUploadComponent implements OnInit {
         val = 0;
       };
       $('#bedroomMobile').val(val);
+      $('#bedroom').val(val);
     }else if(value == 2){
       var val = $('#bathroomMobile').val();
       val = Number(val)-Number(1);
@@ -1336,6 +1561,7 @@ export class ContentUploadComponent implements OnInit {
         val = 0;
       };
       $('#bathroomMobile').val(val);
+      $('#bathroom').val(val);
     }else if(value == 3){
       var val = $('#garageMobile').val();
       val = Number(val)-Number(1)
@@ -1343,6 +1569,7 @@ export class ContentUploadComponent implements OnInit {
         val = 0;
       };
       $('#garageMobile').val(val);
+      $('#garage').val(val);
     }else if(value == 4){
       var val = $('#garageMobile').val();
       val = Number(val)-Number(1)
@@ -1350,6 +1577,7 @@ export class ContentUploadComponent implements OnInit {
         val = 0;
       };
       $('#levels_propertyMobile').val(val);
+      $('#levels_property').val(val);
     }
    }
   incrementValueMobile(value) {
@@ -1357,18 +1585,22 @@ export class ContentUploadComponent implements OnInit {
       var val = $('#bedroomMobile').val();
       val = Number(val)+Number(1);
       $('#bedroomMobile').val(val);
+      $('#bedroom').val(val);
     }else if(value == 2){
       var val = $('#bathroomMobile').val();
       val = Number(val)+Number(1);
       $('#bathroomMobile').val(val);
+      $('#bathroom').val(val);
     }else if(value == 3){
       var val = $('#garageMobile').val();
       val = Number(val)+Number(1);
       $('#garageMobile').val(val);
+      $('#garage').val(val);
     }else if(value == 4){
       var val = $('#garageMobile').val();
       val = Number(val)+Number(1)
       $('#levels_propertyMobile').val(val);
+      $('#levels_property').val(val);
     }
   }
   preview(values){
@@ -1822,5 +2054,16 @@ export class ContentUploadComponent implements OnInit {
       //   error = true;
       // }
       return error;
+  }
+  changeSelected(value,type){
+    if(type == 'type_inmueble'){
+      $('label.type_inmueble').removeClass('label-selectd');
+    }else if(type == 'state_project'){
+      $('label.state_project').removeClass('label-selectd');
+    }else if(type == 'finishes'){
+      $('label.finishes').removeClass('label-selectd');
+      $("input[name='finishes']").val(value);
+    }
+    $("#"+value).addClass('label-selectd')
   }
 }

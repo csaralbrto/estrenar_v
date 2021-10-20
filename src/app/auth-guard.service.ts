@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuardService implements CanActivate {
   isAuthenticate = false;
-  public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
+  public client_id = '21f24499-5493-4609-b204-f9181350de5d';
   public cliente_secret = 'drupal';
   constructor(private authService: AuthService, public router: Router) { }
 
@@ -39,7 +39,7 @@ export class AuthGuardService implements CanActivate {
             redirect: 'follow',
           })
           .then(function (a) {
-              return a.json(); 
+              return a.json();
           })
         .then(result => {
           // console.log('result',result)

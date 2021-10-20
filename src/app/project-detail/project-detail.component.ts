@@ -144,9 +144,6 @@ export class ProjectDetailComponent implements OnInit {
     this.items = this.getDates(
       Date.now()
     );
-
-
-
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
       (data) => (this.response = data.jsonapi),
@@ -203,13 +200,13 @@ export class ProjectDetailComponent implements OnInit {
               /* mapa Yenifer */
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
-              // if(this.response.typology_blueprint){
+              if(this.response.typology_blueprint !== undefined){
                 this.blueprintProyect = this.response.field_typology_blueprint;
                 this.blueprint = this.blueprintProyect[0].uri.url;
-                console.log(this.blueprint);
+                // console.log(this.blueprint);
                 // for (let bluePrint of this.blueprintProyect) {
                 // }
-              // }
+              }
               // console.log(this.coor_latitude,',',this.coor_longitude);
               this.response.marketIcon =
               {
@@ -292,8 +289,8 @@ export class ProjectDetailComponent implements OnInit {
               .then(responseProperties => responseProperties.json())
               .then(data => {
                 this.responseProperties = data.search_results;
+                console.log('propiedades son ',data.search_results);
                 if (this.responseProperties) {
-                  // console.log(this.responseProperties);
                   this.propertiesSimilars = this.responseProperties
                   for (let project of this.propertiesSimilars) {
                     var arrayDeCadenas = project.typology_images.split(',');
@@ -468,7 +465,7 @@ export class ProjectDetailComponent implements OnInit {
       }
       if ($('.slider-properties-project').length) {
         $('.slider-properties-project').not('.slick-initialized').slick({
-          // dots: true,
+          dots: true,
           autoplay: true,
           autoplaySpeed: 5000,
         });

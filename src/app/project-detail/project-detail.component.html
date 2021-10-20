@@ -59,270 +59,245 @@
             <div class="">
                 <ul class="slider-project-img slideproject">
                     <li class="is-active ">
-                        <!-- <div class="row"> -->
-                            <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
-                                <figure class="">
-                                    <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                </figure>
-                            </div>
-                             <div  *ngIf="valoresPares == 'par'">
-                                <div class="rows-img">
-                                    <div class="row1">
-                                        <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="rows-img1" *ngIf="galeria[1]">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div class="row1">
-
-                                        <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                            </figure>
-                                        </div>
-
-                                        <div class="rows-img1" *ngIf="galeria[3]">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="rows-img2" *ngIf="galeria[4]">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div *ngIf="valoresPares == 'impar'">
-                                <div class="rows-img">
-                                    <div class="row1">
-                                        <div class="rows-img1" *ngIf="operacion == 1">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="rows-img1" *ngIf="galeria[1]">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div class="row1">
-                                        <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="rows-img1" *ngIf="galeria[3]">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="rows-img2" *ngIf="galeria[4]">
-                                            <figure class="">
-                                                <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <!-- </div> -->
+                      <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
+                          <figure class="">
+                              <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
+                          </figure>
+                      </div>
+                        <div  *ngIf="valoresPares == 'par'">
+                          <div class="rows-img">
+                              <div class="row1">
+                                  <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img1" *ngIf="galeria[1]">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                              </div>
+                              <div class="row1">
+                                  <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img1" *ngIf="galeria[3]">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img2" *ngIf="galeria[4]">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div *ngIf="valoresPares == 'impar'">
+                          <div class="rows-img">
+                              <div class="row1">
+                                  <div class="rows-img1" *ngIf="operacion == 1">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img1" *ngIf="galeria[1]">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                              </div>
+                              <div class="row1">
+                                  <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img1" *ngIf="galeria[3]">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                                  <div class="rows-img2" *ngIf="galeria[4]">
+                                      <figure class="">
+                                          <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                      </figure>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                     </li>
                     <li class="" *ngIf=" operacion >= 6">
-                        <!-- <div class="row"> -->
-                            <div class="medium-6 columns destacado" *ngIf=" operacion == 10 ">
-                                <figure class="">
-                                    <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                </figure>
-                            </div>
-                            <div class="rows-img" *ngIf=" ( operacion == 9|| operacion == 10) ">
-                                <div class="row1">
-
-                                    <div class="rows-img1" *ngIf=" operacion == 9 ">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                        </figure>
-                                    </div>
-
-                                    <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url" alt="">
-                                        </figure>
-                                    </div>
-
-                                </div>
-                                <div class="row1">
-
-                                    <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="rows-img1" *ngIf="galeria[8]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img2" *ngIf="galeria[9]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url" alt="">
-                                        </figure>
-                                    </div>
-                                    <!-- <div class="rows-img3" *ngIf="galeria[11]">
+                        <div class="medium-6 columns destacado" *ngIf=" operacion == 10 ">
                             <figure class="">
-                                <img class="" [src]="url_img_path + galeria[11].uri.url" alt="">
+                                <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
                             </figure>
                         </div>
-                        <div class="rows-img4" *ngIf="galeria[12]">
-                          <figure class="">
-                              <img class="" [src]="url_img_path + galeria[12].uri.url" alt="">
-                          </figure>
-                      </div> -->
+                        <div class="rows-img" *ngIf=" ( operacion == 9|| operacion == 10) ">
+                            <div class="row1">
+                                <div class="rows-img1" *ngIf=" operacion == 9 ">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                    </figure>
+                                </div>
+                                <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                    </figure>
+                                </div>
+
+                                <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url" alt="">
+                                    </figure>
                                 </div>
 
                             </div>
-
-
-                            <div class="rows-img" *ngIf=" ( operacion == 6 || operacion == 7 ||  operacion == 8 || operacion == 11)">
-                                <div class="row1">
-
-                                    <div class="rows-img1">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img2" *ngIf="galeria[6] ">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                        </figure>
-                                    </div>
-
-                                    <div class="rows-img3" *ngIf="galeria[7]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                        </figure>
-                                    </div>
-
-
+                            <div class="row1">
+                                <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
+                                    </figure>
                                 </div>
-                                <div class="row1">
-                                    <div class="rows-img1" *ngIf="galeria[8]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img2" *ngIf=" galeria[9]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img3" *ngIf=" galeria[10]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
-                                        </figure>
-                                    </div>
+                                <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                    </figure>
                                 </div>
-
+                                <div class="rows-img1" *ngIf="galeria[8]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
+                                    </figure>
+                                </div>
+                                <div class="rows-img2" *ngIf="galeria[9]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[9].uri.url" alt="">
+                                    </figure>
+                                </div>
+                                <!-- <div class="rows-img3" *ngIf="galeria[11]">
+                        <figure class="">
+                            <img class="" [src]="url_img_path + galeria[11].uri.url" alt="">
+                        </figure>
+                    </div>
+                    <div class="rows-img4" *ngIf="galeria[12]">
+                      <figure class="">
+                          <img class="" [src]="url_img_path + galeria[12].uri.url" alt="">
+                      </figure>
+                  </div> -->
                             </div>
-
-                            <div class="rows-img" *ngIf=" operacion >= 12">
-                                <div class="row1">
-
-                                    <div class="rows-img1">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img2" *ngIf="galeria[6] ">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                        </figure>
-                                    </div>
-
-                                    <div class="rows-img3" *ngIf="galeria[7]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img4" *ngIf="galeria[8]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
-                                        </figure>
-                                    </div>
-
-
+                        </div>
+                        <div class="rows-img" *ngIf=" ( operacion == 6 || operacion == 7 ||  operacion == 8 || operacion == 11)">
+                            <div class="row1">
+                                <div class="rows-img1">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                    </figure>
                                 </div>
-                                <div class="row1">
-
-                                    <div class="rows-img1" *ngIf=" galeria[9]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img2" *ngIf=" galeria[10]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img3" *ngIf=" galeria[11]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[11].uri.url">
-                                        </figure>
-                                    </div>
-                                    <div class="rows-img4" *ngIf=" galeria[12]">
-                                        <figure class="">
-                                            <img class="imagenes" [src]="url_img_path + galeria[12].uri.url">
-                                        </figure>
-                                    </div>
+                                <div class="rows-img2" *ngIf="galeria[6] ">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                    </figure>
                                 </div>
 
+                                <div class="rows-img3" *ngIf="galeria[7]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
+                                    </figure>
+                                </div>
                             </div>
-
-                            <!-- cierra div del row -->
-                        <!-- </div> -->
+                            <div class="row1">
+                                <div class="rows-img1" *ngIf="galeria[8]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img2" *ngIf=" galeria[9]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img3" *ngIf=" galeria[10]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rows-img" *ngIf=" operacion >= 12">
+                            <div class="row1">
+                                <div class="rows-img1">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
+                                    </figure>
+                                </div>
+                                <div class="rows-img2" *ngIf="galeria[6] ">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img3" *ngIf="galeria[7]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img4" *ngIf="galeria[8]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <div class="rows-img1" *ngIf=" galeria[9]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img2" *ngIf=" galeria[10]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img3" *ngIf=" galeria[11]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[11].uri.url">
+                                    </figure>
+                                </div>
+                                <div class="rows-img4" *ngIf=" galeria[12]">
+                                    <figure class="">
+                                        <img class="imagenes" [src]="url_img_path + galeria[12].uri.url">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
       </div>
       <div class="row show-for-small-only">
-        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: auto !important;">
+        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important;">
             <div class="">
                 <ul class="slider-project-img slideproject">
-                    <li class="is-active ">
+                    <li class="is-active">
                         <div class="small-12 columns">
                             <figure class="">
                                 <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="" height="371px">
@@ -336,21 +311,21 @@
                             </figure>
                         </div>
                     </li>
-                    <li *ngIf="galeria > 1">
+                    <li>
                         <div class="small-12 columns">
                             <figure class="">
                                 <img class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
-                    <li *ngIf="galeria > 2">
+                    <li>
                         <div class="small-12 columns">
                             <figure class="">
                                 <img class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
-                    <li *ngIf="galeria > 3">
+                    <li>
                         <div class="small-12 columns">
                             <figure class="">
                                 <img class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
@@ -786,11 +761,11 @@
                         </div>
                     </div>
                       <div id="map" class="hide"></div>
-                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
+                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV hide-for-small-only" [latitude]="latitude" [longitude]="longitude"></app-street-view>
                   </div>
                 <div class="pLeft0">
                   <div id="planes" class="medium-12 columns destacado" *ngIf="response.field_typology_blueprint.length > 0; else notfound">
-                    <div class="sl-blueprint imagenPrincipal" role="region" aria-label="Favorite Space Pictures">
+                    <div class="sl-blueprint imagenPrincipal slider" role="region" aria-label="Favorite Space Pictures" style="height: 260px !important;">
                         <div class="">
                             <ul class="slider-blueprints-projects">
                                 <li class="is-active" *ngFor="let blueprint of response.field_typology_blueprint; let i = index">
@@ -985,7 +960,7 @@
 
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                    <a class="button bton-mobile" routerLink="/proyecto/{{relacionados.uuid}}">Ver
+                    <a class="button bton-mobile" href="/es{{relacionados.uuid}}">Ver
                   Proyecto</a>
                     <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                 </div>
@@ -1375,7 +1350,7 @@
                                 <div class="card-section">
                                     <h2>{{ propiedades.project }}</h2>
                                     <div class="descripcion">
-                                        {{ propiedades.project_city }}, {{ propiedades.project_zone }}, {{ propiedades.project_neighborhood }}
+                                        {{ propiedades.property_type }}, {{ propiedades.project_neighborhood }}, {{ propiedades.project_city }}
                                     </div>
                                     <div class="precio text-center">
                                         <div>Desde:</div>
@@ -1383,10 +1358,38 @@
                                     </div>
                                     <hr>
                                 </div>
-
+                                <div class="card-section">
+                                    <div class="row mLeftPRojects">
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                                <div class="data"> {{ propiedades.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                                <div class="data"> {{ propiedades.bathrooms }} alcobas</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                                <div class="data"> Garaje {{ propiedades.garages }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                                <div class="data"> {{ propiedades.bedrooms }} baños</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
                                 <div class="card-section">
                                     <div class="button-group align-spaced ">
-                                        <a class="button bton-mobile" routerLink="/proyecto/{{propiedades.url}}">Ver
+                                        <a class="button bton-mobile" href="/es{{propiedades.url}}">Ver
                                         Proyecto</a>
                                         <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                     </div>
@@ -1427,10 +1430,38 @@
                                     </div>
                                     <hr>
                                 </div>
-
+                                <div class="card-section">
+                                  <div class="row mLeftPRojects">
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                              <div class="data"> {{ propiedades.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                              <div class="data"> {{ propiedades.bathrooms }} alcobas</div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                              <div class="data"> Garaje {{ propiedades.garages }}</div>
+                                          </div>
+                                      </div>
+                                      <div class="small-6 columns">
+                                          <div class="item">
+                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                              <div class="data"> {{ propiedades.bedrooms }} baños</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr>
+                                </div>
                                 <div class="card-section">
                                     <div class="button-group align-spaced ">
-                                        <a class="button bton-mobile" routerLink="/proyecto/{{propiedades.url}}">Ver
+                                        <a class="button bton-mobile" href="/es{{propiedades.url}}">Ver
                                         Proyecto</a>
                                         <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                     </div>
@@ -1466,7 +1497,7 @@
     <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
         <div class="">
           <ul class="slider-properties-project">
-            <li class="is-active" >
+            <li class="is-active">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
                         <img [src]="url_img_path + propertiesSimilars[0].typology_images" alt="" class="proyecto">
@@ -1486,7 +1517,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[0].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[0].project_city }}, {{ propertiesSimilars[0].project_zone }}, {{ propertiesSimilars[0].project_neighborhood }}
+                            {{ propertiesSimilars[0].property_type }}, {{ propertiesSimilars[0].project_neighborhood }}, {{ propertiesSimilars[0].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1495,15 +1526,44 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[0].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[0].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[0].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[0].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[0].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[0].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
                     </div>
                 </div>
             </li>
-            <li>
+            <li >
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
                         <img [src]="url_img_path + propertiesSimilars[1].typology_images" alt="" class="proyecto">
@@ -1523,7 +1583,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[1].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[1].project_city }}, {{ propertiesSimilars[1].project_zone }}, {{ propertiesSimilars[1].project_neighborhood }}
+                            {{ propertiesSimilars[1].property_type }}, {{ propertiesSimilars[1].project_neighborhood }}, {{ propertiesSimilars[1].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1532,8 +1592,37 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[1].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[1].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[1].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[1].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[1].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1560,7 +1649,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[2].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[2].project_city }}, {{ propertiesSimilars[2].project_zone }}, {{ propertiesSimilars[2].project_neighborhood }}
+                            {{ propertiesSimilars[2].property_type }}, {{ propertiesSimilars[2].project_neighborhood }}, {{ propertiesSimilars[2].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1569,8 +1658,37 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[2].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[2].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[2].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[2].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[2].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[2].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1597,7 +1715,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[3].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[3].project_city }}, {{ propertiesSimilars[3].project_zone }}, {{ propertiesSimilars[3].project_neighborhood }}
+                            {{ propertiesSimilars[3].property_type }}, {{ propertiesSimilars[3].project_neighborhood }}, {{ propertiesSimilars[3].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1606,8 +1724,37 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[3].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[3].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[3].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[3].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[3].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[3].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1634,7 +1781,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[4].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[4].project_city }}, {{ propertiesSimilars[4].project_zone }}, {{ propertiesSimilars[4].project_neighborhood }}
+                            {{ propertiesSimilars[4].property_type }}, {{ propertiesSimilars[4].project_neighborhood }}, {{ propertiesSimilars[4].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1643,8 +1790,37 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[4].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[4].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[4].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[4].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[4].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[4].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1671,7 +1847,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[5].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[5].project_city }}, {{ propertiesSimilars[5].project_zone }}, {{ propertiesSimilars[5].project_neighborhood }}
+                            {{ propertiesSimilars[5].property_type }}, {{ propertiesSimilars[5].project_neighborhood }}, {{ propertiesSimilars[5].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1680,8 +1856,37 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[5].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[5].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[5].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[5].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[5].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[5].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1708,7 +1913,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[6].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[6].project_city }}, {{ propertiesSimilars[6].project_zone }}, {{ propertiesSimilars[6].project_neighborhood }}
+                            {{ propertiesSimilars[6].property_type }}, {{ propertiesSimilars[6].project_neighborhood }}, {{ propertiesSimilars[6].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1717,8 +1922,37 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[6].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[6].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[6].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[6].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[6].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[6].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1745,7 +1979,7 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[7].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[7].project_city }}, {{ propertiesSimilars[7].project_zone }}, {{ propertiesSimilars[7].project_neighborhood }}
+                            {{ propertiesSimilars[7].property_type }}, {{ propertiesSimilars[7].project_neighborhood }}, {{ propertiesSimilars[7].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
@@ -1754,8 +1988,37 @@
                         <hr>
                     </div>
                     <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[7].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[7].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ propertiesSimilars[7].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ propertiesSimilars[7].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" routerLink="/proyecto/{{propertiesSimilars[7].url}}">Ver
+                            <a class="button bton-mobile" href="/es{{propertiesSimilars[7].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>

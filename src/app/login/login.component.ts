@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   public form: FormGroup;
   error_message = '';
   public error: any;
-  public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
+  public client_id = '21f24499-5493-4609-b204-f9181350de5d';
   public cliente_secret = 'drupal';
 
   constructor(
@@ -75,12 +75,12 @@ export class LoginComponent implements OnInit {
     );
   }
   beforeLogin(){
-    var url = 'https://lab.estrenarvivienda.com/es/oauth/token';
+    var url = 'https://lab.estrenarvivienda.com/oauth/token';
     var urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "password");
     urlencoded.append("client_id", this.client_id);
     urlencoded.append("client_secret", this.cliente_secret);
-    urlencoded.append("username", sessionStorage.getItem('user_name'));
+    urlencoded.append("username", sessionStorage.getItem('username'));
     urlencoded.append("password", sessionStorage.getItem('password'));
       fetch(url, {
         body: urlencoded,
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
         //  sessionStorage.clear();
 
-         this.router.navigate(['/']);
+         this.router.navigate(['/user']);
 
        }
       })

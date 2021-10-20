@@ -52,7 +52,7 @@
                         <legend>Tipo de inmueble</legend>
                         <div class="opcion text-center" *ngFor="let option of typeProjects">
                             <div class="opcion-seleccion">
-                                <input id="type_property" name="type_property" formControlName="type_property" type="checkbox" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
+                                <input id="type_property" name="type_property" formControlName="type_property" type="checkbox" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'type_inmueble')" class="type_inmueble" for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
                             </div>
                             <div class="item">{{option.name}}</div>
                         </div>
@@ -68,7 +68,7 @@
                         <legend>Estado del proyecto</legend>
                         <div class="opcion text-center" *ngFor="let option of stateProjects">
                             <div class="opcion-seleccion">
-                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label for="casas"><img class="img-icon" [src]="option.icon"
+                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'state_project')" class="state_project" for="casas"><img class="img-icon" [src]="option.icon"
                                             alt="Casas"></label>
                             </div>
                             <div class="item">{{option.name}}</div>
@@ -292,7 +292,7 @@
                     </ul>
                 </div>
                 <hr class="white">
-                <div><img src="/assets/images/ico-cargar-info.png" alt=""></div>
+                <div><img src="/assets/images/multimedia.png" alt=""></div>
                 <h2 class="deco">Multimedia</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis.</p>
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
@@ -379,7 +379,7 @@
                     </ul>
                 </div>
                 <hr class="white">
-                <div><img src="/assets/images/ico-cargar-info.png" alt=""></div>
+                <div><img src="/assets/images/caracteristicas.png" alt=""></div>
                 <h2 class="deco">Características</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis.</p>
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
@@ -494,7 +494,7 @@
                     </ul>
                 </div>
                 <hr class="white">
-                <div><img src="/assets/images/ico-cargar-info.png" alt=""></div>
+                <div><img src="/assets/images/caracteristicas.png" alt=""></div>
                 <h2 class="deco">Contacto</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis.</p>
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
@@ -658,7 +658,8 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <div style="display: none;" id="upload5">
+    <!-- <div style="display: none;" id="upload5"> -->
+      <div id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -671,7 +672,7 @@
                     </ul>
                 </div>
                 <hr class="white">
-                <div><img src="/assets/images/ico-cargar-info.png" alt=""></div>
+                <div><img src="/assets/images/caracteristicas.png" alt=""></div>
                 <h2 class="deco">Descripción del inmueble</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis.</p>
                 <a (click)="preview(form.value)" class="button bton-mobile">Previsualizar</a>
@@ -768,7 +769,7 @@
                         <legend>Estado del inmueble</legend>
                         <div class="opcion text-center" *ngFor="let option of finishesTypology">
                             <div class="opcion-seleccion">
-                                <input id="finishes" name="finishes" formControlName="finishes" type="checkbox" value="{{option.id}}"><label for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
+                                <input id="finishes" name="finishes" formControlName="finishes" type="checkbox" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'finishes')" class="finishes" for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
                             </div>
                             <div class="item">{{option.name}}</div>
                         </div>
@@ -837,7 +838,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row columns">
                     <hr class="white">
                     <div class="row hide-for-small-only">
@@ -894,7 +894,7 @@
                     <div class="row show-for-small-only">
                         <div class="small-12 columns">
                           <div class="input-group input-number-group">
-                              <div style="margin-right: 67px;margin-top: 7px;"> Habitaciones</div>
+                              <div style="margin-right: 68px;margin-top: 7px;"> Habitaciones</div>
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(1))>-</span>
                                 </div>
@@ -918,7 +918,7 @@
                         </div>
                         <div class="small-12 columns">
                           <div class="input-group input-number-group">
-                              <div style="margin-right: 118px;margin-top: 7px;"> Baños</div>
+                              <div style="margin-right: 117px;margin-top: 7px;"> Baños</div>
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(2))>-</span>
                                 </div>
@@ -930,7 +930,7 @@
                         </div>
                         <div class="small-12 columns">
                           <div class="input-group input-number-group">
-                              <div style="margin-right: 110px;margin-top: 7px;"> Garajes</div>
+                              <div style="margin-right: 108px;margin-top: 7px;"> Garajes</div>
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(3))>-</span>
                                 </div>
@@ -961,12 +961,10 @@
                         </div>
                     </div>
                     <hr class="white">
-                    <div class="row">
+                    <div class="row columns">
                       <h2 class="show-for-small-only">Características del inmueble</h2>
                         <div class="filtros-tag" *ngFor="let option of featuresTypologyArray">
-                            <div class="columns medium-4 small-12">
-                                <a class="button close" (click)="onFeaturesClick('typology',option,'remove')">{{option.name}}</a>
-                            </div>
+                            <a class="button close" (click)="onFeaturesClick('typology',option,'remove')">{{option.name}}</a>
                         </div>
                         <div class="">
                             <span style="color: red" id="spanFeature" class="hide">
@@ -975,9 +973,7 @@
                         </div>
                         <hr>
                         <div class="filtros-tag off" *ngFor="let option of featuresTypology">
-                            <div class="columns medium-4 small-12">
-                                <a class="button" (click)="onFeaturesClick('typology',option,'add')">{{option.name}}</a>
-                            </div>
+                            <a class="button" (click)="onFeaturesClick('typology',option,'add')">{{option.name}}</a>
                         </div>
                     </div>
                 </div>
@@ -985,7 +981,7 @@
                     <hr class="white">
                     <div class="medium-6 columns end">
                         <label>Área balcón
-                            <input id="balcon_area" name="balcon_area" type="text" placeholder="">
+                            <input id="balcon_area" formControlName="balcony_area" name="balcon_area" type="text" placeholder="">
                             <div  class="">
                                 <span style="color: red" id="spanFeature" class="hide">
                                     Debe ingresar el área del balcón
@@ -1012,14 +1008,17 @@
                             <div class="typologyText">
                                 Área construida: {{ option.constructed_area }} mt2<br> Área privada: {{ option.private_area }} mt2<br> Alcobas: {{ option.bedrooms }} <br> Baños: {{ option.bathrooms }} <br>
                             </div>
-                            <a class="button" (click)="editTypology(i)">Editar Tipología</a>
+                            <a id="editTypologi{{ i }}" class="button" (click)="editTypology(i)">Editar Tipología</a>
                         </div>
                     </div>
                 </div>
                 <hr class="white">
                 <div class="row">
                     <div class="medium-12 columns text-center">
-                        <a (click)="onSubmitTypology(formTypology.value)" class="tipos">Añadir tipología <span><img src="/assets/images/agregar.png" alt="agregar"></span></a>
+                        <a id="addTypologi" (click)="onSubmitTypology(formTypology.value)" class="tipos">Añadir tipología <span><img src="/assets/images/agregar.png" alt="agregar"></span></a>
+                    </div>
+                    <div class="medium-12 columns text-center">
+                        <a id="addEditTypologi" (click)="onSubmitEditTypology(formTypology.value,index_arrayTipology)" class="tipos hide">Añadir tipología <span><img src="/assets/images/agregar.png" alt="agregar"></span></a>
                     </div>
                 </div>
             </div>
@@ -1031,10 +1030,10 @@
             <div class="medium-4 columns text-center">
                 <a (click)="saveTemporary(form.value,formTypology.value)" class="button hide">Guardar</a>
             </div>
-            <div class="medium-4 small-4 columns text-left">
+            <div class="medium-4 small-6 columns text-left">
                 <a (click)="changeStepWizard(4,5)" class="button">Anterior</a>
             </div>
-            <div class="medium-4 small-4 columns end text-right bton-fRight">
+            <div class="medium-4 small-6 columns end text-right bton-fRight">
                 <a (click)="sendAllInfo" class="button sendProject">Solicitar publicación</a>
             </div>
           </div>

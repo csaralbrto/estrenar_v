@@ -22,7 +22,7 @@ export class UserService {
   public dataRolePath: string;
 
 
-  constructor( private http: Http ) { 
+  constructor( private http: Http ) {
     this.endpoint = environment.endpointTestingApi + 'ubications/countries?_format=json';
     this.dataUser = environment.endpointTestingApiPost+ 'user/';
     this.updateData = environment.endpointTestingApiPost + 'user/logout';
@@ -31,13 +31,13 @@ export class UserService {
     this.dataContactadoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Medio de contacto&sort=weight';
     this.dataViviendaPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Buscas vivienda para&sort=weight';
     this.dataPresupuestoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Presupuesto de compra&sort=weight';
-    this.dataRolePath = environment.endpointTestingApiUrl + '/es/user-roles/' +sessionStorage.getItem('uid') + '?_format=json';
+    this.dataRolePath = environment.endpointTestingApiUrl + '/user-roles/' +sessionStorage.getItem('uid') + '?_format=json';
 
 
     this.headers.append('Accept', 'application/json');
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Authorization', 'Bearer '+sessionStorage.getItem('access_token'));
-    this.headers.append('Host', 'lab.estrenarvivienda.com'); 
+    this.headers.append('Host', 'lab.estrenarvivienda.com');
     this.options = new RequestOptions({headers: this.headers});
   }
 

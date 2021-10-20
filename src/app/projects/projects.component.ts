@@ -63,7 +63,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   Habitaciones: any;
 
   public xcsrfToken: any;
-  public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
+  public client_id = '21f24499-5493-4609-b204-f9181350de5d';
   public cliente_secret = 'drupal';
   public query_elasticsearch = {
     'filtro-proyectos': {term: '', fields: ''}

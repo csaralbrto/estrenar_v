@@ -69,9 +69,11 @@ a.button.close {
     content: "";
     width: 20px;
     height: 20px;
-    right: 6px;
-    top: 6px;
-    background: url(/assets/images/close.png);
+    right: 10px;
+    top: 3px;
+    background: url(/assets/images/close-blue.png);
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
   }
 }
 
@@ -1146,7 +1148,7 @@ label {
 //Proyectos
 h1.project {
   margin-bottom: 0.4rem;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
 .botones {
@@ -2501,7 +2503,8 @@ img.image.constructor {
 .filtros-tag {
   &.off {
     .button {
-      background-color: $medium-gray;
+      // background-color: $medium-gray;
+      background-color: #e4f294 !important;
     }
   }
   .button {
@@ -2993,6 +2996,9 @@ ul.menu li a img {
   background: #e4f294 !important;
 }
 @media print, screen and (max-width: 480px) {
+  .mLeftPRojects{
+    margin-left: 18px !important;
+  }
   .mtopMHome{
     margin-top: 35px !important;
   }
@@ -3227,14 +3233,23 @@ ul.menu li a img {
 
 }
 @media print, screen and (min-width: 481px) {
+  .mLeftPRojects{
+    margin-left: 39px !important;
+  }
   .others-projects{
     width: 226px !important;
   }
   .sendProject{
-    width: 142px !important;
+    width: 144px !important;
   }
   .viewProject{
     width: 146px !important;
+  }
+  .fav-bton-user{
+    width: 121px !important;
+  }
+  .act-account{
+    width: 128px !important;
   }
   .passed-pass{
     background: #b4ca3d !important;
@@ -3520,4 +3535,17 @@ label.container-radio.label-button.checked {
     width: 127px;
     margin-right: 1rem;
   }
+}
+.label-selectd{
+  margin: 0;
+  background: #eeeeee;
+  border-radius: 120px;
+  padding: 1.5rem;
+  margin-bottom: 0.8rem;
+  width: 100px;
+  height: 100px;
+  line-height: 1.5 !important;
+  font-size: 2rem;
+  display: block;
+  border: 1px solid #accb26;
 }

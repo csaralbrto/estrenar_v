@@ -42,7 +42,7 @@ export class UserComponent implements OnInit {
   public preferencesUser: any;
   public xcsrfToken: any;
   public error: any;
-  public client_id = 'f90aca17-a17b-4147-94a7-e91784e70c38';
+  public client_id = '21f24499-5493-4609-b204-f9181350de5d';
   public cliente_secret = 'drupal';
   arrayOptions: string[] = [];
   arrayOptions2: string[] = [];
@@ -337,7 +337,7 @@ export class UserComponent implements OnInit {
       ],
     }
     console.log(payload);
-    fetch("https://lab.estrenarvivienda.com/es/session/token")
+    fetch("https://lab.estrenarvivienda.com/session/token")
     .then(response => response.text())
     .then(result => {
       this.xcsrfToken = result
@@ -369,7 +369,7 @@ export class UserComponent implements OnInit {
    }
   }
   beforeUpdate(xcsrfToken, payload){
-    var url = 'https://lab.estrenarvivienda.com/es/oauth/token';
+    var url = 'https://lab.estrenarvivienda.com/oauth/token';
     var urlencoded = new URLSearchParams();
     urlencoded.append("grant_type", "password");
     urlencoded.append("client_id", this.client_id);
@@ -415,7 +415,7 @@ export class UserComponent implements OnInit {
     myHeaders.append("X-CSRF-Token", xcsrfToken);
     myHeaders.append("Authorization", "Bearer " + sessionStorage.getItem('access_token'));
     var raw = JSON.stringify(payload);
-    let url = 'https://lab.estrenarvivienda.com/es/user/';
+    let url = 'https://lab.estrenarvivienda.com/user/';
     let url_last = '?_format=json';
 
     fetch(url + sessionStorage.getItem('uid') + url_last, {
@@ -434,7 +434,7 @@ export class UserComponent implements OnInit {
     /* Cerramos sesión */
 
     sessionStorage.clear();
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
     // var url = environment.endpointTestingApiPost+ 'user/logout?_format=json';
     // var token = sessionStorage.getItem('access_token');
     // var data = "";
@@ -489,14 +489,12 @@ export class UserComponent implements OnInit {
       })
       .catch(error => console.error(error))
   }
-
   startSpinner(): void {
     if (this.spinnerService) {
       // console.log("ingreso spinner..");
       this.spinnerService.show();
     }
   }
-
    stopSpinner(): void {
 
     if (this.spinnerService) {
