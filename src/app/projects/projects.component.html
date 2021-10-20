@@ -180,8 +180,11 @@
                   <br>
                   <div class="row">
                       <h3>Colecciones</h3>
-                      <div class="filtros-tag">
-                          <a class="button">Colección 1</a><a class="button">Colección 2</a>
+                      <div class="filtros-tag-collection" *ngFor="let option of filterColection">
+                          <a *ngIf="option.values.active == 'true'; else simpleCollection" (click)="clickCollection(option.url)" class="button bton-collection bton-collection-active">{{option.values.value}}</a>
+                          <ng-template #simpleCollection>
+                              <a (click)="clickCollection(option.url)" class="button bton-collection">{{option.values.value}}</a>
+                          </ng-template>
                       </div>
                   </div>
                   <br>

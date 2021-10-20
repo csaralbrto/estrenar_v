@@ -3233,6 +3233,9 @@ ul.menu li a img {
 
 }
 @media print, screen and (min-width: 481px) {
+  .pRightZones{
+    padding-right: 72px !important;
+  }
   .mLeftPRojects{
     margin-left: 39px !important;
   }
@@ -3549,3 +3552,21 @@ label.container-radio.label-button.checked {
   display: block;
   border: 1px solid #accb26;
 }
+.bton-collection{
+  width: 159px !important;
+}
+.bton-collection-active{
+  border: 1px solid #fefefe;
+  margin-right: 0.3rem;
+  border-radius: 20px !important;
+  padding: 0.6em 0.7em;
+  background: #e4f294 !important;
+  color: #2a494e !important;
+}
+.reveal .filtros-tag-collection .button {
+  border: 1px solid #fefefe;
+  margin-right: 0.3rem;
+  border-radius: 20px !important;
+  padding: 0.6em 0.7em;
+}
+

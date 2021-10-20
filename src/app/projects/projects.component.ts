@@ -28,6 +28,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   public filterCity: any;
   public filterZone: any;
   public filterSector: any;
+  public filterColection: any;
   public filterAreaBuilt: any;
   public filterProjectState: any;
   public filterBuilder: any;
@@ -52,6 +53,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   optionsZoneSelected: string = '';
   optionsSectorSelected: string = '';
   optionsAreaSelected: string = '';
+  optionsCollectionSelected: string = '';
   optionsConstructoraSelected: string = '';
   optionFeatureProyectSelected:string ='';
   optionsSortSelected:string ='';
@@ -169,6 +171,10 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             //Área m2
             if(this.response.facets.area_built){
               this.filterAreaBuilt = this.response.facets.area_built;
+            }
+            //collection
+            if(this.response.facets.project_collection){
+              this.filterColection = this.response.facets.project_collection;
             }
             // estados del proyecto
             if(this.response.facets.project_feature){
@@ -342,6 +348,151 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       $('#garage').val(val);
     }
   }
+  clickCollection(url){
+    console.log(url);
+    fetch(url, {
+    })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data)
+      this.response = data;
+      // console.log(this.response);
+      if (this.response) {
+        // console.log(this.response.search_results);
+        this.response_data_project = this.response.search_results
+        this.countProjects = this.response_data_project.length;
+        this.countAllProjects = this.response.total;
+        /* Iterar los proyectos a mostrar */
+        for (let project of this.response_data_project) {
+          var arrayDeCadenas = project.typology_images.split(',');
+          project.typology_images = arrayDeCadenas[0];
+          var arrayDeCadenas2 = project.project_category.split(',');
+          project.project_category = arrayDeCadenas2;
+          /* añadir latitud y longitud de proyectos */
+          var arrayDeLaton = project.latlon.split(',');
+          project.latitude = arrayDeLaton[0]
+          project.longitude = arrayDeLaton[1]
+        }
+        /* Iterar sobre Filtros */
+        if(this.response.facets.property_type){
+          this.optionsTypySelected = '';
+          for(let optionType of this.response.facets.property_type){
+            if(optionType.values.active == 'true'){
+              this.optionsTypySelected = optionType.url;
+            }
+          }
+          this.filterType = this.response.facets.property_type;
+        }
+        if(this.response.facets.project_city){
+          this.optionsCitySelected = '';
+          for(let optionCity of this.response.facets.project_city){
+            if(optionCity.values.active == 'true'){
+              this.optionsCitySelected = optionCity.url;
+            }
+          }
+          this.filterCity = this.response.facets.project_city;
+        }
+        if(this.response.facets.typology_price){
+          this.optionsPriceSelected = '';
+          for(let optionPrice of this.response.facets.typology_price){
+            if(optionPrice.values.active == 'true'){
+              this.optionsPriceSelected = optionPrice.url;
+            }
+          }
+          this.filterPrice = this.response.facets.typology_price;
+        }
+        if(this.response.facets.project_zone){
+          this.optionsZoneSelected = '';
+          for(let optionZone of this.response.facets.project_zone){
+            if(optionZone.values.active == 'true'){
+              this.optionsZoneSelected = optionZone.url;
+            }
+          }
+          this.filterZone = this.response.facets.project_zone;
+        }
+        if(this.response.facets.project_neighborhood){
+          this.optionsSectorSelected = '';
+          for(let optionSector of this.response.facets.project_neighborhood){
+            if(optionSector.values.active == 'true'){
+              this.optionsSectorSelected = optionSector.url;
+            }
+          }
+          this.filterSector = this.response.facets.project_neighborhood;
+        }
+        if(this.response.facets.project_feature){
+          let project_feature = this.response.facets.project_feature;
+          for (let feature of project_feature) {
+            if(feature.values.value == "Estado del proyecto"){
+
+              this.filterProjectState = feature.children;
+              this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+              for (let features of this.ValoresProyecto) {
+              if(features.values.active == 'true'){
+                this.optionFeatureProyectSelected = features.url;
+              }
+            }
+
+
+            }
+          }
+          // console.log(this.filterProjectState);
+
+        }
+        // ÁREA M2
+        if(this.response.facets.area_built){
+          this.filterAreaBuilt = this.response.facets.area_built
+          for (let featureAreaBuilt of this.filterAreaBuilt) {
+            if(featureAreaBuilt.values.active == "true")
+            {
+              this.optionsAreaSelected = featureAreaBuilt.url;
+            }
+
+
+          }
+        }
+        // Collection
+        if(this.response.facets.project_collection){
+          this.filterColection = this.response.facets.project_collection
+          for (let featureCollection of this.filterColection) {
+            if(featureCollection.values.active == "true")
+            {
+              this.optionsAreaSelected = featureCollection.url;
+            }
+
+
+          }
+        }
+        // costructora
+        if(this.response.facets.project_builder)
+            {
+              this.filterBuilder = this.response.facets.project_builder
+              for (let featureProjectBuilder of this.filterBuilder ) {
+                if(featureProjectBuilder.values.active == "true")
+                {
+                  this.optionsConstructoraSelected = featureProjectBuilder.url;
+                }
+
+
+              }
+        }
+        if(this.response.sorts){
+          this.optionsSectorSelected = '';
+          for(let optionSector of this.response.sorts){
+            if(optionSector.active == true){
+              this.optionsSortSelected = optionSector.url;
+            }
+          }
+          this.filterSort = this.response.sorts;
+          this.stopSpinner();
+          // console.log("debo de parar");
+        }
+        this.results = true;
+        this.stopSpinner();
+      }
+    })
+    .catch(error => console.error(error))
+
+  }
   change(value) {
     this.startSpinner();
     // this.bandera = false;
@@ -451,6 +602,18 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             if(featureAreaBuilt.values.active == "true")
             {
               this.optionsAreaSelected = featureAreaBuilt.url;
+            }
+
+
+          }
+        }
+        // Collection
+        if(this.response.facets.project_collection){
+          this.filterColection = this.response.facets.project_collection
+          for (let featureCollection of this.filterColection) {
+            if(featureCollection.values.active == "true")
+            {
+              this.optionsAreaSelected = featureCollection.url;
             }
 
 
@@ -591,6 +754,18 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             {
               this.optionsAreaSelected = featureAreaBuilt.url;
             }
+          }
+        }
+        // Collection
+        if(this.response.facets.project_collection){
+          this.filterColection = this.response.facets.project_collection
+          for (let featureCollection of this.filterColection) {
+            if(featureCollection.values.active == "true")
+            {
+              this.optionsAreaSelected = featureCollection.url;
+            }
+
+
           }
         }
         // costructora

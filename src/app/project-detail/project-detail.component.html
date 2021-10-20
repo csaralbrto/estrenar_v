@@ -742,7 +742,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="small-12 medium-4 columns end zona">
+                              <div class="small-12 medium-6 pRightZones columns end zona">
                                   <div class="row">
                                       <div class="medium-8 small-8 columns">
                                         <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
@@ -760,8 +760,10 @@
                             </div>
                         </div>
                     </div>
-                      <div id="map" class="hide"></div>
-                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV hide-for-small-only" [latitude]="latitude" [longitude]="longitude"></app-street-view>
+                    <div id="map" class="hide"></div>
+                    <div class="hide-for-small-only">
+                      <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
+                    </div>
                   </div>
                 <div class="pLeft0">
                   <div id="planes" class="medium-12 columns destacado" *ngIf="response.field_typology_blueprint.length > 0; else notfound">
