@@ -16,6 +16,7 @@
                 <div class="medium-2 columns">
                     <label>Tipo de inmueble
                         <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                          <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
                             <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                         </select>
                     </label>
@@ -23,6 +24,7 @@
                 <div class="medium-2 columns">
                     <label>Precio
                     <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                      <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
                         <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
                     </select>
                 </label>
@@ -30,6 +32,7 @@
                 <div class="medium-2 columns">
                     <label>Ciudad
                     <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                      <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
                         <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
                     </select>
                 </label>
@@ -37,6 +40,7 @@
                 <div class="medium-2 columns">
                     <label>Zona
                     <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                      <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
                         <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                     </select>
                     <ng-template #zoneTemplate>
@@ -49,6 +53,7 @@
                 <div class="medium-2 columns">
                     <label>Sector
                     <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                      <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
                         <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                     </select>
                     <ng-template #sectorTemplate>
@@ -87,7 +92,7 @@
                     <div *ngFor="let option of ValoresProyecto">
                         <label class="container-check">{{option.values.value}}
                             <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="change(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{option.url}}">
-                            <span class="checkmark"></span>
+                            <span class="checkmark-morefilter"></span>
                         </label>
                     </div>
                     <h3>Inmueble</h3>
@@ -96,7 +101,7 @@
                             <div> Área m2</div>
                         </div>
                         <div class="small-6 columns">
-                            <select id="arear_build" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
+                            <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
                                 <option *ngFor="let type of filterAreaBuilt; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                             </select>
                         </div>
@@ -107,12 +112,12 @@
                         </div>
                         <div class="small-6 columns">
                             <div class="input-group input-number-group">
-                                <div class="input-group-button">
-                                    <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
                                 </div>
-                                <input class="input-number" type="number" id="bedroom" value="1" min="0" max="1000">
-                                <div class="input-group-button">
-                                    <span class="input-number-increment" (click)=(incrementValue(1))>+</span>
+                                <input class="input-number input-morefilter" type="number" id="bedroom" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
                                 </div>
                             </div>
 
@@ -124,12 +129,12 @@
                         </div>
                         <div class="small-6 columns">
                             <div class="input-group input-number-group">
-                                <div class="input-group-button">
-                                    <span class="input-number-decrement" (click)=(decreaseValue(2))>-</span>
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
                                 </div>
-                                <input class="input-number" type="number" id="bathroom" value="1" min="0" max="1000">
-                                <div class="input-group-button">
-                                    <span class="input-number-increment" (click)=(incrementValue(2))>+</span>
+                                <input class="input-number input-morefilter" type="number" id="bathroom" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
                                 </div>
                             </div>
                         </div>
@@ -141,12 +146,12 @@
                         <div class="small-6 columns">
 
                             <div class="input-group input-number-group">
-                                <div class="input-group-button">
-                                    <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
                                 </div>
-                                <input class="input-number" type="number" id="garage" value="1" min="0" max="1000">
-                                <div class="input-group-button">
-                                    <span class="input-number-increment" (click)=(incrementValue(3))>+</span>
+                                <input class="input-number input-morefilter" type="number" id="garage" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
                                 </div>
                             </div>
 
@@ -165,21 +170,25 @@
                       </select>
                         <!-- </div> -->
                     </div>
-                    <div class="row">
+                    <div class="row" *ngIf="filterColection; else nocollection">
                         <h3>Colecciones</h3>
-                        <div class="filtros-tag">
-                            <a href="#" class="button">Colección 1</a><a href="#" class="button">Colección 2</a>
+                        <div class="filtros-tag-collection" *ngFor="let option of filterColection">
+                            <a *ngIf="option.values.active == 'true'; else simpleCollection" (click)="clickCollection(option.url)" class="button bton-collection bton-collection-active">{{option.values.value}}</a>
+                            <ng-template #simpleCollection>
+                                <a (click)="clickCollection(option.url)" class="button bton-collection">{{option.values.value}}</a>
+                            </ng-template>
                         </div>
                     </div>
+                    <ng-template #nocollection>
+                      <div style="margin-bottom: 30px;">
+
+                      </div>
+                    </ng-template>
                     <div class="row">
                         <a (click)="cleanFilter()">Limpiar filtros</a>
-                        <a data-close aria-label="Close modal" class="button secondary">Mostrar <span>{{countProjects}}</span> apartamentos</a>
-
-
+                        <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a>
                     </div>
                 </div>
-
-
             </div>
         </form>
         <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -194,11 +203,10 @@
         <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos</div>
     </div>
     <div class="medium-2 columns end">
-        <label>Ordenar por:
-            <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
-                <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}  {{type.order}}</option>
-            </select>
-        </label>
+      <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+        <option value="" *ngIf="optionsSortSelected == ''">Ordenar por:</option>
+          <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}  {{type.order}}</option>
+      </select>
     </div>
     <div class="medium-1 columns end">
         <a href="#" class="button secondary ">Comparar</a>
@@ -270,9 +278,9 @@
                 </div>
                 <div class="card-section">
                     <div class="button-group align-spaced ">
-                        <a class="button" routerLink="{{project.url}}">Ver
+                        <a class="button bton-mobile" routerLink="{{project.url}}">Ver
                       Proyecto</a>
-                        <a class="button" data-open="exampleModal2">Contacto</a>
+                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                     </div>
                 </div>
             </div>

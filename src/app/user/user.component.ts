@@ -94,163 +94,177 @@ export class UserComponent implements OnInit {
     .then(data => {
       console.log(data)
       this.response = data;
-      this.preferencesUser = this.response.field_user_preference;
-      console.log(this.preferencesUser)
-      /* Método para obtener toda la info subsidio */
-      this.Service.getDataSubsidio().subscribe(
-        (data) => (this.responseSubsidioData = data.data),
-        (err) => console.log(),
-        () => {
-          if (this.responseSubsidioData) {
-            if(this.preferencesUser){
-              for (let subsidio of this.responseSubsidioData) {
-                for (let preference of this.preferencesUser) {
-                  if(subsidio.drupal_internal__tid == preference.target_id){
-                    this.userSubsidioData = preference.target_id;
+      if(this.response.field_user_preference){
+        this.preferencesUser = this.response.field_user_preference;
+        console.log(this.preferencesUser)
+        /* Método para obtener toda la info subsidio */
+        this.Service.getDataSubsidio().subscribe(
+          (data) => (this.responseSubsidioData = data.data),
+          (err) => console.log(),
+          () => {
+            if (this.responseSubsidioData) {
+              if(this.preferencesUser){
+                for (let subsidio of this.responseSubsidioData) {
+                  for (let preference of this.preferencesUser) {
+                    if(subsidio.drupal_internal__tid == preference.target_id){
+                      this.userSubsidioData = preference.target_id;
+                      this.form.controls.subsidy.setValue(this.userSubsidioData);
+                    }
                   }
                 }
               }
             }
+            /* si responde correctamente */
+            if (this.responseSubsidioData.error) {
+              /* si hay error en la respuesta */
+            }
           }
-          /* si responde correctamente */
-          if (this.responseSubsidioData.error) {
-            /* si hay error en la respuesta */
+        );
+        /* Método para obtener toda la info de tiempos */
+        this.Service.getDataTiempo().subscribe(
+          (data) => (this.responseTiempoData = data.data),
+          (err) => console.log(),
+          () => {
+            if (this.responseTiempoData) {
+              // console.log('preferencias del usuario: ',this.preferencesUser);
+              // console.log('tiempo para habitar: ',this.responseTiempoData);
+              if(this.preferencesUser){
+                for (let tiempo of this.responseTiempoData) {
+                  for (let preference of this.preferencesUser) {
+                    if(tiempo.drupal_internal__tid == preference.target_id){
+                      this.userTiempoData = preference.target_id;
+                      this.form.controls.time_buy.setValue(this.userTiempoData);
+                    }
+                  }
+                }
+              }
+              // console.log('tiempo de habitar valor: ',this.userTiempoData);
+            }
+            /* si responde correctamente */
+            if (this.responseTiempoData.error) {
+              /* si hay error en la respuesta */
+            }
           }
-        }
-      );
-      /* Método para obtener toda la info de tiempos */
-      this.Service.getDataTiempo().subscribe(
-        (data) => (this.responseTiempoData = data.data),
-        (err) => console.log(),
-        () => {
-          if (this.responseTiempoData) {
-            // console.log(this.responseTiempoData);
-            if(this.preferencesUser){
-              for (let tiempo of this.responseTiempoData) {
-                for (let preference of this.preferencesUser) {
-                  if(tiempo.drupal_internal__tid == preference.target_id){
-                    this.userTiempoData = preference.target_id;
+        );
+        /* Método para obtener toda la info de presupuesto */
+        this.Service.getDataPresupuesto().subscribe(
+          (data) => (this.responsePresupuestoData = data.data),
+          (err) => console.log(),
+          () => {
+            if (this.responsePresupuestoData) {
+              // console.log(this.responsePresupuestoData);
+              if(this.preferencesUser){
+                for (let presupuesto of this.responsePresupuestoData) {
+                  for (let preference of this.preferencesUser) {
+                    if(presupuesto.drupal_internal__tid == preference.target_id){
+                      this.userPresupuestoData = preference.target_id;
+                      this.form.controls.budget.setValue(this.userPresupuestoData);
+                    }
                   }
                 }
               }
             }
+            /* si responde correctamente */
+            if (this.responsePresupuestoData.error) {
+              /* si hay error en la respuesta */
+            }
           }
-          /* si responde correctamente */
-          if (this.responseTiempoData.error) {
-            /* si hay error en la respuesta */
-          }
-        }
-      );
-      /* Método para obtener toda la info de presupuesto */
-      this.Service.getDataPresupuesto().subscribe(
-        (data) => (this.responsePresupuestoData = data.data),
-        (err) => console.log(),
-        () => {
-          if (this.responsePresupuestoData) {
-            // console.log(this.responsePresupuestoData);
-            if(this.preferencesUser){
-              for (let presupuesto of this.responsePresupuestoData) {
-                for (let preference of this.preferencesUser) {
-                  if(presupuesto.drupal_internal__tid == preference.target_id){
-                    this.userPresupuestoData = preference.target_id;
+        );
+        // /* Método para obtener toda la info de ser contactado */
+        this.Service.getDataContacado().subscribe(
+          (data) => (this.responseContactadoData = data.data),
+          (err) => console.log(),
+          () => {
+            if (this.responseContactadoData) {
+              if (this.preferencesUser) {
+                for (let contactado of this.responseContactadoData) {
+                  for (let preference of this.preferencesUser) {
+                    if(contactado.drupal_internal__tid == preference.target_id){
+                      this.userContactadoData = preference.target_id;
+                      this.form.controls.contact.setValue(this.userContactadoData);
+                    }
                   }
                 }
               }
+              // console.log(this.arrayOptions);
+              this.results = true;
+            }
+            /* si responde correctamente */
+            if (this.responseContactadoData.error) {
+              /* si hay error en la respuesta */
             }
           }
-          /* si responde correctamente */
-          if (this.responsePresupuestoData.error) {
-            /* si hay error en la respuesta */
-          }
-        }
-      );
-      // /* Método para obtener toda la info de ser contactado */
-      this.Service.getDataContacado().subscribe(
-        (data) => (this.responseContactadoData = data.data),
-        (err) => console.log(),
-        () => {
-          if (this.responseContactadoData) {
-            if (this.preferencesUser) {
-              for (let contactado of this.responseContactadoData) {
-                for (let preference of this.preferencesUser) {
-                  if(contactado.drupal_internal__tid == preference.target_id){
-                    this.userContactadoData = preference.target_id;
+        );
+        // /* Método para obtener toda la info de vivienda */
+        this.Service.getDataVivienda().subscribe(
+          (data) => (this.responseViviendaData = data.data),
+          (err) => console.log(),
+          () => {
+            if (this.responseViviendaData) {
+              if(this.preferencesUser){
+                for (let vivienda of this.responseViviendaData) {
+                  for (let preference of this.preferencesUser) {
+                    if(vivienda.drupal_internal__tid == preference.target_id){
+                      this.userViviendaData = preference.target_id;
+                      this.form.controls.search_house.setValue(this.userViviendaData);
+                    }
                   }
                 }
               }
+              this.results = true;
             }
-            console.log(this.arrayOptions);
-            this.results = true;
-          }
-          /* si responde correctamente */
-          if (this.responseContactadoData.error) {
-            /* si hay error en la respuesta */
-          }
-        }
-      );
-      // /* Método para obtener toda la info de vivienda */
-      this.Service.getDataVivienda().subscribe(
-        (data) => (this.responseViviendaData = data.data),
-        (err) => console.log(),
-        () => {
-          if (this.responseViviendaData) {
-            for (let vivienda of this.responseViviendaData) {
-              for (let preference of this.preferencesUser) {
-                if(vivienda.drupal_internal__tid == preference.target_id){
-                  this.userViviendaData = preference.target_id;
-                }
-              }
+            /* si responde correctamente */
+            if (this.responseViviendaData.error) {
+              /* si hay error en la respuesta */
             }
-            this.results = true;
           }
-          /* si responde correctamente */
-          if (this.responseViviendaData.error) {
-            /* si hay error en la respuesta */
-          }
+        );
+        /* Método para cargar el role */
+        // this.Service.getRoleData().subscribe(
+        //   (data) => (this.responseRole = data.data),
+        //   (err) => console.log(),
+        //   () => {
+        //     if (this.responseRole) {
+        //       console.log(this.responseRole);
+        //       this.results = true;
+        //     }
+        //     /* si responde correctamente */
+        //     if (this.responseRole.error) {
+        //       /* si hay error en la respuesta */
+        //     }
+        //   }
+        // );
+        /* Asignamos el valor al formulario */
+        this.form.controls.name.setValue(this.response.field_first_name[0].value);
+        this.form.controls.lastname.setValue(this.response.field_last_name[0].value);
+        this.form.controls.email.setValue(this.response.mail[0].value);
+        this.form.controls.phone.setValue(this.response.field_user_phone[0].value);
+        this.form.controls.country.setValue(this.response.field_country[0].target_id);
+        this.form.controls.city.setValue(this.response.field_city[0].target_id);
+        if(this.response.field_country[0].target_id){
+          this.change(this.response.field_country[0].target_id);
         }
-      );
-      /* Método para cargar el role */
-      this.Service.getRoleData().subscribe(
-        (data) => (this.responseRole = data.data),
-        (err) => console.log(),
-        () => {
-          if (this.responseRole) {
-            console.log(this.responseRole);
-            this.results = true;
-          }
-          /* si responde correctamente */
-          if (this.responseRole.error) {
-            /* si hay error en la respuesta */
-          }
-        }
-      );
-      /* Asignamos el valor al formulario */
-      this.form.controls.name.setValue(this.response.field_first_name[0].value);
-      this.form.controls.lastname.setValue(this.response.field_last_name[0].value);
-      this.form.controls.email.setValue(this.response.mail[0].value);
-      this.form.controls.phone.setValue(this.response.field_user_phone[0].value);
-      this.form.controls.country.setValue(this.response.field_country[0].target_id);
-      this.form.controls.city.setValue(this.response.field_city[0].target_id);
-      if(this.response.field_country[0].target_id){
-        this.change(this.response.field_country[0].target_id);
+        // this.form.controls.zone.setValue(this.response.);
+        // if(this.userPresupuestoData){
+        //   this.form.controls.budget.setValue(this.userPresupuestoData);
+        // }
+        // if(this.userSubsidioData){
+        //   this.form.controls.subsidy.setValue(this.userSubsidioData);
+        // }
+        // if(this.userTiempoData){
+        //   this.form.controls.time_buy.setValue(this.userTiempoData);
+        // }
+        // if(this.userViviendaData){
+        //   this.form.controls.search_house.setValue(this.userViviendaData);
+        // }
+        // if(this.userContactadoData){
+        //   this.form.controls.contact.setValue(this.userContactadoData);
+        // }
+        this.stopSpinner();
+      }else{
+        sessionStorage.clear();
+        this.router.navigate(['/login']);
       }
-      // this.form.controls.zone.setValue(this.response.);
-      if(this.userPresupuestoData){
-        this.form.controls.budget.setValue(this.userPresupuestoData);
-      }
-      if(this.userSubsidioData){
-        this.form.controls.subsidy.setValue(this.userSubsidioData);
-      }
-      if(this.userTiempoData){
-        this.form.controls.time_buy.setValue(this.userTiempoData);
-      }
-      if(this.userViviendaData){
-        this.form.controls.search_house.setValue(this.userViviendaData);
-      }
-      if(this.userContactadoData){
-        this.form.controls.contact.setValue(this.userContactadoData);
-      }
-      this.stopSpinner();
     })
     .catch(error => console.error(error))
   }
@@ -275,66 +289,117 @@ export class UserComponent implements OnInit {
     .catch(error => console.error(error))
   }
   onSubmit(values) {
+    this.startSpinner();
     let password = "";
+    let payload : any;
     console.log(values);
     if(values.confirm){
       password = values.confirm
+      payload = {
+        "name": [
+          {
+            "value": values.email
+          }
+        ],
+        "mail": [
+          {
+            "value": values.email
+          }
+        ],
+        "field_user_phone": [
+          {
+            "value": values.phone
+          }
+        ],
+        "pass": [
+          {
+            "value": password
+          }
+        ],
+        "field_user_address": [
+        ],
+        "field_country":[
+            {
+                "target_id": values.country
+            }
+        ],
+        "field_city":[
+            {
+                "target_id": values.city
+            }
+        ],
+        "field_first_name": [
+            {
+                "value": values.name
+            }
+        ],
+        "field_last_name": [
+            {
+                "value": values.lastname
+            }
+        ],
+        "field_user_preference": [
+          {"target_id": (values.budget)?values.budget:""},
+          {"target_id": (values.subsidy)?values.subsidy:""},
+          {"target_id": (values.time_buy)?values.time_buy:""},
+          {"target_id": (values.search_house)?values.search_house:""},
+          {"target_id": (values.contact)?values.contact:""}
+        ],
+        // "field_user_preference_location": [
+        //   {"target_id": (values.zone)?values.zone:""}
+        // ],
+      }
     }else{
       password = sessionStorage.getItem('password');
-    }
-    let payload = {
-      "name": [
-        {
-          "value": values.email
-        }
-      ],
-      "mail": [
-        {
-          "value": values.email
-        }
-      ],
-      "field_user_phone": [
-        {
-          "value": values.phone
-        }
-      ],
-      "pass": [
-        {
-          "value": password
-        }
-      ],
-      "field_user_address": [
-      ],
-      "field_country":[
+      payload = {
+        "name": [
           {
-              "target_id": values.country
+            "value": values.email
           }
-      ],
-      "field_city":[
+        ],
+        "mail": [
           {
-              "target_id": values.city
+            "value": values.email
           }
-      ],
-      "field_first_name": [
+        ],
+        "field_user_phone": [
           {
-              "value": values.name
+            "value": values.phone
           }
-      ],
-      "field_last_name": [
-          {
-              "value": values.lastname
-          }
-      ],
-      "field_user_preference": [
-        {"target_id": (values.budget)?values.budget:""},
-        {"target_id": (values.subsidy)?values.subsidy:""},
-        {"target_id": (values.time_buy)?values.time_buy:""},
-        {"target_id": (values.search_house)?values.search_house:""},
-        {"target_id": (values.contact)?values.contact:""}
-      ],
-      "field_user_preference_location": [
-        {"target_id": (values.zone)?values.zone:""}
-      ],
+        ],
+        "field_user_address": [
+        ],
+        "field_country":[
+            {
+                "target_id": values.country
+            }
+        ],
+        "field_city":[
+            {
+                "target_id": values.city
+            }
+        ],
+        "field_first_name": [
+            {
+                "value": values.name
+            }
+        ],
+        "field_last_name": [
+            {
+                "value": values.lastname
+            }
+        ],
+        "field_user_preference": [
+          {"target_id": (values.budget)?values.budget:""},
+          {"target_id": (values.subsidy)?values.subsidy:""},
+          {"target_id": (values.time_buy)?values.time_buy:""},
+          {"target_id": (values.search_house)?values.search_house:""},
+          {"target_id": (values.contact)?values.contact:""}
+        ],
+        // "field_user_preference_location": [
+        //   {"target_id": (values.zone)?values.zone:""}
+        // ],
+      }
     }
     console.log(payload);
     fetch("https://lab.estrenarvivienda.com/session/token")
@@ -374,8 +439,8 @@ export class UserComponent implements OnInit {
     urlencoded.append("grant_type", "password");
     urlencoded.append("client_id", this.client_id);
     urlencoded.append("client_secret", this.cliente_secret);
-    urlencoded.append("username", this.cliente_secret);
-    urlencoded.append("password", this.cliente_secret);
+    urlencoded.append("username", sessionStorage.getItem('username'));
+    urlencoded.append("password", sessionStorage.getItem('password'));
       fetch(url, {
         body: urlencoded,
         headers: {
@@ -399,7 +464,7 @@ export class UserComponent implements OnInit {
          sessionStorage.setItem('access_token',result.access_token);
          localStorage.removeItem('time_out');
          sessionStorage.setItem('time_out',JSON.stringify(timeObject));
-         console.log('voy a update user');
+        //  console.log('voy a update user');
          this.updateUser(xcsrfToken, payload);
 
        }
@@ -424,9 +489,178 @@ export class UserComponent implements OnInit {
       body: raw,
       redirect: 'follow'
     })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result =>{
-        console.log(result)
+        // console.log(result)
+        this.response = result;
+        if(this.response.field_user_preference){
+          this.preferencesUser = this.response.field_user_preference;
+          // console.log(this.preferencesUser)
+          /* Método para obtener toda la info subsidio */
+          this.Service.getDataSubsidio().subscribe(
+            (data) => (this.responseSubsidioData = data.data),
+            (err) => console.log(),
+            () => {
+              if (this.responseSubsidioData) {
+                if(this.preferencesUser){
+                  for (let subsidio of this.responseSubsidioData) {
+                    for (let preference of this.preferencesUser) {
+                      if(subsidio.drupal_internal__tid == preference.target_id){
+                        this.userSubsidioData = preference.target_id;
+                        this.form.controls.subsidy.setValue(this.userSubsidioData);
+                      }
+                    }
+                  }
+                }
+              }
+              /* si responde correctamente */
+              if (this.responseSubsidioData.error) {
+                /* si hay error en la respuesta */
+              }
+            }
+          );
+          /* Método para obtener toda la info de tiempos */
+          this.Service.getDataTiempo().subscribe(
+            (data) => (this.responseTiempoData = data.data),
+            (err) => console.log(),
+            () => {
+              if (this.responseTiempoData) {
+                // console.log('preferencias del usuario: ',this.preferencesUser);
+                // console.log('tiempo para habitar: ',this.responseTiempoData);
+                if(this.preferencesUser){
+                  for (let tiempo of this.responseTiempoData) {
+                    for (let preference of this.preferencesUser) {
+                      if(tiempo.drupal_internal__tid == preference.target_id){
+                        this.userTiempoData = preference.target_id;
+                        this.form.controls.time_buy.setValue(this.userTiempoData);
+                        // console.log('tiempo de habitar valor: ',this.userTiempoData);
+                      }
+                    }
+                  }
+                }
+              }
+              /* si responde correctamente */
+              if (this.responseTiempoData.error) {
+                /* si hay error en la respuesta */
+              }
+            }
+          );
+          /* Método para obtener toda la info de presupuesto */
+          this.Service.getDataPresupuesto().subscribe(
+            (data) => (this.responsePresupuestoData = data.data),
+            (err) => console.log(),
+            () => {
+              if (this.responsePresupuestoData) {
+                // console.log(this.responsePresupuestoData);
+                if(this.preferencesUser){
+                  for (let presupuesto of this.responsePresupuestoData) {
+                    for (let preference of this.preferencesUser) {
+                      if(presupuesto.drupal_internal__tid == preference.target_id){
+                        this.userPresupuestoData = preference.target_id;
+                        this.form.controls.budget.setValue(this.userPresupuestoData);
+                      }
+                    }
+                  }
+                }
+              }
+              /* si responde correctamente */
+              if (this.responsePresupuestoData.error) {
+                /* si hay error en la respuesta */
+              }
+            }
+          );
+          // /* Método para obtener toda la info de ser contactado */
+          this.Service.getDataContacado().subscribe(
+            (data) => (this.responseContactadoData = data.data),
+            (err) => console.log(),
+            () => {
+              if (this.responseContactadoData) {
+                if (this.preferencesUser) {
+                  for (let contactado of this.responseContactadoData) {
+                    for (let preference of this.preferencesUser) {
+                      if(contactado.drupal_internal__tid == preference.target_id){
+                        this.userContactadoData = preference.target_id;
+                        this.form.controls.contact.setValue(this.userContactadoData);
+                      }
+                    }
+                  }
+                }
+                // console.log(this.arrayOptions);
+                this.results = true;
+              }
+              /* si responde correctamente */
+              if (this.responseContactadoData.error) {
+                /* si hay error en la respuesta */
+              }
+            }
+          );
+          // /* Método para obtener toda la info de vivienda */
+          this.Service.getDataVivienda().subscribe(
+            (data) => (this.responseViviendaData = data.data),
+            (err) => console.log(),
+            () => {
+              if (this.responseViviendaData) {
+                if(this.preferencesUser){
+                  for (let vivienda of this.responseViviendaData) {
+                    for (let preference of this.preferencesUser) {
+                      if(vivienda.drupal_internal__tid == preference.target_id){
+                        this.userViviendaData = preference.target_id;
+                        this.form.controls.search_house.setValue(this.userViviendaData);
+                      }
+                    }
+                  }
+                }
+                this.results = true;
+              }
+              /* si responde correctamente */
+              if (this.responseViviendaData.error) {
+                /* si hay error en la respuesta */
+              }
+            }
+          );
+          /* Método para cargar el role */
+          // this.Service.getRoleData().subscribe(
+          //   (data) => (this.responseRole = data.data),
+          //   (err) => console.log(),
+          //   () => {
+          //     if (this.responseRole) {
+          //       console.log(this.responseRole);
+          //       this.results = true;
+          //     }
+          //     /* si responde correctamente */
+          //     if (this.responseRole.error) {
+          //       /* si hay error en la respuesta */
+          //     }
+          //   }
+          // );
+          /* Asignamos el valor al formulario */
+          this.form.controls.name.setValue(this.response.field_first_name[0].value);
+          this.form.controls.lastname.setValue(this.response.field_last_name[0].value);
+          this.form.controls.email.setValue(this.response.mail[0].value);
+          this.form.controls.phone.setValue(this.response.field_user_phone[0].value);
+          this.form.controls.country.setValue(this.response.field_country[0].target_id);
+          this.form.controls.city.setValue(this.response.field_city[0].target_id);
+          if(this.response.field_country[0].target_id){
+            this.change(this.response.field_country[0].target_id);
+          }
+          // this.form.controls.zone.setValue(this.response.);
+          // if(this.userPresupuestoData){
+          //   this.form.controls.budget.setValue(this.userPresupuestoData);
+          // }
+          // if(this.userSubsidioData){
+          //   this.form.controls.subsidy.setValue(this.userSubsidioData);
+          // }
+          // if(this.userTiempoData){
+          //   this.form.controls.time_buy.setValue(this.userTiempoData);
+          // }
+          // if(this.userViviendaData){
+          //   this.form.controls.search_house.setValue(this.userViviendaData);
+          // }
+          // if(this.userContactadoData){
+          //   this.form.controls.contact.setValue(this.userContactadoData);
+          // }
+          this.stopSpinner();
+        }
       })
       .catch(error => console.log('error', error));
   }
