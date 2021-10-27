@@ -785,10 +785,11 @@
                     <div class="medium-6 columns">
                         <label for="maps" class="button">Cargar archivo</label>
                         <input style="visibility:hidden;" formControlName="maps" formControlName="maps" id="maps" type="file" class="form-control" (change)="onFilePlanesChange($event)">
+                        <img [src]="planeSrc" *ngIf="planeSrc" style="height: auto; width:200px">
                         <div class="">
                             <span style="color: red" id="spanmaps" class="hide">
-                        Debe cargar el plano del inmueble
-                    </span>
+                                Debe cargar el plano del inmueble
+                            </span>
                         </div>
                     </div>
                 </div>

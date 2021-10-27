@@ -10,9 +10,11 @@ import { environment } from '../../environments/environment';
 })
 export class RevistaDigitalService {
   public endpoint: string;
+  public sendNewsletter: string;
 
   constructor(private http: Http) {
-    this.endpoint = environment.endpointApiBasicPage + '/revista-digital'; 
+    this.endpoint = environment.endpointApiBasicPage + '/revista-digital';
+    this.sendNewsletter = environment.endpointTestingApiPost + 'webform_rest/submit?_format=json';
   }
 
     /* Traer la info de quienes somo */
@@ -23,6 +25,12 @@ export class RevistaDigitalService {
     /* Traer informacion */
     getInfo( params:any ): Observable<any>{
       return this.http.get(params)
+      .pipe(map(( response => response.json() )));
+    }
+    /* Newsletter */
+    suscribeNewsletter( params: any ): Observable<any> {
+      // console.log(this.sendComment, params);
+      return this.http.post(this.sendNewsletter, params)
       .pipe(map(( response => response.json() )));
     }
 }

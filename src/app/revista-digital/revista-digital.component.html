@@ -20,33 +20,56 @@
         </ul>
     </div>
     <div class="medium-9 columns">
-        <h1>Revista Digital</h1>
+      <div class="show-for-small-only text-center">
+        <h1>{{ dataTitle }}</h1>
+      </div>
+      <div class="hide-for-small-only">
+        <h1>{{ dataTitle }}</h1>
+      </div>
         <p [innerHTML]=responseData.body.processed  ></p>
         <p [innerHTML]=responseData.body.summary  ></p>
         <hr class="white">
-        <a href="{{dataInfo}}" target="_blank"><h3>{{ dataTitle }}</h3></a>
+        <a class="button" href="{{dataInfo}}" target="_blank">{{ dataTitle }}</a>
     </div>
-  </div>
-  <hr class="white">
-  <div class="container-blue">
-    <div class="row columns text-center">
-        <h2 class="deco">Suscribirse a nuestro boletín</h2>
-        <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
-        <div>
-            <form action="">
-                <div class="row condensed">
-                    <div class="medium-7 medium-offset-2 columns">
-                        <input type="text" placeholder="Ingresa tu correo electrónico" />
-                    </div>
-                    <div class="medium-1 columns end">
-                        <a href="#" class="button expanded secondary">Suscribirse</a>
-                    </div>
-                    <div class="medium-7 medium-offset-2 columns end text-left">
-                        <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
-                                Aviso de Privacidad</a> y estar conforme con el mismo</label>
-                    </div>
+</div>
+<hr class="white">
+<div class="container-blue">
+  <div class="row columns text-center">
+      <h2 class="deco">Suscribirse a nuestro boletín</h2>
+      <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
+      <div>
+        <form [formGroup]="form2">
+            <div class="row condensed">
+                <div class="medium-7 medium-offset-2 columns">
+                    <input type="text" id="email_suscribe" formControlName="email_suscribe" name="email_suscribe" pattern="email" placeholder="Ingresa tu correo electrónico" required>
                 </div>
-            </form>
-        </div>
-    </div>
+                <div class="medium-1 columns end">
+                    <a (click)="onSubmitSuscribe(form2.value)" class="button expanded secondary">Suscribirse</a>
+                </div>
+                <div class="medium-7 medium-offset-2 columns end text-left">
+                    <input id="checkbox1" type="checkbox">
+                    <label for="checkbox1">Declaro haber leido el <a href="/aviso-privacidad">
+                    Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                </div>
+            </div>
+        </form>
+      </div>
   </div>
+</div>
+<div class="text-center" id="exampleModalSuscribe" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <div style="margin-top: 20px;">
+      <h2>¡Suscripción exitosa!</h2>
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="text-center" id="exampleModalNosuscribe" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <h2>¡Atención!</h2>
+    <p>Su correo ya ha sido registrado anteriormente</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>

@@ -145,7 +145,9 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   change(value,type) {
     if(type == 'capacidad_endeudamiento'){
       this.prestamo_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(32);
+      this.prestamo_endeudamiento = new Intl.NumberFormat("es-ES").format(this.prestamo_endeudamiento)
       this.vivienda_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(45.714286);
+      this.vivienda_endeudamiento = new Intl.NumberFormat("es-ES").format(this.vivienda_endeudamiento)
       // this.form.controls.prestamo_endudamiento.setValue(0);
     }else if(type == 'subsidio_vivienda'){
       let total = 0;
@@ -170,6 +172,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
         this.smmlv_vivienda = 0;
         /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */
       }
+      this.subsidio_vivienda = new Intl.NumberFormat("es-ES").format(this.subsidio_vivienda)
     }else if(type == 'credito_vienda'){
       if(value.tipo_credito_credito == 'hipotecario'){
         $('#leasHabitacional').removeClass('checked');
@@ -213,12 +216,19 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       ingresos_mensuales_min = (Number(cuota_mensual) * Number(3.3));
 
       this.monto_prestamo_credito = monto_prestamo;
+      this.monto_prestamo_credito = new Intl.NumberFormat("es-ES").format(this.monto_prestamo_credito)
       this.ingresos_mensuales_min_credito = ingresos_mensuales_min;
+      this.ingresos_mensuales_min_credito = new Intl.NumberFormat("es-ES").format(this.ingresos_mensuales_min_credito)
       this.tasa_de_interes_credito = tasa_de_interes;
+      this.tasa_de_interes_credito = new Intl.NumberFormat("es-ES").format(this.tasa_de_interes_credito)
       this.cuota_inicial_vivienda_credito = cuota_inicial_vivienda;
+      this.cuota_inicial_vivienda_credito = new Intl.NumberFormat("es-ES").format(this.cuota_inicial_vivienda_credito)
       this.cuota_inicial_porcentaje_vivienda_credito = cuota_inicial;
+      this.cuota_inicial_porcentaje_vivienda_credito = new Intl.NumberFormat("es-ES").format(this.cuota_inicial_porcentaje_vivienda_credito)
       this.cuota_mensual_credito = cuota_mensual;
+      this.cuota_mensual_credito = new Intl.NumberFormat("es-ES").format(this.cuota_mensual_credito)
       this.plazo_meses_credito = plazo_mes;
+      this.plazo_meses_credito = new Intl.NumberFormat("es-ES").format(this.plazo_meses_credito)
     }
   }
   clickInfo(value){
@@ -242,9 +252,13 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     let count = 1;
     let saldo = Number(saldo_diferir);
     this.valorInmuebleCuota = Number(value.valor_inmueble_cuota);
+    this.valorInmuebleCuota = new Intl.NumberFormat("es-ES").format(this.valorInmuebleCuota)
     this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
+    this.valorCuotaInicial = new Intl.NumberFormat("es-ES").format(this.valorCuotaInicial)
     this.valorAhorroCuota = Number(ahorros_totales);
+    this.valorAhorroCuota = new Intl.NumberFormat("es-ES").format(this.valorAhorroCuota)
     this.saldoDiferirCuota = Number(saldo_diferir);
+    this.saldoDiferirCuota = new Intl.NumberFormat("es-ES").format(this.saldoDiferirCuota)
     this.no_months = months + ' meses';
     for (let i=0; i < months; i++){
       var date_now = new Date();
@@ -253,8 +267,8 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       let data =  {
         'count': count,
         'date': monthYear,
-        'value_cuota': valor_mes,
-        'saldo': saldo,
+        'value_cuota': new Intl.NumberFormat("es-ES").format(valor_mes),
+        'saldo': new Intl.NumberFormat("es-ES").format(saldo),
       }
       this.cuotasMensuales.push(data);
       count++;

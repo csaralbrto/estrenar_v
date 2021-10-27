@@ -16,7 +16,37 @@
     </div>
     <div class="medium-9 columns">
         <h1>Glosario</h1>
-        <div class="nav-glossary">
+        <div class="nav-glossary hide-for-small-only">
+            <ul class="menu" data-tabs id="example-tabs">
+                <li class="tabs-title is-active" (click)="change('A')"><a href="#panel1v">A</a></li>
+                <li class="tabs-title" (click)="change('B')"><a href="#panel1v" class="">B</a></li>
+                <li class="tabs-title" (click)="change('C')"><a href="#panel1v" class="">C</a></li>
+                <li class="tabs-title" (click)="change('D')"><a href="#panel1v" class="">D</a></li>
+                <li class="tabs-title" (click)="change('E')"><a href="#panel1v" class="">E</a></li>
+                <li class="tabs-title" (click)="change('F')"><a href="#panel1v" class="">F</a></li>
+                <li class="tabs-title" (click)="change('G')"><a href="#panel1v" class="">G</a></li>
+                <li class="tabs-title" (click)="change('H')"><a href="#panel1v" class="">H</a></li>
+                <li class="tabs-title" (click)="change('I')"><a href="#panel1v" class="">I</a></li>
+                <li class="tabs-title" (click)="change('J')"><a href="#panel1v" class="">J</a></li>
+                <li class="tabs-title" (click)="change('K')"><a href="#panel1v" class="">K</a></li>
+                <li class="tabs-title" (click)="change('L')"><a href="#panel1v" class="">L</a></li>
+                <li class="tabs-title" (click)="change('M')"><a href="#panel1v" class="">M</a></li>
+                <li class="tabs-title" (click)="change('N')"><a href="#panel1v" class="">N</a></li>
+                <li class="tabs-title" (click)="change('O')"><a href="#panel1v" class="">O</a></li>
+                <li class="tabs-title" (click)="change('P')"><a href="#panel1v" class="">P</a></li>
+                <li class="tabs-title" (click)="change('Q')"><a href="#panel1v" class="">Q</a></li>
+                <li class="tabs-title" (click)="change('R')"><a href="#panel1v" class="">R</a></li>
+                <li class="tabs-title" (click)="change('S')"><a href="#panel1v" class="">S</a></li>
+                <li class="tabs-title" (click)="change('T')"><a href="#panel1v" class="">T</a></li>
+                <li class="tabs-title" (click)="change('U')"><a href="#panel1v" class="">U</a></li>
+                <li class="tabs-title" (click)="change('V')"><a href="#panel1v" class="">V</a></li>
+                <li class="tabs-title" (click)="change('W')"><a href="#panel1v" class="">W</a></li>
+                <li class="tabs-title" (click)="change('X')"><a href="#panel1v" class="">X</a></li>
+                <li class="tabs-title" (click)="change('Y')"><a href="#panel1v" class="">Y</a></li>
+                <li class="tabs-title" (click)="change('Z')"><a href="#panel1v" class="">Z</a></li>
+            </ul>
+        </div>
+        <div class="nav-glossary show-for-small-only">
             <ul class="menu" data-tabs id="example-tabs">
                 <li class="tabs-title is-active" (click)="change('A')"><a href="#panel1v">A</a></li>
                 <li class="tabs-title" (click)="change('B')"><a href="#panel1v" class="">B</a></li>
@@ -71,22 +101,40 @@
         <h2 class="deco">Suscribirse a nuestro boletín</h2>
         <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
         <div>
-            <form action="">
-                <div class="row condensed">
-                    <div class="medium-7 medium-offset-2 columns">
-                        <input type="text" placeholder="Ingresa tu correo electrónico" />
-                    </div>
-                    <div class="medium-1 columns end">
-                        <a href="#" class="button expanded secondary">Suscribirse</a>
-                    </div>
-                    <div class="medium-7 medium-offset-2 columns end text-left">
-                        <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
-                                Aviso de Privacidad</a> y estar conforme con el mismo</label>
-                    </div>
-                </div>
-            </form>
+          <form [formGroup]="form2">
+              <div class="row condensed">
+                  <div class="medium-7 medium-offset-2 columns">
+                      <input type="text" id="email_suscribe" formControlName="email_suscribe" name="email_suscribe" pattern="email" placeholder="Ingresa tu correo electrónico" required>
+                  </div>
+                  <div class="medium-1 columns end">
+                      <a (click)="onSubmitSuscribe(form2.value)" class="button expanded secondary">Suscribirse</a>
+                  </div>
+                  <div class="medium-7 medium-offset-2 columns end text-left">
+                      <input id="checkbox1" type="checkbox">
+                      <label for="checkbox1">Declaro haber leido el <a href="/aviso-privacidad">
+                      Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                  </div>
+              </div>
+          </form>
         </div>
     </div>
+</div>
+<div class="text-center" id="exampleModalSuscribe" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <div style="margin-top: 20px;">
+      <h2>¡Suscripción exitosa!</h2>
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="text-center" id="exampleModalNosuscribe" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <h2>¡Atención!</h2>
+    <p>Su correo ya ha sido registrado anteriormente</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <ngx-spinner
   bdColor="rgba(51,51,51,0.8)"

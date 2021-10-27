@@ -22,7 +22,7 @@
   <div class="medium-9 columns">
       <div class="row">
           <div class="medium-8 medium-offset-2 columns">
-              <h1>Contáctenos</h1>
+              <h1>Contáctanos</h1>
               <form data-abide novalidate [formGroup]="form">
                     <div class="container-form">
                         <span id="spanName" class="error hide">
@@ -67,16 +67,19 @@
 
                         <div class="text-left terminos">
                             <div>
-                                <span id="spanTerm" class="error hide">
-                                    Debe aceptar los términos
-                                    </span>
-                                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
-                                    haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
-                                    mismos.</label>
-
+                                <input class="checkBokForm-Contactus" id="checkbox1" type="checkbox" formControlName="emailCopy" name="emailCopy">
+                                <label for="right-label" class="text-left">Enviar una copia del mensaje a su propio E-mail
+                                </label>
                             </div>
-                            <div> <input id="checkbox1" type="checkbox" formControlName="emailCopy" name="emailCopy"><label for="right-label" class="text-left">Enviar
-                                    una copia del mensaje a su propio Email</label></div>
+                            <div>
+                                <span id="spanTerm" class="error hide">
+                                  Debe aceptar los términos
+                                </span>
+                                <input class="checkBokForm-Contactus" id="checkbox1" type="checkbox" formControlName="term" name="term">
+                                <label for="right-label" class="text-left">Declaro
+                                    haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los mismos.
+                                </label>
+                            </div>
                         </div>
                         <div class="text-center">
                         <span  class="button secondary " (click)="onSubmit(form.value)">Enviar</span>
@@ -101,20 +104,38 @@
       <h2 class="deco">Suscribirse a nuestro boletín</h2>
       <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
       <div>
-          <form action="">
-              <div class="row condensed">
-                  <div class="medium-7 medium-offset-2 columns">
-                      <input type="text" placeholder="Ingresa tu correo electrónico" />
-                  </div>
-                  <div class="medium-1 columns end">
-                      <a href="#" class="button expanded secondary">Suscribirse</a>
-                  </div>
-                  <div class="medium-7 medium-offset-2 columns end text-left">
-                      <input id="checkbox1" type="checkbox"><label for="checkbox1">Declaro haber leido el <a href="#">
-                              Aviso de Privacidad</a> y estar conforme con el mismo</label>
-                  </div>
-              </div>
-          </form>
+        <form [formGroup]="form2">
+            <div class="row condensed">
+                <div class="medium-7 medium-offset-2 columns">
+                    <input type="text" id="email_suscribe" formControlName="email_suscribe" name="email_suscribe" pattern="email" placeholder="Ingresa tu correo electrónico" required>
+                </div>
+                <div class="medium-1 columns end">
+                    <a (click)="onSubmitSuscribe(form2.value)" class="button expanded secondary">Suscribirse</a>
+                </div>
+                <div class="medium-7 medium-offset-2 columns end text-left">
+                    <input id="checkbox1" type="checkbox">
+                    <label for="checkbox1">Declaro haber leido el <a href="/aviso-privacidad">
+                    Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                </div>
+            </div>
+        </form>
       </div>
   </div>
+</div>
+<div class="text-center" id="exampleModalSuscribe" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <div style="margin-top: 20px;">
+      <h2>¡Suscripción exitosa!</h2>
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="text-center" id="exampleModalNosuscribe" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <h2>¡Atención!</h2>
+    <p>Su correo ya ha sido registrado anteriormente</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
 </div>

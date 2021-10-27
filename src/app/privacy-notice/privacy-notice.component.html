@@ -19,8 +19,13 @@
         <!-- <li><a href="mapa-sitio">Mapa del sitio</a></li> -->
       </ul>
     </div>
-    <div class="grid-x cell small-7 medium-7 large-7">
-      <h2>{{ responseData.title }}</h2>
+    <div class="grid-x cell small-12 medium-7 large-7">
+      <div class="small-12 show-for-small-only text-center">
+        <h1>{{ responseData.title }}</h1>
+      </div>
+      <div class="hide-for-small-only">
+        <h1>{{ responseData.title }}</h1>
+      </div>
       <p [innerHTML]=responseData.body.processed  ></p>
     </div>
     <div class="cell small-1 medium-1 large-1"></div>

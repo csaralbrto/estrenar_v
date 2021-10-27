@@ -23,6 +23,7 @@ export class BlogDetailComponent implements OnInit {
   public response: any;
   public responseNewslaetter: any;
   public responseComments: any;
+  public responseComment: any;
   public dataSubmit: any;
   public entity_id: any;
   public entity_type: any;
@@ -120,8 +121,6 @@ export class BlogDetailComponent implements OnInit {
     );
     $('html,body').scrollTop(0);
   }
-
-
   ngAfterViewChecked() {
     if (this.results) {
       $('app-blog-detail').foundation();
@@ -152,7 +151,7 @@ export class BlogDetailComponent implements OnInit {
       "field_name":[{"value":"comment"}],
       "subject":[{"value":values.comment.substring(0,15)}],
       "field_comment_mail":[{"value":values.email}],
-      "field_comment_privacy_notice":[{"target_id":40}],
+      "field_comment_privacy_notice":[{"target_id":45}],
       "name":[{"value":values.name}],
       "comment_body":[
         {"value":values.comment,"format":"restricted_html"}
@@ -162,13 +161,15 @@ export class BlogDetailComponent implements OnInit {
     this.createForm();
     this.Service.sendBlogComment( payload )
     .subscribe(
-      data =>{console.log(data)},
+      data =>{this.responseComment = data},
       err => console.log(),
       () => {
-        // if(this){
-        //   // $('#modalAlertSuccessful').foundation('open');
-        //   this.form.reset();
-        // }
+        if(this.responseComment){
+          console.log(this.responseComment);
+          this.stopSpinner();
+          $('#exampleModalComment').foundation('open');
+          this.createForm();
+        }
         // if(this.confirm.error){
         //   // $('#modalAlertError').foundation('open');
         // }
@@ -192,29 +193,26 @@ export class BlogDetailComponent implements OnInit {
         // console.log(this.responseNewslaetter.sid);
         if(this.responseNewslaetter.sid){
           this.stopSpinner();
-          $('#exampleModal1').foundation('open');
+          $('#exampleModalSuscribe').foundation('open');
           this.createFormSuscribe();
         }else{
           this.stopSpinner();
-          $('#exampleModal2').foundation('open');
+          $('#exampleModalNosuscribe').foundation('open');
         }
       }
     );
   }
   // Metodo cargando
-
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
-   stopSpinner(): void {
+  stopSpinner(): void {
 
     if (this.spinnerService) {
       // console.log("ingrese a parar");
       this.spinnerService.hide();
     }
   }
-
 }

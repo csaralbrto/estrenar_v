@@ -142,7 +142,6 @@ export class BlogComponent implements OnInit, AfterViewChecked {
     $('html,body').scrollTop(0);
 
   }
-
   ngAfterViewChecked() {
     if (this.results) {
       $('app-blog').foundation();
@@ -195,21 +194,35 @@ export class BlogComponent implements OnInit, AfterViewChecked {
     }
   }
   subscribe(){
-
+    this.startSpinner();
     if($('#email_subscribe').val() == "" || $('#email_subscribe').val() == null){
       $('#spanEmail').removeClass('hide');
     }
     if($("#checkbox1").is(":checked")){
-      console.log('entre');
       let email_subscribe = $('#email_subscribe').val();
-      this.Service.subscribeService( email_subscribe )
+      let payload = {
+        "webform_id":"newsletter",
+        "correo_electronico":email_subscribe,
+      };
+      this.Service.subscribeService( payload )
       .subscribe(
         (data) => (this.response = data),
         err => (this.error = err),
         () => {
           if(this.response){
-            console.log('respondio',this.response);
+            console.log(this.response);
+            if(this.response.sid){
+              this.stopSpinner();
+              $('#exampleModalSuscribe').foundation('open');
+              $('#email_subscribe').val('');
+            }else{
+              this.stopSpinner();
+              $('#exampleModalNosuscribe').foundation('open');
+            }
           }else{
+            this.stopSpinner();
+            $('#exampleModalNosuscribe').foundation('open');
+            console.log(this.error);
             this.error_message = this.error._body.message
           }
         }
@@ -220,24 +233,12 @@ export class BlogComponent implements OnInit, AfterViewChecked {
 
   }
   // Metodos Cargando
-
-   // startSpinner(): void
-  // {
-  //   console.log("ingrese");
-  //   this.spinnerService.show();
-  //   setTimeout(() =>{
-  //     this.spinnerService.hide();
-  //   }, 4000);
-
-  // }
-
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
-   stopSpinner(): void {
+  stopSpinner(): void {
 
     if (this.spinnerService) {
       // console.log("ingrese a parar");

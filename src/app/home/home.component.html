@@ -6,11 +6,18 @@
 <div class="container-gray">
     <div class="row columns text-center">
         <!-- <div> -->
-        <div id='beacon_ffca91f02b' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'>
+        <!-- <div id='beacon_ffca91f02b' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'>
             <img src='https://ads.estrenarvivienda.com/www/delivery/lg.php?bannerid=0&amp;campaignid=0&amp;zoneid=16&amp;loc=https%3A%2F%2Fwww.estrenarvivienda.com%2Fproyectos-vivienda&amp;cb=ffca91f02b' width='0' height='0' alt='' style='width: 0px; height: 0px;'
             />
-        </div>
+        </div> -->
         <!-- </div> -->
+
+    <div class="row text-center">
+        <hr class="white">
+        <div class="publicidad">
+            <img src="/assets/images/banner1.jpg" alt="">
+        </div>
+    </div>
     </div>
     <div class="row columns">
         <h2 class="text-center deco">¿Qué estás buscando?</h2>
@@ -1235,7 +1242,7 @@
 </div>
 <!--fin bloque2 -->
 <!--Bloque3 -->
-<div class="container">
+<div>
     <div class="row columns hide-for-small-only">
         <h2 class="text-center deco">Constructoras</h2>
         <div class="sl-constructoras" role="region" aria-label="Favorite Space Pictures">
@@ -1246,7 +1253,7 @@
                             <div class="small-4 medium-2 columns end" *ngFor="let builder of response.home_featured_builders; let i = index">
                                 <div *ngIf="i < 6">
                                     <figure class="">
-                                        <img class="" [src]="builder.builder_logo" alt="">
+                                      <a href="/constructora/{{builder.uuid}}"><img class="" [src]="builder.builder_logo" alt=""></a>
                                     </figure>
                                 </div>
                             </div>
@@ -1257,7 +1264,7 @@
                             <div class="small-4 medium-2 columns end" *ngFor="let builder of response.home_featured_builders; let i = index">
                                 <div *ngIf="i >= 6">
                                     <figure class="">
-                                        <img class="" [src]="builder.builder_logo" alt="">
+                                      <a href="/constructora/{{builder.uuid}}"><img class="" [src]="builder.builder_logo" alt=""></a>
                                     </figure>
                                 </div>
                             </div>
@@ -1268,14 +1275,14 @@
         </div>
     </div>
     <!-- slider constructoras mobile -->
-    <div class="row columns show-for-small-only">
+    <div class="row columns show-for-small-only mTopBuilders">
         <h2 class="text-center deco">Constructoras</h2>
         <div class="sl-constructoras" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
           <ul class="slider-builders-home">
             <li class="is-active " *ngFor="let builder of response.home_featured_builders; let i = index">
               <div class="small-12 medium-12 columns end" >
                   <figure class="">
-                      <img class="" [src]="builder.builder_logo" alt="" style="margin: 0 auto;">
+                      <a href="/constructora/{{builder.uuid}}"><img class="" [src]="builder.builder_logo" alt="" style="margin: 0 auto;"></a>
                   </figure>
               </div>
             </li>

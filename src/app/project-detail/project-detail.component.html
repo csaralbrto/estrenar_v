@@ -33,7 +33,7 @@
               <!-- <div>Desde:</div> -->
                 <div class="head-proyecto">
                   <label for=""> Desde:
-                    <div class="precio">$ {{ response.field_typology_price | number }}</div>
+                    <div class="precio">${{ response.field_typology_price }}</div>
                   </label>
                 </div>
             </div>
@@ -294,8 +294,8 @@
         </div>
       </div>
       <div class="row show-for-small-only">
-        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important;">
-            <div class="">
+        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important; background-color: #fefefe;">
+            <div class="bckground-slider">
                 <ul class="slider-project-img slideproject">
                     <li class="is-active">
                         <div class="small-12 columns">
@@ -420,18 +420,65 @@
     </div>
 </div>
 <!--fin slide-->
-<div class="row columns">
-    <div class="features">
-        <div class="small-6 medium-3 columns end" *ngFor="let caract of caracteristicas; let i = index">
+<!-- inicio features mobile -->
+<div class="row columns show-for-small-only">
+        <div class="small-6 medium-3 columns end caracteristica-tipology text-right">
             <div class="item-big">
-                <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
-                <div class="data caracteristica-inmueble">{{ caract.name_only }}</div>
+                <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
+                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
             </div>
         </div>
-    </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+              <div class="data"> {{ response.bathrooms }} alcobas</div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+              <div class="data"> Garaje {{ response.garages }}</div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+              <div class="data"> {{ response.bedrooms }} baños</div>
+            </div>
+        </div>
+</div>
+<!--fin features mobile-->
+<!-- inicio features desktop -->
+<div class="row columns hide-for-small-only pLeftFeatures">
+    <!-- <div class="features"> -->
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+                <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
+                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+              <div class="data"> {{ response.bathrooms }} alcobas</div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+              <div class="data"> Garaje {{ response.garages }}</div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+              <div class="data"> {{ response.bedrooms }} baños</div>
+            </div>
+        </div>
+    <!-- </div> -->
 </div>
 <hr class="white">
-<!--fin features-->
+<!--fin features desktop-->
 <!-- Modal de contacto -->
 <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>
@@ -499,14 +546,17 @@
 </div>
 <!-- Fin modal gracias -->
 <!--mas caracteristicas-->
-<div class="row columns" *ngIf="response.adicionales">
+<div class="row columns" *ngIf="caracteristicas">
     <ul class="accordion" data-accordion data-allow-all-closed="true">
         <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
             <div class="accordion-content" data-tab-content>
                 <div class="row">
-                    <div class="medium-3 columns end" *ngFor="let adicionales of response.adicionales; let i = index">
-                        <div class="feature"><span><img src="/assets/images/feature.png" alt=""></span>{{ adicionales.nombre }}</div>
+                    <div class="small-6 medium-3 columns end caracteristica-tipology" *ngFor="let caract of caracteristicas; let i = index">
+                        <div class="item-big">
+                            <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
+                            <div class="data caracteristica-inmueble">{{ caract.name_only }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -521,15 +571,15 @@
                 <ul class="tabs">
                     <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
                     <li class="tabs-title tabs-title-maps is-active"><a class="tabs-map-button tab-map-project" aria-selected="true" id="showPlane" (click)="showHideTab('2')">Planos</a></li>
-                    <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
+                    <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project-streetV" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
                 </ul>
             </div>
             <div class="tabs-content" data-tabs-content="propertiesProject">
-                <div class="tabs-panel is-active pLeft0" id="mapProject">
+                <div class="tabs-panel is-active paddingNone" id="mapProject">
                     <div class="direccion">
                         <img src="/assets/images/map.png" alt=""> {{ response.field_typology_project.field_project_location[0].field_location_address }}
                     </div>
-                    <div id="googleMaps" class="hide">
+                    <div id="googleMaps" class="hide agm-mobile">
                         <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
                             <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="response.marketIcon">
                                 <agm-info-window #infoWindow>
@@ -619,7 +669,8 @@
                             </agm-marker>
                         </agm-map>
                         <hr class="white">
-                        <div class="row columns">
+                        <!-- Zonas de interes desktop -->
+                        <div class="row columns hide-for-small-only">
                             <h2>Zonas de interés</h2>
                             <div class="small-12 medium-4 columns end zona">
                                 <div class="row">
@@ -759,6 +810,147 @@
                               </div>
                             </div>
                         </div>
+                        <!-- fin de zonas de interés desktop -->
+                        <!-- zonas de interés mobile -->
+                        <div class="row columns show-for-small-only">
+                            <h2>Zonas de interés</h2>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-4 small-1 columns">
+                                      <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
+                                        <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-8 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
+                                        Hospitales
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-3 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-9 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
+                                        Restaurantes
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-4 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-8 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/banco.png" alt="" width="30px" height="30px">
+                                        Bancos
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-4 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-8 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
+                                        Educación
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-3 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-9 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
+                                        Centros comerciales
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-4 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-8 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
+                                        Transporte
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-4 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-8 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/parque.png" alt="" width="30px" height="30px">
+                                        Parques
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-3 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-9 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
+                                        Supermercados
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-4 small-1 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                    <div class="medium-8 small-10 columns paddingZinteres">
+                                      <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
+                                        Iglesias
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fin de zonas de interés mobile -->
                     </div>
                     <div id="map" class="hide"></div>
                     <div class="hide-for-small-only">
@@ -791,7 +983,8 @@
     <hr class="mobile">
     <div class="medium-4 columns text-center">
         <h2 class="deco">¿Necesitas asesoría?</h2>
-        <p class="mini">Déjanos tus datos para contactarte o agendar una visita.</p>
+        <p class="mini">Déjanos tus datos para contactarte</p>
+        <p class="mini">o agendar una visita.</p>
         <div class="formulario">
             <div data-abide-error class="alert callout" style="display: none;">
                 <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
@@ -802,7 +995,7 @@
             </ul>
             <div class="tabs-content" data-tabs-content="contacto">
                 <div class="tabs-panel is-active" id="panel1">
-                    <form data-abide novalidate [formGroup]="form">
+                    <form data-abide novalidate [formGroup]="form" id="contactTipology">
                         <div class="container-form">
                             <span id="spanName" class="error hide">
                                 Debe digitar un nombre de contacto
@@ -857,8 +1050,8 @@
                     <p>Programa la fecha y la jornada en la que deseas visitar y conocer el proyecto:</p>
                     <form [formGroup]="form2">
                         <div class="container-form">
-                            <div class="dates1">
-                                <div class="dates">
+                            <div class="dates1 row">
+                                <div class="dates columns medium-6">
                                     <button class="button" type="button" style="height: 63px;" (click)="picker.open()">
                                         <div class="month">
                                           <span>   {{returnmonth(items) | uppercase}}</span>
@@ -869,7 +1062,7 @@
                                     </button>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </div>
-                                <div class="test12" style="margin-top: 10px;">
+                                <div class="test12 columns medium-6" style="margin-top: 10px;">
                                     <div class="radio1">
                                         <input type="radio" (change)="changeJournal('morning')" name="journalOption" id="" formControlName="journalOption" value="manana" [checked]="true"><label for="right-label" class="text-left">Mañana</label>
                                     </div>
@@ -895,8 +1088,14 @@
                             <input type="text" placeholder="Nombre*" formControlName="name" name="name" required pattern="text">
                             <input type="text" placeholder="Email*" formControlName="email" name="email" required pattern="email">
                             <input type="text" placeholder="Teléfono" formControlName="phone" name="phone">
+                            <select id="select" required formControlName="contact" name="contact">
+                                <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                                <option value="telefono">Tel&eacute;fonica</option>
+                                <option value="email">Correo Electr&oacute;nico</option>
+                                <option value="whatsapp">Whatsapp</option>
+                            </select>
                             <div class="text-left terminos">
-                                <input type="checkbox" name="term" formControlName="term"><label for="right-label" class="text-left">Declaro haber leído el <a href="/aviso-privacidad">Aviso de privacidad</a> y estar conforme con el mismo</label>
+                                <input type="checkbox" class="check-date-form" name="term" formControlName="term"><label for="right-label" class="text-left">Declaro haber leído el <a href="/aviso-privacidad">Aviso de privacidad</a> y estar conforme con el mismo</label>
                             </div>
                         </div>
                         <button (click)="onSubmitDates(form2.value)" type="button" class="success button sendInfoAgenda" style="color: black;">Agendar visita</button>
@@ -908,12 +1107,14 @@
             <div class="container-constructora">
                 <div class="small-5 columns padding0">
                     <!-- <img class="constructora" width="150px" src="/assets/images/content/constructora.jpg" alt=""> -->
-                    <img class="constructora" width="150px" [src]="url_img_path + response.field_typology_builder.field_builder_logo.uri.url"  alt="">
+                    <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.id}}"><img class="constructora" width="150px" [src]="url_img_path + response.field_typology_builder.field_builder_logo.uri.url"  alt=""></a>
                 </div>
                 <div class="small-7 columns text-center">
                     <h3>Atención en sala de ventas</h3>
-                    <p>Lunes a viernes: 7am a 5pm</p>
-                    <p>Sabados y domingos: 9am a 5 pm</p>
+                    <p>Lunes a viernes: </p>
+                    <p>7am a 5pm</p>
+                    <p>Sabados y domingos:</p>
+                    <p>9am a 5 pm</p>
                 </div>
             </div>
         </div>
@@ -1022,7 +1223,7 @@
             <div class="nav-calc">
                 <ul class="nav-cal-menu show-for-small-only" data-tabs id="simuladores">
                     <li class="tabs-title opcion is-active">
-                        <a href="#simulador1" class="active" aria-selected="true">Simulador capacidad endeudamiento</a>
+                        <a href="#simulador1" aria-selected="true">Simulador capacidad endeudamiento</a>
                     </li>
                     <li class="tabs-title opcion">
                         <a data-tabs-target="simulador2"  href="#simulador2">Simulador subsidio de vivienda</a>
@@ -1048,11 +1249,11 @@
                                     </div>
                                 </div>
                                 <div class="medium-4 columns text-center campo-destacado">
-                                    <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
-                                    <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento | number }}">
+                                    <p>Según tus ingresos, podrías recibir un prestamo por:</p>
+                                    <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
                                     <hr>
                                     <p> Podrías comprar una vivienda de:</p>
-                                    <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
+                                    <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
                                     <hr>
                                     <a class="button secondary ">Ver proyectos afines</a>
                                 </div>
@@ -1064,13 +1265,13 @@
                         <div class="container-form">
                             <div class="row">
                                 <div class="medium-4 columns text-center">
-                                    <p> Cuentanos cuales son tus ingresos mensuales</p>
+                                    <p> Cuéntanos cuales son tus ingresos mensuales</p>
                                     <div class="input-group">
                                         <span class="input-group-label">$</span>
                                         <input class="input-group-field" type="number" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (change)="change(form3.value,'subsidio_vivienda')">
                                     </div>
                                     <hr>
-                                    <p> Cuales son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
+                                    <p> Cuáles son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
                                     <div class="input-group">
                                         <span class="input-group-label">$</span>
                                         <input class="input-group-field" type="number" formControlName="ingresos_mensuales_persona_vivienda" name="ingresos_mensuales_persona_vivienda" (change)="change(form3.value,'subsidio_vivienda')" value="0">
@@ -1089,10 +1290,12 @@
                                 </div>
                                 <div class="medium-4 columns text-center campo-destacado">
                                     <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                                    <input type="text" placeholder="" value="{{ smmlv_vivienda }} SMMLV">
+                                    <input type="text" placeholder="" value="{{ smmlv_vivienda }}">
+                                    <label for="">Salarios mínimos legales vigentes</label>
                                     <hr>
                                     <p> Equivalentes a:</p>
-                                    <input type="text" placeholder="" value="$ {{ subsidio_vivienda | number }}">
+                                    <input type="text" placeholder="" value="$ {{ subsidio_vivienda }}">
+                                    <label for="">Pesos colombianos</label>
                                     <a class="button secondary ">Más información</a>
                                 </div>
                                 <div class="medium-4 columns text-center">
@@ -1119,7 +1322,7 @@
                                     </div>
                                     <hr>
                                     <p> Ingrese el valor del inmueble</p>
-                                    <p>$ {{ response.field_typology_price | number }}</p>
+                                    <p>$ {{ response.field_typology_price }}</p>
                                     <!-- <div class="input-group">
                                         <span class="input-group-label">$</span>
                                         <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota" [value]="response.field_typology_price" readonly>
@@ -1204,7 +1407,7 @@
                             <div class="row">
                                 <div class="medium-4 medium-offset-4 columns text-center">
                                     <p> Valor de la vivienda a financiar</p>
-                                    <p>$ {{ response.field_typology_price | number }}</p>
+                                    <p>$ {{ response.field_typology_price }}</p>
                                     <div class="input-group">
                                         <span class="input-group-label">$</span>
                                         <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito" readonly>
@@ -1322,6 +1525,7 @@
     </div>
 </div>
 <hr class="white">
+<!-- Seccion areas similares desktop -->
 <div class="row columns hide-for-small-only">
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
@@ -1492,6 +1696,8 @@
     </div>
     <!--fin slide-->
 </div>
+<!-- Fin sección areas similares desktop -->
+<!-- Seccion areas similares mobile -->
 <div class="row columns show-for-small-only">
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
@@ -1499,7 +1705,7 @@
     <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
         <div class="">
           <ul class="slider-properties-project">
-            <li class="is-active">
+            <li class="is-active" *ngIf="propertiesSimilars">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
                         <img [src]="url_img_path + propertiesSimilars[0].typology_images" alt="" class="proyecto">
@@ -1565,7 +1771,7 @@
                     </div>
                 </div>
             </li>
-            <li >
+            <li *ngIf="propertiesSimilars > 0">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
                         <img [src]="url_img_path + propertiesSimilars[1].typology_images" alt="" class="proyecto">
@@ -2046,6 +2252,7 @@
     </div>
     <!--fin slide-->
 </div>
+<!-- Fin sección areas similares mobile -->
 <div class="row columns text-center">
   <div class="medium-6 medium-offset-3 columns">
       <span>

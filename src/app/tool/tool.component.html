@@ -29,7 +29,7 @@
         <div class="nav-calc">
             <ul class="nav-cal-menu show-for-small-only" data-tabs id="simuladores">
                 <li class="tabs-title opcion is-active">
-                    <a aria-selected="true" href="#panel2" class="active">Simulador subsidio de vivienda</a>
+                    <a aria-selected="true" href="#panel2">Simulador subsidio de vivienda</a>
                 </li>
                 <li class="tabs-title opcion">
                     <a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
@@ -57,10 +57,10 @@
                             </div>
                             <div class="medium-4 columns text-center campo-destacado">
                                 <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
-                                <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento | number }}">
+                                <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
                                 <hr>
                                 <p> Podrías comprar una vivienda de:</p>
-                                <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento | number }}">
+                                <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
                                 <hr>
                                 <a (click)="searchProjectByPrice(vivienda_endeudamiento)"  class="button secondary btn-projects-afines viewProject">Ver proyectos afines</a>
                             </div>
@@ -72,13 +72,13 @@
                     <div class="container-form">
                         <div class="row">
                             <div class="medium-4 columns text-center">
-                                <p> Cuentanos cuales son tus ingresos mensuales</p>
+                                <p> Cuéntanos cuales son tus ingresos mensuales</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
                                     <input class="input-group-field" type="number" id="unput_test" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (keyup)="onKeyUpformatInput($event)" (change)="change(form.value,'subsidio_vivienda')">
                                 </div>
                                 <hr>
-                                <p> Cuales son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
+                                <p> Cuáles son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
                                     <input class="input-group-field" type="number" formControlName="ingresos_mensuales_persona_vivienda" name="ingresos_mensuales_persona_vivienda" (change)="change(form.value,'subsidio_vivienda')" value="0">
@@ -87,7 +87,7 @@
                                 <p> Los ingresos totales son:</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
-                                    <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda | number }}">
+                                    <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda }}">
                                 </div>
                                 <hr>
                                 <p class="small">
@@ -97,10 +97,12 @@
                             </div>
                             <div class="medium-5 columns text-center campo-destacado">
                                 <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                                <input type="text" placeholder="" value ="{{ smmlv_vivienda }} SMMLV">
+                                <input type="text" placeholder="" value ="{{ smmlv_vivienda }}">
+                                <label for="">Salarios mínimos legales vigentes</label>
                                 <hr>
                                 <p> Equivalentes a:</p>
-                                <input type="text" placeholder="" value="$ {{ subsidio_vivienda | number }}">
+                                <input type="text" placeholder="" value="$ {{ subsidio_vivienda }}">
+                                <label for="">Pesos colombianos</label>
                                 <a href="#" class="button secondary btn-projects-afines">Más información</a>
                             </div>
                             <div class="medium-4 columns text-center">
@@ -165,10 +167,10 @@
                                 <div class="container-simulacion">
                                     <div class="row text-left">
                                         <div class="medium-12 columns">
-                                            <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota | number }}</span></div>
-                                            <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial | number }}</span></div>
-                                            <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota | number }}</span></div>
-                                            <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota | number }}</span></div>
+                                            <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota }}</span></div>
+                                            <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial }}</span></div>
+                                            <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota }}</span></div>
+                                            <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota }}</span></div>
                                         </div>
                                     </div>
                                     <hr>
@@ -188,8 +190,8 @@
                                                     <tr *ngFor="let cuota of cuotasMensuales; let i = index">
                                                         <td>{{ cuota.count }}</td>
                                                         <td>{{ cuota.date }}</td>
-                                                        <td>$ {{ cuota.value_cuota | number }}</td>
-                                                        <td>$ {{ cuota.saldo | number }}</td>
+                                                        <td>$ {{ cuota.value_cuota }}</td>
+                                                        <td>$ {{ cuota.saldo }}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -198,7 +200,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="medium-12 columns text-center">
+                            <div class="medium-12 columns text-center mT15Mobile">
                                 <a (click)="clickInfo(form.value)" class="button secondary ">Simular</a>
 
 
@@ -217,30 +219,35 @@
                                 </div>
                                 <hr>
                                 <p> Plazo de financiamiento (meses)</p>
-                                <div class="slider white" data-slider data-initial-start="50">
+                                <div class="show-for-small-only"><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutputMobile"></div>
+                                <div class="slider white show-for-small-only" data-slider data-initial-start="50" data-end="120">
+                                    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputMobile"></span>
+                                    <span class="slider-fill" data-slider-fill></span>
+                                </div>
+                                <div class="slider white hide-for-small-only" data-slider data-initial-start="50" data-end="120">
                                     <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
                                     <span class="slider-fill" data-slider-fill></span>
                                 </div>
-                                <div><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutput1"></div>
+                                <div class="hide-for-small-only"><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutput1"></div>
                                 <hr>
                         <div class="text-left">
                         <p>Escoje una de las dos opciones:</p>
-                        <fieldset>
                         <div class="row">
-                            <div class="medium-6 columns">
+                          <div class="columns medium-12 small-16">
+                            <div class="medium-6 small-5 columns">
                                 <label id="credHipotecario" class="container-radio label-button">Crédito hipotecario
                                     <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="hipotecario">
                                     <span style="display: none;" class="checkmark"></span>
                                 </label>
                             </div>
-                            <div class="medium-6 columns">
+                            <div class="medium-6 small-5 columns">
                                 <label id="leasHabitacional" class="container-radio label-button">Leasing habitacional
                                     <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="leasing">
                                     <span style="display: none;" class="checkmark"></span>
                                 </label>
                             </div>
+                          </div>
                         </div>
-                        </fieldset>
                         <p class="small">
                             * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
                         </p>
@@ -249,66 +256,66 @@
                             <div class="medium-4 columns text-center end">
                                 <h5>Cálculo aproximado para poder adquirir tu vivienda:</h5>
                                 <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
-                                    <div class="medium-6 columns">
+                                    <div class="medium-6 small-6 columns">
                                             <div class="container-calc panel-value-calc" data-equalizer-watch>
                                                 <div class="value">
-                                                    $ {{ monto_prestamo_credito | number }}
+                                                    $ {{ monto_prestamo_credito }}
                                                 </div>
                                                 <div class="caracteristica">
                                                     Monto préstamo
                                                 </div>
                                             </div>
                                     </div>
-                                    <div class="medium-6 columns">
+                                    <div class="medium-6 small-6 columns">
                                         <div class="container-calc panel-value-calc" data-equalizer-watch>
                                             <div class="value">
-                                                $ {{ cuota_inicial_vivienda_credito | number }}
+                                                $ {{ cuota_inicial_vivienda_credito }}
                                             </div>
                                             <div class="caracteristica">
                                                 Cuota inicial {{ cuota_inicial_porcentaje_vivienda_credito }}
                                             </div>
                                         </div>
-                                </div>
-                                <div class="medium-6 columns">
-                                    <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                        <div class="value">
-                                            $ {{ ingresos_mensuales_min_credito | number }}
+                                    </div>
+                                    <div class="medium-6 small-6 columns">
+                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                            <div class="value">
+                                                $ {{ ingresos_mensuales_min_credito }}
+                                            </div>
+                                            <div class="caracteristica-ing-min">
+                                                Ingresos minimos mensuales
+                                            </div>
                                         </div>
-                                        <div class="caracteristica-ing-min">
-                                            Ingresos minimos mensuales
+                                    </div>
+                                    <div class="medium-6 small-6 columns">
+                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                            <div class="value">
+                                                {{ plazo_meses_credito }}
+                                            </div>
+                                            <div class="caracteristica">
+                                                Plazo en meses
+                                            </div>
                                         </div>
                                     </div>
-                            </div>
-                            <div class="medium-6 columns">
-                                <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                    <div class="value">
-                                        {{ plazo_meses_credito }}
+                                    <div class="medium-6 small-6 columns">
+                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                            <div class="value">
+                                                % {{ tasa_de_interes_credito }}
+                                            </div>
+                                            <div class="caracteristica">
+                                                Tasa de interés
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="caracteristica">
-                                        Plazo en meses
+                                    <div class="medium-6 small-6 columns">
+                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                            <div class="value">
+                                                $ {{ cuota_mensual_credito }}
+                                            </div>
+                                            <div class="caracteristica">
+                                                Cuota mensual
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                        </div>
-                        <div class="medium-6 columns">
-                            <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                <div class="value">
-                                    % {{ tasa_de_interes_credito }}
-                                </div>
-                                <div class="caracteristica">
-                                    Tasa de interés
-                                </div>
-                            </div>
-                    </div>
-                    <div class="medium-6 columns">
-                        <div class="container-calc panel-value-calc" data-equalizer-watch>
-                            <div class="value">
-                                $ {{ cuota_mensual_credito | number }}
-                            </div>
-                            <div class="caracteristica">
-                                Cuota mensual
-                            </div>
-                        </div>
-                </div>
                                 </div>
                                 <a (click)="searchProjectByPrice(monto_prestamo_credito)" class="button secondary btn-projects-afines">Ver proyectos afines</a>
                             </div>
@@ -349,7 +356,7 @@
                 </div>
                 <div class="precio text-center">
                     <div>Desde:</div>
-                    <span>{{ project.typology_price | number }}</span>
+                    <span>{{ project.typology_price }}</span>
                 </div>
                 <hr>
             </div>
@@ -393,7 +400,8 @@
     </div>
 </div>
 <!-- Slider mobile porojects -->
-<div class="small-12 columns show-for-small-only">
+<div class="small-12 columns show-for-small-only mT15Mobile">
+  <h1 class="deco text-center">Proyectos de interés</h1>
   <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
     <ul class="slider-proyects-mobile">
       <li class="is-active ">
@@ -425,7 +433,7 @@
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>$ {{ response[0].typology_price | number }}</span>
+                      <span>$ {{ response[0].typology_price }}</span>
                   </div>
                   <hr>
 
@@ -501,7 +509,7 @@
                 </div>
                 <div class="precio text-center">
                     <div>Desde:</div>
-                    <span>$ {{ response[1].typology_price | number }}</span>
+                    <span>$ {{ response[1].typology_price }}</span>
                 </div>
                 <hr>
 
@@ -578,7 +586,7 @@
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>$ {{ response[2].typology_price | number }}</span>
+                      <span>$ {{ response[2].typology_price }}</span>
                   </div>
                   <hr>
 

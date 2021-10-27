@@ -8,6 +8,7 @@ declare function todayDate(): any;
 import { Meta } from '@angular/platform-browser';
 import { MetaTag } from '../class/metatag.class';
 import { NgxSpinnerService } from 'ngx-spinner';
+declare var $: any;
 
 @Component({
   selector: 'app-contactus',
@@ -18,7 +19,9 @@ export class ContactusComponent implements OnInit {
   tags: MetaTag;
   public response: any;
   public responseSubmit: any;
+  public responseNewsletter: any;
   public form: FormGroup;
+  public form2: FormGroup;
   public results = false;
 
   constructor(
@@ -33,6 +36,7 @@ export class ContactusComponent implements OnInit {
 
   ngOnInit(): void {
     this.startSpinner();
+    this.createFormSuscribe();
     this.createForm();
     this.results = true;
     if(this.response.metatag_normalized){
@@ -45,7 +49,6 @@ export class ContactusComponent implements OnInit {
       this.stopSpinner();
     }
   }
-
   createForm() {
     this.form =  this.formBuilder.group({
       name: new FormControl(''),
@@ -186,13 +189,43 @@ export class ContactusComponent implements OnInit {
       );
     }
   }
+  createFormSuscribe() {
+    this.form2 =  this.formBuilder.group({
+      email_suscribe: new FormControl(''),
+    });
+  }
+  onSubmitSuscribe(values) {
+    this.startSpinner();
+    /* Se recibe los valores del formulario */
+    // console.log(values);
+    let payload = {
+      "webform_id":"newsletter",
+      "correo_electronico":values.email_suscribe,
+    };
+    // console.log(payload);
+    this.Service.suscribeNewsletter( payload )
+    .subscribe(
+      data =>(this.responseNewsletter = data),
+      err => console.log(),
+      () => {
+        // console.log(this.responseNewsletter.sid);
+        if(this.responseNewsletter.sid){
+          this.stopSpinner();
+          $('#exampleModalSuscribe').foundation('open');
+          this.createFormSuscribe();
+        }else{
+          this.stopSpinner();
+          $('#exampleModalNosuscribe').foundation('open');
+        }
+      }
+    );
+  }
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
-   stopSpinner(): void {
+  stopSpinner(): void {
 
     if (this.spinnerService) {
       // console.log("ingrese a parar");

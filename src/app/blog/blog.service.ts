@@ -22,7 +22,7 @@ export class BlogService {
   public sendComment: string;
   public dataSubscribePath: string;
 
-  constructor( private http: Http ) { 
+  constructor( private http: Http ) {
     this.dataBlogPath = environment.endpointTestingApi+ 'articles';
     this.mostReadPath = environment.endpointTestingApi+ 'articles?items_per_page=2';
     this.newExperiencePath = environment.endpointTestingApi+ 'articles?items_per_page=4&page=0&article_type=La experiencia de estrenar';
@@ -32,7 +32,7 @@ export class BlogService {
     this.blogRelatedPath = environment.endpointTestingApi+ 'blogRelated';
     this.blogPath = environment.endpointTestingApi + 'blog/';
     this.sendComment = environment.endpointTestingApi + 'blog_comment/';
-    this.dataSubscribePath = environment.endpointTestingApi+ '';
+    this.dataSubscribePath = environment.endpointTestingApiPost + 'webform_rest/submit?_format=json';
   }
   /* Traer toda la info de blogs */
   getBlogData(): Observable<any> {
@@ -80,6 +80,4 @@ export class BlogService {
     return this.http.post(this.dataSubscribePath, params)
     .pipe(map(( response => response.json() )));
   }
-
-
 }

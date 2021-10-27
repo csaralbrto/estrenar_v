@@ -5,11 +5,16 @@
 <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 <div class="row columns">
-  <h1>Comparador</h1>
+  <div class="hide-for-small-only">
+    <h1>Comparador</h1>
+  </div>
+  <div class="text-center show-for-small-only">
+    <h1>Comparador</h1>
+  </div>
 </div>
 <div class="row columns">
   <div class="comparador">
-      <div class="medium-2 columns" style="{{stylesText}}" *ngIf="response_data_project[0]">
+      <div class="medium-2 small-5 columns hide-for-small-only" style="{{stylesText}}" *ngIf="response_data_project[0]">
           <div class="encabezados" style="{{ marginTop }}">
               <div class="item"><img src="/assets/images/ic-precio.jpg" alt="" class="ico">Precio</div>
               <div class="item"><img src="/assets/images/ic-ubicacion.jpg" alt="" class="ico">Ubicacion</div>
@@ -23,17 +28,31 @@
               <div class="item"><img src="/assets/images/ic-estrato.jpg" alt="" class="ico">Estrato</div>
           </div>
       </div>
-      <div class="medium-10 columns">
-          <div class="row">
+      <div class="medium-2 small-5 columns show-for-small-only" *ngIf="response_data_project[0]">
+          <div class="encabezados">
+              <div class="item"><img src="/assets/images/ic-precio.jpg" alt="" class="ico">Precio</div>
+              <div class="item"><img src="/assets/images/ic-ubicacion.jpg" alt="" class="ico">Ubicacion</div>
+              <div class="item"><img src="/assets/images/ic-vivienda.jpg" alt="" class="ico">Vivienda</div>
+              <div class="item"><img src="/assets/images/ic-estado.jpg" alt="" class="ico">Estado</div>
+              <div class="item"><img src="/assets/images/ic-tipo.jpg" alt="" class="ico">Tipo</div>
+              <div class="item"><img src="/assets/images/ic-alcobas.jpg" alt="" class="ico">Alcobas</div>
+              <div class="item"><img src="/assets/images/ic-water.jpg" alt="" class="ico">Baños</div>
+              <div class="item"><img src="/assets/images/ic-garajes.jpg" alt="" class="ico">Garajes</div>
+              <div class="item"><img src="/assets/images/ic-acabados.jpg" alt="" class="ico">Acabados</div>
+              <div class="item"><img src="/assets/images/ic-estrato.jpg" alt="" class="ico">Estrato</div>
+          </div>
+      </div>
+      <div class="medium-10 small-7 columns">
+          <div class="row hide-for-small-only">
               <div class="proyecto text-center">
-                  <div class="{{classRow}} data columns" *ngIf="response_data_project[0]">
-                      <div id="title">{{ response_data_project[0].project }}</div>
+                  <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[0]">
+                      <div id="title"><a href="/es{{response_data_project[0].url}}">{{ response_data_project[0].project }}</a></div>
                       <div id="foto">
                           <div class="container-foto">
-                              <span (click)="removeCompare(response_data_project[0].nid);" href="" class=""><img [src]="url_img_path + response_data_project[0].typology_images" alt=""
+                              <span (click)="removeCompare(response_data_project[0].nid);"><img [src]="url_img_path + response_data_project[0].typology_images" alt=""
                                 class="proyecto"></span>
                           </div>
-                          <div class="row mBotton5">
+                          <div class="row mBotton5 contact-bton-comparator">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">
                                 <div class="ev--bots--whatsapp">
@@ -81,14 +100,14 @@
                       <div id="estrato">{{ response_data_project[0].project_feature_stratum }}</div>
                       <hr>
                   </div>
-                  <div class="{{classRow}} data columns" *ngIf="response_data_project[1]">
-                      <div id="title">{{ response_data_project[1].project }}</div>
+                  <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[1]">
+                      <div id="title"><a href="/es{{ response_data_project[1].url }}">{{ response_data_project[1].project }}</a></div>
                       <div id="foto">
                           <div class="container-foto">
                               <span (click)="removeCompare(response_data_project[1].nid);" class=""><img [src]="url_img_path + response_data_project[1].typology_images" alt=""
                                       class="proyecto"></span>
                           </div>
-                          <div class="row mBotton5">
+                          <div class="row mBotton5 contact-bton-comparator">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">
                                 <div class="ev--bots--whatsapp">
@@ -136,14 +155,14 @@
                       <div id="estrato">{{ response_data_project[1].project_feature_stratum }}</div>
                       <hr>
                   </div>
-                  <div class="{{classRow}} data columns" *ngIf="response_data_project[2]">
-                      <div id="title">{{ response_data_project[2].project }}</div>
+                  <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[2]">
+                      <div id="title"><a href="/es{{ response_data_project[2].url }}">{{ response_data_project[2].project }}</a></div>
                       <div id="foto">
                           <div class="container-foto">
                               <span (click)="removeCompare(response_data_project[2].nid);" class=""><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
                                       class="proyecto"></span>
                           </div>
-                          <div class="row mBotton5">
+                          <div class="row mBotton5 contact-bton-comparator">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">
                                 <div class="ev--bots--whatsapp">
@@ -191,14 +210,14 @@
                       <div id="estrato">{{ response_data_project[2].project_feature_stratum }}</div>
                       <hr>
                   </div>
-                  <div class="{{classRow}} data columns" *ngIf="response_data_project[3]">
-                      <div id="title">{{ response_data_project[3].project }}</div>
+                  <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[3]">
+                      <div id="title"><a href="/es{{ response_data_project[3].url }}">{{ response_data_project[3].project }}</a></div>
                       <div id="foto">
                           <div class="container-foto">
                               <span (click)="removeCompare(response_data_project[3].nid);" class=""><img [src]="url_img_path + response_data_project[3].typology_images" alt=""
                                       class="proyecto"></span>
                           </div>
-                          <div class="row mBotton5">
+                          <div class="row mBotton5 contact-bton-comparator">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">
                                 <div class="ev--bots--whatsapp">
@@ -246,6 +265,240 @@
                       <div id="estrato">{{ response_data_project[3].project_feature_stratum }}</div>
                       <hr>
                   </div>
+              </div>
+          </div>
+          <div class="row show-for-small-only">
+              <div class="proyecto text-center">
+                <ul class="row-tags-filters">
+                  <li class="tags-mobile-filters">
+                    <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[0]">
+                        <div id="title"><a href="/es{{response_data_project[0].url}}">{{ response_data_project[0].project }}</a></div>
+                        <div id="foto">
+                            <div class="container-foto">
+                                <span (click)="removeCompare(response_data_project[0].nid);"><img [src]="url_img_path + response_data_project[0].typology_images" alt=""
+                                  class="proyecto"></span>
+                            </div>
+                            <div class="row mBotton5 contact-bton-comparator">
+                              <div id="contact-btn" class="columns">
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="tools"></div>
+                        <div id="precio">{{ response_data_project[0].typology_price | number }}</div>
+                        <hr>
+                        <div id="ubicacion">{{ response_data_project[0].project_city }}, {{ response_data_project[0].project_zone }}</div>
+                        <hr>
+                        <div id="vivienda">{{ response_data_project[0].project_category }}</div>
+                        <hr>
+                        <div id="estado">{{ response_data_project[0].project_feature_status }}</div>
+                        <hr>
+                        <div id="tipo">{{ response_data_project[0].property_type }}</div>
+                        <hr>
+                        <div id="albobas">{{ response_data_project[0].bedrooms }}</div>
+                        <hr>
+                        <div id="water">{{ response_data_project[0].bathrooms }}</div>
+                        <hr>
+                        <div id="garajes">{{ response_data_project[0].garages }}</div>
+                        <hr>
+                        <div id="acabados">{{ response_data_project[0].finishes }}</div>
+                        <hr>
+                        <div id="estrato">{{ response_data_project[0].project_feature_stratum }}</div>
+                        <hr>
+                    </div>
+                  </li>
+                  <li class="tags-mobile-filters">
+                    <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[1]">
+                          <div id="title"><a href="/es{{ response_data_project[1].url }}">{{ response_data_project[1].project }}</a></div>
+                          <div id="foto">
+                              <div class="container-foto">
+                                  <span (click)="removeCompare(response_data_project[1].nid);" class=""><img [src]="url_img_path + response_data_project[1].typology_images" alt=""
+                                          class="proyecto"></span>
+                              </div>
+                              <div class="row mBotton5 contact-bton-comparator">
+                                <div id="contact-btn" class="columns">
+                                  <div class="medium-4 columns">
+                                    <div class="ev--bots--whatsapp">
+                                      <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                        <img src="/assets/images/wsap.png">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="medium-4 columns">
+                                    <div class="ev--bots--whatsapp">
+                                      <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                        <img src="/assets/images/wsap.png">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="medium-4 columns">
+                                    <div class="ev--bots--whatsapp">
+                                      <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                        <img src="/assets/images/wsap.png">
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="tools"></div>
+                          <div id="precio">{{ response_data_project[1].typology_price | number }}</div>
+                          <hr>
+                          <div id="ubicacion">{{ response_data_project[1].project_city }}, {{ response_data_project[1].project_zone }}</div>
+                          <hr>
+                          <div id="vivienda">{{ response_data_project[1].project_category }}</div>
+                          <hr>
+                          <div id="estado">{{ response_data_project[1].project_feature_status }}</div>
+                          <hr>
+                          <div id="tipo">{{ response_data_project[1].property_type }}</div>
+                          <hr>
+                          <div id="albobas">{{ response_data_project[1].bedrooms }}</div>
+                          <hr>
+                          <div id="water">{{ response_data_project[1].bathrooms }}</div>
+                          <hr>
+                          <div id="garajes">{{ response_data_project[1].garages }}</div>
+                          <hr>
+                          <div id="acabados">{{ response_data_project[1].finishes }}</div>
+                          <hr>
+                          <div id="estrato">{{ response_data_project[1].project_feature_stratum }}</div>
+                          <hr>
+                    </div>
+                  </li>
+                  <li class="tags-mobile-filters">
+                    <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[2]">
+                        <div id="title"><a href="/es{{ response_data_project[2].url }}">{{ response_data_project[2].project }}</a></div>
+                        <div id="foto">
+                            <div class="container-foto">
+                                <span (click)="removeCompare(response_data_project[2].nid);" class=""><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
+                                        class="proyecto"></span>
+                            </div>
+                            <div class="row mBotton5 contact-bton-comparator">
+                              <div id="contact-btn" class="columns">
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="tools"></div>
+                        <div id="precio">{{ response_data_project[2].typology_price | number }}</div>
+                        <hr>
+                        <div id="ubicacion">{{ response_data_project[2].project_city }}, {{ response_data_project[2].project_zone }}</div>
+                        <hr>
+                        <div id="vivienda">{{ response_data_project[2].project_category }}</div>
+                        <hr>
+                        <div id="estado">{{ response_data_project[2].project_feature_status }}</div>
+                        <hr>
+                        <div id="tipo">{{ response_data_project[2].property_type }}</div>
+                        <hr>
+                        <div id="albobas">{{ response_data_project[2].bedrooms }}</div>
+                        <hr>
+                        <div id="water">{{ response_data_project[2].bathrooms }}</div>
+                        <hr>
+                        <div id="garajes">{{ response_data_project[2].garages }}</div>
+                        <hr>
+                        <div id="acabados">{{ response_data_project[2].finishes }}</div>
+                        <hr>
+                        <div id="estrato">{{ response_data_project[2].project_feature_stratum }}</div>
+                        <hr>
+                    </div>
+                  </li>
+                  <li class="tags-mobile-filters">
+                    <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[3]">
+                        <div id="title"><a href="/es{{ response_data_project[3].url }}">{{ response_data_project[3].project }}</a></div>
+                        <div id="foto">
+                            <div class="container-foto">
+                                <span (click)="removeCompare(response_data_project[3].nid);" class=""><img [src]="url_img_path + response_data_project[3].typology_images" alt=""
+                                        class="proyecto"></span>
+                            </div>
+                            <div class="row mBotton5 contact-bton-comparator">
+                              <div id="contact-btn" class="columns">
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                                <div class="medium-4 columns">
+                                  <div class="ev--bots--whatsapp">
+                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                      <img src="/assets/images/wsap.png">
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="tools"></div>
+                        <div id="precio">{{ response_data_project[3].typology_price | number }}</div>
+                        <hr>
+                        <div id="ubicacion">{{ response_data_project[3].project_city }}, {{ response_data_project[3].project_zone }}</div>
+                        <hr>
+                        <div id="vivienda">{{ response_data_project[3].project_category }}</div>
+                        <hr>
+                        <div id="estado">{{ response_data_project[3].project_feature_status }}</div>
+                        <hr>
+                        <div id="tipo">{{ response_data_project[3].property_type }}</div>
+                        <hr>
+                        <div id="albobas">{{ response_data_project[3].bedrooms }}</div>
+                        <hr>
+                        <div id="water">{{ response_data_project[3].bathrooms }}</div>
+                        <hr>
+                        <div id="garajes">{{ response_data_project[3].garages }}</div>
+                        <hr>
+                        <div id="acabados">{{ response_data_project[3].finishes }}</div>
+                        <hr>
+                        <div id="estrato">{{ response_data_project[3].project_feature_stratum }}</div>
+                        <hr>
+                    </div>
+                  </li>
+                </ul>
               </div>
           </div>
       </div>

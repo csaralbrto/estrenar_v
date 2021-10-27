@@ -15,9 +15,9 @@ export class DetailConstructoraService {
 
   constructor( private http: Http ) {
     this.endpoint = environment.endpointTestingApi + 'group/builder/';
-    this.dataFilterPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=8';
+    this.dataFilterPath = environment.endpointTestingApi;
     this.endpointProjects = environment.endpointTestingApi + 'typologies/project_builder/';
-    this.endpointForm = environment.endpointApi + 'saveFormDate/';
+    this.endpointForm = environment.endpointTestingApi + 'ev-lead';
    }
 
   /* Traer la info del proyecto */
@@ -31,8 +31,15 @@ export class DetailConstructoraService {
     .pipe(map(( response => response.json() )));
   }
   /* Traer filtros */
-  getFilters(): Observable<any> {
-    return this.http.get(this.dataFilterPath)
+  getFilters( params:any ): Observable<any> {
+    console.log(this.dataFilterPath + params);
+    return this.http.get(this.dataFilterPath + params)
+    .pipe(map(( response => response.json() )));
+  }
+  /* enviar info de los formularios */
+  getFormService( params: any ): Observable<any> {
+    // console.log(this.endpointForm, params);
+    return this.http.post(this.endpointForm, params)
     .pipe(map(( response => response.json() )));
   }
 }

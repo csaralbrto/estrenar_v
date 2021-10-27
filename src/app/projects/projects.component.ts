@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import {NgModule, LOCALE_ID} from '@angular/core';
 import { ProjectsService } from './projects.service';
 import { MapsAPILoader } from '@agm/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -157,6 +158,9 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               var arrayDeLaton = project.latlon.split(',');
               project.latitude = arrayDeLaton[0]
               project.longitude = arrayDeLaton[1]
+
+              /* format numbr */
+              project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
             }
             /* Iterar sobre los Filtros de proyectos */
             if(this.response.facets.property_type){
@@ -297,6 +301,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             var arrayDeLaton = project.latlon.split(',');
             project.latitude = arrayDeLaton[0]
             project.longitude = arrayDeLaton[1]
+            /* format numbr */
+            project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
           }
           this.results = true;
           this.stopSpinner();
@@ -372,6 +378,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           var arrayDeLaton = project.latlon.split(',');
           project.latitude = arrayDeLaton[0]
           project.longitude = arrayDeLaton[1]
+          /* format numbr */
+          project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
         }
         /* Iterar sobre Filtros */
         if(this.response.facets.property_type){
@@ -529,6 +537,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           var arrayDeLaton = project.latlon.split(',');
           project.latitude = arrayDeLaton[0]
           project.longitude = arrayDeLaton[1]
+          /* format numbr */
+          project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
         }
         /* Iterar sobre Filtros */
         if(this.response.facets.property_type){
@@ -681,6 +691,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           var arrayDeLaton = project.latlon.split(',');
           project.latitude = arrayDeLaton[0]
           project.longitude = arrayDeLaton[1]
+          /* format numbr */
+          project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
         }
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
@@ -1271,11 +1283,13 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       error = false;
     }
     if(!error){
+      this.startSpinner();
+      $('#exampleModal2').foundation('close');
       /* Se recibe los valores del formulario */
       var f = new Date();
       var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
       values.type_submit = 'contact_form';
-      var url = window.location.pathname;
+      var url = window.location.href;
       let payload = {
           "identity": {
             "mail": values.email,
@@ -1288,16 +1302,16 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         "campaign": {
             "options": [
                 {
-                    "UTM source": sessionStorage['UTMSource']?sessionStorage.getItem("UTMSource"):""
+                    "UTM source": sessionStorage['UTMSource']?sessionStorage.getItem("UTMSource"):null
                 },
                 {
-                    "UTM medium": sessionStorage['UTMMedium']?sessionStorage.getItem("UTMMedium"):""
+                    "UTM medium": sessionStorage['UTMMedium']?sessionStorage.getItem("UTMMedium"):null
                 },
                 {
-                    "UTM content": sessionStorage['UTMContent']?sessionStorage.getItem("UTMContent"):""
+                    "UTM content": sessionStorage['UTMContent']?sessionStorage.getItem("UTMContent"):null
                 },
                 {
-                    "UTM campaign": sessionStorage['UTMCampaing']?sessionStorage.getItem("UTMCampaing"):""
+                    "UTM campaign": sessionStorage['UTMCampaing']?sessionStorage.getItem("UTMCampaing"):null
                 }
             ]
         },
@@ -1329,15 +1343,24 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             "category": "Contáctenos"
         }
     }
-    // console.log(payload);
+    console.log(payload);
       this.Service.getFormService( payload )
       .subscribe(
         data =>(this.responseSubmit = data),
         err => console.log(),
         () => {
-          if(this.responseSubmit.id){
-            $('#exampleModal1').foundation('open');
-            this.form.reset();
+          if(this.responseSubmit){
+            if(this.responseSubmit.error){
+              console.log(this.responseSubmit);
+              this.stopSpinner();
+              $('#exampleModalContactErrorProject').foundation('open');
+              this.form.reset();
+            }else{
+              console.log(this.responseSubmit);
+              this.stopSpinner();
+              $('#exampleModalContactProject').foundation('open');
+              this.form.reset();
+            }
           }
           if(!this.responseSubmit.id){
             // $('#modalAlertError').foundation('open');
@@ -1466,13 +1489,26 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       })
       .catch(error => console.log('error', error));
   }
-  // Metodos Cargando
+  removeFilter(value){
+    if(this.optionsTypySelected == value){
+      this.optionsTypySelected = "";
+    }else if(this.optionsPriceSelected == value){
+      this.optionsPriceSelected = "";
+    }else if(this.optionsCitySelected == value){
+      this.optionsCitySelected = "";
+    }else if(this.optionsZoneSelected == value){
+      this.optionsZoneSelected = "";
+    }else if(this.optionsSectorSelected == value){
+      this.optionsSectorSelected = "";
+    }
+  }
+    // Metodos Cargando
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-   stopSpinner(): void {
+  stopSpinner(): void {
     if (this.spinnerService) {
       // console.log("ingrese a parar");
       this.spinnerService.hide();

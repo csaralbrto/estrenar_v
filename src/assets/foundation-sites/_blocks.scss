@@ -241,6 +241,7 @@ p {
     @media screen and (max-width: 600px) {
       margin-bottom: 0.3rem;
       padding: 1rem;
+      height: 3rem;
     }
   }
   .block-search {
@@ -314,9 +315,10 @@ p {
       background: $white;
       position: fixed;
       transition: ease all 0.4s;
-      z-index: 2;
+      z-index: 9;
       -webkit-box-shadow: 0px 7px 6px -3px rgba(0, 0, 0, 0.3);
       box-shadow: 0px 7px 6px -3px rgba(0, 0, 0, 0.3);
+      margin-top: 0rem;
       ul.menu {
         a {
           color: $black;
@@ -390,6 +392,7 @@ p {
       padding: 1rem;
       width: 100%;
       border-radius: 0 0 8px 8px;
+      font-size: 19px;
     }
   }
   .slick-dots {
@@ -1317,7 +1320,8 @@ span.error {
         border-bottom: 0px solid #fff !important;
         &:hover,
         :focus {
-          background: #b4ca3d !important;
+          // background: #b4ca3d !important;
+          background: $white;
           color: $black !important;
         }
       }
@@ -1327,7 +1331,8 @@ span.error {
       color: $primary-color;
       &:hover,
       :focus {
-        background: #b4ca3d !important;
+        // background: #b4ca3d !important;
+        background: $white;
         color: $white !important;
       }
     }
@@ -1903,75 +1908,6 @@ a.tipos {
   }
 }
 
-//comparador
-.comparador {
-  font-size: 0.9rem;
-  .proyecto {
-    img.proyecto {
-      border-radius: $global-radius;
-      margin-bottom: 1rem;
-    }
-    .data {
-      &.columns {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-    #foto,
-    #precio,
-    #title,
-    #ubicacion,
-    #vivienda,
-    #estado,
-    #tipo,
-    #alcobas,
-    #water,
-    #garajes,
-    #acabados,
-    #estrato {
-      padding: 0 2rem;
-    }
-    div#foto {
-      min-height: 140px;
-      position: relative;
-      .container-foto {
-        position: relative;
-        &:after {
-          position: absolute;
-          background: url(/assets/images/cerrar.png);
-          content: "";
-          right: 0.5rem;
-          top: 0.5rem;
-          width: 20px;
-          height: 20px;
-          background-size: contain;
-          cursor: pointer;
-        }
-      }
-    }
-    div#title {
-      font-weight: 600;
-      margin-bottom: 1rem;
-      min-height: 46px;
-    }
-    div#precio {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: $primary-color;
-    }
-  }
-  .encabezados {
-    margin-top: 208px;
-    .item {
-      margin: 2rem auto;
-      font-weight: 600;
-      color: $primary-color;
-      img {
-        margin-right: 1rem;
-      }
-    }
-  }
-}
 
 //team
 .team {
@@ -2280,27 +2216,6 @@ ul.pagination-pointed {
   }
 }
 
-.calculo {
-  .container-calc {
-    background: $white;
-    padding: 0rem;
-    border-radius: $global-radius;
-    margin-bottom: 1rem;
-    .caracteristica {
-      color: $primary-color;
-      padding-top: 10px;
-    }
-    .caracteristica-ing-min {
-      color: $primary-color;
-    }
-    .value {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: $primary-color;
-      padding-top: 1rem;
-    }
-  }
-}
 
 .container-simulacion {
   background: $white;
@@ -2515,6 +2430,9 @@ img.image.constructor {
 //COntador
 
 @media print, screen and (min-width: 481px) {
+.tag-filters{
+  width: 171px !important;
+}
   .reveal {
     &.filter {
       width: 900px;
@@ -2699,7 +2617,7 @@ img:focus {
     }
     .tabs-title > a {
       color: $black;
-      padding: 0.75rem 1.1rem;
+      padding: 0.75rem 0.7rem;
     }
     .tabs-title > a:focus,
     .tabs-title > a[aria-selected="true"] {
@@ -2763,7 +2681,8 @@ img:focus {
       color: $white;
       &:hover {
         border-radius: 8px;
-        background: $primary-color;
+        // background: $primary-color;
+        background: #b4ca3d;
         color: $white;
       }
     }
@@ -2996,6 +2915,248 @@ ul.menu li a img {
   background: #e4f294 !important;
 }
 @media print, screen and (max-width: 480px) {
+
+  //comparador
+  .comparador {
+    font-size: 0.9rem;
+    .proyecto {
+      img.proyecto {
+        border-radius: $global-radius;
+        margin-bottom: 1rem;
+      }
+      .data {
+        &.columns {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      #foto,
+      #precio,
+      #title,
+      #ubicacion,
+      #vivienda,
+      #estado,
+      #tipo,
+      #alcobas,
+      #water,
+      #garajes,
+      #acabados,
+      #estrato {
+        padding: 0 2rem;
+      }
+      div#foto {
+        min-height: 140px;
+        position: relative;
+        .container-foto {
+          position: relative;
+          &:after {
+            position: absolute;
+            background: url(/assets/images/cerrar.png);
+            content: "";
+            right: 0.5rem;
+            top: 0.5rem;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            cursor: pointer;
+          }
+        }
+      }
+      div#title {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        min-height: 46px;
+      }
+      div#precio {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: $primary-color;
+      }
+    }
+    .encabezados {
+      margin-top: 208px;
+      .item {
+        margin: 0.67rem auto;
+        font-weight: 600;
+        color: $primary-color;
+        img {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+  .row-tags-filters{
+    overflow: scroll;
+    white-space: nowrap;
+  }
+  .tags-mobile-filters{
+    display: inline-block;
+    // width: 50%;
+  }
+  // .tag-filters{
+  //   width: 100px !important;
+  // }
+  .dispContent{
+    display: contents;
+  }
+  .mTopBuilders{
+    margin-top: -28px;
+  }
+  .text-right{
+    text-align: right;
+  }
+  input#sliderOutputMobile {
+    background-color: #14454e;
+    color: white;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+  }
+  .calculo {
+    .container-calc {
+      background: $white;
+      padding: 0rem;
+      border-radius: $global-radius;
+      margin-bottom: 1rem;
+      .caracteristica {
+        color: $primary-color;
+        padding-top: 10px;
+      }
+      .caracteristica-ing-min {
+        color: $primary-color;
+      }
+      .value {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: $primary-color;
+        padding-top: 0.5rem;
+      }
+    }
+  }
+  .panel-value-calc {
+    height: 85px !important;
+    width: 140px;
+  }
+
+  label.label-button {
+    padding: 0.7rem 0rem 0.7rem 0;
+    border-radius: 8px;
+    color: #0a244f !important;
+    background: #c5c3c8;
+    display: inline-block;
+    margin: 0 0 1rem;
+    text-align: center;
+    width: 143px;
+    margin-left: -20px;
+  }
+  .mT15Mobile{
+    margin-top: 15px;
+  }
+  .paddingZinteres{
+    padding-left: 0rem !important;
+  }
+  .agm-mobile{
+    width: 100%;
+  }
+  .caracteristica-tipology{
+    height: 52px;
+  }
+  .bckground-slider{
+    background-color: #fefefe;
+  }
+  .tab-map-project {
+    padding: 21px !important;
+  }
+  .tab-map-project-streetV {
+    padding: 14px !important;
+  }
+  .reveal a.button.button-show-apartment{
+    margin: 0;
+  }
+  .scroll-hori-mobile{
+    overflow: scroll;
+    white-space: nowrap;
+  }
+  .contact-bton-comparator{
+    display: none;
+  }
+  ul.menu-left {
+    margin-left: 0;
+    margin-bottom: 0;
+    overflow: scroll;
+    white-space: nowrap;
+    margin-bottom: 3rem;
+    li {
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid #eeeeee;
+      margin-bottom: 0.5rem;
+      padding: 0.4rem 0 0.4rem 0;
+      list-style: none;
+      display: inline-block;
+      width: auto;
+      a{
+        color: #a8a8a8;
+        padding: 0 0.5rem;
+      }
+    }
+  }
+  .pLeftMorFilters{
+    padding-left: 18px;
+  }
+  div#exampleModalSuscribe {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  div#exampleModalComment {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  div#exampleModalContactProject {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  div#exampleModalContactErrorProject {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .card .precio span {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #14454e;
+  }
+  .card h2 {
+    font-size: 1.2rem;
+    letter-spacing: 0;
+    margin-bottom: 0.6rem;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
   .mLeftPRojects{
     margin-left: 18px !important;
   }
@@ -3084,7 +3245,8 @@ ul.menu li a img {
     overflow-y: scroll;
     top: 2.9rem;
     text-align: center;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
+    margin-top: 0.1rem;
   }
   div#responsive-search-input{
     position: fixed;
@@ -3101,9 +3263,10 @@ ul.menu li a img {
   }
   .bton-mobile{
     width: 49% !important;
+    height: 38px;
   }
   .tabs-title-maps > a {
-    width: 91px;
+    width: 86px;
   }
   .mt20M {
     margin-top: 20px;
@@ -3233,6 +3396,164 @@ ul.menu li a img {
 
 }
 @media print, screen and (min-width: 481px) {
+
+//comparador
+.comparador {
+  font-size: 0.9rem;
+  .proyecto {
+    img.proyecto {
+      border-radius: $global-radius;
+      margin-bottom: 1rem;
+    }
+    .data {
+      &.columns {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    #foto,
+    #precio,
+    #title,
+    #ubicacion,
+    #vivienda,
+    #estado,
+    #tipo,
+    #alcobas,
+    #water,
+    #garajes,
+    #acabados,
+    #estrato {
+      padding: 0 2rem;
+    }
+    div#foto {
+      min-height: 140px;
+      position: relative;
+      .container-foto {
+        position: relative;
+        &:after {
+          position: absolute;
+          background: url(/assets/images/cerrar.png);
+          content: "";
+          right: 0.5rem;
+          top: 0.5rem;
+          width: 20px;
+          height: 20px;
+          background-size: contain;
+          cursor: pointer;
+        }
+      }
+    }
+    div#title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      min-height: 46px;
+    }
+    div#precio {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $primary-color;
+    }
+  }
+  .encabezados {
+    margin-top: 208px;
+    .item {
+      margin: 2rem auto;
+      font-weight: 600;
+      color: $primary-color;
+      img {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+  .pLeftFeatures{
+    padding-left: 4rem;
+  }
+  .calculo {
+    .container-calc {
+      background: $white;
+      padding: 0rem;
+      border-radius: $global-radius;
+      margin-bottom: 1rem;
+      .caracteristica {
+        color: $primary-color;
+        padding-top: 10px;
+      }
+      .caracteristica-ing-min {
+        color: $primary-color;
+      }
+      .value {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: $primary-color;
+        padding-top: 1rem;
+      }
+    }
+  }
+  .panel-value-calc {
+    height: 85px !important;
+    width: 167px;
+  }
+  label.label-button {
+    padding: 0.7rem 0rem 0.7rem 0;
+    border-radius: 8px;
+    color: #0a244f !important;
+    background: #c5c3c8;
+    display: inline-block;
+    margin: 0 0 1rem;
+    text-align: center;
+    width: 157px;
+  }
+  .tab-map-project {
+    padding: 18px !important;
+  }
+  .tab-map-project-streetV {
+    padding: 18px !important;
+  }
+  div#exampleModalSuscribe {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 25%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  div#exampleModalComment {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 25%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  div#exampleModalContactProject {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 25%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  div#exampleModalContactErrorProject {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 25%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .map-float{
+    position: sticky;
+    top: 90px;
+  }
   .pRightZones{
     padding-right: 72px !important;
   }
@@ -3307,6 +3628,9 @@ ul.menu li a img {
     }
   }
 }
+html.is-reveal-open body {
+   overflow-y: visible;
+}
 
 // ul#propertiesProject li.tabs-title {
 //   margin-right: 15px !important;
@@ -3340,8 +3664,8 @@ ul.menu li a img {
   padding-left: 0 !important;
 }
 .raddioForm {
-  width: 19px;
-  height: 16px;
+  width: 22px;
+  height: 20px;
 }
 
 .checkBokForm {
@@ -3395,9 +3719,6 @@ a.button.secondary.favorito.button-color-ev.fav-btn {
 .medium-7.columns.mTop-tabs-project {
   margin-top: 16px;
 }
-.tab-map-project {
-  padding: 15px !important;
-}
 
 span.button.secondary.buttonSendInfo {
   padding: 15px;
@@ -3412,16 +3733,6 @@ button.success.button.sendInfoAgenda {
   padding: 0 !important;
 }
 
-label.label-button {
-  padding: 0.7rem 0rem 0.7rem 0;
-  border-radius: 8px;
-  color: #0a244f !important;
-  background: #c5c3c8;
-  display: inline-block;
-  margin: 0 0 1rem;
-  text-align: center;
-  width: 157px;
-}
 label.container-radio.label-button.checked {
   background: #a9d22b;
   color: #0a244f;
@@ -3447,10 +3758,6 @@ label.container-radio.label-button.checked {
 }
 .margin-top20 {
   margin-top: 20px;
-}
-.panel-value-calc {
-  height: 85px !important;
-  width: 167px;
 }
 .width-buttonNormal {
   width: 130px !important;
@@ -3512,6 +3819,16 @@ label.container-radio.label-button.checked {
   &:hover {
     background: $white !important;
     border: 1px solid #b4ca3d !important;
+  }
+  &.bton-agenda {
+    background-color: white !important;
+    width: 55px !important;
+    color: #1b4a53 !important;
+    padding: 10px !important;
+    margin-right: 5px !important;
+    &.bton-active {
+      background-color: #a8d139 !important;
+    }
   }
 }
 .rows-img1,
@@ -3576,4 +3893,27 @@ input.input-morefilter {
 
 .mTop25{
   margin-top: 25px;
+}
+
+.slider {
+  background-color: none !important;
+}
+
+form#contactTipology input[type=radio]:checked {
+  background-color: #ffa500;
+}
+input.check-date-form {
+  width: 17px;
+  height: 21px;
+}
+.paddingNone{
+  padding: 0rem !important;
+}
+.checkBokForm-Contactus{
+  width: 17px;
+  height: 20px;
+}
+.slick-slider {
+  touch-action: auto;
+  -ms-touch-action: auto;
 }

@@ -222,7 +222,6 @@
 <!-- Slider proyectos mobile -->
 
 <div class="small-12 columns show-for-small-only">
-
   <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
     <ul class="slider-proyects-mobile">
       <li class="is-active ">
@@ -230,7 +229,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="allProjects[0].typology_images" alt="" class="proyecto-card">
+                      <img [src]="url_img_path + allProjects[0].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[0].project_category.length > 0">
@@ -254,7 +253,7 @@
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>$ {{ allProjects[0].typology_price | number }}</span>
+                      <span>${{ allProjects[0].typology_price }}</span>
                   </div>
                   <hr>
 
@@ -306,7 +305,7 @@
             <!-- Card Proyecto individual-->
             <div class="card" data-equalizer-watch>
                 <div class="container-photo">
-                    <img [src]="allProjects[1].typology_images" alt="" class="proyecto-card">
+                    <img [src]="url_img_path + allProjects[1].typology_images" alt="" class="proyecto-card">
                     <div class="container-tools">
                         <div class="tags">
                             <div *ngIf="allProjects[1].project_category.length > 0">
@@ -330,7 +329,7 @@
                 </div>
                 <div class="precio text-center">
                     <div>Desde:</div>
-                    <span>$ {{ allProjects[1].typology_price | number }}</span>
+                    <span>${{ allProjects[1].typology_price }}</span>
                 </div>
                 <hr>
 
@@ -383,7 +382,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="allProjects[2].typology_images" alt="" class="proyecto-card">
+                      <img [src]="url_img_path + allProjects[2].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[2].project_category.length > 0">
@@ -407,7 +406,7 @@
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>$ {{ allProjects[2].typology_price | number }}</span>
+                      <span>${{ allProjects[2].typology_price }}</span>
                   </div>
                   <hr>
 
@@ -454,12 +453,12 @@
               </div>
           </div>
       </li>
-      <li>
+      <li *ngIf="allProjects > 2">
           <div class="medium-6 columns">
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="allProjects[3].typology_images" alt="" class="proyecto-card">
+                      <img [src]="url_img_path + allProjects[3].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[3].project_category.length > 0">
@@ -483,7 +482,7 @@
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>$ {{ allProjects[3].typology_price | number
+                      <span>${{ allProjects[3].typology_price | number
                           }}</span>
                   </div>
                   <hr>
@@ -531,12 +530,12 @@
               </div>
           </div>
       </li>
-      <li>
+      <li *ngIf="allProjects > 3">
           <div class="medium-6 columns">
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="allProjects[4].typology_images" alt="" class="proyecto-card">
+                      <img [src]="url_img_path + allProjects[4].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[4].project_category.length > 0">
@@ -560,7 +559,7 @@
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>$ {{ allProjects[4].typology_price | number
+                      <span>${{ allProjects[4].typology_price | number
                           }}</span>
                   </div>
                   <hr>
@@ -624,6 +623,7 @@
               <div class="medium-2 columns">
                   <label>Tipo de inmueble
                       <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                        <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
                           <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                       </select>
                   </label>
@@ -631,6 +631,7 @@
               <div class="medium-2 columns">
                   <label>Precio
                       <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                        <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
                           <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
                       </select>
                   </label>
@@ -638,6 +639,7 @@
               <div class="medium-2 columns">
                   <label>Ciudad
                       <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                        <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
                           <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
                       </select>
                   </label>
@@ -645,6 +647,7 @@
               <div class="medium-2 columns">
                   <label>Zona
                       <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                        <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
                           <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
                       </select>
                       <ng-template #zoneTemplate>
@@ -657,6 +660,7 @@
               <div class="medium-2 columns">
                   <label>Sector
                       <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                        <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
                           <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
                       </select>
                       <ng-template #sectorTemplate>
@@ -683,6 +687,127 @@
     </form>
     <!--fin filtros-->
     <hr>
+    <!-- Modal más filtros -->
+    <div class="reveal filter small-12" id="masfiltrosModal" data-reveal>
+        <form [formGroup]="form_moreFilters">
+            <div class="row">
+              <div class="medium-12 small-12 columns">
+                <div class="medium-12 small-12 colunms text-center">
+                    <h1><strong>Más filtros</strong></h1>
+                </div>
+                <div class="medium-6 small-12 columns">
+                    <h3>Estado del proyecto</h3>
+                    <div *ngFor="let option of ValoresProyecto">
+                        <label class="container-check">{{option.values.value}}
+                            <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{option.url}}">
+                            <span class="checkmark-morefilter"></span>
+                        </label>
+                    </div>
+                    <div class="mTop-inmuebles">
+                      <h3>Inmueble</h3>
+                      <div class="row">
+                          <div class="small-6 columns">
+                              <div class="margin-top10"> Área m2</div>
+                          </div>
+                          <div class="small-6 columns">
+                              <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
+                                  <option *ngFor="let type of filterAreaBuilt; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                              </select>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> Habitaciones</div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
+                                </div>
+                                <input class="input-number input-morefilter" type="number" readonly id="bedroom" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> Baños</div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
+                                </div>
+                                <input class="input-number input-morefilter" type="number" readonly id="bathroom" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> Garajes</div>
+                        </div>
+                        <div class="small-6 columns">
+
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
+                                </div>
+                                <input class="input-number input-morefilter" type="number" readonly id="garage" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="medium-5 small-12 columns">
+                    <div class="row">
+                        <h3>Constructora</h3>
+                        <!-- Se comenta el select porque la constructora por defecto será 1 sola -->
+                            <!-- <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="content.drupal_internal__id">
+                              <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                            </select> -->
+                        <div *ngFor="let type of filterBuilder; let i = index">
+                          <label for=""><strong> {{ type.values.value }} </strong></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <h3>Colecciones</h3>
+                        <div class="filtros-tag-collection" *ngFor="let option of filterColection">
+                            <a *ngIf="option.values.active == 'true'; else simpleCollection" (click)="clickCollection(option.url)" class="button bton-collection bton-collection-active">{{option.values.value}}</a>
+                            <ng-template #simpleCollection>
+                                <a (click)="clickCollection(option.url)" class="button bton-collection">{{option.values.value}}</a>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                      <div class="columns medium-6 small-6">
+                        <a (click)="cleanFilter()">Limpiar filtros</a>
+                      </div>
+                      <div class="columns medium-6 small-6">
+                        <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </form>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- Fin modal más filtros -->
 </div>
 
 <hr class="white">
@@ -711,7 +836,7 @@
                 </div>
                 <div class="precio text-center">
                     <div>Desde:</div>
-                    <span>{{ project.typology_price | number }}</span>
+                    <span>${{ project.typology_price }}</span>
                 </div>
                 <hr>
             </div>
@@ -746,7 +871,7 @@
             </div>
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                  <a class="button bton-mobile" routerLink="/proyecto/{{project.uuid}}">Ver
+                  <a class="button bton-mobile" routerLink="/es/{{project.url}}">Ver
                       Proyecto</a>
                     <a class="button bton-mobile">Contacto</a>
                 </div>
@@ -756,3 +881,68 @@
 </div>
 
 <hr class="white">
+<!-- modal de contacto -->
+<div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
+  <h2>Contactar</h2>
+  <form data-abide novalidate [formGroup]="form">
+      <div class="container-form">
+          <span id="spanName" class="error hide">
+              Debe digitar un nombre de contacto
+            </span>
+          <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+          <span id="spannLastName" class="error hide">
+          Debe digitar un apellido de contacto
+        </span>
+          <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+          <span id="spanEmail" class="error hide">
+          Debe digitar un correo de contacto valido
+        </span>
+          <input type="text" placeholder="Email*" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+          <span id="spanPhone" class="error hide">
+          Debe digitar un n&uacute;mbre de contacto
+        </span>
+          <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+          <span id="spanContact" class="error hide">
+          Debe seleccionar una opción
+        </span>
+          <select id="select" required formControlName="contact" name="contact">
+          <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+          <option value="telefono">Tel&eacute;fonica</option>
+          <option value="email">Correo Electr&oacute;nico</option>
+          <option value="whatsapp">Whatsapp</option>
+        </select>
+          <span id="spanTypesearch" class="error hide">
+          Debe seleccionar una opción
+          </span>
+          <fieldset class="text-left">
+              <legend>Buscas vivienda para:</legend>
+              <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+              <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+          </fieldset>
+          <span id="spanTerm" class="error hide">
+          Debe aceptar los términos
+          </span>
+          <div class="text-left terminos">
+              <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
+                mismos.</label>
+
+          </div>
+          <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
+      </div>
+  </form>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- fin de modal contacto -->
+<!-- modal de gracias -->
+<div class="reveal text-center" id="exampleModal1" data-reveal>
+  <img src="/assets/images/logo-ev.png">
+  <h2>¡Gracias!</h2>
+  <p>Pronto te llegará toda la información a tu correo</p>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- fin de modal de gracias -->

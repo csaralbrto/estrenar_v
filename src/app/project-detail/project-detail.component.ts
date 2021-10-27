@@ -150,7 +150,7 @@ export class ProjectDetailComponent implements OnInit {
       (err) => console.log(),
       () => {
         if(this.response){
-          // console.log()
+          // console.log(this.response.individual)
           // this.beforeCheck(this.response.individual);
           /* captamos el uuid de la tipologia */
           this.typologyUuid = this.response.individual;
@@ -168,7 +168,9 @@ export class ProjectDetailComponent implements OnInit {
             // console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
-              console.log(this.response);
+              /* format numbr */
+              this.response.field_typology_price =  new Intl.NumberFormat("es-ES").format(this.response.field_typology_price)
+              // console.log(this.response);
               if(this.response.metatag_normalized){
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
@@ -238,11 +240,19 @@ export class ProjectDetailComponent implements OnInit {
                     img_src = '/assets/images/icon-medida.png';
                   }
                 }else{
-                  name_cara = caracteristica_tipologia.parent[0].name+': '+ caracteristica_tipologia.name
-                  if( caracteristica_tipologia.parent[0].field_icon_feature.uri){
-                    img_src = this.dataSrcImg + caracteristica_tipologia.parent[0].field_icon_feature.uri.url;
+                  if(caracteristica_tipologia.parent[0].name == 'Alcobas'){
+                    this.response.bathrooms = caracteristica_tipologia.name;
+                  }else if(caracteristica_tipologia.parent[0].name == 'Baños'){
+                    this.response.bedrooms = caracteristica_tipologia.name;
+                  }else if(caracteristica_tipologia.parent[0].name == 'Garajes'){
+                    this.response.garages = caracteristica_tipologia.name;
                   }else{
-                    img_src = '/assets/images/icon-medida.png';
+                    name_cara = caracteristica_tipologia.parent[0].name+': '+ caracteristica_tipologia.name
+                    if( caracteristica_tipologia.parent[0].field_icon_feature.uri){
+                      img_src = this.dataSrcImg + caracteristica_tipologia.parent[0].field_icon_feature.uri.url;
+                    }else{
+                      img_src = '/assets/images/icon-medida.png';
+                    }
                   }
                 }
                 caracteristica_tipologia.name_only = name_cara;
@@ -272,13 +282,14 @@ export class ProjectDetailComponent implements OnInit {
                 caracteristica_project.img_src = img_src
               }
               let new_url = environment.endpointTestingApi + 'typologies/other-areas/' + this.idProject + '/' + this.typologyUuid;
+              console.log(new_url)
               fetch(new_url, {
               })
               .then(newResponse => newResponse.json())
               .then(data => {
                 this.newResponse = data;
                 if (this.newResponse) {
-                  // console.log(this.newResponse);
+                  console.log(this.newResponse);
                   this.othersAreas = this.newResponse
                 }
               })
@@ -289,7 +300,7 @@ export class ProjectDetailComponent implements OnInit {
               .then(responseProperties => responseProperties.json())
               .then(data => {
                 this.responseProperties = data.search_results;
-                console.log('propiedades son ',data.search_results);
+                // console.log('propiedades son ',data.search_results);
                 if (this.responseProperties) {
                   this.propertiesSimilars = this.responseProperties
                   for (let project of this.propertiesSimilars) {
@@ -317,7 +328,6 @@ export class ProjectDetailComponent implements OnInit {
     let currentDate = moment(startDate);
       dateArray.push(moment(currentDate).format("YYYY-MMM-DD"));
       currentDate = moment(currentDate).add(1, "days");
-    console.log("currentDate "+currentDate);
     return dateArray;
   }
   // Cambiar el mes fecha
@@ -446,7 +456,7 @@ export class ProjectDetailComponent implements OnInit {
     }else if(value == 'transit_station'){
       this.transit_station_visible = true;
     }
-    setTimeout(() => { this.stopSpinner() }, 5000);
+    setTimeout(() => { this.stopSpinner() }, 2500);
   }
   beforeCheck(url_find){
     /* Traemos la información del usuario */
@@ -564,6 +574,7 @@ export class ProjectDetailComponent implements OnInit {
       email: new FormControl(''),
       phone: new FormControl(''),
       term: new FormControl(''),
+      contact: new FormControl('Deseas ser contactado'),
     });
   }
   createFormModal() {
@@ -849,7 +860,9 @@ export class ProjectDetailComponent implements OnInit {
     if(type == 'capacidad_endeudamiento'){
       this.prestamo_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(32);
       this.vivienda_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(45.714286);
-      console.log(this.prestamo_endeudamiento);
+      this.vivienda_endeudamiento = new Intl.NumberFormat("es-ES").format(this.vivienda_endeudamiento)
+      this.prestamo_endeudamiento = new Intl.NumberFormat("es-ES").format(this.prestamo_endeudamiento)
+      // console.log(this.prestamo_endeudamiento);
       // this.form.controls.prestamo_endudamiento.setValue(0);
     }else if(type == 'subsidio_vivienda'){
       let total = 0;
@@ -874,6 +887,7 @@ export class ProjectDetailComponent implements OnInit {
         this.smmlv_vivienda = 0;
         /* Agregar un mensaje que diga: Estimado usuario usted no aplica para recibir subsidio */
       }
+      this.subsidio_vivienda = new Intl.NumberFormat("es-ES").format(this.subsidio_vivienda)
     }else if(type == 'credito_vienda'){
       let monto_del_prestamo_multi = 0;
       let cuota = 0;

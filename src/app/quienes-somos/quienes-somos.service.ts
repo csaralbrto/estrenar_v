@@ -10,9 +10,11 @@ import { environment } from '../../environments/environment';
 })
 export class QuienesSomosService {
   public endpoint: string;
+  public sendNewsletter: string;
 
   constructor(private http: Http) {
     this.endpoint = environment.endpointApiBasicPage + '/quienes-somos';
+    this.sendNewsletter = environment.endpointTestingApiPost + 'webform_rest/submit?_format=json';
    }
 
   /* Traer la info de quienes somos */
@@ -25,4 +27,10 @@ export class QuienesSomosService {
 		return this.http.get(params)
     .pipe(map(( response => response.json() )));
 	}
+  /* Newsletter */
+  suscribeNewsletter( params: any ): Observable<any> {
+    // console.log(this.sendComment, params);
+    return this.http.post(this.sendNewsletter, params)
+    .pipe(map(( response => response.json() )));
+  }
 }

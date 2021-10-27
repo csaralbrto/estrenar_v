@@ -180,6 +180,14 @@ export class HeaderComponent implements OnInit {
       this.show_header = false;
     }
   }
+  onFocusSearch(){
+    console.log('entre al focus')
+    $('.img-search').addClass('hide');
+  }
+  onFocusOutSearch(){
+    console.log('entre al focusout')
+    $('.img-search').removeClass('hide');
+  }
   updateFAvorites() {
     if(sessionStorage['favorite']){
       let favorites = [];

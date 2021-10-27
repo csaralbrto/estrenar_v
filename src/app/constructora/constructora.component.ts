@@ -17,7 +17,7 @@ export class ConstructoraComponent implements OnInit {
   constructor( public Service: ConstructoraService, private spinnerService: NgxSpinnerService ) { }
   dataPath = environment.endpoint;
   cadena = '';
-  public url_search_word = 'https://lab.estrenarvivienda.com/es/api/builders/all?search=';
+  public url_search_word = 'https://lab.estrenarvivienda.com/api/builders/all?search=';
   largo = '';
   optionsLocationSelected: string = '';
   public stringQuery: any;
@@ -53,12 +53,19 @@ export class ConstructoraComponent implements OnInit {
       }
     );
   }
-
+  onFocusSearch(){
+    console.log('entre al focus')
+    $('.img-search').addClass('hide');
+  }
+  onFocusOutSearch(){
+    console.log('entre al focusout')
+    $('.img-search').removeClass('hide');
+  }
   loadMore(){
     this.startSpinner();
     let val = this.response.search_results.length;
     let numb_search = Number(val) + Number(4);
- 
+
     this.Service.loadMore(numb_search).subscribe(
       (data) => (this.response = data),
       (err) => console.log(),
@@ -88,7 +95,6 @@ export class ConstructoraComponent implements OnInit {
       $('#buttonLoadMore').addClass('disabled');
     }
   }
-
   change(value) {
 
     this.startSpinner();
@@ -134,8 +140,6 @@ export class ConstructoraComponent implements OnInit {
 
 
   }
-
-
   filterByWord() {
     var value = $('#searchWord').val();
     var url = this.url_search_word + value;
@@ -167,21 +171,17 @@ export class ConstructoraComponent implements OnInit {
       }
     })
     .catch(error => console.error(error))
-  }
-
-  // metodos cargando
+  }  // metodos cargando
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
-   stopSpinner(): void {
+  stopSpinner(): void {
 
     if (this.spinnerService) {
       // console.log("ingrese a parar");
       this.spinnerService.hide();
     }
   }
-
 }

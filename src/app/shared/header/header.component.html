@@ -64,8 +64,8 @@
                 <div class="row condensed">
                     <div class="medium-6 medium-offset-1 columns">
                         <div class="buscador">
-                            <img class="search" src="/assets/images/search.png">
-                            <input id="searchWord" type="search" placeholder="¿Qué estás buscando?" />
+                            <img class="search img-search" src="/assets/images/search.png">
+                            <input (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" id="searchWord" type="search" placeholder="¿Qué estás buscando?" />
                         </div>
                     </div>
                     <div class="medium-2 columns">
