@@ -658,8 +658,7 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <!-- <div style="display: none;" id="upload5"> -->
-      <div id="upload5">
+    <div style="display: none;" id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -953,7 +952,7 @@
                             </div>
                         </div>
                         <div class="small-12 columns">
-                            <div><img width="20px" height="20px" src="/assets/images/sala:comedor.png" alt=""> Sala comedor*</div>
+                            <div><img width="20px" height="20px" src="/assets/images/sala_comedor.png" alt=""> Sala comedor*</div>
                             <div class="" *ngFor="let option of livingDiningRoomTypology">
                                 <div>
                                     <input id="casas" type="checkbox" name="dining_room" formControlName="dining_room" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
