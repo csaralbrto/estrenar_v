@@ -1461,7 +1461,7 @@ span.error {
     }
     &.is-active {
       a {
-        background: $primary-color;
+        background: $primary-color !important;
         color: $white;
         &:hover,
         :focus {
@@ -1471,7 +1471,8 @@ span.error {
       }
     }
     a {
-      background: $secondary-color;
+      // background: $secondary-color;
+      background: white;
       color: $primary-color;
       &:hover,
       :focus {
@@ -2316,7 +2317,7 @@ img.image.constructor {
       width: auto !important;
       a {
         color: $medium-gray !important;
-        background: none !important;
+        // background: none !important;
         &.active {
           background: none !important;
           color: #14454e !important;
@@ -2916,7 +2917,17 @@ ul.menu li a img {
   background: #e4f294 !important;
 }
 @media print, screen and (max-width: 480px) {
-
+  .filter-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 3.2em;
+    bottom: 70%;
+    right: 0;
+    background-color: #14454e;
+    border-radius: 8px 0 0 8px !important;
+  }
   //comparador
   .comparador {
     font-size: 0.9rem;
@@ -3113,7 +3124,9 @@ ul.menu li a img {
     transform: translate(-50%,-50%);
     background-color: #fff;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1rem !important;
+    min-height: 20% !important;
+    height: 23% !important;
   }
   div#exampleModalComment {
     position: fixed;
@@ -3123,7 +3136,9 @@ ul.menu li a img {
     transform: translate(-50%,-50%);
     background-color: #fff;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1rem !important;
+    min-height: 30% !important;
+    height: 33% !important;;
   }
   div#exampleModalContactProject {
     position: fixed;
@@ -3133,7 +3148,9 @@ ul.menu li a img {
     transform: translate(-50%,-50%);
     background-color: #fff;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1rem !important;
+    min-height: 40% !important;
+    height: 40% !important;
   }
   div#exampleModalContactErrorProject {
     position: fixed;
@@ -3143,7 +3160,9 @@ ul.menu li a img {
     transform: translate(-50%,-50%);
     background-color: #fff;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1rem !important;
+    min-height: 40% !important;
+    height: 40% !important;
   }
   .card .precio span {
     font-size: 1.7rem;
