@@ -46,6 +46,7 @@ export class BlogDetailComponent implements OnInit {
   url_img_path = 'https://www.estrenarvivienda.com/';
 
   ngOnInit(): void {
+    $('#exampleModalComment').addClass('hide');
     this.startSpinner();
     this.createForm();
     this.createFormSuscribe()
@@ -99,6 +100,7 @@ export class BlogDetailComponent implements OnInit {
               })
               .catch(error => console.error(error))
              this.results = true;
+             $('#exampleModalComment').removeClass('hide')
             }
           })
           .catch(error => console.error(error))

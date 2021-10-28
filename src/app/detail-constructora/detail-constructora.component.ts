@@ -130,6 +130,8 @@ export class DetailConstructoraComponent implements OnInit {
               () => {
                 if (this.response) {
                   console.log(this.response);
+                  this.allProjects = this.response.search_results
+                  this.countProjects = this.allProjects.length;
                   if(this.response.facets.property_type){
                     this.filterType = this.response.facets.property_type;
                   }

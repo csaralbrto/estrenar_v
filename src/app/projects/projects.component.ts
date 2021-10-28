@@ -847,6 +847,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           var arrayDeLaton = project.latlon.split(',');
           project.latitude = arrayDeLaton[0]
           project.longitude = arrayDeLaton[1]
+          project.typology_price = new Intl.NumberFormat("es-ES").format(project.typology_price)
         }
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
@@ -956,6 +957,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           var arrayDeLaton = project.latlon.split(',');
           project.latitude = arrayDeLaton[0]
           project.longitude = arrayDeLaton[1]
+          project.typology_price = new Intl.NumberFormat("es-ES").format(project.typology_price)
         }
         if(this.response.facets.property_type){
           this.optionsTypySelected = '';
@@ -1058,6 +1060,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           var arrayDeLaton = project.latlon.split(',');
           project.latitude = arrayDeLaton[0]
           project.longitude = arrayDeLaton[1]
+          project.typology_price = new Intl.NumberFormat("es-ES").format(project.typology_price)
         }
         /* Método para obtener toda la info de proyectos */
         this.Service.getData(this.resultProyecto).subscribe(
@@ -1148,6 +1151,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               var arrayDeLaton = project.latlon.split(',');
               project.latitude = arrayDeLaton[0]
               project.longitude = arrayDeLaton[1]
+              project.typology_price = new Intl.NumberFormat("es-ES").format(project.typology_price)
             }
             /* Iterar sobre los Filtros de proyectos */
             if(this.response.facets.property_type){

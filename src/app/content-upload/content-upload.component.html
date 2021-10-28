@@ -658,7 +658,8 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <div style="display: none;" id="upload5">
+    <!-- <div style="display: none;" id="upload5"> -->
+      <div id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -843,7 +844,7 @@
                     <div class="row hide-for-small-only">
                       <h2 class="contenUpload">Características del inmueble</h2>
                         <div class="small-6 columns">
-                            <div> Habitaciones</div>
+                            <div><img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones*</div>
                             <div class="input-group input-number-group">
                                 <div class="input-group-button">
                                     <span class="input-number-decrement" (click)=(decreaseValue(1))>-</span>
@@ -855,7 +856,7 @@
                             </div>
                         </div>
                         <div class="small-6 columns">
-                            <div>Niveles del inmueble</div>
+                            <div><img width="20px" height="20px" src="/assets/images/niveles de inmueble.png" alt="">Niveles del inmueble*</div>
                             <div class="input-group input-number-group">
                                 <div class="input-group-button">
                                     <span class="input-number-decrement" (click)=(decreaseValue(4))>-</span>
@@ -867,7 +868,7 @@
                             </div>
                         </div>
                         <div class="small-6 columns">
-                            <div> Baños</div>
+                            <div><img width="20px" height="20px" src="/assets/images/icon-water.png" alt=""> Baños*</div>
                             <div class="input-group input-number-group">
                                 <div class="input-group-button">
                                     <span class="input-number-decrement" (click)=(decreaseValue(2))>-</span>
@@ -879,7 +880,7 @@
                             </div>
                         </div>
                         <div class="small-6 columns">
-                            <div> Garajes</div>
+                            <div><img width="20px" height="20px" src="/assets/images/icon-garaje.png" alt=""> Garajes</div>
                             <div class="input-group input-number-group">
                                 <div class="input-group-button">
                                     <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
@@ -894,7 +895,7 @@
                     <div class="row show-for-small-only">
                         <div class="small-12 columns">
                           <div class="input-group input-number-group">
-                              <div style="margin-right: 68px;margin-top: 7px;"> Habitaciones</div>
+                              <div style="margin-right: 68px;margin-top: 7px;"><img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones*</div>
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(1))>-</span>
                                 </div>
@@ -906,7 +907,7 @@
                         </div>
                         <div class="small-12 columns">
                           <div class="input-group input-number-group">
-                              <div style="margin-right: 15px;margin-top: 7px;">Niveles del inmueble</div>
+                              <div style="margin-right: 15px;margin-top: 7px;"> <img width="20px" height="20px" src="/assets/images/niveles de inmueble.png" alt=""> Niveles del inmueble*</div>
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(4))>-</span>
                                 </div>
@@ -918,7 +919,7 @@
                         </div>
                         <div class="small-12 columns">
                           <div class="input-group input-number-group">
-                              <div style="margin-right: 117px;margin-top: 7px;"> Baños</div>
+                              <div style="margin-right: 117px;margin-top: 7px;"><img width="20px" height="20px" src="/assets/images/icon-water.png" alt=""> Baños*</div>
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(2))>-</span>
                                 </div>
@@ -930,7 +931,7 @@
                         </div>
                         <div class="small-12 columns">
                           <div class="input-group input-number-group">
-                              <div style="margin-right: 108px;margin-top: 7px;"> Garajes</div>
+                              <div style="margin-right: 115px;margin-top: 7px;"><img width="20px" height="20px" src="/assets/images/icon-garaje.png" alt=""> Garajes</div>
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(3))>-</span>
                                 </div>
@@ -952,7 +953,7 @@
                             </div>
                         </div>
                         <div class="small-12 columns">
-                            <div>Sala comedor</div>
+                            <div><img width="20px" height="20px" src="/assets/images/sala:comedor.png" alt=""> Sala comedor*</div>
                             <div class="" *ngFor="let option of livingDiningRoomTypology">
                                 <div>
                                     <input id="casas" type="checkbox" name="dining_room" formControlName="dining_room" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>

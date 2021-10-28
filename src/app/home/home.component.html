@@ -215,12 +215,12 @@
                               <div *ngIf="response.home_featured_collections[0]; else imgOther0">
                                   <a (click)=(loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name))>
                                       <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
+                                    <figcaption class="">{{ response.home_featured_collections[0] ? response.home_featured_collections[0].name : "" }}</figcaption>
                                   </a>
                               </div>
                               <ng-template #imgOther0>
                                   <img class="" src="/assets/images/content/ficha.jpg" alt="">
                               </ng-template>
-                              <figcaption class="">{{ response.home_featured_collections[0] ? response.home_featured_collections[0].name : "" }}</figcaption>
                           </figure>
                       </div>
                   </li>

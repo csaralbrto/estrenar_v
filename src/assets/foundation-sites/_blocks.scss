@@ -2288,6 +2288,7 @@ img.image.constructor {
     background-color: #14454e;
     border-radius: 0px 0 0 0px !important;
     text-align: center;
+    z-index: 1;
     .ev--bots--facebook {
       display: inline-block;
     }
@@ -3396,7 +3397,9 @@ ul.menu li a img {
 
 }
 @media print, screen and (min-width: 481px) {
-
+.mLfetApartamentos{
+  margin-left: -36px !important;
+}
 //comparador
 .comparador {
   font-size: 0.9rem;

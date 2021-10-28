@@ -57,10 +57,10 @@
                             </div>
                             <div class="medium-4 columns text-center campo-destacado">
                                 <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
-                                <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
+                                <input type="text" class="text-center" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
                                 <hr>
                                 <p> Podrías comprar una vivienda de:</p>
-                                <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
+                                <input type="text" class="text-center" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
                                 <hr>
                                 <a (click)="searchProjectByPrice(vivienda_endeudamiento)"  class="button secondary btn-projects-afines viewProject">Ver proyectos afines</a>
                             </div>
@@ -97,11 +97,11 @@
                             </div>
                             <div class="medium-5 columns text-center campo-destacado">
                                 <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                                <input type="text" placeholder="" value ="{{ smmlv_vivienda }}">
+                                <input type="text" class="text-center" placeholder="" value ="{{ smmlv_vivienda }}">
                                 <label for="">Salarios mínimos legales vigentes</label>
                                 <hr>
                                 <p> Equivalentes a:</p>
-                                <input type="text" placeholder="" value="$ {{ subsidio_vivienda }}">
+                                <input type="text" class="text-center" placeholder="" value="$ {{ subsidio_vivienda }}">
                                 <label for="">Pesos colombianos</label>
                                 <a href="#" class="button secondary btn-projects-afines">Más información</a>
                             </div>

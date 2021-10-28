@@ -179,7 +179,7 @@
                   <h3>Inmueble</h3>
                   <div class="row">
                       <div class="small-6 columns">
-                          <div class="margin-top10"> Área m2</div>
+                          <div class="margin-top10"> <img width="20px" height="20px" src="/assets/images/icon-medida.png" alt=""> Área m2</div>
                       </div>
                       <div class="small-6 columns">
                           <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
@@ -190,7 +190,7 @@
                 </div>
                 <div class="row">
                     <div class="small-6 columns">
-                        <div> Habitaciones</div>
+                        <div><img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones</div>
                     </div>
                     <div class="small-6 columns">
                         <div class="input-group input-number-group">
@@ -207,7 +207,7 @@
                 </div>
                 <div class="row">
                     <div class="small-6 columns">
-                        <div> Baños</div>
+                        <div><img width="20px" height="20px" src="/assets/images/icon-water.png" alt=""> Baños</div>
                     </div>
                     <div class="small-6 columns">
                         <div class="input-group input-number-group">
@@ -223,7 +223,7 @@
                 </div>
                 <div class="row">
                     <div class="small-6 columns">
-                        <div> Garajes</div>
+                        <div><img width="20px" height="20px" src="/assets/images/icon-garaje.png" alt=""> Garajes</div>
                     </div>
                     <div class="small-6 columns">
 
@@ -353,7 +353,7 @@
                     <h3>Inmueble</h3>
                     <div class="row">
                         <div class="small-6 columns">
-                            <div class="margin-top10"> Área m2</div>
+                            <div class="margin-top10"> <img width="20px" height="20px" src="/assets/images/icon-medida.png" alt=""> Área m2</div>
                         </div>
                         <div class="small-6 columns">
                             <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
@@ -364,7 +364,7 @@
                   </div>
                   <div class="row">
                       <div class="small-6 columns">
-                          <div> Habitaciones</div>
+                          <div> <img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones</div>
                       </div>
                       <div class="small-6 columns">
                           <div class="input-group input-number-group">
@@ -381,7 +381,7 @@
                   </div>
                   <div class="row">
                       <div class="small-6 columns">
-                          <div> Baños</div>
+                          <div><img width="20px" height="20px" src="/assets/images/icon-water.png" alt=""> Baños</div>
                       </div>
                       <div class="small-6 columns">
                           <div class="input-group input-number-group">
@@ -397,7 +397,7 @@
                   </div>
                   <div class="row">
                       <div class="small-6 columns">
-                          <div> Garajes</div>
+                          <div><img width="20px" height="20px" src="/assets/images/icon-garaje.png" alt=""> Garajes</div>
                       </div>
                       <div class="small-6 columns">
 
@@ -508,7 +508,7 @@
               <div class="card-section info info-project">
                   <h2>{{ project.project }}</h2>
                   <div class="descripcion">
-                      {{ project.property_type }}, {{ project.project_neighborhood }}, {{ project.project_city }}
+                      {{ project.property_type }} en {{ project.project_neighborhood }}, {{ project.project_city }}
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
@@ -522,13 +522,13 @@
                       <div class="small-6 columns">
                           <div class="item">
                               <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                              <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                           </div>
                       </div>
                       <div class="small-6 columns">
                           <div class="item">
                               <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                              <div class="data"> {{ project.bathrooms }} alcobas</div>
+                              <div class="data"> {{ project.bathrooms }} Alcobas</div>
                           </div>
                       </div>
                       <div class="small-6 columns">
@@ -540,7 +540,7 @@
                       <div class="small-6 columns">
                           <div class="item">
                               <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                              <div class="data"> {{ project.bedrooms }} baños</div>
+                              <div class="data"> {{ project.bedrooms }} Baños</div>
                           </div>
                       </div>
                   </div>

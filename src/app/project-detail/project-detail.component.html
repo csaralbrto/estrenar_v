@@ -1108,6 +1108,9 @@
                 <div class="small-5 columns padding0">
                     <!-- <img class="constructora" width="150px" src="/assets/images/content/constructora.jpg" alt=""> -->
                     <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.id}}"><img class="constructora" width="150px" [src]="url_img_path + response.field_typology_builder.field_builder_logo.uri.url"  alt=""></a>
+                    <div class="text-center">
+                        <h3>{{ response.field_typology_project.field_project_builder.label }}</h3>
+                    </div>
                 </div>
                 <div class="small-7 columns text-center">
                     <h3>Atención en sala de ventas</h3>
