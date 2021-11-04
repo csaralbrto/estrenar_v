@@ -1,3 +1,4 @@
+import { LightboxModule } from 'ng-gallery/lightbox';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +55,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectPreviewComponent } from './project-preview/project-preview.component';
 import { StreetViewComponent } from './street-view/street-view.component';
+import { GalleryModule } from 'ng-gallery';
 
 
 @NgModule({
@@ -119,7 +121,9 @@ import { StreetViewComponent } from './street-view/street-view.component';
     MatDatepickerModule,
     MatInputModule,
     // MatFormFieldModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    GalleryModule,
+    LightboxModule
 
 
   ],

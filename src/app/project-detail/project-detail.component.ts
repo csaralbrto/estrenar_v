@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { Gallery, GalleryItem, ThumbnailsPosition, ImageSize, ImageItem } from 'ng-gallery';
 import { Component, OnInit, AfterViewChecked, ViewChild, Input, ElementRef, ApplicationRef, PLATFORM_ID, Inject } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import * as moment from 'moment';
@@ -19,7 +21,7 @@ declare var $: any;
   providers: [ProjectDetailService],
 })
 export class ProjectDetailComponent implements OnInit {
-
+  itemImg: GalleryItem[];
   tags: MetaTag;
   public response: any;
   public responsePlacesGoogle: any;
@@ -76,7 +78,8 @@ export class ProjectDetailComponent implements OnInit {
     private meta: Meta,
     private spinnerService: NgxSpinnerService,
     private mapsAPILoader: MapsAPILoader,
-    private appRef: ApplicationRef
+    private appRef: ApplicationRef,
+    public gallery: Gallery
   ) {
   }
   dataPath = environment.endpoint;
@@ -204,7 +207,7 @@ export class ProjectDetailComponent implements OnInit {
               if(this.response.typology_blueprint !== undefined){
                 this.blueprintProyect = this.response.field_typology_blueprint;
                 this.blueprint = this.blueprintProyect[0].uri.url;
-                // console.log(this.blueprint);
+                console.log(this.blueprint);
                 // for (let bluePrint of this.blueprintProyect) {
                 // }
               }
@@ -218,6 +221,24 @@ export class ProjectDetailComponent implements OnInit {
                 }
               }
               this.galeria = this.response.field_typology_image;
+              let imageGalleryArray = [];
+
+              for (let JsonGallery of this.galeria)
+              {
+                imageGalleryArray.push({srcUrl: this.url_img_path + JsonGallery.uri.url, previewUrl: this.url_img_path + JsonGallery.uri.url})
+              }
+
+               // 1. cear Galeria  con los items
+              this.itemImg = imageGalleryArray.map(item =>
+                new ImageItem({ src: item.srcUrl, thumb: item.previewUrl })
+              );
+              console.log("items "+this.itemImg);
+
+              // Cargar los itemd en el Lightbox
+              this.basicLightboxExample();
+              // cargar los items en los diferentes lightbox
+              this.withCustomGalleryConfig();
+
               this.operacion= this.galeria.length;
               // console.log("mirar dato "+ this.operacion);
               if(this.operacion % 2 == 0){
@@ -322,6 +343,22 @@ export class ProjectDetailComponent implements OnInit {
         }
       }
     );
+  }
+
+  basicLightboxExample() {
+    this.gallery.ref().load(this.itemImg);
+  }
+
+
+  withCustomGalleryConfig() {
+
+    const lightboxGalleryRef = this.gallery.ref('anotherLightbox');
+
+    lightboxGalleryRef.setConfig({
+      imageSize: ImageSize.Cover,
+      thumbPosition: ThumbnailsPosition.Top
+    });
+    lightboxGalleryRef.load(this.itemImg);
   }
 
   //fecha
@@ -1106,3 +1143,4 @@ export class ProjectDetailComponent implements OnInit {
     window.location.hash = section;
   }
 }
+
