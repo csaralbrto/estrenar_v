@@ -57,11 +57,13 @@
       <div class="row hide-for-small-only">
         <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
             <div class="">
+
                 <ul class="slider-project-img slideproject">
                     <li class="is-active ">
                       <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
                           <figure class="">
-                              <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
+                              <img *ngFor="let item of items; index as i"
+                              [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
                           </figure>
                       </div>
                         <div  *ngIf="valoresPares == 'par'">
