@@ -55,243 +55,41 @@
 <div class="row columns">
     <div class="tabs-content" data-tabs-content="propertiesProject">
       <div class="row hide-for-small-only">
-        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height:558px !important; background-color: #fefefe;">
+        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images" style="height:558px !important; background-color: #fefefe;">
             <div class="">
-
-                <ul class="slider-project-img slideproject">
-                    <li class="is-active ">
-                      <div class="medium-6 columns destacado" *ngIf="(operacion == 3 || operacion >= 5 ) ">
-                          <figure class="">
-                              <img *ngFor="let item of items; index as i"
-                              [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
-                          </figure>
-                      </div>
-                        <div  *ngIf="valoresPares == 'par'">
-                          <div class="rows-img">
-                              <div class="row1">
-                                  <div class="rows-img1" *ngIf="(operacion == 2 || operacion == 4 )">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img1" *ngIf="galeria[1]">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img2" *ngIf="  (galeria[2] &&  operacion != 4 ) && operacion != 2 ">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                              </div>
-                              <div class="row1">
-                                  <div class="rows-img2" *ngIf="  (operacion == 2 || operacion == 4 ) && galeria[2]">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img1" *ngIf="galeria[3]">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img2" *ngIf="galeria[4]">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div *ngIf="valoresPares == 'impar'">
-                          <div class="rows-img">
-                              <div class="row1">
-                                  <div class="rows-img1" *ngIf="operacion == 1">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[0].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img1" *ngIf="galeria[1]">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img2" *ngIf="(galeria[2] || operacion == 5) ">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                              </div>
-                              <div class="row1">
-                                  <div class="rows-img2" *ngIf="(galeria[2] && operacion == 3 )">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img1" *ngIf="galeria[3]">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                                  <div class="rows-img2" *ngIf="galeria[4]">
-                                      <figure class="">
-                                          <img class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
-                                      </figure>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                    </li>
-                    <li class="" *ngIf=" operacion >= 6">
-                        <div class="medium-6 columns destacado" *ngIf=" operacion == 10 ">
-                            <figure class="">
-                                <img class="" [src]="url_img_path + galeria[5].uri.url" alt="">
-                            </figure>
-                        </div>
-                        <div class="rows-img" *ngIf=" ( operacion == 9|| operacion == 10) ">
-                            <div class="row1">
-                                <div class="rows-img1" *ngIf=" operacion == 9 ">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                    </figure>
-                                </div>
-                                <div class="rows-img2" *ngIf="( galeria[6] && operacion == 9)">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img1" *ngIf=" (galeria[6] &&  operacion == 10)">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                    </figure>
-                                </div>
-
-                                <div class="rows-img2" *ngIf="(galeria[7] &&  operacion == 10)">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url" alt="">
-                                    </figure>
-                                </div>
-
+                <div class="medium-6 columns destacado">
+                    <figure class="">
+                        <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
+                    </figure>
+                </div>
+                <div >
+                    <div class="rows-img">
+                        <div class="row1">
+                            <div class="rows-img1" *ngIf="galeria[1]">
+                                <figure class="">
+                                    <img [lightbox]="1" class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                </figure>
                             </div>
-                            <div class="row1">
-                                <div class="rows-img1" *ngIf="( galeria[7] && operacion == 9)">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img2" *ngIf="( galeria[8] && operacion == 9)">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
-                                    </figure>
-                                </div>
-                                <div class="rows-img1" *ngIf="galeria[8]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url" alt="">
-                                    </figure>
-                                </div>
-                                <div class="rows-img2" *ngIf="galeria[9]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[9].uri.url" alt="">
-                                    </figure>
-                                </div>
-                                <!-- <div class="rows-img3" *ngIf="galeria[11]">
-                        <figure class="">
-                            <img class="" [src]="url_img_path + galeria[11].uri.url" alt="">
-                        </figure>
+                            <div class="rows-img2" *ngIf="galeria[2]">
+                                <figure class="">
+                                    <img [lightbox]="2" class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="row1">
+                            <div class="rows-img1" *ngIf="galeria[3]">
+                                <figure class="">
+                                    <img [lightbox]="3" class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                </figure>
+                            </div>
+                            <div class="rows-img2" *ngIf="galeria[4]">
+                                <figure class="">
+                                    <img [lightbox]="4" class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                </figure>
+                            </div>
+                        </div>
                     </div>
-                    <div class="rows-img4" *ngIf="galeria[12]">
-                      <figure class="">
-                          <img class="" [src]="url_img_path + galeria[12].uri.url" alt="">
-                      </figure>
-                  </div> -->
-                            </div>
-                        </div>
-                        <div class="rows-img" *ngIf=" ( operacion == 6 || operacion == 7 ||  operacion == 8 || operacion == 11)">
-                            <div class="row1">
-                                <div class="rows-img1">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                    </figure>
-                                </div>
-                                <div class="rows-img2" *ngIf="galeria[6] ">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                    </figure>
-                                </div>
-
-                                <div class="rows-img3" *ngIf="galeria[7]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="row1">
-                                <div class="rows-img1" *ngIf="galeria[8]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img2" *ngIf=" galeria[9]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img3" *ngIf=" galeria[10]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rows-img" *ngIf=" operacion >= 12">
-                            <div class="row1">
-                                <div class="rows-img1">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[5].uri.url" alt="">
-                                    </figure>
-                                </div>
-                                <div class="rows-img2" *ngIf="galeria[6] ">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[6].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img3" *ngIf="galeria[7]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[7].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img4" *ngIf="galeria[8]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[8].uri.url">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="row1">
-                                <div class="rows-img1" *ngIf=" galeria[9]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[9].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img2" *ngIf=" galeria[10]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[10].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img3" *ngIf=" galeria[11]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[11].uri.url">
-                                    </figure>
-                                </div>
-                                <div class="rows-img4" *ngIf=" galeria[12]">
-                                    <figure class="">
-                                        <img class="imagenes" [src]="url_img_path + galeria[12].uri.url">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                </div>
             </div>
         </div>
       </div>
@@ -302,98 +100,98 @@
                     <li class="is-active">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="" height="371px">
+                                <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li>
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[1].uri.url" alt="" height="371px">
+                                <img [lightbox]="1" class="imagenPrincipal" [src]="url_img_path + galeria[1].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li>
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
+                                <img [lightbox]="2" class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 2">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
+                                <img [lightbox]="3" class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 3">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
+                                <img [lightbox]="4" class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 4">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="" height="371px">
+                                <img [lightbox]="5" class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 5">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[6].uri.url" alt="" height="371px">
+                                <img [lightbox]="6" class="imagenPrincipal" [src]="url_img_path + galeria[6].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 6">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[7].uri.url" alt="" height="371px">
+                                <img [lightbox]="7" class="imagenPrincipal" [src]="url_img_path + galeria[7].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 7">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[8].uri.url" alt="" height="371px">
+                                <img [lightbox]="8" class="imagenPrincipal" [src]="url_img_path + galeria[8].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 8">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[9].uri.url" alt="" height="371px">
+                                <img [lightbox]="9" class="imagenPrincipal" [src]="url_img_path + galeria[9].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 9">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[10].uri.url" alt="" height="371px">
+                                <img [lightbox]="10" class="imagenPrincipal" [src]="url_img_path + galeria[10].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 10">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[11].uri.url" alt="" height="371px">
+                                <img [lightbox]="11" class="imagenPrincipal" [src]="url_img_path + galeria[11].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 11">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[12].uri.url" alt="" height="371px">
+                                <img [lightbox]="12" class="imagenPrincipal" [src]="url_img_path + galeria[12].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
                     <li *ngIf="galeria > 12">
                         <div class="small-12 columns">
                             <figure class="">
-                                <img class="imagenPrincipal" [src]="url_img_path + galeria[13].uri.url" alt="" height="371px">
+                                <img [lightbox]="13" class="imagenPrincipal" [src]="url_img_path + galeria[13].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>

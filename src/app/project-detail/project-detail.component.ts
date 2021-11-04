@@ -221,23 +221,22 @@ export class ProjectDetailComponent implements OnInit {
                 }
               }
               this.galeria = this.response.field_typology_image;
+              /* Asignación de imagenes al Lightbox */
               let imageGalleryArray = [];
-
-              for (let JsonGallery of this.galeria)
-              {
+              for (let JsonGallery of this.galeria){
                 imageGalleryArray.push({srcUrl: this.url_img_path + JsonGallery.uri.url, previewUrl: this.url_img_path + JsonGallery.uri.url})
               }
-
-               // 1. cear Galeria  con los items
+              /*   1. cear Galeria  con los items */
               this.itemImg = imageGalleryArray.map(item =>
                 new ImageItem({ src: item.srcUrl, thumb: item.previewUrl })
               );
               console.log("items "+this.itemImg);
 
-              // Cargar los itemd en el Lightbox
+              /*  Cargar los itemd en el Lightbox */
               this.basicLightboxExample();
-              // cargar los items en los diferentes lightbox
+              /*  cargar los items en los diferentes lightbox */
               this.withCustomGalleryConfig();
+              /* Fin asignación de imagenes al Lightbox */
 
               this.operacion= this.galeria.length;
               // console.log("mirar dato "+ this.operacion);
