@@ -232,12 +232,16 @@
                       <img [src]="url_img_path + allProjects[0].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
-                              <div *ngIf="allProjects[0].project_category.length > 0">
+                              <div *ngIf="allProjects[0].project_category.length > 0; else tagTemplate1">
                                   <div class="tag" *ngFor="let tags of allProjects[0].project_category; let i = index">
                                       <a>{{ tags }}</a>
                                   </div>
                               </div>
-
+                              <ng-template #tagTemplate1>
+                                <div class="tag">
+                                    <a>{{ allProjects[0].project_category }}</a>
+                                </div>
+                            </ng-template>
                           </div>
                           <div class="add">
                               <!-- <a (click)="addFavorite(allProjects[0].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
@@ -256,34 +260,33 @@
                       <span>${{ allProjects[0].typology_price }}</span>
                   </div>
                   <hr>
-
                   <div class="card-section">
                       <hr>
                       <div class="row">
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ allProjects[0].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data">{{ allProjects[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ allProjects[0].bedrooms }} alcobas
+                                  <div class="data">{{ allProjects[0].bedrooms }} Alcobas
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ allProjects[0].garages }} garajes
+                                  <div class="data">{{ allProjects[0].garages }} Garajes
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ allProjects[0].bathrooms }} baños
+                                  <div class="data">{{ allProjects[0].bathrooms }} Baños
                                   </div>
                               </div>
                           </div>
@@ -292,7 +295,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/es{{allProjects[0].url}}">Ver
+                          <a class="button bton-mobile" href="/proyecto{{allProjects[0].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -308,12 +311,16 @@
                     <img [src]="url_img_path + allProjects[1].typology_images" alt="" class="proyecto-card">
                     <div class="container-tools">
                         <div class="tags">
-                            <div *ngIf="allProjects[1].project_category.length > 0">
+                            <div *ngIf="allProjects[1].project_category.length > 0; else tagTemplate2">
                                 <div class="tag" *ngFor="let tags of allProjects[1].project_category; let i = index">
                                     <a>{{ tags }}</a>
                                 </div>
                             </div>
-
+                            <ng-template #tagTemplate2>
+                              <div class="tag">
+                                  <a>{{ allProjects[1].project_category }}</a>
+                              </div>
+                          </ng-template>
                         </div>
                         <div class="add">
                             <!-- <a (click)="addFavorite(allProjects[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
@@ -339,27 +346,27 @@
                         <div class="small-6 columns">
                             <div class="item">
                                 <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                <div class="data">{{ allProjects[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                <div class="data">{{ allProjects[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                             </div>
                         </div>
                         <div class="small-6 columns">
                             <div class="item">
                                 <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                <div class="data">{{ allProjects[1].bedrooms }} alcobas
+                                <div class="data">{{ allProjects[1].bedrooms }} Alcobas
                                 </div>
                             </div>
                         </div>
                         <div class="small-6 columns">
                             <div class="item">
                                 <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                <div class="data">{{ allProjects[1].garages }} garajes
+                                <div class="data">{{ allProjects[1].garages }} Garajes
                                 </div>
                             </div>
                         </div>
                         <div class="small-6 columns">
                             <div class="item">
                                 <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                <div class="data">{{ allProjects[1].bathrooms }} baños
+                                <div class="data">{{ allProjects[1].bathrooms }} Baños
                                 </div>
                             </div>
                         </div>
@@ -368,7 +375,7 @@
                 </div>
                 <div class="card-section">
                     <div class="button-group align-spaced ">
-                        <a class="button bton-mobile" href="/es{{allProjects[1].url}}">Ver
+                        <a class="button bton-mobile" href="/proyecto{{allProjects[1].url}}">Ver
                             Proyecto</a>
                         <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                     </div>
@@ -385,16 +392,20 @@
                       <img [src]="url_img_path + allProjects[2].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
-                              <div *ngIf="allProjects[2].project_category.length > 0">
+                              <div *ngIf="allProjects[2].project_category.length > 0; else tagTemplate2">
                                   <div class="tag" *ngFor="let tags of allProjects[2].project_category; let i = index">
                                       <a>{{ tags }}</a>
                                   </div>
                               </div>
-
+                              <ng-template #tagTemplate2>
+                                <div class="tag">
+                                    <a>{{ allProjects[2].project_category }}</a>
+                                </div>
+                            </ng-template>
                           </div>
                           <div class="add">
-                              <!-- <a (click)="addFavorite(allProjects[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                              <a (click)="addFavorite(allProjects[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                              <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
                           </div>
                       </div>
                   </div>
@@ -416,27 +427,27 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ allProjects[2].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data">{{ allProjects[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ allProjects[2].bedrooms }} alcobas
+                                  <div class="data">{{ allProjects[2].bedrooms }} Alcobas
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ allProjects[2].garages }} garajes
+                                  <div class="data">{{ allProjects[2].garages }} Garajes
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ allProjects[2].bathrooms }} baños
+                                  <div class="data">{{ allProjects[2].bathrooms }} Baños
                                   </div>
                               </div>
                           </div>
@@ -445,7 +456,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/es{{allProjects[2].url}}">Ver
+                          <a class="button bton-mobile" href="/proyecto{{allProjects[2].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -461,16 +472,20 @@
                       <img [src]="url_img_path + allProjects[3].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
-                              <div *ngIf="allProjects[3].project_category.length > 0">
+                              <div *ngIf="allProjects[3].project_category.length > 0; else tagTemplate3">
                                   <div class="tag" *ngFor="let tags of allProjects[3].project_category; let i = index">
                                       <a>{{ tags }}</a>
                                   </div>
                               </div>
-
+                              <ng-template #tagTemplate3>
+                                <div class="tag">
+                                    <a>{{ allProjects[3].project_category }}</a>
+                                </div>
+                            </ng-template>
                           </div>
                           <div class="add">
-                              <!-- <a (click)="addFavorite(allProjects[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                              <a (click)="addFavorite(allProjects[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                              <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
                           </div>
                       </div>
                   </div>
@@ -493,27 +508,27 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ allProjects[3].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data">{{ allProjects[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ allProjects[3].bedrooms }} alcobas
+                                  <div class="data">{{ allProjects[3].bedrooms }} Alcobas
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ allProjects[3].garages }} garajes
+                                  <div class="data">{{ allProjects[3].garages }} Garajes
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ allProjects[3].bathrooms }} baños
+                                  <div class="data">{{ allProjects[3].bathrooms }} Baños
                                   </div>
                               </div>
                           </div>
@@ -522,7 +537,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/es{{allProjects[3].url}}">Ver
+                          <a class="button bton-mobile" href="/proyecto{{allProjects[3].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -538,16 +553,20 @@
                       <img [src]="url_img_path + allProjects[4].typology_images" alt="" class="proyecto-card">
                       <div class="container-tools">
                           <div class="tags">
-                              <div *ngIf="allProjects[4].project_category.length > 0">
+                              <div *ngIf="allProjects[4].project_category.length > 0 tagTemplate4">
                                   <div class="tag" *ngFor="let tags of allProjects[4].project_category; let i = index">
                                       <a>{{ tags }}</a>
                                   </div>
                               </div>
-
+                              <ng-template #tagTemplate4>
+                                <div class="tag">
+                                    <a>{{ allProjects[4].project_category }}</a>
+                                </div>
+                            </ng-template>
                           </div>
                           <div class="add">
-                              <!-- <a (click)="addFavorite(allProjects[4].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                              <a (click)="addFavorite(allProjects[4].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                              <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
                           </div>
                       </div>
                   </div>
@@ -570,27 +589,27 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ allProjects[4].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data">{{ allProjects[4].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ allProjects[4].bedrooms }} alcobas
+                                  <div class="data">{{ allProjects[4].bedrooms }} Alcobas
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ allProjects[4].garages }} garajes
+                                  <div class="data">{{ allProjects[4].garages }} Garajes
                                   </div>
                               </div>
                           </div>
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ allProjects[4].bathrooms }} baños
+                                  <div class="data">{{ allProjects[4].bathrooms }} Baños
                                   </div>
                               </div>
                           </div>
@@ -599,7 +618,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/es{{allProjects[4].url}}">Ver
+                          <a class="button bton-mobile" href="/proyecto{{allProjects[4].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -707,7 +726,7 @@
                       <h3>Inmueble</h3>
                       <div class="row">
                           <div class="small-6 columns">
-                              <div class="margin-top10"> Área m2</div>
+                              <div class="margin-top10"> Área m²</div>
                           </div>
                           <div class="small-6 columns">
                               <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
@@ -809,23 +828,69 @@
     </div>
     <!-- Fin modal más filtros -->
 </div>
-
+<!-- Ordenar y comparar -->
+<div class="row">
+  <div class="medium-4 columns proyectolist">
+      <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
+  </div>
+  <div class="medium-2 columns end">
+    <div class="columns small-12 show-for-small-only">
+      <div class="columns small-3" style="margin-top: 8px;">
+        <label class="sohw-for-small-only">Ordenar por:
+        </label>
+      </div>
+      <div class="columns small-9">
+        <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+            <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="hide-for-small-only">
+      <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+          <option value="" *ngIf="optionsSortSelected == ''">Ordenar por:</option>
+          <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="medium-1 columns end">
+      <a class="button secondary hide-for-small-only">Comparar</a>
+  </div>
+  <div class="medium-2 columns fRight pTop8 hide-for-small-only">
+    <div class="columns medium-2 end" style="margin-left: -15px;white-space: nowrap;">
+      <label>Mostrar mapa</label>
+    </div>
+      <div class="switch" style="float: right;margin-right: 8px;">
+        <input class="switch-input" id="defaultSwitch" (click)='showMap($event)' type="checkbox"  [(ngModel)]="eventos" name="defaultSwitch">
+        <label class="switch-paddle" for="defaultSwitch">
+          <!-- <span class="show-for-sr">Default Switch</span> -->
+        </label>
+      </div>
+  </div>
+</div>
+<!-- Fin ordenar y comparar -->
 <hr class="white">
-<div class="row" data-equalizer data-equalize-on="medium" id="test-eq1">
-    <div class="medium-3 columns end" *ngFor="let project of allProjects; let i = index">
+<!-- proyectos y mapa desktop -->
+<div class="row">
+  <div id="smallScrenn" class="medium-12 columns">
+    <div id="FullScrenn" class="medium-3 columns end FullScrenn" *ngFor="let project of allProjects; let i = index">
         <div class="card" data-equalizer-watch>
             <div class="container-photo">
                 <a href="#" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
                 <div class="container-tools">
                     <div class="tags">
-                      <div  *ngIf="project.project_category.length > 0">
+                      <div *ngIf="project.project_category.length > 0; else tagTemplateProject">
                           <div class="tag" *ngFor="let tags of project.project_category; let i = index">
                               <a>{{ tags }}</a>
                           </div>
                       </div>
                     </div>
+                    <ng-template #tagTemplateProject>
+                      <div class="tag">
+                          <a>{{ project.project_category }}</a>
+                      </div>
+                  </ng-template>
                     <div class="add">
-                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                        <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -845,7 +910,7 @@
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                            <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                            <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                         </div>
                     </div>
                     <div class="small-6 columns">
@@ -871,16 +936,31 @@
             </div>
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                  <a class="button bton-mobile" routerLink="/es/{{project.url}}">Ver
+                  <a class="button bton-mobile" routerLink="/proyecto/{{project.url}}">Ver
                       Proyecto</a>
                     <a class="button bton-mobile">Contacto</a>
                 </div>
             </div>
         </div>
     </div>
+  </div>
+  <div id="ProyectMap" class="medium-6 columns hide map-float" style="padding-bottom: 19px;">
+      <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important; ">
+          <agm-marker *ngFor="let marker of allProjects" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="icon_ev">>
+              <agm-info-window #infoWindow>
+                  {{ marker.project }}
+              </agm-info-window>
+          </agm-marker>
+
+      </agm-map>
+  </div>
 </div>
+<!-- Fin proyectos y mapa desktop -->
 
 <hr class="white">
+<div class="row columns text-center">
+  <button  [disabled]="banderaProyecto" (click)='MoreRecords()'  class="button secondary bton-mobile">Cargar más</button>
+</div>
 <!-- modal de contacto -->
 <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
   <h2>Contactar</h2>

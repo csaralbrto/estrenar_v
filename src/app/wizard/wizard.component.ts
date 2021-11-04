@@ -32,6 +32,10 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   public searchPlaceName: any;
   public minPresupuesto: number;
   public maxPresupuesto: number;
+  public valueShow: any;
+  public subsidyOption: any;
+  public timeOption: any;
+  public contactOption: any;
   arrayOptions: string[] = [];
   arrayPresupuesto: any;
   arrayOptions2: string[] = [];
@@ -65,6 +69,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
 
   ngOnInit(): void {
     // $(document).foundation();
+    $('#responsive-nav-social').addClass('hide')
     this.startSpinner();
     this.createForm();
 
@@ -76,7 +81,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
         if (this.responseSearchData) {
           // console.log(this.responseSearchData);
           for (let project of this.responseSearchData) {
-            console.log(project.name)
+            // console.log(project.name)
             this.arrayOptions.push(project);
           }
           this.results = true;
@@ -193,10 +198,10 @@ export class WizardComponent implements OnInit, AfterViewChecked{
 
   }
   filterValues(value: string) {
-    console.log('entre '+ value);
-    const filterValue = value.toUpperCase();
-    return this.arrayOptions.filter(option => option.toUpperCase().includes(filterValue));
-}
+      console.log('entre '+ value);
+      const filterValue = value.toUpperCase();
+      return this.arrayOptions.filter(option => option.toUpperCase().includes(filterValue));
+  }
   closeWizard(values) {
     console.log(values);
     // $('#welcomeModal').foundation('close');
@@ -215,7 +220,8 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       "user_mail": values.email,
       "user_privacy_notice": 5323
     }
-    this.router.navigate(['/']);
+    // this.router.navigate(['/home']);
+    location.href ="/home";
 
   }
   changeStepWizard(idStep) {
@@ -226,6 +232,11 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       } else {
         // console.log(index + '-oculto este item ');
         $('#wizard' + index).css('display', 'none');
+      }
+    }
+    if(idStep >2){
+      if(this.valueShow !== ''){
+        this.valueShow = new Intl.NumberFormat("es-ES").format(this.minValue);
       }
     }
   }
@@ -260,13 +271,19 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       email: new FormControl(''),
       phone: new FormControl(''),
       typeSearch: new FormControl(''),
+      contact: new FormControl('Deseas ser contactado'),
     });
   }
   ngAfterViewChecked() {
     if (this.results) {
       $('app-wizard').foundation();
       // $('html,body').scrollTop(0);
+      // $('.autocomplete-container .input-container input').one("click", function() {
+      //   console.log('entre');
+      //   $('.autocomplete-container .input-container input').css('background-image','none')
+      // });
       this.stopSpinner();
+      // console.log(this.minValue);
     }
   }
   /* Autocomplete keyword */
@@ -281,15 +298,40 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       this.spinnerService.show();
     }
   }
-
-   stopSpinner(): void {
+  stopSpinner(): void {
 
     if (this.spinnerService) {
       // console.log("ingrese a parar");
       this.spinnerService.hide();
     }
   }
+  changeSelected(value,type){
+    if(type == 'medio_contact'){
+      $('label.medio_contact').removeClass('label-selectd');
+      for (let index of this.responseContactadoData) {
+        if(index.drupal_internal__tid == value){
+          this.contactOption = index.name;
+        }
+      }
+    }else if(type == 'subsidy'){
+      $('label.subsidy').removeClass('label-selectd');
+      this.subsidyOption = $("#"+value).text();
+    }
+    $("#"+value).addClass('label-selectd')
+  }
+  selectWaitTime(valueSelected){
+    for (let index of this.responseTiempoData) {
+      if(index.drupal_internal__tid == valueSelected){
+        this.timeOption = index.name;
+      }
+    }
+  }
   restart(){
+    this.searchPlaceName = '';
+    this.valueShow = '';
+    this.subsidyOption = '';
+    this.timeOption = '';
+    this.contactOption = '';
     this.changeStepWizard(1);
   }
 }

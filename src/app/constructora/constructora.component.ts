@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConstructoraService } from './constructora.service';
 import { environment } from '../../environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
+declare var $: any;
 
 @Component({
   selector: 'app-constructora',
@@ -54,11 +55,9 @@ export class ConstructoraComponent implements OnInit {
     );
   }
   onFocusSearch(){
-    console.log('entre al focus')
     $('.img-search').addClass('hide');
   }
   onFocusOutSearch(){
-    console.log('entre al focusout')
     $('.img-search').removeClass('hide');
   }
   loadMore(){
@@ -96,11 +95,12 @@ export class ConstructoraComponent implements OnInit {
     }
   }
   change(value) {
-
     this.startSpinner();
-    this.stringQuery = $("#location").val();
-    console.log(this.stringQuery)
-    // this.beforeCheck(this.response.individual);
+    if(value == 1){
+      this.stringQuery = $("#locationMobile").val();
+    }else{
+      this.stringQuery = $("#locationDesktop").val();
+    }
     var url = this.stringQuery;
     var data = "";
     fetch(url, {
@@ -140,9 +140,16 @@ export class ConstructoraComponent implements OnInit {
 
 
   }
-  filterByWord() {
-    var value = $('#searchWord').val();
-    var url = this.url_search_word + value;
+  filterByWord(type) {
+    this.startSpinner();
+    var search_string: any;
+    if(type == 'mobile'){
+      search_string = $('#searchWordMobile').val();
+    }else{
+      search_string = $('#searchWordDesktop').val();
+    }
+    var url = this.url_search_word + search_string;
+    console.log(url);
     var data = "";
     fetch(url, {
     })

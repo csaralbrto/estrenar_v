@@ -55,7 +55,7 @@
 <div class="row columns">
     <div class="tabs-content" data-tabs-content="propertiesProject">
       <div class="row hide-for-small-only">
-        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images">
+        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height:558px !important; background-color: #fefefe;">
             <div class="">
                 <ul class="slider-project-img slideproject">
                     <li class="is-active ">
@@ -318,14 +318,14 @@
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="galeria > 2">
                         <div class="small-12 columns">
                             <figure class="">
                                 <img class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="galeria > 3">
                         <div class="small-12 columns">
                             <figure class="">
                                 <img class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
@@ -425,25 +425,31 @@
         <div class="small-6 medium-3 columns end caracteristica-tipology text-right">
             <div class="item-big">
                 <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
-                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology text-right">
+            <div class="item-big">
+                <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
+                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_private }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área privada">!</span></div>
             </div>
         </div>
         <div class="small-6 medium-3 columns end caracteristica-tipology">
             <div class="item-big">
               <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-              <div class="data"> {{ response.bathrooms }} alcobas</div>
-            </div>
-        </div>
-        <div class="small-6 medium-3 columns end caracteristica-tipology">
-            <div class="item-big">
-              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-              <div class="data"> Garaje {{ response.garages }}</div>
+              <div class="data"> {{ response.bathrooms }} Alcobas</div>
             </div>
         </div>
         <div class="small-6 medium-3 columns end caracteristica-tipology">
             <div class="item-big">
               <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-              <div class="data"> {{ response.bedrooms }} baños</div>
+              <div class="data"> {{ response.bedrooms }} Baños</div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+              <div class="data">  {{ response.garages }} Garaje</div>
             </div>
         </div>
 </div>
@@ -454,25 +460,31 @@
         <div class="small-6 medium-3 columns end caracteristica-tipology">
             <div class="item-big">
                 <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
-                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
             </div>
         </div>
+        <!-- <div class="small-6 medium-3 columns end caracteristica-tipology text-right">
+            <div class="item-big">
+                <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
+                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_private }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área privada">!</span></div>
+            </div>
+        </div> -->
         <div class="small-6 medium-3 columns end caracteristica-tipology">
             <div class="item-big">
               <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-              <div class="data"> {{ response.bathrooms }} alcobas</div>
-            </div>
-        </div>
-        <div class="small-6 medium-3 columns end caracteristica-tipology">
-            <div class="item-big">
-              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-              <div class="data"> Garaje {{ response.garages }}</div>
+              <div class="data"> {{ response.bathrooms }} Alcobas</div>
             </div>
         </div>
         <div class="small-6 medium-3 columns end caracteristica-tipology">
             <div class="item-big">
               <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-              <div class="data"> {{ response.bedrooms }} baños</div>
+              <div class="data"> {{ response.bedrooms }} Baños</div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology">
+            <div class="item-big">
+              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+              <div class="data"> {{ response.garages }} Garaje</div>
             </div>
         </div>
     <!-- </div> -->
@@ -546,7 +558,7 @@
 </div>
 <!-- Fin modal gracias -->
 <!--mas caracteristicas-->
-<div class="row columns" *ngIf="caracteristicas">
+<div class="row columns" *ngIf="caracteristicas.length > 0">
     <ul class="accordion" data-accordion data-allow-all-closed="true">
         <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
@@ -1107,9 +1119,11 @@
             <div class="container-constructora">
                 <div class="small-5 columns padding0">
                     <!-- <img class="constructora" width="150px" src="/assets/images/content/constructora.jpg" alt=""> -->
-                    <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.id}}"><img class="constructora" width="150px" [src]="url_img_path + response.field_typology_builder.field_builder_logo.uri.url"  alt=""></a>
+                    <a href="/constructora/{{response.field_typology_project.field_project_builder.path.alias}}"><img class="constructora" width="150px" [src]="url_img_path + response.field_typology_builder.field_builder_logo.uri.url"  alt=""></a>
                     <div class="text-center">
-                        <h3>{{ response.field_typology_project.field_project_builder.label }}</h3>
+                      <a href="/constructora/{{response.field_typology_project.field_project_builder.path.alias}}">
+                        <h4>{{ response.field_typology_project.field_project_builder.label }}</h4>
+                      </a>
                     </div>
                 </div>
                 <div class="small-7 columns text-center">
@@ -1159,14 +1173,14 @@
                 </div>
                 <div class="precio text-center">
                     <div>Desde:</div>
-                    <span>$ {{ relacionados.typology_price | number }}</span>
+                    <span>$ {{ relacionados.typology_price }}</span>
                 </div>
                 <hr>
             </div>
 
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                    <a class="button bton-mobile" href="/es{{relacionados.uuid}}">Ver
+                    <a class="button bton-mobile" href="/proyecto{{relacionados.uuid}}">Ver
                   Proyecto</a>
                     <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                 </div>
@@ -1186,7 +1200,7 @@
 </div>
 <hr class="white">
 <hr class="white">
-<div class="container-gray">
+<div class="container-gray" id="calculadorasSimular">
     <div class="row columns text-center">
         <div class="subtitle">¿Quieres calcular?</div>
         <h2 class="deco">Utiliza nuestros simuladores</h2>
@@ -1253,12 +1267,12 @@
                                 </div>
                                 <div class="medium-4 columns text-center campo-destacado">
                                     <p>Según tus ingresos, podrías recibir un prestamo por:</p>
-                                    <input type="text" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
+                                    <input type="text" class="text-center" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
                                     <hr>
                                     <p> Podrías comprar una vivienda de:</p>
-                                    <input type="text" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
+                                    <input type="text" class="text-center" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
                                     <hr>
-                                    <a class="button secondary ">Ver proyectos afines</a>
+                                    <a (click)="searchProjectByPrice(vivienda_endeudamiento)" class="button secondary ">Ver proyectos afines</a>
                                 </div>
 
                             </div>
@@ -1283,7 +1297,7 @@
                                     <p> Los ingresos totales son:</p>
                                     <div class="input-group">
                                         <span class="input-group-label">$</span>
-                                        <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda | number }}">
+                                        <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda }}">
                                     </div>
                                     <hr>
                                     <p class="small">
@@ -1293,11 +1307,11 @@
                                 </div>
                                 <div class="medium-4 columns text-center campo-destacado">
                                     <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                                    <input type="text" placeholder="" value="{{ smmlv_vivienda }}">
+                                    <input class="text-center" type="text" placeholder="" value="{{ smmlv_vivienda }}">
                                     <label for="">Salarios mínimos legales vigentes</label>
                                     <hr>
                                     <p> Equivalentes a:</p>
-                                    <input type="text" placeholder="" value="$ {{ subsidio_vivienda }}">
+                                    <input class="text-center" type="text" placeholder="" value="$ {{ subsidio_vivienda }}">
                                     <label for="">Pesos colombianos</label>
                                     <a class="button secondary ">Más información</a>
                                 </div>
@@ -1325,7 +1339,7 @@
                                     </div>
                                     <hr>
                                     <p> Ingrese el valor del inmueble</p>
-                                    <p>$ {{ response.field_typology_price }}</p>
+                                    <h3>$ {{ response.field_typology_price }}</h3>
                                     <!-- <div class="input-group">
                                         <span class="input-group-label">$</span>
                                         <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota" [value]="response.field_typology_price" readonly>
@@ -1364,10 +1378,10 @@
                                     <div class="container-simulacion">
                                         <div class="row text-left">
                                             <div class="medium-10 medium-offset-2 columns">
-                                                <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota | number }}</span></div>
-                                                <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial | number }}</span></div>
-                                                <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota | number }}</span></div>
-                                                <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota | number }}</span></div>
+                                                <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota }}</span></div>
+                                                <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial }}</span></div>
+                                                <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota }}</span></div>
+                                                <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota }}</span></div>
                                             </div>
                                         </div>
                                         <hr>
@@ -1377,7 +1391,7 @@
                                                     <table class="stack">
                                                         <thead>
                                                             <tr>
-                                                                <th width="100">Cuota #</th>
+                                                                <th width="100">Cuota</th>
                                                                 <th width="100">Fecha</th>
                                                                 <th width="150">Valor</th>
                                                                 <th width="150">Saldo</th>
@@ -1387,8 +1401,8 @@
                                                             <tr *ngFor="let cuota of cuotasMensuales; let i = index">
                                                                 <td>{{ cuota.count }}</td>
                                                                 <td>{{ cuota.date }}</td>
-                                                                <td>$ {{ cuota.value_cuota | number }}</td>
-                                                                <td>$ {{ cuota.saldo | number }}</td>
+                                                                <td>$ {{ cuota.value_cuota }}</td>
+                                                                <td>$ {{ cuota.saldo }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -1410,14 +1424,14 @@
                             <div class="row">
                                 <div class="medium-4 medium-offset-4 columns text-center">
                                     <p> Valor de la vivienda a financiar</p>
-                                    <p>$ {{ response.field_typology_price }}</p>
-                                    <div class="input-group">
+                                    <h3>$ {{ response.field_typology_price }}</h3>
+                                    <!-- <div class="input-group">
                                         <span class="input-group-label">$</span>
                                         <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito" readonly>
-                                    </div>
+                                    </div> -->
                                     <hr>
                                     <p> Plazo de financiamiento (meses)</p>
-                                    <div class="slider white" data-slider data-initial-start="50">
+                                    <div class="slider white" data-slider data-initial-start="50" data-end="360">
                                         <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
                                         <span class="slider-fill" data-slider-fill></span>
                                     </div>
@@ -1452,7 +1466,7 @@
                                         <div class="medium-6 columns">
                                             <div class="container-calc" data-equalizer-watch>
                                                 <div class="value">
-                                                    $ {{ monto_prestamo_credito | number }}
+                                                    $ {{ monto_prestamo_credito }}
                                                 </div>
                                                 <div class="caracteristica">
                                                     Monto prestamo
@@ -1462,7 +1476,7 @@
                                         <div class="medium-6 columns">
                                             <div class="container-calc" data-equalizer-watch>
                                                 <div class="value">
-                                                    $ {{ cuota_inicial_vivienda_credito | number }}
+                                                    $ {{ cuota_inicial_vivienda_credito }}
                                                 </div>
                                                 <div class="caracteristica">
                                                     Cuota inicial {{ cuota_inicial_porcentaje_vivienda_credito }}
@@ -1472,7 +1486,7 @@
                                         <div class="medium-6 columns">
                                             <div class="container-calc" data-equalizer-watch>
                                                 <div class="value">
-                                                    $ {{ ingresos_mensuales_min_credito | number }}
+                                                    $ {{ ingresos_mensuales_min_credito }}
                                                 </div>
                                                 <div class="caracteristica">
                                                     Ingresos minimos mensuales
@@ -1502,7 +1516,7 @@
                                         <div class="medium-6 columns">
                                             <div class="container-calc" data-equalizer-watch>
                                                 <div class="value">
-                                                    $ {{ cuota_mensual_credito | number }}
+                                                    $ {{ cuota_mensual_credito }}
                                                 </div>
                                                 <div class="caracteristica">
                                                     Cuota mensual
@@ -1510,7 +1524,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="button secondary ">Ver proyectos afines</a>
+                                    <a (click)="searchProjectByPrice(monto_prestamo_credito)" class="button secondary ">Ver proyectos afines</a>
                                 </div>
                             </div>
                         </div>
@@ -1524,7 +1538,7 @@
 <hr class="white">
 <div class="row columns">
     <div class="medium-12 columns text-center">
-        <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.id}}" class="button others-projects">Otros proyectos de la constructora</a>
+        <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.path.alias}}" class="button others-projects">Otros proyectos de la constructora</a>
     </div>
 </div>
 <hr class="white">
@@ -1537,146 +1551,140 @@
         <div class="">
             <ul class="slider-properties-project">
                 <li class="is-active ">
-                    <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-                        <div class="medium-4 columns end" *ngFor="let propiedades of propertiesSimilars; let i = index">
-                            <!-- Card Proyecto individual-->
-                            <div class="card" *ngIf="i < 3" data-equalizer-watch>
-                                <div class="container-photo">
-                                    <img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto">
-                                    <div class="container-tools">
-                                        <div class="tags">
-                                            <div *ngIf="propiedades.project_category.length > 1">
-                                                <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
-                                                    <a>{{ tags }}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="add">
-                                            <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-section">
-                                    <h2>{{ propiedades.project }}</h2>
-                                    <div class="descripcion">
-                                        {{ propiedades.property_type }}, {{ propiedades.project_neighborhood }}, {{ propiedades.project_city }}
-                                    </div>
-                                    <div class="precio text-center">
-                                        <div>Desde:</div>
-                                        <span>$ {{ propiedades.typology_price | number }}</span>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <div class="card-section">
-                                    <div class="row mLeftPRojects">
-                                        <div class="small-6 columns">
-                                            <div class="item">
-                                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                                <div class="data"> {{ propiedades.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="small-6 columns">
-                                            <div class="item">
-                                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                                <div class="data"> {{ propiedades.bathrooms }} alcobas</div>
-                                            </div>
-                                        </div>
-                                        <div class="small-6 columns">
-                                            <div class="item">
-                                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                                <div class="data"> Garaje {{ propiedades.garages }}</div>
-                                            </div>
-                                        </div>
-                                        <div class="small-6 columns">
-                                            <div class="item">
-                                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                                <div class="data"> {{ propiedades.bedrooms }} baños</div>
+                    <div class="medium-3 columns end " *ngFor="let propiedades of propertiesSimilars; let i = index">
+                        <div class="card" *ngIf="i < 4" data-equalizer-watch>
+                            <div class="container-photo">
+                                <a routerLink="/proyecto/{{propiedades.url}}" class=""><img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto"></a>
+                                <div class="container-tools">
+                                    <div class="tags">
+                                        <div *ngIf="propiedades.project_category.length > 0">
+                                            <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
+                                                <a routerLink="{{propiedades.url}}" class="">{{ tags }}</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
-                                </div>
-                                <div class="card-section">
-                                    <div class="button-group align-spaced ">
-                                        <a class="button bton-mobile" href="/es{{propiedades.url}}">Ver
-                                        Proyecto</a>
-                                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                                    <div class="add">
+                                        <a (click)="addFavorite(propiedades.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Fin Card Proyecto individual-->
+                            <div class="card-section info info-project">
+                                <h2>{{ propiedades.project }}</h2>
+                                <div class="descripcion">
+                                    {{ propiedades.property_type }} en {{ propiedades.project_neighborhood }}, {{ propiedades.project_city }}
+                                </div>
+                                <div class="precio text-center">
+                                    <div>Desde:</div>
+                                    <span>${{ propiedades.typology_price }}</span>
+                                </div>
+
+                            </div>
+                            <div class="card-section">
+                                <hr>
+                                <div class="row">
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                            <div class="data"> {{ propiedades.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                            <div class="data"> {{ propiedades.bathrooms }} Alcobas</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                            <div class="data">{{ propiedades.garages }} Garaje</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                            <div class="data"> {{ propiedades.bedrooms }} Baños</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="card-section">
+                                <div class="button-group align-spaced ">
+                                    <a class="button bton-mobile" href="/proyecto{{propiedades.url}}">Ver
+                                      Proyecto</a>
+                                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-                        <div class="medium-4 columns end" *ngFor="let propiedades of propertiesSimilars; let i = index">
-                            <!-- Card Proyecto individual-->
-                            <div class="card" *ngIf="i > 2 && i < 6" data-equalizer-watch>
-                                <div class="container-photo">
-                                    <img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto">
-                                    <div class="container-tools">
-                                        <div class="tags">
-                                            <div *ngIf="propiedades.project_category.length > 1">
-                                                <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
-                                                    <a>{{ tags }}</a>
-                                                </div>
+                    <div class="medium-3 columns end " *ngFor="let propiedades of propertiesSimilars; let i = index">
+                        <div class="card" *ngIf="i > 3 && i < 7" data-equalizer-watch>
+                            <div class="container-photo">
+                                <a routerLink="/proyecto/{{propiedades.url}}" class=""><img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto"></a>
+                                <div class="container-tools">
+                                    <div class="tags">
+                                        <div *ngIf="propiedades.project_category.length > 0">
+                                            <div class="tag" *ngFor="let tags of propiedades.project_category; let i = index">
+                                                <a routerLink="{{propiedades.url}}" class="">{{ tags }}</a>
                                             </div>
                                         </div>
-                                        <div class="add">
-                                            <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-section">
-                                    <h2>{{ propiedades.project }}</h2>
-                                    <div class="descripcion">
-                                        {{ propiedades.project_city }}, {{ propiedades.project_zone }}, {{ propiedades.project_neighborhood }}
-                                    </div>
-                                    <div class="precio text-center">
-                                        <div>Desde:</div>
-                                        <span>$ {{ propiedades.typology_price | number }}</span>
-                                    </div>
-                                    <hr>
-                                </div>
-                                <div class="card-section">
-                                  <div class="row mLeftPRojects">
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                              <div class="data"> {{ propiedades.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                              <div class="data"> {{ propiedades.bathrooms }} alcobas</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                              <div class="data"> Garaje {{ propiedades.garages }}</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                              <div class="data"> {{ propiedades.bedrooms }} baños</div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <hr>
-                                </div>
-                                <div class="card-section">
-                                    <div class="button-group align-spaced ">
-                                        <a class="button bton-mobile" href="/es{{propiedades.url}}">Ver
-                                        Proyecto</a>
-                                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                                    <div class="add">
+                                        <a (click)="addFavorite(propiedades.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Fin Card Proyecto individual-->
+                            <div class="card-section info info-project">
+                                <h2>{{ propiedades.project }}</h2>
+                                <div class="descripcion">
+                                    {{ propiedades.property_type }} en {{ propiedades.project_neighborhood }}, {{ propiedades.project_city }}
+                                </div>
+                                <div class="precio text-center">
+                                    <div>Desde:</div>
+                                    <span>${{ propiedades.typology_price }}</span>
+                                </div>
+
+                            </div>
+                            <div class="card-section">
+                                <hr>
+                                <div class="row">
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                            <div class="data"> {{ propiedades.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                            <div class="data"> {{ propiedades.bathrooms }} Alcobas</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                            <div class="data">{{ propiedades.garages }} Garaje</div>
+                                        </div>
+                                    </div>
+                                    <div class="small-6 columns">
+                                        <div class="item">
+                                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                            <div class="data"> {{ propiedades.bedrooms }} Baños</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="card-section">
+                                <div class="button-group align-spaced ">
+                                    <a class="button bton-mobile" href="/proyecto{{propiedades.url}}">Ver
+                                      Proyecto</a>
+                                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -1728,11 +1736,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[0].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[0].property_type }}, {{ propertiesSimilars[0].project_neighborhood }}, {{ propertiesSimilars[0].project_city }}
+                            {{ propertiesSimilars[0].property_type }} en {{ propertiesSimilars[0].project_neighborhood }}, {{ propertiesSimilars[0].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[0].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[0].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -1741,7 +1749,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[0].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -1767,7 +1775,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[0].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[0].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1794,11 +1802,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[1].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[1].property_type }}, {{ propertiesSimilars[1].project_neighborhood }}, {{ propertiesSimilars[1].project_city }}
+                            {{ propertiesSimilars[1].property_type }} en {{ propertiesSimilars[1].project_neighborhood }}, {{ propertiesSimilars[1].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[1].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[1].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -1807,7 +1815,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -1833,7 +1841,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[1].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[1].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1860,11 +1868,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[2].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[2].property_type }}, {{ propertiesSimilars[2].project_neighborhood }}, {{ propertiesSimilars[2].project_city }}
+                            {{ propertiesSimilars[2].property_type }} en {{ propertiesSimilars[2].project_neighborhood }}, {{ propertiesSimilars[2].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[2].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[2].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -1873,7 +1881,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[2].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -1899,7 +1907,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[2].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[2].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1926,11 +1934,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[3].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[3].property_type }}, {{ propertiesSimilars[3].project_neighborhood }}, {{ propertiesSimilars[3].project_city }}
+                            {{ propertiesSimilars[3].property_type }} en {{ propertiesSimilars[3].project_neighborhood }}, {{ propertiesSimilars[3].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[3].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[3].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -1939,7 +1947,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[3].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -1965,7 +1973,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[3].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[3].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1992,11 +2000,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[4].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[4].property_type }}, {{ propertiesSimilars[4].project_neighborhood }}, {{ propertiesSimilars[4].project_city }}
+                            {{ propertiesSimilars[4].property_type }} en {{ propertiesSimilars[4].project_neighborhood }}, {{ propertiesSimilars[4].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[4].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[4].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -2005,7 +2013,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[4].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[4].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -2031,7 +2039,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[4].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[4].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -2058,11 +2066,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[5].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[5].property_type }}, {{ propertiesSimilars[5].project_neighborhood }}, {{ propertiesSimilars[5].project_city }}
+                            {{ propertiesSimilars[5].property_type }} en {{ propertiesSimilars[5].project_neighborhood }}, {{ propertiesSimilars[5].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[5].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[5].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -2071,7 +2079,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[5].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[5].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -2097,7 +2105,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[5].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[5].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -2124,11 +2132,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[6].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[6].property_type }}, {{ propertiesSimilars[6].project_neighborhood }}, {{ propertiesSimilars[6].project_city }}
+                            {{ propertiesSimilars[6].property_type }} en {{ propertiesSimilars[6].project_neighborhood }}, {{ propertiesSimilars[6].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[6].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[6].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -2137,7 +2145,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[6].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[6].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -2163,7 +2171,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[6].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[6].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -2190,11 +2198,11 @@
                     <div class="card-section">
                         <h2>{{ propertiesSimilars[7].project }}</h2>
                         <div class="descripcion">
-                            {{ propertiesSimilars[7].property_type }}, {{ propertiesSimilars[7].project_neighborhood }}, {{ propertiesSimilars[7].project_city }}
+                            {{ propertiesSimilars[7].property_type }} en {{ propertiesSimilars[7].project_neighborhood }}, {{ propertiesSimilars[7].project_city }}
                         </div>
                         <div class="precio text-center">
                             <div>Desde:</div>
-                            <span>$ {{ propertiesSimilars[7].typology_price | number }}</span>
+                            <span>$ {{ propertiesSimilars[7].typology_price }}</span>
                         </div>
                         <hr>
                     </div>
@@ -2203,7 +2211,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data"> {{ propertiesSimilars[7].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data"> {{ propertiesSimilars[7].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -2229,7 +2237,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/es{{propertiesSimilars[7].url}}">Ver
+                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[7].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -2269,4 +2277,28 @@
       </span>
   </div>
 </div>
+<!-- Botones mobile -->
+<div class="bots-projectDetails show-for-small-only">
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;">
+    <a fragment="calculadorasSimular" (click)="navigateToSection('calculadorasSimular')">
+      <img src="/assets/images/comment.png">
+    </a>
+  </div>
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem; padding-top: 0.5rem;">
+    <a data-open="exampleModal2">
+      <img src="/assets/images/icon-email.png">
+    </a>
+  </div>
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem; padding-top: 0.5rem;">
+    <a data-open="exampleModal2">
+      <img src="/assets/images/icon-phone.png">
+    </a>
+  </div>
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;">
+    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+      <img src="/assets/images/icon-wsap.png">
+    </a>
+  </div>
+</div>
+<!-- Fin botones mobiel -->
 

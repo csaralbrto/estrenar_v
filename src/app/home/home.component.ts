@@ -62,6 +62,7 @@ export class HomeComponent implements OnInit {
             project.typology_images = arrayDeCadenas[0];
             var arrayDeCadenas2 = project.project_category.split(',');
             project.project_category = arrayDeCadenas2;
+            project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
           }
           let count = 0;
           for (let project of this.response.home_featured_typologies) {
@@ -281,9 +282,9 @@ export class HomeComponent implements OnInit {
   addFavorite(value) {
     const user_login = sessionStorage.getItem('access_token');
     const user_uid = sessionStorage.getItem('uid');
-    // if(user_login === null || user_uid === null){
-    //   this.router.navigate(['login']);
-    // }else{
+    if(user_login === null || user_uid === null){
+      this.router.navigate(['login']);
+    }else{
       if (!sessionStorage['favorite']) {
         var ids = [];
         ids.push(value)
@@ -301,7 +302,7 @@ export class HomeComponent implements OnInit {
         // this.router.navigate(['comparador']);
         // console.log('este es el id: ',storedIds);
       }
-    // }
+    }
   }
   startSpinner(): void {
 

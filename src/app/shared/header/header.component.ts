@@ -166,14 +166,16 @@ export class HeaderComponent implements OnInit {
       var searchWord = $('#searchProjectsWord').val();
       sessionStorage.removeItem('word_search');
       sessionStorage.setItem('word_search',searchWord)
-      this.router.navigate(['/proyectos']);
+      // this.router.navigate(['/proyectos']);
+      location.href ="/proyectos";
       this.show_white_header = true;
       this.show_header = false;
     }else{
       var searchWord = $('#searchProjectsWordMobile').val();
       sessionStorage.removeItem('word_search');
       sessionStorage.setItem('word_search',searchWord)
-      this.router.navigate(['/proyectos']);
+      // this.router.navigate(['/proyectos']);
+      location.href ="/proyectos";
       $('#responsive-search-input').toggleClass('hide');
       $('#responsive-search-input').val('');
       this.show_white_header = true;

@@ -103,7 +103,7 @@ export class FavoritesComponent implements OnInit {
             if(this.response.facets.typology_price){
               this.filterPrice = this.response.facets.typology_price;
             }
-            //Área m2
+            //Área m²
             if(this.response.facets.area_built){
               this.filterAreaBuilt = this.response.facets.area_built;
             }

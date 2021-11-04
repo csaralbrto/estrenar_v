@@ -21,17 +21,17 @@
             </div>
             <div class="row columns ">
                 <hr class="white">
-                <div class="medium-3 medium-offset-3 columns">
-                    <div class="bannernews">
+                <div class="medium-3 small-12 medium-offset-3 columns">
+                    <div class="bannernews banner-wizard1">
                         <img src="/assets/images/asesoria.jpg" alt="" class="fondo">
                         <div class="info">
                             <div class="cta mb1">Quiero recibir ayuda para buscar vivienda</div>
-                            <a (click)="changeStepWizard(1);" class="button secondary">Quiero asesoría</a>
+                            <a (click)="changeStepWizard(1);" class="button secondary width-btnWizard">Quiero asesoría</a>
                         </div>
                     </div>
                 </div>
-                <div class="medium-3 columns end">
-                    <div class="bannernews">
+                <div class="medium-3 small-12 columns end">
+                    <div class="bannernews banner-wizard">
                         <img src="/assets/images/busqueda.jpg" alt="" class="fondo">
                         <div class="info">
                             <div class="cta mb1">Prefiero explorar por mi cuenta</div>
@@ -47,17 +47,19 @@
     <!-- Wizard 1 -->
     <div id="wizard1" style="display: none;">
     <div class="row columns">
-        <div class="medium-8 medium-offset-2 columns">
+        <div class="medium-8 medium-offset-2 columns text-center">
             <hr class="white">
             <div class="logo text-center">
                 <a href="/"><img src="/assets/images/logo-ev.png"></a>
+                <hr class="white">
+                <div class="row text-center margin-top20">
+                  <p style="font-size: 18px;"><strong>1 / 6</strong></p>
+                </div>
             </div>
-            <hr class="white">
-            <hr class="white">
             <div class="progress" role="progressbar" tabindex="0" aria-valuenow="16" aria-valuemin="0"
                 aria-valuetext="25 percent" aria-valuemax="100">
                 <span class="progress-meter" style="width: 16%">
-                    <span class="progress-meter-text">1 de 6</span>
+                    <!-- <span class="progress-meter-text">1 de 6</span> -->
                 </span>
             </div>
         </div>
@@ -81,16 +83,16 @@
             </ng-template>
 
             <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
+                <span>No encontrado</span>
             </ng-template>
         </div>
         <hr class="white">
         <div class="inline">
-            <button class="button" (click)="changeStepWizard(2);">Siguiente</button>
+            <button style="text-align: left;" class="button bton-wizard" (click)="changeStepWizard(2);">Siguiente <img class="img-arrow" src="/assets/images/right.png"></button>
         </div>
-        <div class="row text-center mtop10 mBotton10">
+        <!-- <div class="row text-center mtop10 mBotton10">
             <a (click)="restart()">Volver a iniciar</a>
-        </div>
+        </div> -->
         </div>
     </div>
     </div>
@@ -102,17 +104,23 @@
             <hr class="white">
             <div class="logo text-center">
                 <a href="/"><img src="/assets/images/logo-ev.png"></a>
+                <hr class="white">
+                <div class="row text-center margin-top20">
+                  <p style="font-size: 18px;"><strong>2 / 6</strong></p>
+                </div>
             </div>
-            <hr class="white">
-            <hr class="white">
             <div class="progress" role="progressbar" tabindex="0" aria-valuenow="16" aria-valuemin="0"
                 aria-valuetext="25 percent" aria-valuemax="100">
                 <span class="progress-meter" style="width: 32%">
-                    <span class="progress-meter-text">2 de 6</span>
+                    <!-- <span class="progress-meter-text">2 de 6</span> -->
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">{{searchPlaceName}}</div>
+              <div class="item">{{searchPlaceName}}</div>
+              <div class="item">{{valueShow}}</div>
+              <div class="item">{{subsidyOption}}</div>
+              <div class="item">{{timeOption}}</div>
+              <div class="item">{{contactOption}}</div>
             </div>
         </div>
     </div>
@@ -122,23 +130,19 @@
             <h1 class="deco">¿Cuál es tu presupuesto de compra?</h1>
             <hr class="white">
             <p>Presupuesto de compra</p>
-            <!-- <div class="row">
-                <div class="salida">Desde $<span><input type="number" name="budget_from" formControlName="budget_from" id="sliderOutput1"></span>hasta $<span><input
-                    name="budget_to" formControlName="budget_to" type="number" id="sliderOutput2"></span></div>
-            </div> -->
             <div class="row">
                 <hr class="white">
                 <div class="rango">
                     <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
                 </div>
             </div>
-            <div class="row text-center">
-              <div class="inline">
-                  <button class="button" (click)="changeStepWizard(1);">Anterior</button>
-              </div>
-              <div class="inline">
-                <button class="button" (click)="changeStepWizard(3);">Siguiente</button>
-              </div>
+            <div class="row mtopWizard text-center">
+                <div class="inline inline-contents">
+                    <button style="text-align: right;" class="button bton-wizard" (click)="changeStepWizard(1);"> <img class="img-arrow-left" src="/assets/images/left.png">Anterior</button>
+                </div>
+                <div class="inline inline-contents">
+                  <button style="text-align: left;" class="button bton-wizard" (click)="changeStepWizard(3);">Siguiente <img class="img-arrow" src="/assets/images/right.png"></button>
+                </div>
               <div class="row text-center mtop10 mBotton10">
                   <a (click)="restart()">Volver a iniciar</a>
               </div>
@@ -156,18 +160,23 @@
             <hr class="white">
             <div class="logo text-center">
                 <a href="/"><img src="/assets/images/logo-ev.png"></a>
+                <hr class="white">
+                <div class="row text-center margin-top20">
+                  <p style="font-size: 18px;"><strong>3 / 6</strong></p>
+                </div>
             </div>
-            <hr class="white">
-            <hr class="white">
             <div class="progress" role="progressbar" tabindex="0" aria-valuenow="16" aria-valuemin="0"
                 aria-valuetext="25 percent" aria-valuemax="100">
                 <span class="progress-meter" style="width: 48%">
-                    <span class="progress-meter-text">3 de 6</span>
+                    <!-- <span class="progress-meter-text">3 de 6</span> -->
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">{{searchPlaceName}}</div>
-                <div class="item">$150.000.000</div>
+              <div class="item">{{searchPlaceName}}</div>
+              <div class="item">{{valueShow}}</div>
+              <div class="item">{{subsidyOption}}</div>
+              <div class="item">{{timeOption}}</div>
+              <div class="item">{{contactOption}}</div>
             </div>
         </div>
     </div>
@@ -179,7 +188,7 @@
             <div class="row text-center diblock">
                 <div class="opcion text-center">
                     <div class="opcion-seleccion boton" *ngFor="let option of responseSubsidioData">
-                        <input id="casas" name="subsidy" formControlName="subsidy" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
+                        <input id="casas" name="subsidy" formControlName="subsidy" type="radio" value="{{option.drupal_internal__tid}}"><label id="{{option.drupal_internal__tid}}" (click)="changeSelected(option.drupal_internal__tid,'subsidy')" class="subsidy" for="casas">{{option.name}}</label>
                     </div>
                 </div>
                 <!-- <div class="opcion text-center">
@@ -193,12 +202,12 @@
 
     </div>
     <hr class="white">
-    <div class="row text-center">
-        <div class="inline">
-            <button class="button" (click)="changeStepWizard(2);">Anterior</button>
+    <div class="row text-center mtopWizard">
+        <div class="inline inline-contents">
+            <button style="text-align: right;" class="button bton-wizard" (click)="changeStepWizard(2);"> <img class="img-arrow-left" src="/assets/images/left.png">Anterior</button>
         </div>
-        <div class="inline">
-            <button class="button" (click)="changeStepWizard(4);">Siguiente</button>
+        <div class="inline inline-contents">
+            <button style="text-align: left;" class="button bton-wizard" (click)="changeStepWizard(4);">Siguiente <img class="img-arrow" src="/assets/images/right.png"></button>
         </div>
         <div class="row text-center mtop10 mBotton10">
             <a (click)="restart()">Volver a iniciar</a>
@@ -213,18 +222,23 @@
             <hr class="white">
             <div class="logo text-center">
                 <a href="/"><img src="/assets/images/logo-ev.png"></a>
+                <hr class="white">
+                <div class="row text-center margin-top20">
+                  <p style="font-size: 18px;"><strong>4 / 6</strong></p>
+                </div>
             </div>
-            <hr class="white">
-            <hr class="white">
             <div class="progress" role="progressbar" tabindex="0" aria-valuenow="16" aria-valuemin="0"
                 aria-valuetext="25 percent" aria-valuemax="100">
                 <span class="progress-meter" style="width: 64%">
-                    <span class="progress-meter-text">4 de 6</span>
+                    <!-- <span class="progress-meter-text">4 de 6</span> -->
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">{{searchPlaceName}}</div>
-                <div class="item">$150.000.000</div>
+              <div class="item">{{searchPlaceName}}</div>
+              <div class="item">{{valueShow}}</div>
+              <div class="item">{{subsidyOption}}</div>
+              <div class="item">{{timeOption}}</div>
+              <div class="item">{{contactOption}}</div>
             </div>
         </div>
     </div>
@@ -237,7 +251,7 @@
             </div>
             <div class="row text-center inline">
                 <div class="checkblock text-center" *ngFor="let option of responseTiempoData">
-                    <input type="radio" name="waitTime" formControlName="waitTime" value="{{option.drupal_internal__tid}}">
+                    <input (click)="selectWaitTime(option.drupal_internal__tid)" type="radio" name="waitTime" formControlName="waitTime" value="{{option.drupal_internal__tid}}">
                     <div class="etiqueta">{{option.name}}</div>
                 </div>
             </div>
@@ -246,12 +260,12 @@
 
     </div>
     <hr class="white">
-    <div class="row text-center">
-        <div class="inline">
-            <button class="button" (click)="changeStepWizard(3);">Anterior</button>
+    <div class="row text-center mtopWizard">
+        <div class="inline inline-contents">
+            <button style="text-align: right;" class="button bton-wizard" (click)="changeStepWizard(3);"><img class="img-arrow-left" src="/assets/images/left.png"> Anterior</button>
         </div>
-        <div class="inline">
-            <button class="button" (click)="changeStepWizard(5);">Siguiente</button>
+        <div class="inline inline-contents">
+            <button style="text-align: left;" class="button bton-wizard" (click)="changeStepWizard(5);">Siguiente <img class="img-arrow" src="/assets/images/right.png"></button>
         </div>
         <div class="row text-center mtop10 mBotton10">
             <a (click)="restart()">Volver a iniciar</a>
@@ -266,18 +280,23 @@
             <hr class="white">
             <div class="logo text-center">
                 <a href="/"><img src="/assets/images/logo-ev.png"></a>
+                <hr class="white">
+                <div class="row text-center margin-top20">
+                  <p style="font-size: 18px;"><strong>5 / 6</strong></p>
+                </div>
             </div>
-            <hr class="white">
-            <hr class="white">
             <div class="progress" role="progressbar" tabindex="0" aria-valuenow="16" aria-valuemin="0"
                 aria-valuetext="25 percent" aria-valuemax="100">
                 <span class="progress-meter" style="width: 82%">
-                    <span class="progress-meter-text">5 de 6</span>
+                    <!-- <span class="progress-meter-text">5 de 6</span> -->
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">{{searchPlaceName}}</div>
-                <div class="item">$150.000.000</div>
+              <div class="item">{{searchPlaceName}}</div>
+              <div class="item">{{valueShow}}</div>
+              <div class="item">{{subsidyOption}}</div>
+              <div class="item">{{timeOption}}</div>
+              <div class="item">{{contactOption}}</div>
             </div>
         </div>
     </div>
@@ -289,7 +308,7 @@
             <fieldset>
                 <div class="opcion text-center" *ngFor="let option of responseContactadoData">
                     <div class="opcion-seleccion">
-                        <input id="casas" name="contactType" formControlName="contactType" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
+                        <input id="casas" name="contactType" formControlName="contactType" type="radio" value="{{option.drupal_internal__tid}}"><label id="{{option.drupal_internal__tid}}" (click)="changeSelected(option.drupal_internal__tid,'medio_contact')" class="medio_contact" for="casas"><img src="/assets/images/icon-email.png"alt="Casas"></label>
                     </div>
                     <div class="item">{{option.name}}</div>
                 </div>
@@ -299,12 +318,12 @@
 
     </div>
     <hr class="white">
-    <div class="row text-center">
-        <div class="inline">
-            <button class="button" (click)="changeStepWizard(4);">Anterior</button>
+    <div class="row text-center mtopWizard">
+        <div class="inline inline-contents">
+            <button style="text-align: right;" class="button bton-wizard" (click)="changeStepWizard(4);"><img class="img-arrow-left" src="/assets/images/left.png"> Anterior</button>
         </div>
-        <div class="inline">
-            <button class="button" (click)="changeStepWizard(6);">Siguiente</button>
+        <div class="inline inline-contents">
+            <button style="text-align: left;" class="button bton-wizard" (click)="changeStepWizard(6);">Siguiente <img class="img-arrow" src="/assets/images/right.png"></button>
         </div>
         <div class="row text-center mtop10 mBotton10">
             <a (click)="restart()">Volver a iniciar</a>
@@ -319,18 +338,23 @@
             <hr class="white">
             <div class="logo text-center">
                 <a href="/"><img src="/assets/images/logo-ev.png"></a>
+                <hr class="white">
+                <div class="row text-center margin-top20">
+                  <p style="font-size: 18px;"><strong>6 / 6</strong></p>
+                </div>
             </div>
-            <hr class="white">
-            <hr class="white">
             <div class="progress" role="progressbar" tabindex="0" aria-valuenow="16" aria-valuemin="0"
                 aria-valuetext="25 percent" aria-valuemax="100">
                 <span class="progress-meter" style="width: 100%">
-                    <span class="progress-meter-text">6 de 6</span>
+                    <!-- <span class="progress-meter-text">6 de 6</span> -->
                 </span>
             </div>
             <div class="seleccion">
-                <div class="item">{{searchPlaceName}}</div>
-                <div class="item">$150.000.000</div>
+              <div class="item">{{searchPlaceName}}</div>
+              <div class="item">{{valueShow}}</div>
+              <div class="item">{{subsidyOption}}</div>
+              <div class="item">{{timeOption}}</div>
+              <div class="item">{{contactOption}}</div>
             </div>
         </div>
         </div>
@@ -344,16 +368,29 @@
                 <input type="text" name="last_name" formControlName="last_name" placeholder="Apellido">
                 <input type="number" name="phone" formControlName="phone" placeholder="Teléfono">
                 <input type="text" name="email" formControlName="email" placeholder="Email" required>
+                <select id="select" required formControlName="contact" name="contact">
+                    <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                    <option value="telefono">Tel&eacute;fonica</option>
+                    <option value="email">Correo Electr&oacute;nico</option>
+                    <option value="whatsapp">Whatsapp</option>
+                </select>
+                <fieldset class="text-left">
+                    <legend>Buscas vivienda para:</legend>
+                    <div class="searchHouse" *ngFor="let option of responseViviendaData; let i = index">
+                      <input type="radio" class="raddioForm" id="typeSearch" name="typeSearch" formControlName="typeSearch" [value]="option.drupal_internal__tid" id="houseForHabitar">
+                      <label class="verticalAlingLabel" for="">{{option.name}}</label>
+                    </div>
+                </fieldset>
                 <div class="text-left terminos">
-                    <div>
+                    <!-- <div>
                         <select id="typeSearch" name="typeSearch" formControlName="typeSearch">
                             <option value="">Desea la vivienda para:</option>
                             <option *ngFor="let option of responseViviendaData; let i = index" [value]="option.drupal_internal__tid">{{option.name}}</option>
                         </select>
-                        <!-- <input id="typeSearch" name="typeSearch" formControlName="typeSearch" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label> -->
-                    </div>
+                        <input id="typeSearch" name="typeSearch" formControlName="typeSearch" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
+                    </div> -->
                     <div>
-                        <input id="checkbox1" type="checkbox"><label for="right-label" class="text-left">Declaro
+                        <input id="checkbox1" type="checkbox" class="raddioForm"><label for="right-label" class="text-left">Declaro
                             haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los
                             mismos.</label>
                     </div>
@@ -362,12 +399,12 @@
         </div>
         </div>
         <hr class="white">
-        <div class="row text-center">
+        <div class="row text-center mtopWizard">
         <div class="inline">
             <button class="button" (click)="closeWizard(form.value)">Enviar</button>
         </div>
         <div class="inline">
-            <button class="button" (click)="closeWizard(form.value);">Lo enviaré despues</button>
+            <button style="width: 139px;" class="button" (click)="closeWizard(form.value);">Lo enviaré despues</button>
         </div>
         </div>
     </div>

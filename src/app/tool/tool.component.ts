@@ -298,7 +298,8 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     return months <= 0 ? 0 : Number(months) + Number(1);
   }
   searchProjectByPrice(value){
-    let valor = value.toFixed();
+    var valor = value.replace(/[.]/g,'');
+    valor = valor.replace(/[,]/g,'.');
     sessionStorage.removeItem('price_projects');
     sessionStorage.setItem('price_projects',valor)
     this.router.navigate(['/proyectos']);

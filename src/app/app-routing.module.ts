@@ -46,12 +46,12 @@ const routes: Routes = [
   { path: 'vacacionales', component: ProjectsComponent, pathMatch: 'full' },
 
   {
-    path: 'es/node/:path',
+    path: 'proyecto/node/:path',
     component: ProjectDetailComponent,
     pathMatch: 'full',
   },
   {
-    path: 'es/:path/:path',
+    path: 'proyecto/:path/:path',
     component: ProjectDetailComponent,
     pathMatch: 'full',
   },

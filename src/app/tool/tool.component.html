@@ -220,11 +220,11 @@
                                 <hr>
                                 <p> Plazo de financiamiento (meses)</p>
                                 <div class="show-for-small-only"><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutputMobile"></div>
-                                <div class="slider white show-for-small-only" data-slider data-initial-start="50" data-end="120">
+                                <div class="slider white show-for-small-only" data-slider data-initial-start="50" data-end="360">
                                     <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputMobile"></span>
                                     <span class="slider-fill" data-slider-fill></span>
                                 </div>
-                                <div class="slider white hide-for-small-only" data-slider data-initial-start="50" data-end="120">
+                                <div class="slider white hide-for-small-only" data-slider data-initial-start="50" data-end="360">
                                     <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
                                     <span class="slider-fill" data-slider-fill></span>
                                 </div>
@@ -365,7 +365,7 @@
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                            <div class="data"> {{ project.area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                            <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                         </div>
                     </div>
                     <div class="small-6 columns">
@@ -443,7 +443,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ response[0].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data">{{ response[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -519,7 +519,7 @@
                         <div class="small-6 columns">
                             <div class="item">
                                 <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                <div class="data">{{ response[1].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                <div class="data">{{ response[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                             </div>
                         </div>
                         <div class="small-6 columns">
@@ -596,7 +596,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ response[2].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data">{{ response[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">
@@ -673,7 +673,7 @@
                           <div class="small-6 columns">
                               <div class="item">
                                   <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ response[3].area_built }} m2 <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  <div class="data">{{ response[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                               </div>
                           </div>
                           <div class="small-6 columns">

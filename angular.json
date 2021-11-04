@@ -24,7 +24,11 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
+              "src/favicon_32x32.png",
+              "src/favicon_16x16.png",
+              "src/apple-touch-icon.png",
+              "src/safari-pinned-tab.svg",
               "src/assets"
             ],
             "styles": [

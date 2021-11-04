@@ -73,10 +73,9 @@ export class ProjectsService {
     return this.http.post(this.endpointForm, params)
     .pipe(map(( response => response.json() )));
   }
-  // filtro cargar más
-  getMoreData(itempaper:number): Observable<any>
-  {
-    this.urlMas = environment.endpointTestingApi +`typologies?items_per_page=${itempaper}`
+  /* filtro cargar más */
+  getMoreData(url:any): Observable<any>{
+    this.urlMas = url
     //  environment.endpointTestingApi+ `typologies/project_builder/10?items_per_page=${itempaper}`;
     return this.http.get(this.urlMas)
     .pipe(map(( response => response.json() )));

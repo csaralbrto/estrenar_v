@@ -897,7 +897,7 @@ img.proyecto-card {
   .data-icon {
     display: inline-block;
     width: 20px;
-    height: 20px;
+    height: 15px;
   }
   .data {
     display: inline-block;
@@ -1329,7 +1329,10 @@ span.error {
     a {
       background: $secondary-color;
       color: $primary-color;
-      &:hover,
+      :hover{
+        background: $secondary-color !important;
+        color: $primary-color !important;
+      }
       :focus {
         // background: #b4ca3d !important;
         background: $white;
@@ -1835,6 +1838,9 @@ ul.menu-left {
     font-size: 0.8rem;
     border-radius: $global-radius;
     margin-right: 0.6rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -2169,7 +2175,8 @@ ul.pagination-pointed {
   a {
     color: $secondary-color;
     &:hover {
-      color: $white;
+      // color: $white;
+      color: #17454e;
     }
   }
 }
@@ -2432,9 +2439,9 @@ img.image.constructor {
 //COntador
 
 @media print, screen and (min-width: 481px) {
-.tag-filters{
-  width: 171px !important;
-}
+  .tag-filters{
+    width: 171px !important;
+  }
   .reveal {
     &.filter {
       width: 900px;
@@ -2672,7 +2679,8 @@ img:focus {
       }
     }
     .tabs-title > a {
-      color: $primary-color;
+      // color: $primary-color;
+      color: #17454E;
       padding: 0.75rem 1.1rem;
     }
     .tabs-title > a:focus,
@@ -2690,8 +2698,8 @@ img:focus {
     }
     .tabs-title > a:hover {
       border-radius: 8px;
-      background: $primary-color;
-      // background: #B4CA3D;
+      // background: $primary-color;
+      background: #B4CA3D;
       color: $white;
     }
   }
@@ -2887,9 +2895,9 @@ ul.menu li a img {
   background: $secondary-color !important;
 }
 
-.img-icon {
-  margin-top: 10px;
-}
+// .img-icon {
+//   margin-top: 10px;
+// }
 
 .ml10 {
   margin-left: 10px !important;
@@ -2917,6 +2925,59 @@ ul.menu li a img {
   background: #e4f294 !important;
 }
 @media print, screen and (max-width: 480px) {
+
+  .title-home{
+    font-size: 1.5rem;
+    color: #fefefe;
+  }
+  .bots-projectDetails {
+    display: block;
+    flex-direction: row !important;
+    align-items: center;
+    position: fixed;
+    width: 100% !important;
+    bottom: 0 !important;
+    right: 0;
+    background-color: #14454e;
+    border-radius: 0px 0 0 0px !important;
+    text-align: center;
+    z-index: 1;
+    height: 3.1rem;
+    .ev--bots--facebook {
+      display: inline-block;
+    }
+    .ev--bots--whatsapp {
+      display: inline-block;
+    }
+  }
+  .searchHouse{
+    display: inline-block;
+    width: 5.7rem;
+    label{
+      vertical-align: 6px;
+    }
+  }
+  .mtopWizard{
+    margin-top: 3rem;
+  }
+  .inline-contents {
+    display: contents !important;
+    margin-left: 33px;
+    margin-right: 40px;
+    button.button {
+      margin: 1rem;
+    }
+  }
+  .bton-wizard{
+    width: 116.2px !important
+  }
+  .banner-wizard{
+    padding-left: 1rem;
+    margin-top: 1rem;
+  }
+  .banner-wizard1{
+    padding-left: 1rem;
+  }
   .filter-button{
     display: flex;
     flex-direction: column;
@@ -2927,6 +2988,7 @@ ul.menu li a img {
     right: 0;
     background-color: #14454e;
     border-radius: 8px 0 0 8px !important;
+    z-index: 1;
   }
   //comparador
   .comparador {
@@ -3416,78 +3478,95 @@ ul.menu li a img {
 
 }
 @media print, screen and (min-width: 481px) {
-.mLfetApartamentos{
-  margin-left: -36px !important;
-}
-//comparador
-.comparador {
-  font-size: 0.9rem;
-  .proyecto {
-    img.proyecto {
-      border-radius: $global-radius;
-      margin-bottom: 1rem;
+
+  .searchHouse{
+    display: inline-block;
+    width: 5.6rem;
+    label {
+      vertical-align: 6px !important;
     }
-    .data {
-      &.columns {
-        padding-left: 0;
-        padding-right: 0;
+  }
+  .bton-filters-projects{
+    height: 34.5px;
+    margin-top: -6px;
+
+  }
+  .title-home{
+    font-size: 2.625rem;
+    color: #fefefe;
+  }
+  .mLfetApartamentos{
+    margin-left: -36px !important;
+  }
+  //comparador
+  .comparador {
+    font-size: 0.9rem;
+    .proyecto {
+      img.proyecto {
+        border-radius: $global-radius;
+        margin-bottom: 1rem;
+      }
+      .data {
+        &.columns {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      #foto,
+      #precio,
+      #title,
+      #ubicacion,
+      #vivienda,
+      #estado,
+      #tipo,
+      #alcobas,
+      #water,
+      #garajes,
+      #acabados,
+      #estrato {
+        padding: 0 2rem;
+      }
+      div#foto {
+        min-height: 140px;
+        position: relative;
+        .container-foto {
+          position: relative;
+          &:after {
+            position: absolute;
+            background: url(/assets/images/cerrar.png);
+            content: "";
+            right: 0.5rem;
+            top: 0.5rem;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            cursor: pointer;
+          }
+        }
+      }
+      div#title {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        min-height: 46px;
+      }
+      div#precio {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: $primary-color;
       }
     }
-    #foto,
-    #precio,
-    #title,
-    #ubicacion,
-    #vivienda,
-    #estado,
-    #tipo,
-    #alcobas,
-    #water,
-    #garajes,
-    #acabados,
-    #estrato {
-      padding: 0 2rem;
-    }
-    div#foto {
-      min-height: 140px;
-      position: relative;
-      .container-foto {
-        position: relative;
-        &:after {
-          position: absolute;
-          background: url(/assets/images/cerrar.png);
-          content: "";
-          right: 0.5rem;
-          top: 0.5rem;
-          width: 20px;
-          height: 20px;
-          background-size: contain;
-          cursor: pointer;
+    .encabezados {
+      margin-top: 208px;
+      .item {
+        margin: 2rem auto;
+        font-weight: 600;
+        color: $primary-color;
+        img {
+          margin-right: 1rem;
         }
       }
     }
-    div#title {
-      font-weight: 600;
-      margin-bottom: 1rem;
-      min-height: 46px;
-    }
-    div#precio {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: $primary-color;
-    }
   }
-  .encabezados {
-    margin-top: 208px;
-    .item {
-      margin: 2rem auto;
-      font-weight: 600;
-      color: $primary-color;
-      img {
-        margin-right: 1rem;
-      }
-    }
-  }
-}
   .pLeftFeatures{
     padding-left: 4rem;
   }
@@ -3785,7 +3864,7 @@ label.container-radio.label-button.checked {
   width: 130px !important;
 }
 .width-btnWizard {
-  width: 132px !important;
+  width: 135px !important;
 }
 .info-project {
   height: 162px;
@@ -3938,4 +4017,68 @@ input.check-date-form {
 .slick-slider {
   touch-action: auto;
   -ms-touch-action: auto;
+}
+.switch input:checked ~ .switch-paddle, .switch.primary input:checked ~ .switch-paddle {
+  // background: #1779ba;
+  background: #14454e;
+}
+
+.switch.secondary input:checked ~ .switch-paddle {
+  background: #767676;
+}
+
+.switch.success input:checked ~ .switch-paddle {
+  background: #3adb76;
+}
+
+.switch.alert input:checked ~ .switch-paddle {
+  background: #cc4b37;
+}
+
+.switch.warning input:checked ~ .switch-paddle {
+  background: #ffae00;
+}
+.switch-paddle {
+  position: relative;
+  display: block;
+  width: 3.1rem !important;
+  height: 1.7rem !important;
+  border-radius: 8px;
+  background: #a8a8a8;
+  transition: all 0.25s ease-out;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.autocomplete-container .input-container input {
+  font-size: 14px;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: none;
+  outline: 0;
+  background-color: #fff;
+  color: rgba(0,0,0,.87);
+  width: 100%;
+  padding: 0 15px;
+  line-height: 40px;
+  height: 40px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='150px'><text x='0' y='22' fill='gray' font-size='17'>Ciudad, zona</text></svg>");
+  background-repeat: no-repeat;
+}
+.autocomplete-container .input-container input:focus {
+  background-image: none;
+}
+.autocomplete-container .input-container input:active {
+  background-image: none;
+}
+.img-arrow {
+  height: 13px !important;
+  vertical-align: -2px !important;
+  padding-left: 19px;
+}
+.img-arrow-left {
+  height: 13px !important;
+  vertical-align: -2px !important;
+  padding-right: 27px;
 }

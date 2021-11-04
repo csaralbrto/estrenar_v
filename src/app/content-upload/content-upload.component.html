@@ -768,7 +768,7 @@
                         <legend>Estado del inmueble</legend>
                         <div class="opcion text-center" *ngFor="let option of finishesTypology">
                             <div class="opcion-seleccion">
-                                <input id="finishes" name="finishes" formControlName="finishes" type="checkbox" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'finishes')" class="finishes" for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
+                                <input id="finishes" name="finishes" formControlName="finishes" type="checkbox" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'finishes')" class="finishes"><img src="/assets/images/icon-casa.png" ></label>
                             </div>
                             <div class="item">{{option.name}}</div>
                         </div>
@@ -945,7 +945,7 @@
                       <hr>
                         <div class="small-12 columns">
                             <div>Tipos de Garages</div>
-                            <div class="" *ngFor="let option of garageTypesTypology">
+                            <div *ngFor="let option of garageTypesTypology">
                                 <div>
                                     <input id="casas" type="checkbox" name="type_garages" formControlName="type_garages" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
                                 </div>
@@ -953,7 +953,7 @@
                         </div>
                         <div class="small-12 columns">
                             <div><img width="20px" height="20px" src="/assets/images/sala_comedor.png" alt=""> Sala comedor*</div>
-                            <div class="" *ngFor="let option of livingDiningRoomTypology">
+                            <div *ngFor="let option of livingDiningRoomTypology">
                                 <div>
                                     <input id="casas" type="checkbox" name="dining_room" formControlName="dining_room" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
                                 </div>

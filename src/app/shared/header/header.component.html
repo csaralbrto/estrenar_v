@@ -58,27 +58,25 @@
 
     <!--Fin menu -->
     <div class="row columns text-center block-search mtopMHome">
-        <h1>Te ayudamos a encontrar tu lugar ideal</h1>
+        <p class="title-home">Te ayudamos a encontrar tu lugar ideal</p>
         <div>
-            <form action="">
-                <div class="row condensed">
-                    <div class="medium-6 medium-offset-1 columns">
-                        <div class="buscador">
-                            <img class="search img-search" src="/assets/images/search.png">
-                            <input (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" id="searchWord" type="search" placeholder="¿Qué estás buscando?" />
-                        </div>
-                    </div>
-                    <div class="medium-2 columns">
-                        <select id="mySelect" (change)='onOptionsSelected($event)' name="price" *ngIf="filterPrice && filterPrice.length > 0">
-                    <option value="">Precio</option>
-                      <option id="price_val" *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
-                  </select>
-                    </div>
-                    <div class="medium-2 columns end">
-                        <a (click)=(searchWord()) class="button expanded secondary bton-search-home">Buscar</a>
-                    </div>
-                </div>
-            </form>
+          <div class="row condensed">
+              <div class="medium-7 medium-offset-1 columns">
+                  <div class="buscador">
+                      <img class="search img-search" src="/assets/images/search.png">
+                      <input (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" id="searchWord" type="search" placeholder="¿Qué estás buscando?" />
+                  </div>
+              </div>
+              <div class="medium-2 columns">
+                  <select id="mySelect" (change)='onOptionsSelected($event)' name="price" *ngIf="filterPrice && filterPrice.length > 0">
+              <option value="">Precio</option>
+                <option id="price_val" *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
+            </select>
+              </div>
+              <div class="medium-2 columns end">
+                  <a (click)=(searchWord()) class="button expanded secondary bton-search-home">Buscar</a>
+              </div>
+          </div>
         </div>
     </div>
     <div class="slider-header">

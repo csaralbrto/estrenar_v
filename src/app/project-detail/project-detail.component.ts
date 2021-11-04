@@ -134,6 +134,7 @@ export class ProjectDetailComponent implements OnInit {
   public maps_url;
 
   ngOnInit(): void {
+    $('#bots-sidebar').addClass('hide')
     this.startSpinner();
     // this.GooglePlaces();
     this.createForm();
@@ -150,8 +151,6 @@ export class ProjectDetailComponent implements OnInit {
       (err) => console.log(),
       () => {
         if(this.response){
-          // console.log(this.response.individual)
-          // this.beforeCheck(this.response.individual);
           /* captamos el uuid de la tipologia */
           this.typologyUuid = this.response.individual;
           this.typologyUuid = this.typologyUuid.split('/typology/');
@@ -229,34 +228,36 @@ export class ProjectDetailComponent implements OnInit {
               // console.log("si es par "+ this.valoresPares);
               this.caracteristicas = this.response.field_typology_feature;
               /* caracteristicas del inmueble */
-              for (let caracteristica_tipologia of this.caracteristicas) {
-                var name_cara;
-                var img_src;
-                if(caracteristica_tipologia.parent[0].id === 'virtual'){
-                  name_cara = caracteristica_tipologia.name
-                  if(caracteristica_tipologia.field_icon_feature.uri){
-                    img_src = this.dataSrcImg + caracteristica_tipologia.field_icon_feature.uri.url;
-                  }else{
-                    img_src = '/assets/images/icon-medida.png';
-                  }
-                }else{
-                  if(caracteristica_tipologia.parent[0].name == 'Alcobas'){
-                    this.response.bathrooms = caracteristica_tipologia.name;
-                  }else if(caracteristica_tipologia.parent[0].name == 'Baños'){
-                    this.response.bedrooms = caracteristica_tipologia.name;
-                  }else if(caracteristica_tipologia.parent[0].name == 'Garajes'){
-                    this.response.garages = caracteristica_tipologia.name;
-                  }else{
-                    name_cara = caracteristica_tipologia.parent[0].name+': '+ caracteristica_tipologia.name
-                    if( caracteristica_tipologia.parent[0].field_icon_feature.uri){
-                      img_src = this.dataSrcImg + caracteristica_tipologia.parent[0].field_icon_feature.uri.url;
+              if(this.caracteristicas.length > 0){
+                for (let caracteristica_tipologia of this.caracteristicas) {
+                  var name_cara;
+                  var img_src;
+                  if(caracteristica_tipologia.parent[0].id === 'virtual'){
+                    name_cara = caracteristica_tipologia.name
+                    if(caracteristica_tipologia.field_icon_feature.uri){
+                      img_src = this.dataSrcImg + caracteristica_tipologia.field_icon_feature.uri.url;
                     }else{
                       img_src = '/assets/images/icon-medida.png';
                     }
+                  }else{
+                    if(caracteristica_tipologia.parent[0].name == 'Alcobas'){
+                      this.response.bathrooms = caracteristica_tipologia.name;
+                    }else if(caracteristica_tipologia.parent[0].name == 'Baños'){
+                      this.response.bedrooms = caracteristica_tipologia.name;
+                    }else if(caracteristica_tipologia.parent[0].name == 'Garajes'){
+                      this.response.garages = caracteristica_tipologia.name;
+                    }else{
+                      name_cara = caracteristica_tipologia.parent[0].name+': '+ caracteristica_tipologia.name
+                      if( caracteristica_tipologia.parent[0].field_icon_feature.uri){
+                        img_src = this.dataSrcImg + caracteristica_tipologia.parent[0].field_icon_feature.uri.url;
+                      }else{
+                        img_src = '/assets/images/icon-medida.png';
+                      }
+                    }
                   }
+                  caracteristica_tipologia.name_only = name_cara;
+                  caracteristica_tipologia.img_src = img_src
                 }
-                caracteristica_tipologia.name_only = name_cara;
-                caracteristica_tipologia.img_src = img_src
               }
               this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
               /* caracteristicas del proyecto */
@@ -308,6 +309,7 @@ export class ProjectDetailComponent implements OnInit {
                     project.typology_images = arrayDeCadenas[0];
                     var arrayDeCadenas2 = project.project_category.split(',');
                     project.project_category = arrayDeCadenas2;
+                    project.typology_price = new Intl.NumberFormat("es-ES").format(project.typology_price);
                   }
                 }
               })
@@ -910,6 +912,8 @@ export class ProjectDetailComponent implements OnInit {
       // }
       var numerador = Number(formula_general_last) * Number(interes_mensual);
       var denominador = Number(formula_general_last) - Number(1);
+      this.priceProject = this.priceProject.replace(/[.]/g,'');
+      this.priceProject = this.priceProject.replace(/[,]/g,'.');
       if(value.tipo_credito_credito == 'hipotecario'){
         cuota = Number(this.priceProject) * Number(0.30);
         monto_del_prestamo_multi = Number(0.30);
@@ -926,21 +930,31 @@ export class ProjectDetailComponent implements OnInit {
       ingresos_mensuales_min = (Number(cuota_mensual) * Number(3.3));
 
       this.monto_prestamo_credito = monto_prestamo;
+      this.monto_prestamo_credito = new Intl.NumberFormat("es-ES").format(this.monto_prestamo_credito)
       this.ingresos_mensuales_min_credito = ingresos_mensuales_min;
+      this.ingresos_mensuales_min_credito = new Intl.NumberFormat("es-ES").format(this.ingresos_mensuales_min_credito)
       this.tasa_de_interes_credito = tasa_de_interes;
+      this.tasa_de_interes_credito = new Intl.NumberFormat("es-ES").format(this.tasa_de_interes_credito)
       this.cuota_inicial_vivienda_credito = cuota_inicial_vivienda;
+      this.cuota_inicial_vivienda_credito = new Intl.NumberFormat("es-ES").format(this.cuota_inicial_vivienda_credito)
       this.cuota_inicial_porcentaje_vivienda_credito = cuota_inicial;
       this.cuota_mensual_credito = cuota_mensual;
+      this.cuota_mensual_credito = new Intl.NumberFormat("es-ES").format(this.cuota_mensual_credito)
       this.plazo_meses_credito = plazo_mes;
+      this.plazo_meses_credito = new Intl.NumberFormat("es-ES").format(this.plazo_meses_credito)
     }
   }
   clickInfo(value){
     /* Quitar decimales en los montos de valor y saldo */
+
+    this.cuotasMensuales = [];
     var today = new Date();
     let cuota_inicial_porcentaje = 0;
     let cuota_inicial = '';
     let ahorros_totales = 0;
     let saldo_diferir = 0;
+    this.priceProject = this.priceProject.replace(/[.]/g,'');
+    this.priceProject = this.priceProject.replace(/[,]/g,'.');
     if(value.tipo_credito_cuota == 'hipotecario'){
       cuota_inicial_porcentaje = Number(this.priceProject) * Number(0.30);
       cuota_inicial = '30%';
@@ -955,23 +969,37 @@ export class ProjectDetailComponent implements OnInit {
     let count = 1;
     let saldo = Number(saldo_diferir);
     this.valorInmuebleCuota = Number(this.priceProject);
+    this.valorInmuebleCuota = new Intl.NumberFormat("es-ES").format(this.valorInmuebleCuota);
     this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
+    this.valorCuotaInicial = new Intl.NumberFormat("es-ES").format(this.valorCuotaInicial);
     this.valorAhorroCuota = Number(ahorros_totales);
+    this.valorAhorroCuota = new Intl.NumberFormat("es-ES").format(this.valorAhorroCuota);
     this.saldoDiferirCuota = Number(saldo_diferir);
+    this.saldoDiferirCuota = new Intl.NumberFormat("es-ES").format(this.saldoDiferirCuota);
     this.no_months = months + ' meses';
     for (let i=0; i < months; i++){
       var date_now = new Date();
       saldo = saldo - Number(valor_mes);
+      if(saldo < 0){
+        saldo = 0;
+      }
       var monthYear = this.formatMonthDate(date_now,count);
       let data =  {
         'count': count,
         'date': monthYear,
-        'value_cuota': valor_mes,
-        'saldo': saldo,
+        'value_cuota': new Intl.NumberFormat("es-ES").format(valor_mes),
+        'saldo': new Intl.NumberFormat("es-ES").format(saldo),
       }
       this.cuotasMensuales.push(data);
       count++;
     }
+  }
+  searchProjectByPrice(value){
+    var valor = value.replace(/[.]/g,'');
+    valor = valor.replace(/[,]/g,'.');
+    sessionStorage.removeItem('price_projects');
+    sessionStorage.setItem('price_projects',valor)
+    this.router.navigate(['/proyectos']);
   }
   formatDate(dateIn) {
     var dd = String(dateIn.getDate()).padStart(2, '0');
@@ -1072,5 +1100,9 @@ export class ProjectDetailComponent implements OnInit {
       $('#10am').removeClass('bton-active');
       $('#11am').addClass('bton-active');
     }
+  }
+  navigateToSection(section: string) {
+    window.location.hash = '';
+    window.location.hash = section;
   }
 }
