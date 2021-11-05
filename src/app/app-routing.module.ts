@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ProjectPreviewComponent } from './project-preview/project-preview.component';
@@ -217,10 +218,17 @@ const routes: Routes = [
     component: WizardComponent,
     pathMatch: 'full',
   },
+  { path: '**',
+    component: NotFoundComponent,
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)
+    // RouterModule.forRoot(routes, {useHash: true})
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

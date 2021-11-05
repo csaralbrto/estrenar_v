@@ -24,6 +24,7 @@ export class ProjectDetailComponent implements OnInit {
   itemImg: GalleryItem[];
   tags: MetaTag;
   public response: any;
+  public typeContact: any;
   public responsePlacesGoogle: any;
   public newResponse: any;
   public responseProperties: any;
@@ -177,25 +178,28 @@ export class ProjectDetailComponent implements OnInit {
                 this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
               }
               if(this.response.field_virtual_tour !== null){
-                this.urlTour = this.response.field_virtual_tour.uri;
-                this.urlTour = this.urlTour.replace('/watch?v=', "/embed/");
-                this.safeURLVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlTour);
-                // console.log(this.urlTour);
-              }
-              if(this.response.field_typology_video.length && this.urlTour){
-                this.video_url = "video";
                 this.tour_url = "tour";
-                $('#video_tab').attr('data-tabs-target', 'video');
+                this.safeURLVideo = this.response.field_virtual_tour.uri;
+                this.urlTour = this.sanitizer.bypassSecurityTrustResourceUrl(this.safeURLVideo);
                 $('#tour_tab').attr('data-tabs-target', 'tour');
-                $('#video_tab').attr('href', '#video');
                 $('#tour_tab').attr('href', '#tour');
+                console.log(this.urlTour);
+              }else{
+                this.tour_url =  "images";
+                $('#tour_tab').attr('data-tabs-target', 'images');
+                $('#tour_tab').attr('href', '#images');
+              }
+              if(this.response.field_typology_project.field_project_video !== null){
+                /* Crear un variabel para la url del video  el campo en el api es name replicar las 2 lineas de abajo*/
+                // this.safeURLVideo = this.response.field_virtual_tour.uri;
+                // this.urlTour = this.sanitizer.bypassSecurityTrustResourceUrl(this.safeURLVideo);
+                this.video_url = "video";
+                $('#video_tab').attr('data-tabs-target', 'video');
+                $('#video_tab').attr('href', '#video');
               }else{
                 this.video_url = "images";
-                this.tour_url =  "images";
                 $('#video_tab').attr('data-tabs-target', 'images');
-                $('#tour_tab').attr('data-tabs-target', 'images');
                 $('#video_tab').attr('href', '#images');
-                $('#tour_tab').attr('href', '#images');
               }
               this.cityProject = this.response.field_typology_project.field_project_location[0].field_location_city.drupal_internal__tid;
               this.priceProject = this.response.field_typology_price
@@ -230,7 +234,7 @@ export class ProjectDetailComponent implements OnInit {
               this.itemImg = imageGalleryArray.map(item =>
                 new ImageItem({ src: item.srcUrl, thumb: item.previewUrl })
               );
-              console.log("items "+this.itemImg);
+              // console.log("items "+this.itemImg);
 
               /*  Cargar los itemd en el Lightbox */
               this.basicLightboxExample();
@@ -885,6 +889,8 @@ export class ProjectDetailComponent implements OnInit {
           if(this.responseSubmit.id){
             $('#exampleModal1').foundation('open');
             this.form.reset();
+            let type_contact = this.typeContact;
+            this.actionAfterContact(type_contact);
           }
           if(!this.responseSubmit.id){
             // $('#modalAlertError').foundation('open');
@@ -1140,6 +1146,20 @@ export class ProjectDetailComponent implements OnInit {
   navigateToSection(section: string) {
     window.location.hash = '';
     window.location.hash = section;
+  }
+  activeAfterContact(value){
+    this.typeContact = value;
+  }
+  actionAfterContact(type){
+    if(type == 'phone'){
+      let phone = '3210000000';
+      let url_mailto = 'tel:' + phone
+      window.open(url_mailto);
+    }else{
+      let email = 'email@test.com';
+      let url_mailto = 'mailto:' + email
+      window.open(url_mailto);
+    }
   }
 }
 

@@ -1158,7 +1158,7 @@ h1.project {
   margin-top: 27px;
   text-align: right;
   &.list {
-    margin-top: 18px;
+    margin-top: 17px;
   }
   .button {
     display: inline-block;
@@ -2938,7 +2938,7 @@ ul.menu li a img {
     width: 100% !important;
     bottom: 0 !important;
     right: 0;
-    background-color: #14454e;
+    background-color: #fefefe;
     border-radius: 0px 0 0 0px !important;
     text-align: center;
     z-index: 1;
@@ -4052,24 +4052,16 @@ input.check-date-form {
 }
 
 .autocomplete-container .input-container input {
-  font-size: 14px;
-  box-sizing: border-box;
-  border: none;
-  box-shadow: none;
-  outline: 0;
-  background-color: #fff;
-  color: rgba(0,0,0,.87);
-  width: 100%;
-  padding: 0 15px;
-  line-height: 40px;
-  height: 40px;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='150px'><text x='0' y='22' fill='gray' font-size='17'>Ciudad, zona</text></svg>");
   background-repeat: no-repeat;
 }
 .autocomplete-container .input-container input:focus {
   background-image: none;
 }
-.autocomplete-container .input-container input:active {
+.autocomplete-container .input-container input:visited {
+  background-image: none;
+}
+.autocomplete-container .input-container input:focus-within {
   background-image: none;
 }
 .img-arrow {
@@ -4084,4 +4076,15 @@ input.check-date-form {
 }
 .cdk-overlay-container {
   background-color: #000000cf;
+}
+.title-builders-log{
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+.displayIBlock{
+  display: inline-block;
+}
+.mBotton15{
+  margin-bottom: 1.5rem;
 }

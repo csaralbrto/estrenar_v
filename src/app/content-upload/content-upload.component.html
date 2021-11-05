@@ -160,12 +160,19 @@
                             </div>
                             <div>
                                 <label>Escriba la dirección de la sala de ventas
+                                </label>
+                                    <div class="row columns mBotton15">
+                                      <div class="medium-1 displayIBlock">
+                                        <img src="/assets/images/markets/pin-restaurant.svg" alt="">
+                                      </div>
+                                      <div class="medium-11 displayIBlock">
                                         <input id="address_room_sales" name="address_room_sales" (change)="changeAddress()" formControlName="address_room_sales" type="text" placeholder="" value="{{address_sales_room}}">
-                                    </label>
+                                      </div>
+                                    </div>
                                 <div class="">
                                     <span style="color: red" id="spanSales" class="hide">
-                                            Debe ingresar una dirección
-                                        </span>
+                                        Debe ingresar una dirección
+                                    </span>
                                 </div>
                             </div>
                             <div>
@@ -176,8 +183,15 @@
                             </div>
                             <div>
                                 <label>Escriba la dirección del proyecto
-                                        <input id="address_project" name="address_project" (change)="changeAddress()" formControlName="address_project" type="text" placeholder="" value="{{address_project}}">
-                                    </label>
+                                </label>
+                                <div class="row columns mBotton15">
+                                  <div class="medium-1 displayIBlock">
+                                    <img src="/assets/images/markets/pin-hospital.svg" alt="">
+                                  </div>
+                                  <div class="medium-11 displayIBlock">
+                                    <input id="address_project" name="address_project" (change)="changeAddress()" formControlName="address_project" type="text" placeholder="" value="{{address_project}}">
+                                  </div>
+                                </div>
                                 <div class="">
                                     <span style="color: red" id="spanProject" class="hide">
                                             Debe ingresar una dirección

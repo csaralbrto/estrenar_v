@@ -303,7 +303,7 @@
               </div>
           </div>
       </li>
-      <li>
+      <li *ngIf="allProjects > 0">
         <div class="medium-6 columns">
             <!-- Card Proyecto individual-->
             <div class="card" data-equalizer-watch>
@@ -384,7 +384,7 @@
         </div>
           <!-- Fin Card Proyecto individual-->
       </li>
-      <li>
+      <li *ngIf="allProjects > 1">
           <div class="medium-6 columns">
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>

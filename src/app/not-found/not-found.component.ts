@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HomeService } from './home.service';
+import { NotFoundService } from './not-found.service';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Meta } from '@angular/platform-browser';
@@ -10,12 +10,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 declare var $: any;
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  providers: [HomeService],
+  selector: 'app-not-found',
+  templateUrl: './not-found.component.html',
+  styleUrls: ['./not-found.component.scss'],
+  providers: [NotFoundService],
 })
-export class HomeComponent implements OnInit {
+export class NotFoundComponent implements OnInit {
   tags: MetaTag;
   public response: any;
   public responseAdServer: any;
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   public form: FormGroup;
   public stringText: any;
 
-  constructor(public Service: HomeService, private formBuilder: FormBuilder, private meta: Meta, private router: Router, private spinnerService: NgxSpinnerService) {}
+  constructor(public Service: NotFoundService, private formBuilder: FormBuilder, private meta: Meta, private router: Router, private spinnerService: NgxSpinnerService) {}
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -97,8 +97,8 @@ export class HomeComponent implements OnInit {
 
   ngAfterContentChecked() {
     if (this.results) {
+      $('not-found').foundation();
 
-      $('app-home').foundation();
       if ($('.slider-home').length) {
         $('.slider-home').not('.slick-initialized').slick({
           dots: true,

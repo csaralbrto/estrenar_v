@@ -367,13 +367,20 @@ export class DetailConstructoraComponent implements OnInit {
           // }
           this.stopSpinner();
         }else{
-          let urlMoreRecords =  this.content.drupal_internal__id + '?items_per_page=' + diff;
+          this.resultProyecto = this.countProjects + diff;
+          if(this.resultProyecto < 28 && this.resultProyecto > 24){
+            this.resultProyecto = 28;
+          }else if(this.resultProyecto < 32 && this.resultProyecto > 28){
+            this.resultProyecto = 32;
+          }
+          let urlMoreRecords =  this.content.drupal_internal__id + '?items_per_page=' + this.resultProyecto;
           console.log(urlMoreRecords);
           this.Service.getMoreDatos(urlMoreRecords).subscribe(
             (data) => (this.responseProject = data),
             (err) => console.log(),
             () => {
               if (this.responseProject) {
+              // console.log(this.responseProject);
                 this.countAllProjects = this.responseProject.total;
                 this.allProjects = this.responseProject.search_results;
                 this.countProjects = this.allProjects.length;
@@ -385,10 +392,10 @@ export class DetailConstructoraComponent implements OnInit {
                     project.project_category = arrayDeCadenas2;
                   }else{
                     project.project_category = project.project_category + ','
-                    console.log(project.project_category);
+                    // console.log(project.project_category);
                     var arrayDeCadenas2 = project.project_category.split(',');
                     project.project_category = arrayDeCadenas2;
-                    console.log(typeof project.project_category);
+                    // console.log(typeof project.project_category);
                   }
                   /* format numbr */
                   project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
@@ -437,6 +444,7 @@ export class DetailConstructoraComponent implements OnInit {
                   this.filterSort = this.responseProject.sorts;
                 }
                 this.results = true;
+
               }
               /* si responde correctamente */
               if (this.responseProject.error) {

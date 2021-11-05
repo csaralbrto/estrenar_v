@@ -18,6 +18,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { BlogComponent } from './blog/blog.component';
 import { ConstructoraComponent } from './constructora/constructora.component';
 import { ProjectsComponent } from './projects/projects.component';
@@ -62,6 +63,7 @@ import { GalleryModule } from 'ng-gallery';
   declarations: [
     AppComponent,
     HomeComponent,
+    NotFoundComponent,
     BlogComponent,
     ConstructoraComponent,
     ProjectsComponent,

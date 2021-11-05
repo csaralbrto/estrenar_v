@@ -290,6 +290,8 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   keyword = 'name';
   selectEvent(item) {
     // console.log('el valor seleccionado es: ',item)
+    /* quitar el placeholder del input autocomplete */
+    $('.autocomplete-container .input-container input').css('background-image','none')
     this.searchPlace = item.drupal_internal__tid;
     this.searchPlaceName = item.name;
   }
