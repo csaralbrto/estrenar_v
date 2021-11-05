@@ -116,7 +116,9 @@ export class ProjectDetailComponent implements OnInit {
   public blueprintProyect: any;
   public blueprint: any;
   public urlTour: any;
+  public videoUrl:any;
   public safeURLVideo: any;
+  public safeVideoURL:any;
   public Hospital_visible = false;
   public Restaurant_visible = false;
   public Bank_visible = false;
@@ -183,16 +185,18 @@ export class ProjectDetailComponent implements OnInit {
                 this.urlTour = this.sanitizer.bypassSecurityTrustResourceUrl(this.safeURLVideo);
                 $('#tour_tab').attr('data-tabs-target', 'tour');
                 $('#tour_tab').attr('href', '#tour');
-                console.log(this.urlTour);
+                // console.log(this.urlTour);
               }else{
                 this.tour_url =  "images";
                 $('#tour_tab').attr('data-tabs-target', 'images');
                 $('#tour_tab').attr('href', '#images');
               }
               if(this.response.field_typology_project.field_project_video !== null){
-                /* Crear un variabel para la url del video  el campo en el api es name replicar las 2 lineas de abajo*/
-                // this.safeURLVideo = this.response.field_virtual_tour.uri;
-                // this.urlTour = this.sanitizer.bypassSecurityTrustResourceUrl(this.safeURLVideo);
+                this.safeVideoURL =this.response.field_typology_project.field_project_video.field_media_oembed_video;
+
+                var var_video_url = this.safeVideoURL.replace('https://youtu.be/', "https://www.youtube.com/embed/");
+                console.log("mirar video "+ var_video_url);
+                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(var_video_url);
                 this.video_url = "video";
                 $('#video_tab').attr('data-tabs-target', 'video');
                 $('#video_tab').attr('href', '#video');
