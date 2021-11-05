@@ -193,9 +193,8 @@ export class ProjectDetailComponent implements OnInit {
               }
               if(this.response.field_typology_project.field_project_video !== null){
                 this.safeVideoURL =this.response.field_typology_project.field_project_video.field_media_oembed_video;
-
                 var var_video_url = this.safeVideoURL.replace('https://youtu.be/', "https://www.youtube.com/embed/");
-                console.log("mirar video "+ var_video_url);
+                // console.log("mirar video "+ var_video_url);
                 this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(var_video_url);
                 this.video_url = "video";
                 $('#video_tab').attr('data-tabs-target', 'video');

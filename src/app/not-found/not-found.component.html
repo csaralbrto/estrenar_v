@@ -5,22 +5,36 @@
 <!--Bloque1 -->
 <div class="container-gray">
     <div class="row columns text-center">
-        <!-- <div> -->
-        <!-- <div id='beacon_ffca91f02b' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'>
-            <img src='https://ads.estrenarvivienda.com/www/delivery/lg.php?bannerid=0&amp;campaignid=0&amp;zoneid=16&amp;loc=https%3A%2F%2Fwww.estrenarvivienda.com%2Fproyectos-vivienda&amp;cb=ffca91f02b' width='0' height='0' alt='' style='width: 0px; height: 0px;'
-            />
-        </div> -->
-        <!-- </div> -->
-
-    <div class="row text-center">
-        <hr class="white">
-        <div class="publicidad">
-            <img src="/assets/images/banner1.jpg" alt="">
+      <div class="row columns text-center block-search mtopMHome mBotton5">
+        <div class="columns medium-6 mRight-notfound">
+          <p class="notfound">404</p>
         </div>
-    </div>
+        <div class="columns medium-6 text-left mtopNotfound">
+          <h2>Página no encontrada</h2>
+          <p>Lo sentimos el contenido que buscas no est disponible.
+          Puedes volver a la página anterior, visita nuestra página de <a class="colorEV" href="/home">inicio</a>
+          o ponerte en contacto con nuestro equipo de soporte</p>
+        </div>
+        <div class="row condensed">
+            <div class="medium-7 medium-offset-1 columns">
+                <div class="buscador">
+                    <img class="search img-search" src="/assets/images/search.png">
+                    <input (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" id="searchWord" type="search" placeholder="¿Qué estás buscando?" />
+                </div>
+            </div>
+            <div class="medium-2 columns">
+                <select id="mySelect" (change)='onOptionsSelected($event)' name="price" *ngIf="filterPrice && filterPrice.length > 0">
+            <option value="">Precio</option>
+              <option id="price_val" *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
+          </select>
+            </div>
+            <div class="medium-2 columns end">
+                <a (click)=(searchWord()) class="button expanded secondary bton-search-home">Buscar</a>
+            </div>
+        </div>
+      </div>
     </div>
     <div class="row columns">
-        <h2 class="text-center deco">404 NO ENCONTRADA</h2>
         <div class="medium-3 columns end">
             <div class="row">
                 <div class="small-3 medium-6 columns text-center">
@@ -52,7 +66,7 @@
                                 <div class="medium-8 columns destacado">
                                     <figure class="">
                                         <div *ngIf="response.home_featured_collections[0]; else imgOther0">
-                                            <a (click)=(loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name))>
+                                            <a (click)="loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name)">
                                                 <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
                                             </a>
                                         </div>
@@ -67,7 +81,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[1]; else imgOther1">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[1].id,response.home_featured_collections[1].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[1].id,response.home_featured_collections[1].name)">
                                                         <img class="" [src]="response.home_featured_collections[1].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -81,7 +95,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[2]; else imgOther2">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[2].id,response.home_featured_collections[2].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[2].id,response.home_featured_collections[2].name)">
                                                         <img class="" [src]="response.home_featured_collections[2].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -104,7 +118,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[3]; else imgOther3">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[3].id,response.home_featured_collections[3].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[3].id,response.home_featured_collections[3].name)">
                                                         <img class="" [src]="response.home_featured_collections[3].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -118,7 +132,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[4]; else imgOther4">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[4].id,response.home_featured_collections[4].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[4].id,response.home_featured_collections[4].name)">
                                                         <img class="" [src]="response.home_featured_collections[4].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -137,7 +151,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[5]; else imgOther5">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[5].id,response.home_featured_collections[5].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[5].id,response.home_featured_collections[5].name)">
                                                         <img class="" [src]="response.home_featured_collections[5].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -151,7 +165,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[6]; else imgOther6">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[6].id,response.home_featured_collections[6].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[6].id,response.home_featured_collections[6].name)">
                                                         <img class="" [src]="response.home_featured_collections[6].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -170,7 +184,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[7]; else imgOther7">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[7].id,response.home_featured_collections[7].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[7].id,response.home_featured_collections[7].name)">
                                                         <img class="" [src]="response.home_featured_collections[7].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -184,7 +198,7 @@
                                         <div class="medium-12 columns">
                                             <figure class="">
                                                 <div *ngIf="response.home_featured_collections[8]; else imgOther8">
-                                                    <a (click)=(loadCollection(response.home_featured_collections[8].id,response.home_featured_collections[8].name))>
+                                                    <a (click)="loadCollection(response.home_featured_collections[8].id,response.home_featured_collections[8].name)">
                                                         <img class="" [src]="response.home_featured_collections[8].image.url" alt="">
                                                     </a>
                                                 </div>
@@ -213,7 +227,7 @@
                       <div class="medium-12 columns destacado">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[0]; else imgOther0">
-                                  <a (click)=(loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name)">
                                       <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
                                     <figcaption class="">{{ response.home_featured_collections[0] ? response.home_featured_collections[0].name : "" }}</figcaption>
                                   </a>
@@ -228,7 +242,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[1]; else imgOther1">
-                                  <a (click)=(loadCollection(response.home_featured_collections[1].id,response.home_featured_collections[1].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[1].id,response.home_featured_collections[1].name)">
                                       <img class="" [src]="response.home_featured_collections[1].image.url" alt="">
                                   </a>
                               </div>
@@ -244,7 +258,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[2]; else imgOther2">
-                                  <a (click)=(loadCollection(response.home_featured_collections[2].id,response.home_featured_collections[2].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[2].id,response.home_featured_collections[2].name)">
                                       <img class="" [src]="response.home_featured_collections[2].image.url" alt="">
                                   </a>
                               </div>
@@ -260,7 +274,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[3]; else imgOther3">
-                                  <a (click)=(loadCollection(response.home_featured_collections[3].id,response.home_featured_collections[3].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[3].id,response.home_featured_collections[3].name)">
                                       <img class="" [src]="response.home_featured_collections[3].image.url" alt="">
                                   </a>
                               </div>
@@ -276,7 +290,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[4]; else imgOther4">
-                                  <a (click)=(loadCollection(response.home_featured_collections[4].id,response.home_featured_collections[4].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[4].id,response.home_featured_collections[4].name)">
                                       <img class="" [src]="response.home_featured_collections[4].image.url" alt="">
                                   </a>
                               </div>
@@ -292,7 +306,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[5]; else imgOther5">
-                                  <a (click)=(loadCollection(response.home_featured_collections[5].id,response.home_featured_collections[5].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[5].id,response.home_featured_collections[5].name)">
                                       <img class="" [src]="response.home_featured_collections[5].image.url" alt="">
                                   </a>
                               </div>
@@ -308,7 +322,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[6]; else imgOther6">
-                                  <a (click)=(loadCollection(response.home_featured_collections[6].id,response.home_featured_collections[6].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[6].id,response.home_featured_collections[6].name)">
                                       <img class="" [src]="response.home_featured_collections[6].image.url" alt="">
                                   </a>
                               </div>
@@ -324,7 +338,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[7]; else imgOther7">
-                                  <a (click)=(loadCollection(response.home_featured_collections[7].id,response.home_featured_collections[7].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[7].id,response.home_featured_collections[7].name)">
                                       <img class="" [src]="response.home_featured_collections[7].image.url" alt="">
                                   </a>
                               </div>
@@ -340,7 +354,7 @@
                       <div class="medium-12 columns">
                           <figure class="">
                               <div *ngIf="response.home_featured_collections[8]; else imgOther8">
-                                  <a (click)=(loadCollection(response.home_featured_collections[8].id,response.home_featured_collections[8].name))>
+                                  <a (click)="loadCollection(response.home_featured_collections[8].id,response.home_featured_collections[8].name)">
                                       <img class="" [src]="response.home_featured_collections[8].image.url" alt="">
                                   </a>
                               </div>
@@ -1232,17 +1246,10 @@
         <!--fin slide proyecto-->
     </div>
     <!-- fin banner comparar mobile -->
-    <hr class="white">
-    <div class="row text-center">
-        <hr class="white">
-        <div class="publicidad">
-            <img src="/assets/images/banner1.jpg" alt="">
-        </div>
-    </div>
 </div>
 <!--fin bloque2 -->
 <!--Bloque3 -->
-<div>
+<div class="hide">
     <div class="row columns hide-for-small-only">
         <h2 class="text-center deco">Constructoras</h2>
         <div class="sl-constructoras" role="region" aria-label="Favorite Space Pictures">

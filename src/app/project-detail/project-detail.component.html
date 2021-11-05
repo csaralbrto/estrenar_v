@@ -54,10 +54,10 @@
 <!--slide-->
 <div class="row columns">
     <div class="tabs-content" data-tabs-content="propertiesProject">
-      <!-- Imágenes Desktop -->
-      <div class="row hide-for-small-only">
+      <div class="">
         <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images" style="height:558px !important; background-color: #fefefe;">
-            <div class="">
+            <!-- Imágenes Desktop -->
+            <div class="row hide-for-small-only">
                 <div class="medium-6 columns destacado">
                     <figure class="">
                         <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
@@ -92,125 +92,120 @@
                     </div>
                 </div>
             </div>
-        </div>
-      </div>
-      <!-- Fin imágenes Desktop -->
-      <!-- Imágenes Mobile -->
-      <div class="row show-for-small-only">
-        <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important; background-color: #fefefe;">
-            <div class="bckground-slider">
-                <ul class="slider-project-img slideproject">
-                    <li class="is-active">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="1" class="imagenPrincipal" [src]="url_img_path + galeria[1].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="2" class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 2">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="3" class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 3">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="4" class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 4">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="5" class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 5">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="6" class="imagenPrincipal" [src]="url_img_path + galeria[6].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 6">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="7" class="imagenPrincipal" [src]="url_img_path + galeria[7].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 7">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="8" class="imagenPrincipal" [src]="url_img_path + galeria[8].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 8">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="9" class="imagenPrincipal" [src]="url_img_path + galeria[9].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 9">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="10" class="imagenPrincipal" [src]="url_img_path + galeria[10].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 10">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="11" class="imagenPrincipal" [src]="url_img_path + galeria[11].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 11">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="12" class="imagenPrincipal" [src]="url_img_path + galeria[12].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                    <li *ngIf="galeria > 12">
-                        <div class="small-12 columns">
-                            <figure class="">
-                                <img [lightbox]="13" class="imagenPrincipal" [src]="url_img_path + galeria[13].uri.url" alt="" height="371px">
-                            </figure>
-                        </div>
-                    </li>
-                </ul>
+            <!-- Fin imágenes Desktop -->
+            <!-- Imágenes Mobile -->
+            <div class="row show-for-small-only">
+              <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important; background-color: #fefefe;">
+                  <div class="bckground-slider">
+                      <ul class="slider-project-img slideproject">
+                          <li class="is-active">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="1" class="imagenPrincipal" [src]="url_img_path + galeria[1].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="2" class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 2">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="3" class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 3">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="4" class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 4">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="5" class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 5">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="6" class="imagenPrincipal" [src]="url_img_path + galeria[6].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 6">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="7" class="imagenPrincipal" [src]="url_img_path + galeria[7].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 7">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="8" class="imagenPrincipal" [src]="url_img_path + galeria[8].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 8">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="9" class="imagenPrincipal" [src]="url_img_path + galeria[9].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 9">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="10" class="imagenPrincipal" [src]="url_img_path + galeria[10].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 10">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="11" class="imagenPrincipal" [src]="url_img_path + galeria[11].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 11">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="12" class="imagenPrincipal" [src]="url_img_path + galeria[12].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                          <li *ngIf="galeria > 12">
+                              <div class="small-12 columns">
+                                  <figure class="">
+                                      <img [lightbox]="13" class="imagenPrincipal" [src]="url_img_path + galeria[13].uri.url" alt="" height="371px">
+                                  </figure>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
             </div>
+            <!-- Fin imágenes Mobile -->
         </div>
       </div>
-      <!-- Fin imágenes Mobile -->
       <!-- Tab video del proyecto -->
       <div class="tabs-panel" id="video" *ngIf="videoUrl">
           <div class="row">
-              <!-- <video width="100%" height="600" controls>
-                  <source [src]="videoUrl" type="video/mp4">
-                  Tu navegador no soporta los vídeos de HTML5
-              </video> -->
-              <!-- <iframe width="1280" height="720" src="https://www.youtube.com/embed/wQslUGQ3kE8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
               <iframe width="100%" height="600" [src]="videoUrl" ></iframe>
           </div>
       </div>
@@ -218,10 +213,6 @@
       <!-- Tab recorrido del proyecto -->
       <div class="tabs-panel" id="tour" *ngIf="urlTour">
           <div class="row">
-              <!-- <video width="520" height="250" controls>
-                <source [src]="response.field_virtual_tour.uri" type="video/mp4">
-                    Tu navegador no soporta los vídeos de HTML5
-                </video> -->
               <iframe width="100%" height="600" [src]="urlTour">
             </iframe>
           </div>

@@ -3479,6 +3479,12 @@ ul.menu li a img {
 }
 @media print, screen and (min-width: 481px) {
 
+  .mtopNotfound{
+    margin-top: 4rem;
+  }
+  .mRight-notfound{
+    margin-right: -5.5rem;
+  }
   .searchHouse{
     display: inline-block;
     width: 5.6rem;
@@ -4088,3 +4094,18 @@ input.check-date-form {
 .mBotton15{
   margin-bottom: 1.5rem;
 }
+.mBotton5{
+  margin-bottom: 5rem;
+}
+.notfound{
+  font-size: 11rem;
+  font-weight: 500;
+  color: #b4ca3d;
+}
+.text-left{
+  text-align: left;
+}
+.colorEV{
+  color: #b4ca3d !important;
+}
+

@@ -40,11 +40,14 @@ export class NotFoundComponent implements OnInit {
   title_section_builders = 'Constructoras';
   title_section_blog = 'Blog';
   main_title_page = 'Te ayudamos a encontrar tu lugar ideal';
+  public path_api = environment.endpointTestingApi;
+  show_header = false
+  show_white_header = false
+  not_show_header = false
 
   ngOnInit(): void {
     this.startSpinner();
     this.createForm();
-    // $('#welcomeModal').foundation('open');
     this.stringText = '...';
     /* Método para obtener toda la info del home */
     this.Service.getAllData().subscribe(
@@ -74,6 +77,9 @@ export class NotFoundComponent implements OnInit {
               this.projects3 = project;
             }
             count = count +1;
+          }
+          if(this.response.price_ranges){
+            this.filterPrice = this.response.price_ranges;
           }
           // console.log(this.projects2);
           this.results = true;
@@ -133,6 +139,27 @@ export class NotFoundComponent implements OnInit {
       }
       this.stopSpinner();
     }
+  }
+  public onOptionsSelected(event) {
+    const value = event.target.value;
+    // this.selected = value;
+    let url_price  = value.split("/api/");
+    url_price = this.path_api + url_price[1];
+    sessionStorage.removeItem('price_search');
+    sessionStorage.setItem('price_search',url_price)
+    this.router.navigate(['/proyectos']);
+    this.show_white_header = true;
+    this.show_header = false;
+  }
+  public searchWord(){
+    var searchWord = $('#searchWord').val();
+    sessionStorage.removeItem('word_search');
+    sessionStorage.removeItem('wordTitle');
+    sessionStorage.setItem('word_search',searchWord)
+    sessionStorage.setItem('wordTitle',searchWord)
+    this.router.navigate(['/proyectos']);
+    this.show_white_header = true;
+    this.show_header = false;
   }
   createForm() {
     this.form =  this.formBuilder.group({
@@ -327,5 +354,13 @@ export class NotFoundComponent implements OnInit {
     sessionStorage.setItem('wordTitleCollection',name)
     sessionStorage.setItem('collection_id',value);
     this.router.navigate(['/proyectos']);
+  }
+  onFocusSearch(){
+    console.log('entre al focus')
+    $('.img-search').addClass('hide');
+  }
+  onFocusOutSearch(){
+    console.log('entre al focusout')
+    $('.img-search').removeClass('hide');
   }
 }
