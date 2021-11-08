@@ -95,7 +95,7 @@
             <!-- Fin imágenes Desktop -->
             <!-- Imágenes Mobile -->
             <div class="row show-for-small-only">
-              <div class="tabs-panel is-active slider" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important; background-color: #fefefe;">
+              <div class="tabs-panel is-active slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important; background-color: #fefefe; touch-action: auto;">
                   <div class="bckground-slider">
                       <ul class="slider-project-img slideproject">
                           <li class="is-active">
@@ -772,7 +772,7 @@
                   </div>
                 <div class="pLeft0">
                   <div id="planes" class="medium-12 columns destacado" *ngIf="response.field_typology_blueprint.length > 0; else notfound">
-                    <div class="sl-blueprint imagenPrincipal slider" role="region" aria-label="Favorite Space Pictures" style="height: 260px !important;">
+                    <div class="sl-blueprint imagenPrincipal slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: 260px !important;touch-action: auto;">
                         <div class="">
                             <ul class="slider-blueprints-projects">
                                 <li class="is-active" *ngFor="let blueprint of response.field_typology_blueprint; let i = index">
@@ -1514,7 +1514,7 @@
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
     <!--slide-->
-    <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;">
+    <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;">
         <div class="">
           <ul class="slider-properties-project">
             <li class="is-active" *ngIf="propertiesSimilars">
