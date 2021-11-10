@@ -66,24 +66,24 @@
                 <div>
                     <div class="rows-img">
                         <div class="row1">
-                            <div class="rows-img1" *ngIf="galeriaArray.length > 0">
+                            <div class="rows-img1" *ngIf="galeriaArray[1]">
                                 <figure class="">
                                     <img [lightbox]="1" class="imagenes" [src]="url_img_path + galeriaArray[1].uri.url" alt="">
                                 </figure>
                             </div>
-                            <div class="rows-img2" *ngIf="galeriaArray.length > 1">
+                            <div class="rows-img2" *ngIf="galeriaArray[2]">
                                 <figure class="">
                                     <img [lightbox]="2" class="imagenes" [src]="url_img_path + galeriaArray[2].uri.url" alt="">
                                 </figure>
                             </div>
                         </div>
                         <div class="row1">
-                            <div class="rows-img1" *ngIf="galeriaArray.length > 2">
+                            <div class="rows-img1" *ngIf="galeriaArray[3]">
                                 <figure class="">
                                     <img [lightbox]="3" class="imagenes" [src]="url_img_path + galeriaArray[3].uri.url" alt="">
                                 </figure>
                             </div>
-                            <div class="rows-img2" *ngIf="galeriaArray.length > 3">
+                            <div class="rows-img2" *ngIf="galeriaArray[4]">
                                 <figure class="">
                                     <img [lightbox]="4" class="imagenes" [src]="url_img_path + galeriaArray[4].uri.url" alt="">
                                 </figure>
@@ -2080,22 +2080,22 @@
 </div>
 <!-- Botones mobile -->
 <div class="bots-projectDetails show-for-small-only">
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 1.2rem;margin-left: 1.3rem;">
+  <div class="ev--bots--whatsapp" style="width: 72px;height: 30px;padding-right: 2rem;margin-right: 0.8rem;margin-left: 0.9rem;">
     <a fragment="calculadorasSimular" (click)="navigateToSection('calculadorasSimular')">
       <img src="/assets/images/calculator.png">
     </a>
   </div>
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 1.2rem; padding-top: 0.5rem;">
+  <div class="ev--bots--whatsapp" style="width: 72px;height: 30px;padding-right: 2rem;margin-right: 0.7rem; padding-top: 0.5rem;">
     <a data-open="exampleModal2" (click)="activeAfterContact('email')">
       <img src="/assets/images/mail.png">
     </a>
   </div>
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 1.3rem; padding-top: 0.5rem;">
+  <div class="ev--bots--whatsapp" style="width: 72px;height: 30px;padding-right: 2rem;margin-right: 0.7rem; padding-top: 0.5rem;">
     <a data-open="exampleModal2" (click)="activeAfterContact('phone')">
       <img src="/assets/images/phone.png">
     </a>
   </div>
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 0.2rem;">
+  <div class="ev--bots--whatsapp" style="width: 72px;height: 30px;padding-right: 1.7rem;margin-right: 0rem;">
     <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
       <img src="/assets/images/messenger.png">
     </a>

@@ -52,8 +52,8 @@
                       <div id="foto">
                           <div class="container-foto">
                               <span (click)="removeCompare(response_data_project[0].nid);">
-                                <a href="{{response_data_project[0].url}}"><img class="img-comparator" [src]="url_img_path + response_data_project[0].typology_images"
-                                alt="" class="proyecto"></a>
+                                <a href="{{response_data_project[0].url}}"><img [src]="url_img_path + response_data_project[0].typology_images"
+                                alt="" class="proyecto {{imgStyle}}"></a>
                               </span>
                           </div>
                           <div class="row contact-bton-comparator">
@@ -111,8 +111,8 @@
                       <div id="foto">
                           <div class="container-foto">
                               <span (click)="removeCompare(response_data_project[1].nid);" class="">
-                                <a href="{{ response_data_project[1].url }}"><img class="img-comparator" [src]="url_img_path + response_data_project[1].typology_images" alt=""
-                                      class="proyecto"></a></span>
+                                <a href="{{ response_data_project[1].url }}"><img [src]="url_img_path + response_data_project[1].typology_images" alt=""
+                                      class="proyecto {{imgStyle}}"></a></span>
                           </div>
                           <div class="row contact-bton-comparator">
                             <div id="contact-btn" class="columns">
@@ -169,8 +169,8 @@
                       <div id="foto">
                           <div class="container-foto">
                               <span (click)="removeCompare(response_data_project[2].nid);" class="">
-                                <a href="{{ response_data_project[2].url }}"><img class="img-comparator" [src]="url_img_path + response_data_project[2].typology_images" alt=""
-                                      class="proyecto"></a></span>
+                                <a href="{{ response_data_project[2].url }}"><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
+                                      class="proyecto {{imgStyle}}"></a></span>
                           </div>
                           <div class="row contact-bton-comparator">
                             <div id="contact-btn" class="columns">
@@ -227,8 +227,8 @@
                       <div id="foto">
                           <div class="container-foto">
                               <span (click)="removeCompare(response_data_project[3].nid);" class="">
-                                <a href="{{ response_data_project[3].url }}"><img class="img-comparator" [src]="url_img_path + response_data_project[3].typology_images" alt=""
-                                      class="proyecto"></a></span>
+                                <a href="{{ response_data_project[3].url }}"><img [src]="url_img_path + response_data_project[3].typology_images" alt=""
+                                      class="proyecto {{imgStyle}}"></a></span>
                           </div>
                           <div class="row contact-bton-comparator">
                             <div id="contact-btn" class="columns">
@@ -291,8 +291,8 @@
                         <div id="foto">
                             <div class="container-foto">
                                 <span (click)="removeCompare(response_data_project[0].nid);">
-                                  <a href="{{response_data_project[0].url}}"><img class="img-comparator" [src]="url_img_path + response_data_project[0].typology_images" alt=""
-                                  class="proyecto"></a></span>
+                                  <a href="{{response_data_project[0].url}}"><img [src]="url_img_path + response_data_project[0].typology_images" alt=""
+                                  class="proyecto img-comparator"></a></span>
                             </div>
                             <div class="row mBotton5 contact-bton-comparator">
                               <div id="contact-btn" class="columns">
@@ -350,8 +350,8 @@
                           <div id="title"><a href="{{ response_data_project[1].url }}">{{ response_data_project[1].project }}</a></div>
                           <div id="foto">
                               <div class="container-foto">
-                                  <span (click)="removeCompare(response_data_project[1].nid);" class=""><a href="{{ response_data_project[1].url }}"><img class="img-comparator" [src]="url_img_path + response_data_project[1].typology_images" alt=""
-                                          class="proyecto"></a></span>
+                                  <span (click)="removeCompare(response_data_project[1].nid);" class=""><a href="{{ response_data_project[1].url }}"><img [src]="url_img_path + response_data_project[1].typology_images" alt=""
+                                          class="proyecto img-comparator"></a></span>
                               </div>
                               <div class="row mBotton5 contact-bton-comparator">
                                 <div id="contact-btn" class="columns">
@@ -409,8 +409,8 @@
                         <div id="title"><a href="{{ response_data_project[2].url }}">{{ response_data_project[2].project }}</a></div>
                         <div id="foto">
                             <div class="container-foto">
-                                <span (click)="removeCompare(response_data_project[2].nid);" class=""><a href="{{ response_data_project[2].url }}"><img class="img-comparator" [src]="url_img_path + response_data_project[2].typology_images" alt=""
-                                        class="proyecto"></a></span>
+                                <span (click)="removeCompare(response_data_project[2].nid);" class=""><a href="{{ response_data_project[2].url }}"><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
+                                        class="proyecto img-comparator"></a></span>
                             </div>
                             <div class="row mBotton5 contact-bton-comparator">
                               <div id="contact-btn" class="columns">
@@ -468,8 +468,8 @@
                         <div id="title"><a href="{{ response_data_project[3].url }}">{{ response_data_project[3].project }}</a></div>
                         <div id="foto">
                             <div class="container-foto">
-                                <span (click)="removeCompare(response_data_project[3].nid);" class=""><a href="{{ response_data_project[3].url }}"><img class="img-comparator" [src]="url_img_path + response_data_project[3].typology_images" alt=""
-                                        class="proyecto"></a></span>
+                                <span (click)="removeCompare(response_data_project[3].nid);" class=""><a href="{{ response_data_project[3].url }}"><img [src]="url_img_path + response_data_project[3].typology_images" alt=""
+                                        class="proyecto img-comparator"></a></span>
                             </div>
                             <div class="row mBotton5 contact-bton-comparator">
                               <div id="contact-btn" class="columns">

@@ -22,18 +22,18 @@ export class ProjectsService {
 
   constructor( private http: Http, /* private commonFunctions: CommonFunctions */ ) {
     this.servicePath = environment.endpointApi+ 'project/roomSales';
-    this.dataPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=8';
-    this.dataPathVis = environment.endpointTestingApi+ 'typologies/project_category/7893?items_per_page=8&page=0';
-    this.dataPathVacacionales = environment.endpointTestingApi+ 'typologies/project_category/7975?items_per_page=8&page=0';
+    this.dataPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=';
+    this.dataPathVis = environment.endpointTestingApi+ 'typologies/project_category/7893?items_per_page=';
+    this.dataPathVacacionales = environment.endpointTestingApi+ 'typologies/project_category/7975?items_per_page=';
     this.endpointForm = environment.endpointTestingApi + 'ev-lead';
     this.endpoint = environment.endpointApi + 'project/';
     this.endpointFilter = environment.endpointSearchApi;
     this.url_location = window.location.pathname;
     if(this.url_location == "/proyectos"){
       this.url = this.dataPath
-    }else if(this.url_location == "/vis"){
+    }else if(this.url_location == "/vivienda-interes-social"){
       this.url = this.dataPathVis
-    }else if(this.url_location == "/vacacionales"){
+    }else if(this.url_location == "/proyectos-vacacionales"){
       this.url = this.dataPathVacacionales
     }
   }
@@ -47,8 +47,9 @@ export class ProjectsService {
 
     /* Traer toda la info de proyectos  v2*/
   getData(projectcont :number): Observable<any> {
-
-    this.urlMas = environment.endpointTestingApi +`typologies?items_per_page=${projectcont}`
+    // this.urlMas = environment.endpointTestingApi +`typologies?items_per_page=${projectcont}`
+    this.urlMas = this.url +`${projectcont}`
+    console.log(this.urlMas);
     return this.http.get(this.urlMas)
     .pipe(map(( response => response.json() )));
   }

@@ -43,17 +43,20 @@ const routes: Routes = [
   },
 
   {
-    path: 'proyectos', component: ProjectsComponent,
+    path: 'proyectos',
+    component: ProjectsComponent,
     pathMatch: 'full' ,
     data: { alwaysRefresh: true },
   },
   {
-    path: 'vivienda-interes-social', component: ProjectsComponent,
+    path: 'vivienda-interes-social',
+    component: ProjectsComponent,
     pathMatch: 'full' ,
     data: { alwaysRefresh: true },
   },
   {
-    path: 'proyectos-vacacionales', component: ProjectsComponent,
+    path: 'proyectos-vacacionales',
+    component: ProjectsComponent,
     pathMatch: 'full' ,
     data: { alwaysRefresh: true },
   },

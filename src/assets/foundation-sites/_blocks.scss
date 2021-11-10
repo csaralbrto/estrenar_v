@@ -2952,7 +2952,8 @@ ul.menu li a img {
     border-radius: 0px 0 0 0px !important;
     text-align: center;
     z-index: 1;
-    height: 3.1rem;
+    height: 5.125rem;
+    padding-top: 1.3rem;
     .ev--bots--facebook {
       display: inline-block;
     }
@@ -3489,9 +3490,31 @@ ul.menu li a img {
 }
 @media print, screen and (min-width: 481px) {
 
+  .filters-float{
+    position: fixed;
+      transition: ease all 0.4s;
+      z-index: 9;
+      box-shadow: 0px 7px 6px -3px rgb(0 0 0 / 30%);
+      top: 4rem;
+      background-color: #fefefe;
+      width: 100%;
+      left: 0;
+  }
   .img-comparator{
     width: 161px !important;
     height: 174px !important;
+  }
+  .img-comparator2{
+    width: 424px !important;
+    height: 283px !important;
+  }
+  .img-comparator3{
+    width: 261px !important;
+    height: 174px !important;
+  }
+  .img-comparator4{
+    width: 179px !important;
+    height: 126px !important;
   }
   .cc-window.cc-floating {
     max-width: 42.219rem !important;
@@ -3762,16 +3785,6 @@ html.is-reveal-open body {
    overflow-y: visible;
 }
 
-.filters-float{
-  position: fixed;
-    transition: ease all 0.4s;
-    z-index: 9;
-    box-shadow: 0px 7px 6px -3px rgb(0 0 0 / 30%);
-    top: 4rem;
-    background-color: #fefefe;
-    width: 100%;
-    left: 0;
-}
 // ul#propertiesProject li.tabs-title {
 //   margin-right: 15px !important;
 // }
@@ -4157,7 +4170,10 @@ a.cc-btn.cc-dismiss:hover {
 .disabled-li{
   opacity: 0.25;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .disabled-a{
+  opacity: 0.25;
   cursor: not-allowed;
+  pointer-events: none;
 }

@@ -66,6 +66,17 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   optionFeatureProyectSelected:string ='';
   optionsSortSelected:string ='';
   path_favorites = "";
+  public servicePath: string;
+  public dataPathUrl: string;
+  public dataPathVis: string;
+  public dataPathVacacionales: string;
+  public endpoint: string;
+  public url_location: string;
+  public url: string;
+  public endpointFilter: string;
+  public endpointForm: string;
+  public urlMas:string;
+
 
 
   // stateSelected: string = '';
@@ -104,7 +115,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     this.createFormMoreFilters();
     // this.setCurrentLocation();
     $(window).scrollTop(0);
-    $('#responsive-nav-social').css('display','none');
+    // $('#responsive-nav-social').addClass('hide-desktop');
     /* Validar la url de favoritos */
     const user_login = sessionStorage.getItem('access_token');
     const user_uid = sessionStorage.getItem('uid');
@@ -146,13 +157,30 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     }else{
       /* Método para obtener toda la info de proyectos */
       // console.log(this.resultProyecto);
-      this.urlActualProjects = 'https://lab.estrenarvivienda.com/api/typologies?items_per_page='+this.resultProyecto;
+      /* Obtener la url actual */
+      this.dataPathUrl = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=';
+      this.dataPathVis = environment.endpointTestingApi+ 'typologies/project_category/7893?items_per_page=';
+      this.dataPathVacacionales = environment.endpointTestingApi+ 'typologies/project_category/7975?items_per_page=';
+      this.url_location = window.location.pathname;
+      if(this.url_location == "/proyectos"){
+        this.url = this.dataPathUrl
+      }else if(this.url_location == "/vivienda-interes-social"){
+        this.url = this.dataPathVis
+      }else if(this.url_location == "/proyectos-vacacionales"){
+        this.url = this.dataPathVacacionales
+      }
+      this.urlActualProjects = this.url + this.resultProyecto;
       this.Service.getData(this.resultProyecto).subscribe(
         (data) => (this.response = data),
         (err) => console.log(),
         () => {
           if (this.response) {
             console.log(this.response);
+            if(this.response.total == 0){
+              this.router.navigate(['proyectos']);
+            }else if(this.response.total == 0 && this.url_location == "/proyectos") {
+              this.router.navigate(['home']);
+            }
             if(this.response.metatag_normalized){
               this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
             }
