@@ -48,12 +48,12 @@ const routes: Routes = [
     data: { alwaysRefresh: true },
   },
   {
-    path: 'vis', component: ProjectsComponent,
+    path: 'vivienda-interes-social', component: ProjectsComponent,
     pathMatch: 'full' ,
     data: { alwaysRefresh: true },
   },
   {
-    path: 'vacacionales', component: ProjectsComponent,
+    path: 'proyectos-vacacionales', component: ProjectsComponent,
     pathMatch: 'full' ,
     data: { alwaysRefresh: true },
   },

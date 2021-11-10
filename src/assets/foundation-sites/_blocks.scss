@@ -2927,6 +2927,9 @@ ul.menu li a img {
 }
 @media print, screen and (max-width: 480px) {
 
+  .height-caracteristicas{
+    height: 62px;
+  }
   .cc-animate.cc-revoke.cc-bottom{
     display: none;
   }
@@ -3486,6 +3489,10 @@ ul.menu li a img {
 }
 @media print, screen and (min-width: 481px) {
 
+  .img-comparator{
+    width: 161px !important;
+    height: 174px !important;
+  }
   .cc-window.cc-floating {
     max-width: 42.219rem !important;
   }
@@ -3746,11 +3753,11 @@ ul.menu li a img {
   }
 
 }
-@media print, screen and (min-width: 482px) and (max-width: 850px)  {
-  .menu-responsive{
-    margin-left: 6.2rem !important;
-  }
-}
+// @media print, screen and (min-width: 482px) and (max-width: 850px)  {
+//   .menu-responsive{
+//     margin-left: 6.2rem !important;
+//   }
+// }
 html.is-reveal-open body {
    overflow-y: visible;
 }
