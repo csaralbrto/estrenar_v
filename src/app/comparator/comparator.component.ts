@@ -25,6 +25,8 @@ export class ComparatorComponent implements OnInit {
   url_img_path = 'https://www.estrenarvivienda.com/';
 
   ngOnInit(): void {
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.startSpinner();
 
     /* Método para obtener toda la info del comparador */

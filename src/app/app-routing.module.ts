@@ -33,28 +33,54 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
-    data: {url: true},
+    data: {url: true, alwaysRefresh: true},
   },
   {
     path: 'home',
     component: HomeComponent,
     pathMatch: 'full'
-    ,data: {url: true},
+    ,data: {url: true, alwaysRefresh: true},
   },
 
-  { path: 'proyectos', component: ProjectsComponent, pathMatch: 'full' },
-  { path: 'vis', component: ProjectsComponent, pathMatch: 'full' },
-  { path: 'vacacionales', component: ProjectsComponent, pathMatch: 'full' },
+  {
+    path: 'proyectos', component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'vis', component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'vacacionales', component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
 
   {
     path: 'proyecto/node/:path',
     component: ProjectDetailComponent,
     pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'proyecto/:path/:path',
     component: ProjectDetailComponent,
     pathMatch: 'full',
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: ':path/:path',
+    component: ProjectDetailComponent,
+    pathMatch: 'full',
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: ':node/:path',
+    component: ProjectDetailComponent,
+    pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'es/preview-project',
@@ -65,11 +91,6 @@ const routes: Routes = [
   {
     path: 'constructoras',
     component: ConstructoraComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'constructora/:path',
-    component: DetailConstructoraComponent,
     pathMatch: 'full',
   },
   {
@@ -96,61 +117,55 @@ const routes: Routes = [
     path: 'articulos/:path/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
-  },
-  {
-    path: 'articulos/:path/:path',
-    component: BlogDetailComponent,
-    pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'articulos/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'articulos/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
-  },
-  {
-    path: 'es/noticias-del-sector/:path/:path',
-    component: BlogDetailComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'es/noticias-del-sector/:path',
-    component: BlogDetailComponent,
-    pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'noticias-del-sector/:path/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'noticias-del-sector/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
-  },
-  {
-    path: 'es/la-experiencia-de-estrenar/:path/:path',
-    component: BlogDetailComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'es/la-experiencia-de-estrenar/:path',
-    component: BlogDetailComponent,
-    pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'la-experiencia-de-estrenar/:path/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'la-experiencia-de-estrenar/:path',
     component: BlogDetailComponent,
     pathMatch: 'full',
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'articulos/nuestro-lado-deco/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'nuestro-lado-deco/:path',
+    component: BlogDetailComponent,
+    pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   {
     path: 'user',
@@ -217,6 +232,12 @@ const routes: Routes = [
     path: 'wizard',
     component: WizardComponent,
     pathMatch: 'full',
+  },
+  {
+    path: ':path',
+    component: DetailConstructoraComponent,
+    pathMatch: 'full',
+    data: { alwaysRefresh: true },
   },
   { path: '**',
     component: NotFoundComponent,

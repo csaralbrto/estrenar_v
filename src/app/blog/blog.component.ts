@@ -17,7 +17,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
   public responseNewExperience: any;
   public responseMostRead: any;
   public responseRecommend: any;
-  public responseEcoSide: any;
+  public responseDekoSide: any;
   public responseNews: any;
   public results = false;
   url_img_path = 'https://www.estrenarvivienda.com/';
@@ -29,6 +29,8 @@ export class BlogComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     // console.log("arranco");
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.startSpinner();
     /* Método para obtener toda la info del blog */
     this.stringText = '...';
@@ -80,15 +82,15 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       }
     );
 
-    /* Método para obtener toda la info de el lado eco */
-    this.Service.ecoSide().subscribe(
-      (data) => (this.responseEcoSide = data),
+    /* Método para obtener toda la info de el lado deko */
+    this.Service.dekoSide().subscribe(
+      (data) => (this.responseDekoSide = data),
       (err) => console.log(),
       () => {
-        if (this.responseEcoSide) {
+        if (this.responseDekoSide) {
           /* si responde correctamente */
-          console.log('response new experience', this.responseEcoSide);
-          for (let sideEco of this.responseEcoSide.results) {
+          console.log('response responseDekoSide', this.responseDekoSide);
+          for (let sideEco of this.responseDekoSide.results) {
             sideEco.article_image = sideEco.article_image.split(",",1);
           }
         }

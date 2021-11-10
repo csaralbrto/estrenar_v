@@ -33,6 +33,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/cookieconsent/build/cookieconsent.min.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -40,7 +41,8 @@
               "./node_modules/foundation-sites/dist/js/foundation.min.js",
               "./node_modules/slick-carousel/slick/slick.min.js",
               "./src/assets/js/functions.js",
-              "./node_modules/motion-ui/dist/motion-ui.min.js"
+              "./node_modules/motion-ui/dist/motion-ui.min.js",
+              "./node_modules/cookieconsent/build/cookieconsent.min.js"
             ]
           },
           "configurations": {

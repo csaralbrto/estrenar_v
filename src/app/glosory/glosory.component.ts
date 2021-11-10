@@ -32,6 +32,8 @@ export class GlosoryComponent implements OnInit {
   ngOnInit(): void {
     this.createFormSuscribe();
     this.startSpinner();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     /* Método para obtener toda la info */
     this.Service.getDataGlosary(this.stringQuery?this.stringQuery:this.letter)
     .subscribe(

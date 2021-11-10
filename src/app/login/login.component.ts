@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.startSpinner();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     $('.ev--bots').addClass('hide');
     this.createForm();
     this.results = true;

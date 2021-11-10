@@ -309,6 +309,7 @@ p {
     @media screen and (max-width: 600px) {
       margin-bottom: 0.3rem;
       padding: 1rem;
+      padding-top: 0.3rem;
     }
     &.header-fix {
       padding: 0.3rem 1rem;
@@ -2283,7 +2284,7 @@ img.image.constructor {
   width: 2.5em;
   bottom: 60%;
   right: 0;
-  background-color: #14454e;
+  background-color: #fefefe;
   border-radius: 8px 0 0 8px !important;
   @media screen and (max-width: 600px) {
     display: block;
@@ -2293,7 +2294,7 @@ img.image.constructor {
     width: 100% !important;
     bottom: 0 !important;
     right: 0;
-    background-color: #14454e;
+    background-color: #fefefe;
     border-radius: 0px 0 0 0px !important;
     text-align: center;
     z-index: 1;
@@ -2630,7 +2631,7 @@ img:focus {
     }
     .tabs-title > a:focus,
     .tabs-title > a[aria-selected="true"] {
-      border-radius: 8px;
+      border-radius: 5px;
       // background: $primary-color;
       background: #b4ca3d;
       color: $primary-color;
@@ -2641,7 +2642,7 @@ img:focus {
       }
     }
     .tabs-title > a:hover {
-      border-radius: 8px;
+      border-radius: 5px;
       // background: $primary-color;
       background: #b4ca3d;
       color: $primary-color;
@@ -2926,6 +2927,12 @@ ul.menu li a img {
 }
 @media print, screen and (max-width: 480px) {
 
+  .cc-animate.cc-revoke.cc-bottom{
+    display: none;
+  }
+  .cc-window.cc-floating {
+    margin-bottom: 4rem;
+  }
   .title-home{
     font-size: 1.5rem;
     color: #fefefe;
@@ -3479,6 +3486,9 @@ ul.menu li a img {
 }
 @media print, screen and (min-width: 481px) {
 
+  .cc-window.cc-floating {
+    max-width: 42.219rem !important;
+  }
   .mtopNotfound{
     margin-top: 4rem;
   }
@@ -3734,11 +3744,27 @@ ul.menu li a img {
       margin-right: 0px !important;
     }
   }
+
+}
+@media print, screen and (min-width: 482px) and (max-width: 850px)  {
+  .menu-responsive{
+    margin-left: 6.2rem !important;
+  }
 }
 html.is-reveal-open body {
    overflow-y: visible;
 }
 
+.filters-float{
+  position: fixed;
+    transition: ease all 0.4s;
+    z-index: 9;
+    box-shadow: 0px 7px 6px -3px rgb(0 0 0 / 30%);
+    top: 4rem;
+    background-color: #fefefe;
+    width: 100%;
+    left: 0;
+}
 // ul#propertiesProject li.tabs-title {
 //   margin-right: 15px !important;
 // }
@@ -4058,8 +4084,10 @@ input.check-date-form {
 }
 
 .autocomplete-container .input-container input {
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='150px'><text x='0' y='22' fill='gray' font-size='17'>Ciudad, zona</text></svg>");
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='30px' width='150px'><text x='20' y='22' fill='gray' font-size='17'>Ciudad, zona</text></svg>");
   background-repeat: no-repeat;
+  background-position-x: 5px;
+  background-position-y: 3px;
 }
 .autocomplete-container .input-container input:focus {
   background-image: none;
@@ -4111,4 +4139,18 @@ input.check-date-form {
 
 .sliderVerticalScrool{
   touch-action: auto;
+}
+a.cc-btn.cc-dismiss:hover {
+  background-color: #fefefe;
+  color: rgb(23, 69, 78);
+}
+.cc-revoke.cc-bottom.cc-left {
+  display: none;
+}
+.disabled-li{
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+.disabled-a{
+  cursor: not-allowed;
 }

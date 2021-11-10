@@ -38,10 +38,10 @@
           <div class="card constructora" data-equalizer-watch>
               <div class="row">
                   <div class="small-4 columns foto">
-                      <a routerLink="/constructora/{{project1.url }}"><img [src]="url_img_path + project1.builder_logo" alt="" class="image"></a>
+                      <a href="{{project1.url }}"><img [src]="url_img_path + project1.builder_logo" alt="" class="image"></a>
                   </div>
                   <div class="small-8 columns">
-                    <a routerLink="/constructora/{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
+                    <a href="{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
                       <div class="info">
                         <p [innerHTML]=project1.builder_address.slice(0,20)>{{ project1.builder_location_phone }}</p>
                       </div>
@@ -53,14 +53,14 @@
                       </ng-template>
                   </div>
                   <div class="small-12 columns text-center">
-                      <a routerLink="/constructora/{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
+                      <a href="{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
                   </div>
               </div>
           </div>
       </div>
   </div>
   <div class="row columns text-center">
-      <a (click)=(loadMore()) id="buttonLoadMore" class="button secondary bton-mobile">Cargar más</a>
+      <a (click)="loadMore('mobile')" id="buttonLoadMoreMobile" class="button secondary bton-mobile">Cargar más</a>
   </div>
   <hr class="white">
 </div>
@@ -95,10 +95,10 @@
           <div class="card constructora" data-equalizer-watch>
               <div class="row">
                   <div class="small-4 columns foto">
-                    <a routerLink="/constructora/{{project1.url }}"><img [src]="url_img_path + project1.builder_logo" alt="" class="image"></a>
+                    <a href="{{project1.url }}"><img [src]="url_img_path + project1.builder_logo" alt="" class="image"></a>
                   </div>
                   <div class="small-8 columns">
-                    <a routerLink="/constructora/{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
+                    <a href="{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
                       <div class="info">
                         <p [innerHTML]=project1.builder_address.slice(0,20)>{{ project1.builder_location_phone }}</p>
                       </div>
@@ -110,14 +110,14 @@
                       </ng-template>
                   </div>
                   <div class="small-12 columns text-center">
-                      <a routerLink="/constructora/{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
+                      <a href="{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
                   </div>
               </div>
           </div>
       </div>
   </div>
   <div class="row columns text-center">
-      <a (click)=(loadMore()) id="buttonLoadMore" class="button secondary bton-mobile">Cargar más</a>
+      <a (click)="loadMore('desktop')" id="buttonLoadMoreDesktop" class="button secondary bton-mobile">Cargar más</a>
   </div>
   <hr class="white">
 </div>

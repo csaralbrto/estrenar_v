@@ -29,7 +29,7 @@
       </div>
   </div>
   <div class="show-for-small-only">
-      <div class="slick-blog-mobile slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;">
+      <div class="slick-blog-mobile slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;background-color: #fefefe;">
           <div class="">
               <ul class="slider-blog-mobile">
                   <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
@@ -118,7 +118,7 @@
       <div class="container-blog">
           <h2 class="deco-wide boldFont">Nuestro lado DEKO</h2>
           <div class="row">
-              <div class="medium-6 columns" *ngFor="let ecoside of responseEcoSide.results; let i = index">
+              <div class="medium-6 columns" *ngFor="let ecoside of responseDekoSide.results; let i = index">
                   <div class="blog-list col2">
                       <div class="img">
                         <a routerLink="{{ecoside.url}}"><img [src]="url_img_path + ecoside.article_image" alt=""></a>
@@ -134,7 +134,7 @@
                       <div class="resumen">
                         <p [innerHTML]=ecoside.body.slice(0,90)+stringText></p>
                       </div>
-                      <a routerLink="articulos{{ecoside.url}}" class="button">Seguir leyendo</a>
+                      <a routerLink="{{ecoside.url}}" class="button">Seguir leyendo</a>
                   </div>
               </div>
           </div>

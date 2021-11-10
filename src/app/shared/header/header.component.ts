@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
   public path_api = environment.endpointTestingApi;
 
   ngOnInit(): void {
+    $('#responsive-nav-social').css('display','none');
     this.url_location = window.location.pathname;
     if(this.url_location === '/home' || this.url_location === '/'){
       // console.log(this.url_header);

@@ -17,6 +17,8 @@ export class LayaoutComponent implements OnInit {
 
   ngOnInit(): void {
 
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     // this.startSpinner();
     /* Método para obtener toda la info de quienes somos */
     this.Service.getwhoWeAreData()

@@ -27,7 +27,9 @@ export class ForgotPasswordComponent implements OnInit {
     private formBuilder: FormBuilder, ) { }
 
   ngOnInit(): void {
-    
+
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     var url_string = window.location.href;
     var url = new URL(url_string);
     let token_parameter = url.searchParams.get("token");
@@ -123,7 +125,7 @@ export class ForgotPasswordComponent implements OnInit {
     //           "value": values.lastname
     //       }
     //   ]
-    
+
     // }
     // sessionStorage.setItem('username',values.email);
     // sessionStorage.setItem('password',values.confirm);
@@ -138,7 +140,7 @@ export class ForgotPasswordComponent implements OnInit {
     //       sessionStorage.setItem('uid',uid);
     //       this.beforeRegister();
     //     }else{
-    //       this.error_message = this.error._body.message 
+    //       this.error_message = this.error._body.message
     //     }
     //   }
     // );
@@ -193,7 +195,7 @@ export class ForgotPasswordComponent implements OnInit {
     //           "value": values.lastname
     //       }
     //   ]
-    
+
     // }
     // sessionStorage.setItem('username',values.email);
     // sessionStorage.setItem('password',values.confirm);
@@ -208,7 +210,7 @@ export class ForgotPasswordComponent implements OnInit {
     //       sessionStorage.setItem('uid',uid);
     //       this.beforeRegister();
     //     }else{
-    //       this.error_message = this.error._body.message 
+    //       this.error_message = this.error._body.message
     //     }
     //   }
     // );

@@ -32,7 +32,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,private spinnerService: NgxSpinnerService ) { }
 
   ngOnInit(): void {
-
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.createForm();
     $('.ev--bots').addClass('hide');
     this.results = true;

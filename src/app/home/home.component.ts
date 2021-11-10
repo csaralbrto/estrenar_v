@@ -44,6 +44,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.startSpinner();
     this.createForm();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     // $('#welcomeModal').foundation('open');
     this.stringText = '...';
     /* Método para obtener toda la info del home */
@@ -77,6 +79,7 @@ export class HomeComponent implements OnInit {
           }
           // console.log(this.projects2);
           this.results = true;
+          $(window).scrollTop(0);
         }
         /* si responde correctamente */
         if (this.response.error) {

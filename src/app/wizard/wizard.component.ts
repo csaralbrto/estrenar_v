@@ -69,7 +69,8 @@ export class WizardComponent implements OnInit, AfterViewChecked{
 
   ngOnInit(): void {
     // $(document).foundation();
-    $('#responsive-nav-social').addClass('hide')
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.startSpinner();
     this.createForm();
 
@@ -294,6 +295,11 @@ export class WizardComponent implements OnInit, AfterViewChecked{
     $('.autocomplete-container .input-container input').css('background-image','none')
     this.searchPlace = item.drupal_internal__tid;
     this.searchPlaceName = item.name;
+  }
+  getNewData(event){
+    /* quitar el placeholder del input autocomplete */
+    $('.autocomplete-container .input-container input').css('background-image','none')
+    console.log('el evento es: ',event);
   }
   startSpinner(): void {
     if (this.spinnerService) {

@@ -229,7 +229,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="url_img_path + allProjects[0].typology_images" alt="" class="proyecto-card">
+                      <a href="{{allProjects[0].url}}"><img [src]="url_img_path + allProjects[0].typology_images" alt="" class="proyecto-card"></a>
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[0].project_category.length > 0; else tagTemplate1">
@@ -250,7 +250,7 @@
                       </div>
                   </div>
                   <div class="card-section info">
-                      <h2>{{ allProjects[0].project }}</h2>
+                      <a href="{{allProjects[0].url}}"><h2>{{ allProjects[0].project }}</h2></a>
                       <div class="descripcion">
                           {{ allProjects[0].property_type }}, {{ allProjects[0].project_neighborhood }}, {{ allProjects[0].project_city }}
                       </div>
@@ -295,7 +295,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/proyecto{{allProjects[0].url}}">Ver
+                          <a class="button bton-mobile" href="{{allProjects[0].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -308,7 +308,7 @@
             <!-- Card Proyecto individual-->
             <div class="card" data-equalizer-watch>
                 <div class="container-photo">
-                    <img [src]="url_img_path + allProjects[1].typology_images" alt="" class="proyecto-card">
+                    <a href="{{allProjects[1].url}}"><img [src]="url_img_path + allProjects[1].typology_images" alt="" class="proyecto-card"></a>
                     <div class="container-tools">
                         <div class="tags">
                             <div *ngIf="allProjects[1].project_category.length > 0; else tagTemplate2">
@@ -329,7 +329,7 @@
                     </div>
                 </div>
                 <div class="card-section info">
-                    <h2>{{ allProjects[1].project }}</h2>
+                    <a href="{{allProjects[1].url}}"><h2>{{ allProjects[1].project }}</h2></a>
                     <div class="descripcion">
                         {{ allProjects[1].property_type }}, {{ allProjects[1].project_neighborhood }}, {{ allProjects[1].project_city }}
                     </div>
@@ -375,7 +375,7 @@
                 </div>
                 <div class="card-section">
                     <div class="button-group align-spaced ">
-                        <a class="button bton-mobile" href="/proyecto{{allProjects[1].url}}">Ver
+                        <a class="button bton-mobile" href="{{allProjects[1].url}}">Ver
                             Proyecto</a>
                         <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                     </div>
@@ -389,7 +389,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="url_img_path + allProjects[2].typology_images" alt="" class="proyecto-card">
+                      <a href="{{allProjects[2].url}}"><img [src]="url_img_path + allProjects[2].typology_images" alt="" class="proyecto-card"></a>
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[2].project_category.length > 0; else tagTemplate2">
@@ -410,7 +410,7 @@
                       </div>
                   </div>
                   <div class="card-section info">
-                      <h2>{{ allProjects[2].project }}</h2>
+                    <a href="{{allProjects[2].url}}"><h2>{{ allProjects[2].project }}</h2></a>
                       <div class="descripcion">
                           {{ allProjects[2].property_type }}, {{ allProjects[2].project_neighborhood }}, {{ allProjects[2].project_city }}
                       </div>
@@ -456,7 +456,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/proyecto{{allProjects[2].url}}">Ver
+                          <a class="button bton-mobile" href="{{allProjects[2].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -469,7 +469,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="url_img_path + allProjects[3].typology_images" alt="" class="proyecto-card">
+                    <a href="{{allProjects[3].url}}"><img [src]="url_img_path + allProjects[3].typology_images" alt="" class="proyecto-card"></a>
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[3].project_category.length > 0; else tagTemplate3">
@@ -490,15 +490,14 @@
                       </div>
                   </div>
                   <div class="card-section info">
-                      <h2>{{ allProjects[3].project }}</h2>
+                    <a href="{{allProjects[3].url}}"><h2>{{ allProjects[3].project }}</h2></a>
                       <div class="descripcion">
                           {{ allProjects[3].property_type }}, {{ allProjects[3].project_neighborhood }}, {{ allProjects[3].project_city }}
                       </div>
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>${{ allProjects[3].typology_price | number
-                          }}</span>
+                      <span>${{ allProjects[3].typology_price }}</span>
                   </div>
                   <hr>
 
@@ -537,7 +536,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/proyecto{{allProjects[3].url}}">Ver
+                          <a class="button bton-mobile" href="{{allProjects[3].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -550,7 +549,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="url_img_path + allProjects[4].typology_images" alt="" class="proyecto-card">
+                    <a href="{{allProjects[4].url}}"><img [src]="url_img_path + allProjects[4].typology_images" alt="" class="proyecto-card"></a>
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="allProjects[4].project_category.length > 0 tagTemplate4">
@@ -571,15 +570,14 @@
                       </div>
                   </div>
                   <div class="card-section info">
-                      <h2>{{ allProjects[4].project }}</h2>
+                    <a href="{{allProjects[4].url}}"><h2>{{ allProjects[4].project }}</h2></a>
                       <div class="descripcion">
                           {{ allProjects[4].property_type }}, {{ allProjects[4].project_neighborhood }}, {{ allProjects[4].project_city }}
                       </div>
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>${{ allProjects[4].typology_price | number
-                          }}</span>
+                      <span>${{ allProjects[4].typology_price }}</span>
                   </div>
                   <hr>
 
@@ -618,7 +616,7 @@
                   </div>
                   <div class="card-section">
                       <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="/proyecto{{allProjects[4].url}}">Ver
+                          <a class="button bton-mobile" href="{{allProjects[4].url}}">Ver
                               Proyecto</a>
                           <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                       </div>
@@ -636,74 +634,76 @@
     <h4 class="deco text-center hide-for-small-only">Proyectos de Constructora {{ content.label }}</h4>
     <br>
     <!--filtros-->
-    <form [formGroup]="form_filters">
-      <div class="filtros">
-          <div class="row condensed">
-              <div class="medium-2 columns">
-                  <label>Tipo de inmueble
-                      <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
-                        <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
-                          <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
-                      </select>
-                  </label>
-              </div>
-              <div class="medium-2 columns">
-                  <label>Precio
-                      <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
-                        <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
-                          <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
-                      </select>
-                  </label>
-              </div>
-              <div class="medium-2 columns">
-                  <label>Ciudad
-                      <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
-                        <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
-                          <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
-                      </select>
-                  </label>
-              </div>
-              <div class="medium-2 columns">
-                  <label>Zona
-                      <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
-                        <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
-                          <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
-                      </select>
-                      <ng-template #zoneTemplate>
-                          <select disabled="true">
-                              <option value="" selected>Seleccione</option>
-                          </select>
-                      </ng-template>
-                  </label>
-              </div>
-              <div class="medium-2 columns">
-                  <label>Sector
-                      <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
-                        <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
-                          <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
-                      </select>
-                      <ng-template #sectorTemplate>
-                          <select disabled="true">
-                              <option value="" selected>Seleccione</option>
-                          </select>
-                      </ng-template>
-                  </label>
-              </div>
-              <div class="medium-2 columns">
-                  <div class="botones list">
-                      <a class="button filtro-btn" data-open="masfiltrosModal">Más filtros</a>
-                      <a href="#" class="button secondary favorito button-color-ev fav-btn">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
-                  </div>
-              </div>
-          </div>
-          <div class="row condensed">
-          <div class="filtros-tag">
-              <!-- Aqui van los tags de más filtros -->
-              <!-- <a href="#" class="button close">3 Habitaciones</a> -->
-          </div>
-      </div>
-      </div>
-    </form>
+    <div id="filters-form">
+      <form [formGroup]="form_filters">
+        <div class="filtros">
+            <div class="row condensed">
+                <div class="medium-2 columns">
+                    <label>Tipo de inmueble
+                        <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                          <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
+                            <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="medium-2 columns">
+                    <label>Precio
+                        <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                          <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
+                            <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="medium-2 columns">
+                    <label>Ciudad
+                        <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                          <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
+                            <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="medium-2 columns">
+                    <label>Zona
+                        <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                          <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
+                            <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
+                        </select>
+                        <ng-template #zoneTemplate>
+                            <select disabled="true">
+                                <option value="" selected>Seleccione</option>
+                            </select>
+                        </ng-template>
+                    </label>
+                </div>
+                <div class="medium-2 columns">
+                    <label>Sector
+                        <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                          <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
+                            <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
+                        </select>
+                        <ng-template #sectorTemplate>
+                            <select disabled="true">
+                                <option value="" selected>Seleccione</option>
+                            </select>
+                        </ng-template>
+                    </label>
+                </div>
+                <div class="medium-2 columns">
+                    <div class="botones list">
+                        <a class="button filtro-btn" data-open="masfiltrosModal">Más filtros</a>
+                        <a href="#" class="button secondary favorito button-color-ev fav-btn">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row condensed">
+            <div class="filtros-tag">
+                <!-- Aqui van los tags de más filtros -->
+                <!-- <a href="#" class="button close">3 Habitaciones</a> -->
+            </div>
+        </div>
+        </div>
+      </form>
+    </div>
     <!--fin filtros-->
     <hr>
     <!-- Modal más filtros -->
@@ -716,9 +716,9 @@
                 </div>
                 <div class="medium-6 small-12 columns">
                     <h3>Estado del proyecto</h3>
-                    <div *ngFor="let option of ValoresProyecto">
-                        <label class="container-check">{{option.values.value}}
-                            <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{option.url}}">
+                    <div *ngFor="let state_project of ValoresProyecto">
+                        <label class="container-check">{{state_project.values.value}}
+                            <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{state_project.url}}">
                             <span class="checkmark-morefilter"></span>
                         </label>
                     </div>
@@ -730,7 +730,7 @@
                           </div>
                           <div class="small-6 columns">
                               <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
-                                  <option *ngFor="let type of filterAreaBuilt; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                                  <option *ngFor="let area of filterAreaBuilt; let i = index" [value]="area.url">{{area.values.value == "." ? "Todos": area.values.value }}</option>
                               </select>
                           </div>
                       </div>
@@ -790,21 +790,17 @@
                 <div class="medium-5 small-12 columns">
                     <div class="row">
                         <h3>Constructora</h3>
-                        <!-- Se comenta el select porque la constructora por defecto será 1 sola -->
-                            <!-- <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="content.drupal_internal__id">
-                              <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
-                            </select> -->
-                        <div *ngFor="let type of filterBuilder; let i = index">
-                          <label for=""><strong> {{ type.values.value }} </strong></label>
+                        <div *ngFor="let builder of filterBuilder; let i = index">
+                          <label for=""><strong> {{ builder.values.value }} </strong></label>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <h3>Colecciones</h3>
-                        <div class="filtros-tag-collection" *ngFor="let option of filterColection">
-                            <a *ngIf="option.values.active == 'true'; else simpleCollection" (click)="clickCollection(option.url)" class="button bton-collection bton-collection-active">{{option.values.value}}</a>
+                        <div class="filtros-tag-collection" *ngFor="let collection of filterColection">
+                            <a *ngIf="collection.values.active == 'true'; else simpleCollection" (click)="clickCollection(collection.url)" class="button bton-collection bton-collection-active">{{collection.values.value}}</a>
                             <ng-template #simpleCollection>
-                                <a (click)="clickCollection(option.url)" class="button bton-collection">{{option.values.value}}</a>
+                                <a (click)="clickCollection(collection.url)" class="button bton-collection">{{collection.values.value}}</a>
                             </ng-template>
                         </div>
                     </div>
@@ -875,7 +871,7 @@
     <div id="FullScrenn" class="medium-3 columns end FullScrenn" *ngFor="let project of allProjects; let i = index">
         <div class="card" data-equalizer-watch>
             <div class="container-photo">
-                <a href="#" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                <a href="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
                 <div class="container-tools">
                     <div class="tags">
                       <div *ngIf="project.project_category.length > 0; else tagTemplateProject">
@@ -895,9 +891,9 @@
                 </div>
             </div>
             <div class="card-section info">
-                <h2>{{ project.project }}</h2>
+              <a href="{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
                 <div class="descripcion" style="min-height: 40px; max-height: 40px;">
-                  {{ project.property_type }}, {{ project.project_neighborhood }}, {{ project.project_city }}
+                  {{ project.property_type }} en {{ project.project_neighborhood }}, {{ project.project_city }}
                 </div>
                 <div class="precio text-center">
                     <div>Desde:</div>
@@ -916,7 +912,7 @@
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                            <div class="data"> {{ project.bathrooms }} Alcobas</div>
+                            <div class="data"> {{ project.bedrooms }} Alcobas</div>
                         </div>
                     </div>
                     <div class="small-6 columns">
@@ -928,7 +924,7 @@
                     <div class="small-6 columns">
                         <div class="item">
                             <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                            <div class="data"> {{ project.bedrooms }} Baños</div>
+                            <div class="data"> {{ project.bathrooms }} Baños</div>
                         </div>
                     </div>
                 </div>
@@ -936,9 +932,9 @@
             </div>
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                  <a class="button bton-mobile" routerLink="/proyecto/{{project.url}}">Ver
+                  <a class="button bton-mobile" routerLink="/{{project.url}}">Ver
                       Proyecto</a>
-                    <a class="button bton-mobile">Contacto</a>
+                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                 </div>
             </div>
         </div>

@@ -49,7 +49,8 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   public stringText: any;
 
   ngOnInit(): void {
-
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.startSpinner();
 
     this.stringText = '...';

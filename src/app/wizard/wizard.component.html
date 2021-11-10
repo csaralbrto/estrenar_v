@@ -74,6 +74,7 @@
                 [data]="arrayOptions"
                 [searchKeyword]="keyword"
                 (selected)='selectEvent($event)'
+                (inputChanged)='getNewData($event)'
                 [itemTemplate]="itemTemplate"
                 [notFoundTemplate]="notFoundTemplate">
             </ng-autocomplete>

@@ -95,6 +95,7 @@ export class ProjectDetailComponent implements OnInit {
   public coor_longitude: any;
   zoom:number;
   public galeria;
+  public galeriaArray: any[] = [];
   public placesGoogleHospital: any ;
   public placesGoogleRestaurant: any ;
   public placesGoogleBank: any ;
@@ -105,6 +106,7 @@ export class ProjectDetailComponent implements OnInit {
   public placesGooglechurch: any ;
   public placesGoogletransit_station: any ;
   public caracteristicas;
+  public caracteristicasArray: any[] = [];
   public caracteristicasProject;
   public othersAreas;
   public propertiesSimilars;
@@ -118,6 +120,7 @@ export class ProjectDetailComponent implements OnInit {
   public urlTour: any;
   public videoUrl:any;
   public safeURLVideo: any;
+  public safeVideoURLVideo: any;
   public safeVideoURL:any;
   public Hospital_visible = false;
   public Restaurant_visible = false;
@@ -142,6 +145,8 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit(): void {
     $('#bots-sidebar').addClass('hide')
     this.startSpinner();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     // this.GooglePlaces();
     this.createForm();
     this.createFormDates();
@@ -188,12 +193,14 @@ export class ProjectDetailComponent implements OnInit {
                 // console.log(this.urlTour);
               }else{
                 this.tour_url =  "images";
+                $('#li_tour').addClass('disabled-li');
+                $('#tour_tab').addClass('disabled-a');
                 $('#tour_tab').attr('data-tabs-target', 'images');
                 $('#tour_tab').attr('href', '#images');
               }
-              if(this.response.field_typology_project.field_project_video !== null){
-                this.safeVideoURL =this.response.field_typology_project.field_project_video.field_media_oembed_video;
-                var var_video_url = this.safeVideoURL.replace('https://youtu.be/', "https://www.youtube.com/embed/");
+              if(this.response.field_typology_project.field_project_video.data !== null){
+                this.safeVideoURLVideo =this.response.field_typology_project.field_project_video.field_media_oembed_video;
+                var var_video_url = this.safeVideoURLVideo.replace('https://youtu.be/', "https://www.youtube.com/embed/");
                 // console.log("mirar video "+ var_video_url);
                 this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(var_video_url);
                 this.video_url = "video";
@@ -201,6 +208,8 @@ export class ProjectDetailComponent implements OnInit {
                 $('#video_tab').attr('href', '#video');
               }else{
                 this.video_url = "images";
+                $('#li_video').addClass('disabled-li');
+                $('#video_tab').addClass('disabled-a');
                 $('#video_tab').attr('data-tabs-target', 'images');
                 $('#video_tab').attr('href', '#images');
               }
@@ -232,6 +241,7 @@ export class ProjectDetailComponent implements OnInit {
               let imageGalleryArray = [];
               for (let JsonGallery of this.galeria){
                 imageGalleryArray.push({srcUrl: this.url_img_path + JsonGallery.uri.url, previewUrl: this.url_img_path + JsonGallery.uri.url})
+                this.galeriaArray.push(JsonGallery);
               }
               /*   1. cear Galeria  con los items */
               this.itemImg = imageGalleryArray.map(item =>
@@ -254,6 +264,7 @@ export class ProjectDetailComponent implements OnInit {
               }
               // console.log("si es par "+ this.valoresPares);
               this.caracteristicas = this.response.field_typology_feature;
+              console.log(this.response.field_typology_feature);
               /* caracteristicas del inmueble */
               if(this.caracteristicas.length > 0){
                 for (let caracteristica_tipologia of this.caracteristicas) {
@@ -266,6 +277,12 @@ export class ProjectDetailComponent implements OnInit {
                     }else{
                       img_src = '/assets/images/icon-medida.png';
                     }
+                    this.caracteristicasArray.push({
+                      name_only: name_cara,
+                      img_src: img_src
+                    })
+                    caracteristica_tipologia.name_only = name_cara;
+                    caracteristica_tipologia.img_src = img_src
                   }else{
                     if(caracteristica_tipologia.parent[0].name == 'Alcobas'){
                       this.response.bathrooms = caracteristica_tipologia.name;
@@ -280,12 +297,17 @@ export class ProjectDetailComponent implements OnInit {
                       }else{
                         img_src = '/assets/images/icon-medida.png';
                       }
+                      this.caracteristicasArray.push({
+                        name_only: name_cara,
+                        img_src: img_src
+                      })
+                      caracteristica_tipologia.name_only = name_cara;
+                      caracteristica_tipologia.img_src = img_src
                     }
                   }
-                  caracteristica_tipologia.name_only = name_cara;
-                  caracteristica_tipologia.img_src = img_src
                 }
               }
+              console.log(this.caracteristicas);
               this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
               /* caracteristicas del proyecto */
               for (let caracteristica_project of this.caracteristicasProject) {

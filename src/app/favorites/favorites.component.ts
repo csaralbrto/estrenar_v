@@ -65,6 +65,8 @@ export class FavoritesComponent implements OnInit {
     this.collectionActive = this.route;
     this.createForm();
     this.setCurrentLocation();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
 
     // Favoritos
     var stringQuery = "";

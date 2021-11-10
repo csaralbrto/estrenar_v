@@ -30,6 +30,8 @@ export class QuienesSomosComponent implements OnInit {
   constructor( public Service: QuienesSomosService, private meta: Meta,private spinnerService: NgxSpinnerService, private formBuilder: FormBuilder, ) { }
 
   ngOnInit(): void {
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.createFormSuscribe();
     this.startSpinner();
     /* Método para obtener toda la info */

@@ -10,6 +10,8 @@ export class PostLoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
   }
 
 }

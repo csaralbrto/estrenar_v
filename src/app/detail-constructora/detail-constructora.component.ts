@@ -98,8 +98,9 @@ export class DetailConstructoraComponent implements OnInit {
       this.createForm();
       this.createFormMoreFilters();
       this.createForm2();
+      $(window).scrollTop(0);
+      $('#responsive-nav-social').css('display','none');
       // this.setCurrentLocation();
-
       // const title = this.activatedRoute.snapshot.params.path + this.dataConstrutora;
       const title = this.activatedRoute.snapshot.params.path;
       console.log(title);
@@ -135,25 +136,26 @@ export class DetailConstructoraComponent implements OnInit {
                     (err) => console.log(err),
                     () => {
                       if (this.responseProject) {
+                        console.log(this.responseProject);
                         this.countAllProjects = this.responseProject.total;
                         this.allProjects = this.responseProject.search_results;
                         this.countProjects = this.allProjects.length;
-                        if(this.countProjects == this.allProjects){
+                        if(this.countProjects == this.countAllProjects){
                           this.banderaProyecto = true;
                         }
                         for (let project of this.allProjects) {
                           var arrayDeCadenas = project.typology_images.split(',');
                           project.typology_images = arrayDeCadenas[0];
-                          if(project.project_category.includes(',')){
+                          // if(project.project_category.includes(',')){
                             var arrayDeCadenas2 = project.project_category.split(',');
                             project.project_category = arrayDeCadenas2;
-                          }else{
-                            project.project_category = project.project_category + ','
-                            // console.log(project.project_category);
-                            var arrayDeCadenas2 = project.project_category.split(',');
-                            project.project_category = arrayDeCadenas2;
-                            // console.log(typeof project.project_category);
-                          }
+                          // }else{
+                          //   project.project_category = project.project_category + ','
+                          //   // console.log(project.project_category);
+                          //   var arrayDeCadenas2 = project.project_category.split(',');
+                          //   project.project_category = arrayDeCadenas2;
+                          //   // console.log(typeof project.project_category);
+                          // }
                           /* format numbr */
                           project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
                           // Nueva linea Yenifer
@@ -285,7 +287,7 @@ export class DetailConstructoraComponent implements OnInit {
         if(diff > 4){
           this.resultProyecto = this.countProjects + this.contProyecto;
           let urlMoreRecords =  this.content.drupal_internal__id + '?items_per_page=' + this.resultProyecto;
-          console.log(urlMoreRecords);
+          // console.log(urlMoreRecords);
           this.Service.getMoreDatos(urlMoreRecords).subscribe(
             (data) => (this.responseProject = data),
             (err) => console.log(),
@@ -374,7 +376,7 @@ export class DetailConstructoraComponent implements OnInit {
             this.resultProyecto = 32;
           }
           let urlMoreRecords =  this.content.drupal_internal__id + '?items_per_page=' + this.resultProyecto;
-          console.log(urlMoreRecords);
+          // console.log(urlMoreRecords);
           this.Service.getMoreDatos(urlMoreRecords).subscribe(
             (data) => (this.responseProject = data),
             (err) => console.log(),
@@ -387,16 +389,16 @@ export class DetailConstructoraComponent implements OnInit {
                 for (let project of this.allProjects) {
                   var arrayDeCadenas = project.typology_images.split(',');
                   project.typology_images = arrayDeCadenas[0];
-                  if(project.project_category.includes(',')){
+                  // if(project.project_category.includes(',')){
                     var arrayDeCadenas2 = project.project_category.split(',');
                     project.project_category = arrayDeCadenas2;
-                  }else{
-                    project.project_category = project.project_category + ','
-                    // console.log(project.project_category);
-                    var arrayDeCadenas2 = project.project_category.split(',');
-                    project.project_category = arrayDeCadenas2;
-                    // console.log(typeof project.project_category);
-                  }
+                  // }else{
+                  //   project.project_category = project.project_category + ','
+                  //   // console.log(project.project_category);
+                  //   var arrayDeCadenas2 = project.project_category.split(',');
+                  //   project.project_category = arrayDeCadenas2;
+                  //   // console.log(typeof project.project_category);
+                  // }
                   /* format numbr */
                   project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
                   // Nueva linea Yenifer
@@ -475,6 +477,16 @@ export class DetailConstructoraComponent implements OnInit {
           });
         }
       }
+    }
+    ngAfterContentChecked() {
+      $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll > 230) {
+          $("#filters-form").addClass("filters-float");
+        }else{
+          $("#filters-form").removeClass("filters-float");
+        }
+    });
     }
     decreaseValue(value) {
       this.startSpinner();

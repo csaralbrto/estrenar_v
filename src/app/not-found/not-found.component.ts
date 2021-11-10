@@ -49,6 +49,8 @@ export class NotFoundComponent implements OnInit {
     this.startSpinner();
     this.createForm();
     this.stringText = '...';
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     /* Método para obtener toda la info del home */
     this.Service.getAllData().subscribe(
       (data) => (this.response = data),

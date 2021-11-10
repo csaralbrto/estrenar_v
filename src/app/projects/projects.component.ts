@@ -103,6 +103,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     this.createForm2();
     this.createFormMoreFilters();
     // this.setCurrentLocation();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     /* Validar la url de favoritos */
     const user_login = sessionStorage.getItem('access_token');
     const user_uid = sessionStorage.getItem('uid');
@@ -144,7 +146,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     }else{
       /* Método para obtener toda la info de proyectos */
       // console.log(this.resultProyecto);
-      this.urlActualProjects = 'https://lab.estrenarvivienda.com/es/api/typologies?items_per_page='+this.resultProyecto;
+      this.urlActualProjects = 'https://lab.estrenarvivienda.com/api/typologies?items_per_page='+this.resultProyecto;
       this.Service.getData(this.resultProyecto).subscribe(
         (data) => (this.response = data),
         (err) => console.log(),
@@ -1790,6 +1792,17 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       $('app-projects').foundation();
       // $('html,body').scrollTop(0);
     }
+
+  }
+  ngAfterContentChecked() {
+    $(window).scroll(function (event) {
+      var scroll = $(window).scrollTop();
+      if (scroll > 5) {
+        $("#filters-desktop").addClass("filters-float");
+      } else {
+        $("#filters-desktop").removeClass("filters-float");
+      }
+  });
   }
   addFavorite(value) {
     const user_login = sessionStorage.getItem('access_token');

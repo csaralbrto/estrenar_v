@@ -31,6 +31,8 @@ export class RevistaDigitalComponent implements OnInit {
   constructor( public Service: RevistaDigitalService, private meta: Meta,private spinnerService: NgxSpinnerService, private formBuilder: FormBuilder, ) { }
 
   ngOnInit(): void {
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.createFormSuscribe();
     this.startSpinner();
     /* Método para obtener toda la info */

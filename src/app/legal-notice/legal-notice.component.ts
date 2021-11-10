@@ -27,6 +27,8 @@ export class LegalNoticeComponent implements OnInit {
 
   ngOnInit(): void {
     this.startSpinner();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     /* Método para obtener toda la info */
     this.Service.getData().subscribe(
       (data) => (this.response = data),

@@ -1,4 +1,5 @@
 import { LightboxModule } from 'ng-gallery/lightbox';
+import { RouteReuseStrategy } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +13,7 @@ import { AgmCoreModule } from '@agm/core';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { Ng5SliderModule } from 'ng5-slider';
+// import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 
 // import { StorageServiceModule } from 'ngx-webstorage-service';
 
@@ -57,7 +59,48 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectPreviewComponent } from './project-preview/project-preview.component';
 import { StreetViewComponent } from './street-view/street-view.component';
 import { GalleryModule } from 'ng-gallery';
+import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { CustomRouteReuseStrategy } from './custom-route-reuse-strategy';
 
+
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'estrenarvivienda.demodayscript.com' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+  },
+  position: "bottom-left",
+  theme: "classic",
+  palette: {
+    popup: {
+      background: "rgb(89 89 89 / 66%)",
+      text: "#ffffff",
+      link: "#ffffff"
+    },
+    button: {
+      background: "#b4ca3d",
+      text: "#17454e",
+      border: "transparent"
+    }
+  },
+  type: "opt-in",
+  content: {
+    message: "Usamos cookies propias y de terceros con el fin de mejorar su experiencia en nuestro sitio web, generar análisis estadísticos y entregar publicidad que pueda llegar a ser de su interés guiados por sus preferencias de navegación. Al navegar por nuestro sitio web, acepta nuestra",
+    dismiss: "Acepto",
+    deny: "Más información",
+    link: "Política de Cookies",
+    href: "https://www.estrenarvivienda.com/politica-de-datos-de-navegacion",
+    policy: "Política de Cookies"
+  }
+  // palette: {
+  //   popup: {
+  //     background: '#000'
+  //   },
+  //   button: {
+  //     background: '#f1d600'
+  //   }
+  // },
+  // theme: 'edgeless',
+  // type: 'opt-out'
+};
 
 @NgModule({
   declarations: [
@@ -110,6 +153,8 @@ import { GalleryModule } from 'ng-gallery';
     AutocompleteLibModule,
     /* Slider Range */
     Ng5SliderModule,
+    /* Cookie Consent */
+    NgcCookieConsentModule.forRoot(cookieConfig),
     /* Recaptcha */
     RecaptchaModule,  //this is the recaptcha main module
     RecaptchaFormsModule, //this is the module for form incase form validation
@@ -129,7 +174,7 @@ import { GalleryModule } from 'ng-gallery';
 
 
   ],
-  providers: [],
+  providers: [{provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

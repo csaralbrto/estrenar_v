@@ -41,9 +41,9 @@
                 <div class="nav-tabs right">
                     <ul class="tabs" data-tabs id="propertiesProject">
                         <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
-                        <li class="tabs-title"><a id="video_tab" data-tabs-target="video" href="#video">Ver video</a></li>
+                        <li class="tabs-title" id="li_video"><a id="video_tab" data-tabs-target="video" href="#video">Ver video</a></li>
                         <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
-                        <li class="tabs-title"><a id="tour_tab" data-tabs-target="tour" href="#tour">Recorrido</a></li>
+                        <li class="tabs-title" id="li_tour"><a id="tour_tab" data-tabs-target="tour" href="#tour">Recorrido</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,39 +53,39 @@
 <!-- <hr class="white"> -->
 <!--slide-->
 <div class="row columns">
-    <div class="tabs-content" data-tabs-content="propertiesProject">
+    <div class="tabs-content" data-tabs-content="propertiesProject" style="margin-top: 2rem;">
       <div class="">
-        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images" style="height:558px !important; background-color: #fefefe;">
+        <div class="tabs-panel is-active" role="region" aria-label="Favorite Space Pictures" id="images" style="height:460px !important; background-color: #fefefe;">
             <!-- Imágenes Desktop -->
             <div class="row hide-for-small-only">
-                <div class="medium-6 columns destacado">
+                <div class="medium-6 columns destacado" *ngIf="galeriaArray">
                     <figure class="">
-                        <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="">
+                        <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeriaArray[0].uri.url" alt="">
                     </figure>
                 </div>
-                <div >
+                <div>
                     <div class="rows-img">
                         <div class="row1">
-                            <div class="rows-img1" *ngIf="galeria[1]">
+                            <div class="rows-img1" *ngIf="galeriaArray.length > 0">
                                 <figure class="">
-                                    <img [lightbox]="1" class="imagenes" [src]="url_img_path + galeria[1].uri.url" alt="">
+                                    <img [lightbox]="1" class="imagenes" [src]="url_img_path + galeriaArray[1].uri.url" alt="">
                                 </figure>
                             </div>
-                            <div class="rows-img2" *ngIf="galeria[2]">
+                            <div class="rows-img2" *ngIf="galeriaArray.length > 1">
                                 <figure class="">
-                                    <img [lightbox]="2" class="imagenes" [src]="url_img_path + galeria[2].uri.url" alt="">
+                                    <img [lightbox]="2" class="imagenes" [src]="url_img_path + galeriaArray[2].uri.url" alt="">
                                 </figure>
                             </div>
                         </div>
                         <div class="row1">
-                            <div class="rows-img1" *ngIf="galeria[3]">
+                            <div class="rows-img1" *ngIf="galeriaArray.length > 2">
                                 <figure class="">
-                                    <img [lightbox]="3" class="imagenes" [src]="url_img_path + galeria[3].uri.url" alt="">
+                                    <img [lightbox]="3" class="imagenes" [src]="url_img_path + galeriaArray[3].uri.url" alt="">
                                 </figure>
                             </div>
-                            <div class="rows-img2" *ngIf="galeria[4]">
+                            <div class="rows-img2" *ngIf="galeriaArray.length > 3">
                                 <figure class="">
-                                    <img [lightbox]="4" class="imagenes" [src]="url_img_path + galeria[4].uri.url" alt="">
+                                    <img [lightbox]="4" class="imagenes" [src]="url_img_path + galeriaArray[4].uri.url" alt="">
                                 </figure>
                             </div>
                         </div>
@@ -98,101 +98,101 @@
               <div class="tabs-panel is-active slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" id="images" style="height: 430px !important; background-color: #fefefe; touch-action: auto;">
                   <div class="bckground-slider">
                       <ul class="slider-project-img slideproject">
-                          <li class="is-active">
+                          <li class="is-active" *ngIf="galeriaArray">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeria[0].uri.url" alt="" height="371px">
+                                      <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeriaArray[0].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li>
+                          <li *ngIf="galeriaArray[1]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="1" class="imagenPrincipal" [src]="url_img_path + galeria[1].uri.url" alt="" height="371px">
+                                      <img [lightbox]="1" class="imagenPrincipal" [src]="url_img_path + galeriaArray[1].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li>
+                          <li *ngIf="galeriaArray[2]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="2" class="imagenPrincipal" [src]="url_img_path + galeria[2].uri.url" alt="" height="371px">
+                                      <img [lightbox]="2" class="imagenPrincipal" [src]="url_img_path + galeriaArray[2].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 2">
+                          <li *ngIf="galeriaArray[3]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="3" class="imagenPrincipal" [src]="url_img_path + galeria[3].uri.url" alt="" height="371px">
+                                      <img [lightbox]="3" class="imagenPrincipal" [src]="url_img_path + galeriaArray[3].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 3">
+                          <li *ngIf="galeriaArray[4]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="4" class="imagenPrincipal" [src]="url_img_path + galeria[4].uri.url" alt="" height="371px">
+                                      <img [lightbox]="4" class="imagenPrincipal" [src]="url_img_path + galeriaArray[4].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 4">
+                          <li *ngIf="galeriaArray[5]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="5" class="imagenPrincipal" [src]="url_img_path + galeria[5].uri.url" alt="" height="371px">
+                                      <img [lightbox]="5" class="imagenPrincipal" [src]="url_img_path + galeriaArray[5].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 5">
+                          <li *ngIf="galeriaArray[6]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="6" class="imagenPrincipal" [src]="url_img_path + galeria[6].uri.url" alt="" height="371px">
+                                      <img [lightbox]="6" class="imagenPrincipal" [src]="url_img_path + galeriaArray[6].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 6">
+                          <li *ngIf="galeriaArray[7]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="7" class="imagenPrincipal" [src]="url_img_path + galeria[7].uri.url" alt="" height="371px">
+                                      <img [lightbox]="7" class="imagenPrincipal" [src]="url_img_path + galeriaArray[7].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 7">
+                          <li *ngIf="galeriaArray[8]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="8" class="imagenPrincipal" [src]="url_img_path + galeria[8].uri.url" alt="" height="371px">
+                                      <img [lightbox]="8" class="imagenPrincipal" [src]="url_img_path + galeriaArray[8].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 8">
+                          <li *ngIf="galeriaArray[9]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="9" class="imagenPrincipal" [src]="url_img_path + galeria[9].uri.url" alt="" height="371px">
+                                      <img [lightbox]="9" class="imagenPrincipal" [src]="url_img_path + galeriaArray[9].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 9">
+                          <li *ngIf="galeriaArray[10]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="10" class="imagenPrincipal" [src]="url_img_path + galeria[10].uri.url" alt="" height="371px">
+                                      <img [lightbox]="10" class="imagenPrincipal" [src]="url_img_path + galeriaArray[10].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 10">
+                          <li *ngIf="galeriaArray[11]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="11" class="imagenPrincipal" [src]="url_img_path + galeria[11].uri.url" alt="" height="371px">
+                                      <img [lightbox]="11" class="imagenPrincipal" [src]="url_img_path + galeriaArray[11].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 11">
+                          <li *ngIf="galeriaArray[12]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="12" class="imagenPrincipal" [src]="url_img_path + galeria[12].uri.url" alt="" height="371px">
+                                      <img [lightbox]="12" class="imagenPrincipal" [src]="url_img_path + galeriaArray[12].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
-                          <li *ngIf="galeria > 12">
+                          <li *ngIf="galeriaArray[13]">
                               <div class="small-12 columns">
                                   <figure class="">
-                                      <img [lightbox]="13" class="imagenPrincipal" [src]="url_img_path + galeria[13].uri.url" alt="" height="371px">
+                                      <img [lightbox]="13" class="imagenPrincipal" [src]="url_img_path + galeriaArray[13].uri.url" alt="" height="371px">
                                   </figure>
                               </div>
                           </li>
@@ -206,14 +206,14 @@
       <!-- Tab video del proyecto -->
       <div class="tabs-panel" id="video" *ngIf="videoUrl">
           <div class="row">
-              <iframe width="100%" height="600" [src]="videoUrl" ></iframe>
+              <iframe style="border: none;" width="100%" height="600" [src]="videoUrl" ></iframe>
           </div>
       </div>
       <!-- Fin tab video del proyecto -->
       <!-- Tab recorrido del proyecto -->
       <div class="tabs-panel" id="tour" *ngIf="urlTour">
           <div class="row">
-              <iframe width="100%" height="600" [src]="urlTour">
+              <iframe style="border: none;" width="100%" height="600" [src]="urlTour">
             </iframe>
           </div>
       </div>
@@ -229,16 +229,16 @@
                 <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
             </div>
         </div>
-        <div class="small-6 medium-3 columns end caracteristica-tipology text-right">
-            <div class="item-big">
-                <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
-                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_private }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área privada">!</span></div>
-            </div>
-        </div>
         <div class="small-6 medium-3 columns end caracteristica-tipology">
             <div class="item-big">
               <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
               <div class="data"> {{ response.bathrooms }} Alcobas</div>
+            </div>
+        </div>
+        <div class="small-6 medium-3 columns end caracteristica-tipology text-right">
+            <div class="item-big">
+                <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
+                <div class="data caracteristica-inmueble"> {{ response.field_typology_area_private }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área privada">!</span></div>
             </div>
         </div>
         <div class="small-6 medium-3 columns end caracteristica-tipology">
@@ -359,13 +359,13 @@
 </div>
 <!-- Fin modal gracias -->
 <!--mas caracteristicas-->
-<div class="row columns" *ngIf="caracteristicas.length > 0">
+<div class="row columns" *ngIf="caracteristicasArray">
     <ul class="accordion" data-accordion data-allow-all-closed="true">
         <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
             <div class="accordion-content" data-tab-content>
                 <div class="row">
-                    <div class="small-6 medium-3 columns end caracteristica-tipology" *ngFor="let caract of caracteristicas; let i = index">
+                    <div class="small-6 medium-3 columns end caracteristica-tipology" *ngFor="let caract of caracteristicasArray; let i = index">
                         <div class="item-big">
                             <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
                             <div class="data caracteristica-inmueble">{{ caract.name_only }}</div>
@@ -772,7 +772,7 @@
                   </div>
                 <div class="pLeft0">
                   <div id="planes" class="medium-12 columns destacado" *ngIf="response.field_typology_blueprint.length > 0; else notfound">
-                    <div class="sl-blueprint imagenPrincipal slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: 260px !important;touch-action: auto;">
+                    <div class="sl-blueprint imagenPrincipal slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: 260px !important;touch-action: auto;background: #fefefe;">
                         <div class="">
                             <ul class="slider-blueprints-projects">
                                 <li class="is-active" *ngFor="let blueprint of response.field_typology_blueprint; let i = index">
@@ -920,9 +920,9 @@
             <div class="container-constructora">
                 <div class="small-5 columns padding0">
                     <!-- <img class="constructora" width="150px" src="/assets/images/content/constructora.jpg" alt=""> -->
-                    <a href="/constructora{{response.field_typology_project.field_project_builder.path.alias}}"><img class="constructora" width="150px" [src]="url_img_path + response.field_typology_builder.field_builder_logo.uri.url"  alt=""></a>
+                    <a href="{response.field_typology_project.field_project_builder.path.alias}}"><img class="constructora" width="150px" [src]="url_img_path + response.field_typology_builder.field_builder_logo.uri.url"  alt=""></a>
                     <div class="text-center">
-                      <a href="/constructora{{response.field_typology_project.field_project_builder.path.alias}}">
+                      <a href="{response.field_typology_project.field_project_builder.path.alias}}">
                         <p class="title-builders-log">{{ response.field_typology_project.field_project_builder.label }}</p>
                       </a>
                     </div>
@@ -981,7 +981,7 @@
 
             <div class="card-section">
                 <div class="button-group align-spaced ">
-                    <a class="button bton-mobile" href="/proyecto{{relacionados.uuid}}">Ver
+                    <a class="button bton-mobile" href="{{relacionados.uuid}}">Ver
                   Proyecto</a>
                     <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                 </div>
@@ -1339,12 +1339,12 @@
 <hr class="white">
 <div class="row columns">
     <div class="medium-12 columns text-center">
-        <a routerLink="/constructora/{{response.field_typology_project.field_project_builder.path.alias}}" class="button others-projects">Otros proyectos de la constructora</a>
+        <a href="{{response.field_typology_project.field_project_builder.path.alias}}" class="button others-projects">Otros proyectos de la constructora</a>
     </div>
 </div>
 <hr class="white">
 <!-- Seccion areas similares desktop -->
-<div class="row columns hide-for-small-only">
+<div class="row columns hide-for-small-only" *ngIf="propertiesSimilars">
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
     <!--slide-->
@@ -1355,7 +1355,7 @@
                     <div class="medium-3 columns end " *ngFor="let propiedades of propertiesSimilars; let i = index">
                         <div class="card" *ngIf="i < 4" data-equalizer-watch>
                             <div class="container-photo">
-                                <a routerLink="/proyecto/{{propiedades.url}}" class=""><img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto"></a>
+                                <a routerLink="/{{propiedades.url}}" class=""><img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto"></a>
                                 <div class="container-tools">
                                     <div class="tags">
                                         <div *ngIf="propiedades.project_category.length > 0">
@@ -1370,7 +1370,7 @@
                                 </div>
                             </div>
                             <div class="card-section info info-project">
-                              <a href="/proyecto{{propiedades.url}}" class=""><h2>{{ propiedades.project }}</h2></a>
+                              <a routerLink="{{propiedades.url}}" class=""><h2>{{ propiedades.project }}</h2></a>
                                 <div class="descripcion">
                                     {{ propiedades.property_type }} en {{ propiedades.project_neighborhood }}, {{ propiedades.project_city }}
                                 </div>
@@ -1412,7 +1412,7 @@
                             </div>
                             <div class="card-section">
                                 <div class="button-group align-spaced ">
-                                    <a class="button bton-mobile" href="/proyecto{{propiedades.url}}">Ver
+                                    <a class="button bton-mobile" href="{{propiedades.url}}">Ver
                                       Proyecto</a>
                                     <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                 </div>
@@ -1424,7 +1424,7 @@
                     <div class="medium-3 columns end " *ngFor="let propiedades of propertiesSimilars; let i = index">
                         <div class="card" *ngIf="i > 3 && i < 7" data-equalizer-watch>
                             <div class="container-photo">
-                                <a routerLink="/proyecto{{propiedades.url}}" class=""><img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto"></a>
+                                <a routerLink="{{propiedades.url}}" class=""><img [src]="url_img_path + propiedades.typology_images" alt="" class="proyecto"></a>
                                 <div class="container-tools">
                                     <div class="tags">
                                         <div *ngIf="propiedades.project_category.length > 0">
@@ -1439,7 +1439,7 @@
                                 </div>
                             </div>
                             <div class="card-section info info-project">
-                              <a href="/proyecto/{{propiedades.url}}" class=""><h2>{{ propiedades.project }}</h2></a>
+                              <a href="/{{propiedades.url}}" class=""><h2>{{ propiedades.project }}</h2></a>
                                 <div class="descripcion">
                                     {{ propiedades.property_type }} en {{ propiedades.project_neighborhood }}, {{ propiedades.project_city }}
                                 </div>
@@ -1481,7 +1481,7 @@
                             </div>
                             <div class="card-section">
                                 <div class="button-group align-spaced ">
-                                    <a class="button bton-mobile" href="/proyecto{{propiedades.url}}">Ver
+                                    <a class="button bton-mobile" href="{{propiedades.url}}">Ver
                                       Proyecto</a>
                                     <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                                 </div>
@@ -1510,11 +1510,11 @@
 </div>
 <!-- Fin sección areas similares desktop -->
 <!-- Seccion areas similares mobile -->
-<div class="row columns show-for-small-only">
+<div class="row columns show-for-small-only" *ngIf="propertiesSimilars">
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
     <!--slide-->
-    <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;">
+    <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;background-color: #fefefe;">
         <div class="">
           <ul class="slider-properties-project">
             <li class="is-active" *ngIf="propertiesSimilars">
@@ -1576,7 +1576,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[0].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[0].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1642,7 +1642,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[1].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[1].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1708,7 +1708,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[2].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[2].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1774,7 +1774,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[3].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[3].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1840,7 +1840,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[4].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[4].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1906,7 +1906,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[5].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[5].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -1972,7 +1972,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[6].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[6].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -2038,7 +2038,7 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="/proyecto{{propertiesSimilars[7].url}}">Ver
+                            <a class="button bton-mobile" href="{{propertiesSimilars[7].url}}">Ver
                             Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
@@ -2080,22 +2080,22 @@
 </div>
 <!-- Botones mobile -->
 <div class="bots-projectDetails show-for-small-only">
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;">
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 1.2rem;margin-left: 1.3rem;">
     <a fragment="calculadorasSimular" (click)="navigateToSection('calculadorasSimular')">
       <img src="/assets/images/calculator.png">
     </a>
   </div>
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem; padding-top: 0.5rem;">
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 1.2rem; padding-top: 0.5rem;">
     <a data-open="exampleModal2" (click)="activeAfterContact('email')">
       <img src="/assets/images/mail.png">
     </a>
   </div>
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem; padding-top: 0.5rem;">
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 1.3rem; padding-top: 0.5rem;">
     <a data-open="exampleModal2" (click)="activeAfterContact('phone')">
       <img src="/assets/images/phone.png">
     </a>
   </div>
-  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;">
+  <div class="ev--bots--whatsapp" style="width: 62px;height: 30px;padding-right: 2rem;margin-right: 0.2rem;">
     <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
       <img src="/assets/images/messenger.png">
     </a>

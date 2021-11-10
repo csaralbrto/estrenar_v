@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class ConstructoraComponent implements OnInit {
   public response: any;
+  public total_results: any;
   public constructoras: any;
   url_img_path = 'https://www.estrenarvivienda.com/';
 
@@ -26,7 +27,8 @@ export class ConstructoraComponent implements OnInit {
 
   ngOnInit(): void {
     this.startSpinner();
-    $('app-constructora').foundation();
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     /* Método para obtener toda la info de proyectos */
     this.Service.getData().subscribe(
       (data) => (this.response = data),
@@ -34,6 +36,10 @@ export class ConstructoraComponent implements OnInit {
       () => {
         if (this.response) {
           console.log(this.response);
+          if(!(this.response.search_results.length < this.total_results)){
+            $('#buttonLoadMore').addClass('disabled');
+          }
+          this.total_results = this.response.total;
           this.constructoras = this.response.search_results;
           for (let project of this.constructoras) {
             var arrayDeCadenas = project.builder_location_phone.split(',');
@@ -45,11 +51,13 @@ export class ConstructoraComponent implements OnInit {
             this.filterLocation = this.response.facets.builder_location_city;
           }
           this.stopSpinner();
+          $('app-constructora').foundation();
         }
         /* si responde correctamente */
         if (this.response.error) {
           /* si hay error en la respuesta */
           this.stopSpinner();
+          $('app-constructora').foundation();
         }
       }
     );
@@ -60,37 +68,45 @@ export class ConstructoraComponent implements OnInit {
   onFocusOutSearch(){
     $('.img-search').removeClass('hide');
   }
-  loadMore(){
+  loadMore(value){
     this.startSpinner();
     let val = this.response.search_results.length;
-    let numb_search = Number(val) + Number(4);
-
-    this.Service.loadMore(numb_search).subscribe(
-      (data) => (this.response = data),
-      (err) => console.log(),
-      () => {
-        if (this.response) {
-          console.log(this.response);
-          this.constructoras = this.response.search_results;
-          for (let project of this.constructoras) {
-            var arrayDeCadenas = project.builder_location_phone.split(',');
-            project.builder_location_phone = arrayDeCadenas[0];
-            var arrayDeCadenas2 = project.builder_address.split(',');
-            project.builder_address = arrayDeCadenas2[0];
+    if(val < this.total_results){
+      let numb_search = Number(val) + Number(4);
+      this.Service.loadMore(numb_search).subscribe(
+        (data) => (this.response = data),
+        (err) => console.log(),
+        () => {
+          if (this.response) {
+            console.log(this.response);
+            console.log(this.response.search_results.length);
+            this.constructoras = this.response.search_results;
+            for (let project of this.constructoras) {
+              var arrayDeCadenas = project.builder_location_phone.split(',');
+              project.builder_location_phone = arrayDeCadenas[0];
+              var arrayDeCadenas2 = project.builder_address.split(',');
+              project.builder_address = arrayDeCadenas2[0];
+            }
+            if(this.response.facets.builder_location_city){
+              this.filterLocation = this.response.facets.builder_location_city;
+            }
+            this.stopSpinner();
+            if(this.response.search_results.length == 32){
+              if(value == 'desktop'){
+                $('#buttonLoadMoreDesktop').addClass('disabled');
+              }else{
+                $('#buttonLoadMoreMobile').addClass('disabled');
+              }
+            }
           }
-          if(this.response.facets.builder_location_city){
-            this.filterLocation = this.response.facets.builder_location_city;
+          /* si responde correctamente */
+          if (this.response.error) {
+            /* si hay error en la respuesta */
+            this.stopSpinner();
           }
-          this.stopSpinner();
         }
-        /* si responde correctamente */
-        if (this.response.error) {
-          /* si hay error en la respuesta */
-          this.stopSpinner();
-        }
-      }
-    );
-    if(numb_search == 32){
+      );
+    }else{
       $('#buttonLoadMore').addClass('disabled');
     }
   }

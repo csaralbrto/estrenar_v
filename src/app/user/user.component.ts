@@ -58,6 +58,8 @@ export class UserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    $(window).scrollTop(0);
+    $('#responsive-nav-social').css('display','none');
     this.startSpinner();
     this.uid = this.user_id + this.path;
     $('.ev--bots').addClass('hide');
