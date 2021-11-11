@@ -56,15 +56,16 @@
           <div class="row">
               <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
                   <div class="blog-list col2">
-                      <div class="img">
-                          <a routerLink="{{mostRead.url}}"><img [src]="url_img_path + mostRead.article_image" alt=""></a>
-                      </div>
+                      <a href="{{mostRead.url}}">
+                        <div class="img">
+                            <img [src]="url_img_path + mostRead.article_image" alt="">
+                        </div>
+                      </a>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{mostRead.comments | number }}</span>
                           </div>
                           <div class="like"><img src="/assets/images/like.png" alt=""><span>{{mostRead.likes}}</span></div>
                       </div>
-
                       <div class="section"><a routerLink="{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
                       <h3><a routerLink="{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
                       <div class="resumen">
@@ -95,9 +96,11 @@
               <hr class="white">
               <div class="medium-6 columns end" *ngFor="let newExperience of responseNewExperience.results; let i = index">
                   <div class="blog-list" *ngIf="i >= 1">
-                      <div class="img">
-                          <a routerLink="{{newExperience.url}}"><img [src]="url_img_path + newExperience.article_image" alt=""></a>
-                      </div>
+                        <a routerLink="{{newExperience.url}}">
+                          <div class="img">
+                            <img [src]="url_img_path + newExperience.article_image" alt="">
+                          </div>
+                        </a>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{newExperience.comments}}</span>
                           </div>
@@ -120,9 +123,11 @@
           <div class="row">
               <div class="medium-6 columns" *ngFor="let ecoside of responseDekoSide.results; let i = index">
                   <div class="blog-list col2">
-                      <div class="img">
-                        <a routerLink="{{ecoside.url}}"><img [src]="url_img_path + ecoside.article_image" alt=""></a>
-                      </div>
+                      <a routerLink="{{ecoside.url}}">
+                        <div class="img">
+                            <img [src]="url_img_path + ecoside.article_image" alt="">
+                        </div>
+                      </a>
                       <div class="social">
                           <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{ecoside.comments}}</span>
                           </div>

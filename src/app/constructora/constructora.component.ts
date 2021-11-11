@@ -37,7 +37,8 @@ export class ConstructoraComponent implements OnInit {
         if (this.response) {
           console.log(this.response);
           if(!(this.response.search_results.length < this.total_results)){
-            $('#buttonLoadMore').addClass('disabled');
+            // $('#buttonLoadMoreDesktop').addClass('hide');
+            // $('#buttonLoadMoreMobile').addClass('hide');
           }
           this.total_results = this.response.total;
           this.constructoras = this.response.search_results;
@@ -93,9 +94,9 @@ export class ConstructoraComponent implements OnInit {
             this.stopSpinner();
             if(this.response.search_results.length == 32){
               if(value == 'desktop'){
-                $('#buttonLoadMoreDesktop').addClass('disabled');
+                $('#buttonLoadMoreDesktop').addClass('hide');
               }else{
-                $('#buttonLoadMoreMobile').addClass('disabled');
+                $('#buttonLoadMoreMobile').addClass('hide');
               }
             }
           }
@@ -107,7 +108,8 @@ export class ConstructoraComponent implements OnInit {
         }
       );
     }else{
-      $('#buttonLoadMore').addClass('disabled');
+      $('#buttonLoadMoreDesktop').addClass('hide');
+      $('#buttonLoadMoreMobile').addClass('hide');
     }
   }
   change(value) {

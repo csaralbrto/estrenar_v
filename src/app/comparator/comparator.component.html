@@ -50,12 +50,11 @@
                   <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[0]">
                       <div id="title"><a href="{{response_data_project[0].url}}">{{ response_data_project[0].project }}</a></div>
                       <div id="foto">
-                          <div class="container-foto">
-                              <span (click)="removeCompare(response_data_project[0].nid);">
-                                <a href="{{response_data_project[0].url}}"><img [src]="url_img_path + response_data_project[0].typology_images"
-                                alt="" class="proyecto {{imgStyle}}"></a>
-                              </span>
-                          </div>
+                          <span (click)="removeCompare(response_data_project[0].nid);">
+                            <div class="container-foto">
+                              <a href="{{response_data_project[0].url}}"><img [src]="url_img_path + response_data_project[0].typology_images" alt="" class="proyecto {{imgStyle}}"></a>
+                            </div>
+                          </span>
                           <div class="row contact-bton-comparator">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">
@@ -109,36 +108,37 @@
                   <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[1]">
                       <div id="title"><a href="{{ response_data_project[1].url }}">{{ response_data_project[1].project }}</a></div>
                       <div id="foto">
+                        <span (click)="removeCompare(response_data_project[1].nid);" class="">
                           <div class="container-foto">
-                              <span (click)="removeCompare(response_data_project[1].nid);" class="">
-                                <a href="{{ response_data_project[1].url }}"><img [src]="url_img_path + response_data_project[1].typology_images" alt=""
-                                      class="proyecto {{imgStyle}}"></a></span>
+                            <a href="{{ response_data_project[1].url }}"><img [src]="url_img_path + response_data_project[1].typology_images" alt="" class="proyecto {{imgStyle}}">
+                            </a>
                           </div>
-                          <div class="row contact-bton-comparator">
-                            <div id="contact-btn" class="columns">
-                              <div class="medium-4 columns">
-                                <div class="ev--bots--whatsapp">
-                                  <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
-                                    <img src="/assets/images/wsap.png">
-                                  </a>
-                                </div>
+                        </span>
+                        <div class="row contact-bton-comparator">
+                          <div id="contact-btn" class="columns">
+                            <div class="medium-4 columns">
+                              <div class="ev--bots--whatsapp">
+                                <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                  <img src="/assets/images/wsap.png">
+                                </a>
                               </div>
-                              <div class="medium-4 columns">
-                                <div class="ev--bots--whatsapp">
-                                  <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
-                                    <img src="/assets/images/wsap.png">
-                                  </a>
-                                </div>
+                            </div>
+                            <div class="medium-4 columns">
+                              <div class="ev--bots--whatsapp">
+                                <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                  <img src="/assets/images/wsap.png">
+                                </a>
                               </div>
-                              <div class="medium-4 columns">
-                                <div class="ev--bots--whatsapp">
-                                  <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
-                                    <img src="/assets/images/wsap.png">
-                                  </a>
-                                </div>
+                            </div>
+                            <div class="medium-4 columns">
+                              <div class="ev--bots--whatsapp">
+                                <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                  <img src="/assets/images/wsap.png">
+                                </a>
                               </div>
                             </div>
                           </div>
+                        </div>
                       </div>
                       <div class="tools"></div>
                       <div id="precio">{{ response_data_project[1].typology_price | number }}</div>
@@ -167,11 +167,12 @@
                   <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[2]">
                       <div id="title"><a href="{{ response_data_project[2].url }}">{{ response_data_project[2].project }}</a></div>
                       <div id="foto">
-                          <div class="container-foto">
-                              <span (click)="removeCompare(response_data_project[2].nid);" class="">
-                                <a href="{{ response_data_project[2].url }}"><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
-                                      class="proyecto {{imgStyle}}"></a></span>
-                          </div>
+                          <span (click)="removeCompare(response_data_project[2].nid);" class="">
+                            <div class="container-foto">
+                                  <a href="{{ response_data_project[2].url }}"><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
+                                        class="proyecto {{imgStyle}}"></a>
+                            </div>
+                          </span>
                           <div class="row contact-bton-comparator">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">
@@ -225,11 +226,12 @@
                   <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[3]">
                       <div id="title"><a href="{{ response_data_project[3].url }}">{{ response_data_project[3].project }}</a></div>
                       <div id="foto">
-                          <div class="container-foto">
-                              <span (click)="removeCompare(response_data_project[3].nid);" class="">
+                          <span (click)="removeCompare(response_data_project[3].nid);" class="">
+                            <div class="container-foto">
                                 <a href="{{ response_data_project[3].url }}"><img [src]="url_img_path + response_data_project[3].typology_images" alt=""
-                                      class="proyecto {{imgStyle}}"></a></span>
-                          </div>
+                                class="proyecto {{imgStyle}}"></a>
+                            </div>
+                          </span>
                           <div class="row contact-bton-comparator">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">

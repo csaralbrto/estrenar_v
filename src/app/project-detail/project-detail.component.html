@@ -41,8 +41,8 @@
                 <div class="nav-tabs right">
                     <ul class="tabs" data-tabs id="propertiesProject">
                         <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
-                        <li class="tabs-title" id="li_video"><a id="video_tab" data-tabs-target="video" href="#video">Ver video</a></li>
                         <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
+                        <li class="tabs-title" id="li_video"><a id="video_tab" data-tabs-target="video" href="#video">Ver video</a></li>
                         <li class="tabs-title" id="li_tour"><a id="tour_tab" data-tabs-target="tour" href="#tour">Recorrido</a></li>
                     </ul>
                 </div>
@@ -206,7 +206,15 @@
       <!-- Tab video del proyecto -->
       <div class="tabs-panel" id="video" *ngIf="videoUrl">
           <div class="row">
-              <iframe style="border: none;" width="100%" height="600" [src]="videoUrl" ></iframe>
+              <iframe style="border: none;"
+                width="100%" height="600"
+                [src]="videoUrl"
+                allowfullscreen="allowfullscreen"
+                mozallowfullscreen="mozallowfullscreen"
+                msallowfullscreen="msallowfullscreen"
+                oallowfullscreen="oallowfullscreen"
+                webkitallowfullscreen="webkitallowfullscreen">
+              </iframe>
           </div>
       </div>
       <!-- Fin tab video del proyecto -->
@@ -364,7 +372,7 @@
         <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
             <div class="accordion-content" data-tab-content>
-                <div class="row">
+                <div class="row content-row">
                     <div class="small-6 medium-3 columns end caracteristica-tipology height-caracteristicas" *ngFor="let caract of caracteristicasArray; let i = index">
                         <div class="item-big">
                             <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
@@ -769,7 +777,7 @@
                     <div class="hide-for-small-only">
                       <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
                     </div>
-                  </div>
+                </div>
                 <div class="pLeft0">
                   <div id="planes" class="medium-12 columns destacado" *ngIf="response.field_typology_blueprint.length > 0; else notfound">
                     <div class="sl-blueprint imagenPrincipal slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: 260px !important;touch-action: auto;background: #fefefe;">
@@ -865,7 +873,7 @@
                         <div class="container-form">
                             <div class="dates1 row">
                                 <div class="dates columns medium-6">
-                                    <button class="button" type="button" style="height: 63px;" (click)="picker.open()">
+                                    <button class="button bton-calendar" type="button" style="height: 63px;" (click)="picker.open()">
                                         <div class="month">
                                           <span>   {{returnmonth(items) | uppercase}}</span>
                                           <span> <strong class="dia"> {{items | date:'d'}}</strong></span>
@@ -1348,7 +1356,7 @@
     <hr class="white">
     <h2 class="deco text-center">Propiedades similares</h2>
     <!--slide-->
-    <div class="" role="region" aria-label="Favorite Space Pictures">
+    <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important; background-color: #fefefe;">
         <div class="">
             <ul class="slider-properties-project">
                 <li class="is-active ">
@@ -1520,7 +1528,7 @@
             <li class="is-active" *ngIf="propertiesSimilars">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[0].typology_images" alt="" class="proyecto">
+                        <a href="{{propertiesSimilars[0].url}}"><img [src]="url_img_path + propertiesSimilars[0].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[0].project_category.length > 1">
@@ -1535,7 +1543,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[0].project }}</h2>
+                      <a href="{{propertiesSimilars[0].url}}"><h2>{{ propertiesSimilars[0].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[0].property_type }} en {{ propertiesSimilars[0].project_neighborhood }}, {{ propertiesSimilars[0].project_city }}
                         </div>
@@ -1586,7 +1594,7 @@
             <li *ngIf="propertiesSimilars > 0">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[1].typology_images" alt="" class="proyecto">
+                      <a href="{{propertiesSimilars[1].url}}"><img [src]="url_img_path + propertiesSimilars[1].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[1].project_category.length > 1">
@@ -1601,7 +1609,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[1].project }}</h2>
+                      <a href="{{propertiesSimilars[1].url}}"><h2>{{ propertiesSimilars[1].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[1].property_type }} en {{ propertiesSimilars[1].project_neighborhood }}, {{ propertiesSimilars[1].project_city }}
                         </div>
@@ -1652,7 +1660,7 @@
             <li *ngIf="propertiesSimilars > 1">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[2].typology_images" alt="" class="proyecto">
+                      <a href="{{propertiesSimilars[2].url}}"><img [src]="url_img_path + propertiesSimilars[2].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[2].project_category.length > 1">
@@ -1667,7 +1675,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[2].project }}</h2>
+                      <a href="{{propertiesSimilars[2].url}}"><h2>{{ propertiesSimilars[2].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[2].property_type }} en {{ propertiesSimilars[2].project_neighborhood }}, {{ propertiesSimilars[2].project_city }}
                         </div>
@@ -1718,7 +1726,7 @@
             <li *ngIf="propertiesSimilars > 2">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[3].typology_images" alt="" class="proyecto">
+                      <a href="{{propertiesSimilars[3].url}}"><img [src]="url_img_path + propertiesSimilars[3].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[3].project_category.length > 1">
@@ -1733,7 +1741,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[3].project }}</h2>
+                      <a href="{{propertiesSimilars[3].url}}"><h2>{{ propertiesSimilars[3].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[3].property_type }} en {{ propertiesSimilars[3].project_neighborhood }}, {{ propertiesSimilars[3].project_city }}
                         </div>
@@ -1784,7 +1792,7 @@
             <li *ngIf="propertiesSimilars > 3">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[4].typology_images" alt="" class="proyecto">
+                      <a href="{{propertiesSimilars[4].url}}"><img [src]="url_img_path + propertiesSimilars[4].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[4].project_category.length > 1">
@@ -1799,7 +1807,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[4].project }}</h2>
+                      <a href="{{propertiesSimilars[4].url}}"><h2>{{ propertiesSimilars[4].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[4].property_type }} en {{ propertiesSimilars[4].project_neighborhood }}, {{ propertiesSimilars[4].project_city }}
                         </div>
@@ -1850,7 +1858,7 @@
             <li *ngIf="propertiesSimilars > 4">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[5].typology_images" alt="" class="proyecto">
+                      <a href="{{propertiesSimilars[5].url}}"><img [src]="url_img_path + propertiesSimilars[5].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[5].project_category.length > 1">
@@ -1865,7 +1873,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[5].project }}</h2>
+                      <a href="{{propertiesSimilars[5].url}}"><h2>{{ propertiesSimilars[5].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[5].property_type }} en {{ propertiesSimilars[5].project_neighborhood }}, {{ propertiesSimilars[5].project_city }}
                         </div>
@@ -1916,7 +1924,7 @@
             <li *ngIf="propertiesSimilars > 5">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[6].typology_images" alt="" class="proyecto">
+                      <a href="{{propertiesSimilars[6].url}}"><img [src]="url_img_path + propertiesSimilars[6].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[6].project_category.length > 1">
@@ -1931,7 +1939,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[6].project }}</h2>
+                      <a href="{{propertiesSimilars[6].url}}"><h2>{{ propertiesSimilars[6].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[6].property_type }} en {{ propertiesSimilars[6].project_neighborhood }}, {{ propertiesSimilars[6].project_city }}
                         </div>
@@ -1982,7 +1990,7 @@
             <li *ngIf="propertiesSimilars > 6">
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <img [src]="url_img_path + propertiesSimilars[7].typology_images" alt="" class="proyecto">
+                      <a href="{{propertiesSimilars[7].url}}"><img [src]="url_img_path + propertiesSimilars[7].typology_images" alt="" class="proyecto"></a>
                         <div class="container-tools">
                             <div class="tags">
                                 <div *ngIf="propertiesSimilars[7].project_category.length > 1">
@@ -1997,7 +2005,7 @@
                         </div>
                     </div>
                     <div class="card-section">
-                        <h2>{{ propertiesSimilars[7].project }}</h2>
+                      <a href="{{propertiesSimilars[7].url}}"><h2>{{ propertiesSimilars[7].project }}</h2></a>
                         <div class="descripcion">
                             {{ propertiesSimilars[7].property_type }} en {{ propertiesSimilars[7].project_neighborhood }}, {{ propertiesSimilars[7].project_city }}
                         </div>

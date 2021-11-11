@@ -89,7 +89,7 @@ export class ComparatorComponent implements OnInit {
     }
   }
   removeCompare(value) {
-    // console.log("ingrese "+ value);
+    console.log("ingrese "+ value);
       var storedIds = JSON.parse(sessionStorage.getItem("id"));
       /* remover el proyecto de los coparadores */
       const index = storedIds.indexOf(value);
@@ -100,7 +100,7 @@ export class ComparatorComponent implements OnInit {
      // this.router.navigate(['comparador']);
       // console.log('este es el id: ',storedIds);
       if(storedIds.length > 0){
-        window.location.reload();
+        window.location.reload(true);
       }else{
         this.router.navigate(['home']);
       }

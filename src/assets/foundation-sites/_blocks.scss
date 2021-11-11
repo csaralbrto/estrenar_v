@@ -2686,19 +2686,19 @@ img:focus {
     }
     .tabs-title > a:focus,
     .tabs-title > a[aria-selected="true"] {
-      border-radius: 8px;
+      border-radius: 3px;
       background: #b4ca3d;
       // background: #B4CA3D;
       color: $white;
       &:hover {
-        border-radius: 8px;
+        border-radius: 3px;
         // background: $primary-color;
         background: #b4ca3d;
         color: $white;
       }
     }
     .tabs-title > a:hover {
-      border-radius: 8px;
+      border-radius: 3px;
       // background: $primary-color;
       background: #B4CA3D;
       color: $white;
@@ -3499,6 +3499,10 @@ ul.menu li a img {
       background-color: #fefefe;
       width: 100%;
       left: 0;
+      // padding-left: 20.4rem;
+      // padding-right: 19.6rem;
+      padding-left: 11rem;
+      padding-right: 10.2rem;
   }
   .img-comparator{
     width: 161px !important;
@@ -4176,4 +4180,11 @@ a.cc-btn.cc-dismiss:hover {
   opacity: 0.25;
   cursor: not-allowed;
   pointer-events: none;
+}
+.content-row{
+  display: flex;
+  flex-wrap: wrap;
+}
+.bton-calendar:hover{
+  background-color: #B4CA3D !important;
 }

@@ -379,9 +379,7 @@ export class ProjectDetailComponent implements OnInit {
 
 
   withCustomGalleryConfig() {
-
     const lightboxGalleryRef = this.gallery.ref('anotherLightbox');
-
     lightboxGalleryRef.setConfig({
       imageSize: ImageSize.Cover,
       thumbPosition: ThumbnailsPosition.Top

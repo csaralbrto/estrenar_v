@@ -329,7 +329,7 @@
 <hr class="white">
 <!--fin simuladores-->
 <div class="row columns hide-for-small-only" data-equalizer data-equalize-on="medium" id="test-eq">
-    <h1 class="deco text-center">Proyectos de interés</h1>
+  <h2 class="deco text-center">Propiedades similares</h2>
     <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
         <div class="card" data-equalizer-watch *ngIf="i < 8">
             <div class="container-photo">
@@ -401,15 +401,15 @@
 </div>
 <!-- Slider mobile porojects -->
 <div class="small-12 columns show-for-small-only mT15Mobile">
-  <h1 class="deco text-center">Proyectos de interés</h1>
-  <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;">
+  <h2 class="deco text-center">Propiedades similares</h2>
+  <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
     <ul class="slider-proyects-mobile">
       <li class="is-active ">
           <div class="medium-6 columns">
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="url_img_path + response[0].typology_images" alt="" class="proyecto-card">
+                      <a href="{{response[0].url}}"><img [src]="url_img_path + response[0].typology_images" alt="" class="proyecto-card"></a>
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="response[0].project_category.length > 0">
@@ -426,7 +426,7 @@
                       </div>
                   </div>
                   <div class="card-section info">
-                      <h2>{{ response[0].project }}</h2>
+                    <a href="{{response[0].url}}"><h2>{{ response[0].project }}</h2></a>
                       <div class="descripcion">
                           {{ response[0].property_type }}, {{ response[0].project_neighborhood }}, {{ response[0].project_city }}
                       </div>
@@ -485,7 +485,7 @@
             <!-- Card Proyecto individual-->
             <div class="card" data-equalizer-watch>
                 <div class="container-photo">
-                    <img [src]="url_img_path + response[1].typology_images" alt="" class="proyecto-card">
+                  <a href="{{response[1].url}}"><img [src]="url_img_path + response[1].typology_images" alt="" class="proyecto-card"></a>
                     <div class="container-tools">
                         <div class="tags">
                             <div *ngIf="response[1].project_category.length > 0">
@@ -502,7 +502,7 @@
                     </div>
                 </div>
                 <div class="card-section info">
-                    <h2>{{ response[1].project }}</h2>
+                  <a href="{{response[1].url}}"><h2>{{ response[1].project }}</h2></a>
                     <div class="descripcion">
                         {{ response[1].property_type }}, {{ response[1].project_neighborhood }}, {{ response[1].project_city }}
                     </div>
@@ -562,7 +562,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="url_img_path + response[2].typology_images" alt="" class="proyecto-card">
+                    <a href="{{response[2].url}}"><img [src]="url_img_path + response[2].typology_images" alt="" class="proyecto-card"></a>
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="response[2].project_category.length > 0">
@@ -579,7 +579,7 @@
                       </div>
                   </div>
                   <div class="card-section info">
-                      <h2>{{ response[2].project }}</h2>
+                    <a href="{{response[2].url}}"><h2>{{ response[2].project }}</h2></a>
                       <div class="descripcion">
                           {{ response[2].property_type }}, {{ response[2].project_neighborhood }}, {{ response[2].project_city }}
                       </div>
@@ -638,7 +638,7 @@
               <!-- Card Proyecto individual-->
               <div class="card" data-equalizer-watch>
                   <div class="container-photo">
-                      <img [src]="url_img_path + response[3].typology_images" alt="" class="proyecto-card">
+                    <a href="{{response[3].url}}"><img [src]="url_img_path + response[3].typology_images" alt="" class="proyecto-card"></a>
                       <div class="container-tools">
                           <div class="tags">
                               <div *ngIf="response[3].project_category.length > 0">
