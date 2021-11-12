@@ -2635,17 +2635,20 @@ img:focus {
       // background: $primary-color;
       background: #b4ca3d;
       color: $primary-color;
+      border-bottom: 1px solid #B4CA3D;
       &:hover {
-        border-radius: 8px;
+        border-radius: 4px;
         background: #B4CA3D;
         color: $white;
+        border-bottom: 1px solid #B4CA3D;
       }
     }
     .tabs-title > a:hover {
-      border-radius: 5px;
+      border-radius: 4px;
       // background: $primary-color;
       background: #b4ca3d;
       color: $primary-color;
+      border-bottom: 1px solid #B4CA3D;
     }
   }
 }
@@ -2672,7 +2675,7 @@ img:focus {
         // background: #B4CA3D;
         color: $white !important;
         a {
-          border-radius: 8px;
+          border-radius: 3px;
           background: $primary-color;
           // background: #B4CA3D;
           color: $white;
@@ -3704,6 +3707,10 @@ ul.menu li a img {
   .map-float{
     position: sticky;
     top: 90px;
+  }
+  .recommended-float{
+    position: sticky;
+    // top: 90px;
   }
   .pRightZones{
     padding-right: 72px !important;

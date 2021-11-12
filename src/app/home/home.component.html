@@ -1303,9 +1303,11 @@
                         <div class="row">
                             <div class="medium-3 columns end" *ngFor="let blog of response.home_featured_articles.slice(0, 4); let i = index">
                                 <div class="blog-list">
-                                    <div class="img">
-                                        <a href="{{blog.url}}"><img [src]="blog.article_image" alt=""></a>
-                                    </div>
+                                    <a href="{{blog.url}}">
+                                      <div class="img">
+                                        <img [src]="blog.article_image" alt="">
+                                      </div>
+                                    </a>
                                     <div class="social">
                                         <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>
                                         </div>
@@ -1338,9 +1340,11 @@
                     <div class="row">
                         <div class="small-12 columns end">
                             <div class="blog-list">
-                                <div class="img">
-                                    <a href="{{blog.url}}"><img [src]="blog.article_image" alt=""></a>
-                                </div>
+                                <a href="{{blog.url}}">
+                                  <div class="img">
+                                    <img [src]="blog.article_image" alt="">
+                                  </div>
+                                </a>
                                 <div class="social">
                                     <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>
                                     </div>

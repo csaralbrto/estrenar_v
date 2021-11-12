@@ -655,15 +655,14 @@
                       </div>
                   </div>
                   <div class="card-section info">
-                      <h2>{{ response[3].project }}</h2>
+                    <a href="{{response[3].url}}"><h2>{{ response[3].project }}</h2></a>
                       <div class="descripcion">
                           {{ response[3].property_type }}, {{ response[3].project_neighborhood }}, {{ response[3].project_city }}
                       </div>
                   </div>
                   <div class="precio text-center">
                       <div>Desde:</div>
-                      <span>$ {{ response[3].typology_price | number
-                          }}</span>
+                      <span>$ {{ response[3].typology_price }}</span>
                   </div>
                   <hr>
 
@@ -722,29 +721,28 @@
 <div class="row columns">
     <h2 class="deco text-center">Artículos de interés</h2>
     <div class="container-blog hide-for-small-only">
-            <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead; let i = index">
-                <div class="blog-list" *ngIf="i < 4">
-                    <div class="img">
-                      <img [src]="url_img_path + mostRead.article_image" alt="">
-                    </div>
-                    <div class="social">
-                        <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
-                        </div>
-                        <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
-                    </div>
-
-                    <div class="section"><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
-                    <h3><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
-                    <div class="resumen">
-                        <p [innerHTML]=mostRead.description.slice(0,120)+stringText></p>
-                    </div>
-                    <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
+        <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead; let i = index">
+            <div class="blog-list" *ngIf="i < 4">
+                <div class="img">
+                  <img [src]="url_img_path + mostRead.article_image" alt="">
                 </div>
-            </div>
+                <div class="social">
+                    <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                    </div>
+                    <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                </div>
 
+                <div class="section"><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
+                <h3><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
+                <div class="resumen">
+                    <p [innerHTML]=mostRead.description.slice(0,120)+stringText></p>
+                </div>
+                <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
+            </div>
+        </div>
     </div>
     <div class="row columns show-for-small-only">
-        <div class="sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;">
+        <div class="sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
             <ul class="slider-blog-mobile">
                 <li class="is-active" *ngFor="let blog of responseMostRead.slice(0, 4); let i = index">
                     <div class="row">

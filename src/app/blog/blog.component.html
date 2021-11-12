@@ -146,6 +146,7 @@
       </div>
   </div>
   <div class="medium-4 columns">
+    <div class="recommended-float">
       <h2 class="deco-wide boldFont">Recomendados</h2>
       <div class="recomendado" *ngFor="let recommend of responseRecommend.results; let i = index">
           <h3><a routerLink="{{recommend.url}}">{{ recommend.title.slice(0,90) }}</a></h3>
@@ -166,6 +167,7 @@
           <div class="fecha">{{ news.changed }}</div>
           <hr>
       </div>
+    </div>
   </div>
 </div>
 <hr class="white">

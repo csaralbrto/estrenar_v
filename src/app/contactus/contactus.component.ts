@@ -146,7 +146,7 @@ export class ContactusComponent implements OnInit {
         },
         "additional": {
             "comment": values.comment,
-            "emailCopy": values.emailCopy
+            "emailCopy": true
         },
         "contextual": {
             "options": [

@@ -70,6 +70,8 @@ export class ToolComponent implements OnInit, AfterViewChecked {
             project.typology_images = arrayDeCadenas[0];
             var arrayDeCadenas2 = project.project_category.split(',');
             project.project_category = arrayDeCadenas2;
+            /* format numbr */
+            project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
           }
           this.results = true;
           this.stopSpinner();
@@ -305,14 +307,12 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     sessionStorage.setItem('price_projects',valor)
     this.router.navigate(['/proyectos']);
   }
-
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
-   stopSpinner(): void {
+  stopSpinner(): void {
 
     if (this.spinnerService) {
       // console.log("ingrese a parar");
