@@ -22,6 +22,7 @@ declare var $: any;
 })
 export class ProjectDetailComponent implements OnInit {
   itemImg: GalleryItem[];
+  itemImgPlano: GalleryItem[];
   tags: MetaTag;
   public response: any;
   public typeContact: any;
@@ -65,6 +66,7 @@ export class ProjectDetailComponent implements OnInit {
   url_img_path = 'https://www.estrenarvivienda.com/';
   /* Fecha */
   items: any[] = [];
+  itemsPlano: any[] = [];
   currentDate = new Date();
   currentMonth = "";
   stopDate = new Date();
@@ -80,7 +82,9 @@ export class ProjectDetailComponent implements OnInit {
     private spinnerService: NgxSpinnerService,
     private mapsAPILoader: MapsAPILoader,
     private appRef: ApplicationRef,
-    public gallery: Gallery
+    public gallery: Gallery,
+    public galleryPlano: Gallery,
+
   ) {
   }
   dataPath = environment.endpoint;
@@ -96,6 +100,7 @@ export class ProjectDetailComponent implements OnInit {
   zoom:number;
   public galeria;
   public galeriaArray: any[] = [];
+  public galeriaArrayPlano: any[] = [];
   public placesGoogleHospital: any ;
   public placesGoogleRestaurant: any ;
   public placesGoogleBank: any ;
@@ -217,15 +222,29 @@ export class ProjectDetailComponent implements OnInit {
               this.priceProject = this.response.field_typology_price
               this.idProject = this.response.drupal_internal__nid;
               const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
-              /* mapa Yenifer */
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
-              if(this.response.typology_blueprint !== undefined){
+              // console.log("Miro imagenes1 "+this.response.typology_blueprint);
+
+              // lightbox para planos
+
+              if(this.response.field_typology_blueprint !== undefined){
                 this.blueprintProyect = this.response.field_typology_blueprint;
                 this.blueprint = this.blueprintProyect[0].uri.url;
-                console.log(this.blueprint);
-                // for (let bluePrint of this.blueprintProyect) {
-                // }
+                /* Asignación de imagenes al Lightbox */
+                let imageGalleryArrayPlano = [];
+                for (let JsonGalleryPlano of this.blueprintProyect){
+                  imageGalleryArrayPlano.push({srcUrl: this.url_img_path + JsonGalleryPlano.uri.url, previewUrl: this.url_img_path + JsonGalleryPlano.uri.url})
+                  this.galeriaArrayPlano.push(JsonGalleryPlano);
+                }
+                /*   1. cear Galeria  con los items */
+                this.itemImgPlano = imageGalleryArrayPlano.map(itemPlano =>
+                  new ImageItem({ src: itemPlano.srcUrl, thumb: itemPlano.previewUrl })
+                );
+                this.basicLightboxPlano();
+                this.withCustomGalleryConfigPlano();
+
+
               }
               // console.log(this.coor_latitude,',',this.coor_longitude);
               this.response.marketIcon =
@@ -372,6 +391,17 @@ export class ProjectDetailComponent implements OnInit {
       }
     );
   }
+
+  basicLightboxPlano() {
+    this.galleryPlano.ref().load(this.itemImgPlano);
+  }
+
+
+  withCustomGalleryConfigPlano() {
+    const lightboxGalleryRef1 = this.galleryPlano.ref('anotherLightbox1');
+    lightboxGalleryRef1.load(this.itemImgPlano);
+  }
+
 
   basicLightboxExample() {
     this.gallery.ref().load(this.itemImg);
