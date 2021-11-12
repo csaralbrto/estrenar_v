@@ -3209,12 +3209,15 @@ ul.menu li a img {
     top: 50% !important;
     left: 50%;
     width: 80%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: #fff;
     border-radius: 10px;
     padding: 1rem !important;
-    min-height: 30% !important;
-    height: 33% !important;;
+    min-height: 20% !important;
+    height: 25% !important;
+    h3{
+      text-transform: none !important;
+    }
   }
   div#exampleModalContactProject {
     position: fixed;
@@ -4194,4 +4197,7 @@ a.cc-btn.cc-dismiss:hover {
 }
 .bton-calendar:hover{
   background-color: #B4CA3D !important;
+}
+.padding-textDate{
+  padding: 0 2.1rem 0 2.1rem;
 }

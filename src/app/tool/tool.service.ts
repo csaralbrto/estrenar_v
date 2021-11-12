@@ -10,19 +10,21 @@ import { environment } from '../../environments/environment';
 })
 export class ToolService {
   public loanHome: string;
+  public endpointForm: string;
   public initialQuote: string;
   public subsidyHome: string;
   public debtCapacity: string;
   public dataPathProyect: string;
   public dataPathArticles: string;
 
-  constructor( private http: Http ) { 
+  constructor( private http: Http ) {
     this.loanHome = environment.endpointApi + 'tools/loan_home/';
     this.initialQuote = environment.endpointApi + 'tools/initial_Quote/';
     this.subsidyHome = environment.endpointApi + 'tools/subsidy_home/';
     this.debtCapacity = environment.endpointApi + 'tools/debt_capacity/';
     this.dataPathProyect = environment.endpointTestingApi+ 'typologies/all?items_per_page=4';
     this.dataPathArticles = environment.endpointTestingApi+ 'articles/all?items_per_page=5';
+    this.endpointForm = environment.endpointTestingApi + 'ev-lead';
 
   }
   /* Traer toda la info de proyectos */
@@ -55,6 +57,12 @@ export class ToolService {
   /* Enviar datos a capacidad de endeudamiento */
   calculateDebtCapacity( operation: string, params: any ): Observable<any> {
     return this.http.post(this.debtCapacity + operation, params)
+    .pipe(map(( response => response.json() )));
+  }
+  /* enviar info de los formularios */
+  getFormService( params: any ): Observable<any> {
+    // console.log(this.endpointForm, params);
+    return this.http.post(this.endpointForm, params)
     .pipe(map(( response => response.json() )));
   }
 }

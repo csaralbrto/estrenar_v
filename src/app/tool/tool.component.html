@@ -72,7 +72,7 @@
                     <div class="container-form">
                         <div class="row">
                             <div class="medium-4 columns text-center">
-                                <p> Cuéntanos cuales son tus ingresos mensuales</p>
+                                <p> Cuéntanos cuáles son tus ingresos mensuales</p>
                                 <div class="input-group">
                                     <span class="input-group-label">$</span>
                                     <input class="input-group-field" type="number" id="unput_test" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (keyup)="onKeyUpformatInput($event)" (change)="change(form.value,'subsidio_vivienda')">
@@ -328,6 +328,7 @@
 </div>
 <hr class="white">
 <!--fin simuladores-->
+<!-- Proyectos Desktop -->
 <div class="row columns hide-for-small-only" data-equalizer data-equalize-on="medium" id="test-eq">
   <h2 class="deco text-center">Propiedades similares</h2>
     <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
@@ -393,13 +394,14 @@
               <div class="button-group align-spaced ">
                 <a class="button" routerLink="{{project.url}}">Ver
                     Proyecto</a>
-                  <a class="button">Contacto</a>
+                  <a data-open="exampleModal2" class="button">Contacto</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Slider mobile porojects -->
+<!-- Fin proyectos desktop -->
+<!-- Slider mobile projects -->
 <div class="small-12 columns show-for-small-only mT15Mobile">
   <h2 class="deco text-center">Propiedades similares</h2>
   <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
@@ -712,7 +714,7 @@
     </ul>
   </div>
 </div>
-<!-- Fin slider mobile porojects -->
+<!-- Fin slider mobile projects -->
 <hr class="white">
 <div class="row columns text-center mtop50">
     <a href="proyectos" class="button secondary bton-mobile">Ver más proyectos</a>
@@ -775,3 +777,69 @@
     </div>
 </div>
 <hr class="white">
+<!-- Modal de contacto -->
+<div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
+    <h2>Contactar</h2>
+    <form data-abide novalidate [formGroup]="form4">
+        <div class="container-form">
+            <span id="spanNameModal" class="error hide">
+              Debe digitar un nombre de contacto
+          </span>
+            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+            <span id="spannLastNameModal" class="error hide">
+                  Debe digitar un apellido de contacto
+              </span>
+            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+            <span id="spanEmailModal" class="error hide">
+                  Debe digitar un correo de contacto valido
+              </span>
+            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+            <span id="spanPhoneModal" class="error hide">
+                  Debe digitar un n&uacute;mbre de contacto
+              </span>
+            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+            <span id="spanContactModal" class="error hide">
+                  Debe seleccionar una opción
+              </span>
+            <select id="select" required formControlName="contact" name="contact">
+              <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+              <option value="telefono">Tel&eacute;fonica</option>
+              <option value="email">Correo Electr&oacute;nico</option>
+              <option value="whatsapp">Whatsapp</option>
+          </select>
+            <span id="spanTypesearchModal" class="error hide">
+              Debe seleccionar una opción
+          </span>
+            <fieldset class="text-left">
+                <legend>Buscas vivienda para:</legend>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+            </fieldset>
+
+            <div class="text-left terminos">
+                <span id="spanTermModal" class="error hide">
+                  Debe aceptar los términos
+              </span>
+                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                  haber leído los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
+                  mismos.</label>
+
+            </div>
+            <span href="" class="button secondary" (click)="onSubmitModal(form4.value)">Enviar</span>
+        </div>
+    </form>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- Fin modal de contacto -->
+<!-- Modal de gracias -->
+<div class="reveal text-center" id="exampleModal1" data-reveal>
+  <img src="/assets/images/logo-ev.png">
+  <h2>¡Gracias!</h2>
+  <p>Pronto te llegará toda la información a tu correo</p>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+  <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- Fin modal de gracias -->

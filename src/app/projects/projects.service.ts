@@ -22,7 +22,7 @@ export class ProjectsService {
 
   constructor( private http: Http, /* private commonFunctions: CommonFunctions */ ) {
     this.servicePath = environment.endpointApi+ 'project/roomSales';
-    this.dataPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=';
+    this.dataPath = environment.endpointTestingApi+ 'typologies?items_per_page=';
     this.dataPathVis = environment.endpointTestingApi+ 'typologies/project_category/7893?items_per_page=';
     this.dataPathVacacionales = environment.endpointTestingApi+ 'typologies/project_category/7975?items_per_page=';
     this.endpointForm = environment.endpointTestingApi + 'ev-lead';

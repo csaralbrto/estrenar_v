@@ -16,7 +16,9 @@ declare var $: any;
 })
 export class ToolComponent implements OnInit, AfterViewChecked {
   tags: MetaTag;
+  public form4: FormGroup;
   public response: any;
+  public responseSubmit: any;
   public responseMostRead: any;
   public form: FormGroup;
   public salario_minimo = 877803;
@@ -52,6 +54,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     $(window).scrollTop(0);
     $('#responsive-nav-social').css('display','none');
     this.startSpinner();
+    this.createFormModal();
 
     this.stringText = '...';
     this.createForm();
@@ -144,7 +147,138 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     // }
     return event.target.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
-
+  createFormModal() {
+    this.form4 =  this.formBuilder.group({
+      name: new FormControl(''),
+      lastname: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      contact: new FormControl('Deseas ser contactado'),
+      typeSearch: new FormControl(''),
+      term: new FormControl(''),
+    });
+  }
+  onSubmitModal(values) {
+    console.log(values);
+    var error = false;
+    if(values.name == null || values.name == ""){
+      $('#spanNameModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanNameModal').addClass('hide');
+      error = false;
+    }
+    if(values.lastname == null || values.lastname == ""){
+      $('#spannLastNameModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spannLastNameModal').addClass('hide');
+      error = false;
+    }
+    if(values.phone == null || values.phone == ""){
+      $('#spanPhoneModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanPhoneModal').addClass('hide');
+      error = false;
+    }
+    if(values.email == null || values.email == ""){
+      $('#spanEmailModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanEmailModal').addClass('hide');
+      error = false;
+    }
+    if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
+      $('#spanContactModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanContactModal').addClass('hide');
+      error = false;
+    }
+    if(values.term == null || values.term == ""){
+      $('#spanTermModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanTermModal').addClass('hide');
+      error = false;
+    }
+    if(!error){
+      /* Se recibe los valores del formulario */
+      var f = new Date();
+      var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
+      values.type_submit = 'contact_form';
+      var url = window.location.pathname;
+      let payload = {
+          "identity": {
+            "mail": values.email,
+            "phone": values.phone
+        },
+        "personal": {
+            "name": values.name,
+            "lastName": values.lastname
+        },
+        "campaign": {
+            "options": [
+                {
+                    "UTM source": sessionStorage['UTMSource']?sessionStorage.getItem("UTMSource"):""
+                },
+                {
+                    "UTM medium": sessionStorage['UTMMedium']?sessionStorage.getItem("UTMMedium"):""
+                },
+                {
+                    "UTM content": sessionStorage['UTMContent']?sessionStorage.getItem("UTMContent"):""
+                },
+                {
+                    "UTM campaign": sessionStorage['UTMCampaing']?sessionStorage.getItem("UTMCampaing"):""
+                }
+            ]
+        },
+        "additional": {
+            "comment": values.comment,
+            "emailCopy": values.emailCopy
+        },
+        "contextual": {
+            "options": [
+                {
+                    "Ruta": url
+                },
+                {
+                    "Dispositivo": "Escritorio"
+                }
+            ]
+        },
+        "profiling": {
+            "survey":
+            [
+                {
+                    "Deseas ser contactado vía": values.contact
+                }
+            ],
+            "location": values.city
+        },
+        "main": {
+            "privacyNotice": 5323,
+            "category": "Contáctenos"
+        }
+    }
+    // console.log(payload);
+      this.Service.getFormService( payload )
+      .subscribe(
+        data =>(this.responseSubmit = data),
+        err => console.log(),
+        () => {
+          if(this.responseSubmit.id){
+            $('#exampleModal1').foundation('open');
+            this.form.reset();
+          }
+          if(!this.responseSubmit.id){
+            // $('#modalAlertError').foundation('open');
+          }
+        }
+      );
+    }
+  }
   change(value,type) {
     if(type == 'capacidad_endeudamiento'){
       this.prestamo_endeudamiento = Number(value.ingresos_mensuales_endudamiento) * Number(32);

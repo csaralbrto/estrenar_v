@@ -145,7 +145,6 @@ export class BlogDetailComponent implements OnInit {
       email_suscribe: new FormControl(''),
     });
   }
-
   onSubmit(values) {
     /* Se recibe los valores del formulario */
     values.type_submit = 'contact_form';
@@ -162,8 +161,6 @@ export class BlogDetailComponent implements OnInit {
         {"value":values.comment,"format":"restricted_html"}
       ]
     };
-    console.log(payload);
-    this.createForm();
     this.Service.sendBlogComment( payload )
     .subscribe(
       data =>{this.responseComment = data},
@@ -174,6 +171,7 @@ export class BlogDetailComponent implements OnInit {
           this.stopSpinner();
           $('#exampleModalComment').foundation('open');
           this.createForm();
+          // window.location.reload();
         }
         // if(this.confirm.error){
         //   // $('#modalAlertError').foundation('open');

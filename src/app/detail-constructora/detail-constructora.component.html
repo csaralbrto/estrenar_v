@@ -634,7 +634,7 @@
     <h4 class="deco text-center hide-for-small-only">Proyectos de Constructora {{ content.label }}</h4>
     <br>
     <!--filtros-->
-    <div id="filters-form">
+    <div id="filters-form" class="hide-for-small-only">
       <form [formGroup]="form_filters">
         <div class="filtros">
             <div class="row condensed">
@@ -708,10 +708,71 @@
     <hr>
     <!-- Modal más filtros -->
     <div class="reveal filter small-12" id="masfiltrosModal" data-reveal>
+        <div id="filters-form">
+          <form [formGroup]="form_filters">
+            <div class="filtros show-for-small-only">
+                <div class="medium-12 small-12 colunms text-center">
+                    <h1><strong>Más filtros</strong></h1>
+                </div>
+                <div class="row condensed">
+                    <div class="medium-2 columns">
+                        <label>Tipo de inmueble
+                            <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                              <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
+                                <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Precio
+                            <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                              <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
+                                <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Ciudad
+                            <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                              <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
+                                <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Zona
+                            <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                              <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
+                                <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
+                            </select>
+                            <ng-template #zoneTemplate>
+                                <select disabled="true">
+                                    <option value="" selected>Seleccione</option>
+                                </select>
+                            </ng-template>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Sector
+                            <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                              <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
+                                <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
+                            </select>
+                            <ng-template #sectorTemplate>
+                                <select disabled="true">
+                                    <option value="" selected>Seleccione</option>
+                                </select>
+                            </ng-template>
+                        </label>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
         <form [formGroup]="form_moreFilters">
             <div class="row">
               <div class="medium-12 small-12 columns">
-                <div class="medium-12 small-12 colunms text-center">
+                <div class="medium-12 small-12 colunms text-center hide-for-small-only">
                     <h1><strong>Más filtros</strong></h1>
                 </div>
                 <div class="medium-6 small-12 columns">
@@ -1022,3 +1083,11 @@
   </button>
 </div>
 <!-- fin de modal de gracias -->
+
+<div class="show-for-small-only filter-button">
+  <div style="width: 34px;height: 31px;">
+    <a data-open="masfiltrosModal">
+      <img width="28px" height="28px" src="/assets/images/filtros.png">
+    </a>
+  </div>
+</div>

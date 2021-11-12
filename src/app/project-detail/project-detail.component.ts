@@ -1194,6 +1194,26 @@ export class ProjectDetailComponent implements OnInit {
       $('#09am').removeClass('bton-active');
       $('#10am').removeClass('bton-active');
       $('#11am').addClass('bton-active');
+    }else if(value == "02"){
+      $('#02pm').addClass('bton-active');
+      $('#03pm').removeClass('bton-active');
+      $('#04pm').removeClass('bton-active');
+      $('#05pm').removeClass('bton-active');
+    }else if(value == "03"){
+      $('#02pm').removeClass('bton-active');
+      $('#03pm').addClass('bton-active');
+      $('#04pm').removeClass('bton-active');
+      $('#05pm').removeClass('bton-active');
+    }else if(value == "04"){
+      $('#02pm').removeClass('bton-active');
+      $('#03pm').removeClass('bton-active');
+      $('#04pm').addClass('bton-active');
+      $('#05pm').removeClass('bton-active');
+    }else if(value == "05"){
+      $('#02pm').removeClass('bton-active');
+      $('#03pm').removeClass('bton-active');
+      $('#04pm').removeClass('bton-active');
+      $('#05pm').addClass('bton-active');
     }
   }
   navigateToSection(section: string) {
