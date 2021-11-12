@@ -60,7 +60,7 @@
             <div class="row hide-for-small-only">
                 <div class="medium-6 columns destacado" *ngIf="galeriaArray">
                     <figure class="">
-                        <img *ngFor="let item of items; index as i" [lightbox]="i" class="imagenPrincipal" [src]="url_img_path + galeriaArray[0].uri.url" alt="">
+                        <img *ngFor="let item of items; index as i" [lightbox]="i"  class="imagenPrincipal" [src]="url_img_path + galeriaArray[0].uri.url" alt="">
                     </figure>
                 </div>
                 <div>
@@ -786,7 +786,8 @@
                                 <li class="is-active" *ngFor="let blueprint of response.field_typology_blueprint; let i = index">
                                     <div class="row">
                                         <figure class="">
-                                            <img class="" [src]="url_img_path + blueprint.uri.url" alt="" style="padding-left: 15px;">
+
+                                            <img *ngFor="let item of items; index as i" [lightbox]="i"  [gallery]="'anotherLightbox1'"  class="" [src]="url_img_path + blueprint.uri.url" alt="" style="padding-left: 15px;">
                                         </figure>
                                     </div>
                                 </li>
