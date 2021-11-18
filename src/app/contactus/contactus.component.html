@@ -22,7 +22,7 @@
   <div class="medium-9 columns">
       <div class="row">
           <div class="medium-8 medium-offset-2 columns">
-              <h1>Contáctanos</h1>
+              <h2>CONTÁCTANOS</h2>
               <form data-abide novalidate [formGroup]="form">
                     <div class="container-form">
                         <span id="spanName" class="error hide">
@@ -49,18 +49,43 @@
                             Debe seleccionar una ciudad
                           </span>
                         <select id="select" required formControlName="city" name="city">
-                        <option value="Ciudad">Ciudad:</option>
-                        <option value="bogota">Bogotá</option>
-                        <option value="barranquilla">Barranquilla</option>
+                          <option value="Ciudad">Ciudad:</option>
+                          <option value="Arauca">Arauca</option>
+                          <option value="Armenia">Armenia</option>
+                          <option value="Barranquilla">Barranquilla</option>
+                          <option value="Bogotá">Bogotá</option>
+                          <option value="Bucaramanga">Bucaramanga</option>
+                          <option value="Cartagena">Cartagena</option>
+                          <option value="Florencia">Florencia</option>
+                          <option value="Inírida">Inírida</option>
+                          <option value="Leticia">Leticia</option>
+                          <option value="Manizales">Manizales</option>
+                          <option value="Medellín">Medellín</option>
+                          <option value="Mocoa">Mocoa</option>
+                          <option value="Montería">Montería</option>
+                          <option value="Neiva">Neiva</option>
+                          <option value="Pasto">Pasto</option>
+                          <option value="Pereira">Pereira</option>
+                          <option value="Popayán">Popayán</option>
+                          <option value="Quibdó">Quibdó</option>
+                          <option value="Riohacha">Riohacha</option>
+                          <option value="San Andrés">San Andrés</option>
+                          <option value="San José de Cúcuta">San José de Cúcuta</option>
+                          <option value="San José del Guaviare">San José del Guaviare</option>
+                          <option value="Santa Marta">Santa Marta</option>
+                          <option value="Tunja">Tunja</option>
+                          <option value="Valledupar">Valledupar</option>
+                          <option value="Villavicencio">Villavicencio</option>
+                          <option value="Yopal">Yopal</option>
                         </select>
                         <span id="spanContact" class="error hide">
                             Debe seleccionar una opción
                           </span>
                         <select id="select" required formControlName="contact" name="contact">
-                        <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
-                        <option value="telefono">Tel&eacute;fonica</option>
-                        <option value="email">Correo Electr&oacute;nico</option>
-                        <option value="whatsapp">Whatsapp</option>
+                          <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                          <option value="telefono">Tel&eacute;fonica</option>
+                          <option value="email">Correo Electr&oacute;nico</option>
+                          <option value="whatsapp">Whatsapp</option>
                         </select>
 
                         <textarea placeholder="Comentarios" formControlName="comment" name="comment"></textarea>
@@ -71,11 +96,11 @@
                                 <label for="right-label" class="text-left">Enviar una copia del mensaje a su propio E-mail
                                 </label>
                             </div> -->
-                            <div>
+                            <div id="term-privacid">
                                 <span id="spanTerm" class="error hide">
                                   Debe aceptar los términos
                                 </span>
-                                <input class="checkBokForm-Contactus" id="checkbox1" type="checkbox" formControlName="term" name="term">
+                                <input class="checkBokForm-Contactus" id="checkbox" type="checkbox" formControlName="term" name="term">
                                 <label for="right-label" class="text-left">Declaro
                                     haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los mismos.
                                 </label>

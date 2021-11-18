@@ -236,6 +236,10 @@ const routes: Routes = [
     component: WizardComponent,
     pathMatch: 'full',
   },
+  { path: 'no-encontrada',
+    component: NotFoundComponent,
+    pathMatch: 'full',
+  },
   {
     path: ':path',
     component: DetailConstructoraComponent,

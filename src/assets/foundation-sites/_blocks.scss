@@ -2930,6 +2930,23 @@ ul.menu li a img {
 }
 @media print, screen and (max-width: 480px) {
 
+
+  .img-comparator{
+    width: 161px !important;
+    height: 130px !important;
+  }
+  .img-comparator2{
+    width: 161px !important;
+    height: 130px !important;
+  }
+  .img-comparator3{
+    width: 161px !important;
+    height: 130px !important;
+  }
+  .img-comparator4{
+    width: 161px !important;
+    height: 130px !important;
+  }
   .height-caracteristicas{
     height: 62px;
   }
@@ -3165,8 +3182,11 @@ ul.menu li a img {
     overflow: scroll;
     white-space: nowrap;
   }
-  .contact-bton-comparator{
-    display: none;
+  // .contact-bton-comparator{
+  //   display: none;
+  // }
+  .mgTopComparator{
+    margin-top: 1.9rem;
   }
   ul.menu-left {
     margin-left: 0;
@@ -3192,6 +3212,18 @@ ul.menu li a img {
   .pLeftMorFilters{
     padding-left: 18px;
   }
+  div#exampleModal1 {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem !important;
+    min-height: 20% !important;
+    height: 33% !important;
+  }
   div#exampleModalSuscribe {
     position: fixed;
     top: 50% !important;
@@ -3202,7 +3234,7 @@ ul.menu li a img {
     border-radius: 10px;
     padding: 1rem !important;
     min-height: 20% !important;
-    height: 23% !important;
+    height: 26% !important;
   }
   div#exampleModalComment {
     position: fixed;
@@ -3214,7 +3246,7 @@ ul.menu li a img {
     border-radius: 10px;
     padding: 1rem !important;
     min-height: 20% !important;
-    height: 25% !important;
+    height: 29.2% !important;
     h3{
       text-transform: none !important;
     }
@@ -3496,6 +3528,20 @@ ul.menu li a img {
 }
 @media print, screen and (min-width: 481px) {
 
+  div.legal-notice{
+    label{
+      vertical-align: 3px;
+      font-size: 14px;
+      a{
+        color: #b4ca3d;
+      }
+    }
+    input#accept_legal_notice{
+      width: 17px;
+      height: 15px;
+    }
+  }
+
   .filters-float{
     position: fixed;
       transition: ease all 0.4s;
@@ -3512,7 +3558,7 @@ ul.menu li a img {
   }
   .img-comparator{
     width: 161px !important;
-    height: 174px !important;
+    height: 130px !important;
   }
   .img-comparator2{
     width: 424px !important;
@@ -3686,6 +3732,9 @@ ul.menu li a img {
     background-color: #fff;
     border-radius: 10px;
     padding: 1rem;
+    h3{
+      text-transform: none !important;
+    }
   }
   div#exampleModalContactProject {
     position: fixed;
@@ -4200,4 +4249,11 @@ a.cc-btn.cc-dismiss:hover {
 }
 .padding-textDate{
   padding: 0 2.1rem 0 2.1rem;
+}
+div#term-privacid{
+  label{
+    a{
+      color: #b4ca3d;
+    }
+  }
 }

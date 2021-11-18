@@ -258,6 +258,7 @@ export class HomeComponent implements OnInit {
         data =>(this.responseSubmit = data),
         err => console.log(),
         () => {
+          console.log(this.responseSubmit);
           if(this.responseSubmit.id){
             $('#exampleModal1').foundation('open');
             this.form.reset();

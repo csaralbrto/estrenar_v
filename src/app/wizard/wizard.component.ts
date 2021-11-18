@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Options, LabelType } from 'ng5-slider';
+import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import {
   FormGroup,
   FormControl,
@@ -22,6 +23,8 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   public confirm: any;
   public form: FormGroup;
   public responseSearchData: any;
+  public data: any;
+  public new_url: any;
   public responsePresupuestoData: any;
   public responseSubsidioData: any;
   public responseTiempoData: any;
@@ -64,8 +67,10 @@ export class WizardComponent implements OnInit, AfterViewChecked{
     private formBuilder: FormBuilder,
     public Options: Options,
     private router: Router,
-    private spinnerService: NgxSpinnerService
-    ) {}
+    private spinnerService: NgxSpinnerService,
+    private http: Http) {
+      this.http = http;
+    }
 
   ngOnInit(): void {
     // $(document).foundation();
@@ -99,7 +104,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       (err) => console.log(),
       () => {
         if (this.responsePresupuestoData) {
-          console.log(this.responsePresupuestoData);
+          // console.log(this.responsePresupuestoData);
           let count = 0;
           for (let presupuesto of this.responsePresupuestoData) {
               presupuesto.name = presupuesto.name.replace('$','');
@@ -134,7 +139,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       (err) => console.log(),
       () => {
         if (this.responseSubsidioData) {
-          console.log(this.responseSubsidioData);
+          // console.log(this.responseSubsidioData);
           // for (let subsidio of this.responseSubsidioData) {
           // }
           this.results = true;
@@ -151,7 +156,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       (err) => console.log(),
       () => {
         if (this.responseTiempoData) {
-          console.log(this.responseTiempoData);
+          // console.log(this.responseTiempoData);
           // for (let subsidio of this.responseTiempoData) {
           // }
           this.results = true;
@@ -168,7 +173,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       (err) => console.log(),
       () => {
         if (this.responseContactadoData) {
-          console.log(this.responseContactadoData);
+          // console.log(this.responseContactadoData);
           // for (let subsidio of this.responseContactadoData) {
           // }
           this.results = true;
@@ -185,7 +190,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       (err) => console.log(),
       () => {
         if (this.responseViviendaData) {
-          console.log(this.responseViviendaData);
+          // console.log(this.responseViviendaData);
           // for (let subsidio of this.responseViviendaData) {
           // }
           this.results = true;
@@ -299,7 +304,21 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   getNewData(event){
     /* quitar el placeholder del input autocomplete */
     $('.autocomplete-container .input-container input').css('background-image','none')
-    console.log('el evento es: ',event);
+    this.new_url = "https://lab.estrenarvivienda.com/api/taxonomy_term/user_preferences_location?filter[name][operator]=CONTAINS&filter[name][value]=" + event + "&sort=weight";
+    console.log(this.new_url);
+    fetch(this.new_url, {
+    })
+    .then(newResponse => newResponse.json())
+    .then(data => {
+      this.responseSearchData = data.data;
+      // console.log(this.responseSearchData);
+      if (this.responseSearchData) {
+        for (let project of this.responseSearchData) {
+          // console.log(project.name)
+          this.arrayOptions.push(project);
+        }
+      }
+    })
   }
   startSpinner(): void {
     if (this.spinnerService) {

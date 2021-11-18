@@ -145,7 +145,7 @@ export class BlogDetailComponent implements OnInit {
       email_suscribe: new FormControl(''),
     });
   }
-  onSubmit(values) {
+  onSubmitComment(values) {
     /* Se recibe los valores del formulario */
     values.type_submit = 'contact_form';
     let payload = {
@@ -173,9 +173,12 @@ export class BlogDetailComponent implements OnInit {
           this.createForm();
           // window.location.reload();
         }
-        // if(this.confirm.error){
-        //   // $('#modalAlertError').foundation('open');
-        // }
+        if(!(this.responseComment)){
+          console.log(this.responseComment);
+          this.stopSpinner();
+          $('#exampleModalComment').foundation('open');
+          this.createForm();
+        }
       }
     );
   }

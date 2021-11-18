@@ -25,6 +25,7 @@ export class ProjectDetailComponent implements OnInit {
   itemImgPlano: GalleryItem[];
   tags: MetaTag;
   public response: any;
+  public url_project: any;
   public typeContact: any;
   public responsePlacesGoogle: any;
   public newResponse: any;
@@ -62,7 +63,7 @@ export class ProjectDetailComponent implements OnInit {
   public mapTypeId: any;
   public newplace:any;
   public keyGoglePlace="AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM";
-  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city,field_typology_blueprint';
+  dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city,field_typology_blueprint,field_typology_project.field_project_feature.field_icon_feature';
   url_img_path = 'https://www.estrenarvivienda.com/';
   /* Fecha */
   items: any[] = [];
@@ -183,6 +184,7 @@ export class ProjectDetailComponent implements OnInit {
             // console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
+              this.url_project = window.location.href;
               /* format numbr */
               this.response.field_typology_price =  new Intl.NumberFormat("es-ES").format(this.response.field_typology_price)
               // console.log(this.response);
@@ -220,7 +222,7 @@ export class ProjectDetailComponent implements OnInit {
               }
               this.cityProject = this.response.field_typology_project.field_project_location[0].field_location_city.drupal_internal__tid;
               this.priceProject = this.response.field_typology_price
-              this.idProject = this.response.drupal_internal__nid;
+              this.idProject = this.response.field_typology_project.drupal_internal__tid;
               const latong = this.response.field_typology_project.field_project_location[0].field_location_geo_data.latlon;
               this.coor_latitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lat;
               this.coor_longitude = this.response.field_typology_project.field_project_location[0].field_location_geo_data.lon;
@@ -228,23 +230,26 @@ export class ProjectDetailComponent implements OnInit {
 
               // lightbox para planos
 
-              if(this.response.field_typology_blueprint !== undefined){
-                this.blueprintProyect = this.response.field_typology_blueprint;
-                this.blueprint = this.blueprintProyect[0].uri.url;
-                /* Asignación de imagenes al Lightbox */
-                let imageGalleryArrayPlano = [];
-                for (let JsonGalleryPlano of this.blueprintProyect){
-                  imageGalleryArrayPlano.push({srcUrl: this.url_img_path + JsonGalleryPlano.uri.url, previewUrl: this.url_img_path + JsonGalleryPlano.uri.url})
-                  this.galeriaArrayPlano.push(JsonGalleryPlano);
+              console.log('aqui 1');
+              if(!(this.response.field_typology_blueprint.data)){
+                console.log('entre al if 2')
+                if(this.response.field_typology_blueprint !== undefined){
+                  console.log('entre al if 3')
+                  this.blueprintProyect = this.response.field_typology_blueprint;
+                  this.blueprint = this.blueprintProyect[0].uri.url;
+                  /* Asignación de imagenes al Lightbox */
+                  let imageGalleryArrayPlano = [];
+                  for (let JsonGalleryPlano of this.blueprintProyect){
+                    imageGalleryArrayPlano.push({srcUrl: this.url_img_path + JsonGalleryPlano.uri.url, previewUrl: this.url_img_path + JsonGalleryPlano.uri.url})
+                    this.galeriaArrayPlano.push(JsonGalleryPlano);
+                  }
+                  /*   1. cear Galeria  con los items */
+                  this.itemImgPlano = imageGalleryArrayPlano.map(itemPlano =>
+                    new ImageItem({ src: itemPlano.srcUrl, thumb: itemPlano.previewUrl })
+                  );
+                  this.basicLightboxPlano();
+                  this.withCustomGalleryConfigPlano();
                 }
-                /*   1. cear Galeria  con los items */
-                this.itemImgPlano = imageGalleryArrayPlano.map(itemPlano =>
-                  new ImageItem({ src: itemPlano.srcUrl, thumb: itemPlano.previewUrl })
-                );
-                this.basicLightboxPlano();
-                this.withCustomGalleryConfigPlano();
-
-
               }
               // console.log(this.coor_latitude,',',this.coor_longitude);
               this.response.marketIcon =
@@ -262,6 +267,7 @@ export class ProjectDetailComponent implements OnInit {
                 imageGalleryArray.push({srcUrl: this.url_img_path + JsonGallery.uri.url, previewUrl: this.url_img_path + JsonGallery.uri.url})
                 this.galeriaArray.push(JsonGallery);
               }
+              console.log(this.galeriaArray);
               /*   1. cear Galeria  con los items */
               this.itemImg = imageGalleryArray.map(item =>
                 new ImageItem({ src: item.srcUrl, thumb: item.previewUrl })
@@ -328,6 +334,7 @@ export class ProjectDetailComponent implements OnInit {
               }
               console.log(this.caracteristicas);
               this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
+              console.log(this.caracteristicasProject);
               /* caracteristicas del proyecto */
               for (let caracteristica_project of this.caracteristicasProject) {
                 var name_cara;
@@ -341,8 +348,8 @@ export class ProjectDetailComponent implements OnInit {
                   }
                 }else{
                   name_cara = caracteristica_project.parent[0].name+': '+ caracteristica_project.name
-                  if(caracteristica_project.parent[0].field_icon_feature.uri){
-                    img_src = this.dataSrcImg + caracteristica_project.parent[0].field_icon_feature.uri.url;
+                  if(caracteristica_project.field_icon_feature.uri){
+                    img_src = this.dataSrcImg + caracteristica_project.field_icon_feature.uri.url;
                   }else{
                     img_src = '/assets/images/caracteristica.png';
                   }
@@ -358,8 +365,15 @@ export class ProjectDetailComponent implements OnInit {
               .then(data => {
                 this.newResponse = data;
                 if (this.newResponse) {
-                  console.log(this.newResponse);
+                  // console.log(this.newResponse);
                   this.othersAreas = this.newResponse
+                  for (let project of this.othersAreas) {
+                    var arrayDeCadenas = project.typology_images.split(',');
+                    project.typology_images = arrayDeCadenas[0];
+                    var arrayDeCadenas2 = project.project_category.split(',');
+                    project.project_category = arrayDeCadenas2;
+                    project.typology_price = new Intl.NumberFormat("es-ES").format(project.typology_price);
+                  }
                 }
               })
               .catch(error => console.error(error))
@@ -391,23 +405,16 @@ export class ProjectDetailComponent implements OnInit {
       }
     );
   }
-
   basicLightboxPlano() {
     this.galleryPlano.ref().load(this.itemImgPlano);
   }
-
-
   withCustomGalleryConfigPlano() {
     const lightboxGalleryRef1 = this.galleryPlano.ref('anotherLightbox1');
     lightboxGalleryRef1.load(this.itemImgPlano);
   }
-
-
   basicLightboxExample() {
     this.gallery.ref().load(this.itemImg);
   }
-
-
   withCustomGalleryConfig() {
     const lightboxGalleryRef = this.gallery.ref('anotherLightbox');
     lightboxGalleryRef.setConfig({
@@ -415,9 +422,7 @@ export class ProjectDetailComponent implements OnInit {
       thumbPosition: ThumbnailsPosition.Top
     });
     lightboxGalleryRef.load(this.itemImg);
-  }
-
-  //fecha
+  }  //fecha
   getDates(startDate: any) {
     let dateArray = [];
     let currentDate = moment(startDate);
@@ -585,7 +590,9 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
   addCompare(value) {
-    if (!sessionStorage['id']) {
+    var comparatorsId = JSON.parse(sessionStorage.getItem("id"));
+    console.log(comparatorsId);
+    if (comparatorsId == null) {
       var ids = [];
       ids.push(value)
       sessionStorage.setItem('id',JSON.stringify(ids))
@@ -594,11 +601,11 @@ export class ProjectDetailComponent implements OnInit {
       // console.log('este es el id: ',storedIds);
     }else{
       var storedIds = JSON.parse(sessionStorage.getItem("id"));
-      for (let ids of storedIds) {
-        if(ids === value){
-        }else{
-          storedIds.push(value);
-        }
+      /* agregar el proyecto de los comparadores */
+      const index = storedIds.indexOf(Number(value));
+      console.log(index);
+      if ( index == -1 ) {
+        storedIds.push(value);
       }
       /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
       sessionStorage.setItem('id',JSON.stringify(storedIds))
@@ -692,43 +699,47 @@ export class ProjectDetailComponent implements OnInit {
       $('#spanName').addClass('hide');
       error = false;
     }
+    var errorspannLastName = false
     if(values.lastname == null || values.lastname == ""){
       $('#spannLastName').removeClass('hide');
-      error = true;
+      errorspannLastName = true;
     }else{
       $('#spannLastName').addClass('hide');
-      error = false;
+      errorspannLastName = false;
     }
+    var errorspanPhone = false
     if(values.phone == null || values.phone == ""){
       $('#spanPhone').removeClass('hide');
-      error = true;
+      errorspanPhone = true;
     }else{
       $('#spanPhone').addClass('hide');
-      error = false;
+      errorspanPhone = false;
     }
+    var errorspanEmail = false
     if(values.email == null || values.email == ""){
       $('#spanEmail').removeClass('hide');
-      error = true;
+      errorspanEmail = true;
     }else{
       $('#spanEmail').addClass('hide');
-      error = false;
+      errorspanEmail = false;
     }
+    var errorspanContact = false
     if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
       $('#spanContact').removeClass('hide');
-      error = true;
+      errorspanContact = true;
     }else{
       $('#spanContact').addClass('hide');
-      error = false;
+      errorspanContact = false;
     }
+    var errorspanTerm = false
     if(values.term == null || values.term == ""){
       $('#spanTerm').removeClass('hide');
-      error = true;
+      errorspanTerm = true;
     }else{
       $('#spanTerm').addClass('hide');
-      error = false;
+      errorspanTerm = false;
     }
-    if(!error){
-      $('#exampleModal1').foundation('open');
+    if(error == false && errorspannLastName == false && errorspanPhone == false && errorspanEmail == false && errorspanContact == false && errorspanTerm == false){
       /* Se recibe los valores del formulario */
       var f = new Date();
       var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
@@ -799,10 +810,12 @@ export class ProjectDetailComponent implements OnInit {
         err => console.log(),
         () => {
           if(this.responseSubmit.id){
+            $('#exampleModal1').foundation('open');
             this.form.reset();
           }
           if(!this.responseSubmit.id){
-            // $('#modalAlertError').foundation('open');
+            $('#exampleModal1').foundation('open');
+            this.form.reset();
           }
         }
       );
@@ -839,42 +852,47 @@ export class ProjectDetailComponent implements OnInit {
       $('#spanNameModal').addClass('hide');
       error = false;
     }
+    let errorspannLastNameModal = false;
     if(values.lastname == null || values.lastname == ""){
       $('#spannLastNameModal').removeClass('hide');
-      error = true;
+      errorspannLastNameModal = true;
     }else{
       $('#spannLastNameModal').addClass('hide');
-      error = false;
+      errorspannLastNameModal = false;
     }
+    let errorspanPhoneModal = false;
     if(values.phone == null || values.phone == ""){
       $('#spanPhoneModal').removeClass('hide');
-      error = true;
+      errorspanPhoneModal = true;
     }else{
       $('#spanPhoneModal').addClass('hide');
-      error = false;
+      errorspanPhoneModal = false;
     }
+    let errorspanEmailModal = false;
     if(values.email == null || values.email == ""){
       $('#spanEmailModal').removeClass('hide');
-      error = true;
+      errorspanEmailModal = true;
     }else{
       $('#spanEmailModal').addClass('hide');
-      error = false;
+      errorspanEmailModal = false;
     }
+    let errorspanContactModal = false;
     if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
       $('#spanContactModal').removeClass('hide');
-      error = true;
+      errorspanContactModal = true;
     }else{
       $('#spanContactModal').addClass('hide');
-      error = false;
+      errorspanContactModal = false;
     }
+    let errorspanTermModal = false;
     if(values.term == null || values.term == ""){
       $('#spanTermModal').removeClass('hide');
-      error = true;
+      errorspanTermModal = true;
     }else{
       $('#spanTermModal').addClass('hide');
-      error = false;
+      errorspanTermModal = false;
     }
-    if(!error){
+    if(error == false && errorspannLastNameModal == false && errorspanPhoneModal == false && errorspanEmailModal == false && errorspanContactModal == false && errorspanTermModal == false){
       /* Se recibe los valores del formulario */
       var f = new Date();
       var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
@@ -939,14 +957,18 @@ export class ProjectDetailComponent implements OnInit {
         data =>(this.responseSubmit = data),
         err => console.log(),
         () => {
+          console.log(this.responseSubmit);
           if(this.responseSubmit.id){
             $('#exampleModal1').foundation('open');
-            this.form.reset();
+            this.form4.reset();
             let type_contact = this.typeContact;
             this.actionAfterContact(type_contact);
           }
           if(!this.responseSubmit.id){
-            // $('#modalAlertError').foundation('open');
+            $('#exampleModal1').foundation('open');
+            this.form4.reset();
+            let type_contact = this.typeContact;
+            this.actionAfterContact(type_contact);
           }
         }
       );
@@ -1233,6 +1255,14 @@ export class ProjectDetailComponent implements OnInit {
       let url_mailto = 'mailto:' + email
       window.open(url_mailto);
     }
+  }
+  goSimulator() {
+    //this.scroller.scrollToAnchor("targetGreen");
+    document.getElementById("calculadorasSimular").scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+    });
   }
 }
 

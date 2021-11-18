@@ -104,128 +104,132 @@ export class DetailConstructoraComponent implements OnInit {
       // const title = this.activatedRoute.snapshot.params.path + this.dataConstrutora;
       const title = this.activatedRoute.snapshot.params.path;
       console.log(title);
-      this.Service.findConstructoraUrl(title).subscribe(
-        (data) => (this.responseFirst = data),
-        (err) => console.log(),
-        () => {
-          if (this.responseFirst) {
-            let url = this.responseFirst.jsonapi.individual + this.dataConstrutora
-            this.Service.findConstructora( url ).subscribe(
-              (data) => (this.response = data),
-              (err) => console.log(),
-              () => {
-                if (this.response) {
-                  /* si responde correctamente en la respuesta */
-                  // console.log(this.response);
-                  // for (let project of this.response.constructora.proyectos) {
-                  //     if (project.url_img) {
-                  //         this.largo = project.url_img.length;
-                  //         this.cadena = project.url_img.substr(39, this.largo);
-                  //         project.url_img = this.dataPath + this.cadena;
-                  //       }
-                  //     }
-                  this.content = this.response.data;
-                  this.builder_id = this.content.drupal_internal__id;
-                  if(this.content.metatag_normalized){
-                    this.tags = new MetaTag(this.content.metatag_normalized, this.meta);
-                  }
-                  /* Método para obtener los proyectos de la constructora */
-                  let stringBuilders =  this.content.drupal_internal__id + '?items_per_page=24'
-                  this.Service.constructoraProjects(stringBuilders).subscribe(
-                    (data) => (this.responseProject = data),
-                    (err) => console.log(err),
-                    () => {
-                      if (this.responseProject) {
-                        console.log(this.responseProject);
-                        this.countAllProjects = this.responseProject.total;
-                        this.allProjects = this.responseProject.search_results;
-                        this.countProjects = this.allProjects.length;
-                        if(this.countProjects == this.countAllProjects){
-                          this.banderaProyecto = true;
-                        }
-                        for (let project of this.allProjects) {
-                          var arrayDeCadenas = project.typology_images.split(',');
-                          project.typology_images = arrayDeCadenas[0];
-                          // if(project.project_category.includes(',')){
-                            var arrayDeCadenas2 = project.project_category.split(',');
-                            project.project_category = arrayDeCadenas2;
-                          // }else{
-                          //   project.project_category = project.project_category + ','
-                          //   // console.log(project.project_category);
-                          //   var arrayDeCadenas2 = project.project_category.split(',');
-                          //   project.project_category = arrayDeCadenas2;
-                          //   // console.log(typeof project.project_category);
-                          // }
-                          /* format numbr */
-                          project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
-                          // Nueva linea Yenifer
-                          var arrayDeLaton = project.latlon.split(',');
-                          project.latitude = arrayDeLaton[0]
-                          project.longitude = arrayDeLaton[1]
-                          this.results = true;
-                        }
-                        this.setLocationProject(this.allProjects[0].latitude,this.allProjects[0].longitude);
-                        /* si responde correctamente */
+      if(title.indexOf('constructora-') > 1){
+        this.Service.findConstructoraUrl(title).subscribe(
+          (data) => (this.responseFirst = data),
+          (err) => console.log(),
+          () => {
+            if (this.responseFirst) {
+              let url = this.responseFirst.jsonapi.individual + this.dataConstrutora
+              this.Service.findConstructora( url ).subscribe(
+                (data) => (this.response = data),
+                (err) => console.log(),
+                () => {
+                  if (this.response) {
+                    /* si responde correctamente en la respuesta */
+                    // console.log(this.response);
+                    // for (let project of this.response.constructora.proyectos) {
+                    //     if (project.url_img) {
+                    //         this.largo = project.url_img.length;
+                    //         this.cadena = project.url_img.substr(39, this.largo);
+                    //         project.url_img = this.dataPath + this.cadena;
+                    //       }
+                    //     }
+                    this.content = this.response.data;
+                    this.builder_id = this.content.drupal_internal__id;
+                    if(this.content.metatag_normalized){
+                      this.tags = new MetaTag(this.content.metatag_normalized, this.meta);
+                    }
+                    /* Método para obtener los proyectos de la constructora */
+                    let stringBuilders =  this.content.drupal_internal__id + '?items_per_page=24'
+                    this.Service.constructoraProjects(stringBuilders).subscribe(
+                      (data) => (this.responseProject = data),
+                      (err) => console.log(err),
+                      () => {
+                        if (this.responseProject) {
+                          console.log(this.responseProject);
+                          this.countAllProjects = this.responseProject.total;
+                          this.allProjects = this.responseProject.search_results;
+                          this.countProjects = this.allProjects.length;
+                          if(this.countProjects == this.countAllProjects){
+                            this.banderaProyecto = true;
+                          }
+                          for (let project of this.allProjects) {
+                            var arrayDeCadenas = project.typology_images.split(',');
+                            project.typology_images = arrayDeCadenas[0];
+                            // if(project.project_category.includes(',')){
+                              var arrayDeCadenas2 = project.project_category.split(',');
+                              project.project_category = arrayDeCadenas2;
+                            // }else{
+                            //   project.project_category = project.project_category + ','
+                            //   // console.log(project.project_category);
+                            //   var arrayDeCadenas2 = project.project_category.split(',');
+                            //   project.project_category = arrayDeCadenas2;
+                            //   // console.log(typeof project.project_category);
+                            // }
+                            /* format numbr */
+                            project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
+                            // Nueva linea Yenifer
+                            var arrayDeLaton = project.latlon.split(',');
+                            project.latitude = arrayDeLaton[0]
+                            project.longitude = arrayDeLaton[1]
+                            this.results = true;
+                          }
+                          this.setLocationProject(this.allProjects[0].latitude,this.allProjects[0].longitude);
+                          /* si responde correctamente */
 
-                        if(this.responseProject.facets.property_type){
-                          this.filterType = this.responseProject.facets.property_type;
-                        }
-                        if(this.responseProject.facets.project_city){
-                          this.filterCity = this.responseProject.facets.project_city;
-                        }
-                        if(this.responseProject.facets.typology_price){
-                          this.filterPrice = this.responseProject.facets.typology_price;
-                        }
-                        //Área m²
-                        if(this.responseProject.facets.area_built){
-                          this.filterAreaBuilt = this.responseProject.facets.area_built;
-                        }
-                        //collection
-                        if(this.responseProject.facets.project_collection){
-                          this.filterColection = this.responseProject.facets.project_collection;
-                        }
-                        // estados del proyecto
-                        if(this.responseProject.facets.project_feature){
-                          let project_feature = this.responseProject.facets.project_feature;
-                          for (let feature of project_feature) {
-                            if(feature.values.value == "Estado del proyecto"){
-                              this.filterProjectState = feature.children;
-                              this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+                          if(this.responseProject.facets.property_type){
+                            this.filterType = this.responseProject.facets.property_type;
+                          }
+                          if(this.responseProject.facets.project_city){
+                            this.filterCity = this.responseProject.facets.project_city;
+                          }
+                          if(this.responseProject.facets.typology_price){
+                            this.filterPrice = this.responseProject.facets.typology_price;
+                          }
+                          //Área m²
+                          if(this.responseProject.facets.area_built){
+                            this.filterAreaBuilt = this.responseProject.facets.area_built;
+                          }
+                          //collection
+                          if(this.responseProject.facets.project_collection){
+                            this.filterColection = this.responseProject.facets.project_collection;
+                          }
+                          // estados del proyecto
+                          if(this.responseProject.facets.project_feature){
+                            let project_feature = this.responseProject.facets.project_feature;
+                            for (let feature of project_feature) {
+                              if(feature.values.value == "Estado del proyecto"){
+                                this.filterProjectState = feature.children;
+                                this.ValoresProyecto = Object.values(this.filterProjectState[0]);
+                              }
                             }
                           }
+                          // Constructora
+                          if(this.responseProject.facets.project_builder){
+                            this.filterBuilder = this.responseProject.facets.project_builder
+                          }
+                          /* Ordenación */
+                          if(this.responseProject.sorts){
+                            this.filterSort = this.responseProject.sorts;
+                          }
+                          /* Baños */
+                          if(this.responseProject.facets.bathrooms){
+                            this.filterBathrooms = this.responseProject.facets.bathrooms;
+                          }
+                          /* Habitaciones */
+                          if(this.responseProject.facets.bedrooms){
+                            this.filterBedrooms = this.responseProject.facets.bedrooms;
+                          }
+                          /* Garajes */
+                          if(this.responseProject.facets.garages){
+                            this.filterGarages = this.responseProject.facets.garages;
+                          }
+                          this.results = true;
                         }
-                        // Constructora
-                        if(this.responseProject.facets.project_builder){
-                          this.filterBuilder = this.responseProject.facets.project_builder
-                        }
-                        /* Ordenación */
-                        if(this.responseProject.sorts){
-                          this.filterSort = this.responseProject.sorts;
-                        }
-                        /* Baños */
-                        if(this.responseProject.facets.bathrooms){
-                          this.filterBathrooms = this.responseProject.facets.bathrooms;
-                        }
-                        /* Habitaciones */
-                        if(this.responseProject.facets.bedrooms){
-                          this.filterBedrooms = this.responseProject.facets.bedrooms;
-                        }
-                        /* Garajes */
-                        if(this.responseProject.facets.garages){
-                          this.filterGarages = this.responseProject.facets.garages;
-                        }
-                        this.results = true;
                       }
-                    }
-                  );
+                    );
+                  }
                 }
-              }
-            );
-            this.stopSpinner();
+              );
+              this.stopSpinner();
+            }
           }
-        }
-      );
-      $('html,body').scrollTop(0);
+        );
+        $('html,body').scrollTop(0);
+      }else{
+        this.router.navigate(['no-encontrada']);
+      }
     }
     /* Obtener la locacion en coordenadas actual */
     private setCurrentLocation() {

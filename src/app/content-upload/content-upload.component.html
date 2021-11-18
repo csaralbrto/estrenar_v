@@ -318,7 +318,7 @@
                 <hr class="white">
                 <h2 class="contenUpload">Logo del proyecto</h2>
                 <!-- <input type="file" id="exampleFileUpload" class="show-for-sr"> -->
-                <p>Los archivos deben ser menores que 2 MB.<br> Tipos de archivo permitidos: png jpg jpeg.<br> Las imágenes deben tener entre 900x600 y 1200x800 píxeles.</p>
+                <p>Los archivos deben ser menores que 2 MB.<br> Tipos de archivo permitidos: png jpg jpeg.<br> Las imágenes deben tener 113x120 píxeles.</p>
                 <label for="logo_project" class="button" style="width: 133px;">Cargar archivo</label>
                 <input style="visibility:hidden;" formControlName="logo_project" formControlName="logo_project" id="logo_project" type="file" class="form-control" (change)="onFileChange($event)">
                 <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
@@ -345,11 +345,11 @@
                 <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
                 <div class="">
                     <span style="color: red" id="spanimages" class="hide">
-                            Debe al menos una imagen para el proyecto
-                        </span>
+                        Debe al menos una imagen para el proyecto
+                    </span>
                 </div>
                 <hr class="white">
-                <h2 class="contenUpload">Video</h2>
+                <h2 class="contenUpload">Vídeo</h2>
                 <div class="row">
                     <div class="medium-12 columns">
                         <label>URL
@@ -357,8 +357,8 @@
                             </label>
                         <div class="">
                             <span style="color: red" id="spanVideo" class="hide">
-                                    Debe ingresar una url correcta
-                                </span>
+                                Debe ingresar una url correcta
+                            </span>
                         </div>
                     </div>
 
@@ -562,7 +562,7 @@
                         <label id="email3" class="hide">Email 3
                             <input type="email" id="email3" name="email3" formControlName="email3" placeholder="">
                         </label>
-                        <label id="email4" class="hide">Email 4
+                        <!-- <label id="email4" class="hide">Email 4
                             <input type="email" id="email4" name="email4" formControlName="email4" placeholder="">
                         </label>
                         <label id="email5" class="hide">Email 5
@@ -582,7 +582,7 @@
                         </label>
                         <label id="email10" class="hide">Email 10
                             <input type="email" id="email10" name="email10" formControlName="email10" placeholder="">
-                        </label>
+                        </label> -->
                     </div>
                     <div class="medium-6 columns">
                         <label id="celular2" class="hide">Celular 2
@@ -672,7 +672,8 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <div style="display: none;" id="upload5">
+    <!-- <div style="display: none;" id="upload5"> -->
+      <div id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -699,11 +700,16 @@
                 <div class="row">
                     <div class="medium-6 columns">
                         <label>Etiqueta de precio
-                          <input id="label_price" name="label_price" formControlName="label_price" type="number" placeholder="">
-                      </label>
+                          <select id="label_price" required formControlName="label_price" name="label_price">
+                            <option value="Ciudad">Seleccione un valor:</option>
+                            <option value="Sin etiqueta">Sin etiqueta</option>
+                            <option value="Desde">Desde</option>
+                            <option value="Valor">Valor</option>
+                          </select>
+                        </label>
                         <div class="">
                             <span style="color: red" id="spanPriceLabel" class="hide">
-                              Debe ingresar algún monto
+                              Debe seleccionar alguna opción
                           </span>
                         </div>
                     </div>
@@ -742,7 +748,7 @@
                 <h2 class="contenUpload">Área</h2>
                 <div class="row">
                     <div class="medium-6 columns">
-                        <label>Area cosntruida
+                        <label>Área construida
                           <input id="constructed_area" name="constructed_area" formControlName="constructed_area" type="text" placeholder="">
                       </label>
                         <div class="">
@@ -752,7 +758,7 @@
                         </div>
                     </div>
                     <div class="medium-6 columns end">
-                        <label>Area privada
+                        <label>Área privada
                           <input id="private_area" name="private_area" formControlName="private_area" type="text" placeholder="">
                       </label>
                         <div class="">
@@ -958,7 +964,7 @@
                     <div class="row">
                       <hr>
                         <div class="small-12 columns">
-                            <div>Tipos de Garages</div>
+                            <div>Tipos de Garajes</div>
                             <div *ngFor="let option of garageTypesTypology">
                                 <div>
                                     <input id="casas" type="checkbox" name="type_garages" formControlName="type_garages" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
@@ -997,7 +1003,7 @@
                         <label>Área balcón
                             <input id="balcon_area" formControlName="balcony_area" name="balcon_area" type="text" placeholder="">
                             <div  class="">
-                                <span style="color: red" id="spanFeature" class="hide">
+                                <span style="color: red" id="spanbalcon_area" class="hide">
                                     Debe ingresar el área del balcón
                                 </span>
                             </div>
@@ -1052,9 +1058,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="medium-12 small-12 text-right">
-              <input id="checkbox1" type="checkbox" name="accept_legal_notice" id="accept_legal_notice" formControlName="accept_legal_notice"><label class="content-label" for="checkbox1">Aceptación <a href="/aviso-legal">
-                Aviso Legal</a></label>
+            <div class="medium-12 small-12 text-right legal-notice">
+              <input id="checkbox1" type="checkbox" name="accept_legal_notice" id="accept_legal_notice" formControlName="accept_legal_notice">
+              <label class="content-label" for="checkbox1">Aceptación <a href="/aviso-legal">Aviso Legal</a></label>
             </div>
           </div>
         <hr class="white">

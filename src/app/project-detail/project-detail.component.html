@@ -786,7 +786,6 @@
                                 <li class="is-active" *ngFor="let blueprint of response.field_typology_blueprint; let i = index">
                                     <div class="row">
                                         <figure class="">
-
                                             <img *ngFor="let item of items; index as i" [lightbox]="i"  [gallery]="'anotherLightbox1'"  class="" [src]="url_img_path + blueprint.uri.url" alt="" style="padding-left: 15px;">
                                         </figure>
                                     </div>
@@ -957,45 +956,634 @@
 <hr class="white">
 <hr class="white">
 <div class="row columns" data-equalizer data-equalize-on="medium" id="test-eq" *ngIf="othersAreas && othersAreas.length > 0">
-    <h2 class="deco text-center">Otras áreas disponibles</h2>
-    <div class="medium-4 columns end" *ngFor="let relacionados of othersAreas; let i = index">
-        <div class="card" *ngIf="i < 3" data-equalizer-watch>
-            <div class="container-photo">
-                <a href="#" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
-                <div class="container-tools">
-                    <div class="tags">
-                        <div *ngIf="relacionados.project_category.length > 0">
-                            <div class="tag" *ngFor="let tags of relacionados.project_category; let i = index">
-                                <a>{{ tags }}</a>
+  <h2 class="deco text-center">Otras áreas disponibles</h2>
+  <div class="hide-for-small-only">
+    <!--slide desktop-->
+    <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: auto !important; background-color: #fefefe;">
+      <ul class="slider-properties-project">
+        <li class="is-active" >
+          <div class="medium-3 columns end" *ngFor="let relacionados of othersAreas; let i = index">
+            <div class="card" *ngIf="i < 3" data-equalizer-watch>
+                <div class="container-photo">
+                    <a href="{{relacionados.uuid}}" class=""><img [src]="url_img_path + relacionados.typology_images" alt="" class="proyecto"></a>
+                    <div class="container-tools">
+                        <div class="tags">
+                            <div *ngIf="relacionados.project_category.length > 0">
+                                <div class="tag" *ngFor="let tags of relacionados.project_category; let i = index">
+                                    <a>{{ tags }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add">
+                            <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section">
+                  <a href="{{relacionados.uuid}}" class=""><h2>{{ relacionados.project }}</h2></a>
+                    <div class="descripcion">
+                        {{ relacionados.property_type }} en {{ relacionados.project_neighborhood }}, {{ relacionados.project_city }}
+                    </div>
+                    <div class="precio text-center">
+                        <div>Desde:</div>
+                        <span>$ {{ relacionados.typology_price }}</span>
+                    </div>
+                    <hr>
+                </div>
+                <div class="card-section">
+                  <div class="row">
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                              <div class="data"> {{ relacionados.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                          </div>
+                      </div>
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                              <div class="data"> {{ relacionados.bathrooms }} Alcobas</div>
+                          </div>
+                      </div>
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                              <div class="data"> {{ relacionados.garages }} Garaje </div>
+                          </div>
+                      </div>
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                              <div class="data"> {{ relacionados.bedrooms }} Baños</div>
+                          </div>
+                      </div>
+                  </div>
+                  <hr>
+                </div>
+                <div class="card-section">
+                    <div class="button-group align-spaced ">
+                        <a class="button bton-mobile" href="{{relacionados.url}}">Ver Proyecto</a>
+                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--slide desktop-->
+  </div>
+  <div class="show-for-small-only">
+    <!--slide mobile-->
+    <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;background-color: #fefefe;">
+        <div class="">
+          <ul class="slider-properties-project">
+            <li class="is-active" *ngIf="othersAreas">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <a href="{{othersAreas[0].url}}"><img [src]="url_img_path + othersAreas[0].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[0].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[0].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
                             </div>
                         </div>
                     </div>
-                    <div class="add">
-                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                    <div class="card-section">
+                      <a href="{{othersAreas[0].url}}"><h2>{{ othersAreas[0].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[0].property_type }} en {{ othersAreas[0].project_neighborhood }}, {{ othersAreas[0].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[0].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[0].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[0].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[0].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[0].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-section">
-                <h2>{{ relacionados.project }}</h2>
-                <div class="descripcion">
-                    {{ relacionados.project_city }}, {{ relacionados.project_zone }}, {{ relacionados.project_neighborhood }}
+            </li>
+            <li *ngIf="othersAreas > 0">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{othersAreas[1].url}}"><img [src]="url_img_path + othersAreas[1].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[1].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[1].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                      <a href="{{othersAreas[1].url}}"><h2>{{ othersAreas[1].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[1].property_type }} en {{ othersAreas[1].project_neighborhood }}, {{ othersAreas[1].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[1].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[1].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[1].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[1].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[1].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="precio text-center">
-                    <div>Desde:</div>
-                    <span>$ {{ relacionados.typology_price }}</span>
+            </li>
+            <li *ngIf="othersAreas > 1">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{othersAreas[2].url}}"><img [src]="url_img_path + othersAreas[2].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[2].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[2].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                      <a href="{{othersAreas[2].url}}"><h2>{{ othersAreas[2].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[2].property_type }} en {{ othersAreas[2].project_neighborhood }}, {{ othersAreas[2].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[2].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[2].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[2].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[2].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[2].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
                 </div>
-                <hr>
-            </div>
-
-            <div class="card-section">
-                <div class="button-group align-spaced ">
-                    <a class="button bton-mobile" href="{{relacionados.uuid}}">Ver
-                  Proyecto</a>
-                    <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+            </li>
+            <li *ngIf="othersAreas > 2">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{othersAreas[3].url}}"><img [src]="url_img_path + othersAreas[3].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[3].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[3].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                      <a href="{{othersAreas[3].url}}"><h2>{{ othersAreas[3].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[3].property_type }} en {{ othersAreas[3].project_neighborhood }}, {{ othersAreas[3].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[3].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[3].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[3].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[3].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[3].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </li>
+            <li *ngIf="othersAreas > 3">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{othersAreas[4].url}}"><img [src]="url_img_path + othersAreas[4].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[4].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[4].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                      <a href="{{othersAreas[4].url}}"><h2>{{ othersAreas[4].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[4].property_type }} en {{ othersAreas[4].project_neighborhood }}, {{ othersAreas[4].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[4].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[4].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[4].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[4].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[4].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[4].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="othersAreas > 4">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{othersAreas[5].url}}"><img [src]="url_img_path + othersAreas[5].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[5].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[5].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                      <a href="{{othersAreas[5].url}}"><h2>{{ othersAreas[5].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[5].property_type }} en {{ othersAreas[5].project_neighborhood }}, {{ othersAreas[5].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[5].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[5].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[5].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[5].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[5].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[5].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="othersAreas > 5">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{othersAreas[6].url}}"><img [src]="url_img_path + othersAreas[6].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[6].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[6].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                      <a href="{{othersAreas[6].url}}"><h2>{{ othersAreas[6].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[6].property_type }} en {{ othersAreas[6].project_neighborhood }}, {{ othersAreas[6].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[6].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[6].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[6].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[6].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[6].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[6].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li *ngIf="othersAreas > 6">
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{othersAreas[7].url}}"><img [src]="url_img_path + othersAreas[7].typology_images" alt="" class="proyecto"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="othersAreas[7].project_category.length > 1">
+                                    <div class="tag" *ngFor="let tags of othersAreas[7].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add">
+                                <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                      <a href="{{othersAreas[7].url}}"><h2>{{ othersAreas[7].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ othersAreas[7].property_type }} en {{ othersAreas[7].project_neighborhood }}, {{ othersAreas[7].project_city }}
+                        </div>
+                        <div class="precio text-center">
+                            <div>Desde:</div>
+                            <span>$ {{ othersAreas[7].typology_price }}</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                      <div class="row mLeftPRojects">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[7].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[7].bathrooms }} alcobas</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data"> Garaje {{ othersAreas[7].garages }}</div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data"> {{ othersAreas[7].bedrooms }} baños</div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{othersAreas[7].url}}">Ver
+                            Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+          </ul>
         </div>
+        <!-- <div class="container-controls">
+            <nav class="orbit-bullets">
+                <button class="is-active" data-slide="0">
+                <span class="show-for-sr">First slide details.</span>
+                <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+            </button>
+                <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+            </nav>
+            <div class="orbit-controls">
+                <button class="orbit-previous"><span class="show-for-sr">Previous
+                    Slide</span>&#9664;&#xFE0E;</button>
+                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+            </div>
+        </div> -->
     </div>
+    <!--fin slide mobile-->
+  </div>
 </div>
 <hr class="white">
 <hr class="white">
@@ -1003,7 +1591,7 @@
     <h2 class="deco text-center">Características del proyecto</h2>
     <div class="medium-4 columns end" *ngFor="let caract of caracteristicasProject; let i = index">
         <div class="caracteristica">
-            <span><img [src]="caract.img_src" alt=""></span>{{ caract.name_only }}
+            <span><img width="28px" height="28px" [src]="caract.img_src" alt=""></span>{{ caract.name_only }}
         </div>
     </div>
 </div>
@@ -1116,11 +1704,11 @@
                                 </div>
                                 <div class="medium-4 columns text-center campo-destacado">
                                     <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                                    <input class="text-center" type="text" placeholder="" value="{{ smmlv_vivienda }}">
+                                    <input readonly class="text-center" type="text" placeholder="" value="{{ smmlv_vivienda }}">
                                     <label for="">Salarios mínimos legales vigentes</label>
                                     <hr>
                                     <p> Equivalentes a:</p>
-                                    <input class="text-center" type="text" placeholder="" value="$ {{ subsidio_vivienda }}">
+                                    <input readonly class="text-center" type="text" placeholder="" value="$ {{ subsidio_vivienda }}">
                                     <label for="">Pesos colombianos</label>
                                     <a class="button secondary ">Más información</a>
                                 </div>
@@ -2089,7 +2677,7 @@
 <!-- Botones mobile -->
 <div class="bots-projectDetails show-for-small-only">
   <div class="ev--bots--whatsapp" style="width: 72px;height: 30px;padding-right: 2rem;margin-right: 0.8rem;margin-left: 0.9rem;">
-    <a fragment="calculadorasSimular" (click)="navigateToSection('calculadorasSimular')">
+    <a (click)="goSimulator()">
       <img src="/assets/images/calculator.png">
     </a>
   </div>

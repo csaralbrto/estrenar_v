@@ -3,7 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ComparatorService } from './comparator.service';
 import { environment } from '../../environments/environment';
+import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+declare var $: any;
 
 @Component({
   selector: 'app-comparator',
@@ -13,13 +15,16 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ComparatorComponent implements OnInit {
   public response: any;
+  public typeContact: any;
   public response_data_project: any;
   public classRow: any;
   public marginTop: any;
   public stylesText: any;
   public imgStyle: any;
+  public form4: FormGroup;
+  public responseSubmit: any;
 
-  constructor( public Service: ComparatorService, private router: Router,private spinnerService: NgxSpinnerService ) { }
+  constructor( public Service: ComparatorService, private router: Router,private spinnerService: NgxSpinnerService, private formBuilder: FormBuilder, ) { }
   dataPath = environment.endpoint;
   cadena = '';
   largo = '';
@@ -27,19 +32,22 @@ export class ComparatorComponent implements OnInit {
 
   ngOnInit(): void {
     $(window).scrollTop(0);
+    this.createFormModal();
     $('#responsive-nav-social').css('display','none');
     this.startSpinner();
 
     /* Método para obtener toda la info del comparador */
 
+    var comparatorsId = JSON.parse(sessionStorage.getItem("id"));
+    console.log(comparatorsId);
     var stringQuery = "";
-    if (sessionStorage['id']) {
+    if (comparatorsId !== null) {
       var storedIds = JSON.parse(sessionStorage.getItem("id"));
       for (let ids of storedIds) {
         stringQuery = stringQuery+ids+"+";
       }
+      console.log(stringQuery);
       stringQuery = stringQuery.substring(0, stringQuery.length - 1);
-      // console.log(stringQuery);
       this.Service.comparatorData(stringQuery)
       .subscribe(
         data => this.response = data,
@@ -55,6 +63,8 @@ export class ComparatorComponent implements OnInit {
               project.typology_images = arrayDeCadenas[0];
               var arrayDeCadenas2 = project.project_category.split(',');
               project.project_category = arrayDeCadenas2;
+              /* format numbr */
+              project.typology_price =  new Intl.NumberFormat("es-ES").format(project.typology_price)
             }
             // console.log(count_results);
             if(count_results == 1){
@@ -78,6 +88,7 @@ export class ComparatorComponent implements OnInit {
               this.imgStyle = "img-comparator4"
             }
             this.stopSpinner();
+            $('app-comparator').foundation();
           }
           if(this.response.error){
             /* si hay error en la respuesta */
@@ -85,36 +96,189 @@ export class ComparatorComponent implements OnInit {
         }
       );
     }else{
-      this.router.navigate(['home']);
+      this.router.navigate(['/']);
     }
+  }
+  createFormModal() {
+    this.form4 =  this.formBuilder.group({
+      name: new FormControl(''),
+      lastname: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      contact: new FormControl('Deseas ser contactado'),
+      typeSearch: new FormControl(''),
+      term: new FormControl(''),
+    });
   }
   removeCompare(value) {
     console.log("ingrese "+ value);
       var storedIds = JSON.parse(sessionStorage.getItem("id"));
+      console.log(storedIds);
       /* remover el proyecto de los coparadores */
-      const index = storedIds.indexOf(value);
-      storedIds.splice(index, 1);
+      const index = storedIds.indexOf(Number(value));
+      // console.log(index);
+      if ( index !== -1 ) {
+        storedIds.splice( index, 1 );
+      }
+      // console.log(storedIds);
       /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
       sessionStorage.removeItem("id");
       sessionStorage.setItem('id',JSON.stringify(storedIds));
      // this.router.navigate(['comparador']);
-      // console.log('este es el id: ',storedIds);
+      var storedIds2 = JSON.parse(sessionStorage.getItem("id"));
+      // console.log(storedIds2);
       if(storedIds.length > 0){
-        window.location.reload(true);
+        window.location.reload();
       }else{
-        this.router.navigate(['home']);
+        sessionStorage.removeItem("id");
+        this.router.navigate(['/']);
       }
   }
-
+  onSubmitModal(values) {
+    console.log(values);
+    var error = false;
+    if(values.name == null || values.name == ""){
+      $('#spanNameModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanNameModal').addClass('hide');
+      error = false;
+    }
+    if(values.lastname == null || values.lastname == ""){
+      $('#spannLastNameModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spannLastNameModal').addClass('hide');
+      error = false;
+    }
+    if(values.phone == null || values.phone == ""){
+      $('#spanPhoneModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanPhoneModal').addClass('hide');
+      error = false;
+    }
+    if(values.email == null || values.email == ""){
+      $('#spanEmailModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanEmailModal').addClass('hide');
+      error = false;
+    }
+    if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
+      $('#spanContactModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanContactModal').addClass('hide');
+      error = false;
+    }
+    if(values.term == null || values.term == ""){
+      $('#spanTermModal').removeClass('hide');
+      error = true;
+    }else{
+      $('#spanTermModal').addClass('hide');
+      error = false;
+    }
+    if(!error){
+      /* Se recibe los valores del formulario */
+      var f = new Date();
+      var date = f.getFullYear()+ "-" + (f.getMonth() +1) + "-" + f.getDate() + "T" + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
+      values.type_submit = 'contact_form';
+      var url = window.location.pathname;
+      let payload = {
+          "identity": {
+            "mail": values.email,
+            "phone": values.phone
+        },
+        "personal": {
+            "name": values.name,
+            "lastName": values.lastname
+        },
+        "campaign": {
+            "options": [
+                {
+                    "UTM source": sessionStorage['UTMSource']?sessionStorage.getItem("UTMSource"):""
+                },
+                {
+                    "UTM medium": sessionStorage['UTMMedium']?sessionStorage.getItem("UTMMedium"):""
+                },
+                {
+                    "UTM content": sessionStorage['UTMContent']?sessionStorage.getItem("UTMContent"):""
+                },
+                {
+                    "UTM campaign": sessionStorage['UTMCampaing']?sessionStorage.getItem("UTMCampaing"):""
+                }
+            ]
+        },
+        "additional": {
+            "comment": values.comment,
+            "emailCopy": values.emailCopy
+        },
+        "contextual": {
+            "options": [
+                {
+                    "Ruta": url
+                },
+                {
+                    "Dispositivo": "Escritorio"
+                }
+            ]
+        },
+        "profiling": {
+            "survey":
+            [
+                {
+                    "Deseas ser contactado vía": values.contact
+                }
+            ],
+            "location": values.city
+        },
+        "main": {
+            "privacyNotice": 5323,
+            "category": "Contáctenos"
+        }
+    }
+    // console.log(payload);
+      this.Service.getFormService( payload )
+      .subscribe(
+        data =>(this.responseSubmit = data),
+        err => console.log(),
+        () => {
+          if(this.responseSubmit.id){
+            $('#exampleModal1').foundation('open');
+            this.form4.reset();
+            let type_contact = this.typeContact;
+            this.actionAfterContact(type_contact);
+          }
+          if(!this.responseSubmit.id){
+            // $('#modalAlertError').foundation('open');
+          }
+        }
+      );
+    }
+  }
   startSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.show();
     }
   }
-
-   stopSpinner(): void {
+  stopSpinner(): void {
     if (this.spinnerService) {
       this.spinnerService.hide();
+    }
+  }
+  activeAfterContact(value){
+    this.typeContact = value;
+  }
+  actionAfterContact(type){
+    if(type == 'phone'){
+      let phone = '3210000000';
+      let url_mailto = 'tel:' + phone
+      window.open(url_mailto);
+    }else{
+      let email = 'email@test.com';
+      let url_mailto = 'mailto:' + email
+      window.open(url_mailto);
     }
   }
 

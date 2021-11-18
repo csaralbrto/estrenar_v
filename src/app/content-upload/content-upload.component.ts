@@ -567,24 +567,24 @@ export class ContentUploadComponent implements OnInit {
         error_typology = false;
       }
       let error_video_property
-      if($('#video_property').val() == null || $('#video_property').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
-        error_video_property = 1;
-        error_typology = true;
-      }else{
-        $('#spanvideo_property').addClass('hide');
-        error_video_property = 0;
-        error_typology = false;
-      }
+      // if($('#video_property').val() == null || $('#video_property').val() == ""){
+      //   $('#spanvideo_property').focus();
+      //   $('#spanvideo_property').removeClass('hide');
+      //   error_video_property = 1;
+      //   error_typology = true;
+      // }else{
+      //   $('#spanvideo_property').addClass('hide');
+      //   error_video_property = 0;
+      //   error_typology = false;
+      // }
       let error_balcon_area
       if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
+        $('#spanbalcon_area').focus();
+        $('#spanbalcon_area').removeClass('hide');
         error_balcon_area = 1;
         error_typology = true;
       }else{
-        $('#spanvideo_property').addClass('hide');
+        $('#spanbalcon_area').addClass('hide');
         error_balcon_area = 0;
         error_typology = false;
       }
@@ -733,24 +733,24 @@ export class ContentUploadComponent implements OnInit {
         error_typology = false;
       }
       let error_video_property
-      if($('#video_property').val() == null || $('#video_property').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
-        error_video_property = 1;
-        error_typology = true;
-      }else{
-        $('#spanvideo_property').addClass('hide');
-        error_video_property = 0;
-        error_typology = false;
-      }
+      // if($('#video_property').val() == null || $('#video_property').val() == ""){
+      //   $('#spanvideo_property').focus();
+      //   $('#spanvideo_property').removeClass('hide');
+      //   error_video_property = 1;
+      //   error_typology = true;
+      // }else{
+      //   $('#spanvideo_property').addClass('hide');
+      //   error_video_property = 0;
+      //   error_typology = false;
+      // }
       let error_balcon_area
       if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
+        $('#spanbalcon_area').focus();
+        $('#spanbalcon_area').removeClass('hide');
         error_balcon_area = 1;
         error_typology = true;
       }else{
-        $('#spanvideo_property').addClass('hide');
+        $('#spanbalcon_area').addClass('hide');
         error_balcon_area = 0;
         error_typology = false;
       }
@@ -1115,16 +1115,16 @@ export class ContentUploadComponent implements OnInit {
         error = false;
       }
       let error_url_video = 0;
-      if($('#url_video').val() == null || $('#url_video').val() == ""){
-        $('#spanVideo').focus();
-        $('#spanVideo').removeClass('hide');
-        error_url_video = 1;
-        error = true;
-      }else{
-        $('#spanVideo').addClass('hide');
-        error_url_video = 0;
-        error = false;
-      }
+      // if($('#url_video').val() == null || $('#url_video').val() == ""){
+      //   $('#spanVideo').focus();
+      //   $('#spanVideo').removeClass('hide');
+      //   error_url_video = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanVideo').addClass('hide');
+      //   error_url_video = 0;
+      //   error = false;
+      // }
       if(error_imageSrc == 1 || error_images == 1 || error_url_video == 1){
         error = true;
       }
@@ -1364,24 +1364,24 @@ export class ContentUploadComponent implements OnInit {
         error = false;
       }
       let error_video_property
-      if($('#video_property').val() == null || $('#video_property').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
-        error_video_property = 1;
-        error = true;
-      }else{
-        $('#spanvideo_property').addClass('hide');
-        error_video_property = 0;
-        error = false;
-      }
+      // if($('#video_property').val() == null || $('#video_property').val() == ""){
+      //   $('#spanvideo_property').focus();
+      //   $('#spanvideo_property').removeClass('hide');
+      //   error_video_property = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanvideo_property').addClass('hide');
+      //   error_video_property = 0;
+      //   error = false;
+      // }
       let error_balcon_area
       if($('#balcon_area').val() == null || $('#balcon_area').val() == ""){
-        $('#spanvideo_property').focus();
-        $('#spanvideo_property').removeClass('hide');
+        $('#spanbalcon_area').focus();
+        $('#spanbalcon_area').removeClass('hide');
         error_balcon_area = 1;
         error = true;
       }else{
-        $('#spanvideo_property').addClass('hide');
+        $('#spanbalcon_area').addClass('hide');
         error_balcon_area = 0;
         error = false;
       }
@@ -1417,15 +1417,19 @@ export class ContentUploadComponent implements OnInit {
   addEmailsOrPhone(type){
     if(type === 'email'){
       var qtyEmails = sessionStorage['qtEmails']?sessionStorage.getItem("qtEmails"):1;
-      qtyEmails = Number(qtyEmails) + Number(1);
-      sessionStorage.setItem('qtEmails',String(qtyEmails));
-      $("#email"+qtyEmails).removeClass('hide')
+      if(qtyEmails == 1){
+        qtyEmails = Number(qtyEmails) + Number(1);
+        sessionStorage.setItem('qtEmails',String(qtyEmails));
+        $("#email"+qtyEmails).removeClass('hide')
+      }
     }else if(type === 'phone'){
-      console.log('generar telefonos')
+      // console.log('generar telefonos')
       var qtyPhones = sessionStorage['qtPhones']?sessionStorage.getItem("qtPhones"):1;
-      qtyPhones = Number(qtyPhones) + Number(1);
-      sessionStorage.setItem('qtPhones',String(qtyPhones));
-      $("#celular"+qtyPhones).removeClass('hide')
+      if(qtyPhones == 1){
+        qtyPhones = Number(qtyPhones) + Number(1);
+        sessionStorage.setItem('qtPhones',String(qtyPhones));
+        $("#celular"+qtyPhones).removeClass('hide')
+      }
     }
   }
   updateControls(addressComponents) {
@@ -1770,16 +1774,16 @@ export class ContentUploadComponent implements OnInit {
         error = false;
       }
       let error_url_video = 0;
-      if($('#url_video').val() == null || $('#url_video').val() == ""){
-        $('#spanVideo').focus();
-        $('#spanVideo').removeClass('hide');
-        error_url_video = 1;
-        error = true;
-      }else{
-        $('#spanVideo').addClass('hide');
-        error_url_video = 0;
-        error = false;
-      }
+      // if($('#url_video').val() == null || $('#url_video').val() == ""){
+      //   $('#spanVideo').focus();
+      //   $('#spanVideo').removeClass('hide');
+      //   error_url_video = 1;
+      //   error = true;
+      // }else{
+      //   $('#spanVideo').addClass('hide');
+      //   error_url_video = 0;
+      //   error = false;
+      // }
       if(error_imageSrc == 1 || error_images == 1 || error_url_video == 1){
         error = true;
       }

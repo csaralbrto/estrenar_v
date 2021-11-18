@@ -330,11 +330,11 @@
 <!--fin simuladores-->
 <!-- Proyectos Desktop -->
 <div class="row columns hide-for-small-only" data-equalizer data-equalize-on="medium" id="test-eq">
-  <h2 class="deco text-center">Propiedades similares</h2>
+  <h2 class="deco text-center">Proyectos de Interés</h2>
     <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
         <div class="card" data-equalizer-watch *ngIf="i < 8">
             <div class="container-photo">
-                <a href="proyecto.php" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                <a href="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
                 <div class="container-tools">
                     <div class="tags">
                       <div  *ngIf="project.project_category.length > 0">
@@ -349,7 +349,7 @@
                 </div>
             </div>
             <div class="card-section">
-              <h2>{{ project.project }}</h2>
+              <a href="{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
                 <div class="descripcion">
                   {{ project.project_city }},
                   {{ project.project_zone }},
@@ -403,7 +403,7 @@
 <!-- Fin proyectos desktop -->
 <!-- Slider mobile projects -->
 <div class="small-12 columns show-for-small-only mT15Mobile">
-  <h2 class="deco text-center">Propiedades similares</h2>
+  <h2 class="deco text-center">Proyectos de Interés</h2>
   <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
     <ul class="slider-proyects-mobile">
       <li class="is-active ">
