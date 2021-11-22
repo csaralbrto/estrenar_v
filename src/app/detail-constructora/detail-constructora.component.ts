@@ -66,6 +66,7 @@ export class DetailConstructoraComponent implements OnInit {
   optionsGaragesSelected: string = '';
   public ValoresProyecto: any;
   public eventos : boolean = false;
+  public not_found : boolean = false;
   public mapTypeId: any;
   public builderUuid: any;
   public icon_ev = './assets/images/markets/pin-verde.svg';
@@ -103,8 +104,7 @@ export class DetailConstructoraComponent implements OnInit {
       // this.setCurrentLocation();
       // const title = this.activatedRoute.snapshot.params.path + this.dataConstrutora;
       const title = this.activatedRoute.snapshot.params.path;
-      console.log(title);
-      if(title.indexOf('constructora-') > 1){
+      if(title.indexOf('constructora-') > -1){
         this.Service.findConstructoraUrl(title).subscribe(
           (data) => (this.responseFirst = data),
           (err) => console.log(),
@@ -228,7 +228,8 @@ export class DetailConstructoraComponent implements OnInit {
         );
         $('html,body').scrollTop(0);
       }else{
-        this.router.navigate(['no-encontrada']);
+        this.not_found = true;
+        // this.router.navigate(['no-encontrada']);
       }
     }
     /* Obtener la locacion en coordenadas actual */

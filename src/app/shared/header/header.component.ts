@@ -93,7 +93,7 @@ export class HeaderComponent implements OnInit {
     url_price = this.path_api + url_price[1];
     sessionStorage.removeItem('price_search');
     sessionStorage.setItem('price_search',url_price)
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
     this.show_white_header = true;
     this.show_header = false;
   }
@@ -143,11 +143,11 @@ export class HeaderComponent implements OnInit {
       this.show_white_header = true;
       this.show_header = false;
     }
-    $('.slider-header').not('.slick-initialized').slick({
-      // dots: true,
-      autoplay: true,
-      autoplaySpeed: 5000,
-    });
+    // $('.slider-header').not('.slick-initialized').slick({
+    //   // dots: true,
+    //   autoplay: true,
+    //   autoplaySpeed: 5000,
+    // });
   }
   public searchWord(){
     var searchWord = $('#searchWord').val();
@@ -155,7 +155,7 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('wordTitle');
     sessionStorage.setItem('word_search',searchWord)
     sessionStorage.setItem('wordTitle',searchWord)
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
     this.show_white_header = true;
     this.show_header = false;
   }
@@ -167,7 +167,7 @@ export class HeaderComponent implements OnInit {
       var searchWord = $('#searchProjectsWord').val();
       sessionStorage.removeItem('word_search');
       sessionStorage.setItem('word_search',searchWord)
-      // this.router.navigate(['/proyectos']);
+      // this.router.navigate(['/proyectos-vivienda']);
       location.href ="/proyectos";
       this.show_white_header = true;
       this.show_header = false;
@@ -175,7 +175,7 @@ export class HeaderComponent implements OnInit {
       var searchWord = $('#searchProjectsWordMobile').val();
       sessionStorage.removeItem('word_search');
       sessionStorage.setItem('word_search',searchWord)
-      // this.router.navigate(['/proyectos']);
+      // this.router.navigate(['/proyectos-vivienda']);
       location.href ="/proyectos";
       $('#responsive-search-input').toggleClass('hide');
       $('#responsive-search-input').val('');

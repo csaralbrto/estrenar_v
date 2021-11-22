@@ -149,7 +149,7 @@ export class NotFoundComponent implements OnInit {
     url_price = this.path_api + url_price[1];
     sessionStorage.removeItem('price_search');
     sessionStorage.setItem('price_search',url_price)
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
     this.show_white_header = true;
     this.show_header = false;
   }
@@ -159,7 +159,7 @@ export class NotFoundComponent implements OnInit {
     sessionStorage.removeItem('wordTitle');
     sessionStorage.setItem('word_search',searchWord)
     sessionStorage.setItem('wordTitle',searchWord)
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
     this.show_white_header = true;
     this.show_header = false;
   }
@@ -301,7 +301,7 @@ export class NotFoundComponent implements OnInit {
     sessionStorage.removeItem('projectTitle');
     sessionStorage.setItem('word_search',searchWord);
     sessionStorage.setItem('projectTitle',searchWord);
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
   }
   goFavorites(){
     const user_login = sessionStorage.getItem('access_token');
@@ -355,7 +355,7 @@ export class NotFoundComponent implements OnInit {
     sessionStorage.removeItem('collection_id');
     sessionStorage.setItem('wordTitleCollection',name)
     sessionStorage.setItem('collection_id',value);
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
   }
   onFocusSearch(){
     console.log('entre al focus')

@@ -29,7 +29,7 @@ export class ProjectsService {
     this.endpoint = environment.endpointApi + 'project/';
     this.endpointFilter = environment.endpointSearchApi;
     this.url_location = window.location.pathname;
-    if(this.url_location == "/proyectos"){
+    if(this.url_location == "/proyectos-vivienda"){
       this.url = this.dataPath
     }else if(this.url_location == "/vivienda-interes-social"){
       this.url = this.dataPathVis

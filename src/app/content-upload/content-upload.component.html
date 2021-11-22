@@ -52,7 +52,7 @@
                         <legend>Tipo de inmueble</legend>
                         <div class="opcion text-center" *ngFor="let option of typeProjects">
                             <div class="opcion-seleccion">
-                                <input id="type_property" name="type_property" formControlName="type_property" type="checkbox" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'type_inmueble')" class="type_inmueble" for="casas"><img src="/assets/images/icon-casa.png" alt="Casas"></label>
+                                <input id="type_property" name="type_property" formControlName="type_property" type="checkbox" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'type_inmueble')" class="type_inmueble" for="type_property"><img src="/assets/images/icon-casa.png" alt="type_property"></label>
                             </div>
                             <div class="item">{{option.name}}</div>
                         </div>
@@ -68,8 +68,7 @@
                         <legend>Estado del proyecto</legend>
                         <div class="opcion text-center" *ngFor="let option of stateProjects">
                             <div class="opcion-seleccion">
-                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'state_project')" class="state_project" for="casas"><img class="img-icon" [src]="option.icon"
-                                            alt="Casas"></label>
+                                <input id="status_project" type="checkbox" name="status_project" formControlName="status_project" value="{{option.id}}"><label id="{{option.id}}" (click)="changeSelected(option.id,'state_project')" class="state_project" for="status_project"><img class="img-icon" [src]="option.icon" alt="state_project"></label>
                             </div>
                             <div class="item">{{option.name}}</div>
                         </div>
@@ -293,7 +292,7 @@
             <hr class="white">
         </div>
     </div>
-    <div style="display: none;" id="upload2">
+    <div id="upload2">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -380,7 +379,7 @@
         </div>
         <hr class="white">
     </div>
-    <div style="display: none;" id="upload3">
+    <div id="upload3">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -495,7 +494,7 @@
         </div>
         <hr class="white">
     </div>
-    <div style="display: none;" id="upload4">
+    <div id="upload4">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -672,8 +671,7 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <!-- <div style="display: none;" id="upload5"> -->
-      <div id="upload5">
+    <div id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -704,7 +702,7 @@
                             <option value="Ciudad">Seleccione un valor:</option>
                             <option value="Sin etiqueta">Sin etiqueta</option>
                             <option value="Desde">Desde</option>
-                            <option value="Valor">Valor</option>
+                            <option value="Valor">Otro valor</option>
                           </select>
                         </label>
                         <div class="">
@@ -904,7 +902,7 @@
                                 <div class="input-group-button">
                                     <span class="input-number-decrement" (click)=(decreaseValue(3))>-</span>
                                 </div>
-                                <input class="input-number" type="number" name="garages" formControlName="garages" id="garage" value="0" min="0" max="1000">
+                                <input class="input-number" type="text" name="garages" formControlName="garages" id="garage" placeholder="0">
                                 <div class="input-group-button">
                                     <span class="input-number-increment" (click)=(incrementValue(3))>+</span>
                                 </div>

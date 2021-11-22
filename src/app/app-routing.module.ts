@@ -41,9 +41,32 @@ const routes: Routes = [
     pathMatch: 'full'
     ,data: {url: true, alwaysRefresh: true},
   },
-
   {
-    path: 'proyectos',
+    path: 'proyectos-vivienda',
+    component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'proyectos-vivienda/:path',
+    component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'proyectos-vivienda/:path/:path',
+    component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'proyectos-vivienda/:path/:path/:path',
+    component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
+  {
+    path: 'proyectos-vivienda/:path/:path/:path/:path',
     component: ProjectsComponent,
     pathMatch: 'full' ,
     data: { alwaysRefresh: true },

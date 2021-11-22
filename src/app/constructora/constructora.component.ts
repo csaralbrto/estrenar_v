@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConstructoraService } from './constructora.service';
 import { environment } from '../../environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Meta } from '@angular/platform-browser';
+import { MetaTag } from '../class/metatag.class';
 declare var $: any;
 
 @Component({
@@ -11,12 +13,13 @@ declare var $: any;
   providers: [ConstructoraService],
 })
 export class ConstructoraComponent implements OnInit {
+  tags: MetaTag;
   public response: any;
   public total_results: any;
   public constructoras: any;
   url_img_path = 'https://www.estrenarvivienda.com/';
 
-  constructor( public Service: ConstructoraService, private spinnerService: NgxSpinnerService ) { }
+  constructor( public Service: ConstructoraService, private spinnerService: NgxSpinnerService, private meta: Meta ) { }
   dataPath = environment.endpoint;
   cadena = '';
   public url_search_word = 'https://lab.estrenarvivienda.com/api/builders/all?search=';
@@ -39,6 +42,9 @@ export class ConstructoraComponent implements OnInit {
           if(!(this.response.search_results.length < this.total_results)){
             // $('#buttonLoadMoreDesktop').addClass('hide');
             // $('#buttonLoadMoreMobile').addClass('hide');
+          }
+          if(this.response.metatag_normalized){
+            this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
           }
           this.total_results = this.response.total;
           this.constructoras = this.response.search_results;

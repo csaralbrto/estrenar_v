@@ -1458,7 +1458,7 @@ export class ContentUploadComponent implements OnInit {
         this.response = data;
         // console.log(this.response);
         if (this.response) {
-          // console.log(this.response.search_results);
+          console.log(this.response);
           this.response_data_project = this.response.search_results
           for (let project of this.response_data_project) {
             var arrayDeCadenas = project.typology_images.split(',');
@@ -1516,13 +1516,16 @@ export class ContentUploadComponent implements OnInit {
       $('#bathroom').val(val);
     }else if(value == 3){
       var val = $('#garage').val();
+      if(val == 'Comunal'){
+        val = 5;
+      }
       val = Number(val)-Number(1)
       if(val < 0){
         val = 0;
       };
       $('#garage').val(val);
     }else if(value == 4){
-      var val = $('#garage').val();
+      var val = $('#levels_property').val();
       val = Number(val)-Number(1)
       if(val < 0){
         val = 0;
@@ -1541,10 +1544,15 @@ export class ContentUploadComponent implements OnInit {
       $('#bathroom').val(val);
     }else if(value == 3){
       var val = $('#garage').val();
-      val = Number(val)+Number(1);
-      $('#garage').val(val);
+      if(val < 5){
+        val = Number(val)+Number(1);
+        if(val == 5){
+          val = 'Comunal'
+        }
+        $('#garage').val(val);
+      }
     }else if(value == 4){
-      var val = $('#garage').val();
+      var val = $('#levels_property').val();
       val = Number(val)+Number(1)
       $('#levels_property').val(val);
     }
@@ -1568,6 +1576,9 @@ export class ContentUploadComponent implements OnInit {
       $('#bathroom').val(val);
     }else if(value == 3){
       var val = $('#garageMobile').val();
+      if(val == 'Comunal'){
+        val = 4;
+      }
       val = Number(val)-Number(1)
       if(val < 0){
         val = 0;
@@ -1575,7 +1586,7 @@ export class ContentUploadComponent implements OnInit {
       $('#garageMobile').val(val);
       $('#garage').val(val);
     }else if(value == 4){
-      var val = $('#garageMobile').val();
+      var val = $('#levels_property').val();
       val = Number(val)-Number(1)
       if(val < 0){
         val = 0;

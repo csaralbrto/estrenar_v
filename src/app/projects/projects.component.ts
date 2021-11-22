@@ -162,7 +162,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       this.dataPathVis = environment.endpointTestingApi+ 'typologies/project_category/7893?items_per_page=';
       this.dataPathVacacionales = environment.endpointTestingApi+ 'typologies/project_category/7975?items_per_page=';
       this.url_location = window.location.pathname;
-      if(this.url_location == "/proyectos"){
+      if(this.url_location == "/proyectos-vivienda"){
         this.url = this.dataPathUrl
       }else if(this.url_location == "/vivienda-interes-social"){
         this.url = this.dataPathVis
@@ -177,8 +177,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
           if (this.response) {
             console.log(this.response);
             if(this.response.total == 0){
-              this.router.navigate(['proyectos']);
-            }else if(this.response.total == 0 && this.url_location == "/proyectos") {
+              this.router.navigate(['proyectos-vivienda']);
+            }else if(this.response.total == 0 && this.url_location == "/proyectos-vivienda") {
               this.router.navigate(['home']);
             }
             if(this.response.metatag_normalized){

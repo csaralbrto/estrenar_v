@@ -89,13 +89,12 @@
         <div class="small-12 medium-five columns">
             <h2>Proyectos de vivienda en Colombia</h2>
             <ul class="">
-                <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
+                <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let project of response.projects">
                     <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
-                            Bogotá</a>
+                        <a href="/proyectos/{{ project.values.value }}">{{ project.values.value }}</a>
                     </div>
                 </li>
-                <li class="views-row views-row-2 views-row-even menu-item">
+                <!-- <li class="views-row views-row-2 views-row-even menu-item">
                     <div class="views-field views-field-php">
                         <a href="/proyectos-vivienda/apartamentos/ciudad-barranquilla/galeria">Apartamentos en Venta
                             en
@@ -150,13 +149,18 @@
                             La
                             Calera</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
-            <h2>Proyectos de vivienda en Colombia</h2>
+            <h2>Apartamentos en Colombia</h2>
             <ul class="">
-                <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
+                <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let apartment of response.apartments">
+                    <div class="views-field views-field-php">
+                        <a href="/proyectos/{{ apartment.values.value }}">{{ apartment.values.value }}</a>
+                    </div>
+                </li>
+                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
                     <div class="views-field views-field-php">
                         <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
                             Bogotá</a>
@@ -217,13 +221,18 @@
                             La
                             Calera</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
-            <h2>Proyectos de vivienda en Colombia</h2>
+            <h2>Apartaestudios en Colombia</h2>
             <ul class="">
-                <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
+              <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let studioapartment of response.studioapartments">
+                  <div class="views-field views-field-php">
+                      <a href="/proyectos/{{ studioapartment.values.value }}">{{ studioapartment.values.value }}</a>
+                  </div>
+              </li>
+                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
                     <div class="views-field views-field-php">
                         <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
                             Bogotá</a>
@@ -284,13 +293,18 @@
                             La
                             Calera</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
-            <h2>Proyectos de vivienda en Colombia</h2>
+            <h2>Casas en Colombia</h2>
             <ul class="">
-                <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
+              <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let house of response.houses">
+                  <div class="views-field views-field-php">
+                      <a href="/proyectos/{{ house.values.value }}">{{ house.values.value }}</a>
+                  </div>
+              </li>
+                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
                     <div class="views-field views-field-php">
                         <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
                             Bogotá</a>
@@ -351,13 +365,18 @@
                             La
                             Calera</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
-            <h2>Proyectos de vivienda en Colombia</h2>
+            <h2>Proyectos de vivienda Vis en Colombia</h2>
             <ul class="">
-                <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
+              <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let vis of response.vis_housing">
+                  <div class="views-field views-field-php">
+                      <a href="/vivienda-interes-social/{{ vis.values.value }}">{{ vis.values.value }}</a>
+                  </div>
+              </li>
+                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
                     <div class="views-field views-field-php">
                         <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
                             Bogotá</a>
@@ -418,7 +437,7 @@
                             La
                             Calera</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

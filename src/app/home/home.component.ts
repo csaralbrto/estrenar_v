@@ -276,7 +276,7 @@ export class HomeComponent implements OnInit {
     sessionStorage.removeItem('projectTitle');
     sessionStorage.setItem('word_search',searchWord);
     sessionStorage.setItem('projectTitle',searchWord);
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
   }
   goFavorites(){
     const user_login = sessionStorage.getItem('access_token');
@@ -330,6 +330,6 @@ export class HomeComponent implements OnInit {
     sessionStorage.removeItem('collection_id');
     sessionStorage.setItem('wordTitleCollection',name)
     sessionStorage.setItem('collection_id',value);
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
   }
 }

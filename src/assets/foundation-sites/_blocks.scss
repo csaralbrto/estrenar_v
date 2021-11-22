@@ -3922,12 +3922,17 @@ html.is-reveal-open body {
 }
 a.button.filtro-btn {
   width: 86px;
+  display: inline-block;
 }
 a.button.secondary.favorito.button-color-ev.fav-btn {
   width: 88px;
   background: #f8c452 !important;
   border: 1px solid #f8c452 !important;
   color: #3F3F3F !important;
+  // display: inline;
+}
+.width-div{
+  width: max-content;
 }
 .mTop-columns {
   margin-top: 0.4px;
