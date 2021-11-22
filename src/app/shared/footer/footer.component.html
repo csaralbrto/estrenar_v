@@ -91,65 +91,9 @@
             <ul class="">
                 <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let project of response.projects">
                     <div class="views-field views-field-php">
-                        <a href="/proyectos/{{ project.values.value }}">{{ project.values.value }}</a>
+                        <a href="/proyectos/{{ project.values.value }}">Proyectos de vivienda en {{ project.values.value }}</a>
                     </div>
                 </li>
-                <!-- <li class="views-row views-row-2 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-barranquilla/galeria">Apartamentos en Venta
-                            en
-                            Barranquilla</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-3 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cali/galeria">Apartamentos en Venta en
-                            Cali</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-4 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cajica/galeria">Apartamentos en Venta en
-                            Cajicá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-5 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-tocancipa/galeria">Apartamentos en Venta en
-                            Tocancipá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-6 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-zipaquira/galeria">Apartamentos en Venta en
-                            Zipaquirá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-7 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-madrid/galeria">Apartamentos en Venta en
-                            Madrid</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-8 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cartagena/galeria">Apartamentos en Venta en
-                            Cartagena</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-9 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-mosquera/galeria">Apartamentos en Venta en
-                            Mosquera</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-10 views-row-even views-row-last menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-la-calera/galeria">Apartamentos en Venta en
-                            La
-                            Calera</a>
-                    </div>
-                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
@@ -157,71 +101,9 @@
             <ul class="">
                 <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let apartment of response.apartments">
                     <div class="views-field views-field-php">
-                        <a href="/proyectos/{{ apartment.values.value }}">{{ apartment.values.value }}</a>
+                        <a href="/proyectos/{{ apartment.values.value }}">Apartamentos en {{ apartment.values.value }}</a>
                     </div>
                 </li>
-                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
-                            Bogotá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-2 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-barranquilla/galeria">Apartamentos en Venta
-                            en
-                            Barranquilla</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-3 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cali/galeria">Apartamentos en Venta en
-                            Cali</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-4 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cajica/galeria">Apartamentos en Venta en
-                            Cajicá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-5 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-tocancipa/galeria">Apartamentos en Venta en
-                            Tocancipá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-6 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-zipaquira/galeria">Apartamentos en Venta en
-                            Zipaquirá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-7 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-madrid/galeria">Apartamentos en Venta en
-                            Madrid</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-8 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cartagena/galeria">Apartamentos en Venta en
-                            Cartagena</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-9 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-mosquera/galeria">Apartamentos en Venta en
-                            Mosquera</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-10 views-row-even views-row-last menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-la-calera/galeria">Apartamentos en Venta en
-                            La
-                            Calera</a>
-                    </div>
-                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
@@ -229,71 +111,9 @@
             <ul class="">
               <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let studioapartment of response.studioapartments">
                   <div class="views-field views-field-php">
-                      <a href="/proyectos/{{ studioapartment.values.value }}">{{ studioapartment.values.value }}</a>
+                      <a href="/proyectos/{{ studioapartment.values.value }}">Apartaestudios en {{ studioapartment.values.value }}</a>
                   </div>
               </li>
-                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
-                            Bogotá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-2 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-barranquilla/galeria">Apartamentos en Venta
-                            en
-                            Barranquilla</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-3 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cali/galeria">Apartamentos en Venta en
-                            Cali</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-4 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cajica/galeria">Apartamentos en Venta en
-                            Cajicá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-5 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-tocancipa/galeria">Apartamentos en Venta en
-                            Tocancipá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-6 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-zipaquira/galeria">Apartamentos en Venta en
-                            Zipaquirá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-7 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-madrid/galeria">Apartamentos en Venta en
-                            Madrid</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-8 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cartagena/galeria">Apartamentos en Venta en
-                            Cartagena</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-9 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-mosquera/galeria">Apartamentos en Venta en
-                            Mosquera</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-10 views-row-even views-row-last menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-la-calera/galeria">Apartamentos en Venta en
-                            La
-                            Calera</a>
-                    </div>
-                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
@@ -301,71 +121,9 @@
             <ul class="">
               <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let house of response.houses">
                   <div class="views-field views-field-php">
-                      <a href="/proyectos/{{ house.values.value }}">{{ house.values.value }}</a>
+                      <a href="/proyectos/{{ house.values.value }}">Casas en {{ house.values.value }}</a>
                   </div>
               </li>
-                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
-                            Bogotá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-2 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-barranquilla/galeria">Apartamentos en Venta
-                            en
-                            Barranquilla</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-3 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cali/galeria">Apartamentos en Venta en
-                            Cali</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-4 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cajica/galeria">Apartamentos en Venta en
-                            Cajicá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-5 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-tocancipa/galeria">Apartamentos en Venta en
-                            Tocancipá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-6 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-zipaquira/galeria">Apartamentos en Venta en
-                            Zipaquirá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-7 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-madrid/galeria">Apartamentos en Venta en
-                            Madrid</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-8 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cartagena/galeria">Apartamentos en Venta en
-                            Cartagena</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-9 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-mosquera/galeria">Apartamentos en Venta en
-                            Mosquera</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-10 views-row-even views-row-last menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-la-calera/galeria">Apartamentos en Venta en
-                            La
-                            Calera</a>
-                    </div>
-                </li> -->
             </ul>
         </div>
         <div class="small-12 medium-five columns">
@@ -373,71 +131,9 @@
             <ul class="">
               <li class="views-row views-row-1 views-row-odd views-row-first menu-item" *ngFor="let vis of response.vis_housing">
                   <div class="views-field views-field-php">
-                      <a href="/vivienda-interes-social/{{ vis.values.value }}">{{ vis.values.value }}</a>
+                      <a href="/vivienda-interes-social/{{ vis.values.value }}">Proyectos de vivienda Vis en {{ vis.values.value }}</a>
                   </div>
               </li>
-                <!-- <li class="views-row views-row-1 views-row-odd views-row-first menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-bogota/galeria">Apartamentos en Venta en
-                            Bogotá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-2 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-barranquilla/galeria">Apartamentos en Venta
-                            en
-                            Barranquilla</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-3 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cali/galeria">Apartamentos en Venta en
-                            Cali</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-4 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cajica/galeria">Apartamentos en Venta en
-                            Cajicá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-5 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-tocancipa/galeria">Apartamentos en Venta en
-                            Tocancipá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-6 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-zipaquira/galeria">Apartamentos en Venta en
-                            Zipaquirá</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-7 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-madrid/galeria">Apartamentos en Venta en
-                            Madrid</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-8 views-row-even menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-cartagena/galeria">Apartamentos en Venta en
-                            Cartagena</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-9 views-row-odd menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-mosquera/galeria">Apartamentos en Venta en
-                            Mosquera</a>
-                    </div>
-                </li>
-                <li class="views-row views-row-10 views-row-even views-row-last menu-item">
-                    <div class="views-field views-field-php">
-                        <a href="/proyectos-vivienda/apartamentos/ciudad-la-calera/galeria">Apartamentos en Venta en
-                            La
-                            Calera</a>
-                    </div>
-                </li> -->
             </ul>
         </div>
     </div>

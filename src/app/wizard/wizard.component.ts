@@ -304,8 +304,12 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   getNewData(event){
     /* quitar el placeholder del input autocomplete */
     $('.autocomplete-container .input-container input').css('background-image','none')
-    this.new_url = "https://lab.estrenarvivienda.com/api/taxonomy_term/user_preferences_location?filter[name][operator]=CONTAINS&filter[name][value]=" + event + "&sort=weight";
+    var cadena = this.mostrarSinDiacriticos(event)
+    console.log('cadena:',typeof cadena);
+    $('.autocomplete-container .input-container input').val(cadena);
+    this.new_url = "https://lab.estrenarvivienda.com/api/taxonomy_term/user_preferences_location?filter[name][operator]=CONTAINS&filter[name][value]=" + cadena + "&sort=weight";
     console.log(this.new_url);
+    this.responseSearchData = [];
     fetch(this.new_url, {
     })
     .then(newResponse => newResponse.json())
@@ -319,6 +323,16 @@ export class WizardComponent implements OnInit, AfterViewChecked{
         }
       }
     })
+  }
+  quitarAcentos(cadena){
+    const acentos = {'á':'a','é':'e','í':'i','ó':'o','ú':'u','Á':'A','É':'E','Í':'I','Ó':'O','Ú':'U'};
+    return cadena.split('').map( letra => acentos[letra] || letra).join('').toString();
+  }
+  mostrarSinDiacriticos(inp){
+    return this.eliminarDiacriticos(inp);
+  }
+  eliminarDiacriticos(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
   }
   startSpinner(): void {
     if (this.spinnerService) {

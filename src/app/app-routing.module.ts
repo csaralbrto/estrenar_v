@@ -78,6 +78,12 @@ const routes: Routes = [
     data: { alwaysRefresh: true },
   },
   {
+    path: 'vivienda-interes-social/:path',
+    component: ProjectsComponent,
+    pathMatch: 'full' ,
+    data: { alwaysRefresh: true },
+  },
+  {
     path: 'proyectos-vacacionales',
     component: ProjectsComponent,
     pathMatch: 'full' ,

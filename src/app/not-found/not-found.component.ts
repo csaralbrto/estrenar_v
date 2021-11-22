@@ -59,9 +59,7 @@ export class NotFoundComponent implements OnInit {
         if (this.response) {
           console.log(this.response);
           /* se envian los metas al servicio creado */
-          if(this.response.metatag_normalized){
-            this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
-          }
+          this.tags = new MetaTag(environment.not_metas, this.meta);
           for (let project of this.response.home_featured_typologies) {
             var arrayDeCadenas = project.typology_images.split(',');
             project.typology_images = arrayDeCadenas[0];

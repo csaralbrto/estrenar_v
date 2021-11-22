@@ -292,7 +292,7 @@
             <hr class="white">
         </div>
     </div>
-    <div id="upload2">
+    <div style="display: none;" id="upload2">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -379,7 +379,7 @@
         </div>
         <hr class="white">
     </div>
-    <div id="upload3">
+    <div style="display: none;" id="upload3">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -494,7 +494,7 @@
         </div>
         <hr class="white">
     </div>
-    <div id="upload4">
+    <div style="display: none;" id="upload4">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -671,7 +671,7 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <div id="upload5">
+    <div style="display: none;" id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -723,7 +723,7 @@
                     </div>
                     <div class="medium-6 columns end">
                         <label>Cuota inicial
-                          <input id="initial_fee" name="initial_fee" formControlName="initial_fee" type="number" placeholder="">
+                          <input id="initial_fee" name="initial_fee" formControlName="initial_fee" (keyup)="changePercentage('initial_fee')" pattern="[a-zA-Z ]*" type="text" placeholder="">
                       </label>
                         <div class="">
                             <span style="color: red" id="spanFee" class="hide">
@@ -733,7 +733,7 @@
                     </div>
                     <div class="medium-6 columns end">
                         <label>Separación
-                          <input id="separation" name="separation" formControlName="separation" type="number" placeholder="">
+                          <input id="separation" name="separation" formControlName="separation" (keyup)="changePercentage('separation')" type="text" placeholder="">
                       </label>
                         <div class="">
                             <span style="color: red" id="spanSeparation" class="hide">
@@ -802,12 +802,9 @@
                 <div class="row">
                     <div class="medium-6 columns">
                         <label for="maps" class="button">Cargar archivo</label>
-                        <input style="visibility:hidden;" formControlName="maps" formControlName="maps" id="maps" type="file" class="form-control" (change)="onFilePlanesChange($event)">
-                        <img [src]="planeSrc" *ngIf="planeSrc" style="height: auto; width:200px">
-                        <div class="">
-                            <span style="color: red" id="spanmaps" class="hide">
-                                Debe cargar el plano del inmueble
-                            </span>
+                        <input style="visibility:hidden;" formControlName="maps" formControlName="maps" id="maps" type="file" class="form-control" multiple="" (change)="onFilesBlueprintTypologyChange($event)">
+                        <div class="medium-4 columns" *ngFor='let url of blueprintTypology; let i = index'>
+                            <img [src]="url" height="150" width="200px" style="margin: 3px;">
                         </div>
                     </div>
                 </div>
@@ -952,7 +949,7 @@
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(decreaseValueMobile(3))>-</span>
                                 </div>
-                                <input class="input-number" type="number" name="garages" formControlName="garages" id="garageMobile" value="0" min="0" max="1000">
+                                <input class="input-number" type="text" name="garages" formControlName="garages" id="garageMobile" value="0" min="0" max="1000">
                                 <div class="input-group-button">
                                     <span class="input-number-increment-conten-upload-mobile increment-sign" (click)=(incrementValueMobile(3))>+</span>
                                 </div>

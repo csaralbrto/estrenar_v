@@ -20,6 +20,7 @@ export class BlogDetailComponent implements OnInit {
   dataArticle = '?include=uid,field_article_type,field_media.field_media_image,field_tags';
   tags: MetaTag;
   public responseAll: any;
+  public responseError: any;
   public response: any;
   public responseNewslaetter: any;
   public responseComments: any;
@@ -30,6 +31,7 @@ export class BlogDetailComponent implements OnInit {
   public responseRelated: any;
   public form: FormGroup;
   public form2: FormGroup;
+  public not_found : boolean = false;
   public urlComments = 'https://lab.estrenarvivienda.com/api/comment/comment?filter[entity_id.id]=';
   public results = false;
 
@@ -52,23 +54,25 @@ export class BlogDetailComponent implements OnInit {
     this.createFormSuscribe()
     $(window).scrollTop(0);
     $('#responsive-nav-social').css('display','none');
-
     // const title = this.activatedRoute.snapshot.params.path ;
     /* se uso el window location ya que en los parametros no se carga completa la urls */
-    console.log(window.location.pathname);
+    // console.log(window.location.pathname);
     let url_path1  = window.location.pathname.split("/es/");
     var url_path = /* url_path1[1] */ window.location.pathname;
     console.log(url_path);
     this.Service.findProject(url_path).subscribe(
       (data) => (this.responseAll = data),
-      (err) => console.log(),
+      (err) =>  {
+        this.responseError = err;
+        // console.log(this.responseError)
+        if(this.responseError.ok === false){
+          this.not_found = true;
+          this.tags = new MetaTag(environment.not_metas, this.meta);
+        }
+      },
       () => {
         if (this.responseAll) {
           this.response = this.responseAll.jsonapi;
-          console.log('entre a mostrar ',this.responseAll);
-          if(this.responseAll.metatag_normalized){
-            this.tags = new MetaTag(this.responseAll.metatag_normalized, this.meta);
-          }
           this.entity_id = this.responseAll.entity.id;
           this.entity_type = this.responseAll.entity.type;
            // this.beforeCheck(this.response.individual);
@@ -82,6 +86,10 @@ export class BlogDetailComponent implements OnInit {
             this.response = data.data;
             // console.log(this.response);
             if (this.response) {
+              if(this.response.metatag_normalized){
+                console.log('entre a mostrar ',this.response.metatag_normalized);
+                this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
+              }
               var urlComments = this.urlComments + this.response.id + '&page[limit]=20';
               var dataComments = "";
               fetch(urlComments, {
@@ -107,6 +115,9 @@ export class BlogDetailComponent implements OnInit {
             }
           })
           .catch(error => console.error(error))
+        }else{
+          this.not_found = true;
+          this.tags = new MetaTag(environment.not_metas, this.meta);
         }
       }
     );

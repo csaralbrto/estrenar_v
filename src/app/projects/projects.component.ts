@@ -175,7 +175,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         (err) => console.log(),
         () => {
           if (this.response) {
-            console.log(this.response);
+            // console.log(this.response);
             if(this.response.total == 0){
               this.router.navigate(['proyectos-vivienda']);
             }else if(this.response.total == 0 && this.url_location == "/proyectos-vivienda") {
@@ -1560,12 +1560,12 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       // console.log(data)
       this.response = data;
       // console.log(this.response);
-          if (this.response) {
+          if (this.response.total > 0) {
             console.log(this.response);
             if(this.response.metatag_normalized){
               this.tags = new MetaTag(this.response.metatag_normalized, this.meta);
             }
-            // console.log('entre al else');
+            console.log(this.response_data_project);
             this.response_data_project = this.response.search_results
             this.countProjects = this.response_data_project.length;
             this.countAllProjects = this.response.total;
@@ -1632,6 +1632,8 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
             }
             this.results = true;
             this.stopSpinner();
+          }else{
+            this.router.navigate(['home']);
           }
     })
     .catch(error => console.error(error))

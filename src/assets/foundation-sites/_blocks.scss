@@ -2440,6 +2440,12 @@ img.image.constructor {
 //COntador
 
 @media print, screen and (min-width: 481px) {
+  .state_project{
+    vertical-align: -10px;
+  }
+  .width-features-projects{
+    width: 19.966667% !important;
+  }
   .tag-filters{
     width: 171px !important;
   }

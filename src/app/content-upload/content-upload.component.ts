@@ -49,6 +49,7 @@ export class ContentUploadComponent implements OnInit {
   public planeSrc: string;
   public images: string[] = [];
   public imagesTypology: string[] = [];
+  public blueprintTypology: string[] = [];
   public featuresProjectsArray: string[] = [];
   public featuresTypologyArray: string[] = [];
   public formTypologyArray: string[] = [];
@@ -311,7 +312,7 @@ export class ContentUploadComponent implements OnInit {
                 var reader = new FileReader();
 
                 reader.onload = (event:any) => {
-                  console.log(event.target.result);
+                  // console.log(event.target.result);
                    this.images.push(event.target.result);
 
                   //  this.myForm.patchValue({
@@ -330,7 +331,7 @@ export class ContentUploadComponent implements OnInit {
                 var reader = new FileReader();
 
                 reader.onload = (event:any) => {
-                  console.log(event.target.result);
+                  // console.log(event.target.result);
                    this.imagesTypology.push(event.target.result);
 
                   //  this.myForm.patchValue({
@@ -340,6 +341,32 @@ export class ContentUploadComponent implements OnInit {
 
                 reader.readAsDataURL(event.target.files[i]);
         }
+    }
+  }
+  onFilesBlueprintTypologyChange(event) {
+    let length_blueprint = this.blueprintTypology.length;
+    console.log(length_blueprint);
+    if(length_blueprint > 4){
+      alert('Recuerda que sólo se permiten 5 imágenes en los planos');
+      return false;
+    }else{
+      if (event.target.files && event.target.files[0]) {
+          var filesAmount = event.target.files.length;
+          let total_files = Number(filesAmount) + Number(length_blueprint);
+          if(total_files > 5){
+            alert('Recuerda que sólo se permiten 5 imágenes en los planos');
+            return false;
+          }else{
+            for (let i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+                reader.onload = (event:any) => {
+                  // console.log(event.target.result);
+                    this.blueprintTypology.push(event.target.result);
+                }
+                reader.readAsDataURL(event.target.files[i]);
+            }
+          }
+      }
     }
   }
   onFeaturesClick(type_feature,event,type) {
@@ -1532,7 +1559,7 @@ export class ContentUploadComponent implements OnInit {
       };
       $('#levels_property').val(val);
     }
-   }
+  }
   incrementValue(value) {
     if(value == 1){
       var val = $('#bedroom').val();
@@ -1577,7 +1604,7 @@ export class ContentUploadComponent implements OnInit {
     }else if(value == 3){
       var val = $('#garageMobile').val();
       if(val == 'Comunal'){
-        val = 4;
+        val = 5;
       }
       val = Number(val)-Number(1)
       if(val < 0){
@@ -1594,7 +1621,7 @@ export class ContentUploadComponent implements OnInit {
       $('#levels_propertyMobile').val(val);
       $('#levels_property').val(val);
     }
-   }
+  }
   incrementValueMobile(value) {
     if(value == 1){
       var val = $('#bedroomMobile').val();
@@ -1608,11 +1635,19 @@ export class ContentUploadComponent implements OnInit {
       $('#bathroom').val(val);
     }else if(value == 3){
       var val = $('#garageMobile').val();
-      val = Number(val)+Number(1);
-      $('#garageMobile').val(val);
-      $('#garage').val(val);
+      if(val < 5){
+        val = Number(val)+Number(1);
+        if(val == 5){
+          val = 'Comunal'
+        }
+        $('#garageMobile').val(val);
+        $('#garage').val(val);
+      }
+      // val = Number(val)+Number(1);
+      // $('#garageMobile').val(val);
+      // $('#garage').val(val);
     }else if(value == 4){
-      var val = $('#garageMobile').val();
+      var val = $('#levels_propertyMobile').val();
       val = Number(val)+Number(1)
       $('#levels_propertyMobile').val(val);
       $('#levels_property').val(val);
@@ -2080,5 +2115,21 @@ export class ContentUploadComponent implements OnInit {
       $("input[name='finishes']").val(value);
     }
     $("#"+value).addClass('label-selectd')
+  }
+  changePercentage(input){
+    console.log('entre');
+    if(input == 'initial_fee'){
+      $("input[name='initial_fee']").on('input', function() {
+        $(this).val(function(i, v) {
+          return v.replace('%','') + '%';
+        });
+      });
+    }else{
+      $("input[name='separation']").on('input', function() {
+        $(this).val(function(i, v) {
+          return v.replace('%','') + '%';
+        });
+      });
+    }
   }
 }

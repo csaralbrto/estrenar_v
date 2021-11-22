@@ -46,11 +46,6 @@ export class MetaTag{
         document.title = this.title;
         this.meta.updateTag({ property: 'og:title', content: this.title });
         this.meta.updateTag({ name: 'twitter:title', content: this.title });
-      }else{
-        this.title = '';
-        document.title = '';
-        this.meta.updateTag({ property: 'og:title', content: this.title });
-        this.meta.updateTag({ name: 'twitter:title', content: this.title });
       }
     }
   }

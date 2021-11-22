@@ -219,6 +219,9 @@ export class DetailConstructoraComponent implements OnInit {
                         }
                       }
                     );
+                  }else{
+                    this.not_found = true;
+                    this.tags = new MetaTag(environment.not_metas, this.meta);
                   }
                 }
               );
@@ -229,6 +232,7 @@ export class DetailConstructoraComponent implements OnInit {
         $('html,body').scrollTop(0);
       }else{
         this.not_found = true;
+        this.tags = new MetaTag(environment.not_metas, this.meta);
         // this.router.navigate(['no-encontrada']);
       }
     }

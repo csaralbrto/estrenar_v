@@ -25,6 +25,7 @@ export class ProjectDetailComponent implements OnInit {
   itemImgPlano: GalleryItem[];
   tags: MetaTag;
   public response: any;
+  public responseError: any;
   public url_project: any;
   public typeContact: any;
   public responsePlacesGoogle: any;
@@ -62,6 +63,7 @@ export class ProjectDetailComponent implements OnInit {
   public valoresPares:any;
   public mapTypeId: any;
   public newplace:any;
+  public not_found : boolean = false;
   public keyGoglePlace="AIzaSyDpDGfOlZAtjd1PV0UOk9a-BZ7LfHvcFFM";
   dataProjectUrl = '?include=field_typology_project.field_project_logo,field_typology_image,field_typology_project.field_project_video,field_typology_feature.field_icon_feature,field_typology_feature.parent,field_typology_feature.parent.field_icon_feature,field_typology_project.field_project_location,field_typology_project.field_project_builder.field_builder_logo,field_typology_project.field_project_location.field_location_opening_hours.parent,field_typology_project.field_project_feature.parent,field_typology_project.field_project_location.field_location_city,field_typology_blueprint,field_typology_project.field_project_feature.field_icon_feature';
   url_img_path = 'https://www.estrenarvivienda.com/';
@@ -165,7 +167,14 @@ export class ProjectDetailComponent implements OnInit {
     this.title = this.activatedRoute.snapshot.params.path;
     this.Service.findProject(this.title).subscribe(
       (data) => (this.response = data.jsonapi),
-      (err) => console.log(),
+      (err) => {
+        this.responseError = err;
+        // console.log(this.responseError)
+        if(this.responseError.ok === false){
+          this.not_found = true;
+          this.tags = new MetaTag(environment.not_metas, this.meta);
+        }
+      },
       () => {
         if(this.response){
           /* captamos el uuid de la tipologia */
@@ -173,7 +182,6 @@ export class ProjectDetailComponent implements OnInit {
           this.typologyUuid = this.typologyUuid.split('/typology/');
           this.typologyUuid = this.typologyUuid[1];
           var url = this.response.individual + this.dataProjectUrl;
-          var data = "";
           console.log(url);
           fetch(url, {
           })
@@ -181,7 +189,7 @@ export class ProjectDetailComponent implements OnInit {
           .then(data => {
             // console.log(data)
             this.response = data.data;
-            // console.log(this.response);
+            console.log(this.response);
             if (this.response) {
               /* si responde correctamente en la respuesta */
               this.url_project = window.location.href;
@@ -230,11 +238,8 @@ export class ProjectDetailComponent implements OnInit {
 
               // lightbox para planos
 
-              console.log('aqui 1');
               if(!(this.response.field_typology_blueprint.data)){
-                console.log('entre al if 2')
                 if(this.response.field_typology_blueprint !== undefined){
-                  console.log('entre al if 3')
                   this.blueprintProyect = this.response.field_typology_blueprint;
                   this.blueprint = this.blueprintProyect[0].uri.url;
                   /* Asignación de imagenes al Lightbox */
@@ -289,7 +294,7 @@ export class ProjectDetailComponent implements OnInit {
               }
               // console.log("si es par "+ this.valoresPares);
               this.caracteristicas = this.response.field_typology_feature;
-              console.log(this.response.field_typology_feature);
+              // console.log(this.response.field_typology_feature);
               /* caracteristicas del inmueble */
               if(this.caracteristicas.length > 0){
                 for (let caracteristica_tipologia of this.caracteristicas) {
@@ -332,7 +337,7 @@ export class ProjectDetailComponent implements OnInit {
                   }
                 }
               }
-              console.log(this.caracteristicas);
+              // console.log(this.caracteristicas);
               this.caracteristicasProject = this.response.field_typology_project.field_project_feature;
               console.log(this.caracteristicasProject);
               /* caracteristicas del proyecto */
@@ -347,11 +352,21 @@ export class ProjectDetailComponent implements OnInit {
                     img_src = '/assets/images/caracteristica.png';
                   }
                 }else{
-                  name_cara = caracteristica_project.parent[0].name+': '+ caracteristica_project.name
-                  if(caracteristica_project.field_icon_feature.uri){
-                    img_src = this.dataSrcImg + caracteristica_project.field_icon_feature.uri.url;
+                  if(caracteristica_project.parent[0].name == 'Estado del proyecto'){
+                    this.response.state_project = caracteristica_project.name;
+                    if(caracteristica_project.field_icon_feature.uri){
+                      img_src = this.dataSrcImg + caracteristica_project.field_icon_feature.uri.url;
+                    }else{
+                      img_src = '/assets/images/caracteristica.png';
+                    }
+                    this.response.state_project_img = img_src;
                   }else{
-                    img_src = '/assets/images/caracteristica.png';
+                    name_cara = caracteristica_project.parent[0].name+': '+ caracteristica_project.name
+                    if(caracteristica_project.field_icon_feature.uri){
+                      img_src = this.dataSrcImg + caracteristica_project.field_icon_feature.uri.url;
+                    }else{
+                      img_src = '/assets/images/caracteristica.png';
+                    }
                   }
                 }
                 caracteristica_project.name_only = name_cara;
@@ -398,9 +413,17 @@ export class ProjectDetailComponent implements OnInit {
               .catch(error => console.error(error))
               this.results = true;
               this.setCurrentLocation();
+            }else{
+              this.not_found = true;
             }
           })
-          .catch(error => console.error(error))
+          .catch(error => {
+            this.not_found = true;
+            console.error(error)
+          })
+        }else{
+          this.not_found = true;
+          this.tags = new MetaTag(environment.not_metas, this.meta);
         }
       }
     );
