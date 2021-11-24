@@ -31,14 +31,14 @@
                 </div>
             </div>
             <div class="medium-7 columns">
-                <div class="nav-tabs right">
-                    <ul class="tabs" data-tabs id="propertiesProject">
-                        <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
-                        <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
-                        <li class="tabs-title"><a id="video_tab" data-tabs-target="video" href="#video">Ver video</a></li>
-                        <li class="tabs-title"><a id="tour_tab" data-tabs-target="tour" href="#tour">Recorrido</a></li>
-                    </ul>
-                </div>
+              <div class="nav-tabs right">
+                  <ul class="tabs" data-tabs id="propertiesProject">
+                      <li class="tabs-title"><a data-tabs-target="images" data-open="exampleModal2">Contacto</a></li>
+                      <li class="tabs-title is-active"><a data-tabs-target="images" href="#images">Imágenes</a></li>
+                      <li class="tabs-title" id="li_video"><a id="video_tab" data-tabs-target="video" href="#video">Ver video</a></li>
+                      <li class="tabs-title" id="li_tour"><a id="tour_tab" data-tabs-target="tour" href="#tour">Recorrido</a></li>
+                  </ul>
+              </div>
             </div>
         </div>
     </div>
@@ -109,28 +109,33 @@
                 </div>
             </div> -->
         </div>
-        <div class="tabs-panel" id="video" *ngIf="response.field_typology_video">
+        <!-- Tab video del proyecto -->
+        <div class="tabs-panel" id="video" *ngIf="videoUrl">
             <div class="row">
-                <video width="520" height="250" controls>
-                  <source src="response.field_typology_video.data.src" type="video/mp4">
-                  Tu navegador no soporta los vídeos de HTML5
-              </video>
+                <iframe style="border: none;"
+                  width="100%" height="600"
+                  [src]="videoUrl"
+                  allowfullscreen="allowfullscreen"
+                  mozallowfullscreen="mozallowfullscreen"
+                  msallowfullscreen="msallowfullscreen"
+                  oallowfullscreen="oallowfullscreen"
+                  webkitallowfullscreen="webkitallowfullscreen">
+                </iframe>
             </div>
         </div>
+        <!-- Fin tab video del proyecto -->
+        <!-- Tab recorrido del proyecto -->
         <div class="tabs-panel" id="tour" *ngIf="urlTour">
-            <div class="row">
-                <!-- <video width="520" height="250" controls>
-                  <source [src]="response.field_virtual_tour.uri" type="video/mp4">
-                      Tu navegador no soporta los vídeos de HTML5
-                  </video> -->
-                <iframe width="420" height="315" [src]="urlTour">
-              </iframe>
-            </div>
-        </div>
+          <div class="row">
+              <iframe style="border: none;" width="100%" height="600" [src]="urlTour">
+            </iframe>
+          </div>
+      </div>
+      <!-- Fin tab recorrido del proyecto -->
     </div>
 </div>
 <!--fin slide-->
-<div class="row columns">
+<!-- <div class="row columns">
     <div class="features">
         <div class="small-6 medium-3 columns end" *ngFor="let caract of response.project_characteristics; let i = index">
             <div class="item-big">
@@ -139,9 +144,590 @@
             </div>
         </div>
     </div>
+</div> -->
+<!--fin features-->
+<!--mas caracteristicas-->
+<div class="row columns" *ngIf="response.project_characteristics">
+  <ul class="accordion" data-accordion data-allow-all-closed="true">
+      <li class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
+          <div class="accordion-content" data-tab-content>
+              <div class="row content-row">
+                  <div class="small-6 medium-3 columns end caracteristica-tipology height-caracteristicas" *ngFor="let caract of response.project_characteristics; let i = index">
+                      <div class="item-big">
+                          <div class="data-icon"><img [src]="caract.img_src" alt=""></div>
+                          <div class="data caracteristica-inmueble">{{ caract.name }}</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </li>
+  </ul>
+</div>
+<!--  -->
+<hr class="white">
+<div class="row columns">
+    <div class="medium-8 columns">
+        <div class="mapa">
+          <div class="nav-tabs-map">
+              <ul class="tabs">
+                  <li class="tabs-title tabs-title-maps is-active"><a class="tabs-map-button tab-map-project" aria-selected="true" id="showPlane" (click)="showHideTab('2')">Planos</a></li>
+                  <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project" id="showMap" (click)="showHideTab('1')">Mapa</a></li>
+                  <li class="tabs-title tabs-title-maps"><a class="tabs-map-button tab-map-project-streetV" id="showStreet" (click)="showHideTab('3')">Street view</a></li>
+              </ul>
+          </div>
+          <div class="tabs-content" data-tabs-content="propertiesProject">
+              <div class="tabs-panel is-active paddingNone" id="mapProject">
+                  <div class="direccion" *ngIf="response.address_project">
+                      <img src="/assets/images/map.png" alt=""> {{ response.address_project }}
+                  </div>
+                  <div id="googleMaps" class="hide agm-mobile">
+                      <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
+                          <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="response.marketIcon">
+                              <agm-info-window #infoWindow>
+                                  {{ response.name_proyect }}
+                              </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGoogleHospital of placesGoogleHospital"
+                            [latitude]="marker_placesGoogleHospital.geometry.location.lat()"
+                            [longitude]="marker_placesGoogleHospital.geometry.location.lng()"
+                            [iconUrl]="icon_hospital"
+                            [visible]="Hospital_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGoogleHospital.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGoogleMall of placesGoogleMall"
+                            [latitude]="marker_placesGoogleMall.geometry.location.lat()"
+                            [longitude]="marker_placesGoogleMall.geometry.location.lng()"
+                            [iconUrl]="icon_mall"
+                            [visible]="Mall_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGoogleMall.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGoogleRestaurant of placesGoogleRestaurant"
+                            [latitude]="marker_placesGoogleRestaurant.geometry.location.lat()"
+                            [longitude]="marker_placesGoogleRestaurant.geometry.location.lng()"
+                            [iconUrl]="icon_restaurant"
+                            [visible]="Restaurant_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGoogleRestaurant.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGoogleBank of placesGoogleBank"
+                            [latitude]="marker_placesGoogleBank.geometry.location.lat()"
+                            [longitude]="marker_placesGoogleBank.geometry.location.lng()"
+                            [iconUrl]="icon_bank"
+                            [visible]="Bank_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGoogleBank.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGoogleUniversity of placesGoogleUniversity"
+                            [latitude]="marker_placesGoogleUniversity.geometry.location.lat()"
+                            [longitude]="marker_placesGoogleUniversity.geometry.location.lng()"
+                            [iconUrl]="icon_university"
+                            [visible]="University_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGoogleUniversity.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGooglepark of placesGooglepark"
+                            [latitude]="marker_placesGooglepark.geometry.location.lat()"
+                            [longitude]="marker_placesGooglepark.geometry.location.lng()"
+                            [iconUrl]="icon_park"
+                            [visible]="park_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGooglepark.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGooglesupermarket of placesGooglesupermarket"
+                            [latitude]="marker_placesGooglesupermarket.geometry.location.lat()"
+                            [longitude]="marker_placesGooglesupermarket.geometry.location.lng()"
+                            [iconUrl]="icon_supermarket"
+                            [visible]="supermarket_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGooglesupermarket.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGooglechurch of placesGooglechurch"
+                            [latitude]="marker_placesGooglechurch.geometry.location.lat()"
+                            [longitude]="marker_placesGooglechurch.geometry.location.lng()"
+                            [iconUrl]="icon_church"
+                            [visible]="church_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGooglechurch.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                          <agm-marker *ngFor="let marker_placesGoogletransit_station of placesGoogletransit_station"
+                            [latitude]="marker_placesGoogletransit_station.geometry.location.lat()"
+                            [longitude]="marker_placesGoogletransit_station.geometry.location.lng()"
+                            [iconUrl]="icon_transporte"
+                            [visible]="transit_station_visible">
+                                <agm-info-window #infoWindow>
+                                    {{ marker_placesGoogletransit_station.name }}
+                                </agm-info-window>
+                          </agm-marker>
+                      </agm-map>
+                      <hr class="white">
+                      <!-- Zonas de interes desktop -->
+                      <div class="row columns hide-for-small-only">
+                          <h2>Zonas de interés</h2>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-8 small-8 columns">
+                                    <label><img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
+                                      Hospitales
+                                    </label>
+                                  </div>
+                                  <div class="medium-4 small-4 columns">
+                                    <label class="container-check">
+                                      <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-9 small-8 columns">
+                                    <label><img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
+                                      Restaurantes
+                                    </label>
+                                  </div>
+                                  <div class="medium-3 small-4 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-8 small-8 columns">
+                                    <label><img src="/assets/images/banco.png" alt="" width="30px" height="30px">
+                                      Bancos
+                                    </label>
+                                  </div>
+                                  <div class="medium-4 small-4 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-8 small-8 columns">
+                                    <label><img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
+                                      Educación
+                                    </label>
+                                  </div>
+                                  <div class="medium-4 small-4 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-9 smal-8 columns">
+                                    <label><img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
+                                      Centros comerciales
+                                    </label>
+                                  </div>
+                                  <div class="medium-3 small-4 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-8 small-8 columns">
+                                    <label><img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
+                                      Transporte
+                                    </label>
+                                  </div>
+                                  <div class="medium-4 small-4 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row" style="padding-top: 79px;margin-top: 45px;padding-left: 17px;padding-right: 17px;">
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 small-8 columns">
+                                      <label><img src="/assets/images/parque.png" alt="" width="30px" height="30px">
+                                        Parques
+                                      </label>
+                                    </div>
+                                    <div class="medium-4 small-4 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-9 small-9 columns">
+                                      <label><img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
+                                        Supermercados
+                                      </label>
+                                    </div>
+                                    <div class="medium-3 small-3 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-12 medium-4 columns end zona">
+                                <div class="row">
+                                    <div class="medium-8 small-8 columns">
+                                      <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
+                                        Iglesias
+                                      </label>
+                                    </div>
+                                    <div class="medium-4 small-4 columns">
+                                      <label class="container-check">
+                                          <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
+                                          <span class="checkmark"></span>
+                                      </label>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- fin de zonas de interés desktop -->
+                      <!-- zonas de interés mobile -->
+                      <div class="row columns show-for-small-only">
+                          <h2>Zonas de interés</h2>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-4 small-1 columns">
+                                    <label class="container-check">
+                                      <input type="radio" name="type_place" (click)="changePlaces('hospital')" value="hospital">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-8 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/Hospital.png" alt="" width="30px" height="30px">
+                                      Hospitales
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-3 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('restaurants')" value="restaurants" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-9 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/Restaurante.png" alt="" width="30px" height="30px">
+                                      Restaurantes
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-4 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('banks')" value="banks" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-8 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/banco.png" alt="" width="30px" height="30px">
+                                      Bancos
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-4 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('school')" value="university" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-8 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/estudio.png" alt="" width="30px" height="30px">
+                                      Educación
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-3 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('mall')" value="mall" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-9 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/cento comercial.png" alt="" width="30px" height="30px">
+                                      Centros comerciales
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-4 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('transit_station')" value="university" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-8 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/trasporte.png" alt="" width="30px" height="30px">
+                                      Transporte
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-4 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('park')" value="university" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-8 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/parque.png" alt="" width="30px" height="30px">
+                                      Parques
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-3 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('supermarket')" value="university" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-9 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/supermercado.png" alt="" width="30px" height="30px">
+                                      Supermercados
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-12 medium-4 columns end zona">
+                              <div class="row">
+                                  <div class="medium-4 small-1 columns">
+                                    <label class="container-check">
+                                        <input type="radio" name="type_place" (click)="changePlaces('church')" value="university" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="medium-8 small-10 columns paddingZinteres">
+                                    <label><img src="/assets/images/iglesia.png" alt="" width="30px" height="30px">
+                                      Iglesias
+                                    </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- fin de zonas de interés mobile -->
+                  </div>
+                  <div id="map" class="hide"></div>
+                  <div class="hide-for-small-only">
+                    <app-street-view id="googleStreet" class="visibi-hide mb-StreetV" [latitude]="latitude" [longitude]="longitude"></app-street-view>
+                  </div>
+              </div>
+              <div class="pLeft0">
+                <div id="planes" class="medium-12 columns destacado" *ngIf="response.blueprint; else notfound">
+                  <div class="sl-blueprint imagenPrincipal slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: 260px !important;touch-action: auto;background: #fefefe;">
+                      <div class="">
+                          <ul class="slider-blueprints-projects">
+                              <li class="is-active" *ngFor="let blueprint of response.blueprint; let i = index">
+                                  <div class="row">
+                                      <figure class="">
+                                          <img *ngFor="let item of items; index as i" [lightbox]="i"  [gallery]="'anotherLightbox1'"  class="" [src]="url_img_path + blueprint.url" alt="" style="padding-left: 15px;">
+                                      </figure>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                </div>
+                <ng-template #notfound>
+                  <p>Información no disponible</p>
+                </ng-template>
+              </div>
+          </div>
+        </div>
+    </div>
+    <hr class="mobile">
+    <div class="medium-4 columns text-center">
+        <h2 class="deco">¿Necesitas asesoría?</h2>
+        <p class="mini">Déjanos tus datos para contactarte o agendar una visita.</p>
+        <form data-abide novalidate [formGroup]="form">
+            <div class="formulario">
+                <div data-abide-error class="alert callout" style="display: none;">
+                    <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
+                </div>
+                <ul class="tabs" data-tabs id="contacto">
+                    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Contacto</a></li>
+                    <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Agendar visita</a></li>
+                </ul>
+                <div class="tabs-content" data-tabs-content="contacto">
+                    <div class="tabs-panel is-active" id="panel1">
+                        <div class="container-form">
+                            <span id="spanName" class="error hide">
+                          Debe digitar un nombre de contacto
+                      </span>
+                            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+                            <span id="spannLastName" class="error hide">
+                          Debe digitar un apellido de contacto
+                      </span>
+                            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+                            <span id="spanEmail" class="error hide">
+                          Debe digitar un correo de contacto valido
+                      </span>
+                            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+                            <span id="spanPhone" class="error hide">
+                          Debe digitar un n&uacute;mbre de contacto
+                      </span>
+                            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+                            <span id="spanContact" class="error hide">
+                          Debe seleccionar una opción
+                      </span>
+                            <select id="select" required formControlName="contact" name="contact">
+                          <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                          <option value="telefono">Tel&eacute;fonica</option>
+                          <option value="email">Correo Electr&oacute;nico</option>
+                          <option value="whatsapp">Whatsapp</option>
+                      </select>
+                            <span id="spanTypesearch" class="hide">
+                          Debe seleccionar una opción
+                          </span>
+                            <fieldset class="text-left">
+                                <legend>Buscas vivienda para:</legend>
+                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+                            </fieldset>
+
+                            <div class="text-left terminos">
+                                <span id="spanTerm" class="hide">
+                              Debe aceptar los términos
+                              </span>
+                                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                              haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
+                              mismos.</label>
+
+                            </div>
+                            <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
+                        </div>
+                    </div>
+                    <div class="tabs-panel" id="panel2">
+                      <div class="row">
+                        <h4>Agendar Visita</h4>
+                      </div>
+                        <p>Programa la fecha y la jornada en la que deseas visitar y conocer el proyecto:</p>
+                        <form [formGroup]="form2">
+                            <div class="container-form">
+                                <div class="dates1 row">
+                                    <div class="dates columns medium-6">
+                                        <button class="button bton-calendar" type="button" style="height: 63px;" (click)="picker.open()">
+                                            <div class="month">
+                                              <span>   {{returnmonth(items) | uppercase}}</span>
+                                              <span> <strong class="dia"> {{items | date:'d'}}</strong></span>
+                                              <span class="weekName">{{returnWeekDay(items)}}</span>
+                                            </div>
+                                            <input matInput  [matDatepicker]="picker" style="visibility: hidden" (dateChange)="changeMonth($event)" >
+                                        </button>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </div>
+                                    <div class="test12 columns medium-6" style="margin-top: 10px;">
+                                        <div class="radio1">
+                                            <input type="radio" (change)="changeJournal('morning')" name="journalOption" id="" formControlName="journalOption" value="manana" [checked]="true"><label for="right-label" class="text-left">Mañana</label>
+                                        </div>
+                                        <div class="radio2">
+                                            <input type="radio" (change)="changeJournal('late')" name="journalOption" id="" formControlName="journalOption" value="tarde"> <label for="right-label" class="text-left">Tarde</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <div class="columns medium-12" id="journal-morning">
+                                    <button class="button bton-agenda" id="08am" (click)="selectJournal('08')" type="button"> <b>08:00 AM</b></button>
+                                    <button class="button bton-agenda" id="09am" (click)="selectJournal('09')" type="button"> <b>09:00 AM</b></button>
+                                    <button class="button bton-agenda" id="10am" (click)="selectJournal('10')" type="button"> <b>10:00 AM</b></button>
+                                    <button class="button bton-agenda" id="11am" (click)="selectJournal('11')" type="button"> <b>11:00 AM</b></button>
+                                  </div>
+                                  <div class="columns medium-12 hide" id="journal-late">
+                                    <button class="button bton-agenda" id="02pm" (click)="selectJournal('02')" type="button"> <b>02:00 PM</b></button>
+                                    <button class="button bton-agenda" id="03pm" (click)="selectJournal('03')" type="button"> <b>03:00 PM</b></button>
+                                    <button class="button bton-agenda" id="04pm" (click)="selectJournal('04')" type="button"> <b>04:00 PM</b></button>
+                                    <button class="button bton-agenda" id="05pm" (click)="selectJournal('05')" type="button"> <b>05:00 PM</b></button>
+                                  </div>
+                                </div>
+                                <input type="text" placeholder="Nombre*" formControlName="name" name="name" required pattern="text">
+                                <input type="text" placeholder="Email*" formControlName="email" name="email" required pattern="email">
+                                <input type="text" placeholder="Teléfono" formControlName="phone" name="phone">
+                                <select id="select" required formControlName="contact" name="contact">
+                                    <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+                                    <option value="telefono">Tel&eacute;fonica</option>
+                                    <option value="email">Correo Electr&oacute;nico</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                </select>
+                                <div class="text-left terminos">
+                                    <input type="checkbox" class="check-date-form" name="term" formControlName="term"><label for="right-label" class="text-left">Declaro haber leído el <a href="/aviso-privacidad">Aviso de privacidad</a> y estar conforme con el mismo</label>
+                                </div>
+                            </div>
+                            <button (click)="onSubmitDates(form2.value)" type="button" class="success button sendInfoAgenda" style="color: black;">Agendar visita</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row columns">
+            <div class="container-constructora">
+                <div class="small-4 columns">
+                    <img class="constructora" src="/assets/images/content/constructora.jpg" alt="">
+                </div>
+                <div class="small-8 columns text-center">
+                    <h3>Atención en sala de ventas</h3>
+                    <p>Lunes a viernes: 7am a 5pm</p>
+                    <p>Sabados y domingos: 9am a 5 pm</p>
+                </div>
+            </div>
+        </div>
+        <div class="reveal text-center" id="exampleModal1" data-reveal>
+            <img src="/assets/images/logo-ev.png">
+            <h2>¡Gracias!</h2>
+            <p>Pronto te llegará toda la información a tu correo</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </div>
 </div>
 <hr class="white">
-<!--fin features-->
 <!-- Modal de contacto -->
 <div class="reveal text-center" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>
@@ -208,197 +794,3 @@
   </button>
 </div>
 <!-- Fin modal gracias -->
-<!--mas caracteristicas-->
-<div class="row columns" *ngIf="response.adicionales">
-    <ul class="accordion" data-accordion data-allow-all-closed="true">
-        <li class="accordion-item" data-accordion-item>
-            <a href="#" class="accordion-title">Más caracteristicas del inmueble</a>
-            <div class="accordion-content" data-tab-content>
-                <div class="row">
-                    <div class="medium-3 columns end" *ngFor="let adicionales of response.adicionales; let i = index">
-                        <div class="feature"><span><img src="/assets/images/feature.png" alt=""></span>{{ adicionales.nombre }}</div>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
-<!--  -->
-<div class="row columns">
-    <div class="medium-8 columns">
-        <div class="mapa">
-            <div class="nav-tabs">
-                <ul class="tabs" data-tabs id="propertiesProject">
-                    <li class="tabs-title is-active"><a data-tabs-target="mapProject" href="#mapProject">Mapa</a></li>
-                    <li class="tabs-title"><a data-tabs-target="planes" href="#planes">Planos</a></li>
-                    <li class="tabs-title"><a data-tabs-target="street_view" href="#street_view">Street view</a></li>
-                </ul>
-            </div>
-            <div class="tabs-content" data-tabs-content="propertiesProject">
-                <div class="tabs-panel is-active" id="mapProject">
-                    <div class="direccion">
-                        <img src="/assets/images/map.png" alt=""> {{ response.address_project }}
-                    </div>
-                    <iframe [src]="maps_url" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-              </iframe>
-                    <hr class="white">
-                    <div class="row columns">
-                        <h2>Zonas de interés</h2>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                                <input type="checkbox" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                              <input type="checkbox" >
-                              <span class="checkmark"></span>
-                          </label>
-
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                              <input type="checkbox" >
-                              <span class="checkmark"></span>
-                          </label>
-
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="small-6 medium-4 columns end zona">
-                            <div class="row">
-                                <div class="medium-8 columns">
-                                    <label class="container-check">Supermercados
-                              <input type="checkbox" >
-                              <span class="checkmark"></span>
-                          </label>
-
-                                </div>
-                                <div class="medium-4 columns hide-for-small-only">
-                                    <img src="/assets/images/supermercado.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="tabs-panel" id="planes">
-                </div>
-                <div class="tabs-panel" id="street_view">
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr class="mobile">
-    <div class="medium-4 columns text-center">
-        <h2 class="deco">¿Necesitas asesoría?</h2>
-        <p class="mini">Déjanos tus datos para contactarte o agendar una visita.</p>
-        <form data-abide novalidate [formGroup]="form">
-            <div class="formulario">
-                <div data-abide-error class="alert callout" style="display: none;">
-                    <p><i class="fi-alert"></i> Hay algunos errores en su solicitud.</p>
-                </div>
-                <ul class="tabs" data-tabs id="contacto">
-                    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Contacto</a></li>
-                    <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Agendar visita</a></li>
-                </ul>
-                <div class="tabs-content" data-tabs-content="contacto">
-                    <div class="tabs-panel is-active" id="panel1">
-                        <div class="container-form">
-                            <span id="spanName" class="error hide">
-                          Debe digitar un nombre de contacto
-                      </span>
-                            <input type="text" placeholder="Nombre" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
-                            <span id="spannLastName" class="error hide">
-                          Debe digitar un apellido de contacto
-                      </span>
-                            <input type="text" placeholder="Apellido" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
-                            <span id="spanEmail" class="error hide">
-                          Debe digitar un correo de contacto valido
-                      </span>
-                            <input type="text" placeholder="Email" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
-                            <span id="spanPhone" class="error hide">
-                          Debe digitar un n&uacute;mbre de contacto
-                      </span>
-                            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
-                            <span id="spanContact" class="error hide">
-                          Debe seleccionar una opción
-                      </span>
-                            <select id="select" required formControlName="contact" name="contact">
-                          <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
-                          <option value="telefono">Tel&eacute;fonica</option>
-                          <option value="email">Correo Electr&oacute;nico</option>
-                          <option value="whatsapp">Whatsapp</option>
-                      </select>
-                            <span id="spanTypesearch" class="hide">
-                          Debe seleccionar una opción
-                          </span>
-                            <fieldset class="text-left">
-                                <legend>Buscas vivienda para:</legend>
-                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
-                                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
-                            </fieldset>
-
-                            <div class="text-left terminos">
-                                <span id="spanTerm" class="hide">
-                              Debe aceptar los términos
-                              </span>
-                                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
-                              haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
-                              mismos.</label>
-
-                            </div>
-                            <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
-                        </div>
-                    </div>
-                    <div class="tabs-panel" id="panel2">
-                        <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor neque eu tellus rhoncus ut eleifend
-                            nibh porttitor.</p>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <div class="row columns">
-            <div class="container-constructora">
-                <div class="small-4 columns">
-                    <img class="constructora" src="/assets/images/content/constructora.jpg" alt="">
-                </div>
-                <div class="small-8 columns text-center">
-                    <h3>Atención en sala de ventas</h3>
-                    <p>Lunes a viernes: 7am a 5pm</p>
-                    <p>Sabados y domingos: 9am a 5 pm</p>
-                </div>
-            </div>
-        </div>
-        <div class="reveal text-center" id="exampleModal1" data-reveal>
-            <img src="/assets/images/logo-ev.png">
-            <h2>¡Gracias!</h2>
-            <p>Pronto te llegará toda la información a tu correo</p>
-            <button class="close-button" data-close aria-label="Close modal" type="button">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-    </div>
-</div>
-<hr class="white">

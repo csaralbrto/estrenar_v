@@ -107,6 +107,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   banderaProyecto  = false;
 
   ngOnInit() {
+    // window.location.href = "/proyectos-vivienda/apartamento/bogota";
     this.collectionActive = this.route;
     this.banderaProyecto  = false;
     this.startSpinner();
@@ -364,7 +365,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       }
     );
     if(this.resultProyecto == 32){
-      console.log("debe de estar desactivado");
+      // console.log("debe de estar desactivado");
       this.banderaProyecto = true;
     }
   }
@@ -659,7 +660,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         this.stringQuery = value[key];
       }
     },this);
-    // console.log(this.stringQuery);
+    console.log(this.stringQuery);
     // this.beforeCheck(this.response.individual);}
     var url = this.stringQuery;
     var data = "";

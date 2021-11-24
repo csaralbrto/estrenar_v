@@ -115,7 +115,7 @@ const routes: Routes = [
     data: { alwaysRefresh: true },
   },
   {
-    path: 'es/preview-project',
+    path: 'preview-project',
     component: ProjectPreviewComponent,
     pathMatch: 'full',
   },

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Gallery, GalleryItem, ThumbnailsPosition, ImageSize, ImageItem } from 'ng-gallery';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { DomSanitizer, SafeResourceUrl, SafeUrl, Meta} from '@angular/platform-browser';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from '../../environments/environment';
@@ -46,6 +48,15 @@ export class ProjectPreviewComponent implements OnInit {
   public saldoDiferirCuota: any;
   public operacion:any;
   public valoresPares:any;
+  public placesGoogleHospital: any ;
+  public placesGoogleRestaurant: any ;
+  public placesGoogleBank: any ;
+  public placesGoogleUniversity: any ;
+  public placesGoogleMall: any ;
+  public placesGooglepark: any ;
+  public placesGooglesupermarket: any ;
+  public placesGooglechurch: any ;
+  public placesGoogletransit_station: any ;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,10 +64,14 @@ export class ProjectPreviewComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private formBuilder: FormBuilder,
     private meta: Meta,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    public gallery: Gallery,
+    public galleryPlano: Gallery,
     ) { }
     dataPath = environment.endpoint;
     dataSrcImg = environment.endpointTestingApiUrl
+    itemImg: GalleryItem[];
+    itemImgPlano: GalleryItem[];
     cadena = '';
     largo = '';
     video_url = '';
@@ -74,8 +89,39 @@ export class ProjectPreviewComponent implements OnInit {
     public urlTour: any;
     public safeURLVideo: any;
     public projectPreview: any
-  
+    public Hospital_visible = false;
+    public Restaurant_visible = false;
+    public Bank_visible = false;
+    public University_visible = false;
+    public Mall_visible = false;
+    public park_visible = false;
+    public supermarket_visible = false;
+    public church_visible = false;
+    public transit_station_visible = false;
+    public icon_hospital = './assets/images/markets/pin-hospital.svg';
+    public icon_bank = './assets/images/markets/pin-banco.svg';
+    public icon_mall = './assets/images/markets/pin-cc.svg';
+    public icon_restaurant = './assets/images/markets/pin-restaurant.svg';
+    public icon_university = './assets/images/markets/pin-universidad.svg';
+    public icon_transporte = './assets/images/markets/pinazul-claro.svg';
+    public icon_park = './assets/images/markets/pin-azulo.svg';
+    public icon_supermarket = './assets/images/markets/pinazul-claro.svg';
+    public icon_church = './assets/images/markets/pin-azulo.svg';
+    latitude: number;
+    longitude: number;
+    public coor_latitude: any;
+    public coor_longitude: any;
+    public blueprintProyect: any;
+    public galeriaArrayPlano: any[] = [];
+    public blueprint: any;
+    zoom:number;
+    items: any[] = [];
+    itemsPlano: any[] = [];
+    public safeVideoURLVideo: any;
+    public videoUrl: any;
+
     public maps_url;
+    url_img_path = 'https://www.estrenarvivienda.com/';
 
   ngOnInit(): void {
     this.startSpinner();
@@ -83,6 +129,10 @@ export class ProjectPreviewComponent implements OnInit {
     this.createFormDates();
     this.createFormSimuladores();
     this.createFormModal();
+    //Fecha
+    this.items = this.getDates(
+      Date.now()
+    );
 
     if (sessionStorage['previewProject']) {
       var project_preview = JSON.parse(sessionStorage.getItem("previewProject"));
@@ -91,9 +141,275 @@ export class ProjectPreviewComponent implements OnInit {
       this.response = this.projectPreview;
       this.galeria = this.response.images_project;
       // const latong = this.response.latitude_project + ',' + this.response.longitude_project;
-      const latong = '4.6854498,-74.0767686';
-      this.maps_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q="+ latong +"&hl=es&z=14&output=embed");
+      this.coor_latitude = this.response.latitude_project;
+      this.coor_longitude = this.response.longitude_project;
+      this.response.marketIcon =
+      {
+        url: './assets/images/markets/pin-verde.svg',
+        scaledSize: {
+            width: 60,
+            height: 60
+        }
+      }
+      if(this.response.url_tour !== null && this.response.url_tour !== undefined){
+        this.tour_url = "tour";
+        this.safeURLVideo = this.response.url_tour;
+        this.urlTour = this.sanitizer.bypassSecurityTrustResourceUrl(this.safeURLVideo);
+        $('#tour_tab').attr('data-tabs-target', 'tour');
+        $('#tour_tab').attr('href', '#tour');
+        // console.log(this.urlTour);
+      }else{
+        this.tour_url =  "images";
+        $('#li_tour').addClass('disabled-li');
+        $('#tour_tab').addClass('disabled-a');
+        $('#tour_tab').attr('data-tabs-target', 'images');
+        $('#tour_tab').attr('href', '#images');
+      }
+      if(this.response.url_video !== null){
+        this.safeVideoURLVideo = this.response.url_video;
+        var var_video_url = this.safeVideoURLVideo.replace('https://youtu.be/', "https://www.youtube.com/embed/");
+        // console.log("mirar video "+ var_video_url);
+        this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(var_video_url);
+        console.log(this.videoUrl);
+        this.video_url = "video";
+        $('#video_tab').attr('data-tabs-target', 'video');
+        $('#video_tab').attr('href', '#video');
+      }else{
+        this.video_url = "images";
+        $('#li_video').addClass('disabled-li');
+        $('#video_tab').addClass('disabled-a');
+        $('#video_tab').attr('data-tabs-target', 'images');
+        $('#video_tab').attr('href', '#images');
+      }
+      if(this.response.blueprint !== undefined){
+        this.blueprintProyect = this.response.blueprint;
+        this.blueprint = this.blueprintProyect[0].uri.url;
+        /* Asignación de imagenes al Lightbox */
+        let imageGalleryArrayPlano = [];
+        for (let JsonGalleryPlano of this.blueprintProyect){
+          imageGalleryArrayPlano.push({srcUrl: this.url_img_path + JsonGalleryPlano.uri.url, previewUrl: this.url_img_path + JsonGalleryPlano.uri.url})
+          this.galeriaArrayPlano.push(JsonGalleryPlano);
+        }
+        /*   1. cear Galeria  con los items */
+        this.itemImgPlano = imageGalleryArrayPlano.map(itemPlano =>
+          new ImageItem({ src: itemPlano.srcUrl, thumb: itemPlano.previewUrl })
+        );
+        this.basicLightboxPlano();
+        this.withCustomGalleryConfigPlano();
+      }
       this.results = true;
+      $('app-project-preview').foundation();
+      this.stopSpinner();
+      this.setCurrentLocation();
+    }
+  }  //fecha
+  getDates(startDate: any) {
+    let dateArray = [];
+    let currentDate = moment(startDate);
+      dateArray.push(moment(currentDate).format("YYYY-MMM-DD"));
+      currentDate = moment(currentDate).add(1, "days");
+    return dateArray;
+  }
+  // Cambiar el mes fecha
+  changeMonth(event) {
+    console.log(event.target.value);
+    this.items = this.getDates(
+      event.target.value
+    );
+    console.log(this.items);
+  }
+  // fecha
+  returnWeekDay(item: any) {
+    return new Date(item).toLocaleDateString("default", { weekday: "long" });
+  }
+  returnmonth(item: any) {
+    return new Date(item).toLocaleDateString("default", { month: "long" });
+  }
+  private setCurrentLocation() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = this.coor_latitude;
+        this.longitude = this.coor_longitude;
+        this.zoom = 15;
+        // this.mapTypeId = 'roadmap';
+      });
+
+      this.GooglePlaces();
+    }
+  }
+  GooglePlaces(){
+
+    let map;//: google.maps.Map;
+    let service;//: google.maps.places.PlacesService;
+    let infowindow;//: google.maps.InfoWindow;
+    const place = new google.maps.LatLng(this.coor_latitude,this.coor_longitude);
+
+    //infowindow = new google.maps.InfoWindow();
+
+    map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+      center: place,
+      zoom: 15,
+    });
+    let types_places = [
+      'hospital',
+      'shopping_mall',
+      'restaurant',
+      'bank',
+      'school',
+      'park',
+      'supermarket',
+      'church',
+      'transit_station'
+    ]
+    for (let places of types_places) {
+        var request = {
+          location: place,
+          radius: '1000',
+          type: [places]
+        };
+
+        service = new google.maps.places.PlacesService(map);
+
+        service.nearbySearch(
+          request,
+          (
+            results: google.maps.places.PlaceResult[] | null,
+            status: google.maps.places.PlacesServiceStatus
+          ) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+              // console.log(results);
+              if(places == 'hospital'){
+                this.placesGoogleHospital = results;
+              }else if(places == 'shopping_mall'){
+                this.placesGoogleMall = results;
+              }else if(places == 'restaurant'){
+                this.placesGoogleRestaurant = results
+              }else if(places == 'bank'){
+                this.placesGoogleBank = results;
+              }else if(places == 'school'){
+                this.placesGoogleUniversity = results;
+              }else if(places == 'park'){
+                this.placesGooglepark = results;
+              }else if(places == 'supermarket'){
+                this.placesGooglesupermarket = results;
+              }else if(places == 'church'){
+                this.placesGooglechurch = results;
+              }else if(places == 'transit_station'){
+                this.placesGoogletransit_station = results;
+              }
+            }
+          }
+        );
+        this.stopSpinner();
+    }
+
+  }
+  changePlaces(value){
+    // console.log('entre abrir');
+    this.startSpinner();
+    this.Hospital_visible = false;
+    this.University_visible = false;
+    this.Mall_visible = false;
+    this.Bank_visible = false;
+    this.Restaurant_visible = false;
+    this.park_visible = false
+    this.supermarket_visible = false
+    this.church_visible = false
+    this.transit_station_visible = false
+
+    if(value == "hospital"){
+      this.Hospital_visible = true;
+    }else if(value == 'university'){
+      this.University_visible = true;
+    }else if(value == 'mall'){
+      this.Mall_visible = true;
+    }else if(value == 'banks'){
+      this.Bank_visible = true;
+    }else if(value == 'school'){
+      this.Restaurant_visible = true;
+    }else if(value == 'park'){
+      this.park_visible = true;
+    }else if(value == 'supermarket'){
+      this.supermarket_visible = true;
+    }else if(value == 'church'){
+      this.church_visible = true;
+    }else if(value == 'transit_station'){
+      this.transit_station_visible = true;
+    }
+    setTimeout(() => { this.stopSpinner() }, 2500);
+  }
+  basicLightboxPlano() {
+    this.galleryPlano.ref().load(this.itemImgPlano);
+  }
+  withCustomGalleryConfigPlano() {
+    const lightboxGalleryRef1 = this.galleryPlano.ref('anotherLightbox1');
+    lightboxGalleryRef1.load(this.itemImgPlano);
+  }
+  basicLightboxExample() {
+    this.gallery.ref().load(this.itemImg);
+  }
+  withCustomGalleryConfig() {
+    const lightboxGalleryRef = this.gallery.ref('anotherLightbox');
+    lightboxGalleryRef.setConfig({
+      imageSize: ImageSize.Cover,
+      thumbPosition: ThumbnailsPosition.Top
+    });
+    lightboxGalleryRef.load(this.itemImg);
+  }
+  changeJournal(value){
+    if(value == 'morning'){
+      $('#journal-late').addClass('hide');
+      $('#journal-morning').removeClass('hide');
+    }else{
+      $('#journal-late').removeClass('hide');
+      $('#journal-morning').addClass('hide');
+      $('#08am').removeClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }
+  }
+  selectJournal(value){
+    if(value == "08"){
+      $('#08am').addClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }else if(value == "09"){
+      $('#08am').removeClass('bton-active');
+      $('#09am').addClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }else if(value == "10"){
+      $('#08am').removeClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').addClass('bton-active');
+      $('#11am').removeClass('bton-active');
+    }else if(value == "11"){
+      $('#08am').removeClass('bton-active');
+      $('#09am').removeClass('bton-active');
+      $('#10am').removeClass('bton-active');
+      $('#11am').addClass('bton-active');
+    }else if(value == "02"){
+      $('#02pm').addClass('bton-active');
+      $('#03pm').removeClass('bton-active');
+      $('#04pm').removeClass('bton-active');
+      $('#05pm').removeClass('bton-active');
+    }else if(value == "03"){
+      $('#02pm').removeClass('bton-active');
+      $('#03pm').addClass('bton-active');
+      $('#04pm').removeClass('bton-active');
+      $('#05pm').removeClass('bton-active');
+    }else if(value == "04"){
+      $('#02pm').removeClass('bton-active');
+      $('#03pm').removeClass('bton-active');
+      $('#04pm').addClass('bton-active');
+      $('#05pm').removeClass('bton-active');
+    }else if(value == "05"){
+      $('#02pm').removeClass('bton-active');
+      $('#03pm').removeClass('bton-active');
+      $('#04pm').removeClass('bton-active');
+      $('#05pm').addClass('bton-active');
     }
   }
   ngAfterViewChecked() {
@@ -113,7 +429,6 @@ export class ProjectPreviewComponent implements OnInit {
           autoplaySpeed: 5000,
         });
       }
-      this.stopSpinner();
     }
   }
   // Metodos Cargando
@@ -160,11 +475,13 @@ export class ProjectPreviewComponent implements OnInit {
   createFormDates() {
     this.form2 =  this.formBuilder.group({
       dateAgenda: new FormControl(''),
-      journalOption: new FormControl(''),
-      house_for: new FormControl(''),
+      journalOption: new FormControl('manana'),
+      schedule: new FormControl(''),
       name: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
+      term: new FormControl(''),
+      contact: new FormControl('Deseas ser contactado'),
     });
   }
   createFormModal() {
@@ -442,6 +759,33 @@ export class ProjectPreviewComponent implements OnInit {
       //     }
       //   }
       // );
+    }
+  }
+  showHideTab(value){
+    if(value == 1){
+      $('#showMap').attr('aria-selected', 'true');
+      $('#showStreet').attr('aria-selected', 'false');
+      $('#showPlane').attr('aria-selected', 'false');
+      $('#googleMaps').removeClass("hide");
+      $('#googleStreet').addClass("visibi-hide");
+      $('#planes').addClass("visibi-hide");
+      $('#planes').css('height','14px');
+    }else if(value == 3){
+      $('#showStreet').attr('aria-selected', 'true');
+      $('#showMap').attr('aria-selected', 'false');
+      $('#showPlane').attr('aria-selected', 'false');
+      $('#googleMaps').addClass("hide");
+      $('#googleStreet').removeClass("visibi-hide");
+      $('#planes').addClass("visibi-hide");
+      $('#planes').css('height','14px');
+    }else if(value == 2){
+      $('#showStreet').attr('aria-selected', 'false');
+      $('#showMap').attr('aria-selected', 'false');
+      $('#showPlane').attr('aria-selected', 'true');
+      $('#planes').removeClass("visibi-hide");
+      $('#planes').css('height','auto');
+      $('#googleMaps').addClass("hide");
+      $('#googleStreet').addClass("visibi-hide");
     }
   }
 

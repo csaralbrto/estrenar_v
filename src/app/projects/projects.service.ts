@@ -29,15 +29,14 @@ export class ProjectsService {
     this.endpoint = environment.endpointApi + 'project/';
     this.endpointFilter = environment.endpointSearchApi;
     this.url_location = window.location.pathname;
-    if(this.url_location == "/proyectos-vivienda"){
-      this.url = this.dataPath
-    }else if(this.url_location == "/vivienda-interes-social"){
+    if(this.url_location == "/vivienda-interes-social"){
       this.url = this.dataPathVis
     }else if(this.url_location == "/proyectos-vacacionales"){
       this.url = this.dataPathVacacionales
+    }else{
+      this.url = this.dataPath
     }
   }
-
 
   /* Traer toda la info de proyectos */
   // getData(): Observable<any> {

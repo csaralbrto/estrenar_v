@@ -70,7 +70,11 @@ export class ContentUploadComponent implements OnInit {
   longitude_input: number;
   zoom:number;
   address_sales_room: string;
+  latitude_sales_room: any;
+  longitude_sales_room: any;
   address_project: string;
+  latitude_project: any;
+  longitude_project: any;
   address_office: string;
   public geoCoder;
 
@@ -205,8 +209,12 @@ export class ContentUploadComponent implements OnInit {
           // console.log(type_addres);
           if(type_addres == "sales_room"){
             this.address_sales_room = results[0].formatted_address;
+            this.latitude_sales_room = latitude;
+            this.longitude_sales_room = longitude;
           }else if(type_addres == "project"){
             this.address_project = results[0].formatted_address;
+            this.latitude_project = latitude;
+            this.longitude_project = longitude;
           }
           this.latitude = latitude;
           this.longitude = longitude;
@@ -1662,10 +1670,14 @@ export class ContentUploadComponent implements OnInit {
       values.project_characteristics = this.featuresProjectsArray;
       values.logo_project = this.imageSrc;
       values.images_project = this.images;
+      values.address_room_sales = this.address_sales_room;
+      values.address_project = this.address_project;
+      values.latitude_project = this.latitude_project;
+      values.longitude_project = this.longitude_project;
       console.log(values);
       this.formProjectArray.push(values);
       sessionStorage.setItem('previewProject',JSON.stringify(this.formProjectArray))
-      window.open('/es/preview-project', '_blank');
+      window.open('/preview-project', '_blank');
     }
   }
   validateForm(values){

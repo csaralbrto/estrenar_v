@@ -218,6 +218,7 @@ export class ProjectDetailComponent implements OnInit {
                 var var_video_url = this.safeVideoURLVideo.replace('https://youtu.be/', "https://www.youtube.com/embed/");
                 // console.log("mirar video "+ var_video_url);
                 this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(var_video_url);
+                console.log(this.videoUrl);
                 this.video_url = "video";
                 $('#video_tab').attr('data-tabs-target', 'video');
                 $('#video_tab').attr('href', '#video');
