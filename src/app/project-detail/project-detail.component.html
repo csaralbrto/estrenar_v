@@ -266,6 +266,7 @@
   <!-- inicio features desktop -->
   <div class="row columns hide-for-small-only pLeftFeatures">
       <!-- <div class="features"> -->
+        <div *ngIf="response.state_project">
           <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology">
               <div class="item-big">
                   <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
@@ -299,9 +300,48 @@
           <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology" *ngIf="response.state_project">
               <div class="item-big">
                 <div class="data-icon"><img [src]="response.state_project_img" alt=""></div>
-                <div class="data state_project"><strong>Estado del proyecto: {{ response.state_project }}</strong></div>
+                <div class="data state_project"><strong>Estado: {{ response.state_project }}</strong></div>
               </div>
           </div>
+        </div>
+        <div *ngIf="!response.state_project">
+          <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology">
+              <div class="item-big">
+                  <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
+                  <div class="data caracteristica-inmueble"> {{ response.field_typology_area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+              </div>
+          </div>
+          <!-- <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology text-right">
+              <div class="item-big">
+                  <div class="data-icon" style="float: left;margin-left: -0.7rem;"><img src="/assets/images/icon-medida.png" alt=""></div>
+                  <div class="data caracteristica-inmueble"> {{ response.field_typology_area_private }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área privada">!</span></div>
+              </div>
+          </div> -->
+          <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology">
+              <div class="item-big">
+                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                <div class="data"> {{ response.bathrooms }} Alcobas</div>
+              </div>
+          </div>
+          <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology">
+              <div class="item-big">
+                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                <div class="data"> {{ response.bedrooms }} Baños</div>
+              </div>
+          </div>
+          <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology">
+              <div class="item-big">
+                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                <div class="data"> {{ response.garages }} Garaje</div>
+              </div>
+          </div>
+          <div class="small-6 medium-2 width-features-projects columns end caracteristica-tipology" *ngIf="response.state_project">
+              <div class="item-big">
+                <div class="data-icon"><img [src]="response.state_project_img" alt=""></div>
+                <div class="data state_project"><strong>Estado: {{ response.state_project }}</strong></div>
+              </div>
+          </div>
+        </div>
       <!-- </div> -->
   </div>
   <hr class="white">

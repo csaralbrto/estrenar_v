@@ -19,6 +19,7 @@ export class DetailConstructoraComponent implements OnInit {
   tags: MetaTag;
   public responseSubmit: any;
   public response: any;
+  public responseError: any;
   public responseFirst: any;
   public builder_id: any;
   public responseProject: any;
@@ -107,7 +108,14 @@ export class DetailConstructoraComponent implements OnInit {
       if(title.indexOf('constructora-') > -1){
         this.Service.findConstructoraUrl(title).subscribe(
           (data) => (this.responseFirst = data),
-          (err) => console.log(),
+          (err) => {
+            this.responseError = err;
+            // console.log(this.responseError)
+            if(this.responseError.ok === false){
+              this.not_found = true;
+              this.tags = new MetaTag(environment.not_metas, this.meta);
+            }
+          },
           () => {
             if (this.responseFirst) {
               let url = this.responseFirst.jsonapi.individual + this.dataConstrutora
