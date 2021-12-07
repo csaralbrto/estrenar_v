@@ -2,122 +2,124 @@
     <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
 
-<div class="row columns text-center">
-    <div class="publicidad">
-        <img src="/assets/images/banner1.jpg" alt="">
+<div *ngIf="response">
+  <div class="row columns text-center">
+      <div class="publicidad">
+          <img src="/assets/images/banner1.jpg" alt="">
+      </div>
+  </div>
+  <div class="show-for-small-only padding-builders">
+    <div class="row columns text-center-mobile">
+        <h1>Constructoras</h1>
+        <div>
+            <form action="">
+                <div class="row">
+                    <div class="medium-4 columns end">
+                      <div class="buscador">
+                        <img class="search img-search" src="/assets/images/search.png">
+                        <input (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" id="searchWordMobile" type="search" placeholder="Buscar constructora" />
+                      </div>
+                    </div>
+                    <div class="medium-4 columns end">
+                        <select id="locationMobile" name="location" (change)="change(1)" [(ngModel)]="optionsLocationSelected" *ngIf="filterLocation && filterLocation.length > 0">
+                        <option value="" selected disabled hidden>Ciudad</option>
+                        <option *ngFor="let location of filterLocation; let i = index" [value]="location.url">{{location.values.value}}</option>
+                    </select>
+                    </div>
+                    <div class="medium-2 columns end">
+                        <a (click)="filterByWord('mobile')" class="button expanded">Buscar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr>
     </div>
-</div>
-<div class="show-for-small-only padding-builders">
-  <div class="row columns text-center-mobile">
-      <h1>Constructoras</h1>
-      <div>
-          <form action="">
-              <div class="row">
-                  <div class="medium-4 columns end">
-                    <div class="buscador">
-                      <img class="search img-search" src="/assets/images/search.png">
-                      <input (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" id="searchWordMobile" type="search" placeholder="Buscar constructora" />
+    <div class="row columns content-row" data-equalizer data-equalize-on="medium" id="test-eq1">
+        <div class="medium-3 columns end" *ngFor="let project1 of constructoras; let i = index">
+            <div class="card constructora" data-equalizer-watch>
+                <div class="row">
+                    <div class="small-4 columns foto">
+                        <a href="{{project1.url }}"><img [src]="url_img_path + project1.builder_logo" alt="" class="image"></a>
                     </div>
-                  </div>
-                  <div class="medium-4 columns end">
-                      <select id="locationMobile" name="location" (change)="change(1)" [(ngModel)]="optionsLocationSelected" *ngIf="filterLocation && filterLocation.length > 0">
-                      <option value="" selected disabled hidden>Ciudad</option>
-                      <option *ngFor="let location of filterLocation; let i = index" [value]="location.url">{{location.values.value}}</option>
-                  </select>
-                  </div>
-                  <div class="medium-2 columns end">
-                      <a (click)="filterByWord('mobile')" class="button expanded">Buscar</a>
-                  </div>
-              </div>
-          </form>
-      </div>
-      <hr>
+                    <div class="small-8 columns">
+                      <a href="{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
+                        <div class="info">
+                          <p [innerHTML]=project1.builder_address.slice(0,20)>{{ project1.builder_location_phone }}</p>
+                        </div>
+                    </div>
+                    <div class="small-12 columns" style="max-height: 145px; min-height: 145px;">
+                        <p [innerHTML]=project1.description.slice(0,125) *ngIf="project1.description; else lorem_description"></p>
+                        <ng-template #lorem_description>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit hasellus quis est eu nibh venenatis fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis.</p>
+                        </ng-template>
+                    </div>
+                    <div class="small-12 columns text-center">
+                        <a href="{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row columns text-center">
+        <a (click)="loadMore('mobile')" id="buttonLoadMoreMobile" class="button secondary bton-mobile">Cargar más</a>
+    </div>
+    <hr class="white">
   </div>
-  <div class="row columns content-row" data-equalizer data-equalize-on="medium" id="test-eq1">
-      <div class="medium-3 columns end" *ngFor="let project1 of constructoras; let i = index">
-          <div class="card constructora" data-equalizer-watch>
-              <div class="row">
-                  <div class="small-4 columns foto">
+  <div class="hide-for-small-only">
+    <div class="row columns text-center-mobile">
+        <h1>Constructoras</h1>
+        <div>
+            <form action="">
+                <div class="row">
+                    <div class="medium-4 columns end">
+                      <div class="buscador">
+                        <img class="search img-search" src="/assets/images/search.png">
+                        <input id="searchWordDesktop" (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" type="search" placeholder="Buscar constructora" />
+                      </div>
+                    </div>
+                    <div class="medium-4 columns end">
+                        <select id="locationDesktop" name="location" (change)="change(2)" [(ngModel)]="optionsLocationSelected" *ngIf="filterLocation && filterLocation.length > 0">
+                        <option value="" selected disabled hidden>Ciudad</option>
+                        <option *ngFor="let location of filterLocation; let i = index" [value]="location.url">{{location.values.value}}</option>
+                    </select>
+                    </div>
+                    <div class="medium-2 columns end">
+                        <a (click)="filterByWord('desktop')" class="button expanded">Buscar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr>
+    </div>
+    <div class="row columns content-row" data-equalizer data-equalize-on="medium" id="test-eq1">
+        <div class="medium-3 columns end" *ngFor="let project1 of constructoras; let i = index">
+            <div class="card constructora" data-equalizer-watch>
+                <div class="row">
+                    <div class="small-4 columns foto">
                       <a href="{{project1.url }}"><img [src]="url_img_path + project1.builder_logo" alt="" class="image"></a>
-                  </div>
-                  <div class="small-8 columns">
-                    <a href="{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
-                      <div class="info">
-                        <p [innerHTML]=project1.builder_address.slice(0,20)>{{ project1.builder_location_phone }}</p>
-                      </div>
-                  </div>
-                  <div class="small-12 columns" style="max-height: 145px; min-height: 145px;">
-                      <p [innerHTML]=project1.description.slice(0,125) *ngIf="project1.description; else lorem_description"></p>
-                      <ng-template #lorem_description>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit hasellus quis est eu nibh venenatis fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis.</p>
-                      </ng-template>
-                  </div>
-                  <div class="small-12 columns text-center">
-                      <a href="{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row columns text-center">
-      <a (click)="loadMore('mobile')" id="buttonLoadMoreMobile" class="button secondary bton-mobile">Cargar más</a>
-  </div>
-  <hr class="white">
-</div>
-<div class="hide-for-small-only">
-  <div class="row columns text-center-mobile">
-      <h1>Constructoras</h1>
-      <div>
-          <form action="">
-              <div class="row">
-                  <div class="medium-4 columns end">
-                    <div class="buscador">
-                      <img class="search img-search" src="/assets/images/search.png">
-                      <input id="searchWordDesktop" (focus)="onFocusSearch()" (focusout)="onFocusOutSearch()" type="search" placeholder="Buscar constructora" />
                     </div>
-                  </div>
-                  <div class="medium-4 columns end">
-                      <select id="locationDesktop" name="location" (change)="change(2)" [(ngModel)]="optionsLocationSelected" *ngIf="filterLocation && filterLocation.length > 0">
-                      <option value="" selected disabled hidden>Ciudad</option>
-                      <option *ngFor="let location of filterLocation; let i = index" [value]="location.url">{{location.values.value}}</option>
-                  </select>
-                  </div>
-                  <div class="medium-2 columns end">
-                      <a (click)="filterByWord('desktop')" class="button expanded">Buscar</a>
-                  </div>
-              </div>
-          </form>
-      </div>
-      <hr>
+                    <div class="small-8 columns">
+                      <a href="{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
+                        <div class="info">
+                          <p [innerHTML]=project1.builder_address.slice(0,20)>{{ project1.builder_location_phone }}</p>
+                        </div>
+                    </div>
+                    <div class="small-12 columns" style="max-height: 145px; min-height: 145px;">
+                        <p [innerHTML]=project1.description.slice(0,125) *ngIf="project1.description; else lorem_description"></p>
+                        <ng-template #lorem_description>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit hasellus quis est eu nibh venenatis fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis.</p>
+                        </ng-template>
+                    </div>
+                    <div class="small-12 columns text-center">
+                        <a href="{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row columns text-center">
+        <a (click)="loadMore('desktop')" id="buttonLoadMoreDesktop" class="button secondary bton-mobile">Cargar más</a>
+    </div>
+    <hr class="white">
   </div>
-  <div class="row columns content-row" data-equalizer data-equalize-on="medium" id="test-eq1">
-      <div class="medium-3 columns end" *ngFor="let project1 of constructoras; let i = index">
-          <div class="card constructora" data-equalizer-watch>
-              <div class="row">
-                  <div class="small-4 columns foto">
-                    <a href="{{project1.url }}"><img [src]="url_img_path + project1.builder_logo" alt="" class="image"></a>
-                  </div>
-                  <div class="small-8 columns">
-                    <a href="{{project1.url }}"><div class="title">{{ project1.label }}</div></a>
-                      <div class="info">
-                        <p [innerHTML]=project1.builder_address.slice(0,20)>{{ project1.builder_location_phone }}</p>
-                      </div>
-                  </div>
-                  <div class="small-12 columns" style="max-height: 145px; min-height: 145px;">
-                      <p [innerHTML]=project1.description.slice(0,125) *ngIf="project1.description; else lorem_description"></p>
-                      <ng-template #lorem_description>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit hasellus quis est eu nibh venenatis fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis.</p>
-                      </ng-template>
-                  </div>
-                  <div class="small-12 columns text-center">
-                      <a href="{{project1.url }}" class="button secondary bton-mobile">Proyectos</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row columns text-center">
-      <a (click)="loadMore('desktop')" id="buttonLoadMoreDesktop" class="button secondary bton-mobile">Cargar más</a>
-  </div>
-  <hr class="white">
-</div>
+ </div>

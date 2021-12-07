@@ -313,6 +313,9 @@ export class DetailConstructoraComponent implements OnInit {
                 this.countAllProjects = this.responseProject.total;
                 this.allProjects = this.responseProject.search_results;
                 this.countProjects = this.allProjects.length;
+                if(this.countProjects == this.countAllProjects){
+                  this.banderaProyecto = true;
+                }
                 for (let project of this.allProjects) {
                   var arrayDeCadenas = project.typology_images.split(',');
                   project.typology_images = arrayDeCadenas[0];
@@ -403,6 +406,9 @@ export class DetailConstructoraComponent implements OnInit {
                 this.countAllProjects = this.responseProject.total;
                 this.allProjects = this.responseProject.search_results;
                 this.countProjects = this.allProjects.length;
+                if(this.countProjects == this.countAllProjects){
+                  this.banderaProyecto = true;
+                }
                 for (let project of this.allProjects) {
                   var arrayDeCadenas = project.typology_images.split(',');
                   project.typology_images = arrayDeCadenas[0];

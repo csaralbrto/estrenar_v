@@ -4,421 +4,340 @@
 >
 <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
-
-<div *ngIf="not_found == false; else notFoundTemplate">
-  <div class="row columns">
-    <div class="text-center-mobile show-for-small-only">
-      <h1>Proyectos de {{ content.label }}</h1>
-    </div>
-      <div class="medium-5 columns">
-          <div class="row encabezado">
-              <div class="small-7 columns" *ngIf="content.field_builder_logo.uri; else noimage">
-                  <img class="image constructor" [src]="url_img_path + content.field_builder_logo.uri.url" alt="">
-              </div>
-              <ng-template #noimage>
-                <img class="image constructor" [src]="url_img_path" alt="">
-              </ng-template>
-              <div class="small-7 columns hide-for-small-only">
-                  <h2>Constructora {{ content.label }}</h2>
-              </div>
-              <div class="small-5 columns show-for-small-only">
-                  <h1>{{ content.label }}</h1>
-              </div>
-          </div>
+<div *ngIf="results">
+  <div *ngIf="not_found == false; else notFoundTemplate">
+    <div class="row columns">
+      <div class="text-center-mobile show-for-small-only">
+        <h1>Proyectos de {{ content.label }}</h1>
       </div>
-      <div class="medium-7 columns">
-          <div class="container-info">
-              <div class="row">
-                  <div class="medium-4 small-12 columns separator-right hide-for-small-only">
-                      <div class="label-info">Ciudad oficina principal</div>
-                      <div class="dato">{{ content.field_builder_location[0].field_location_city.name }}</div>
-                      <div class="label-info">Dirección oficina principal</div>
-                      <div class="dato">{{ content.field_builder_location[0].field_location_address }} </div>
-                      <div class="label-info">Teléfonos</div>
-                      <div class="dato">{{ content.field_builder_location[0].field_location_contact[0].field_contact_phone }}</div>
-                  </div>
-                  <div class="small-12 columns separator-right show-for-small-only">
-                    <div class="small-7 disp-inBlock">
-                      <div class="label-info">Ciudad oficina principal</div>
-                      <div class="dato">{{ content.field_builder_location[0].field_location_city.name }}</div>
+        <div class="medium-5 columns">
+            <div class="row encabezado">
+                <div class="small-7 columns" *ngIf="content.field_builder_logo.uri; else noimage">
+                    <img class="image constructor" [src]="url_img_path + content.field_builder_logo.uri.url" alt="">
+                </div>
+                <ng-template #noimage>
+                  <img class="image constructor" [src]="url_img_path" alt="">
+                </ng-template>
+                <div class="small-7 columns hide-for-small-only">
+                    <h2>Constructora {{ content.label }}</h2>
+                </div>
+                <div class="small-5 columns show-for-small-only mleft-builders">
+                    <h1 class="h1Builders">{{ content.label }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="medium-7 columns">
+            <div class="container-info">
+                <div class="row">
+                    <div class="medium-4 small-12 columns separator-right hide-for-small-only">
+                        <div class="label-info">Ciudad oficina principal</div>
+                        <div class="dato">{{ content.field_builder_location[0].field_location_city.name }}</div>
+                        <div class="label-info">Dirección oficina principal</div>
+                        <div class="dato">{{ content.field_builder_location[0].field_location_address }} </div>
+                        <div class="label-info">Teléfonos</div>
+                        <div class="dato">{{ content.field_builder_location[0].field_location_contact[0].field_contact_phone }}</div>
                     </div>
-                    <div class="small-5 disp-inBlock">
-                      <div class="label-info">Teléfonos</div>
-                      <div class="dato">{{ content.field_builder_location[0].field_location_contact[0].field_contact_phone }}</div>
-                    </div>
-                    <div class="small-12">
-                      <div class="label-info">Dirección oficina principal</div>
-                      <div class="dato">{{ content.field_builder_location[0].field_location_address }} </div>
-                    </div>
-                  </div>
-                  <div class="medium-8 small-12 columns">
-                      <p [innerHTML]=content.description.slice(0,125) *ngIf="content.description; else lorem_description"></p>
-                      <ng-template #lorem_description>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis
-                            fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis. Cras et augue ac
-                            nisl congue eleifend hendrerit eget eros. Nulla pulvinar faucibus leo in tempus. Sed ornare
-                            libero sit amet justo congue, quis laoreet neque congue.</p>
-                      </ng-template>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <hr class="white">
-  <!--slide-->
-  <!-- Se comenta el carrusel ya que no esta llegandfo la información del api -->
-  <!-- <div class="row columns">
-      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-          <div class="orbit-wrapper">
-
-              <ul class="orbit-container">
-                  <li class="is-active orbit-slide">
-                      <div class="row slide-build">
-                          <div class="medium-7 medium-offset-1 columns">
-                              <figure class="orbit-figure">
-                                  <img class="orbit-image" [src]="project[0].url_img" alt="">
-                              </figure>
-                          </div>
-                          <div class="medium-4 columns card-build">
-                              <div class="card">
-
-                                  <div class="card-section">
-                                      <h2>{{ project[0].direccion }}</h2>
-                                      <div class="descripcion">
-                                          {{ project[0].sub_titulo }}
-                                      </div>
-                                      <div class="precio text-center">
-                                          <div>Desde:</div>
-                                          <span>{{ project[0].valor_venta | number }}</span>
-                                      </div>
-                                      <hr>
-                                  </div>
-                                  <div class="card-section">
-                                      <div class="row">
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
-                                                  </div>
-                                                  <div class="data">{{ project[0].medida_apartamento }} m</div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
-                                                  </div>
-                                                  <div class="data">{{ project[0].n_habitaciones }} alcobas</div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
-                                                  </div>
-                                                  <div class="data">{{ project[0].n_gagrages }} garajes</div>
-                                              </div>
-                                          </div>
-                                          <div class="small-6 columns">
-                                              <div class="item">
-                                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                                  <div class="data">{{ project[0].n_banos }} baños</div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <hr>
-                                  </div>
-                                  <div class="card-section">
-                                      <div class="button-group align-spaced ">
-                                          <a class="button" href="#">Ver
-                                              Proyecto</a>
-                                          <a class="button">Contacto</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                    <div class="small-12 columns separator-right show-for-small-only">
+                      <div class="small-7 disp-inBlock">
+                        <div class="label-info">Ciudad oficina principal</div>
+                        <div class="dato">{{ content.field_builder_location[0].field_location_city.name }}</div>
                       </div>
-                  </li>
-                  <li class="orbit-slide">
-                      <div class="row slide-build">
-                          <div class="medium-7 medium-offset-1 columns">
-                            <figure class="orbit-figure">
-                              <img class="orbit-image" [src]="project[1].url_img" alt="">
-                          </figure>
+                      <div class="small-5 disp-inBlock">
+                        <div class="label-info">Teléfonos</div>
+                        <div class="dato">{{ content.field_builder_location[0].field_location_contact[0].field_contact_phone }}</div>
                       </div>
-                      <div class="medium-4 columns card-build">
-                          <div class="card">
-
-                              <div class="card-section">
-                                  <h2>{{ project[1].direccion }}</h2>
-                                  <div class="descripcion">
-                                      {{ project[1].sub_titulo }}
-                                  </div>
-                                  <div class="precio text-center">
-                                      <div>Desde:</div>
-                                      <span>{{ project[1].valor_venta | number }}</span>
-                                  </div>
-                                  <hr>
-                              </div>
-                              <div class="card-section">
-                                  <div class="row">
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
-                                              </div>
-                                              <div class="data">{{ project[1].medida_apartamento }} m</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
-                                              </div>
-                                              <div class="data">{{ project[1].n_habitaciones }} alcobas</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
-                                              </div>
-                                              <div class="data">{{ project[1].n_gagrages }} garajes</div>
-                                          </div>
-                                      </div>
-                                      <div class="small-6 columns">
-                                          <div class="item">
-                                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                              <div class="data">{{ project[1].n_banos }} baños</div>
-                                          </div>
-                                          </div>
-                                      </div>
-                                      <hr>
-                                  </div>
-                                  <div class="card-section">
-                                      <div class="button-group align-spaced ">
-                                          <a class="button" href="proyecto.php">Ver
-                                              Proyecto</a>
-                                          <a class="button">Contacto</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                      <div class="small-12">
+                        <div class="label-info">Dirección oficina principal</div>
+                        <div class="dato">{{ content.field_builder_location[0].field_location_address }} </div>
                       </div>
-                  </li>
-              </ul>
-          </div>
-          <div class="container-controls">
-              <nav class="orbit-bullets">
-                  <button class="is-active" data-slide="0">
-                      <span class="show-for-sr">First slide details.</span>
-                      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-                  </button>
-                  <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-              </nav>
-              <div class="orbit-controls">
-                  <button class="orbit-previous"><span class="show-for-sr">Previous
-                          Slide</span>&#9664;&#xFE0E;</button>
-                  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-              </div>
-          </div>
-      </div>
-  </div> -->
-
-  <!--fin slide-->
-  <!-- Slider proyectos mobile -->
-
-  <div class="small-12 columns show-for-small-only">
-    <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;">
-      <ul class="slider-proyects-mobile">
-        <li class="is-active ">
-            <div class="medium-6 columns">
-                <!-- Card Proyecto individual-->
-                <div class="card" data-equalizer-watch>
-                    <div class="container-photo">
-                        <a href="{{allProjects[0].url}}"><img [src]="url_img_path + allProjects[0].typology_images" alt="" class="proyecto-card"></a>
-                        <div class="container-tools">
-                            <div class="tags">
-                                <div *ngIf="allProjects[0].project_category.length > 0; else tagTemplate1">
-                                    <div class="tag" *ngFor="let tags of allProjects[0].project_category; let i = index">
-                                        <a>{{ tags }}</a>
-                                    </div>
-                                </div>
-                                <ng-template #tagTemplate1>
-                                  <div class="tag">
-                                      <a>{{ allProjects[0].project_category }}</a>
-                                  </div>
-                              </ng-template>
-                            </div>
-                            <div class="add">
-                                <!-- <a (click)="addFavorite(allProjects[0].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                                <a class="fav"><img src="/assets/images/add.png" alt=""></a>
-                            </div>
-                        </div>
                     </div>
-                    <div class="card-section info">
-                        <a href="{{allProjects[0].url}}"><h2>{{ allProjects[0].project }}</h2></a>
-                        <div class="descripcion">
-                            {{ allProjects[0].property_type }}, {{ allProjects[0].project_neighborhood }}, {{ allProjects[0].project_city }}
-                        </div>
-                    </div>
-                    <div class="precio text-center">
-                        <div>Desde:</div>
-                        <span>${{ allProjects[0].typology_price }}</span>
-                    </div>
-                    <hr>
-                    <div class="card-section">
-                        <hr>
-                        <div class="row">
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                    <div class="data">{{ allProjects[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                    <div class="data">{{ allProjects[0].bedrooms }} Alcobas
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                    <div class="data">{{ allProjects[0].garages }} Garajes
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                    <div class="data">{{ allProjects[0].bathrooms }} Baños
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="card-section">
-                        <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="{{allProjects[0].url}}">Ver
-                                Proyecto</a>
-                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                        </div>
+                    <div class="medium-8 small-12 columns">
+                        <p [innerHTML]=content.description.slice(0,125) *ngIf="content.description; else lorem_description"></p>
+                        <ng-template #lorem_description>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis est eu nibh venenatis
+                              fringilla vitae sit amet orci. Ut euismod turpis in ipsum molestie venenatis. Cras et augue ac
+                              nisl congue eleifend hendrerit eget eros. Nulla pulvinar faucibus leo in tempus. Sed ornare
+                              libero sit amet justo congue, quis laoreet neque congue.</p>
+                        </ng-template>
                     </div>
                 </div>
             </div>
-        </li>
-        <li *ngIf="allProjects > 0">
-          <div class="medium-6 columns">
-              <!-- Card Proyecto individual-->
-              <div class="card" data-equalizer-watch>
-                  <div class="container-photo">
-                      <a href="{{allProjects[1].url}}"><img [src]="url_img_path + allProjects[1].typology_images" alt="" class="proyecto-card"></a>
-                      <div class="container-tools">
-                          <div class="tags">
-                              <div *ngIf="allProjects[1].project_category.length > 0; else tagTemplate2">
-                                  <div class="tag" *ngFor="let tags of allProjects[1].project_category; let i = index">
-                                      <a>{{ tags }}</a>
-                                  </div>
-                              </div>
-                              <ng-template #tagTemplate2>
-                                <div class="tag">
-                                    <a>{{ allProjects[1].project_category }}</a>
-                                </div>
-                            </ng-template>
-                          </div>
-                          <div class="add">
-                              <!-- <a (click)="addFavorite(allProjects[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-section info">
-                      <a href="{{allProjects[1].url}}"><h2>{{ allProjects[1].project }}</h2></a>
-                      <div class="descripcion">
-                          {{ allProjects[1].property_type }}, {{ allProjects[1].project_neighborhood }}, {{ allProjects[1].project_city }}
-                      </div>
-                  </div>
-                  <div class="precio text-center">
-                      <div>Desde:</div>
-                      <span>${{ allProjects[1].typology_price }}</span>
-                  </div>
-                  <hr>
+        </div>
+    </div>
+    <hr class="white">
+    <!--slide-->
+    <!-- Se comenta el carrusel ya que no esta llegandfo la información del api -->
+    <!-- <div class="row columns">
+        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+            <div class="orbit-wrapper">
 
-                  <div class="card-section">
-                      <hr>
-                      <div class="row">
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ allProjects[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ allProjects[1].bedrooms }} Alcobas
+                <ul class="orbit-container">
+                    <li class="is-active orbit-slide">
+                        <div class="row slide-build">
+                            <div class="medium-7 medium-offset-1 columns">
+                                <figure class="orbit-figure">
+                                    <img class="orbit-image" [src]="project[0].url_img" alt="">
+                                </figure>
+                            </div>
+                            <div class="medium-4 columns card-build">
+                                <div class="card">
+
+                                    <div class="card-section">
+                                        <h2>{{ project[0].direccion }}</h2>
+                                        <div class="descripcion">
+                                            {{ project[0].sub_titulo }}
+                                        </div>
+                                        <div class="precio text-center">
+                                            <div>Desde:</div>
+                                            <span>{{ project[0].valor_venta | number }}</span>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="card-section">
+                                        <div class="row">
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
+                                                    </div>
+                                                    <div class="data">{{ project[0].medida_apartamento }} m</div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
+                                                    </div>
+                                                    <div class="data">{{ project[0].n_habitaciones }} alcobas</div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
+                                                    </div>
+                                                    <div class="data">{{ project[0].n_gagrages }} garajes</div>
+                                                </div>
+                                            </div>
+                                            <div class="small-6 columns">
+                                                <div class="item">
+                                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                                    <div class="data">{{ project[0].n_banos }} baños</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="card-section">
+                                        <div class="button-group align-spaced ">
+                                            <a class="button" href="#">Ver
+                                                Proyecto</a>
+                                            <a class="button">Contacto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="orbit-slide">
+                        <div class="row slide-build">
+                            <div class="medium-7 medium-offset-1 columns">
+                              <figure class="orbit-figure">
+                                <img class="orbit-image" [src]="project[1].url_img" alt="">
+                            </figure>
+                        </div>
+                        <div class="medium-4 columns card-build">
+                            <div class="card">
+
+                                <div class="card-section">
+                                    <h2>{{ project[1].direccion }}</h2>
+                                    <div class="descripcion">
+                                        {{ project[1].sub_titulo }}
+                                    </div>
+                                    <div class="precio text-center">
+                                        <div>Desde:</div>
+                                        <span>{{ project[1].valor_venta | number }}</span>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="card-section">
+                                    <div class="row">
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt="">
+                                                </div>
+                                                <div class="data">{{ project[1].medida_apartamento }} m</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt="">
+                                                </div>
+                                                <div class="data">{{ project[1].n_habitaciones }} alcobas</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt="">
+                                                </div>
+                                                <div class="data">{{ project[1].n_gagrages }} garajes</div>
+                                            </div>
+                                        </div>
+                                        <div class="small-6 columns">
+                                            <div class="item">
+                                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                                <div class="data">{{ project[1].n_banos }} baños</div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="card-section">
+                                        <div class="button-group align-spaced ">
+                                            <a class="button" href="proyecto.php">Ver
+                                                Proyecto</a>
+                                            <a class="button">Contacto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-controls">
+                <nav class="orbit-bullets">
+                    <button class="is-active" data-slide="0">
+                        <span class="show-for-sr">First slide details.</span>
+                        <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                    </button>
+                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                </nav>
+                <div class="orbit-controls">
+                    <button class="orbit-previous"><span class="show-for-sr">Previous
+                            Slide</span>&#9664;&#xFE0E;</button>
+                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!--fin slide-->
+    <!-- Slider proyectos mobile -->
+
+    <div class="small-12 columns show-for-small-only">
+      <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;">
+        <ul class="slider-proyects-mobile">
+          <li class="is-active ">
+              <div class="medium-6 columns">
+                  <!-- Card Proyecto individual-->
+                  <div class="card" data-equalizer-watch>
+                      <div class="container-photo">
+                          <a href="{{allProjects[0].url}}"><img [src]="url_img_path + allProjects[0].typology_images" alt="" class="proyecto-card"></a>
+                          <div class="container-tools">
+                              <div class="tags">
+                                  <div *ngIf="allProjects[0].project_category.length > 0; else tagTemplate1">
+                                      <div class="tag" *ngFor="let tags of allProjects[0].project_category; let i = index">
+                                          <a>{{ tags }}</a>
+                                      </div>
                                   </div>
+                                  <ng-template #tagTemplate1>
+                                    <div class="tag">
+                                        <a>{{ allProjects[0].project_category }}</a>
+                                    </div>
+                                </ng-template>
                               </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ allProjects[1].garages }} Garajes
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ allProjects[1].bathrooms }} Baños
-                                  </div>
+                              <div class="add">
+                                  <!-- <a (click)="addFavorite(allProjects[0].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                                  <a class="fav"><img src="/assets/images/add.png" alt=""></a>
                               </div>
                           </div>
                       </div>
+                      <div class="card-section info">
+                          <a href="{{allProjects[0].url}}"><h2>{{ allProjects[0].project }}</h2></a>
+                          <div class="descripcion">
+                              {{ allProjects[0].property_type }}, {{ allProjects[0].project_neighborhood }}, {{ allProjects[0].project_city }}
+                          </div>
+                      </div>
+                      <div class="precio text-center">
+                          <div>Desde:</div>
+                          <span>${{ allProjects[0].typology_price }}</span>
+                      </div>
                       <hr>
-                  </div>
-                  <div class="card-section">
-                      <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="{{allProjects[1].url}}">Ver
-                              Proyecto</a>
-                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                      <div class="card-section">
+                          <hr>
+                          <div class="row">
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                      <div class="data">{{ allProjects[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                      <div class="data">{{ allProjects[0].bedrooms }} Alcobas
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                      <div class="data">{{ allProjects[0].garages }} Garajes
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                      <div class="data">{{ allProjects[0].bathrooms }} Baños
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr>
+                      </div>
+                      <div class="card-section">
+                          <div class="button-group align-spaced ">
+                              <a class="button bton-mobile" href="{{allProjects[0].url}}">Ver
+                                  Proyecto</a>
+                              <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                          </div>
                       </div>
                   </div>
               </div>
-          </div>
-            <!-- Fin Card Proyecto individual-->
-        </li>
-        <li *ngIf="allProjects > 1">
+          </li>
+          <li *ngIf="allProjects > 0">
             <div class="medium-6 columns">
                 <!-- Card Proyecto individual-->
                 <div class="card" data-equalizer-watch>
                     <div class="container-photo">
-                        <a href="{{allProjects[2].url}}"><img [src]="url_img_path + allProjects[2].typology_images" alt="" class="proyecto-card"></a>
+                        <a href="{{allProjects[1].url}}"><img [src]="url_img_path + allProjects[1].typology_images" alt="" class="proyecto-card"></a>
                         <div class="container-tools">
                             <div class="tags">
-                                <div *ngIf="allProjects[2].project_category.length > 0; else tagTemplate2">
-                                    <div class="tag" *ngFor="let tags of allProjects[2].project_category; let i = index">
+                                <div *ngIf="allProjects[1].project_category.length > 0; else tagTemplate2">
+                                    <div class="tag" *ngFor="let tags of allProjects[1].project_category; let i = index">
                                         <a>{{ tags }}</a>
                                     </div>
                                 </div>
                                 <ng-template #tagTemplate2>
                                   <div class="tag">
-                                      <a>{{ allProjects[2].project_category }}</a>
+                                      <a>{{ allProjects[1].project_category }}</a>
                                   </div>
                               </ng-template>
                             </div>
                             <div class="add">
-                                <a (click)="addFavorite(allProjects[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                                <!-- <a (click)="addFavorite(allProjects[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                                <a class="fav"><img src="/assets/images/add.png" alt=""></a>
                             </div>
                         </div>
                     </div>
                     <div class="card-section info">
-                      <a href="{{allProjects[2].url}}"><h2>{{ allProjects[2].project }}</h2></a>
+                        <a href="{{allProjects[1].url}}"><h2>{{ allProjects[1].project }}</h2></a>
                         <div class="descripcion">
-                            {{ allProjects[2].property_type }}, {{ allProjects[2].project_neighborhood }}, {{ allProjects[2].project_city }}
+                            {{ allProjects[1].property_type }}, {{ allProjects[1].project_neighborhood }}, {{ allProjects[1].project_city }}
                         </div>
                     </div>
                     <div class="precio text-center">
                         <div>Desde:</div>
-                        <span>${{ allProjects[2].typology_price }}</span>
+                        <span>${{ allProjects[1].typology_price }}</span>
                     </div>
                     <hr>
 
@@ -428,27 +347,27 @@
                             <div class="small-6 columns">
                                 <div class="item">
                                     <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                    <div class="data">{{ allProjects[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                    <div class="data">{{ allProjects[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                                 </div>
                             </div>
                             <div class="small-6 columns">
                                 <div class="item">
                                     <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                    <div class="data">{{ allProjects[2].bedrooms }} Alcobas
+                                    <div class="data">{{ allProjects[1].bedrooms }} Alcobas
                                     </div>
                                 </div>
                             </div>
                             <div class="small-6 columns">
                                 <div class="item">
                                     <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                    <div class="data">{{ allProjects[2].garages }} Garajes
+                                    <div class="data">{{ allProjects[1].garages }} Garajes
                                     </div>
                                 </div>
                             </div>
                             <div class="small-6 columns">
                                 <div class="item">
                                     <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                    <div class="data">{{ allProjects[2].bathrooms }} Baños
+                                    <div class="data">{{ allProjects[1].bathrooms }} Baños
                                     </div>
                                 </div>
                             </div>
@@ -457,639 +376,721 @@
                     </div>
                     <div class="card-section">
                         <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="{{allProjects[2].url}}">Ver
+                            <a class="button bton-mobile" href="{{allProjects[1].url}}">Ver
                                 Proyecto</a>
                             <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </li>
-        <li *ngIf="allProjects > 2">
-            <div class="medium-6 columns">
-                <!-- Card Proyecto individual-->
-                <div class="card" data-equalizer-watch>
-                    <div class="container-photo">
-                      <a href="{{allProjects[3].url}}"><img [src]="url_img_path + allProjects[3].typology_images" alt="" class="proyecto-card"></a>
-                        <div class="container-tools">
-                            <div class="tags">
-                                <div *ngIf="allProjects[3].project_category.length > 0; else tagTemplate3">
-                                    <div class="tag" *ngFor="let tags of allProjects[3].project_category; let i = index">
-                                        <a>{{ tags }}</a>
-                                    </div>
-                                </div>
-                                <ng-template #tagTemplate3>
-                                  <div class="tag">
-                                      <a>{{ allProjects[3].project_category }}</a>
+              <!-- Fin Card Proyecto individual-->
+          </li>
+          <li *ngIf="allProjects > 1">
+              <div class="medium-6 columns">
+                  <!-- Card Proyecto individual-->
+                  <div class="card" data-equalizer-watch>
+                      <div class="container-photo">
+                          <a href="{{allProjects[2].url}}"><img [src]="url_img_path + allProjects[2].typology_images" alt="" class="proyecto-card"></a>
+                          <div class="container-tools">
+                              <div class="tags">
+                                  <div *ngIf="allProjects[2].project_category.length > 0; else tagTemplate2">
+                                      <div class="tag" *ngFor="let tags of allProjects[2].project_category; let i = index">
+                                          <a>{{ tags }}</a>
+                                      </div>
                                   </div>
-                              </ng-template>
-                            </div>
-                            <div class="add">
-                                <a (click)="addFavorite(allProjects[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section info">
-                      <a href="{{allProjects[3].url}}"><h2>{{ allProjects[3].project }}</h2></a>
-                        <div class="descripcion">
-                            {{ allProjects[3].property_type }}, {{ allProjects[3].project_neighborhood }}, {{ allProjects[3].project_city }}
-                        </div>
-                    </div>
-                    <div class="precio text-center">
-                        <div>Desde:</div>
-                        <span>${{ allProjects[3].typology_price }}</span>
-                    </div>
-                    <hr>
+                                  <ng-template #tagTemplate2>
+                                    <div class="tag">
+                                        <a>{{ allProjects[2].project_category }}</a>
+                                    </div>
+                                </ng-template>
+                              </div>
+                              <div class="add">
+                                  <a (click)="addFavorite(allProjects[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                  <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-section info">
+                        <a href="{{allProjects[2].url}}"><h2>{{ allProjects[2].project }}</h2></a>
+                          <div class="descripcion">
+                              {{ allProjects[2].property_type }}, {{ allProjects[2].project_neighborhood }}, {{ allProjects[2].project_city }}
+                          </div>
+                      </div>
+                      <div class="precio text-center">
+                          <div>Desde:</div>
+                          <span>${{ allProjects[2].typology_price }}</span>
+                      </div>
+                      <hr>
 
-                    <div class="card-section">
-                        <hr>
-                        <div class="row">
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                    <div class="data">{{ allProjects[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                    <div class="data">{{ allProjects[3].bedrooms }} Alcobas
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                    <div class="data">{{ allProjects[3].garages }} Garajes
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                    <div class="data">{{ allProjects[3].bathrooms }} Baños
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="card-section">
-                        <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="{{allProjects[3].url}}">Ver
-                                Proyecto</a>
-                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li *ngIf="allProjects > 3">
-            <div class="medium-6 columns">
-                <!-- Card Proyecto individual-->
-                <div class="card" data-equalizer-watch>
-                    <div class="container-photo">
-                      <a href="{{allProjects[4].url}}"><img [src]="url_img_path + allProjects[4].typology_images" alt="" class="proyecto-card"></a>
-                        <div class="container-tools">
-                            <div class="tags">
-                                <div *ngIf="allProjects[4].project_category.length > 0 tagTemplate4">
-                                    <div class="tag" *ngFor="let tags of allProjects[4].project_category; let i = index">
-                                        <a>{{ tags }}</a>
-                                    </div>
-                                </div>
-                                <ng-template #tagTemplate4>
-                                  <div class="tag">
-                                      <a>{{ allProjects[4].project_category }}</a>
+                      <div class="card-section">
+                          <hr>
+                          <div class="row">
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                      <div class="data">{{ allProjects[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
                                   </div>
-                              </ng-template>
-                            </div>
-                            <div class="add">
-                                <a (click)="addFavorite(allProjects[4].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                                <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section info">
-                      <a href="{{allProjects[4].url}}"><h2>{{ allProjects[4].project }}</h2></a>
-                        <div class="descripcion">
-                            {{ allProjects[4].property_type }}, {{ allProjects[4].project_neighborhood }}, {{ allProjects[4].project_city }}
-                        </div>
-                    </div>
-                    <div class="precio text-center">
-                        <div>Desde:</div>
-                        <span>${{ allProjects[4].typology_price }}</span>
-                    </div>
-                    <hr>
-
-                    <div class="card-section">
-                        <hr>
-                        <div class="row">
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                    <div class="data">{{ allProjects[4].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                    <div class="data">{{ allProjects[4].bedrooms }} Alcobas
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                    <div class="data">{{ allProjects[4].garages }} Garajes
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="small-6 columns">
-                                <div class="item">
-                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                    <div class="data">{{ allProjects[4].bathrooms }} Baños
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="card-section">
-                        <div class="button-group align-spaced ">
-                            <a class="button bton-mobile" href="{{allProjects[4].url}}">Ver
-                                Proyecto</a>
-                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- Fin slide proyectos mobile -->
-
-  <hr class="white">
-  <div class="row columns">
-      <h4 class="deco text-center hide-for-small-only">Proyectos de Constructora {{ content.label }}</h4>
-      <br>
-      <!--filtros-->
-      <div id="filters-form" class="hide-for-small-only">
-        <form [formGroup]="form_filters">
-          <div class="filtros">
-              <div class="row condensed">
-                  <div class="medium-2 columns">
-                      <label>Tipo de inmueble
-                          <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
-                            <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
-                              <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
-                          </select>
-                      </label>
-                  </div>
-                  <div class="medium-2 columns">
-                      <label>Precio
-                          <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
-                            <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
-                              <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
-                          </select>
-                      </label>
-                  </div>
-                  <div class="medium-2 columns">
-                      <label>Ciudad
-                          <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
-                            <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
-                              <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
-                          </select>
-                      </label>
-                  </div>
-                  <div class="medium-2 columns">
-                      <label>Zona
-                          <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
-                            <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
-                              <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
-                          </select>
-                          <ng-template #zoneTemplate>
-                              <select disabled="true">
-                                  <option value="" selected>Seleccione</option>
-                              </select>
-                          </ng-template>
-                      </label>
-                  </div>
-                  <div class="medium-2 columns">
-                      <label>Sector
-                          <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
-                            <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
-                              <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
-                          </select>
-                          <ng-template #sectorTemplate>
-                              <select disabled="true">
-                                  <option value="" selected>Seleccione</option>
-                              </select>
-                          </ng-template>
-                      </label>
-                  </div>
-                  <div class="medium-2 columns">
-                      <div class="botones list width-div">
-                          <a class="button filtro-btn" data-open="masfiltrosModal">Más filtros</a>
-                          <a href="#" class="button secondary favorito button-color-ev fav-btn">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                      <div class="data">{{ allProjects[2].bedrooms }} Alcobas
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                      <div class="data">{{ allProjects[2].garages }} Garajes
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                      <div class="data">{{ allProjects[2].bathrooms }} Baños
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr>
+                      </div>
+                      <div class="card-section">
+                          <div class="button-group align-spaced ">
+                              <a class="button bton-mobile" href="{{allProjects[2].url}}">Ver
+                                  Proyecto</a>
+                              <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                          </div>
                       </div>
                   </div>
               </div>
-              <div class="row condensed">
-              <div class="filtros-tag">
-                  <!-- Aqui van los tags de más filtros -->
-                  <!-- <a href="#" class="button close">3 Habitaciones</a> -->
+          </li>
+          <li *ngIf="allProjects > 2">
+              <div class="medium-6 columns">
+                  <!-- Card Proyecto individual-->
+                  <div class="card" data-equalizer-watch>
+                      <div class="container-photo">
+                        <a href="{{allProjects[3].url}}"><img [src]="url_img_path + allProjects[3].typology_images" alt="" class="proyecto-card"></a>
+                          <div class="container-tools">
+                              <div class="tags">
+                                  <div *ngIf="allProjects[3].project_category.length > 0; else tagTemplate3">
+                                      <div class="tag" *ngFor="let tags of allProjects[3].project_category; let i = index">
+                                          <a>{{ tags }}</a>
+                                      </div>
+                                  </div>
+                                  <ng-template #tagTemplate3>
+                                    <div class="tag">
+                                        <a>{{ allProjects[3].project_category }}</a>
+                                    </div>
+                                </ng-template>
+                              </div>
+                              <div class="add">
+                                  <a (click)="addFavorite(allProjects[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                  <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-section info">
+                        <a href="{{allProjects[3].url}}"><h2>{{ allProjects[3].project }}</h2></a>
+                          <div class="descripcion">
+                              {{ allProjects[3].property_type }}, {{ allProjects[3].project_neighborhood }}, {{ allProjects[3].project_city }}
+                          </div>
+                      </div>
+                      <div class="precio text-center">
+                          <div>Desde:</div>
+                          <span>${{ allProjects[3].typology_price }}</span>
+                      </div>
+                      <hr>
+
+                      <div class="card-section">
+                          <hr>
+                          <div class="row">
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                      <div class="data">{{ allProjects[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                      <div class="data">{{ allProjects[3].bedrooms }} Alcobas
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                      <div class="data">{{ allProjects[3].garages }} Garajes
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                      <div class="data">{{ allProjects[3].bathrooms }} Baños
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr>
+                      </div>
+                      <div class="card-section">
+                          <div class="button-group align-spaced ">
+                              <a class="button bton-mobile" href="{{allProjects[3].url}}">Ver
+                                  Proyecto</a>
+                              <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                          </div>
+                      </div>
+                  </div>
               </div>
-          </div>
-          </div>
-        </form>
+          </li>
+          <li *ngIf="allProjects > 3">
+              <div class="medium-6 columns">
+                  <!-- Card Proyecto individual-->
+                  <div class="card" data-equalizer-watch>
+                      <div class="container-photo">
+                        <a href="{{allProjects[4].url}}"><img [src]="url_img_path + allProjects[4].typology_images" alt="" class="proyecto-card"></a>
+                          <div class="container-tools">
+                              <div class="tags">
+                                  <div *ngIf="allProjects[4].project_category.length > 0 tagTemplate4">
+                                      <div class="tag" *ngFor="let tags of allProjects[4].project_category; let i = index">
+                                          <a>{{ tags }}</a>
+                                      </div>
+                                  </div>
+                                  <ng-template #tagTemplate4>
+                                    <div class="tag">
+                                        <a>{{ allProjects[4].project_category }}</a>
+                                    </div>
+                                </ng-template>
+                              </div>
+                              <div class="add">
+                                  <a (click)="addFavorite(allProjects[4].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                                  <!-- <a class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-section info">
+                        <a href="{{allProjects[4].url}}"><h2>{{ allProjects[4].project }}</h2></a>
+                          <div class="descripcion">
+                              {{ allProjects[4].property_type }}, {{ allProjects[4].project_neighborhood }}, {{ allProjects[4].project_city }}
+                          </div>
+                      </div>
+                      <div class="precio text-center">
+                          <div>Desde:</div>
+                          <span>${{ allProjects[4].typology_price }}</span>
+                      </div>
+                      <hr>
+
+                      <div class="card-section">
+                          <hr>
+                          <div class="row">
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                      <div class="data">{{ allProjects[4].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                      <div class="data">{{ allProjects[4].bedrooms }} Alcobas
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                      <div class="data">{{ allProjects[4].garages }} Garajes
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <div class="item">
+                                      <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                      <div class="data">{{ allProjects[4].bathrooms }} Baños
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr>
+                      </div>
+                      <div class="card-section">
+                          <div class="button-group align-spaced ">
+                              <a class="button bton-mobile" href="{{allProjects[4].url}}">Ver
+                                  Proyecto</a>
+                              <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </li>
+        </ul>
       </div>
-      <!--fin filtros-->
-      <hr>
-      <!-- Modal más filtros -->
-      <div class="reveal filter small-12" id="masfiltrosModal" data-reveal>
-          <div id="filters-form">
-            <form [formGroup]="form_filters">
-              <div class="filtros show-for-small-only">
-                  <div class="medium-12 small-12 colunms text-center">
-                      <h1><strong>Más filtros</strong></h1>
-                  </div>
-                  <div class="row condensed">
-                      <div class="medium-2 columns">
-                          <label>Tipo de inmueble
-                              <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
-                                <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
-                                  <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
-                              </select>
-                          </label>
-                      </div>
-                      <div class="medium-2 columns">
-                          <label>Precio
-                              <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
-                                <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
-                                  <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
-                              </select>
-                          </label>
-                      </div>
-                      <div class="medium-2 columns">
-                          <label>Ciudad
-                              <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
-                                <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
-                                  <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
-                              </select>
-                          </label>
-                      </div>
-                      <div class="medium-2 columns">
-                          <label>Zona
-                              <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
-                                <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
-                                  <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
-                              </select>
-                              <ng-template #zoneTemplate>
-                                  <select disabled="true">
-                                      <option value="" selected>Seleccione</option>
-                                  </select>
-                              </ng-template>
-                          </label>
-                      </div>
-                      <div class="medium-2 columns">
-                          <label>Sector
-                              <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
-                                <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
-                                  <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
-                              </select>
-                              <ng-template #sectorTemplate>
-                                  <select disabled="true">
-                                      <option value="" selected>Seleccione</option>
-                                  </select>
-                              </ng-template>
-                          </label>
-                      </div>
-                  </div>
-              </div>
-            </form>
-          </div>
-          <form [formGroup]="form_moreFilters">
-              <div class="row">
-                <div class="medium-12 small-12 columns">
-                  <div class="medium-12 small-12 colunms text-center hide-for-small-only">
-                      <h1><strong>Más filtros</strong></h1>
-                  </div>
-                  <div class="medium-6 small-12 columns">
-                      <h3>Estado del proyecto</h3>
-                      <div *ngFor="let state_project of ValoresProyecto">
-                          <label class="container-check">{{state_project.values.value}}
-                              <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{state_project.url}}">
-                              <span class="checkmark-morefilter"></span>
-                          </label>
-                      </div>
-                      <div class="mTop-inmuebles">
-                        <h3>Inmueble</h3>
-                        <div class="row">
-                            <div class="small-6 columns">
-                                <div class="margin-top10"> Área m²</div>
-                            </div>
-                            <div class="small-6 columns">
-                                <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
-                                    <option *ngFor="let area of filterAreaBuilt; let i = index" [value]="area.url">{{area.values.value == "." ? "Todos": area.values.value }}</option>
+    </div>
+    <!-- Fin slide proyectos mobile -->
+
+    <hr class="white">
+    <div class="row columns">
+        <h4 class="deco text-center hide-for-small-only">Proyectos de Constructora {{ content.label }}</h4>
+        <br>
+        <!--filtros-->
+        <div id="filters-form" class="hide-for-small-only">
+          <form [formGroup]="form_filters">
+            <div class="filtros">
+                <div class="row condensed">
+                    <div class="medium-2 columns">
+                        <label>Tipo de inmueble
+                            <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                              <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
+                                <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Precio
+                            <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                              <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
+                                <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Ciudad
+                            <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                              <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
+                                <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Zona
+                            <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                              <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
+                                <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
+                            </select>
+                            <ng-template #zoneTemplate>
+                                <select disabled="true">
+                                    <option value="" selected>Seleccione</option>
                                 </select>
+                            </ng-template>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Sector
+                            <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                              <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
+                                <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
+                            </select>
+                            <ng-template #sectorTemplate>
+                                <select disabled="true">
+                                    <option value="" selected>Seleccione</option>
+                                </select>
+                            </ng-template>
+                        </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <div class="botones list width-div">
+                            <a class="button filtro-btn" data-open="masfiltrosModal">Más filtros</a>
+                            <a href="#" class="button secondary favorito button-color-ev fav-btn">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row condensed">
+                <div class="filtros-tag">
+                    <!-- Aqui van los tags de más filtros -->
+                    <!-- <a href="#" class="button close">3 Habitaciones</a> -->
+                </div>
+            </div>
+            </div>
+          </form>
+        </div>
+        <!--fin filtros-->
+        <hr>
+        <!-- Modal más filtros -->
+        <div class="reveal filter small-12" id="masfiltrosModal" data-reveal>
+            <div id="filters-form">
+              <form [formGroup]="form_filters">
+                <div class="filtros show-for-small-only">
+                    <div class="medium-12 small-12 colunms text-center">
+                        <h1><strong>Más filtros</strong></h1>
+                    </div>
+                    <div class="row condensed">
+                        <div class="medium-2 columns">
+                            <label>Tipo de inmueble
+                                <select id="type" name="type" formControlName="type" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                                  <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
+                                    <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="medium-2 columns">
+                            <label>Precio
+                                <select id="price" name="price" formControlName="price" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                                  <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
+                                    <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="medium-2 columns">
+                            <label>Ciudad
+                                <select id="city" name="city" formControlName="city" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                                  <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
+                                    <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="medium-2 columns">
+                            <label>Zona
+                                <select id="zone" name="zone" formControlName="zone" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                                  <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
+                                    <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
+                                </select>
+                                <ng-template #zoneTemplate>
+                                    <select disabled="true">
+                                        <option value="" selected>Seleccione</option>
+                                    </select>
+                                </ng-template>
+                            </label>
+                        </div>
+                        <div class="medium-2 columns">
+                            <label>Sector
+                                <select id="sector" name="sector" formControlName="sector" (change)="change(content.drupal_internal__id,form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                                  <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
+                                    <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
+                                </select>
+                                <ng-template #sectorTemplate>
+                                    <select disabled="true">
+                                        <option value="" selected>Seleccione</option>
+                                    </select>
+                                </ng-template>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+            <form [formGroup]="form_moreFilters">
+                <div class="row">
+                  <div class="medium-12 small-12 columns">
+                    <div class="medium-12 small-12 colunms text-center hide-for-small-only">
+                        <h1><strong>Más filtros</strong></h1>
+                    </div>
+                    <div class="medium-6 small-12 columns">
+                        <h3>Estado del proyecto</h3>
+                        <div *ngFor="let state_project of ValoresProyecto">
+                            <label class="container-check">{{state_project.values.value}}
+                                <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{state_project.url}}">
+                                <span class="checkmark-morefilter"></span>
+                            </label>
+                        </div>
+                        <div class="mTop-inmuebles">
+                          <h3>Inmueble</h3>
+                          <div class="row">
+                              <div class="small-6 columns">
+                                  <div class="margin-top10"> Área m²</div>
+                              </div>
+                              <div class="small-6 columns">
+                                  <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="changeMoreFilters(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
+                                      <option *ngFor="let area of filterAreaBuilt; let i = index" [value]="area.url">{{area.values.value == "." ? "Todos": area.values.value }}</option>
+                                  </select>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <div> Habitaciones</div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="input-group input-number-group">
+                                    <div class="input-group-button-morefilter">
+                                        <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
+                                    </div>
+                                    <input class="input-number input-morefilter" type="number" readonly id="bedroom" value="1" min="0" max="1000">
+                                    <div class="input-group-button-morefilter">
+                                        <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                      </div>
-                      <div class="row">
-                          <div class="small-6 columns">
-                              <div> Habitaciones</div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="input-group input-number-group">
-                                  <div class="input-group-button-morefilter">
-                                      <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
-                                  </div>
-                                  <input class="input-number input-morefilter" type="number" readonly id="bedroom" value="1" min="0" max="1000">
-                                  <div class="input-group-button-morefilter">
-                                      <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
-                                  </div>
-                              </div>
-
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="small-6 columns">
-                              <div> Baños</div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="input-group input-number-group">
-                                  <div class="input-group-button-morefilter">
-                                      <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
-                                  </div>
-                                  <input class="input-number input-morefilter" type="number" readonly id="bathroom" value="1" min="0" max="1000">
-                                  <div class="input-group-button-morefilter">
-                                      <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="small-6 columns">
-                              <div> Garajes</div>
-                          </div>
-                          <div class="small-6 columns">
-
-                              <div class="input-group input-number-group">
-                                  <div class="input-group-button-morefilter">
-                                      <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
-                                  </div>
-                                  <input class="input-number input-morefilter" type="number" readonly id="garage" value="1" min="0" max="1000">
-                                  <div class="input-group-button-morefilter">
-                                      <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
-                                  </div>
-                              </div>
-
-                          </div>
-                      </div>
-                  </div>
-                  <div class="medium-5 small-12 columns">
-                      <div class="row">
-                          <h3>Constructora</h3>
-                          <div *ngFor="let builder of filterBuilder; let i = index">
-                            <label for=""><strong> {{ builder.values.value }} </strong></label>
-                          </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                          <h3>Colecciones</h3>
-                          <div class="filtros-tag-collection" *ngFor="let collection of filterColection">
-                              <a *ngIf="collection.values.active == 'true'; else simpleCollection" (click)="clickCollection(collection.url)" class="button bton-collection bton-collection-active">{{collection.values.value}}</a>
-                              <ng-template #simpleCollection>
-                                  <a (click)="clickCollection(collection.url)" class="button bton-collection">{{collection.values.value}}</a>
-                              </ng-template>
-                          </div>
-                      </div>
-                      <br>
-                      <br>
-                      <div class="row">
-                        <div class="columns medium-6 small-6">
-                          <a (click)="cleanFilter()">Limpiar filtros</a>
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <div> Baños</div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="input-group input-number-group">
+                                    <div class="input-group-button-morefilter">
+                                        <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
+                                    </div>
+                                    <input class="input-number input-morefilter" type="number" readonly id="bathroom" value="1" min="0" max="1000">
+                                    <div class="input-group-button-morefilter">
+                                        <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="columns medium-6 small-6">
-                          <a data-close aria-label="Close modal" class="button secondary button-show-apartment mLfetApartamentos">Mostrar <span>{{countProjects}}</span> apartamentos</a>
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <div> Garajes</div>
+                            </div>
+                            <div class="small-6 columns">
+
+                                <div class="input-group input-number-group">
+                                    <div class="input-group-button-morefilter">
+                                        <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
+                                    </div>
+                                    <input class="input-number input-morefilter" type="number" readonly id="garage" value="1" min="0" max="1000">
+                                    <div class="input-group-button-morefilter">
+                                        <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                      </div>
+                    </div>
+                    <div class="medium-5 small-12 columns">
+                        <div class="row">
+                            <h3>Constructora</h3>
+                            <div *ngFor="let builder of filterBuilder; let i = index">
+                              <label for=""><strong> {{ builder.values.value }} </strong></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <h3>Colecciones</h3>
+                            <div class="filtros-tag-collection" *ngFor="let collection of filterColection">
+                                <a *ngIf="collection.values.active == 'true'; else simpleCollection" (click)="clickCollection(collection.url)" class="button bton-collection bton-collection-active">{{collection.values.value}}</a>
+                                <ng-template #simpleCollection>
+                                    <a (click)="clickCollection(collection.url)" class="button bton-collection">{{collection.values.value}}</a>
+                                </ng-template>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                          <div class="columns medium-6 small-6">
+                            <a (click)="cleanFilter()">Limpiar filtros</a>
+                          </div>
+                          <div class="columns medium-6 small-6">
+                            <a data-close aria-label="Close modal" class="button secondary button-show-apartment mLfetApartamentos">Mostrar <span>{{countProjects}}</span> apartamentos</a>
+                          </div>
+                        </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-          </form>
-          <button class="close-button" data-close aria-label="Close modal" type="button">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      <!-- Fin modal más filtros -->
-  </div>
-  <!-- Ordenar y comparar -->
-  <div class="row">
-    <div class="medium-4 columns proyectolist">
-        <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
-    </div>
-    <div class="medium-2 columns end">
-      <div class="columns small-12 show-for-small-only">
-        <div class="columns small-3" style="margin-top: 8px;">
-          <label class="sohw-for-small-only">Ordenar por:
-          </label>
+            </form>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-        <div class="columns small-9">
+        <!-- Fin modal más filtros -->
+    </div>
+    <!-- Ordenar y comparar -->
+    <div class="row">
+      <div class="medium-4 columns proyectolist">
+          <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
+      </div>
+      <div class="medium-2 columns end">
+        <div class="columns small-12 show-for-small-only">
+          <div class="columns small-3" style="margin-top: 8px;">
+            <label class="sohw-for-small-only">Ordenar por:
+            </label>
+          </div>
+          <div class="columns small-9">
+            <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+                <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="hide-for-small-only">
           <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+              <option value="" *ngIf="optionsSortSelected == ''">Ordenar por:</option>
               <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
           </select>
         </div>
       </div>
-      <div class="hide-for-small-only">
-        <select id="sortBy" name="sortBy" (change)="changeSort()" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
-            <option value="" *ngIf="optionsSortSelected == ''">Ordenar por:</option>
-            <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
-        </select>
+      <div class="medium-1 columns end">
+          <a class="button secondary hide-for-small-only">Comparar</a>
       </div>
-    </div>
-    <div class="medium-1 columns end">
-        <a class="button secondary hide-for-small-only">Comparar</a>
-    </div>
-    <div class="medium-2 columns fRight pTop8 hide-for-small-only">
-      <div class="columns medium-2 end" style="margin-left: -15px;white-space: nowrap;">
-        <label>Mostrar mapa</label>
-      </div>
-        <div class="switch" style="float: right;margin-right: 8px;">
-          <input class="switch-input" id="defaultSwitch" (click)='showMap($event)' type="checkbox"  [(ngModel)]="eventos" name="defaultSwitch">
-          <label class="switch-paddle" for="defaultSwitch">
-            <!-- <span class="show-for-sr">Default Switch</span> -->
-          </label>
+      <div class="medium-2 columns fRight pTop8 hide-for-small-only">
+        <div class="columns medium-2 end" style="margin-left: -15px;white-space: nowrap;">
+          <label>Mostrar mapa</label>
         </div>
-    </div>
-  </div>
-  <!-- Fin ordenar y comparar -->
-  <hr class="white">
-  <!-- proyectos y mapa desktop -->
-  <div class="row">
-    <div id="smallScrenn" class="medium-12 columns">
-      <div id="FullScrenn" class="medium-3 columns end FullScrenn" *ngFor="let project of allProjects; let i = index">
-          <div class="card" data-equalizer-watch>
-              <div class="container-photo">
-                  <a href="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
-                  <div class="container-tools">
-                      <div class="tags">
-                        <div *ngIf="project.project_category.length > 0; else tagTemplateProject">
-                            <div class="tag" *ngFor="let tags of project.project_category; let i = index">
-                                <a>{{ tags }}</a>
-                            </div>
-                        </div>
-                      </div>
-                      <ng-template #tagTemplateProject>
-                        <div class="tag">
-                            <a>{{ project.project_category }}</a>
-                        </div>
-                    </ng-template>
-                      <div class="add">
-                          <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                      </div>
-                  </div>
-              </div>
-              <div class="card-section info">
-                <a href="{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
-                  <div class="descripcion" style="min-height: 40px; max-height: 40px;">
-                    {{ project.property_type }} en {{ project.project_neighborhood }}, {{ project.project_city }}
-                  </div>
-                  <div class="precio text-center">
-                      <div>Desde:</div>
-                      <span>${{ project.typology_price }}</span>
-                  </div>
-                  <hr>
-              </div>
-              <div class="card-section">
-                  <div class="row">
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                              <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                              <div class="data"> {{ project.bedrooms }} Alcobas</div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                              <div class="data"> {{ project.garages }} Garajes </div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                              <div class="data"> {{ project.bathrooms }} Baños</div>
-                          </div>
-                      </div>
-                  </div>
-                  <hr>
-              </div>
-              <div class="card-section">
-                  <div class="button-group align-spaced ">
-                    <a class="button bton-mobile" routerLink="/{{project.url}}">Ver
-                        Proyecto</a>
-                      <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                  </div>
-              </div>
+          <div class="switch" style="float: right;margin-right: 8px;">
+            <input class="switch-input" id="defaultSwitch" (click)='showMap($event)' type="checkbox"  [(ngModel)]="eventos" name="defaultSwitch">
+            <label class="switch-paddle" for="defaultSwitch">
+              <!-- <span class="show-for-sr">Default Switch</span> -->
+            </label>
           </div>
       </div>
     </div>
-    <div id="ProyectMap" class="medium-6 columns hide map-float" style="padding-bottom: 19px;">
-        <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important; ">
-            <agm-marker *ngFor="let marker of allProjects" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="icon_ev">>
-                <agm-info-window #infoWindow>
-                    {{ marker.project }}
-                </agm-info-window>
-            </agm-marker>
-
-        </agm-map>
-    </div>
-  </div>
-  <!-- Fin proyectos y mapa desktop -->
-
-  <hr class="white">
-  <div class="row columns text-center">
-    <button  [disabled]="banderaProyecto" (click)='MoreRecords()'  class="button secondary bton-mobile">Cargar más</button>
-  </div>
-  <!-- modal de contacto -->
-  <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
-    <h2>Contactar</h2>
-    <form data-abide novalidate [formGroup]="form">
-        <div class="container-form">
-            <span id="spanName" class="error hide">
-                Debe digitar un nombre de contacto
-              </span>
-            <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
-            <span id="spannLastName" class="error hide">
-            Debe digitar un apellido de contacto
-          </span>
-            <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
-            <span id="spanEmail" class="error hide">
-            Debe digitar un correo de contacto valido
-          </span>
-            <input type="text" placeholder="Email*" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
-            <span id="spanPhone" class="error hide">
-            Debe digitar un n&uacute;mbre de contacto
-          </span>
-            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
-            <span id="spanContact" class="error hide">
-            Debe seleccionar una opción
-          </span>
-            <select id="select" required formControlName="contact" name="contact">
-            <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
-            <option value="telefono">Tel&eacute;fonica</option>
-            <option value="email">Correo Electr&oacute;nico</option>
-            <option value="whatsapp">Whatsapp</option>
-          </select>
-            <span id="spanTypesearch" class="error hide">
-            Debe seleccionar una opción
-            </span>
-            <fieldset class="text-left">
-                <legend>Buscas vivienda para:</legend>
-                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
-                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
-            </fieldset>
-            <span id="spanTerm" class="error hide">
-            Debe aceptar los términos
-            </span>
-            <div class="text-left terminos">
-                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
-                  haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
-                  mismos.</label>
-
+    <!-- Fin ordenar y comparar -->
+    <hr class="white">
+    <!-- proyectos y mapa desktop -->
+    <div class="row">
+      <div id="smallScrenn" class="medium-12 columns">
+        <div id="FullScrenn" class="medium-3 columns end FullScrenn" *ngFor="let project of allProjects; let i = index">
+            <div class="card" data-equalizer-watch>
+                <div class="container-photo">
+                    <a href="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                    <div class="container-tools">
+                        <div class="tags">
+                          <div *ngIf="project.project_category.length > 0; else tagTemplateProject">
+                              <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                                  <a>{{ tags }}</a>
+                              </div>
+                          </div>
+                        </div>
+                        <ng-template #tagTemplateProject>
+                          <div class="tag">
+                              <a>{{ project.project_category }}</a>
+                          </div>
+                      </ng-template>
+                        <div class="add">
+                            <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section info">
+                  <a href="{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
+                    <div class="descripcion" style="min-height: 40px; max-height: 40px;">
+                      {{ project.property_type }} en {{ project.project_neighborhood }}, {{ project.project_city }}
+                    </div>
+                    <div class="precio text-center">
+                        <div>Desde:</div>
+                        <span>${{ project.typology_price }}</span>
+                    </div>
+                    <hr>
+                </div>
+                <div class="card-section">
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                <div class="data"> {{ project.bedrooms }} Alcobas</div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                <div class="data"> {{ project.garages }} Garajes </div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                <div class="data"> {{ project.bathrooms }} Baños</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="card-section">
+                    <div class="button-group align-spaced ">
+                      <a class="button bton-mobile" routerLink="/{{project.url}}">Ver
+                          Proyecto</a>
+                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                    </div>
+                </div>
             </div>
-            <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
         </div>
-    </form>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <!-- fin de modal contacto -->
-  <!-- modal de gracias -->
-  <div class="reveal text-center" id="exampleModal1" data-reveal>
-    <img src="/assets/images/logo-ev.png">
-    <h2>¡Gracias!</h2>
-    <p>Pronto te llegará toda la información a tu correo</p>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <!-- fin de modal de gracias -->
+      </div>
+      <div id="ProyectMap" class="medium-6 columns hide map-float" style="padding-bottom: 19px;">
+          <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important; ">
+              <agm-marker *ngFor="let marker of allProjects" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="icon_ev">>
+                  <agm-info-window #infoWindow>
+                      {{ marker.project }}
+                  </agm-info-window>
+              </agm-marker>
 
-  <div class="show-for-small-only filter-button">
-    <div style="width: 34px;height: 31px;">
-      <a data-open="masfiltrosModal">
-        <img width="28px" height="28px" src="/assets/images/filtros.png">
-      </a>
+          </agm-map>
+      </div>
+    </div>
+    <!-- Fin proyectos y mapa desktop -->
+
+    <hr class="white">
+    <div class="row columns text-center">
+      <button  [disabled]="banderaProyecto" (click)='MoreRecords()'  class="button secondary bton-mobile">Cargar más</button>
+    </div>
+    <!-- modal de contacto -->
+    <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
+      <h2>Contactar</h2>
+      <form data-abide novalidate [formGroup]="form">
+          <div class="container-form">
+              <span id="spanName" class="error hide">
+                  Debe digitar un nombre de contacto
+                </span>
+              <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+              <span id="spannLastName" class="error hide">
+              Debe digitar un apellido de contacto
+            </span>
+              <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+              <span id="spanEmail" class="error hide">
+              Debe digitar un correo de contacto valido
+            </span>
+              <input type="text" placeholder="Email*" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+              <span id="spanPhone" class="error hide">
+              Debe digitar un n&uacute;mbre de contacto
+            </span>
+              <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+              <span id="spanContact" class="error hide">
+              Debe seleccionar una opción
+            </span>
+              <select id="select" required formControlName="contact" name="contact">
+              <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+              <option value="telefono">Tel&eacute;fonica</option>
+              <option value="email">Correo Electr&oacute;nico</option>
+              <option value="whatsapp">Whatsapp</option>
+            </select>
+              <span id="spanTypesearch" class="error hide">
+              Debe seleccionar una opción
+              </span>
+              <fieldset class="text-left">
+                  <legend>Buscas vivienda para:</legend>
+                  <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+                  <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+              </fieldset>
+              <span id="spanTerm" class="error hide">
+              Debe aceptar los términos
+              </span>
+              <div class="text-left terminos">
+                  <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                    haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
+                    mismos.</label>
+
+              </div>
+              <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
+          </div>
+      </form>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- fin de modal contacto -->
+    <!-- modal de gracias -->
+    <div class="reveal text-center" id="exampleModal1" data-reveal>
+      <img src="/assets/images/logo-ev.png">
+      <h2>¡Gracias!</h2>
+      <p>Pronto te llegará toda la información a tu correo</p>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- fin de modal de gracias -->
+
+    <div class="show-for-small-only filter-button">
+      <div style="width: 34px;height: 31px;">
+        <a data-open="masfiltrosModal">
+          <img width="28px" height="28px" src="/assets/images/filtros.png">
+        </a>
+      </div>
     </div>
   </div>
 </div>

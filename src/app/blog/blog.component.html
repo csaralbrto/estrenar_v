@@ -4,202 +4,204 @@
 >
 <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
-<div class="row columns text-center-mobile">
-  <h1>Blog</h1>
-</div>
-<div>
-  <div class="hide-for-small-only">
-      <div class="slick-blog" role="region" aria-label="Favorite Space Pictures" >
-          <div class="">
-              <ul class="slider-blog">
-                  <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
-                      <figure class="">
-                          <a routerLink="{{newExperience.url}}"><img class="blog" [src]="url_img_path + newExperience.article_image" alt="">
-                            <figcaption class="blog">
-                                <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
-                                <h2><a routerLink="{{newExperience.url}}">{{newExperience.title.slice(0,90)}}</a></h2>
-                                <div class="user"><img class="usr" src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
-                            </figcaption>
-                        </a>
-
-                      </figure>
-                  </li>
-              </ul>
-          </div>
-      </div>
+<div *ngIf="results">
+  <div class="row columns text-center-mobile">
+    <h1>Blog</h1>
   </div>
-  <div class="show-for-small-only">
-      <div class="slick-blog-mobile slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;background-color: #fefefe;">
-          <div class="">
-              <ul class="slider-blog-mobile">
-                  <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
-                      <figure class="">
-                          <a routerLink="{{newExperience.url}}"><img class="blog" [src]="url_img_path + newExperience.article_image" alt="">
-                            <figcaption class="blog">
-                                <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
-                                <h2><a routerLink="{{newExperience.url}}">{{newExperience.title.slice(0,90)}}</a></h2>
-                                <div class="user"><img class="usr" src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
-                            </figcaption>
-                        </a>
-                      </figure>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-</div>
-<hr class="white">
-<div class="row columns">
-  <div class="medium-8 columns">
-      <div class="container-blog">
-          <h2 class="deco-wide boldFont">Lo más leído</h2>
-          <div class="row">
-              <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
-                  <div class="blog-list col2">
-                      <a href="{{mostRead.url}}">
-                        <div class="img">
-                            <img [src]="url_img_path + mostRead.article_image" alt="">
-                        </div>
-                      </a>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{mostRead.comments | number }}</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>{{mostRead.likes}}</span></div>
-                      </div>
-                      <div class="section"><a routerLink="{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
-                      <h3><a routerLink="{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
-                      <div class="resumen">
-                        <p [innerHTML]=mostRead.body.slice(0,90)+stringText></p>
-                      </div>
-                      <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <hr class="white">
-      <div class="container-blog">
-          <h2 class="deco-wide boldFont">La experiencia de estrenar</h2>
-          <div class="row">
-              <div class="medium-12 columns">
-                  <figure class="orbit-figure">
-                      <a routerLink="{{responseNewExperience.results[1].url}}">
-                      <img class="orbit-image" [src]="url_img_path + responseNewExperience.results[1].article_image" alt="">
-                      <figcaption class="orbit-caption blog">
-                        <div class="section"><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].article_type }}</a></div>
-                        <h2><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].title.slice(0,90) }}</a></h2>
-                        <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[1].user_name}}</span>{{ responseNewExperience.results[1].changed }}</div>
-                    </figcaption>
-                    </a>
+  <div>
+    <div class="hide-for-small-only">
+        <div class="slick-blog" role="region" aria-label="Favorite Space Pictures" >
+            <div class="">
+                <ul class="slider-blog">
+                    <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
+                        <figure class="">
+                            <a routerLink="{{newExperience.url}}"><img class="blog" [src]="url_img_path + newExperience.article_image" alt="">
+                              <figcaption class="blog">
+                                  <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
+                                  <h2><a routerLink="{{newExperience.url}}">{{newExperience.title.slice(0,90)}}</a></h2>
+                                  <div class="user"><img class="usr" src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
+                              </figcaption>
+                          </a>
 
-                  </figure>
-              </div>
-              <hr class="white">
-              <div class="medium-6 columns end" *ngFor="let newExperience of responseNewExperience.results; let i = index">
-                  <div class="blog-list" *ngIf="i >= 1">
-                        <a routerLink="{{newExperience.url}}">
-                          <div class="img">
-                            <img [src]="url_img_path + newExperience.article_image" alt="">
-                          </div>
-                        </a>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{newExperience.comments}}</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>{{newExperience.likes}}</span></div>
-                      </div>
-
-                      <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
-                      <h3><a routerLink="{{newExperience.url}}">{{ newExperience.title.slice(0,90) }}</a></h3>
-                      <div class="resumen">
-                        <p [innerHTML]=newExperience.body.slice(0,90)+stringText></p>
-                      </div>
-                      <a routerLink="{{newExperience.url}}" class="button">Seguir leyendo</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <hr class="white">
-      <div class="container-blog">
-          <h2 class="deco-wide boldFont">Nuestro lado DEKO</h2>
-          <div class="row">
-              <div class="medium-6 columns" *ngFor="let ecoside of responseDekoSide.results; let i = index">
-                  <div class="blog-list col2">
-                      <a routerLink="{{ecoside.url}}">
-                        <div class="img">
-                            <img [src]="url_img_path + ecoside.article_image" alt="">
-                        </div>
-                      </a>
-                      <div class="social">
-                          <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{ecoside.comments}}</span>
-                          </div>
-                          <div class="like"><img src="/assets/images/like.png" alt=""><span>{{ecoside.likes}}</span></div>
-                      </div>
-
-                      <div class="section"><a routerLink="{{ecoside.url}}">{{ ecoside.article_type }}</a></div>
-                      <h3><a routerLink="{{ecoside.url}}">{{ ecoside.title.slice(0,90).slice(0,90) }}</a></h3>
-                      <div class="resumen">
-                        <p [innerHTML]=ecoside.body.slice(0,90)+stringText></p>
-                      </div>
-                      <a routerLink="{{ecoside.url}}" class="button">Seguir leyendo</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="medium-4 columns">
-    <div class="recommended-float">
-      <h2 class="deco-wide boldFont">Recomendados</h2>
-      <div class="recomendado" *ngFor="let recommend of responseRecommend.results; let i = index">
-          <h3><a routerLink="{{recommend.url}}">{{ recommend.title.slice(0,90) }}</a></h3>
-          <div class="fecha">{{ recommend.changed }}</div>
-          <hr>
-      </div>
-      <div class="bannernews">
-          <img src="/assets/images/suscribirse.jpg" alt="" class="fondo">
-          <div class="info">
-              <div class="cta mb1">Recibe consejos para la compra de tu próxima vivienda</div>
-              <a href="/register" class="button ">Regístrate</a>
-          </div>
-      </div>
-      <hr class="white">
-      <h2 class="deco-wide boldFont mt20M">Noticias del sector</h2>
-      <div class="recomendado" *ngFor="let news of responseNews.results; let i = index">
-          <h3><a routerLink="{{news.url}}">{{ news.title.slice(0,90) }}</a></h3>
-          <div class="fecha">{{ news.changed }}</div>
-          <hr>
-      </div>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="show-for-small-only">
+        <div class="slick-blog-mobile slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto;background-color: #fefefe;">
+            <div class="">
+                <ul class="slider-blog-mobile">
+                    <li class="is-active" *ngFor="let newExperience of responseNewExperience.results; let i = index">
+                        <figure class="">
+                            <a routerLink="{{newExperience.url}}"><img class="blog" [src]="url_img_path + newExperience.article_image" alt="">
+                              <figcaption class="blog">
+                                  <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
+                                  <h2><a routerLink="{{newExperience.url}}">{{newExperience.title.slice(0,90)}}</a></h2>
+                                  <div class="user"><img class="usr" src="/assets/images/user-blog.png" alt=""><span>{{newExperience.user_name}}</span>{{ newExperience.changed }}</div>
+                              </figcaption>
+                          </a>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
   </div>
-</div>
-<hr class="white">
-<div class="container-blue">
-  <div class="row columns text-center">
-      <h2 class="deco">Suscribirse a nuestro boletín</h2>
-      <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
-      <div>
-    <form action="">
-        <div class="row condensed">
-          <div class="medium-7 medium-offset-2 columns">
-            <input id="email_subscribe" type="email" placeholder="Ingresa tu correo electrónico" />
-            <div  class="">
-                <span style="color: red" id="spanEmail" class="hide">
-                    Debe ingresar un correo electrónico
-                </span>
-            </div>
-          </div>
-          <div class="medium-1 columns end text-center">
-            <a (click)="subscribe()" class="button secondary bton-mobile">Suscribirse</a>
-          </div>
-            <div class="medium-7 medium-offset-2 columns end text-left">
-                <input id="checkbox1" type="checkbox" class="check-mobile"><label for="checkbox1" class="font-mobile">Declaro haber leido el <a href="/aviso-privacidad"> Aviso de Privacidad</a> y estar conforme con el mismo</label>
-                <div class="">
-                    <span style="color: red" id="spanPass" class="hide">
-                        Declare haber leído el aviso de privacidad
-                    </span>
+  <hr class="white">
+  <div class="row columns">
+    <div class="medium-8 columns">
+        <div class="container-blog">
+            <h2 class="deco-wide boldFont">Lo más leído</h2>
+            <div class="row">
+                <div class="medium-6 columns" *ngFor="let mostRead of responseMostRead.results; let i = index">
+                    <div class="blog-list col2">
+                        <a href="{{mostRead.url}}">
+                          <div class="img">
+                              <img [src]="url_img_path + mostRead.article_image" alt="">
+                          </div>
+                        </a>
+                        <div class="social">
+                            <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{mostRead.comments | number }}</span>
+                            </div>
+                            <div class="like"><img src="/assets/images/like.png" alt=""><span>{{mostRead.likes}}</span></div>
+                        </div>
+                        <div class="section"><a routerLink="{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
+                        <h3><a routerLink="{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
+                        <div class="resumen">
+                          <p [innerHTML]=mostRead.body.slice(0,90)+stringText></p>
+                        </div>
+                        <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </form>
+        <hr class="white">
+        <div class="container-blog">
+            <h2 class="deco-wide boldFont">La experiencia de estrenar</h2>
+            <div class="row">
+                <div class="medium-12 columns">
+                    <figure class="orbit-figure">
+                        <a routerLink="{{responseNewExperience.results[1].url}}">
+                        <img class="orbit-image" [src]="url_img_path + responseNewExperience.results[1].article_image" alt="">
+                        <figcaption class="orbit-caption blog">
+                          <div class="section"><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].article_type }}</a></div>
+                          <h2><a routerLink="{{responseNewExperience.results[1].url}}">{{ responseNewExperience.results[1].title.slice(0,90) }}</a></h2>
+                          <div class="user"><img src="/assets/images/user-blog.png" alt=""><span>{{responseNewExperience.results[1].user_name}}</span>{{ responseNewExperience.results[1].changed }}</div>
+                      </figcaption>
+                      </a>
+
+                    </figure>
+                </div>
+                <hr class="white">
+                <div class="medium-6 columns end" *ngFor="let newExperience of responseNewExperience.results; let i = index">
+                    <div class="blog-list" *ngIf="i >= 1">
+                          <a routerLink="{{newExperience.url}}">
+                            <div class="img">
+                              <img [src]="url_img_path + newExperience.article_image" alt="">
+                            </div>
+                          </a>
+                        <div class="social">
+                            <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{newExperience.comments}}</span>
+                            </div>
+                            <div class="like"><img src="/assets/images/like.png" alt=""><span>{{newExperience.likes}}</span></div>
+                        </div>
+
+                        <div class="section"><a routerLink="{{newExperience.url}}">{{ newExperience.article_type }}</a></div>
+                        <h3><a routerLink="{{newExperience.url}}">{{ newExperience.title.slice(0,90) }}</a></h3>
+                        <div class="resumen">
+                          <p [innerHTML]=newExperience.body.slice(0,90)+stringText></p>
+                        </div>
+                        <a routerLink="{{newExperience.url}}" class="button">Seguir leyendo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="white">
+        <div class="container-blog">
+            <h2 class="deco-wide boldFont">Nuestro lado DEKO</h2>
+            <div class="row">
+                <div class="medium-6 columns" *ngFor="let ecoside of responseDekoSide.results; let i = index">
+                    <div class="blog-list col2">
+                        <a routerLink="{{ecoside.url}}">
+                          <div class="img">
+                              <img [src]="url_img_path + ecoside.article_image" alt="">
+                          </div>
+                        </a>
+                        <div class="social">
+                            <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{ecoside.comments}}</span>
+                            </div>
+                            <div class="like"><img src="/assets/images/like.png" alt=""><span>{{ecoside.likes}}</span></div>
+                        </div>
+
+                        <div class="section"><a routerLink="{{ecoside.url}}">{{ ecoside.article_type }}</a></div>
+                        <h3><a routerLink="{{ecoside.url}}">{{ ecoside.title.slice(0,90).slice(0,90) }}</a></h3>
+                        <div class="resumen">
+                          <p [innerHTML]=ecoside.body.slice(0,90)+stringText></p>
+                        </div>
+                        <a routerLink="{{ecoside.url}}" class="button">Seguir leyendo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="medium-4 columns">
+      <div class="recommended-float">
+        <h2 class="deco-wide boldFont">Recomendados</h2>
+        <div class="recomendado" *ngFor="let recommend of responseRecommend.results; let i = index">
+            <h3><a routerLink="{{recommend.url}}">{{ recommend.title.slice(0,90) }}</a></h3>
+            <div class="fecha">{{ recommend.changed }}</div>
+            <hr>
+        </div>
+        <div class="bannernews">
+            <img src="/assets/images/suscribirse.jpg" alt="" class="fondo">
+            <div class="info">
+                <div class="cta mb1">Recibe consejos para la compra de tu próxima vivienda</div>
+                <a href="/register" class="button ">Regístrate</a>
+            </div>
+        </div>
+        <hr class="white">
+        <h2 class="deco-wide boldFont mt20M">Noticias del sector</h2>
+        <div class="recomendado" *ngFor="let news of responseNews.results; let i = index">
+            <h3><a routerLink="{{news.url}}">{{ news.title.slice(0,90) }}</a></h3>
+            <div class="fecha">{{ news.changed }}</div>
+            <hr>
+        </div>
+      </div>
+    </div>
   </div>
+  <hr class="white">
+  <div class="container-blue">
+    <div class="row columns text-center">
+        <h2 class="deco">Suscribirse a nuestro boletín</h2>
+        <p>Suscribete a nustro boletin y recibe nuestros últimos contenidos.</p>
+        <div>
+      <form action="">
+          <div class="row condensed">
+            <div class="medium-7 medium-offset-2 columns">
+              <input id="email_subscribe" type="email" placeholder="Ingresa tu correo electrónico" />
+              <div  class="">
+                  <span style="color: red" id="spanEmail" class="hide">
+                      Debe ingresar un correo electrónico
+                  </span>
+              </div>
+            </div>
+            <div class="medium-1 columns end text-center">
+              <a (click)="subscribe()" class="button secondary bton-mobile">Suscribirse</a>
+            </div>
+              <div class="medium-7 medium-offset-2 columns end text-left">
+                  <input id="checkbox1" type="checkbox" class="check-mobile"><label for="checkbox1" class="font-mobile">Declaro haber leido el <a href="/aviso-privacidad"> Aviso de Privacidad</a> y estar conforme con el mismo</label>
+                  <div class="">
+                      <span style="color: red" id="spanPass" class="hide">
+                          Declare haber leído el aviso de privacidad
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </form>
+    </div>
+    </div>
   </div>
 </div>
 <div class="reveal text-center" id="exampleModalSuscribe" data-reveal>

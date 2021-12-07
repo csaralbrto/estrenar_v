@@ -205,7 +205,15 @@ export class BlogDetailComponent implements OnInit {
     this.Service.suscribeNewsletter( payload )
     .subscribe(
       data =>(this.responseNewslaetter = data),
-      err => console.log(),
+      err => {
+        // console.log(err)
+        this.responseError = err;
+        if(this.responseError.status == 400){
+          this.stopSpinner();
+          $('#exampleModalNosuscribe').foundation('open');
+          this.createFormSuscribe();
+        }
+      },
       () => {
         // console.log(this.responseNewslaetter.sid);
         if(this.responseNewslaetter.sid){
@@ -215,6 +223,7 @@ export class BlogDetailComponent implements OnInit {
         }else{
           this.stopSpinner();
           $('#exampleModalNosuscribe').foundation('open');
+          this.createFormSuscribe();
         }
       }
     );

@@ -111,8 +111,8 @@ export class ToolComponent implements OnInit, AfterViewChecked {
           autoplaySpeed: 5000,
         });
       }
-      if ($('.slider-blog-mobile').length) {
-        $('.slider-blog-mobile').not('.slick-initialized').slick({
+      if ($('.slider-blog-home').length) {
+        $('.slider-blog-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,
@@ -311,13 +311,9 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       }
       this.subsidio_vivienda = new Intl.NumberFormat("es-ES").format(this.subsidio_vivienda)
     }else if(type == 'credito_vienda'){
-      if(value.tipo_credito_credito == 'hipotecario'){
-        $('#leasHabitacional').removeClass('checked');
-        $('#credHipotecario').addClass('checked');
-      }else{
-        $('#credHipotecario').removeClass('checked');
-        $('#leasHabitacional').addClass('checked');
-      }
+      console.log(value.tipo_credito_credito);
+      var plazo_meses_desktop = Number($("input[id='sliderOutput1']").val());
+      var plazo_meses_mobile = Number($("input[id='sliderOutputMobile']").val());
       let monto_del_prestamo_multi = 0;
       let cuota = 0;
       let cuota_inicial = '';
@@ -327,7 +323,13 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       let ingresos_mensuales_min = 0;
       let tasa_de_interes = 0;
       let cuota_inicial_vivienda = 0;
-      let plazo_mes = Number(value.plazo_credito);
+      // let plazo_mes = Number(value.plazo_credito);
+      let plazo_mes = 0;
+      if(plazo_meses_desktop == 50){
+        plazo_mes = plazo_meses_mobile;
+      }else{
+        plazo_mes = plazo_meses_desktop;
+      }
       let cuota_mensual = 0;
       interes_mensual = ((Number(tasa_interes) / 12) / 100);
       let formula_general_last = Math.pow((1 + Number(interes_mensual)), Number(plazo_mes));
@@ -361,7 +363,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
       this.cuota_inicial_vivienda_credito = cuota_inicial_vivienda;
       this.cuota_inicial_vivienda_credito = new Intl.NumberFormat("es-ES").format(this.cuota_inicial_vivienda_credito)
       this.cuota_inicial_porcentaje_vivienda_credito = cuota_inicial;
-      this.cuota_inicial_porcentaje_vivienda_credito = new Intl.NumberFormat("es-ES").format(this.cuota_inicial_porcentaje_vivienda_credito)
+      // this.cuota_inicial_porcentaje_vivienda_credito = new Intl.NumberFormat("es-ES").format(this.cuota_inicial_porcentaje_vivienda_credito)
       this.cuota_mensual_credito = cuota_mensual;
       this.cuota_mensual_credito = new Intl.NumberFormat("es-ES").format(this.cuota_mensual_credito)
       this.plazo_meses_credito = plazo_mes;

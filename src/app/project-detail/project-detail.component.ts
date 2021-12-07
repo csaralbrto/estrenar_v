@@ -1032,6 +1032,7 @@ export class ProjectDetailComponent implements OnInit {
       }
       this.subsidio_vivienda = new Intl.NumberFormat("es-ES").format(this.subsidio_vivienda)
     }else if(type == 'credito_vienda'){
+
       let monto_del_prestamo_multi = 0;
       let cuota = 0;
       let cuota_inicial = '';
@@ -1041,7 +1042,8 @@ export class ProjectDetailComponent implements OnInit {
       let ingresos_mensuales_min = 0;
       let tasa_de_interes = 0;
       let cuota_inicial_vivienda = 0;
-      let plazo_mes = Number(value.plazo_credito);
+      // let plazo_mes = Number(value.plazo_credito);
+      let plazo_mes = Number($("input[name='plazo_credito']").val());
       let cuota_mensual = 0;
       interes_mensual = ((Number(tasa_interes) / 12) / 100);
       let formula_general_last = Math.pow((1 + Number(interes_mensual)), Number(plazo_mes));

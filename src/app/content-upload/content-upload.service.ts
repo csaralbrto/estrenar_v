@@ -9,18 +9,25 @@ import { environment } from '../../environments/environment';
 })
 export class ContentUploadService {
   public formData: string;
+  public formDataTypology: string;
   public dataSearchPath: string;
   public dataPath: string;
 
   constructor( private http: Http ) {
-    this.formData = environment.endpointApi + 'saveData/';
+    this.formData = environment.endpointTestingApi + 'ev-project';
+    this.formDataTypology = environment.endpointTestingApi + 'ev-typology';
     this.dataSearchPath = environment.endpointTestingApi+ 'ev-project/form';
     this.dataPath = environment.endpointTestingApi+ 'typologies/project_builder/10?items_per_page=8';
    }
 
   /* Enviar datos para crear proyectos */
-  saveformData( operation: string, params: any ): Observable<any> {
-    return this.http.post(this.formData + operation, params)
+  saveformData( params: any ): Observable<any> {
+    return this.http.post(this.formData, params)
+    .pipe(map(( response => response.json() )));
+  }
+  /* Enviar datos para crear tipologias de proyectos */
+  saveformDataTypology( params: any ): Observable<any> {
+    return this.http.post(this.formDataTypology, params)
     .pipe(map(( response => response.json() )));
   }
   /* Traer toda la info */

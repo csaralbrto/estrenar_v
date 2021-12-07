@@ -4,779 +4,780 @@
 >
 <p style="font-size: 20px; color: white">Cargando...</p>
 </ngx-spinner>
-
-<div class="row columns">
-    <h1>Herramientas</h1>
-    <p>Te ofrecemos calculadoras para su búsqueda de vivienda nueva</p><br>
-</div>
-<!--simuladores-->
-<div class="row columns">
-    <div class="simuladores">
-        <ul class="tabs hide-for-small-only" data-tabs id="simuladores">
-            <li class="tabs-title tool is-active">
-                <a data-tabs-target="panel2" href="#panel2">Simulador subsidio de vivienda</a>
-            </li>
-            <li class="tabs-title tool">
-                <a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
-            </li>
-            <li class="tabs-title tool">
-                <a href="#panel1" aria-selected="true">Simulador capacidad endeudamiento</a>
-            </li>
-            <li class="tabs-title tool">
-                <a data-tabs-target="panel4" href="#panel4">Simulador crédito de vivienda</a>
-            </li>
-        </ul>
-        <div class="nav-calc">
-            <ul class="nav-cal-menu show-for-small-only" data-tabs id="simuladores">
-                <li class="tabs-title opcion is-active">
-                    <a aria-selected="true" href="#panel2">Simulador subsidio de vivienda</a>
-                </li>
-                <li class="tabs-title opcion">
-                    <a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
-                </li>
-                <li class="tabs-title opcion">
-                    <a data-tabs-target="panel1" href="#panel1">Simulador capacidad endeudamiento</a>
-                </li>
-                <li class="tabs-title opcion">
-                    <a data-tabs-target="panel4" href="#panel4">Simulador crédito de vivienda</a>
-                </li>
-            </ul>
-        </div>
-        <div class="tabs-content" data-tabs-content="simuladores">
-            <form [formGroup]="form">
-                <div class="tabs-panel cuota" id="panel1">
-                    <div class="container-form">
-                        <div class="row">
-                            <div class="medium-5 medium-offset-3 columns text-center">
-                                <p> Tus ingresos mensuales</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" (change)="change(form.value,'capacidad_endeudamiento')" formControlName="ingresos_mensuales_endudamiento" name="ingresos_mensuales_endudamiento" type="number"><br>
-                                </div>
-                                <p style="font-size: 11px;">Ingresa el monto sin puntos ni comas</p>
-                            </div>
-                            <div class="medium-4 columns text-center campo-destacado">
-                                <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
-                                <input type="text" class="text-center" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
-                                <hr>
-                                <p> Podrías comprar una vivienda de:</p>
-                                <input type="text" class="text-center" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
-                                <hr>
-                                <a (click)="searchProjectByPrice(vivienda_endeudamiento)"  class="button secondary btn-projects-afines viewProject">Ver proyectos afines</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="tabs-panel endeudamiento is-active" id="panel2">
-                    <div class="container-form">
-                        <div class="row">
-                            <div class="medium-4 columns text-center">
-                                <p> Cuéntanos cuáles son tus ingresos mensuales</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" id="unput_test" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (keyup)="onKeyUpformatInput($event)" (change)="change(form.value,'subsidio_vivienda')">
-                                </div>
-                                <hr>
-                                <p> Cuáles son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="ingresos_mensuales_persona_vivienda" name="ingresos_mensuales_persona_vivienda" (change)="change(form.value,'subsidio_vivienda')" value="0">
-                                </div>
-                                <hr>
-                                <p> Los ingresos totales son:</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda }}">
-                                </div>
-                                <hr>
-                                <p class="small">
-                                    * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
-                                </p>
-
-                            </div>
-                            <div class="medium-5 columns text-center campo-destacado">
-                                <p> Con el total de ingresos puedes obtener un subsidio por:</p>
-                                <input type="text" class="text-center" placeholder="" value ="{{ smmlv_vivienda }}">
-                                <label for="">Salarios mínimos legales vigentes</label>
-                                <hr>
-                                <p> Equivalentes a:</p>
-                                <input type="text" class="text-center" placeholder="" value="$ {{ subsidio_vivienda }}">
-                                <label for="">Pesos colombianos</label>
-                                <a href="#" class="button secondary btn-projects-afines">Más información</a>
-                            </div>
-                            <div class="medium-4 columns text-center">
-                                <p> </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="tabs-panel" id="panel3">
-                    <div class="container-form">
-                        <div class="row">
-                            <div class="medium-5 columns text-center">
-                                <p> Si cuentas con ahorros para la cuota inicial, ingresa el valor</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="ahorros_cuota" name="ahorros_cuota">
-                                </div>
-                                <hr>
-                                <p> Si deseas incluir primas, ingresa el valor</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="primas_cuota" name="primas_cuota">
-                                </div>
-                                <hr>
-                                <p> Ingrese el valor del inmueble</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota">
-                                </div>
-                                <hr>
-                        <div class="text-left">
-                        <p>Escoje una de las dos opciones:</p>
-                        <fieldset>
-                        <div class="row">
-                            <div class="medium-6 columns">
-                                <label class="container-radio">Crédito hipotecario
-                                    <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="medium-6 columns">
-
-                                <label class="container-radio">Leasing habitacional
-                                    <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        </fieldset>
-                        </div>
-                            </div>
-                            <div class="medium-3 columns text-center campo-destacado">
-                                <p> Fecha estimada de entrega</p>
-                                <input type="text" formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
-                                <hr>
-                                <p> Plazo actual para cuota inicial</p>
-                                <input style="text-align: center;" type="text" placeholder="No. meses" value="{{ no_months }}" readonly>
-                            </div>
-                            <div class="medium-4 columns text-center">
-                                <p> Simulación</p>
-                                <div class="container-simulacion">
-                                    <div class="row text-left">
-                                        <div class="medium-12 columns">
-                                            <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota }}</span></div>
-                                            <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial }}</span></div>
-                                            <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota }}</span></div>
-                                            <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota }}</span></div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="simulacion">
-                                        <div class="row">
-                                            <div class="columns">
-                                            <table class="stack">
-                                                <thead>
-                                                    <tr>
-                                                        <th width="100">Cuota #</th>
-                                                        <th width="100">Fecha</th>
-                                                        <th width="150">Valor</th>
-                                                        <th width="150">Saldo</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr *ngFor="let cuota of cuotasMensuales; let i = index">
-                                                        <td>{{ cuota.count }}</td>
-                                                        <td>{{ cuota.date }}</td>
-                                                        <td>$ {{ cuota.value_cuota }}</td>
-                                                        <td>$ {{ cuota.saldo }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="medium-12 columns text-center mT15Mobile">
-                                <a (click)="clickInfo(form.value)" class="button secondary ">Simular</a>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tabs-panel credito" id="panel4">
-                    <div class="container-form">
-                        <div class="row">
-                            <div class="medium-4 medium-offset-4 columns text-center">
-                                <p> Valor de la vivienda a financiar</p>
-                                <div class="input-group">
-                                    <span class="input-group-label">$</span>
-                                    <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito">
-                                </div>
-                                <hr>
-                                <p> Plazo de financiamiento (meses)</p>
-                                <div class="show-for-small-only"><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutputMobile"></div>
-                                <div class="slider white show-for-small-only" data-slider data-initial-start="50" data-end="360">
-                                    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputMobile"></span>
-                                    <span class="slider-fill" data-slider-fill></span>
-                                </div>
-                                <div class="slider white hide-for-small-only" data-slider data-initial-start="50" data-end="360">
-                                    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
-                                    <span class="slider-fill" data-slider-fill></span>
-                                </div>
-                                <div class="hide-for-small-only"><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutput1"></div>
-                                <hr>
-                        <div class="text-left">
-                        <p>Escoje una de las dos opciones:</p>
-                        <div class="row">
-                          <div class="columns medium-12 small-16">
-                            <div class="medium-6 small-5 columns">
-                                <label id="credHipotecario" class="container-radio label-button">Crédito hipotecario
-                                    <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="hipotecario">
-                                    <span style="display: none;" class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="medium-6 small-5 columns">
-                                <label id="leasHabitacional" class="container-radio label-button">Leasing habitacional
-                                    <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="leasing">
-                                    <span style="display: none;" class="checkmark"></span>
-                                </label>
-                            </div>
-                          </div>
-                        </div>
-                        <p class="small">
-                            * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
-                        </p>
-                        </div>
-                            </div>
-                            <div class="medium-4 columns text-center end">
-                                <h5>Cálculo aproximado para poder adquirir tu vivienda:</h5>
-                                <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
-                                    <div class="medium-6 small-6 columns">
-                                            <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                                <div class="value">
-                                                    $ {{ monto_prestamo_credito }}
-                                                </div>
-                                                <div class="caracteristica">
-                                                    Monto préstamo
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="medium-6 small-6 columns">
-                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                            <div class="value">
-                                                $ {{ cuota_inicial_vivienda_credito }}
-                                            </div>
-                                            <div class="caracteristica">
-                                                Cuota inicial {{ cuota_inicial_porcentaje_vivienda_credito }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="medium-6 small-6 columns">
-                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                            <div class="value">
-                                                $ {{ ingresos_mensuales_min_credito }}
-                                            </div>
-                                            <div class="caracteristica-ing-min">
-                                                Ingresos minimos mensuales
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="medium-6 small-6 columns">
-                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                            <div class="value">
-                                                {{ plazo_meses_credito }}
-                                            </div>
-                                            <div class="caracteristica">
-                                                Plazo en meses
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="medium-6 small-6 columns">
-                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                            <div class="value">
-                                                % {{ tasa_de_interes_credito }}
-                                            </div>
-                                            <div class="caracteristica">
-                                                Tasa de interés
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="medium-6 small-6 columns">
-                                        <div class="container-calc panel-value-calc" data-equalizer-watch>
-                                            <div class="value">
-                                                $ {{ cuota_mensual_credito }}
-                                            </div>
-                                            <div class="caracteristica">
-                                                Cuota mensual
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a (click)="searchProjectByPrice(monto_prestamo_credito)" class="button secondary btn-projects-afines">Ver proyectos afines</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<hr class="white">
-<!--fin simuladores-->
-<!-- Proyectos Desktop -->
-<div class="row columns hide-for-small-only" data-equalizer data-equalize-on="medium" id="test-eq">
-  <h2 class="deco text-center">Proyectos de Interés</h2>
-    <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
-        <div class="card" data-equalizer-watch *ngIf="i < 8">
-            <div class="container-photo">
-                <a href="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
-                <div class="container-tools">
-                    <div class="tags">
-                      <div  *ngIf="project.project_category.length > 0">
-                          <div class="tag" *ngFor="let tags of project.project_category; let i = index">
-                              <a>{{ tags }}</a>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="add">
-                        <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-section">
-              <a href="{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
-                <div class="descripcion">
-                  {{ project.project_city }},
-                  {{ project.project_zone }},
-                  {{ project.project_neighborhood }}
-                </div>
-                <div class="precio text-center">
-                    <div>Desde:</div>
-                    <span>{{ project.typology_price }}</span>
-                </div>
-                <hr>
-            </div>
-            <div class="card-section">
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                            <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                        </div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                            <div class="data"> {{ project.bathrooms }} alcobas</div>
-                        </div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                            <div class="data"> garajes {{ project.garages }}</div>
-                        </div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="item">
-                            <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                            <div class="data"> {{ project.bedrooms }} baños</div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="card-section">
-              <div class="button-group align-spaced ">
-                <a class="button" routerLink="{{project.url}}">Ver
-                    Proyecto</a>
-                  <a data-open="exampleModal2" class="button">Contacto</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Fin proyectos desktop -->
-<!-- Slider mobile projects -->
-<div class="small-12 columns show-for-small-only mT15Mobile">
-  <h2 class="deco text-center">Proyectos de Interés</h2>
-  <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
-    <ul class="slider-proyects-mobile">
-      <li class="is-active ">
-          <div class="medium-6 columns">
-              <!-- Card Proyecto individual-->
-              <div class="card" data-equalizer-watch>
-                  <div class="container-photo">
-                      <a href="{{response[0].url}}"><img [src]="url_img_path + response[0].typology_images" alt="" class="proyecto-card"></a>
-                      <div class="container-tools">
-                          <div class="tags">
-                              <div *ngIf="response[0].project_category.length > 0">
-                                  <div class="tag" *ngFor="let tags of response[0].project_category; let i = index">
-                                      <a>{{ tags }}</a>
-                                  </div>
-                              </div>
-
-                          </div>
-                          <div class="add">
-                              <!-- <a (click)="addFavorite(response[0].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-section info">
-                    <a href="{{response[0].url}}"><h2>{{ response[0].project }}</h2></a>
-                      <div class="descripcion">
-                          {{ response[0].property_type }}, {{ response[0].project_neighborhood }}, {{ response[0].project_city }}
-                      </div>
-                  </div>
-                  <div class="precio text-center">
-                      <div>Desde:</div>
-                      <span>$ {{ response[0].typology_price }}</span>
-                  </div>
-                  <hr>
-
-                  <div class="card-section">
-                      <hr>
-                      <div class="row">
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ response[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ response[0].bedrooms }} alcobas
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ response[0].garages }} garajes
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ response[0].bathrooms }} baños
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <hr>
-                  </div>
-                  <div class="card-section">
-                      <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="{{response[0].url}}">Ver
-                              Proyecto</a>
-                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </li>
-      <li *ngIf="response.length > 0">
-        <div class="medium-6 columns">
-            <!-- Card Proyecto individual-->
-            <div class="card" data-equalizer-watch>
-                <div class="container-photo">
-                  <a href="{{response[1].url}}"><img [src]="url_img_path + response[1].typology_images" alt="" class="proyecto-card"></a>
-                    <div class="container-tools">
-                        <div class="tags">
-                            <div *ngIf="response[1].project_category.length > 0">
-                                <div class="tag" *ngFor="let tags of response[1].project_category; let i = index">
-                                    <a>{{ tags }}</a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="add">
-                            <!-- <a (click)="addFavorite(response[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                            <a class="fav"><img src="/assets/images/add.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-section info">
-                  <a href="{{response[1].url}}"><h2>{{ response[1].project }}</h2></a>
-                    <div class="descripcion">
-                        {{ response[1].property_type }}, {{ response[1].project_neighborhood }}, {{ response[1].project_city }}
-                    </div>
-                </div>
-                <div class="precio text-center">
-                    <div>Desde:</div>
-                    <span>$ {{ response[1].typology_price }}</span>
-                </div>
-                <hr>
-
-                <div class="card-section">
-                    <hr>
-                    <div class="row">
-                        <div class="small-6 columns">
-                            <div class="item">
-                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                <div class="data">{{ response[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                            </div>
-                        </div>
-                        <div class="small-6 columns">
-                            <div class="item">
-                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                <div class="data">{{ response[1].bedrooms }} alcobas
-                                </div>
-                            </div>
-                        </div>
-                        <div class="small-6 columns">
-                            <div class="item">
-                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                <div class="data">{{ response[1].garages }} garajes
-                                </div>
-                            </div>
-                        </div>
-                        <div class="small-6 columns">
-                            <div class="item">
-                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                <div class="data">{{ response[1].bathrooms }} baños
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-                <div class="card-section">
-                    <div class="button-group align-spaced ">
-                        <a class="button bton-mobile" href="{{response[1].url}}">Ver
-                            Proyecto</a>
-                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-          <!-- Fin Card Proyecto individual-->
-      </li>
-      <li *ngIf="response.length > 1">
-          <div class="medium-6 columns">
-              <!-- Card Proyecto individual-->
-              <div class="card" data-equalizer-watch>
-                  <div class="container-photo">
-                    <a href="{{response[2].url}}"><img [src]="url_img_path + response[2].typology_images" alt="" class="proyecto-card"></a>
-                      <div class="container-tools">
-                          <div class="tags">
-                              <div *ngIf="response[2].project_category.length > 0">
-                                  <div class="tag" *ngFor="let tags of response[2].project_category; let i = index">
-                                      <a>{{ tags }}</a>
-                                  </div>
-                              </div>
-
-                          </div>
-                          <div class="add">
-                              <!-- <a (click)="addFavorite(response[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-section info">
-                    <a href="{{response[2].url}}"><h2>{{ response[2].project }}</h2></a>
-                      <div class="descripcion">
-                          {{ response[2].property_type }}, {{ response[2].project_neighborhood }}, {{ response[2].project_city }}
-                      </div>
-                  </div>
-                  <div class="precio text-center">
-                      <div>Desde:</div>
-                      <span>$ {{ response[2].typology_price }}</span>
-                  </div>
-                  <hr>
-
-                  <div class="card-section">
-                      <hr>
-                      <div class="row">
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ response[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ response[2].bedrooms }} alcobas
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ response[2].garages }} garajes
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ response[2].bathrooms }} baños
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <hr>
-                  </div>
-                  <div class="card-section">
-                      <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="{{response[2].url}}">Ver
-                              Proyecto</a>
-                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </li>
-      <li *ngIf="response.length > 2">
-          <div class="medium-6 columns">
-              <!-- Card Proyecto individual-->
-              <div class="card" data-equalizer-watch>
-                  <div class="container-photo">
-                    <a href="{{response[3].url}}"><img [src]="url_img_path + response[3].typology_images" alt="" class="proyecto-card"></a>
-                      <div class="container-tools">
-                          <div class="tags">
-                              <div *ngIf="response[3].project_category.length > 0">
-                                  <div class="tag" *ngFor="let tags of response[3].project_category; let i = index">
-                                      <a>{{ tags }}</a>
-                                  </div>
-                              </div>
-
-                          </div>
-                          <div class="add">
-                              <!-- <a (click)="addFavorite(response[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
-                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-section info">
-                    <a href="{{response[3].url}}"><h2>{{ response[3].project }}</h2></a>
-                      <div class="descripcion">
-                          {{ response[3].property_type }}, {{ response[3].project_neighborhood }}, {{ response[3].project_city }}
-                      </div>
-                  </div>
-                  <div class="precio text-center">
-                      <div>Desde:</div>
-                      <span>$ {{ response[3].typology_price }}</span>
-                  </div>
-                  <hr>
-
-                  <div class="card-section">
-                      <hr>
-                      <div class="row">
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                                  <div class="data">{{ response[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                                  <div class="data">{{ response[3].bedrooms }} alcobas
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                                  <div class="data">{{ response[3].garages }} garajes
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="small-6 columns">
-                              <div class="item">
-                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                                  <div class="data">{{ response[3].bathrooms }} baños
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <hr>
-                  </div>
-                  <div class="card-section">
-                      <div class="button-group align-spaced ">
-                          <a class="button bton-mobile" href="{{response[3].url}}">Ver
-                              Proyecto</a>
-                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </li>
-    </ul>
+<div *ngIf="results">
+  <div class="row columns">
+      <h1>Herramientas</h1>
+      <p>Te ofrecemos calculadoras para su búsqueda de vivienda nueva</p><br>
   </div>
-</div>
-<!-- Fin slider mobile projects -->
-<hr class="white">
-<div class="row columns text-center mtop50">
-    <a href="proyectos" class="button secondary bton-mobile">Ver más proyectos</a>
-</div>
-<hr class="white">
-<div class="row columns">
-    <h2 class="deco text-center">Artículos de interés</h2>
-    <div class="container-blog hide-for-small-only">
-        <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead; let i = index">
-            <div class="blog-list" *ngIf="i < 4">
-                <div class="img">
-                  <img [src]="url_img_path + mostRead.article_image" alt="">
-                </div>
-                <div class="social">
-                    <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
-                    </div>
-                    <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
-                </div>
+  <!--simuladores-->
+  <div class="row columns">
+      <div class="simuladores">
+          <ul class="tabs hide-for-small-only" data-tabs id="simuladores">
+              <li class="tabs-title tool is-active">
+                  <a data-tabs-target="panel2" href="#panel2">Simulador subsidio de vivienda</a>
+              </li>
+              <li class="tabs-title tool">
+                  <a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
+              </li>
+              <li class="tabs-title tool">
+                  <a href="#panel1" aria-selected="true">Simulador capacidad endeudamiento</a>
+              </li>
+              <li class="tabs-title tool">
+                  <a data-tabs-target="panel4" href="#panel4">Simulador crédito de vivienda</a>
+              </li>
+          </ul>
+          <div class="nav-calc">
+              <ul class="nav-cal-menu show-for-small-only" data-tabs id="simuladores">
+                  <li class="tabs-title opcion is-active">
+                      <a aria-selected="true" href="#panel2">Simulador subsidio de vivienda</a>
+                  </li>
+                  <li class="tabs-title opcion">
+                      <a data-tabs-target="panel3" href="#panel3">Simulador cuota inicial</a>
+                  </li>
+                  <li class="tabs-title opcion">
+                      <a data-tabs-target="panel1" href="#panel1">Simulador capacidad endeudamiento</a>
+                  </li>
+                  <li class="tabs-title opcion">
+                      <a data-tabs-target="panel4" href="#panel4">Simulador crédito de vivienda</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="tabs-content" data-tabs-content="simuladores">
+              <form [formGroup]="form">
+                  <div class="tabs-panel cuota" id="panel1">
+                      <div class="container-form">
+                          <div class="row">
+                              <div class="medium-5 medium-offset-3 columns text-center">
+                                  <p> Tus ingresos mensuales</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" (change)="change(form.value,'capacidad_endeudamiento')" formControlName="ingresos_mensuales_endudamiento" name="ingresos_mensuales_endudamiento" type="number"><br>
+                                  </div>
+                                  <p style="font-size: 11px;">Ingresa el monto sin puntos ni comas</p>
+                              </div>
+                              <div class="medium-4 columns text-center campo-destacado">
+                                  <p>Segun tus ingresos, podrías recibir un prestamo por:</p>
+                                  <input type="text" class="text-center" readonly formControlName="prestamo_endudamiento" name="prestamo_endudamiento" value="$ {{ prestamo_endeudamiento }}">
+                                  <hr>
+                                  <p> Podrías comprar una vivienda de:</p>
+                                  <input type="text" class="text-center" readonly formControlName="vivienda_endudamiento" name="vivienda_endudamiento" value="$ {{ vivienda_endeudamiento }}">
+                                  <hr>
+                                  <a (click)="searchProjectByPrice(vivienda_endeudamiento)"  class="button secondary btn-projects-afines viewProject">Ver proyectos afines</a>
+                              </div>
 
-                <div class="section"><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
-                <h3><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
-                <div class="resumen">
-                    <p [innerHTML]=mostRead.description.slice(0,120)+stringText></p>
-                </div>
-                <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
-            </div>
-        </div>
-    </div>
-    <div class="row columns show-for-small-only">
-        <div class="sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
-            <ul class="slider-blog-mobile">
-                <li class="is-active" *ngFor="let blog of responseMostRead.slice(0, 4); let i = index">
-                    <div class="row">
-                        <div class="small-12 columns end">
-                            <div class="blog-list">
-                                <div class="img">
-                                    <a href="{{blog.url}}"><img [src]="url_img_path + blog.article_image" alt=""></a>
-                                </div>
-                                <div class="social">
-                                    <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tabs-panel endeudamiento is-active" id="panel2">
+                      <div class="container-form">
+                          <div class="row">
+                              <div class="medium-4 columns text-center">
+                                  <p> Cuéntanos cuáles son tus ingresos mensuales</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" type="number" id="unput_test" formControlName="ingresos_mensuales_vivienda" name="ingresos_mensuales_vivienda" (keyup)="onKeyUpformatInput($event)" (change)="change(form.value,'subsidio_vivienda')">
+                                  </div>
+                                  <hr>
+                                  <p> Cuáles son los ingresos mensuales de la persona con la que solicitarás el subsidio (opcional)</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" type="number" formControlName="ingresos_mensuales_persona_vivienda" name="ingresos_mensuales_persona_vivienda" (change)="change(form.value,'subsidio_vivienda')" value="0">
+                                  </div>
+                                  <hr>
+                                  <p> Los ingresos totales son:</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" readonly type="text" formControlName="ingresos_totales_vivienda" name="ingresos_totales_vivienda" value="$ {{ total_vivienda }}">
+                                  </div>
+                                  <hr>
+                                  <p class="small">
+                                      * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
+                                  </p>
+
+                              </div>
+                              <div class="medium-5 columns text-center campo-destacado">
+                                  <p> Con el total de ingresos puedes obtener un subsidio por:</p>
+                                  <input type="text" class="text-center" placeholder="" value ="{{ smmlv_vivienda }}">
+                                  <label for="">Salarios mínimos legales vigentes</label>
+                                  <hr>
+                                  <p> Equivalentes a:</p>
+                                  <input type="text" class="text-center" placeholder="" value="$ {{ subsidio_vivienda }}">
+                                  <label for="">Pesos colombianos</label>
+                                  <a href="#" class="button secondary btn-projects-afines">Más información</a>
+                              </div>
+                              <div class="medium-4 columns text-center">
+                                  <p> </p>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tabs-panel" id="panel3">
+                      <div class="container-form">
+                          <div class="row">
+                              <div class="medium-5 columns text-center">
+                                  <p> Si cuentas con ahorros para la cuota inicial, ingresa el valor</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" type="number" formControlName="ahorros_cuota" name="ahorros_cuota">
+                                  </div>
+                                  <hr>
+                                  <p> Si deseas incluir primas, ingresa el valor</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" type="number" formControlName="primas_cuota" name="primas_cuota">
+                                  </div>
+                                  <hr>
+                                  <p> Ingrese el valor del inmueble</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" type="number" formControlName="valor_inmueble_cuota" name="valor_inmueble_cuota">
+                                  </div>
+                                  <hr>
+                          <div class="text-left">
+                          <p>Escoje una de las dos opciones:</p>
+                          <fieldset>
+                          <div class="row">
+                              <div class="medium-6 columns">
+                                  <label class="container-radio">Crédito hipotecario
+                                      <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="hipotecario">
+                                      <span class="checkmark"></span>
+                                  </label>
+                              </div>
+                              <div class="medium-6 columns">
+
+                                  <label class="container-radio">Leasing habitacional
+                                      <input type="radio" formControlName="tipo_credito_cuota" name="tipo_credito_cuota" value="leasing">
+                                      <span class="checkmark"></span>
+                                  </label>
+                              </div>
+                          </div>
+                          </fieldset>
+                          </div>
+                              </div>
+                              <div class="medium-3 columns text-center campo-destacado">
+                                  <p> Fecha estimada de entrega</p>
+                                  <input type="text" formControlName="fecha_cuota" name="fecha_cuota" type="date" placeholder="MM - AAAA">
+                                  <hr>
+                                  <p> Plazo actual para cuota inicial</p>
+                                  <input style="text-align: center;" type="text" placeholder="No. meses" value="{{ no_months }}" readonly>
+                              </div>
+                              <div class="medium-4 columns text-center">
+                                  <p> Simulación</p>
+                                  <div class="container-simulacion">
+                                      <div class="row text-left">
+                                          <div class="medium-12 columns">
+                                              <div class="item">Valor del inmueble: <span>$ {{ valorInmuebleCuota }}</span></div>
+                                              <div class="item">Cuota inicial: <span>$ {{ valorCuotaInicial }}</span></div>
+                                              <div class="item">Ahorros y primas: <span>$ {{ valorAhorroCuota }}</span></div>
+                                              <div class="item">Saldo a diferir: <span>$ {{ saldoDiferirCuota }}</span></div>
+                                          </div>
+                                      </div>
+                                      <hr>
+                                      <div class="simulacion">
+                                          <div class="row">
+                                              <div class="columns">
+                                              <table class="stack">
+                                                  <thead>
+                                                      <tr>
+                                                          <th width="100">Cuota #</th>
+                                                          <th width="100">Fecha</th>
+                                                          <th width="150">Valor</th>
+                                                          <th width="150">Saldo</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr *ngFor="let cuota of cuotasMensuales; let i = index">
+                                                          <td>{{ cuota.count }}</td>
+                                                          <td>{{ cuota.date }}</td>
+                                                          <td>$ {{ cuota.value_cuota }}</td>
+                                                          <td>$ {{ cuota.saldo }}</td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="medium-12 columns text-center mT15Mobile">
+                                  <a (click)="clickInfo(form.value)" class="button secondary ">Simular</a>
+
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tabs-panel credito" id="panel4">
+                      <div class="container-form">
+                          <div class="row">
+                              <div class="medium-4 medium-offset-4 columns text-center">
+                                  <p> Valor de la vivienda a financiar</p>
+                                  <div class="input-group">
+                                      <span class="input-group-label">$</span>
+                                      <input class="input-group-field" type="number" formControlName="valor_vivienda_credito" name="valor_vivienda_credito">
+                                  </div>
+                                  <hr>
+                                  <p> Plazo de financiamiento (meses)</p>
+                                  <div class="show-for-small-only"><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutputMobile"></div>
+                                  <div class="slider white show-for-small-only" data-slider data-initial-start="50" data-end="360">
+                                      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputMobile"></span>
+                                      <span class="slider-fill" data-slider-fill></span>
+                                  </div>
+                                  <div class="slider white hide-for-small-only" data-slider data-initial-start="50" data-end="360">
+                                      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
+                                      <span class="slider-fill" data-slider-fill></span>
+                                  </div>
+                                  <div class="hide-for-small-only"><input type="number" formControlName="plazo_credito" name="plazo_credito" id="sliderOutput1"></div>
+                                  <hr>
+                          <div class="text-left">
+                          <p>Escoje una de las dos opciones:</p>
+                          <fieldset>
+                              <div class="row">
+                                  <div class="medium-6 columns">
+                                      <label class="container-radio">Crédito hipotecario
+                                          <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="hipotecario">
+                                          <span class="checkmark"></span>
+                                      </label>
+                                  </div>
+                                  <div class="medium-6 columns">
+                                      <label class="container-radio">Leasing habitacional
+                                        <input type="radio" formControlName="tipo_credito_credito" name="tipo_credito_credito" (change)="change(form.value,'credito_vienda')" value="leasing">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                              </div>
+                          </fieldset>
+                          <p class="small">
+                              * Los ingresos calculados son aproximados y varían dependiendo de la entidad, departamento, ciudad o municipio.
+                          </p>
+                          </div>
+                              </div>
+                              <div class="medium-4 columns text-center end">
+                                  <h5>Cálculo aproximado para poder adquirir tu vivienda:</h5>
+                                  <div class="row calculo" data-equalizer data-equalize-on="medium" id="test-eq">
+                                      <div class="medium-6 small-6 columns">
+                                              <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                                  <div class="value">
+                                                      $ {{ monto_prestamo_credito }}
+                                                  </div>
+                                                  <div class="caracteristica">
+                                                      Monto préstamo
+                                                  </div>
+                                              </div>
+                                      </div>
+                                      <div class="medium-6 small-6 columns">
+                                          <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                              <div class="value">
+                                                  $ {{ cuota_inicial_vivienda_credito }}
+                                              </div>
+                                              <div class="caracteristica">
+                                                  Cuota inicial {{ cuota_inicial_porcentaje_vivienda_credito }}
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="medium-6 small-6 columns">
+                                          <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                              <div class="value">
+                                                  $ {{ ingresos_mensuales_min_credito }}
+                                              </div>
+                                              <div class="caracteristica-ing-min">
+                                                  Ingresos mínimos mensuales
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="medium-6 small-6 columns">
+                                          <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                              <div class="value">
+                                                  {{ plazo_meses_credito }}
+                                              </div>
+                                              <div class="caracteristica">
+                                                  Plazo en meses
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="medium-6 small-6 columns">
+                                          <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                              <div class="value">
+                                                  % {{ tasa_de_interes_credito }}
+                                              </div>
+                                              <div class="caracteristica">
+                                                  Tasa de interés
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="medium-6 small-6 columns">
+                                          <div class="container-calc panel-value-calc" data-equalizer-watch>
+                                              <div class="value">
+                                                  $ {{ cuota_mensual_credito }}
+                                              </div>
+                                              <div class="caracteristica">
+                                                  Cuota mensual
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <a (click)="searchProjectByPrice(monto_prestamo_credito)" class="button secondary btn-projects-afines">Ver proyectos afines</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  <hr class="white">
+  <!--fin simuladores-->
+  <!-- Proyectos Desktop -->
+  <div class="row columns hide-for-small-only" data-equalizer data-equalize-on="medium" id="test-eq">
+    <h2 class="deco text-center">Proyectos de Interés</h2>
+      <div class="medium-3 columns end" *ngFor="let project of response; let i = index">
+          <div class="card" data-equalizer-watch *ngIf="i < 8">
+              <div class="container-photo">
+                  <a href="{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                  <div class="container-tools">
+                      <div class="tags">
+                        <div  *ngIf="project.project_category.length > 0">
+                            <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                                <a>{{ tags }}</a>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="add">
+                          <a href="#" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-section">
+                <a href="{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
+                  <div class="descripcion">
+                    {{ project.project_city }},
+                    {{ project.project_zone }},
+                    {{ project.project_neighborhood }}
+                  </div>
+                  <div class="precio text-center">
+                      <div>Desde:</div>
+                      <span>{{ project.typology_price }}</span>
+                  </div>
+                  <hr>
+              </div>
+              <div class="card-section">
+                  <div class="row">
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                              <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                          </div>
+                      </div>
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                              <div class="data"> {{ project.bathrooms }} alcobas</div>
+                          </div>
+                      </div>
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                              <div class="data"> garajes {{ project.garages }}</div>
+                          </div>
+                      </div>
+                      <div class="small-6 columns">
+                          <div class="item">
+                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                              <div class="data"> {{ project.bedrooms }} baños</div>
+                          </div>
+                      </div>
+                  </div>
+                  <hr>
+              </div>
+              <div class="card-section">
+                <div class="button-group align-spaced ">
+                  <a class="button" routerLink="{{project.url}}">Ver
+                      Proyecto</a>
+                    <a data-open="exampleModal2" class="button">Contacto</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Fin proyectos desktop -->
+  <!-- Slider mobile projects -->
+  <div class="small-12 columns show-for-small-only mT15Mobile">
+    <h2 class="deco text-center">Proyectos de Interés</h2>
+    <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
+      <ul class="slider-proyects-mobile">
+        <li class="is-active ">
+            <div class="medium-6 columns">
+                <!-- Card Proyecto individual-->
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                        <a href="{{response[0].url}}"><img [src]="url_img_path + response[0].typology_images" alt="" class="proyecto-card"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="response[0].project_category.length > 0">
+                                    <div class="tag" *ngFor="let tags of response[0].project_category; let i = index">
+                                        <a>{{ tags }}</a>
                                     </div>
-                                    <div class="like"><img src="/assets/images/like.png" alt=""><span>{{blog.likes}}</span></div>
                                 </div>
 
-                                <div class="section"><a href="{{blog.url}}">{{ blog.article_type }}</a></div>
-                                <div style="height: 50px !important;margin-top: 5px;">
-                                  <h2><a href="{{blog.url}}">{{ blog.title.slice(0,80)+stringText }}</a></h2>
-                                </div>
-                                <div class="resumen" style="height: 100px !important;">
-                                    <p [innerHTML]=blog.description.slice(0,120)+stringText></p>
-                                </div>
-                                <!-- <hr> -->
-                                <a href="{{blog.url}}" class="button">Seguir leyendo</a>
+                            </div>
+                            <div class="add">
+                                <!-- <a (click)="addFavorite(response[0].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                                <a class="fav"><img src="/assets/images/add.png" alt=""></a>
                             </div>
                         </div>
                     </div>
-                </li>
-            </ul>
-        </div>
+                    <div class="card-section info">
+                      <a href="{{response[0].url}}"><h2>{{ response[0].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ response[0].property_type }}, {{ response[0].project_neighborhood }}, {{ response[0].project_city }}
+                        </div>
+                    </div>
+                    <div class="precio text-center">
+                        <div>Desde:</div>
+                        <span>$ {{ response[0].typology_price }}</span>
+                    </div>
+                    <hr>
+
+                    <div class="card-section">
+                        <hr>
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                    <div class="data">{{ response[0].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                    <div class="data">{{ response[0].bedrooms }} alcobas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                    <div class="data">{{ response[0].garages }} garajes
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                    <div class="data">{{ response[0].bathrooms }} baños
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{response[0].url}}">Ver
+                                Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li *ngIf="response.length > 0">
+          <div class="medium-6 columns">
+              <!-- Card Proyecto individual-->
+              <div class="card" data-equalizer-watch>
+                  <div class="container-photo">
+                    <a href="{{response[1].url}}"><img [src]="url_img_path + response[1].typology_images" alt="" class="proyecto-card"></a>
+                      <div class="container-tools">
+                          <div class="tags">
+                              <div *ngIf="response[1].project_category.length > 0">
+                                  <div class="tag" *ngFor="let tags of response[1].project_category; let i = index">
+                                      <a>{{ tags }}</a>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="add">
+                              <!-- <a (click)="addFavorite(response[1].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                              <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-section info">
+                    <a href="{{response[1].url}}"><h2>{{ response[1].project }}</h2></a>
+                      <div class="descripcion">
+                          {{ response[1].property_type }}, {{ response[1].project_neighborhood }}, {{ response[1].project_city }}
+                      </div>
+                  </div>
+                  <div class="precio text-center">
+                      <div>Desde:</div>
+                      <span>$ {{ response[1].typology_price }}</span>
+                  </div>
+                  <hr>
+
+                  <div class="card-section">
+                      <hr>
+                      <div class="row">
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                  <div class="data">{{ response[1].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                  <div class="data">{{ response[1].bedrooms }} alcobas
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                  <div class="data">{{ response[1].garages }} garajes
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="small-6 columns">
+                              <div class="item">
+                                  <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                  <div class="data">{{ response[1].bathrooms }} baños
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                  </div>
+                  <div class="card-section">
+                      <div class="button-group align-spaced ">
+                          <a class="button bton-mobile" href="{{response[1].url}}">Ver
+                              Proyecto</a>
+                          <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <!-- Fin Card Proyecto individual-->
+        </li>
+        <li *ngIf="response.length > 1">
+            <div class="medium-6 columns">
+                <!-- Card Proyecto individual-->
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{response[2].url}}"><img [src]="url_img_path + response[2].typology_images" alt="" class="proyecto-card"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="response[2].project_category.length > 0">
+                                    <div class="tag" *ngFor="let tags of response[2].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="add">
+                                <!-- <a (click)="addFavorite(response[2].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                                <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section info">
+                      <a href="{{response[2].url}}"><h2>{{ response[2].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ response[2].property_type }}, {{ response[2].project_neighborhood }}, {{ response[2].project_city }}
+                        </div>
+                    </div>
+                    <div class="precio text-center">
+                        <div>Desde:</div>
+                        <span>$ {{ response[2].typology_price }}</span>
+                    </div>
+                    <hr>
+
+                    <div class="card-section">
+                        <hr>
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                    <div class="data">{{ response[2].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                    <div class="data">{{ response[2].bedrooms }} alcobas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                    <div class="data">{{ response[2].garages }} garajes
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                    <div class="data">{{ response[2].bathrooms }} baños
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{response[2].url}}">Ver
+                                Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li *ngIf="response.length > 2">
+            <div class="medium-6 columns">
+                <!-- Card Proyecto individual-->
+                <div class="card" data-equalizer-watch>
+                    <div class="container-photo">
+                      <a href="{{response[3].url}}"><img [src]="url_img_path + response[3].typology_images" alt="" class="proyecto-card"></a>
+                        <div class="container-tools">
+                            <div class="tags">
+                                <div *ngIf="response[3].project_category.length > 0">
+                                    <div class="tag" *ngFor="let tags of response[3].project_category; let i = index">
+                                        <a>{{ tags }}</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="add">
+                                <!-- <a (click)="addFavorite(response[3].nid);" class="fav"><img src="/assets/images/add.png" alt=""></a> -->
+                                <a class="fav"><img src="/assets/images/add.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section info">
+                      <a href="{{response[3].url}}"><h2>{{ response[3].project }}</h2></a>
+                        <div class="descripcion">
+                            {{ response[3].property_type }}, {{ response[3].project_neighborhood }}, {{ response[3].project_city }}
+                        </div>
+                    </div>
+                    <div class="precio text-center">
+                        <div>Desde:</div>
+                        <span>$ {{ response[3].typology_price }}</span>
+                    </div>
+                    <hr>
+
+                    <div class="card-section">
+                        <hr>
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                    <div class="data">{{ response[3].area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                    <div class="data">{{ response[3].bedrooms }} alcobas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                    <div class="data">{{ response[3].garages }} garajes
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-6 columns">
+                                <div class="item">
+                                    <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                    <div class="data">{{ response[3].bathrooms }} baños
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="card-section">
+                        <div class="button-group align-spaced ">
+                            <a class="button bton-mobile" href="{{response[3].url}}">Ver
+                                Proyecto</a>
+                            <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+      </ul>
     </div>
+  </div>
+  <!-- Fin slider mobile projects -->
+  <hr class="white">
+  <div class="row columns text-center mtop50">
+      <a href="proyectos" class="button secondary bton-mobile">Ver más proyectos</a>
+  </div>
+  <hr class="white">
+  <div class="row columns">
+      <h2 class="deco text-center">Artículos de interés</h2>
+      <div class="container-blog hide-for-small-only">
+          <div class="medium-3 columns" *ngFor="let mostRead of responseMostRead; let i = index">
+              <div class="blog-list" *ngIf="i < 4">
+                  <div class="img">
+                    <img [src]="url_img_path + mostRead.article_image" alt="">
+                  </div>
+                  <div class="social">
+                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>2</span>
+                      </div>
+                      <div class="like"><img src="/assets/images/like.png" alt=""><span>5</span></div>
+                  </div>
+
+                  <div class="section"><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.article_type }}</a></div>
+                  <h3><a routerLink="/blog/{{mostRead.url}}">{{ mostRead.title.slice(0,90) }}</a></h3>
+                  <div class="resumen">
+                      <p [innerHTML]=mostRead.description.slice(0,120)+stringText></p>
+                  </div>
+                  <a routerLink="{{mostRead.url}}" class="button">Seguir leyendo</a>
+              </div>
+          </div>
+      </div>
+      <div class="row columns show-for-small-only">
+          <div class="sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: auto !important;touch-action: auto; background-color: #fefefe !important;">
+              <ul class="slider-blog-home">
+                  <li class="is-active" *ngFor="let blog of responseMostRead.slice(0, 4); let i = index">
+                      <div class="row">
+                          <div class="small-12 columns end">
+                              <div class="blog-list">
+                                  <div class="img">
+                                      <a href="{{blog.url}}"><img [src]="url_img_path + blog.article_image" alt=""></a>
+                                  </div>
+                                  <div class="social">
+                                      <div class="comment"><img src="/assets/images/comment.png" alt=""><span>{{blog.comments}}</span>
+                                      </div>
+                                      <div class="like"><img src="/assets/images/like.png" alt=""><span>{{blog.likes}}</span></div>
+                                  </div>
+
+                                  <div class="section"><a href="{{blog.url}}">{{ blog.article_type }}</a></div>
+                                  <div style="height: 50px !important;margin-top: 5px;">
+                                    <h2><a href="{{blog.url}}">{{ blog.title.slice(0,80)+stringText }}</a></h2>
+                                  </div>
+                                  <div class="resumen" style="height: 100px !important;">
+                                      <p [innerHTML]=blog.description.slice(0,120)+stringText></p>
+                                  </div>
+                                  <!-- <hr> -->
+                                  <a href="{{blog.url}}" class="button">Seguir leyendo</a>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <hr class="white">
 </div>
-<hr class="white">
 <!-- Modal de contacto -->
 <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>

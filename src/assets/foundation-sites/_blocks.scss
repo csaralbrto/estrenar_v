@@ -1186,9 +1186,6 @@ h1.project {
   }
 }
 
-.info-proyecto {
-  margin-bottom: 1.4rem;
-}
 
 img.logo-proyecto {
   border: 1px solid $light-gray;
@@ -1896,6 +1893,42 @@ ul.menu-left {
       margin-left: -10px;
     }
   }
+  .opcion-wizard{
+    display: inline-block;
+    margin: 0.6rem;
+    &.small {
+      width: 80px;
+      height: 80px !important;
+    }
+    &.activo {
+      background: $primary-color;
+    }
+    input {
+      display: none;
+    }
+    label {
+      margin: 0;
+      // background: #eeeeee;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 0.8rem;
+      width: 100px;
+      height: 50px;
+      line-height: 0.1 !important;
+      font-size: 2rem;
+      display: block;
+      color: #17454E;
+      border: 1px solid #accb26;
+    }
+    .item-tex {
+      display: block;
+      height: 10px;
+      line-height: 0em;
+      margin-top: 41%;
+      font-size: 0.8rem;
+      margin-left: -10px;
+    }
+  }
 }
 
 .checkblock {
@@ -1992,7 +2025,8 @@ a.tipos {
 /* When the checkbox is checked, add a blue background */
 
 .container-check input:checked ~ .checkmark {
-  background-color: $primary-color;
+  // background-color: $primary-color;
+  background-color: #b4ca3d;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -2672,7 +2706,7 @@ img:focus {
       border: 1px solid #b4ca3d;
       // background: $primary-color;
       // background: #B4CA3D;
-      border-radius: 8px;
+      border-radius: 12px;
       margin-right: 0.5rem;
       color: $black !important;
       .is-active {
@@ -2695,19 +2729,19 @@ img:focus {
     }
     .tabs-title > a:focus,
     .tabs-title > a[aria-selected="true"] {
-      border-radius: 3px;
+      border-radius: 8px;
       background: #b4ca3d;
       // background: #B4CA3D;
       color: $white;
       &:hover {
-        border-radius: 3px;
+        border-radius: 8px;
         // background: $primary-color;
         background: #b4ca3d;
         color: $white;
       }
     }
     .tabs-title > a:hover {
-      border-radius: 3px;
+      border-radius: 8px;
       // background: $primary-color;
       background: #B4CA3D;
       color: $white;
@@ -2936,7 +2970,12 @@ ul.menu li a img {
 }
 @media print, screen and (max-width: 480px) {
 
-
+  .mleft-builders{
+    margin-left: -2rem;
+  }
+  .info-proyecto {
+    margin-bottom: 0rem;
+  }
   .img-comparator{
     width: 161px !important;
     height: 130px !important;
@@ -3060,6 +3099,7 @@ ul.menu li a img {
         position: relative;
         .container-foto {
           position: relative;
+          cursor: pointer;
           &:after {
             position: absolute;
             background: url(/assets/images/cerrar.png);
@@ -3231,6 +3271,21 @@ ul.menu li a img {
     height: 33% !important;
   }
   div#exampleModalSuscribe {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem !important;
+    min-height: 20% !important;
+    height: 26% !important;
+    h3{
+      text-transform: none !important;
+    }
+  }
+  div#exampleModalNosuscribe {
     position: fixed;
     top: 50% !important;
     left: 50%;
@@ -3534,6 +3589,9 @@ ul.menu li a img {
 }
 @media print, screen and (min-width: 481px) {
 
+.info-proyecto {
+  margin-bottom: 1.4rem;
+}
   div.legal-notice{
     label{
       vertical-align: 3px;
@@ -3639,7 +3697,8 @@ ul.menu li a img {
         position: relative;
         .container-foto {
           position: relative;
-          &:after {
+          cursor: pointer;
+          &::before {
             position: absolute;
             background: url(/assets/images/cerrar.png);
             content: "";
@@ -3714,12 +3773,25 @@ ul.menu li a img {
     width: 157px;
   }
   .tab-map-project {
-    padding: 18px !important;
+    padding: 13px !important;
   }
   .tab-map-project-streetV {
-    padding: 18px !important;
+    padding: 13px !important;
   }
   div#exampleModalSuscribe {
+    position: fixed;
+    top: 50% !important;
+    left: 50%;
+    width: 25%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    h3{
+      text-transform: none !important;
+    }
+  }
+  div#exampleModalNosuscribe {
     position: fixed;
     top: 50% !important;
     left: 50%;
@@ -4096,6 +4168,33 @@ label.container-radio.label-button.checked {
   display: block;
   border: 1px solid #accb26;
 }
+.label-selectd-contact{
+  margin: 0;
+  background: #accb26 !important;
+  border-radius: 120px;
+  padding: 1.5rem;
+  margin-bottom: 0.8rem;
+  width: 100px;
+  height: 100px;
+  line-height: 1.5 !important;
+  font-size: 2rem;
+  display: block;
+  border: 1px solid #accb26;
+}
+.label-selectd-wizard{
+  color: white !important;
+  margin: 0;
+  background: #b4ca3d;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 0.8rem;
+  width: 100px;
+  height: 50px;
+  line-height: 0.1 !important;
+  font-size: 2rem;
+  display: block;
+  border: 1px solid #accb26;
+}
 .bton-collection{
   width: 159px !important;
 }
@@ -4267,4 +4366,10 @@ div#term-privacid{
       color: #b4ca3d;
     }
   }
+}
+.mBtn-ComparatorContact{
+  margin-bottom: 0.5rem;
+}
+.h1Builders{
+  font-size: 1.3rem !important;
 }

@@ -1,324 +1,35 @@
-<div class="row columns text-center">
-  <div class="publicidad">
-      <img src="/assets/images/banner1.jpg" alt="">
-  </div>
-</div>
-<div class="row columns">
-  <!-- <div *ngIf="titleLabel">
-      <h1>{{titleLabel}}</h1>
-  </div> -->
-  <div *ngIf="wordLabel || titleLabel; else titleDefaultTemplate">
-      <h1>{{wordLabel}} {{titleLabel}}</h1>
-  </div>
-  <ng-template #titleDefaultTemplate>
-      <div>
-          <h1>Proyectos de Vivienda</h1>
-      </div>
-  </ng-template>
-  <div class="medium-6 small-12 columns map-float show-for-small-only" style="margin-bottom: 10px;">
-      <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
-          <agm-marker *ngFor="let marker of response_data_project" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="icon_ev">>
-              <agm-info-window #infoWindow>
-                  {{ marker.project }}
-              </agm-info-window>
-          </agm-marker>
-      </agm-map>
-  </div>
-  <!--filtros-->
-  <div id="filters-desktop" class="hide-for-small-only">
-    <form [formGroup]="form_filters">
-        <div class="filtros">
-            <div class="row condensed">
-                <div class="medium-2 columns">
-                    <label>Tipo de inmueble
-                    <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
-                      <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
-                        <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
-                    </select>
-                </label>
-                </div>
-                <div class="medium-2 columns">
-                    <label>Precio
-                    <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
-                      <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
-                        <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
-                    </select>
-                </label>
-                </div>
-                <div class="medium-2 columns">
-                    <label>Ciudad
-                    <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
-                      <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
-                        <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
-                    </select>
-                </label>
-                </div>
-                <div class="medium-2 columns">
-                    <label>Zona
-                    <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
-                      <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
-                        <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
-                    </select>
-                    <ng-template #zoneTemplate>
-                        <select disabled="true">
-                            <option value="" selected>Seleccione</option>
-                        </select>
-                    </ng-template>
-                </label>
-                </div>
-                <div class="medium-2 columns">
-                    <label>Sector
-                    <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
-                      <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
-                        <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
-                    </select>
-                    <ng-template #sectorTemplate>
-                        <select disabled="true">
-                            <option value="" selected>Seleccione</option>
-                        </select>
-                    </ng-template>
-                </label>
-                </div>
-                <div class="medium-2 columns mTop-columns">
-                    <div class="botones list width-div">
-                        <a class="button filtro-btn hide-for-small-only bton-filters-projects" data-open="masfiltrosModal">Más filtros</a>
-                        <a class="button filtro-btn show-for-small-only" data-open="masfiltrosModalMobile">Más filtros</a>
-                        <a href="{{path_favorites}}" class="button secondary favorito button-color-ev fav-btn bton-filters-projects">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row condensed">
-                <!-- Aqui van los tags de más filtros -->
-                <!-- <a href="#" class="button close">3 Habitaciones</a> -->
-                <div class="columns medium-2 small-3 end" *ngIf="optionsTypySelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterType; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsTypySelected)" *ngIf="optionsTypySelected == type.url">{{ type.values.value }}</a>
-                  </div>
-                </div>
-                <div class="columns medium-2 small-3 end" *ngIf="optionsPriceSelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterPrice; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsPriceSelected)" *ngIf="optionsPriceSelected == type.url">{{ type.values.value }}</a>
-                  </div>
-                </div>
-                <div class="columns medium-2 small-3 end" *ngIf="optionsCitySelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterCity; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsCitySelected)" *ngIf="optionsCitySelected == type.url">{{ type.values.value }}</a>
-                  </div>
-                </div>
-                <div class="columns medium-2 small-3 end" *ngIf="optionsZoneSelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterZone; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsZoneSelected)" *ngIf="optionsZoneSelected == type.url">{{ type.values.value }}</a>
-                  </div>
-                </div>
-                <div class="columns medium-2 small-3 end" *ngIf="optionsSectorSelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterSector; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsSectorSelected)" *ngIf="optionsSectorSelected == type.url">{{ type.values.value }}</a>
-                  </div>
-                </div>
-                <div class="columns medium-2 small-3 end" *ngIf="optionsBedroomsSelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterBedrooms; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsBedroomsSelected)" *ngIf="optionsBedroomsSelected == type.url">{{ type.values.value }} Habitaciones</a>
-                  </div>
-                </div>
-                <div class="columns medium-2 small-3 end" *ngIf="optionsBathroomsSelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterBathrooms; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsBathroomsSelected)" *ngIf="optionsBathroomsSelected == type.url">{{ type.values.value }} Baños</a>
-                  </div>
-                </div>
-                <div class="columns medium-2 small-3 end" *ngIf="optionsGaragesSelected !== ''">
-                  <div class="filtros-tag" *ngFor="let type of filterGarages; let i = index">
-                    <a class="button close tag-filters" (click)="removeFilter(optionsGaragesSelected)" *ngIf="optionsGaragesSelected == type.url">{{ type.values.value }} Garajes</a>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </form>
-  </div>
-  <div class="row show-for-small-only">
-    <div class="filtros">
-        <div class="row condensed">
-          <div class="medium-2 columns mTop-columns">
-            <div class="botones list">
-                <a class="button filtro-btn hide-for-small-only" data-open="masfiltrosModal">Más filtros</a>
-                <a class="button filtro-btn show-for-small-only" data-open="masfiltrosModalMobile">Más filtros</a>
-                <a href="{{path_favorites}}" class="button secondary favorito button-color-ev fav-btn">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="row condensed row-tags-filters ">
-          <ul class="row-tags-filters">
-            <li class="tags-mobile-filters" *ngIf="optionsTypySelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterType; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsTypySelected)" *ngIf="optionsTypySelected == type.url">{{ type.values.value }}</a>
-              </div>
-            </li>
-            <li class="tags-mobile-filters" *ngIf="optionsPriceSelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterPrice; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsPriceSelected)" *ngIf="optionsPriceSelected == type.url">{{ type.values.value }}</a>
-              </div>
-            </li>
-            <li class="tags-mobile-filters" *ngIf="optionsCitySelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterCity; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsCitySelected)" *ngIf="optionsCitySelected == type.url">{{ type.values.value }}</a>
-              </div>
-            </li>
-            <li class="tags-mobile-filters" *ngIf="optionsZoneSelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterZone; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsZoneSelected)" *ngIf="optionsZoneSelected == type.url">{{ type.values.value }}</a>
-              </div>
-            </li>
-            <li class="tags-mobile-filters" *ngIf="optionsSectorSelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterSector; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsSectorSelected)" *ngIf="optionsSectorSelected == type.url">{{ type.values.value }}</a>
-              </div>
-            </li>
-            <li class="tags-mobile-filters" *ngIf="optionsBedroomsSelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterBedrooms; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsBedroomsSelected)" *ngIf="optionsBedroomsSelected == type.url">{{ type.values.value }} Habitaciones</a>
-              </div>
-            </li>
-            <li class="tags-mobile-filters" *ngIf="optionsBathroomsSelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterBathrooms; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsBathroomsSelected)" *ngIf="optionsBathroomsSelected == type.url">{{ type.values.value }} Baños</a>
-              </div>
-            </li>
-            <li class="tags-mobile-filters" *ngIf="optionsGaragesSelected !== ''">
-              <div class="filtros-tag" *ngFor="let type of filterGarages; let i = index">
-                <a class="button close tag-filters" (click)="removeFilter(optionsGaragesSelected)" *ngIf="optionsGaragesSelected == type.url">{{ type.values.value }} Garajes</a>
-              </div>
-            </li>
-        </ul>
+<div *ngIf="results">
+  <div class="row columns text-center">
+    <div class="publicidad">
+        <img src="/assets/images/banner1.jpg" alt="">
     </div>
   </div>
-  <!--fin filtros-->
-  <!-- Modal más filtros -->
-  <div class="reveal filter small-12" id="masfiltrosModal" data-reveal>
-    <form [formGroup]="form_moreFilters">
-        <div class="row">
-          <div class="medium-12 small-12 columns">
-            <div class="medium-12 small-12 colunms text-center">
-                <h1><strong>Más filtros</strong></h1>
-            </div>
-            <div class="medium-6 small-12 columns">
-                <h3>Estado del proyecto</h3>
-                <div *ngFor="let option of ValoresProyecto">
-                    <label class="container-check">{{option.values.value}}
-                        <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="change(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{option.url}}">
-                        <span class="checkmark-morefilter"></span>
-                    </label>
-                </div>
-                <div class="mTop-inmuebles">
-                  <h3>Inmueble</h3>
-                  <div class="row">
-                      <div class="small-6 columns">
-                          <div class="margin-top10"> <img width="20px" height="20px" src="/assets/images/icon-medida.png" alt=""> Área m²</div>
-                      </div>
-                      <div class="small-6 columns">
-                          <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
-                              <option *ngFor="let type of filterAreaBuilt; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
-                          </select>
-                      </div>
-                  </div>
-                </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div><img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones</div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="input-group input-number-group">
-                            <div class="input-group-button-morefilter">
-                                <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
-                            </div>
-                            <input class="input-number input-morefilter" type="number" readonly id="bedroom" value="1" min="0" max="1000">
-                            <div class="input-group-button-morefilter">
-                                <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div><img width="20px" height="20px" src="/assets/images/icon-water.png" alt=""> Baños</div>
-                    </div>
-                    <div class="small-6 columns">
-                        <div class="input-group input-number-group">
-                            <div class="input-group-button-morefilter">
-                                <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
-                            </div>
-                            <input class="input-number input-morefilter" type="number" readonly id="bathroom" value="1" min="0" max="1000">
-                            <div class="input-group-button-morefilter">
-                                <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <div><img width="20px" height="20px" src="/assets/images/icon-garaje.png" alt=""> Garajes</div>
-                    </div>
-                    <div class="small-6 columns">
-
-                        <div class="input-group input-number-group">
-                            <div class="input-group-button-morefilter">
-                                <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
-                            </div>
-                            <input class="input-number input-morefilter" type="number" readonly id="garage" value="1" min="0" max="1000">
-                            <div class="input-group-button-morefilter">
-                                <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="medium-5 small-12 columns">
-                <div class="row">
-                    <h3>Constructora</h3>
-                    <!-- <label>
-                    <input type="search" placeholder="Buscar">
-                </label> -->
-                    <!-- <div class="small-6 columns"> -->
-                  <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
-                    <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
-                  </select>
-                    <!-- </div> -->
-                </div>
-                <br>
-                <div class="row">
-                    <h3>Colecciones</h3>
-                    <div class="filtros-tag-collection" *ngFor="let option of filterColection">
-                        <a *ngIf="option.values.active == 'true'; else simpleCollection" (click)="clickCollection(option.url)" class="button bton-collection bton-collection-active">{{option.values.value}}</a>
-                        <ng-template #simpleCollection>
-                            <a (click)="clickCollection(option.url)" class="button bton-collection">{{option.values.value}}</a>
-                        </ng-template>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <a (click)="cleanFilter()">Limpiar filtros</a>
-                    <!-- <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a> -->
-                    <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Aplicar filtros</a>
-                </div>
-            </div>
-          </div>
+  <div class="row columns">
+    <!-- <div *ngIf="titleLabel">
+        <h1>{{titleLabel}}</h1>
+    </div> -->
+    <div *ngIf="wordLabel || titleLabel; else titleDefaultTemplate">
+        <h1>{{wordLabel}} {{titleLabel}}</h1>
+    </div>
+    <ng-template #titleDefaultTemplate>
+        <div>
+            <h1>Proyectos de Vivienda</h1>
         </div>
-    </form>
-    <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <!-- Fin modal más filtros -->
-  <!-- Modal más filtros mobile -->
-  <div class="reveal filter small-12" id="masfiltrosModalMobile" data-reveal>
+    </ng-template>
+    <div class="medium-6 small-12 columns map-float show-for-small-only" style="margin-bottom: 10px;">
+        <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 580px !important;">
+            <agm-marker *ngFor="let marker of response_data_project" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="icon_ev">>
+                <agm-info-window #infoWindow>
+                    {{ marker.project }}
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
+    <!--filtros-->
+    <div id="filters-desktop" class="hide-for-small-only">
       <form [formGroup]="form_filters">
           <div class="filtros">
               <div class="row condensed">
-                  <div class="medium-2 colunms pLeftMorFilters">
-                      <h1><strong>Filtros</strong></h1>
-                  </div>
                   <div class="medium-2 columns">
                       <label>Tipo de inmueble
                       <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
@@ -369,12 +80,127 @@
                       </ng-template>
                   </label>
                   </div>
+                  <div class="medium-2 columns mTop-columns">
+                      <div class="botones list width-div">
+                          <a class="button filtro-btn hide-for-small-only bton-filters-projects" data-open="masfiltrosModal">Más filtros</a>
+                          <a class="button filtro-btn show-for-small-only" data-open="masfiltrosModalMobile">Más filtros</a>
+                          <a href="{{path_favorites}}" class="button secondary favorito button-color-ev fav-btn bton-filters-projects">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="row condensed">
+                  <!-- Aqui van los tags de más filtros -->
+                  <!-- <a href="#" class="button close">3 Habitaciones</a> -->
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsTypySelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterType; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsTypySelected)" *ngIf="optionsTypySelected == type.url">{{ type.values.value }}</a>
+                    </div>
+                  </div>
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsPriceSelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterPrice; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsPriceSelected)" *ngIf="optionsPriceSelected == type.url">{{ type.values.value }}</a>
+                    </div>
+                  </div>
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsCitySelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterCity; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsCitySelected)" *ngIf="optionsCitySelected == type.url">{{ type.values.value }}</a>
+                    </div>
+                  </div>
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsZoneSelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterZone; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsZoneSelected)" *ngIf="optionsZoneSelected == type.url">{{ type.values.value }}</a>
+                    </div>
+                  </div>
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsSectorSelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterSector; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsSectorSelected)" *ngIf="optionsSectorSelected == type.url">{{ type.values.value }}</a>
+                    </div>
+                  </div>
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsBedroomsSelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterBedrooms; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsBedroomsSelected)" *ngIf="optionsBedroomsSelected == type.url">{{ type.values.value }} Habitaciones</a>
+                    </div>
+                  </div>
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsBathroomsSelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterBathrooms; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsBathroomsSelected)" *ngIf="optionsBathroomsSelected == type.url">{{ type.values.value }} Baños</a>
+                    </div>
+                  </div>
+                  <div class="columns medium-2 small-3 end" *ngIf="optionsGaragesSelected !== ''">
+                    <div class="filtros-tag" *ngFor="let type of filterGarages; let i = index">
+                      <a class="button close tag-filters" (click)="removeFilter(optionsGaragesSelected)" *ngIf="optionsGaragesSelected == type.url">{{ type.values.value }} Garajes</a>
+                    </div>
+                  </div>
               </div>
           </div>
       </form>
+    </div>
+    <div class="show-for-small-only">
+      <div class="filtros">
+          <div class="row condensed">
+            <div class="medium-2 columns mTop-columns">
+              <div class="botones list">
+                  <a class="button filtro-btn hide-for-small-only" data-open="masfiltrosModal">Más filtros</a>
+                  <a class="button filtro-btn show-for-small-only" data-open="masfiltrosModalMobile">Más filtros</a>
+                  <a href="{{path_favorites}}" class="button secondary favorito button-color-ev fav-btn">Favoritos <img src="/assets/images/fav-white.png" alt="add"></a>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row condensed row-tags-filters ">
+            <ul class="row-tags-filters">
+              <li class="tags-mobile-filters" *ngIf="optionsTypySelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterType; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsTypySelected)" *ngIf="optionsTypySelected == type.url">{{ type.values.value }}</a>
+                </div>
+              </li>
+              <li class="tags-mobile-filters" *ngIf="optionsPriceSelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterPrice; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsPriceSelected)" *ngIf="optionsPriceSelected == type.url">{{ type.values.value }}</a>
+                </div>
+              </li>
+              <li class="tags-mobile-filters" *ngIf="optionsCitySelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterCity; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsCitySelected)" *ngIf="optionsCitySelected == type.url">{{ type.values.value }}</a>
+                </div>
+              </li>
+              <li class="tags-mobile-filters" *ngIf="optionsZoneSelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterZone; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsZoneSelected)" *ngIf="optionsZoneSelected == type.url">{{ type.values.value }}</a>
+                </div>
+              </li>
+              <li class="tags-mobile-filters" *ngIf="optionsSectorSelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterSector; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsSectorSelected)" *ngIf="optionsSectorSelected == type.url">{{ type.values.value }}</a>
+                </div>
+              </li>
+              <li class="tags-mobile-filters" *ngIf="optionsBedroomsSelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterBedrooms; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsBedroomsSelected)" *ngIf="optionsBedroomsSelected == type.url">{{ type.values.value }} Habitaciones</a>
+                </div>
+              </li>
+              <li class="tags-mobile-filters" *ngIf="optionsBathroomsSelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterBathrooms; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsBathroomsSelected)" *ngIf="optionsBathroomsSelected == type.url">{{ type.values.value }} Baños</a>
+                </div>
+              </li>
+              <li class="tags-mobile-filters" *ngIf="optionsGaragesSelected !== ''">
+                <div class="filtros-tag" *ngFor="let type of filterGarages; let i = index">
+                  <a class="button close tag-filters" (click)="removeFilter(optionsGaragesSelected)" *ngIf="optionsGaragesSelected == type.url">{{ type.values.value }} Garajes</a>
+                </div>
+              </li>
+          </ul>
+      </div>
+    </div>
+    <!--fin filtros-->
+    <!-- Modal más filtros -->
+    <div class="reveal filter small-12" id="masfiltrosModal" data-reveal>
       <form [formGroup]="form_moreFilters">
           <div class="row">
             <div class="medium-12 small-12 columns">
+              <div class="medium-12 small-12 colunms text-center">
+                  <h1><strong>Más filtros</strong></h1>
+              </div>
               <div class="medium-6 small-12 columns">
                   <h3>Estado del proyecto</h3>
                   <div *ngFor="let option of ValoresProyecto">
@@ -398,14 +224,14 @@
                   </div>
                   <div class="row">
                       <div class="small-6 columns">
-                          <div> <img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones</div>
+                          <div><img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones</div>
                       </div>
                       <div class="small-6 columns">
                           <div class="input-group input-number-group">
                               <div class="input-group-button-morefilter">
                                   <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
                               </div>
-                              <input class="input-number input-morefilter" type="number" readonly id="bedroomMobile" value="1" min="0" max="1000">
+                              <input class="input-number input-morefilter" type="number" readonly id="bedroom" value="1" min="0" max="1000">
                               <div class="input-group-button-morefilter">
                                   <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
                               </div>
@@ -422,7 +248,7 @@
                               <div class="input-group-button-morefilter">
                                   <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
                               </div>
-                              <input class="input-number input-morefilter" type="number" readonly id="bathroomMobile" value="1" min="0" max="1000">
+                              <input class="input-number input-morefilter" type="number" readonly id="bathroom" value="1" min="0" max="1000">
                               <div class="input-group-button-morefilter">
                                   <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
                               </div>
@@ -439,7 +265,7 @@
                               <div class="input-group-button-morefilter">
                                   <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
                               </div>
-                              <input class="input-number input-morefilter" type="number" readonly id="garageMobile" value="0" min="0" max="1000">
+                              <input class="input-number input-morefilter" type="number" readonly id="garage" value="1" min="0" max="1000">
                               <div class="input-group-button-morefilter">
                                   <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
                               </div>
@@ -451,6 +277,9 @@
               <div class="medium-5 small-12 columns">
                   <div class="row">
                       <h3>Constructora</h3>
+                      <!-- <label>
+                      <input type="search" placeholder="Buscar">
+                  </label> -->
                       <!-- <div class="small-6 columns"> -->
                     <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
                       <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
@@ -470,14 +299,9 @@
                   <br>
                   <br>
                   <div class="row">
-                    <div class="colums small-12 medium-12">
-                      <div class="small-4 columns medium-6" style="margin-left: -1.1rem; width: 6.7rem;">
-                        <a style="vertical-align: -14px;" (click)="cleanFilter()">Limpiar filtros</a>
-                      </div>
-                      <div class="small-8 columns medium-6">
-                        <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a>
-                      </div>
-                    </div>
+                      <a (click)="cleanFilter()">Limpiar filtros</a>
+                      <!-- <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a> -->
+                      <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Aplicar filtros</a>
                   </div>
               </div>
             </div>
@@ -486,227 +310,405 @@
       <button class="close-button" data-close aria-label="Close modal" type="button">
         <span aria-hidden="true">&times;</span>
       </button>
+    </div>
+    <!-- Fin modal más filtros -->
+    <!-- Modal más filtros mobile -->
+    <div class="reveal filter small-12" id="masfiltrosModalMobile" data-reveal>
+        <form [formGroup]="form_filters">
+            <div class="filtros">
+                <div class="row condensed">
+                    <div class="medium-2 colunms pLeftMorFilters">
+                        <h1><strong>Filtros</strong></h1>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Tipo de inmueble
+                        <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                          <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
+                            <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                        </select>
+                    </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Precio
+                        <select id="price" name="price" formControlName="price" (change)="change(form_filters.value)" [(ngModel)]="optionsPriceSelected" *ngIf="filterPrice && filterPrice.length > 0">
+                          <option value="" *ngIf="optionsPriceSelected == ''">Seleccione:</option>
+                            <option *ngFor="let price of filterPrice; let i = index" [value]="price.url">{{price.values.value }}</option>
+                        </select>
+                    </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Ciudad
+                        <select id="city" name="city" formControlName="city" (change)="change(form_filters.value)" [(ngModel)]="optionsCitySelected" *ngIf="filterCity && filterCity.length > 0">
+                          <option value="" *ngIf="optionsCitySelected == ''">Seleccione:</option>
+                            <option *ngFor="let city of filterCity; let i = index" [value]="city.url">{{city.values.value }}</option>
+                        </select>
+                    </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Zona
+                        <select id="zone" name="zone" formControlName="zone" (change)="change(form_filters.value)" [(ngModel)]="optionsZoneSelected" *ngIf="filterZone && filterZone.length > 0; else zoneTemplate">
+                          <option value="" *ngIf="optionsZoneSelected == ''">Seleccione:</option>
+                            <option *ngFor="let zone of filterZone; let i = index" [value]="zone.url">{{zone.values.value }}</option>
+                        </select>
+                        <ng-template #zoneTemplate>
+                            <select disabled="true">
+                                <option value="" selected>Seleccione</option>
+                            </select>
+                        </ng-template>
+                    </label>
+                    </div>
+                    <div class="medium-2 columns">
+                        <label>Sector
+                        <select id="sector" name="sector" formControlName="sector" (change)="change(form_filters.value)" [(ngModel)]="optionsSectorSelected" *ngIf="filterSector && filterSector.length > 0; else sectorTemplate">
+                          <option value="" *ngIf="optionsSectorSelected == ''">Seleccione:</option>
+                            <option *ngFor="let sector of filterSector; let i = index" [value]="sector.url">{{sector.values.value }}</option>
+                        </select>
+                        <ng-template #sectorTemplate>
+                            <select disabled="true">
+                                <option value="" selected>Seleccione</option>
+                            </select>
+                        </ng-template>
+                    </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="form_moreFilters">
+            <div class="row">
+              <div class="medium-12 small-12 columns">
+                <div class="medium-6 small-12 columns">
+                    <h3>Estado del proyecto</h3>
+                    <div *ngFor="let option of ValoresProyecto">
+                        <label class="container-check">{{option.values.value}}
+                            <input id="project_state" type="radio" name="project_state" formControlName="project_state" (change)="change(form_moreFilters.value)" [(ngModel)]="optionFeatureProyectSelected" value="{{option.url}}">
+                            <span class="checkmark-morefilter"></span>
+                        </label>
+                    </div>
+                    <div class="mTop-inmuebles">
+                      <h3>Inmueble</h3>
+                      <div class="row">
+                          <div class="small-6 columns">
+                              <div class="margin-top10"> <img width="20px" height="20px" src="/assets/images/icon-medida.png" alt=""> Área m²</div>
+                          </div>
+                          <div class="small-6 columns">
+                              <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
+                                  <option *ngFor="let type of filterAreaBuilt; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                              </select>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div> <img width="20px" height="20px" src="/assets/images/icon-alcoba.png" alt=""> Habitaciones</div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(1))>-</span>
+                                </div>
+                                <input class="input-number input-morefilter" type="number" readonly id="bedroomMobile" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(1))>+</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div><img width="20px" height="20px" src="/assets/images/icon-water.png" alt=""> Baños</div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(2))>-</span>
+                                </div>
+                                <input class="input-number input-morefilter" type="number" readonly id="bathroomMobile" value="1" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(2))>+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div><img width="20px" height="20px" src="/assets/images/icon-garaje.png" alt=""> Garajes</div>
+                        </div>
+                        <div class="small-6 columns">
+
+                            <div class="input-group input-number-group">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-decrement-morefilter" (click)=(decreaseValue(3))>-</span>
+                                </div>
+                                <input class="input-number input-morefilter" type="number" readonly id="garageMobile" value="0" min="0" max="1000">
+                                <div class="input-group-button-morefilter">
+                                    <span class="input-number-increment-morefilter" (click)=(incrementValue(3))>+</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="medium-5 small-12 columns">
+                    <div class="row">
+                        <h3>Constructora</h3>
+                        <!-- <div class="small-6 columns"> -->
+                      <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
+                        <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
+                      </select>
+                        <!-- </div> -->
+                    </div>
+                    <br>
+                    <div class="row">
+                        <h3>Colecciones</h3>
+                        <div class="filtros-tag-collection" *ngFor="let option of filterColection">
+                            <a *ngIf="option.values.active == 'true'; else simpleCollection" (click)="clickCollection(option.url)" class="button bton-collection bton-collection-active">{{option.values.value}}</a>
+                            <ng-template #simpleCollection>
+                                <a (click)="clickCollection(option.url)" class="button bton-collection">{{option.values.value}}</a>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                      <div class="colums small-12 medium-12">
+                        <div class="small-4 columns medium-6" style="margin-left: -1.1rem; width: 6.7rem;">
+                          <a style="vertical-align: -14px;" (click)="cleanFilter()">Limpiar filtros</a>
+                        </div>
+                        <div class="small-8 columns medium-6">
+                          <a data-close aria-label="Close modal" class="button secondary button-show-apartment">Mostrar <span>{{countProjects}}</span> apartamentos</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </form>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+  <!-- Fin modal más filtros mobile -->
+    <hr>
   </div>
-<!-- Fin modal más filtros mobile -->
-  <hr>
-</div>
-<div class="row">
-  <div class="medium-4 columns proyectolist">
-      <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
-  </div>
-  <div class="medium-2 columns end">
-    <div class="columns small-12 show-for-small-only">
-      <div class="columns small-3" style="margin-top: 8px;">
-        <label class="sohw-for-small-only">Ordenar por:
-        </label>
+  <div class="row">
+    <div class="medium-4 columns proyectolist">
+        <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
+    </div>
+    <div class="medium-2 columns end">
+      <div class="columns small-12 show-for-small-only">
+        <div class="columns small-3" style="margin-top: 8px;">
+          <label class="sohw-for-small-only">Ordenar por:
+          </label>
+        </div>
+        <div class="columns small-9">
+          <select id="sortByMobile" name="sortBy" (change)="changeSort('mobile')" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+              <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
+          </select>
+        </div>
       </div>
-      <div class="columns small-9">
-        <select id="sortByMobile" name="sortBy" (change)="changeSort('mobile')" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+      <div class="hide-for-small-only">
+        <select id="sortByDesktop" name="sortBy" (change)="changeSort('desktop')" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
+            <option value="" *ngIf="optionsSortSelected == ''">Ordenar por:</option>
             <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
         </select>
       </div>
     </div>
-    <div class="hide-for-small-only">
-      <select id="sortByDesktop" name="sortBy" (change)="changeSort('desktop')" [(ngModel)]="optionsSortSelected" *ngIf="filterSort && filterSort.length > 0">
-          <option value="" *ngIf="optionsSortSelected == ''">Ordenar por:</option>
-          <option *ngFor="let type of filterSort; let i = index" [value]="type.url">{{type.label == "." ? "Todos": type.label }}</option>
-      </select>
+    <!-- <div class="medium-1 columns end">
+        <a class="button secondary hide-for-small-only">Comparar</a>
+    </div> -->
+    <div class="medium-2 columns fRight pTop8 hide-for-small-only">
+      <div class="columns medium-2 end" style="margin-left: -15px;white-space: nowrap;margin-top: 6px;">
+        <label>Mostrar mapa</label>
+      </div>
+        <div class="switch" style="float: right;margin-right: 8px;">
+          <input class="switch-input" id="defaultSwitch" (click)='showMap($event)' type="checkbox"  [(ngModel)]="eventos" name="defaultSwitch">
+          <label class="switch-paddle" for="defaultSwitch">
+            <!-- <span class="show-for-sr">Default Switch</span> -->
+          </label>
+        </div>
     </div>
   </div>
-  <!-- <div class="medium-1 columns end">
-      <a class="button secondary hide-for-small-only">Comparar</a>
-  </div> -->
-  <div class="medium-2 columns fRight pTop8 hide-for-small-only">
-    <div class="columns medium-2 end" style="margin-left: -15px;white-space: nowrap;margin-top: 6px;">
-      <label>Mostrar mapa</label>
+  <div class="row ">
+    <div id="smallScrenn" class="medium-12 columns content-row">
+        <div id="FullScrenn" class="medium-3 columns end FullScrenn" *ngFor="let project of response_data_project; let i = index">
+            <div class="card" data-equalizer-watch>
+                <div class="container-photo">
+                    <a routerLink="/{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
+                    <div class="container-tools">
+                        <div class="tags">
+                            <div *ngIf="project.project_category.length > 0">
+                                <div class="tag" *ngFor="let tags of project.project_category; let i = index">
+                                    <a routerLink="{{project.url}}" class="">{{ tags }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add">
+                            <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section info info-project">
+                  <a routerLink="/{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
+                    <div class="descripcion">
+                        {{ project.property_type }} en {{ project.project_neighborhood }}, {{ project.project_city }}
+                    </div>
+                    <div class="precio text-center">
+                        <div>Desde:</div>
+                        <span>${{ project.typology_price }}</span>
+                    </div>
+
+                </div>
+                <div class="card-section">
+                    <hr>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
+                                <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
+                                <div class="data"> {{ project.bedrooms }} Alcobas</div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
+                                <div class="data">{{ project.garages }} Garaje</div>
+                            </div>
+                        </div>
+                        <div class="small-6 columns">
+                            <div class="item">
+                                <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
+                                <div class="data"> {{ project.bathrooms }} Baños</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="card-section">
+                    <div class="button-group align-spaced ">
+                        <a class="button bton-mobile" routerLink="/{{project.url}}">Ver
+                          Proyecto</a>
+                        <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-      <div class="switch" style="float: right;margin-right: 8px;">
-        <input class="switch-input" id="defaultSwitch" (click)='showMap($event)' type="checkbox"  [(ngModel)]="eventos" name="defaultSwitch">
-        <label class="switch-paddle" for="defaultSwitch">
-          <!-- <span class="show-for-sr">Default Switch</span> -->
-        </label>
-      </div>
-  </div>
-</div>
-<div class="row ">
-  <div id="smallScrenn" class="medium-12 columns content-row">
-      <div id="FullScrenn" class="medium-3 columns end FullScrenn" *ngFor="let project of response_data_project; let i = index">
-          <div class="card" data-equalizer-watch>
-              <div class="container-photo">
-                  <a routerLink="/{{project.url}}" class=""><img [src]="url_img_path + project.typology_images" alt="" class="proyecto"></a>
-                  <div class="container-tools">
-                      <div class="tags">
-                          <div *ngIf="project.project_category.length > 0">
-                              <div class="tag" *ngFor="let tags of project.project_category; let i = index">
-                                  <a routerLink="{{project.url}}" class="">{{ tags }}</a>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="add">
-                          <a (click)="addFavorite(project.nid);" class="fav"><img src="/assets/images/add.png" alt=""></a>
-                      </div>
-                  </div>
-              </div>
-              <div class="card-section info info-project">
-                <a routerLink="/{{project.url}}" class=""><h2>{{ project.project }}</h2></a>
-                  <div class="descripcion">
-                      {{ project.property_type }} en {{ project.project_neighborhood }}, {{ project.project_city }}
-                  </div>
-                  <div class="precio text-center">
-                      <div>Desde:</div>
-                      <span>${{ project.typology_price }}</span>
-                  </div>
+    <div id="ProyectMap" class="medium-6 columns hide map-float" style="padding-bottom: 19px;">
+        <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 740px !important; ">
+            <agm-marker *ngFor="let marker of response_data_project"
+            [latitude]="marker.latitude"
+            [longitude]="marker.longitude"
+            [iconUrl]="icon_ev">
+                <agm-info-window #infoWindow>
+                    {{ marker.project }}
+                </agm-info-window>
+            </agm-marker>
 
-              </div>
-              <div class="card-section">
-                  <hr>
-                  <div class="row">
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-medida.png" alt=""></div>
-                              <div class="data"> {{ project.area_built }} m² <span data-tooltip class="right" tabindex="3" title="El valor corresponde al área construida">!</span></div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-alcoba.png" alt=""></div>
-                              <div class="data"> {{ project.bedrooms }} Alcobas</div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-garaje.png" alt=""></div>
-                              <div class="data">{{ project.garages }} Garaje</div>
-                          </div>
-                      </div>
-                      <div class="small-6 columns">
-                          <div class="item">
-                              <div class="data-icon"><img src="/assets/images/icon-water.png" alt=""></div>
-                              <div class="data"> {{ project.bathrooms }} Baños</div>
-                          </div>
-                      </div>
-                  </div>
-                  <hr>
-              </div>
-              <div class="card-section">
-                  <div class="button-group align-spaced ">
-                      <a class="button bton-mobile" routerLink="/{{project.url}}">Ver
-                        Proyecto</a>
-                      <a class="button bton-mobile" data-open="exampleModal2">Contacto</a>
-                  </div>
-              </div>
-          </div>
-      </div>
+        </agm-map>
+    </div>
   </div>
-  <div id="ProyectMap" class="medium-6 columns hide map-float" style="padding-bottom: 19px;">
-      <agm-map class="agmHeightFavorite" [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' style="height: 740px !important; ">
-          <agm-marker *ngFor="let marker of response_data_project"
-          [latitude]="marker.latitude"
-          [longitude]="marker.longitude"
-          [iconUrl]="icon_ev">
-              <agm-info-window #infoWindow>
-                  {{ marker.project }}
-              </agm-info-window>
-          </agm-marker>
-
-      </agm-map>
-  </div>
-</div>
-<!-- modal de contacto -->
-<div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
-  <h2>Contactar</h2>
-  <form data-abide novalidate [formGroup]="form">
-      <div class="container-form">
-          <span id="spanName" class="error hide">
-              Debe digitar un nombre de contacto
+  <!-- modal de contacto -->
+  <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
+    <h2>Contactar</h2>
+    <form data-abide novalidate [formGroup]="form">
+        <div class="container-form">
+            <span id="spanName" class="error hide">
+                Debe digitar un nombre de contacto
+              </span>
+            <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
+            <span id="spannLastName" class="error hide">
+            Debe digitar un apellido de contacto
+          </span>
+            <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
+            <span id="spanEmail" class="error hide">
+            Debe digitar un correo de contacto valido
+          </span>
+            <input type="text" placeholder="Email*" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
+            <span id="spanPhone" class="error hide">
+            Debe digitar un n&uacute;mbre de contacto
+          </span>
+            <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
+            <span id="spanContact" class="error hide">
+            Debe seleccionar una opción
+          </span>
+            <select id="select" required formControlName="contact" name="contact">
+            <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
+            <option value="telefono">Tel&eacute;fonica</option>
+            <option value="email">Correo Electr&oacute;nico</option>
+            <option value="whatsapp">Whatsapp</option>
+          </select>
+            <span id="spanTypesearch" class="error hide">
+            Debe seleccionar una opción
             </span>
-          <input type="text" placeholder="Nombre*" aria-errormessage="nameError" formControlName="name" name="name" required pattern="text">
-          <span id="spannLastName" class="error hide">
-          Debe digitar un apellido de contacto
-        </span>
-          <input type="text" placeholder="Apellido*" aria-errormessage="lastnameError" formControlName="lastname" name="lastnanme" required pattern="text">
-          <span id="spanEmail" class="error hide">
-          Debe digitar un correo de contacto valido
-        </span>
-          <input type="text" placeholder="Email*" aria-errormessage="emailError" formControlName="email" name="email" required pattern="email">
-          <span id="spanPhone" class="error hide">
-          Debe digitar un n&uacute;mbre de contacto
-        </span>
-          <input type="text" placeholder="Teléfono" aria-errormessage="phoneError" formControlName="phone" name="phone" required>
-          <span id="spanContact" class="error hide">
-          Debe seleccionar una opción
-        </span>
-          <select id="select" required formControlName="contact" name="contact">
-          <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
-          <option value="telefono">Tel&eacute;fonica</option>
-          <option value="email">Correo Electr&oacute;nico</option>
-          <option value="whatsapp">Whatsapp</option>
-        </select>
-          <span id="spanTypesearch" class="error hide">
-          Debe seleccionar una opción
-          </span>
-          <fieldset class="text-left">
-              <legend>Buscas vivienda para:</legend>
-              <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
-              <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
-          </fieldset>
-          <span id="spanTerm" class="error hide">
-          Debe aceptar los términos
-          </span>
-          <div class="text-left terminos">
-              <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
-                haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
-                mismos.</label>
+            <fieldset class="text-left">
+                <legend>Buscas vivienda para:</legend>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="habitar" id="houseForHabitar"><label for="">Habitar</label>
+                <input type="radio" formControlName="typeSearch" name="typeSearch" value="invertir" id="houseForInvertir"><label for="">Invertir</label>
+            </fieldset>
+            <span id="spanTerm" class="error hide">
+            Debe aceptar los términos
+            </span>
+            <div class="text-left terminos">
+                <input id="checkbox1" type="checkbox" formControlName="term" name="term"><label for="right-label" class="text-left">Declaro
+                  haber leido los <a href="/aviso-privacidad">Términos de privacidad</a> y estar conforme con los
+                  mismos.</label>
 
-          </div>
-          <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
-      </div>
-  </form>
-  <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<!-- fin de modal contacto -->
-<!-- modal de gracias -->
-<div class="reveal text-center" id="exampleModalContactProject" data-reveal>
-  <img src="/assets/images/logo-ev.png">
-  <h2>¡Gracias!</h2>
-  <p>Pronto te llegará toda la información a tu correo</p>
-  <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<!-- fin de modal de gracias -->
-<!-- Modal error -->
-<div class="reveal text-center" id="exampleModalContactErrorProject" data-reveal>
-  <img src="/assets/images/logo-ev.png">
-  <h2>Atención!</h2>
-  <p>Sus datos no han podido ser enviados por favor intenta de nuevo más tarde</p>
-  <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<!-- fin de modal error -->
-<div class="row columns text-center">
-  <button  [disabled]="banderaProyecto" (click)='MoreRecords()'  class="button secondary bton-mobile">Cargar más</button>
-</div>
-<div class="row columns text-center hide">
-  <div class="medium-6 medium-offset-3 columns">
-      <a>
-          <div class="comparador-btn-2">
-              <div class="container-comparador">
-                  <h2 class="deco">¿Quieres comparar?</h2>
-                  <div class="subtitle">Selecciona tus proyectos favoritos para hacerlo</div>
-              </div>
-          </div>
-      </a>
+            </div>
+            <span href="" class="button secondary" (click)="onSubmit(form.value)">Enviar</span>
+        </div>
+    </form>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div>
-<div class="show-for-small-only filter-button">
-  <div style="width: 34px;height: 31px;">
-    <a data-open="masfiltrosModalMobile">
-      <img width="28px" height="28px" src="/assets/images/filtros.png">
-    </a>
+  <!-- fin de modal contacto -->
+  <!-- modal de gracias -->
+  <div class="reveal text-center" id="exampleModalContactProject" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <h2>¡Gracias!</h2>
+    <p>Pronto te llegará toda la información a tu correo</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- fin de modal de gracias -->
+  <!-- Modal error -->
+  <div class="reveal text-center" id="exampleModalContactErrorProject" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <h2>Atención!</h2>
+    <p>Sus datos no han podido ser enviados por favor intenta de nuevo más tarde</p>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- fin de modal error -->
+  <div class="row columns text-center">
+    <button  [disabled]="banderaProyecto" (click)='MoreRecords()'  class="button secondary bton-mobile">Cargar más</button>
+  </div>
+  <div class="row columns text-center hide">
+    <div class="medium-6 medium-offset-3 columns">
+        <a>
+            <div class="comparador-btn-2">
+                <div class="container-comparador">
+                    <h2 class="deco">¿Quieres comparar?</h2>
+                    <div class="subtitle">Selecciona tus proyectos favoritos para hacerlo</div>
+                </div>
+            </div>
+        </a>
+    </div>
+  </div>
+  <div class="show-for-small-only filter-button">
+    <div style="width: 34px;height: 31px;">
+      <a data-open="masfiltrosModalMobile">
+        <img width="28px" height="28px" src="/assets/images/filtros.png">
+      </a>
+    </div>
   </div>
 </div>
 

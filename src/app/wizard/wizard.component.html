@@ -188,7 +188,7 @@
             <hr class="white">
             <div class="row text-center diblock">
                 <div class="opcion text-center">
-                    <div class="opcion-seleccion boton" *ngFor="let option of responseSubsidioData">
+                    <div class="opcion-wizard boton" *ngFor="let option of responseSubsidioData">
                         <input id="casas" name="subsidy" formControlName="subsidy" type="radio" value="{{option.drupal_internal__tid}}"><label id="{{option.drupal_internal__tid}}" (click)="changeSelected(option.drupal_internal__tid,'subsidy')" class="subsidy" for="casas">{{option.name}}</label>
                     </div>
                 </div>
@@ -252,7 +252,10 @@
             </div>
             <div class="row text-center inline">
                 <div class="checkblock text-center" *ngFor="let option of responseTiempoData">
+                  <label class="container-check">
                     <input (click)="selectWaitTime(option.drupal_internal__tid)" type="radio" name="waitTime" formControlName="waitTime" value="{{option.drupal_internal__tid}}">
+                    <span class="checkmark"></span>
+                  </label>
                     <div class="etiqueta">{{option.name}}</div>
                 </div>
             </div>

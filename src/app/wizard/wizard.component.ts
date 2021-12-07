@@ -348,17 +348,18 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   }
   changeSelected(value,type){
     if(type == 'medio_contact'){
-      $('label.medio_contact').removeClass('label-selectd');
+      $('label.medio_contact').removeClass('label-selectd-contact');
       for (let index of this.responseContactadoData) {
         if(index.drupal_internal__tid == value){
           this.contactOption = index.name;
         }
       }
+    $("#"+value).addClass('label-selectd-contact')
     }else if(type == 'subsidy'){
-      $('label.subsidy').removeClass('label-selectd');
+      $('label.subsidy').removeClass('label-selectd-wizard');
       this.subsidyOption = $("#"+value).text();
+      $("#"+value).addClass('label-selectd-wizard')
     }
-    $("#"+value).addClass('label-selectd')
   }
   selectWaitTime(valueSelected){
     for (let index of this.responseTiempoData) {

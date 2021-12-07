@@ -68,10 +68,12 @@ export class ComparatorComponent implements OnInit {
             }
             // console.log(count_results);
             if(count_results == 1){
-              this.classRow = "medium-3";
-              this.stylesText = "margin-top: -24px;";
-              this.marginTop = "margin-top: 262px;"
-              this.imgStyle = "img-comparator"
+              this.classRow = "medium-6";
+              // this.stylesText = "margin-top: -24px;";
+              // this.marginTop = "margin-top: 262px;"
+              this.stylesText = "margin-top: 101px";
+              this.marginTop = "margin-top: 303px;"
+              this.imgStyle = "img-comparator2"
             }else if(count_results == 2){
               this.classRow = "medium-6";
               this.stylesText = "margin-top: 101px";
@@ -99,6 +101,18 @@ export class ComparatorComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+  // ngDoCheck() {
+  //   $('div.container-foto').one( "click",function (e) {
+  //       console.log(e.target.offsetLeft);
+  //       if (e.offsetX > e.target.offsetLeft) {
+  //           // click on element
+  //           console.log(1);
+  //       }else{
+  //         // click on ::before element
+  //           console.log(2);
+  //     }
+  //   });
+  // }
   createFormModal() {
     this.form4 =  this.formBuilder.group({
       name: new FormControl(''),
@@ -111,28 +125,40 @@ export class ComparatorComponent implements OnInit {
     });
   }
   removeCompare(value) {
-    console.log("ingrese "+ value);
-      var storedIds = JSON.parse(sessionStorage.getItem("id"));
-      console.log(storedIds);
-      /* remover el proyecto de los coparadores */
-      const index = storedIds.indexOf(Number(value));
-      // console.log(index);
-      if ( index !== -1 ) {
-        storedIds.splice( index, 1 );
-      }
-      // console.log(storedIds);
-      /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
-      sessionStorage.removeItem("id");
-      sessionStorage.setItem('id',JSON.stringify(storedIds));
-     // this.router.navigate(['comparador']);
-      var storedIds2 = JSON.parse(sessionStorage.getItem("id"));
-      // console.log(storedIds2);
-      if(storedIds.length > 0){
-        window.location.reload();
+
+    $('div.container-foto').click(function (e) {
+      let action = e.target.offsetLeft;
+      if (action == 0) {
+        let url = value.url;
+        // this.router.navigate([url]);
+        window.location.href = url;
       }else{
+        // console.log("ingrese "+ Number(value));
+        let valor = value.nid;
+        var storedIds = JSON.parse(sessionStorage.getItem("id"));
+        console.log(storedIds);
+        /* remover el proyecto de los coparadores */
+        const index = storedIds.indexOf(Number(valor));
+        // console.log(index);
+        if ( index !== -1 ) {
+          storedIds.splice( index, 1 );
+        }
+        // console.log(storedIds);
+        /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
         sessionStorage.removeItem("id");
-        this.router.navigate(['/']);
+        sessionStorage.setItem('id',JSON.stringify(storedIds));
+        // this.router.navigate(['comparador']);
+        var storedIds2 = JSON.parse(sessionStorage.getItem("id"));
+        // console.log(storedIds2);
+        if(storedIds.length > 0){
+          window.location.reload();
+        }else{
+          sessionStorage.removeItem("id");
+          this.router.navigate(['/']);
+        }
       }
+  });
+
   }
   onSubmitModal(values) {
     console.log(values);

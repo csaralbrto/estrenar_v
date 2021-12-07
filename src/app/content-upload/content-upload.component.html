@@ -1,3 +1,9 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  template="<img src='/assets/images/logo-ev.png' />"
+>
+<p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>
 <form [formGroup]="form" class="upload">
     <div class="tabs-panel is-active" id="upload1">
         <div class="row columns">
@@ -334,8 +340,9 @@
                   <label for="images_project" class="button" style="width: 143px;">Añadir imágenes</label>
                 </div>
                 <input style="visibility:hidden;" formControlName="images_project" formControlName="images_project" id="images_project" type="file" class="form-control" multiple="" (change)="onFilesChange($event)">
-
-                <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+                <div class="content-row">
+                  <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+                </div>
                 <div class="">
                     <span style="color: red" id="spanimages" class="hide">
                         Debe al menos una imagen para el proyecto
@@ -532,79 +539,46 @@
                                 Debe ingresar algún Correo electrónico
                             </span>
                         </div>
-                        <a (click)="addEmailsOrPhone('email')">Agregar un Correo
-                        <span class="input-number-increment-morefilter increment-sign">+</span></a>
+                        <label id="email2" class="hide">Email 2
+                            <input type="email" id="email2" name="email2" formControlName="email2" placeholder="">
+                        </label>
+                        <a id="addMail" (click)="addEmailsOrPhone('email')">Agregar un Correo
+                        <span class="input-number-increment-morefilter increment-sign">+</span></a><br>
+                        <a class="hide" id="removeEmails" (click)="removeEmailsOrPhone('email')">Quitar un Correo
+                        <span class="input-number-increment-morefilter increment-sign">-</span></a>
                     </div>
                     <div class="medium-6 columns">
                         <label>Celular*
                             <input type="text" id="phone" name="phone" formControlName="phone" placeholder="">
+                        </label>
+                        <label class="container-check">
+                          <input id="checkbox1" type="checkbox" name="check_whatsapp" formControlName="check_whatsapp"><label>Este es el mismo número de Whatsapp</label>
+                          <span class="checkmark"></span>
                         </label>
                         <div class="">
                             <span style="color: red" id="spanPhone" class="hide">
                                 Debe ingresar algún número de teléfono
                             </span>
                         </div>
-                        <a (click)="addEmailsOrPhone('phone')">Agregar Número
-                        <span class="input-number-increment-morefilter increment-sign">+</span></a><br>
-                        <input id="checkbox1" type="checkbox" name="check_whatsapp" formControlName="check_whatsapp" id="check_whatsapp"><label for="checkbox1">Este es el mismo número de Whatsapp</label>
-                    </div>
-                    <div class="medium-6 columns end">
-                        <label id="email2" class="hide">Email 2
-                            <input type="email" id="email2" name="email2" formControlName="email2" placeholder="">
-                        </label>
-                        <label id="email3" class="hide">Email 3
-                            <input type="email" id="email3" name="email3" formControlName="email3" placeholder="">
-                        </label>
-                        <!-- <label id="email4" class="hide">Email 4
-                            <input type="email" id="email4" name="email4" formControlName="email4" placeholder="">
-                        </label>
-                        <label id="email5" class="hide">Email 5
-                            <input type="email" id="email5" name="email5" formControlName="email5" placeholder="">
-                        </label>
-                        <label id="email6" class="hide">Email 6
-                            <input type="email" id="email6" name="email6" formControlName="email6" placeholder="">
-                        </label>
-                        <label id="email7" class="hide">Email 7
-                            <input type="email" id="email7" name="email7" formControlName="email7" placeholder="">
-                        </label>
-                        <label id="email8" class="hide">Email 8
-                            <input type="email" id="email8" name="email8" formControlName="email8" placeholder="">
-                        </label>
-                        <label id="email9" class="hide">Email 9
-                            <input type="email" id="email9" name="email9" formControlName="email9" placeholder="">
-                        </label>
-                        <label id="email10" class="hide">Email 10
-                            <input type="email" id="email10" name="email10" formControlName="email10" placeholder="">
-                        </label> -->
-                    </div>
-                    <div class="medium-6 columns">
                         <label id="celular2" class="hide">Celular 2
                             <input type="text" id="celular2" name="phone2" formControlName="phone2" placeholder="">
                         </label>
-                        <label id="celular3" class="hide">Celular 3
-                            <input type="text" id="celular3" name="phone3" formControlName="phone3" placeholder="">
-                        </label>
-                        <label id="celular4" class="hide">Celular 4
-                            <input type="text" id="celular4" name="phone4" formControlName="phone4" placeholder="">
-                        </label>
-                        <label id="celular5" class="hide">Celular 5
-                            <input type="text" id="celular5" name="phone5" formControlName="phone5" placeholder="">
-                        </label>
-                        <label id="celular6" class="hide">Celular 6
-                            <input type="text" id="celular6" name="phone6" formControlName="phone6" placeholder="">
-                        </label>
-                        <label id="celular7" class="hide">Celular 7
-                            <input type="text" id="celular7" name="phone7" formControlName="phone7" placeholder="">
-                        </label>
-                        <label id="celular8" class="hide">Celular 8
-                            <input type="text" id="celular8" name="phone8" formControlName="phone8" placeholder="">
-                        </label>
-                        <label id="celular9" class="hide">Celular 9
-                            <input type="text" id="celular9" name="phone9" formControlName="phone9" placeholder="">
-                        </label>
-                        <label id="celular10" class="hide">Celular 10
-                            <input type="text" id="celular10" name="phone10" formControlName="phone10" placeholder="">
-                        </label>
+                        <div class="whatasapp2 hide">
+                          <label class="container-check">
+                            <input id="checkbox2" type="checkbox" name="check_whatsapp" formControlName="check_whatsapp"><label>Este es el mismo número de Whatsapp</label>
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <br><a class="addPhone" (click)="addEmailsOrPhone('phone')">Agregar Número
+                        <span class="input-number-increment-morefilter increment-sign">+</span></a><br>
+                        <a class="hide removePhone" (click)="removeEmailsOrPhone('phone')">Quitar Número
+                        <span class="input-number-increment-morefilter increment-sign">-</span></a><br>
+                    </div>
+                    <div class="medium-12 columns end">
+                      <div class="medium-6 columns end">
+                      </div>
+                    </div>
+                    <div class="medium-6 columns">
                     </div>
                     <div class="medium-6 columns end"></div>
                 </div>
@@ -665,7 +639,8 @@
     </div>
 </form>
 <form [formGroup]="formTypology">
-    <div style="display: none;" id="upload5">
+    <!-- <div style="display: none;" id="upload5"> -->
+      <div id="upload5">
         <div class="row columns">
             <div class="medium-4 columns text-center">
                 <div>
@@ -794,7 +769,7 @@
                 <hr class="white">
                 <h2 class="contenUpload">Planos</h2>
                 <div class="row">
-                    <div class="medium-6 columns">
+                    <div class="medium-6 columns content-row">
                         <label for="maps" class="button">Cargar archivo</label>
                         <input style="visibility:hidden;" formControlName="maps" formControlName="maps" id="maps" type="file" class="form-control" multiple="" (change)="onFilesBlueprintTypologyChange($event)">
                         <div class="medium-4 columns" *ngFor='let url of blueprintTypology; let i = index'>
@@ -805,7 +780,7 @@
                 <hr class="white">
                 <h2 class="contenUpload">Imágenes del inmueble</h2>
                 <div class="row">
-                    <div class="medium-12 columns">
+                    <div class="medium-12 columns content-row">
                         <label for="images_property" class="button">Añadir imágenes</label>
                         <input style="visibility:hidden;" formControlName="images_property" formControlName="images_property" id="images_property" type="file" class="form-control" multiple="" (change)="onFilesTypologyChange($event)">
 
@@ -825,7 +800,7 @@
 
                 <div class="row">
                     <div class="medium-6 columns">
-                        <h2 class="contenUpload">Video</h2>
+                        <h2 class="contenUpload">Vídeo</h2>
                         <label>Url
                             <input id="video_property" name="video_property" formControlName="video_property" type="text" placeholder="">
                         </label>
@@ -956,7 +931,7 @@
                             <div>Tipos de Garajes</div>
                             <div *ngFor="let option of garageTypesTypology">
                                 <div>
-                                    <input id="casas" type="checkbox" name="type_garages" formControlName="type_garages" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
+                                    <input id="{{option.name}}" type="checkbox" name="type_garages" formControlName="type_garages" value="{{option.id}}"><label class="content-label" for="{{option.name}}">{{option.name}}</label>
                                 </div>
                             </div>
                         </div>
@@ -964,7 +939,7 @@
                             <div><img width="20px" height="20px" src="/assets/images/sala_comedor.png" alt=""> Sala comedor*</div>
                             <div *ngFor="let option of livingDiningRoomTypology">
                                 <div>
-                                    <input id="casas" type="checkbox" name="dining_room" formControlName="dining_room" value="{{option.id}}"><label class="content-label" for="">{{option.name}}</label>
+                                    <input id="{{option.name}}" type="checkbox" name="dining_room" formControlName="dining_room" value="{{option.id}}"><label class="content-label" for="{{option.name}}">{{option.name}}</label>
                                 </div>
                             </div>
                         </div>
@@ -972,11 +947,12 @@
                     <hr class="white">
                     <div class="row columns">
                       <h2 class="show-for-small-only">Características del inmueble</h2>
+                      <input id="hidde_features" type="hidden" name="hidde_features">
                         <div class="filtros-tag" *ngFor="let option of featuresTypologyArray">
                             <a class="button close" (click)="onFeaturesClick('typology',option,'remove')">{{option.name}}</a>
                         </div>
                         <div class="">
-                            <span style="color: red" id="spanFeature" class="hide">
+                            <span style="color: red" id="spanFeatureTypologi" class="hide">
                                 Debe seleccionar alguna características del inmueble
                             </span>
                         </div>
@@ -997,7 +973,7 @@
                                 </span>
                             </div>
                         </label>
-                        <input id="checkbox1" type="checkbox" name="immediate_delivery" id="immediate_delivery" formControlName="immediate_delivery"><label class="content-label" for="checkbox1">Entrega inmediata</label>
+                        <input type="checkbox" name="immediate_delivery" id="immediate_delivery" formControlName="immediate_delivery"><label class="content-label" for="immediate_delivery">Entrega inmediata</label>
                     </div>
                     <div class="medium-12 columns">
                         <label>
@@ -1015,7 +991,7 @@
                         <div>
                             <h5>Tipología {{i}}</h5>
                             <div class="typologyText">
-                                Área construida: {{ option.constructed_area }} mt2<br> Área privada: {{ option.private_area }} mt2<br> Alcobas: {{ option.bedrooms }} <br> Baños: {{ option.bathrooms }} <br>
+                                Área construida: {{ option.constructed_area }} mt²<br> Área privada: {{ option.private_area }} mt²<br> Alcobas: {{ option.bedrooms }} <br> Baños: {{ option.bathrooms }} <br>
                             </div>
                             <a id="editTypologi{{ i }}" class="button" (click)="editTypology(i)">Editar Tipología</a>
                         </div>
@@ -1043,7 +1019,7 @@
                 <a (click)="changeStepWizard(4,5)" class="button">Anterior</a>
             </div>
             <div class="medium-4 small-6 columns end text-right bton-fRight">
-                <a (click)="sendAllInfo" class="button sendProject">Solicitar publicación</a>
+                <a (click)="sendAllInfo()" class="button sendProject">Solicitar publicación</a>
             </div>
           </div>
           <div class="row">
@@ -1055,3 +1031,12 @@
         <hr class="white">
     </div>
 </form>
+<div class="text-center reveal" id="exampleModalSuscribe" data-reveal>
+    <img src="/assets/images/logo-ev.png">
+    <div style="margin-top: 20px;">
+      <h3>¡Su información ha sido enviada Exitosamente!</h3>
+    </div>
+    <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>

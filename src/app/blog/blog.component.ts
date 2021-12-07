@@ -74,7 +74,6 @@ export class BlogComponent implements OnInit, AfterViewChecked {
         if (this.responseNewExperience) {
           /* si responde correctamente */
           console.log('la experiencia ',this.responseNewExperience)
-          this.results = true;
         }
         if (this.response.error) {
           /* si hay error en la respuesta */
@@ -142,6 +141,7 @@ export class BlogComponent implements OnInit, AfterViewChecked {
       }
     );
     $('html,body').scrollTop(0);
+    this.results = true;
 
   }
   ngAfterViewChecked() {
@@ -192,7 +192,6 @@ export class BlogComponent implements OnInit, AfterViewChecked {
         });
       }
       this.stopSpinner();
-
     }
   }
   subscribe(){

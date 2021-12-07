@@ -18,6 +18,7 @@ declare var $: any;
 export class ContactusComponent implements OnInit {
   tags: MetaTag;
   public response: any;
+  public responseError: any;
   public responseSubmit: any;
   public responseNewsletter: any;
   public form: FormGroup;
@@ -58,7 +59,7 @@ export class ContactusComponent implements OnInit {
       comment: new FormControl(''),
       city: new FormControl('Ciudad'),
       contact: new FormControl('Deseas ser contactado'),
-      emailCopy: new FormControl(''),
+      term: new FormControl(''),
     });
   }
   onSubmit(values) {
@@ -206,9 +207,17 @@ export class ContactusComponent implements OnInit {
     this.Service.suscribeNewsletter( payload )
     .subscribe(
       data =>(this.responseNewsletter = data),
-      err => console.log(),
+      err => {
+        // console.log(err)
+        this.responseError = err;
+        if(this.responseError.status == 400){
+          this.stopSpinner();
+          $('#exampleModalNosuscribe').foundation('open');
+          this.createFormSuscribe();
+        }
+      },
       () => {
-        // console.log(this.responseNewsletter.sid);
+        // console.log(this.responseNewsletter);
         if(this.responseNewsletter.sid){
           this.stopSpinner();
           $('#exampleModalSuscribe').foundation('open');
@@ -216,6 +225,7 @@ export class ContactusComponent implements OnInit {
         }else{
           this.stopSpinner();
           $('#exampleModalNosuscribe').foundation('open');
+          this.createFormSuscribe();
         }
       }
     );
