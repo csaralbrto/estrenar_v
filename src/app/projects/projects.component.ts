@@ -650,6 +650,86 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     .catch(error => console.error(error))
 
   }
+  changeAfter(value){
+    let type_filter = "";
+    let url_redirect = "";
+    this.startSpinner();
+    // this.bandera = false;
+    this.showMap(false);
+    this.stringQuery = "";
+    Object.keys(value).forEach( function(key) {
+      // console.log(key);
+      if(value[key] && value[key] !== 'Seleccione'){
+        this.stringQuery = value[key];
+        type_filter = key;
+      }
+    },this);
+    // console.log(type_filter);
+    let type = type_filter;
+    switch (type) {
+        case 'price':
+          for(let type of this.filterPrice){
+            if(type.url == this.stringQuery){
+              if(type.values.url != undefined || type.values.url != null){
+                url_redirect = type.values.url;
+              }else{
+                url_redirect = null;
+              }
+            }
+          }
+            break
+        case 'city':
+          for(let type of this.filterCity){
+            if(type.url == this.stringQuery){
+              if(type.values.url != undefined || type.values.url != null){
+                url_redirect = type.values.url;
+              }else{
+                url_redirect = null;
+              }
+            }
+          }
+            break
+        case 'zone':
+          for(let type of this.filterZone){
+            if(type.url == this.stringQuery){
+              if(type.values.url != undefined || type.values.url != null){
+                url_redirect = type.values.url;
+              }else{
+                url_redirect = null;
+              }
+            }
+          }
+            break
+        case 'sector':
+          for(let type of this.filterSector){
+            if(type.url == this.stringQuery){
+              if(type.values.url != undefined || type.values.url != null){
+                url_redirect = type.values.url;
+              }else{
+                url_redirect = null;
+              }
+            }
+          }
+          break
+            break
+        case 'type':
+            for(let type of this.filterType){
+              if(type.url == this.stringQuery){
+                if(type.values.url != undefined || type.values.url != null){
+                  url_redirect = type.values.url;
+                }else{
+                  url_redirect = null;
+                }
+              }
+            }
+            break
+    }
+    if(url_redirect != null){
+
+    }else{
+      this.change(value);
+    }
+  }
   change(value) {
     this.startSpinner();
     // this.bandera = false;

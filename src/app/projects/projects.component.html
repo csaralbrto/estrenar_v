@@ -32,7 +32,7 @@
               <div class="row condensed">
                   <div class="medium-2 columns">
                       <label>Tipo de inmueble
-                      <select id="type" name="type" formControlName="type" (change)="change(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
+                      <select id="type" name="type" formControlName="type" (change)="changeAfter(form_filters.value)" [(ngModel)]="optionsTypySelected" *ngIf="filterType && filterType.length > 0">
                         <option value="" *ngIf="optionsTypySelected == ''">Seleccione:</option>
                           <option *ngFor="let type of filterType; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                       </select>
