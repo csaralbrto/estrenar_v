@@ -21,7 +21,7 @@ export class ComparatorComponent implements OnInit {
   public marginTop: any;
   public stylesText: any;
   public imgStyle: any;
-  public form4: FormGroup;
+  public form: FormGroup;
   public responseSubmit: any;
 
   constructor( public Service: ComparatorService, private router: Router,private spinnerService: NgxSpinnerService, private formBuilder: FormBuilder, ) { }
@@ -114,7 +114,7 @@ export class ComparatorComponent implements OnInit {
   //   });
   // }
   createFormModal() {
-    this.form4 =  this.formBuilder.group({
+    this.form =  this.formBuilder.group({
       name: new FormControl(''),
       lastname: new FormControl(''),
       email: new FormControl(''),
@@ -125,84 +125,85 @@ export class ComparatorComponent implements OnInit {
     });
   }
   removeCompare(value) {
-
-    $('div.container-foto').click(function (e) {
-      let action = e.target.offsetLeft;
-      if (action == 0) {
-        let url = value.url;
-        // this.router.navigate([url]);
-        window.location.href = url;
-      }else{
-        // console.log("ingrese "+ Number(value));
-        let valor = value.nid;
-        var storedIds = JSON.parse(sessionStorage.getItem("id"));
-        console.log(storedIds);
-        /* remover el proyecto de los coparadores */
-        const index = storedIds.indexOf(Number(valor));
-        // console.log(index);
-        if ( index !== -1 ) {
-          storedIds.splice( index, 1 );
-        }
-        // console.log(storedIds);
-        /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
-        sessionStorage.removeItem("id");
-        sessionStorage.setItem('id',JSON.stringify(storedIds));
-        // this.router.navigate(['comparador']);
-        var storedIds2 = JSON.parse(sessionStorage.getItem("id"));
-        // console.log(storedIds2);
-        if(storedIds.length > 0){
-          window.location.reload();
-        }else{
-          sessionStorage.removeItem("id");
-          this.router.navigate(['/']);
-        }
-      }
-  });
-
+    console.log('entre');
+    // console.log("ingrese "+ Number(value));
+    let valor = value.nid;
+    var storedIds = JSON.parse(sessionStorage.getItem("id"));
+    console.log(storedIds);
+    /* remover el proyecto de los coparadores */
+    const index = storedIds.indexOf(Number(valor));
+    // console.log(index);
+    if ( index !== -1 ) {
+      storedIds.splice( index, 1 );
+    }
+    // console.log(storedIds);
+    /* Hay que agregar un validacion de que solo puede comparar 4 proyectos */
+    sessionStorage.removeItem("id");
+    sessionStorage.setItem('id',JSON.stringify(storedIds));
+    // this.router.navigate(['comparador']);
+    var storedIds2 = JSON.parse(sessionStorage.getItem("id"));
+    // console.log(storedIds2);
+    if(storedIds.length > 0){
+      window.location.reload();
+    }else{
+      sessionStorage.removeItem("id");
+      this.router.navigate(['/']);
+    }
   }
-  onSubmitModal(values) {
+  onSubmitModal2(values) {
     console.log(values);
     var error = false;
+    let errorspanNameModal = false;
     if(values.name == null || values.name == ""){
       $('#spanNameModal').removeClass('hide');
-      error = true;
+      errorspanNameModal = true;
     }else{
       $('#spanNameModal').addClass('hide');
-      error = false;
+      errorspanNameModal = false;
     }
+    let errorspannLastNameModal = false;
     if(values.lastname == null || values.lastname == ""){
       $('#spannLastNameModal').removeClass('hide');
-      error = true;
+      errorspannLastNameModal = true;
     }else{
       $('#spannLastNameModal').addClass('hide');
-      error = false;
+      errorspannLastNameModal = false;
     }
+    let errorspanPhoneModal = false;
     if(values.phone == null || values.phone == ""){
       $('#spanPhoneModal').removeClass('hide');
-      error = true;
+      errorspanPhoneModal = true;
     }else{
       $('#spanPhoneModal').addClass('hide');
-      error = false;
+      errorspanPhoneModal = false;
     }
+    let errorspanEmailModal = false;
     if(values.email == null || values.email == ""){
       $('#spanEmailModal').removeClass('hide');
-      error = true;
+      errorspanEmailModal = true;
     }else{
       $('#spanEmailModal').addClass('hide');
-      error = false;
+      errorspanEmailModal = false;
     }
+    let errorspanContactModal = false;
     if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
       $('#spanContactModal').removeClass('hide');
-      error = true;
+      errorspanContactModal = true;
     }else{
       $('#spanContactModal').addClass('hide');
-      error = false;
+      errorspanContactModal = false;
     }
+    let errorspanTermModal = false;
     if(values.term == null || values.term == ""){
       $('#spanTermModal').removeClass('hide');
-      error = true;
+      errorspanTermModal = true;
     }else{
       $('#spanTermModal').addClass('hide');
+      errorspanTermModal = false;
+    }
+    if(errorspanNameModal == true || errorspannLastNameModal == true || errorspanPhoneModal == true || errorspanEmailModal == true || errorspanContactModal == true || errorspanTermModal == true){
+      error = true;
+    }else{
       error = false;
     }
     if(!error){
@@ -272,7 +273,7 @@ export class ComparatorComponent implements OnInit {
         () => {
           if(this.responseSubmit.id){
             $('#exampleModal1').foundation('open');
-            this.form4.reset();
+            this.form.reset();
             let type_contact = this.typeContact;
             this.actionAfterContact(type_contact);
           }
@@ -301,10 +302,12 @@ export class ComparatorComponent implements OnInit {
       let phone = '3210000000';
       let url_mailto = 'tel:' + phone
       window.open(url_mailto);
-    }else{
+    }else if(type == 'email'){
       let email = 'email@test.com';
       let url_mailto = 'mailto:' + email
       window.open(url_mailto);
+    }else{
+      window.open('https://wa.me/573144119717', '_blank');
     }
   }
 

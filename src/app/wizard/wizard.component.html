@@ -368,10 +368,25 @@
             <h1 class="deco">Déjanos tus datos para poder ayudarte en tu búsqueda de vivienda</h1>
             <hr class="white">
             <div class="container-form">
-                <input type="text" name="name" formControlName="name" placeholder="Nombre">
-                <input type="text" name="last_name" formControlName="last_name" placeholder="Apellido">
-                <input type="number" name="phone" formControlName="phone" placeholder="Teléfono">
+              <span id="spanName" class="error hide">
+                  Debe digitar un nombre de contacto
+              </span>
+                <input type="text" name="name" formControlName="name" placeholder="Nombre" required>
+                <span id="spannLastName" class="error hide">
+                    Debe digitar un apellido de contacto
+                </span>
+                <input type="text" name="last_name" formControlName="last_name" placeholder="Apellido" required>
+                <span id="spanPhone" class="error hide">
+                    Debe digitar un n&uacute;mbre de contacto
+                </span>
+                <input type="number" name="phone" formControlName="phone" placeholder="Teléfono" required>
+                <span id="spanEmail" class="error hide">
+                    Debe digitar un correo de contacto valido
+                </span>
                 <input type="text" name="email" formControlName="email" placeholder="Email" required>
+                <span id="spanContact" class="error hide">
+                    Debe seleccionar una opción
+                  </span>
                 <select id="select" required formControlName="contact" name="contact">
                     <option value="Deseas ser contactado">Deseas ser contactado v&iacute;a:</option>
                     <option value="telefono">Tel&eacute;fonica</option>
@@ -394,9 +409,13 @@
                         <input id="typeSearch" name="typeSearch" formControlName="typeSearch" type="radio" value="{{option.drupal_internal__tid}}"><label for="casas">{{option.name}}</label>
                     </div> -->
                     <div>
-                        <input id="checkbox1" type="checkbox" class="raddioForm"><label for="right-label" class="text-left">Declaro
-                            haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los
-                            mismos.</label>
+                      <span id="spanTerm" class="error hide">
+                        Debe aceptar los términos
+                      </span>
+                        <input id="checkbox1" type="checkbox" class="raddioForm"  formControlName="term" name="term">
+                        <label for="right-label" class="text-left">Declaro
+                            haber leido los <a href="#">Términos de privacidad</a> y estar conforme con los mismos.
+                        </label>
                     </div>
                 </div>
             </div>
@@ -409,6 +428,9 @@
         </div>
         <div class="inline">
             <button style="width: 139px;" class="button" (click)="closeWizard(form.value);">Lo enviaré despues</button>
+        </div>
+        <div class="row text-center mtop10 mBotton10">
+            <a (click)="restart()">Volver a iniciar</a>
         </div>
         </div>
     </div>

@@ -39,6 +39,7 @@ export class ProjectDetailComponent implements OnInit {
   public form3: FormGroup;
   public form4: FormGroup;
   public title: any;
+  public journalDate: any;
   public results = false;
   public salario_minimo = 877803;
   public prestamo_endeudamiento: any;
@@ -846,25 +847,81 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
   onSubmitDates(values) {
-    /* Se recibe los valores del formulario de Citas */
-    values.dateAgenda = this.items[0];
-    values.type_submit = 'date_form';
-    $('#exampleModal1').foundation('open');
-    // this.Service.getFormService( values )
-    // .subscribe(
-    //   data => this.confirm = data,
-    //   err => console.log(),
-    //   () => {
-    //     if(this.confirm){
-    //       // $('#modalAlertSuccessful').foundation('open');
-    //       console.log('Respondió '+this.confirm);
-    //       this.form2.reset();
-    //     }
-    //     if(this.confirm.error){
-    //       // $('#modalAlertError').foundation('open');
-    //     }
-    //   }
-    // );
+    var error = false;
+    let errornamedates = false;
+    if(values.name == null || values.name == ""){
+      $('#spanNameDate').removeClass('hide');
+      errornamedates = true;
+    }else{
+      $('#spanNameDate').addClass('hide');
+      errornamedates = false;
+    }
+    let errorphonedates = false;
+    if(values.phone == null || values.phone == ""){
+      $('#spanPhoneDate').removeClass('hide');
+      errorphonedates = true;
+    }else{
+      $('#spanPhoneDate').addClass('hide');
+      errorphonedates = false;
+    }
+    let erroremaildates = false;
+    if(values.email == null || values.email == ""){
+      $('#spanEmailDate').removeClass('hide');
+      erroremaildates = true;
+    }else{
+      $('#spanEmailDate').addClass('hide');
+      erroremaildates = false;
+    }
+    let errorcontactdates = false;
+    if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
+      $('#spanContactDate').removeClass('hide');
+      errorcontactdates = true;
+    }else{
+      $('#spanContactDate').addClass('hide');
+      errorcontactdates = false;
+    }
+    let errortermdates = false;
+    if(values.term == null || values.term == ""){
+      $('#spanTermDate').removeClass('hide');
+      errortermdates = true;
+    }else{
+      $('#spanTermDate').addClass('hide');
+      errortermdates = false;
+    }
+    let errorjournalDates = false;
+    if(this.journalDate == '' || this.journalDate == null){
+      $('#spanJournalDate').removeClass('hide');
+      errorjournalDates = true;
+    }else{
+      $('#spanJournalDate').addClass('hide');
+      errorjournalDates = false;
+    }
+    if(errornamedates == true || errorphonedates == true || erroremaildates == true || errorcontactdates == true || errortermdates == true || errorjournalDates == true){
+      error = true
+    }else{
+      error = false
+    }
+    if(!error){
+      /* Se recibe los valores del formulario de Citas */
+      values.dateAgenda = this.items[0];
+      values.type_submit = 'date_form';
+      $('#exampleModal1').foundation('open');
+      // this.Service.getFormService( values )
+      // .subscribe(
+      //   data => this.confirm = data,
+      //   err => console.log(),
+      //   () => {
+      //     if(this.confirm){
+      //       // $('#modalAlertSuccessful').foundation('open');
+      //       console.log('Respondió '+this.confirm);
+      //       this.form2.reset();
+      //     }
+      //     if(this.confirm.error){
+      //       // $('#modalAlertError').foundation('open');
+      //     }
+      //   }
+      // );
+    }
   }
   onSubmitModal(values) {
     console.log(values);
@@ -1088,14 +1145,14 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
   clickInfo(value){
-    /* Quitar decimales en los montos de valor y saldo */
-
     this.cuotasMensuales = [];
     var today = new Date();
     let cuota_inicial_porcentaje = 0;
     let cuota_inicial = '';
     let ahorros_totales = 0;
     let saldo_diferir = 0;
+    let saldo_cuota_diferir = 0;
+    /* Quitar decimales en los montos de valor y saldo */
     this.priceProject = this.priceProject.replace(/[.]/g,'');
     this.priceProject = this.priceProject.replace(/[,]/g,'.');
     if(value.tipo_credito_cuota == 'hipotecario'){
@@ -1107,10 +1164,11 @@ export class ProjectDetailComponent implements OnInit {
     }
     var months = this.monthDiff(new Date(today), new Date(value.fecha_cuota));
     ahorros_totales = Number(value.ahorros_cuota) + Number(value.primas_cuota);
-    saldo_diferir = Number(this.priceProject) - Number(cuota_inicial_porcentaje);
-    var valor_mes = (Number(saldo_diferir) / Number(months))
+    saldo_diferir = Number(this.priceProject) - Number(cuota_inicial_porcentaje) - Number(ahorros_totales);
+    saldo_cuota_diferir = Number(cuota_inicial_porcentaje) - Number(ahorros_totales);
+    var valor_mes = (Number(saldo_cuota_diferir) / Number(months))
     let count = 1;
-    let saldo = Number(saldo_diferir);
+    let saldo = Number(saldo_cuota_diferir);
     this.valorInmuebleCuota = Number(this.priceProject);
     this.valorInmuebleCuota = new Intl.NumberFormat("es-ES").format(this.valorInmuebleCuota);
     this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
@@ -1222,47 +1280,57 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
   selectJournal(value){
+    this.journalDate = '';
     if(value == "08"){
       $('#08am').addClass('bton-active');
+      this.journalDate = '08am';
       $('#09am').removeClass('bton-active');
       $('#10am').removeClass('bton-active');
       $('#11am').removeClass('bton-active');
     }else if(value == "09"){
       $('#08am').removeClass('bton-active');
       $('#09am').addClass('bton-active');
+      this.journalDate = '09am';
       $('#10am').removeClass('bton-active');
       $('#11am').removeClass('bton-active');
     }else if(value == "10"){
       $('#08am').removeClass('bton-active');
       $('#09am').removeClass('bton-active');
       $('#10am').addClass('bton-active');
+      this.journalDate = '10am';
       $('#11am').removeClass('bton-active');
     }else if(value == "11"){
       $('#08am').removeClass('bton-active');
       $('#09am').removeClass('bton-active');
       $('#10am').removeClass('bton-active');
       $('#11am').addClass('bton-active');
+      this.journalDate = '11am';
     }else if(value == "02"){
       $('#02pm').addClass('bton-active');
+      this.journalDate = '02pm';
       $('#03pm').removeClass('bton-active');
       $('#04pm').removeClass('bton-active');
       $('#05pm').removeClass('bton-active');
     }else if(value == "03"){
       $('#02pm').removeClass('bton-active');
       $('#03pm').addClass('bton-active');
+      this.journalDate = '03pm';
       $('#04pm').removeClass('bton-active');
       $('#05pm').removeClass('bton-active');
     }else if(value == "04"){
       $('#02pm').removeClass('bton-active');
       $('#03pm').removeClass('bton-active');
       $('#04pm').addClass('bton-active');
+      this.journalDate = '04pm';
       $('#05pm').removeClass('bton-active');
     }else if(value == "05"){
       $('#02pm').removeClass('bton-active');
       $('#03pm').removeClass('bton-active');
       $('#04pm').removeClass('bton-active');
       $('#05pm').addClass('bton-active');
+      this.journalDate = '05pm';
     }
+
   }
   navigateToSection(section: string) {
     window.location.hash = '';
@@ -1276,10 +1344,12 @@ export class ProjectDetailComponent implements OnInit {
       let phone = '3210000000';
       let url_mailto = 'tel:' + phone
       window.open(url_mailto);
-    }else{
+    }else if( type == 'mail'){
       let email = 'email@test.com';
       let url_mailto = 'mailto:' + email
       window.open(url_mailto);
+    }else{
+      window.open('https://wa.me/573144119717', '_blank');
     }
   }
   goSimulator() {

@@ -17,7 +17,7 @@ export class WizardService {
   public dataViviendaPath: string;
 
   constructor( private http: Http ) {
-    this.formData = environment.endpointApi + 'saveWizardData/';
+    this.formData = environment.endpointApi + '/ev_rest/webform/submit?_format=json';
     this.dataSearchPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences_location';
     this.dataPresupuestoPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Presupuesto de compra&sort=weight';
     this.dataSubsidioPath = environment.endpointTestingApi+ 'taxonomy_term/user_preferences?filter[parent.name]=Subsidio&sort=weight';

@@ -373,10 +373,13 @@ export class ToolComponent implements OnInit, AfterViewChecked {
   clickInfo(value){
     /* Quitar decimales en los montos de valor y saldo */
     var today = new Date();
+    let data = {};
+    this.cuotasMensuales = [];
     let cuota_inicial_porcentaje = 0;
     let cuota_inicial = '';
     let ahorros_totales = 0;
     let saldo_diferir = 0;
+    let saldo_cuota_diferir = 0;
     if(value.tipo_credito_cuota == 'hipotecario'){
       cuota_inicial_porcentaje = Number(value.valor_inmueble_cuota) * Number(0.30);
       cuota_inicial = '30%';
@@ -386,10 +389,11 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     }
     var months = this.monthDiff(new Date(today), new Date(value.fecha_cuota));
     ahorros_totales = Number(value.ahorros_cuota) + Number(value.primas_cuota);
-    saldo_diferir = Number(value.valor_inmueble_cuota) - Number(cuota_inicial_porcentaje);
-    var valor_mes = (Number(saldo_diferir) / Number(months))
+    saldo_cuota_diferir = Number(cuota_inicial_porcentaje) - Number(ahorros_totales);
+    saldo_diferir = Number(value.valor_inmueble_cuota) - Number(cuota_inicial_porcentaje) - Number(ahorros_totales);
+    var valor_mes = (Number(saldo_cuota_diferir) / Number(months))
     let count = 1;
-    let saldo = Number(saldo_diferir);
+    let saldo = Number(saldo_cuota_diferir);
     this.valorInmuebleCuota = Number(value.valor_inmueble_cuota);
     this.valorInmuebleCuota = new Intl.NumberFormat("es-ES").format(this.valorInmuebleCuota)
     this.valorCuotaInicial = Number(cuota_inicial_porcentaje);
@@ -402,8 +406,11 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     for (let i=0; i < months; i++){
       var date_now = new Date();
       saldo = saldo - Number(valor_mes);
+      if(saldo < 0){
+        saldo = 0;
+      }
       var monthYear = this.formatMonthDate(date_now,count);
-      let data =  {
+      data =  {
         'count': count,
         'date': monthYear,
         'value_cuota': new Intl.NumberFormat("es-ES").format(valor_mes),

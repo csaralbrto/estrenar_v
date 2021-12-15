@@ -80,6 +80,7 @@ export class HomeComponent implements OnInit {
           // console.log(this.projects2);
           this.results = true;
           $(window).scrollTop(0);
+          this.stopSpinner();
         }
         /* si responde correctamente */
         if (this.response.error) {
@@ -100,10 +101,17 @@ export class HomeComponent implements OnInit {
 
   ngAfterContentChecked() {
     if (this.results) {
-
       $('app-home').foundation();
-      if ($('.slider-home').length) {
-        $('.slider-home').not('.slick-initialized').slick({
+      if ($('.slider-home-desktop').length) {
+        $('.slider-home-desktop').not('.slick-initialized').slick({
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 3000,
+        });
+      }
+      if ($('.slider-home-mobile').length) {
+        $('.slider-home-mobile').not('.slick-initialized').slick({
+          arrows: true,
           dots: true,
           autoplay: true,
           autoplaySpeed: 5000,
@@ -113,7 +121,7 @@ export class HomeComponent implements OnInit {
         $('.slider-projects-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
-          autoplaySpeed: 5000,
+          autoplaySpeed: 3000,
           // mobileFirst: true,
           // swipe: true,
           // swipeToSlide: true,
@@ -124,17 +132,16 @@ export class HomeComponent implements OnInit {
         $('.slider-builders-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
-          autoplaySpeed: 5000,
+          autoplaySpeed: 3000,
         });
       }
       if ($('.slider-blog-home').length) {
         $('.slider-blog-home').not('.slick-initialized').slick({
           dots: true,
           autoplay: true,
-          autoplaySpeed: 5000,
+          autoplaySpeed: 3000,
         });
       }
-      this.stopSpinner();
     }
   }
   createForm() {

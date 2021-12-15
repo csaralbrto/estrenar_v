@@ -50,11 +50,14 @@
                   <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[0]">
                       <div id="title"><a href="{{response_data_project[0].url}}">{{ response_data_project[0].project }}</a></div>
                       <div id="foto">
-                        <div (click)="removeCompare(response_data_project[0])" class="container-foto">
-                              <!-- <span title="Remover del comparador" (click)="removeCompare(response_data_project[0].nid);">
-                              </span> -->
-                              <img [src]="url_img_path + response_data_project[0].typology_images" alt="" class="proyecto {{imgStyle}}">
+                          <div class="container-foto">
+                            <div (click)="removeCompare(response_data_project[0])">
+                              <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
                             </div>
+                            <!-- <span title="Remover del comparador" (click)="removeCompare(response_data_project[0].nid);">
+                            </span> -->
+                            <a href="{{response_data_project[0].url}}"><img [src]="url_img_path + response_data_project[0].typology_images" alt="" class="proyecto {{imgStyle}}"></a>
+                          </div>
                           <div class="row contact-bton-comparator mBtn-ComparatorContact">
                             <div id="contact-btn" class="columns">
                               <div class="medium-4 columns">
@@ -66,7 +69,7 @@
                               </div>
                               <div class="medium-4 columns">
                                 <div class="ev--bots--whatsapp">
-                                  <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                  <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
                                     <img src="/assets/images/wsap.png">
                                   </a>
                                 </div>
@@ -109,8 +112,11 @@
                       <div id="title"><a href="{{ response_data_project[1].url }}">{{ response_data_project[1].project }}</a></div>
                       <div id="foto">
                         <span class="">
-                          <div class="container-foto" (click)="removeCompare(response_data_project[1])">
-                            <img [src]="url_img_path + response_data_project[1].typology_images" alt="" class="proyecto {{imgStyle}}">
+                          <div class="container-foto">
+                            <div (click)="removeCompare(response_data_project[1])">
+                              <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
+                            </div>
+                            <a href="{{ response_data_project[1].url }}"><img [src]="url_img_path + response_data_project[1].typology_images" alt="" class="proyecto {{imgStyle}}"></a>
                           </div>
                         </span>
                         <div class="row contact-bton-comparator mBtn-ComparatorContact">
@@ -124,7 +130,7 @@
                             </div>
                             <div class="medium-4 columns">
                               <div class="ev--bots--whatsapp">
-                                <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
                                   <img src="/assets/images/wsap.png">
                                 </a>
                               </div>
@@ -167,9 +173,11 @@
                       <div id="title"><a href="{{ response_data_project[2].url }}">{{ response_data_project[2].project }}</a></div>
                       <div id="foto">
                           <span class="">
-                            <div class="container-foto" (click)="removeCompare(response_data_project[2])">
-                                  <img [src]="url_img_path + response_data_project[2].typology_images" alt=""
-                                        class="proyecto {{imgStyle}}">
+                            <div class="container-foto">
+                              <div (click)="removeCompare(response_data_project[2])">
+                                <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
+                              </div>
+                              <a href="{{ response_data_project[2].url }}"><img [src]="url_img_path + response_data_project[2].typology_images" alt="" class="proyecto {{imgStyle}}"></a>
                             </div>
                           </span>
                           <div class="row contact-bton-comparator mBtn-ComparatorContact">
@@ -183,7 +191,7 @@
                               </div>
                               <div class="medium-4 columns">
                                 <div class="ev--bots--whatsapp">
-                                  <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                  <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
                                     <img src="/assets/images/wsap.png">
                                   </a>
                                 </div>
@@ -226,9 +234,11 @@
                       <div id="title"><a href="{{ response_data_project[3].url }}">{{ response_data_project[3].project }}</a></div>
                       <div id="foto">
                           <span class="">
-                            <div class="container-foto" (click)="removeCompare(response_data_project[3])">
-                                <img [src]="url_img_path + response_data_project[3].typology_images" alt=""
-                                class="proyecto {{imgStyle}}">
+                            <div class="container-foto">
+                              <div (click)="removeCompare(response_data_project[3])">
+                                <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
+                              </div>
+                              <a href="{{ response_data_project[3].url }}"><img [src]="url_img_path + response_data_project[3].typology_images" alt="" class="proyecto {{imgStyle}}"></a>
                             </div>
                           </span>
                           <div class="row contact-bton-comparator mBtn-ComparatorContact">
@@ -242,7 +252,7 @@
                               </div>
                               <div class="medium-4 columns">
                                 <div class="ev--bots--whatsapp">
-                                  <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
+                                  <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
                                     <img src="/assets/images/wsap.png">
                                   </a>
                                 </div>
@@ -290,31 +300,32 @@
                     <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[0]">
                         <div id="title"><a href="{{response_data_project[0].url}}">{{ response_data_project[0].project }}</a></div>
                         <div id="foto">
-                            <div class="container-foto" (click)="removeCompare(response_data_project[0])">
-                                <span>
-                                  <img [src]="url_img_path + response_data_project[0].typology_images" alt=""
-                                  class="proyecto img-comparator"></span>
+                          <div class="container-foto">
+                              <div (click)="removeCompare(response_data_project[0])">
+                                <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
+                              </div>
+                              <a href="{{response_data_project[0].url}}"><img [src]="url_img_path + response_data_project[0].typology_images" alt="" class="proyecto img-comparator"></a>
                             </div>
                             <div class="row contact-bton-comparator">
                               <div id="contact-btn" class="columns">
                                 <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
                                     <a data-open="exampleModal2" (click)="activeAfterContact('email')" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/mail_contact.png">
+                                      <img width="25px" src="/assets/images/mail_contact.png">
                                     </a>
                                   </div>
                                 </div>
                                 <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
-                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/wsap.png">
+                                    <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
+                                      <img width="25px" src="/assets/images/wsap.png">
                                     </a>
                                   </div>
                                 </div>
                                 <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
                                     <a data-open="exampleModal2" (click)="activeAfterContact('phone')" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/phone_contact.png">
+                                      <img width="25px" src="/assets/images/phone_contact.png">
                                     </a>
                                   </div>
                                 </div>
@@ -350,30 +361,32 @@
                     <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[1]">
                           <div id="title"><a href="{{ response_data_project[1].url }}">{{ response_data_project[1].project }}</a></div>
                           <div id="foto">
-                              <div class="container-foto" (click)="removeCompare(response_data_project[1])">
-                                  <span><img [src]="url_img_path + response_data_project[1].typology_images" alt=""
-                                          class="proyecto img-comparator"></span>
+                              <div class="container-foto">
+                                <div (click)="removeCompare(response_data_project[1])">
+                                  <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
+                                </div>
+                                <a href="{{ response_data_project[1].url }}"><img [src]="url_img_path + response_data_project[1].typology_images" alt="" class="proyecto img-comparator"></a>
                               </div>
                               <div class="row contact-bton-comparator">
                                 <div id="contact-btn" class="columns">
-                                  <div class="medium-4 columns">
+                                  <div class="small-4 medium-4 columns">
                                     <div class="ev--bots--whatsapp">
                                       <a data-open="exampleModal2" (click)="activeAfterContact('email')" id="ev-bots-whatsapp">
-                                        <img src="/assets/images/mail_contact.png">
+                                        <img width="25px" src="/assets/images/mail_contact.png">
                                       </a>
                                     </div>
                                   </div>
-                                  <div class="medium-4 columns">
+                                  <div class="small-4 medium-4 columns">
                                     <div class="ev--bots--whatsapp">
-                                      <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
-                                        <img src="/assets/images/wsap.png">
+                                      <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
+                                        <img width="25px" src="/assets/images/wsap.png">
                                       </a>
                                     </div>
                                   </div>
-                                  <div class="medium-4 columns">
+                                  <div class="small-4 medium-4 columns">
                                     <div class="ev--bots--whatsapp">
                                       <a data-open="exampleModal2" (click)="activeAfterContact('phone')" id="ev-bots-whatsapp">
-                                        <img src="/assets/images/phone_contact.png">
+                                        <img width="25px" src="/assets/images/phone_contact.png">
                                       </a>
                                     </div>
                                   </div>
@@ -409,30 +422,32 @@
                     <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[2]">
                         <div id="title"><a href="{{ response_data_project[2].url }}">{{ response_data_project[2].project }}</a></div>
                         <div id="foto">
-                            <div class="container-foto" (click)="removeCompare(response_data_project[2])">
-                                <span ><img [src]="url_img_path + response_data_project[2].typology_images" alt=""
-                                        class="proyecto img-comparator"></span>
+                            <div class="container-foto">
+                              <div (click)="removeCompare(response_data_project[2])">
+                                <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
+                              </div>
+                              <a href="{{ response_data_project[2].url }}"><img [src]="url_img_path + response_data_project[2].typology_images" alt="" class="proyecto img-comparator"></a>
                             </div>
                             <div class="row contact-bton-comparator">
                               <div id="contact-btn" class="columns">
-                                <div class="medium-4 columns">
+                                <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
                                     <a data-open="exampleModal2" (click)="activeAfterContact('email')" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/mail_contact.png">
+                                      <img width="25px" src="/assets/images/mail_contact.png">
                                     </a>
                                   </div>
                                 </div>
-                                <div class="medium-4 columns">
+                                <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
-                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/wsap.png">
+                                    <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
+                                      <img width="25px" src="/assets/images/wsap.png">
                                     </a>
                                   </div>
                                 </div>
-                                <div class="medium-4 columns">
+                                <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
                                     <a data-open="exampleModal2" (click)="activeAfterContact('phone')" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/phone_contact.png">
+                                      <img width="25px" src="/assets/images/phone_contact.png">
                                     </a>
                                   </div>
                                 </div>
@@ -468,30 +483,32 @@
                     <div class="{{classRow}} data scroll-hori-mobile columns" *ngIf="response_data_project[3]">
                         <div id="title"><a href="{{ response_data_project[3].url }}">{{ response_data_project[3].project }}</a></div>
                         <div id="foto">
-                            <div class="container-foto" (click)="removeCompare(response_data_project[1])">
-                                <span><img [src]="url_img_path + response_data_project[3].typology_images" alt=""
-                                        class="proyecto img-comparator"></span>
+                            <div class="container-foto">
+                              <div (click)="removeCompare(response_data_project[3])">
+                                <img class="img-cerrar" src="/assets/images/cerrar.png" alt="">
+                              </div>
+                              <a href="{{ response_data_project[3].url }}"><img [src]="url_img_path + response_data_project[3].typology_images" alt="" class="proyecto img-comparator"></a>
                             </div>
                             <div class="row contact-bton-comparator">
                               <div id="contact-btn" class="columns">
-                                <div class="medium-4 columns">
+                                <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
                                     <a data-open="exampleModal2" (click)="activeAfterContact('email')" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/mail_contact.png">
+                                      <img width="25px" src="/assets/images/mail_contact.png">
                                     </a>
                                   </div>
                                 </div>
-                                <div class="medium-4 columns">
+                                <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
-                                    <a href="https://wa.me/573144119717" target="_blank" title="Whatsapp Bot" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/wsap.png">
+                                    <a data-open="exampleModal2" (click)="activeAfterContact('whatsapp')" id="ev-bots-whatsapp">
+                                      <img width="25px" src="/assets/images/wsap.png">
                                     </a>
                                   </div>
                                 </div>
-                                <div class="medium-4 columns">
+                                <div class="small-4 medium-4 columns">
                                   <div class="ev--bots--whatsapp">
                                     <a data-open="exampleModal2" (click)="activeAfterContact('phone')" id="ev-bots-whatsapp">
-                                      <img src="/assets/images/phone_contact.png">
+                                      <img width="25px" src="/assets/images/phone_contact.png">
                                     </a>
                                   </div>
                                 </div>
@@ -532,7 +549,7 @@
 <!-- Modal de contacto -->
 <div class="reveal text-center reveal-contact" id="exampleModal2" data-reveal>
     <h2>Contactar</h2>
-    <form data-abide novalidate [formGroup]="form4">
+    <form data-abide novalidate [formGroup]="form">
         <div class="container-form">
             <span id="spanNameModal" class="error hide">
               Debe digitar un nombre de contacto
@@ -577,7 +594,7 @@
                   mismos.</label>
 
             </div>
-            <span href="" class="button secondary" (click)="onSubmitModal(form4.value)">Enviar</span>
+            <a class="button secondary" (click)="onSubmitModal2(form.value)">Enviar</a>
         </div>
     </form>
     <button class="close-button" data-close aria-label="Close modal" type="button">

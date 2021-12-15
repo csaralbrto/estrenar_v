@@ -217,6 +217,7 @@
                         </div>
                         <div class="small-6 columns">
                             <select id="arear_build" style="width: 137px;" name="arear_build" formControlName="arear_build" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsAreaSelected">
+                                <option value="" *ngIf="optionsAreaSelected == ''">Seleccione:</option>
                                 <option *ngFor="let type of filterAreaBuilt; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                             </select>
                         </div>
@@ -282,6 +283,7 @@
                   </label> -->
                       <!-- <div class="small-6 columns"> -->
                     <select id="constructora_builder" name="constructora_builder" formControlName="constructora_builder" (change)="change(form_moreFilters.value)" [(ngModel)]="optionsConstructoraSelected">
+                      <option value="" *ngIf="optionsConstructoraSelected == ''">Seleccione:</option>
                       <option *ngFor="let type of filterBuilder; let i = index" [value]="type.url">{{type.values.value == "." ? "Todos": type.values.value }}</option>
                     </select>
                       <!-- </div> -->
@@ -493,7 +495,7 @@
   </div>
   <div class="row">
     <div class="medium-4 columns proyectolist">
-        <div class="resultados">Mostrando <span>{{countProjects}}</span> apartamentos de <span>{{countAllProjects}}</span></div>
+        <div class="resultados">Mostrando <span>{{countProjects}}</span> inmuebles de <span>{{countAllProjects}}</span></div>
     </div>
     <div class="medium-2 columns end">
       <div class="columns small-12 show-for-small-only">

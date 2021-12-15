@@ -399,6 +399,7 @@ p {
   .slick-dots {
     width: auto;
     right: 3rem;
+    margin-right: 2rem;
     li button {
       font-size: 0;
       margin: 0;
@@ -432,7 +433,8 @@ p {
     &::before {
       content: "ᐸ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
+      margin-right: 1.5rem;
     }
   }
   .slick-next {
@@ -440,7 +442,7 @@ p {
     &::before {
       content: "ᐳ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
     }
   }
 }
@@ -563,6 +565,7 @@ p {
   .slick-dots {
     width: auto;
     right: 3rem;
+    margin-right: 2rem;
     li button {
       font-size: 0;
       margin: 0;
@@ -596,7 +599,8 @@ p {
     &::before {
       content: "ᐸ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
+      margin-right: 1.5rem;
     }
   }
   .slick-next {
@@ -604,7 +608,7 @@ p {
     &::before {
       content: "ᐳ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
     }
   }
 }
@@ -2772,6 +2776,7 @@ ul.menu li a img {
   .slick-dots {
     width: auto;
     right: 3rem;
+    margin-right: 2rem;
     bottom: -2rem !important;
     li button {
       font-size: 0;
@@ -2807,7 +2812,8 @@ ul.menu li a img {
     &::before {
       content: "ᐸ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
+      margin-right: 1.5rem;
     }
   }
   .slick-next {
@@ -2816,7 +2822,7 @@ ul.menu li a img {
     &::before {
       content: "ᐳ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
     }
   }
 }
@@ -2825,6 +2831,7 @@ ul.menu li a img {
   .slick-dots {
     width: auto;
     right: 3rem;
+    margin-right: 2rem;
     li button {
       font-size: 0;
       margin: 0;
@@ -2858,7 +2865,8 @@ ul.menu li a img {
     &::before {
       content: "ᐸ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
+      margin-right: 1.5rem;
     }
   }
   .slick-next {
@@ -2866,7 +2874,7 @@ ul.menu li a img {
     &::before {
       content: "ᐳ";
       color: $primary-color;
-      font-size: 18px;
+      font-size: 22px;
     }
   }
 }
@@ -2932,7 +2940,8 @@ ul.menu li a img {
 }
 
 .ng5-slider .ng5-slider-pointer {
-  background-color: $primary-color !important;
+  // background-color: $primary-color !important;
+  background-color: #b4ca3d !important;
 }
 
 .ng5-slider .ng5-slider-selection {
@@ -3067,6 +3076,7 @@ ul.menu li a img {
     z-index: 1;
   }
   //comparador
+
   .comparador {
     font-size: 0.9rem;
     .proyecto {
@@ -3100,17 +3110,17 @@ ul.menu li a img {
         .container-foto {
           position: relative;
           cursor: pointer;
-          &:after {
-            position: absolute;
-            background: url(/assets/images/cerrar.png);
-            content: "";
-            right: 0.5rem;
-            top: 0.5rem;
-            width: 20px;
-            height: 20px;
-            background-size: contain;
-            cursor: pointer;
-          }
+          // &:after {
+          //   position: absolute;
+          //   background: url(/assets/images/cerrar.png);
+          //   content: "";
+          //   right: 0.5rem;
+          //   top: 0.5rem;
+          //   width: 20px;
+          //   height: 20px;
+          //   background-size: contain;
+          //   cursor: pointer;
+          // }
         }
       }
       div#title {
@@ -3136,6 +3146,7 @@ ul.menu li a img {
       }
     }
   }
+
   .row-tags-filters{
     overflow: scroll;
     white-space: nowrap;
@@ -3257,6 +3268,19 @@ ul.menu li a img {
   }
   .pLeftMorFilters{
     padding-left: 18px;
+  }
+  div#exampleModal2{
+    top: 12% !important;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    height: 74% !important;
+    min-height: 60% !important;
+    margin-left: 0;
+    border: 0;
+    border-radius: 0;
   }
   div#exampleModal1 {
     position: fixed;
@@ -3698,17 +3722,17 @@ ul.menu li a img {
         .container-foto {
           position: relative;
           cursor: pointer;
-          &::before {
-            position: absolute;
-            background: url(/assets/images/cerrar.png);
-            content: "";
-            right: 0.5rem;
-            top: 0.5rem;
-            width: 20px;
-            height: 20px;
-            background-size: contain;
-            cursor: pointer;
-          }
+          // &::before {
+          //   position: absolute;
+          //   background: url(/assets/images/cerrar.png);
+          //   content: "";
+          //   right: 0.5rem;
+          //   top: 0.5rem;
+          //   width: 20px;
+          //   height: 20px;
+          //   background-size: contain;
+          //   cursor: pointer;
+          // }
         }
       }
       div#title {
@@ -4372,4 +4396,10 @@ div#term-privacid{
 }
 .h1Builders{
   font-size: 1.3rem !important;
+  padding-left: 1rem;
+}
+.img-cerrar{
+  position: absolute;
+  top: 8px;
+  right: 14px;
 }

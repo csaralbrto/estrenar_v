@@ -1681,53 +1681,65 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   onSubmit(values) {
     console.log(values);
     var error = false;
+    let errorspanName = false;
     if(values.name == null || values.name == ""){
       $('#spanName').removeClass('hide');
-      error = true;
+      errorspanName = true;
     }else{
       $('#spanName').addClass('hide');
-      error = false;
+      errorspanName = false;
     }
+    let errorspannLastName = false;
     if(values.lastname == null || values.lastname == ""){
       $('#spannLastName').removeClass('hide');
-      error = true;
+      errorspannLastName = true;
     }else{
       $('#spannLastName').addClass('hide');
-      error = false;
+      errorspannLastName = false;
     }
+    let errorspanPhone = false;
     if(values.phone == null || values.phone == ""){
       $('#spanPhone').removeClass('hide');
-      error = true;
+      errorspanPhone = true;
     }else{
       $('#spanPhone').addClass('hide');
-      error = false;
+      errorspanPhone = false;
     }
+    let errorspanEmail = false;
     if(values.email == null || values.email == ""){
       $('#spanEmail').removeClass('hide');
-      error = true;
+      errorspanEmail = true;
     }else{
       $('#spanEmail').addClass('hide');
-      error = false;
+      errorspanEmail = false;
     }
+    let errorspanContact = false;
     if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
       $('#spanContact').removeClass('hide');
-      error = true;
+      errorspanContact = true;
     }else{
       $('#spanContact').addClass('hide');
-      error = false;
+      errorspanContact = false;
     }
+    let errorspanTypesearch = false;
     if(values.typeSearch == null || values.typeSearch == ""){
       $('#spanTypesearch').removeClass('hide');
-      error = true;
+      errorspanTypesearch = true;
     }else{
       $('#spanTypesearch').addClass('hide');
-      error = false;
+      errorspanTypesearch = false;
     }
+    let errorspanTerm = false;
     if(values.term == null || values.term == ""){
       $('#spanTerm').removeClass('hide');
-      error = true;
+      errorspanTerm = true;
     }else{
       $('#spanTerm').addClass('hide');
+      errorspanTerm = false;
+    }
+    if(errorspanName == true || errorspannLastName == true || errorspanPhone == true || errorspanEmail == true || errorspanContact == true || errorspanTypesearch == true || errorspanTerm == true){
+      error = true;
+    }else{
       error = false;
     }
     if(!error){

@@ -46,7 +46,7 @@
           <div class="medium-9 columns hide-for-small-only">
               <div class="slider" role="region" aria-label="Favorite Space Pictures">
                   <div class="">
-                      <ul class="slider-home">
+                      <ul class="slider-home-desktop">
                           <li class="is-active ">
                               <div class="row">
                                   <div class="medium-8 columns destacado">
@@ -206,148 +206,95 @@
           <!--fin slide-->
           <!-- slide mobile -->
           <div class="medium-9 columns show-for-small-only">
-            <div class="slider" role="region" aria-label="Favorite Space Pictures" style="height: 239px !important;background-color: #f9fff0;touch-action: auto;">
+            <div class="slider sliderVerticalScrool" role="region" aria-label="Favorite Space Pictures" style="height: 239px !important;background-color: #f9fff0;touch-action: auto;">
                 <div class="">
-                  <ul class="slider-home">
-                    <li class="is-active ">
+                  <ul class="slider-home-mobile">
+                    <li class="is-active " *ngIf="response.home_featured_collections[0]">
                         <div class="medium-12 columns destacado">
                             <figure class="">
-                                <div *ngIf="response.home_featured_collections[0]; else imgOther0">
+                                <div *ngIf="response.home_featured_collections[0]">
                                     <a (click)=(loadCollection(response.home_featured_collections[0].id,response.home_featured_collections[0].name))>
                                         <img class="" [src]="response.home_featured_collections[0].image.url" alt="">
                                       <figcaption class="">{{ response.home_featured_collections[0] ? response.home_featured_collections[0].name : "" }}</figcaption>
                                     </a>
                                 </div>
-                                <ng-template #imgOther0>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="response.home_featured_collections[1]">
                         <div class="medium-12 columns">
                             <figure class="">
-                                <div *ngIf="response.home_featured_collections[1]; else imgOther1">
+                                <div *ngIf="response.home_featured_collections[1]">
                                     <a (click)=(loadCollection(response.home_featured_collections[1].id,response.home_featured_collections[1].name))>
                                         <img class="" [src]="response.home_featured_collections[1].image.url" alt="">
                                     </a>
                                 </div>
-                                <ng-template #imgOther1>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
                                 <figcaption class="">{{ response.home_featured_collections[1] ? response.home_featured_collections[1].name : "" }}
                                 </figcaption>
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="response.home_featured_collections[2]">
                         <div class="medium-12 columns">
                             <figure class="">
-                                <div *ngIf="response.home_featured_collections[2]; else imgOther2">
+                                <div *ngIf="response.home_featured_collections[2]">
                                     <a (click)=(loadCollection(response.home_featured_collections[2].id,response.home_featured_collections[2].name))>
                                         <img class="" [src]="response.home_featured_collections[2].image.url" alt="">
                                     </a>
                                 </div>
-                                <ng-template #imgOther2>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
                                 <figcaption class="">{{ response.home_featured_collections[2] ? response.home_featured_collections[2].name : "" }}
                                 </figcaption>
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="response.home_featured_collections[3]">
                         <div class="medium-12 columns">
                             <figure class="">
-                                <div *ngIf="response.home_featured_collections[3]; else imgOther3">
+                                <div *ngIf="response.home_featured_collections[3]">
                                     <a (click)=(loadCollection(response.home_featured_collections[3].id,response.home_featured_collections[3].name))>
                                         <img class="" [src]="response.home_featured_collections[3].image.url" alt="">
                                     </a>
                                 </div>
-                                <ng-template #imgOther3>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
                                 <figcaption class="">{{ response.home_featured_collections[3] ? response.home_featured_collections[3].name : "" }}
                                 </figcaption>
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="response.home_featured_collections[4]">
                         <div class="medium-12 columns">
                             <figure class="">
-                                <div *ngIf="response.home_featured_collections[4]; else imgOther4">
+                                <div *ngIf="response.home_featured_collections[4]">
                                     <a (click)=(loadCollection(response.home_featured_collections[4].id,response.home_featured_collections[4].name))>
                                         <img class="" [src]="response.home_featured_collections[4].image.url" alt="">
                                     </a>
                                 </div>
-                                <ng-template #imgOther4>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
-                                <figcaption class="">{{ response.home_featured_collections[4] ? response.home_featured_collections[4].name : "" }}
+                                <figcaption class="">{{ response.home_featured_collections[4] ? response.home_featured_collections[3].name : "" }}
                                 </figcaption>
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="response.home_featured_collections[5]">
                         <div class="medium-12 columns">
                             <figure class="">
-                                <div *ngIf="response.home_featured_collections[5]; else imgOther5">
+                                <div *ngIf="response.home_featured_collections[5]">
                                     <a (click)=(loadCollection(response.home_featured_collections[5].id,response.home_featured_collections[5].name))>
                                         <img class="" [src]="response.home_featured_collections[5].image.url" alt="">
                                     </a>
                                 </div>
-                                <ng-template #imgOther5>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
-                                <figcaption class="">{{ response.home_featured_collections[5] ? response.home_featured_collections[5].name : "" }}
+                                <figcaption class="">{{ response.home_featured_collections[5] ? response.home_featured_collections[3].name : "" }}
                                 </figcaption>
                             </figure>
                         </div>
                     </li>
-                    <li>
+                    <li *ngIf="response.home_featured_collections[6]">
                         <div class="medium-12 columns">
                             <figure class="">
-                                <div *ngIf="response.home_featured_collections[6]; else imgOther6">
+                                <div *ngIf="response.home_featured_collections[6]">
                                     <a (click)=(loadCollection(response.home_featured_collections[6].id,response.home_featured_collections[6].name))>
                                         <img class="" [src]="response.home_featured_collections[6].image.url" alt="">
                                     </a>
                                 </div>
-                                <ng-template #imgOther6>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
-                                <figcaption class="">{{ response.home_featured_collections[6] ? response.home_featured_collections[6].name : "" }}
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="medium-12 columns">
-                            <figure class="">
-                                <div *ngIf="response.home_featured_collections[7]; else imgOther7">
-                                    <a (click)=(loadCollection(response.home_featured_collections[7].id,response.home_featured_collections[7].name))>
-                                        <img class="" [src]="response.home_featured_collections[7].image.url" alt="">
-                                    </a>
-                                </div>
-                                <ng-template #imgOther7>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
-                                <figcaption class="">{{ response.home_featured_collections[7] ? response.home_featured_collections[7].name : "" }}
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="medium-12 columns">
-                            <figure class="">
-                                <div *ngIf="response.home_featured_collections[8]; else imgOther8">
-                                    <a (click)=(loadCollection(response.home_featured_collections[8].id,response.home_featured_collections[8].name))>
-                                        <img class="" [src]="response.home_featured_collections[8].image.url" alt="">
-                                    </a>
-                                </div>
-                                <ng-template #imgOther8>
-                                    <img class="" src="/assets/images/content/ficha.jpg" alt="">
-                                </ng-template>
-                                <figcaption class="">{{ response.home_featured_collections[8] ? response.home_featured_collections[8].name : "" }}
+                                <figcaption class="">{{ response.home_featured_collections[6] ? response.home_featured_collections[3].name : "" }}
                                 </figcaption>
                             </figure>
                         </div>
@@ -451,7 +398,7 @@
                               <div class="card-section info">
                                 <a href="{{response.home_featured_typologies[0].url}}"><h2>{{ response.home_featured_typologies[0].project }}</h2></a>
                                   <div class="descripcion">
-                                      {{ response.home_featured_typologies[0].property_type }}, {{ response.home_featured_typologies[0].project_neighborhood }}, {{ response.home_featured_typologies[0].project_city }}
+                                      {{ response.home_featured_typologies[0].property_type }} en {{ response.home_featured_typologies[0].project_neighborhood }}, {{ response.home_featured_typologies[0].project_city }}
                                   </div>
                                   <div class="precio text-center">
                                       <div>Desde:</div>
@@ -544,7 +491,7 @@
                                           <div class="card-section info">
                                             <a href="{{response.home_featured_typologies[1].url}}"><h2>{{ response.home_featured_typologies[1].project }}</h2></a>
                                               <div class="descripcion">
-                                                  {{ response.home_featured_typologies[1].property_type }}, {{ response.home_featured_typologies[1].project_neighborhood }}, {{ response.home_featured_typologies[1].project_city }}
+                                                  {{ response.home_featured_typologies[1].property_type }} en {{ response.home_featured_typologies[1].project_neighborhood }}, {{ response.home_featured_typologies[1].project_city }}
                                               </div>
                                           </div>
                                           <div class="precio text-center">
@@ -619,7 +566,7 @@
                                           <div class="card-section info">
                                             <a href="{{response.home_featured_typologies[2].url}}"><h2>{{ response.home_featured_typologies[2].project }}</h2></a>
                                               <div class="descripcion">
-                                                  {{ response.home_featured_typologies[2].property_type }}, {{ response.home_featured_typologies[2].project_neighborhood }}, {{ response.home_featured_typologies[2].project_city }}
+                                                  {{ response.home_featured_typologies[2].property_type }} en {{ response.home_featured_typologies[2].project_neighborhood }}, {{ response.home_featured_typologies[2].project_city }}
                                               </div>
                                           </div>
                                           <div class="precio text-center">
@@ -696,7 +643,7 @@
                                           <div class="card-section info">
                                             <a href="{{response.home_featured_typologies[3].url}}"><h2>{{ response.home_featured_typologies[3].project }}</h2></a>
                                               <div class="descripcion">
-                                                  {{ response.home_featured_typologies[3].property_type }}, {{ response.home_featured_typologies[3].project_neighborhood }}, {{ response.home_featured_typologies[3].project_city }}
+                                                  {{ response.home_featured_typologies[3].property_type }} en {{ response.home_featured_typologies[3].project_neighborhood }}, {{ response.home_featured_typologies[3].project_city }}
                                               </div>
                                           </div>
                                           <div class="precio text-center">
@@ -770,7 +717,7 @@
                                           <div class="card-section info">
                                             <a href="{{response.home_featured_typologies[4].url}}"><h2>{{ response.home_featured_typologies[4].project }}</h2></a>
                                               <div class="descripcion">
-                                                  {{ response.home_featured_typologies[4].property_type }}, {{ response.home_featured_typologies[4].project_neighborhood }}, {{ response.home_featured_typologies[4].project_city }}
+                                                  {{ response.home_featured_typologies[4].property_type }} en {{ response.home_featured_typologies[4].project_neighborhood }}, {{ response.home_featured_typologies[4].project_city }}
                                               </div>
                                           </div>
                                           <div class="precio text-center">
@@ -860,7 +807,7 @@
                                 <div class="card-section info">
                                   <a href="{{response.home_featured_typologies[0].url}}"><h2>{{ response.home_featured_typologies[0].project }}</h2></a>
                                     <div class="descripcion">
-                                        {{ response.home_featured_typologies[0].property_type }}, {{ response.home_featured_typologies[0].project_neighborhood }}, {{ response.home_featured_typologies[0].project_city }}
+                                        {{ response.home_featured_typologies[0].property_type }} en {{ response.home_featured_typologies[0].project_neighborhood }}, {{ response.home_featured_typologies[0].project_city }}
                                     </div>
                                 </div>
                                 <div class="precio text-center">
@@ -935,7 +882,7 @@
                               <div class="card-section info">
                                 <a href="{{response.home_featured_typologies[1].url}}"><h2>{{ response.home_featured_typologies[1].project }}</h2></a>
                                   <div class="descripcion">
-                                      {{ response.home_featured_typologies[1].property_type }}, {{ response.home_featured_typologies[1].project_neighborhood }}, {{ response.home_featured_typologies[1].project_city }}
+                                      {{ response.home_featured_typologies[1].property_type }} en {{ response.home_featured_typologies[1].project_neighborhood }}, {{ response.home_featured_typologies[1].project_city }}
                                   </div>
                               </div>
                               <div class="precio text-center">
@@ -1011,7 +958,7 @@
                                 <div class="card-section info">
                                   <a href="{{response.home_featured_typologies[2].url}}"><h2>{{ response.home_featured_typologies[2].project }}</h2></a>
                                     <div class="descripcion">
-                                        {{ response.home_featured_typologies[2].property_type }}, {{ response.home_featured_typologies[2].project_neighborhood }}, {{ response.home_featured_typologies[2].project_city }}
+                                        {{ response.home_featured_typologies[2].property_type }} en {{ response.home_featured_typologies[2].project_neighborhood }}, {{ response.home_featured_typologies[2].project_city }}
                                     </div>
                                 </div>
                                 <div class="precio text-center">
@@ -1086,7 +1033,7 @@
                                 <div class="card-section info">
                                   <a href="{{response.home_featured_typologies[3].url}}"><h2>{{ response.home_featured_typologies[3].project }}</h2></a>
                                     <div class="descripcion">
-                                        {{ response.home_featured_typologies[3].property_type }}, {{ response.home_featured_typologies[3].project_neighborhood }}, {{ response.home_featured_typologies[3].project_city }}
+                                        {{ response.home_featured_typologies[3].property_type }} en {{ response.home_featured_typologies[3].project_neighborhood }}, {{ response.home_featured_typologies[3].project_city }}
                                     </div>
                                 </div>
                                 <div class="precio text-center">
@@ -1162,7 +1109,7 @@
                                 <div class="card-section info">
                                   <a href="{{response.home_featured_typologies[4].url}}"><h2>{{ response.home_featured_typologies[4].project }}</h2></a>
                                     <div class="descripcion">
-                                        {{ response.home_featured_typologies[4].property_type }}, {{ response.home_featured_typologies[4].project_neighborhood }}, {{ response.home_featured_typologies[4].project_city }}
+                                        {{ response.home_featured_typologies[4].property_type }} en {{ response.home_featured_typologies[4].project_neighborhood }}, {{ response.home_featured_typologies[4].project_city }}
                                     </div>
                                 </div>
                                 <div class="precio text-center">

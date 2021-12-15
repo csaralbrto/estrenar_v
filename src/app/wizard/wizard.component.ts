@@ -210,24 +210,80 @@ export class WizardComponent implements OnInit, AfterViewChecked{
   }
   closeWizard(values) {
     console.log(values);
-    // $('#welcomeModal').foundation('close');
-    let payload = {
-      "webform_id": "wizard",
-      "user_preference_location": this.searchPlace,
-      "user_preference": [
-          24,
-          values.subsidy,
-          values.waitTime,
-          values.contactType,
-          values.typeSearch
-      ],
-      "user_name": values.name,
-      "user_phone": values.phone,
-      "user_mail": values.email,
-      "user_privacy_notice": 5323
+    var error = false;
+    let errorspanName = false;
+    if(values.name == null || values.name == ""){
+      $('#spanName').removeClass('hide');
+      errorspanName = true;
+    }else{
+      $('#spanName').addClass('hide');
+      errorspanName = false;
     }
-    // this.router.navigate(['/home']);
-    location.href ="/home";
+    let errorspannLastName = false;
+    if(values.last_name == null || values.last_name == ""){
+      $('#spannLastName').removeClass('hide');
+      errorspannLastName = true;
+    }else{
+      $('#spannLastName').addClass('hide');
+      errorspannLastName = false;
+    }
+    let errorspanPhone = false;
+    if(values.phone == null || values.phone == ""){
+      $('#spanPhone').removeClass('hide');
+      errorspanPhone = true;
+    }else{
+      $('#spanPhone').addClass('hide');
+      errorspanPhone = false;
+    }
+    let errorspanEmail = false;
+    if(values.email == null || values.email == ""){
+      $('#spanEmail').removeClass('hide');
+      errorspanEmail = true;
+    }else{
+      $('#spanEmail').addClass('hide');
+      errorspanEmail = false;
+    }
+    let errorspanContact = false;
+    if(values.contact == null || values.contact == "" || values.contact == "Deseas ser contactado"){
+      $('#spanContact').removeClass('hide');
+      errorspanContact = true;
+    }else{
+      $('#spanContact').addClass('hide');
+      errorspanContact = false;
+    }
+    let errorspanTerm = false;
+    if(values.term == null || values.term == ""){
+      $('#spanTerm').removeClass('hide');
+      errorspanTerm = true;
+    }else{
+      $('#spanTerm').addClass('hide');
+      errorspanTerm = false;
+    }
+    // $('#welcomeModal').foundation('close');
+    if(errorspanName == true || errorspannLastName == true || errorspanPhone == true || errorspanEmail == true || errorspanContact == true || errorspanTerm == true){
+      error = true;
+    }else{
+      error = false;
+    }
+    if(!error){
+      let payload = {
+        "webform_id": "wizard",
+        "user_preference_location": this.searchPlace,
+        "user_preference": [
+            24,
+            values.subsidy,
+            values.waitTime,
+            values.contactType,
+            values.typeSearch
+        ],
+        "user_name": values.name,
+        "user_phone": values.phone,
+        "user_mail": values.email,
+        "user_privacy_notice": 5323
+      }
+      // this.router.navigate(['/home']);
+      location.href ="/home";
+    }
 
   }
   changeStepWizard(idStep) {
@@ -278,6 +334,7 @@ export class WizardComponent implements OnInit, AfterViewChecked{
       phone: new FormControl(''),
       typeSearch: new FormControl(''),
       contact: new FormControl('Deseas ser contactado'),
+      term: new FormControl(''),
     });
   }
   ngAfterViewChecked() {
@@ -369,11 +426,13 @@ export class WizardComponent implements OnInit, AfterViewChecked{
     }
   }
   restart(){
-    this.searchPlaceName = '';
-    this.valueShow = '';
-    this.subsidyOption = '';
-    this.timeOption = '';
-    this.contactOption = '';
+
+    this.searchPlaceName = null;
+    this.valueShow = null;
+    this.subsidyOption = null;
+    this.timeOption = null;
+    this.contactOption = null;
+    this.form.reset();
     this.changeStepWizard(1);
   }
 }
