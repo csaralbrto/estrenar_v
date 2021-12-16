@@ -133,6 +133,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
     let get_filter_word  = sessionStorage['word_search']?sessionStorage.getItem("word_search"):null;
     let get_collection_id  = sessionStorage['collection_id']?sessionStorage.getItem("collection_id"):null;
     let word_label_collection  = sessionStorage['wordTitleCollection']?sessionStorage.getItem("wordTitleCollection"):null;
+    let searchFilters = sessionStorage['filterSearch']?sessionStorage.getItem("filterSearch"):null;
     // console.log(sessionStorage.getItem("projectTitle"));
     if(title_label && title_label !== null){
       this.titleLabel = title_label;
@@ -155,6 +156,9 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
       sessionStorage.removeItem("collection_id");
       this.wordLabel = word_label_collection
       this.filterByCollection(get_collection_id);
+    }else if(searchFilters && searchFilters !== null){
+      sessionStorage.removeItem("filterSearch");
+      this.change(searchFilters);
     }else{
       /* Método para obtener toda la info de proyectos */
       // console.log(this.resultProyecto);
@@ -664,7 +668,6 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
         type_filter = key;
       }
     },this);
-    // console.log(type_filter);
     let type = type_filter;
     switch (type) {
         case 'price':
@@ -677,7 +680,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               }
             }
           }
-            break
+        break
         case 'city':
           for(let type of this.filterCity){
             if(type.url == this.stringQuery){
@@ -688,7 +691,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               }
             }
           }
-            break
+        break
         case 'zone':
           for(let type of this.filterZone){
             if(type.url == this.stringQuery){
@@ -699,7 +702,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               }
             }
           }
-            break
+        break
         case 'sector':
           for(let type of this.filterSector){
             if(type.url == this.stringQuery){
@@ -710,8 +713,7 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
               }
             }
           }
-          break
-            break
+        break
         case 'type':
             for(let type of this.filterType){
               if(type.url == this.stringQuery){
@@ -722,10 +724,12 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
                 }
               }
             }
-            break
+        break
     }
     if(url_redirect != null){
-
+      sessionStorage.removeItem('filterSearch');
+      sessionStorage.setItem('filterSearch',this.stringQuery)
+      window.location.href = window.location.href + url_redirect;
     }else{
       this.change(value);
     }
@@ -733,16 +737,16 @@ export class ProjectsComponent implements OnInit, AfterViewChecked {
   change(value) {
     this.startSpinner();
     // this.bandera = false;
-    this.showMap(false);
-    this.stringQuery = "";
-    Object.keys(value).forEach( function(key) {
-      if(value[key] && value[key] !== 'Seleccione'){
-        this.stringQuery = value[key];
-      }
-    },this);
-    console.log(this.stringQuery);
+    // this.showMap(false);
+    // this.stringQuery = "";
+    // Object.keys(value).forEach( function(key) {
+    //   if(value[key] && value[key] !== 'Seleccione'){
+    //     this.stringQuery = value[key];
+    //   }
+    // },this);
+    // console.log(this.stringQuery);
     // this.beforeCheck(this.response.individual);}
-    var url = this.stringQuery;
+    var url = value;
     var data = "";
     this.urlActualProjects = url;
     fetch(url, {
