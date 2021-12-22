@@ -88,15 +88,15 @@ export class HomeComponent implements OnInit {
         }
       }
     );
-    // this.Service.getAdServerData().subscribe(
-    //   (data) => (this.responseAdServer = data),
-    //   (err) => console.log(),
-    //   () => {
-    //     if (this.responseAdServer){
-    //       console.log(this.responseAdServer)
-    //     }
-    //   }
-    // );
+    this.Service.getAdServerData().subscribe(
+      (data) => (this.responseAdServer = data),
+      (err) => console.log(),
+      () => {
+        if (this.responseAdServer){
+          console.log(this.responseAdServer)
+        }
+      }
+    );
   }
 
   ngAfterContentChecked() {

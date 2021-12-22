@@ -1200,7 +1200,7 @@ export class ProjectDetailComponent implements OnInit {
     valor = valor.replace(/[,]/g,'.');
     sessionStorage.removeItem('price_projects');
     sessionStorage.setItem('price_projects',valor)
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
   }
   formatDate(dateIn) {
     var dd = String(dateIn.getDate()).padStart(2, '0');

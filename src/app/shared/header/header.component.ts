@@ -168,7 +168,7 @@ export class HeaderComponent implements OnInit {
       sessionStorage.removeItem('word_search');
       sessionStorage.setItem('word_search',searchWord)
       // this.router.navigate(['/proyectos-vivienda']);
-      location.href ="/proyectos";
+      location.href ="/proyectos-vivienda";
       this.show_white_header = true;
       this.show_header = false;
     }else{
@@ -176,7 +176,7 @@ export class HeaderComponent implements OnInit {
       sessionStorage.removeItem('word_search');
       sessionStorage.setItem('word_search',searchWord)
       // this.router.navigate(['/proyectos-vivienda']);
-      location.href ="/proyectos";
+      location.href ="/proyectos-vivienda";
       $('#responsive-search-input').toggleClass('hide');
       $('#responsive-search-input').val('');
       this.show_white_header = true;

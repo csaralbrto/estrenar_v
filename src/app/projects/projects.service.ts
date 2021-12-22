@@ -17,6 +17,7 @@ export class ProjectsService {
   public url_location: string;
   public url: string;
   public endpointFilter: string;
+  public endpointFilterUrl: string;
   public endpointForm: string;
   public urlMas:string;
 
@@ -28,6 +29,7 @@ export class ProjectsService {
     this.endpointForm = environment.endpointTestingApi + 'ev-lead';
     this.endpoint = environment.endpointApi + 'project/';
     this.endpointFilter = environment.endpointSearchApi;
+    this.endpointFilterUrl = environment.endpointSearchApi;
     this.url_location = window.location.pathname;
     if(this.url_location == "/vivienda-interes-social"){
       this.url = this.dataPathVis
@@ -52,6 +54,11 @@ export class ProjectsService {
     return this.http.get(this.urlMas)
     .pipe(map(( response => response.json() )));
   }
+  /* Traer proyectos filtrados por URL*/
+	getDataFilterUrl( params:any ): Observable<any>{
+		return this.http.get(this.endpointFilterUrl + params)
+    .pipe(map(( response => response.json() )));
+	}
   /* Traer proyectos filtrados */
 	getDataFilter( params:any ): Observable<any>{
 		return this.http.get(this.endpointFilter + params)

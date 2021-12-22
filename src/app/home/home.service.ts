@@ -13,7 +13,7 @@ export class HomeService {
   private endpointForm: string;
   constructor(private http: Http) {
     this.dataPath = environment.endpointTestingApi + 'ev-home';
-    this.adServerPath = environment.endpointTestingApiAdServer + '16&loc=https://www.estrenarvivienda.com/proyectos-vivienda';
+    this.adServerPath = environment.endpointTestingApiAdServer + '19&loc=https://www.estrenarvivienda.com/proyectos-vivienda';
     this.endpointForm = environment.endpointTestingApi + 'ev-lead';
   }
 

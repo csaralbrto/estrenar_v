@@ -448,7 +448,7 @@ export class ToolComponent implements OnInit, AfterViewChecked {
     valor = valor.replace(/[,]/g,'.');
     sessionStorage.removeItem('price_projects');
     sessionStorage.setItem('price_projects',valor)
-    this.router.navigate(['/proyectos']);
+    this.router.navigate(['/proyectos-vivienda']);
   }
   startSpinner(): void {
     if (this.spinnerService) {
